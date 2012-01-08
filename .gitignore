@@ -1,2 +1,4 @@
 *.pyc
 *.origin
+.cproject
+.project
