@@ -3,3 +3,5 @@
 *.origin
 .cproject
 .project
+build/
+.dep/
