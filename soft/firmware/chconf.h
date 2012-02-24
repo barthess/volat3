@@ -32,6 +32,8 @@
 #ifndef _CHCONF_H_
 #define _CHCONF_H_
 
+#define PORT_IDLE_THREAD_STACK_SIZE     32
+
 /*===========================================================================*/
 /**
  * @name Kernel parameters and options
