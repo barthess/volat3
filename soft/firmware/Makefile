@@ -30,7 +30,7 @@ endif
 
 # Enable this if you want to see the full log while compiling.
 ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = yes
+  USE_VERBOSE_COMPILE = no
 endif
 
 #
@@ -59,11 +59,11 @@ PROJECT = ch
 
 # Imported source files and paths
 CHIBIOS = ../../../chibios
-include $(CHIBIOS)/boards/OLIMEX_STM32_103STK/board.mk
 include $(CHIBIOS)/os/hal/platforms/STM32F1xx/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/STM32F1xx/port.mk
 include $(CHIBIOS)/os/kernel/kernel.mk
+#include $(CHIBIOS)/boards/OLIMEX_STM32_103STK/board.mk
 #include $(CHIBIOS)/test/test.mk
 
 # Define linker script file here
@@ -79,7 +79,8 @@ CSRC = $(PORTSRC) \
        $(BOARDSRC) \
        $(CHIBIOS)/os/various/shell.c \
        $(CHIBIOS)/os/various/chprintf.c \
-       main.c
+       main.c \
+       board.c \
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
