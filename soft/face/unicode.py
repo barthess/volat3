@@ -1,4 +1,6 @@
-# -*- coding: cp1251 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import pygame, sys
 unistr = u"sdfdывап"
 pygame.font.init()

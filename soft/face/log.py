@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: cp1251 -*-
+# -*- coding: utf-8 -*-
 
 from multiprocessing import Queue
 from datetime import datetime
