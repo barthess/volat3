@@ -1,6 +1,6 @@
 # -*- coding: cp1251 -*-
 import pygame, sys
-unistr = u"sdfdывап"
+unistr = u"sdfdС‹РІР°Рї"
 pygame.font.init()
 srf = pygame.display.set_mode((640,480))
 f = pygame.font.Font("cour.ttf",20)

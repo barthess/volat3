@@ -15,19 +15,19 @@ from dsp import *
 import globalflags
 flags = globalflags.flags
 
-#дополнительные именованные цвета
+#РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РёРјРµРЅРѕРІР°РЅРЅС‹Рµ С†РІРµС‚Р°
 Color.LIGHTGREY = Color(0.75, 0.75, 0.75, 1)
 Color.GREY = Color(0.5, 0.5, 0.5, 1)
 Color.DARKGREY = Color(0.1, 0.1, 0.1, 1)
 Color.CYAN = Color(0.0, 1, 1, 1)
 Color.YELLOW = Color(1, 1, 0.0, 1)
 
-# базовый путь к файлам ресурсов
+# Р±Р°Р·РѕРІС‹Р№ РїСѓС‚СЊ Рє С„Р°Р№Р»Р°Рј СЂРµСЃСѓСЂСЃРѕРІ
 RESPATH = "resources/"
 
-class Label():#{{{текстовая бирка с возможностью центрирования
+class Label():#{{{С‚РµРєСЃС‚РѕРІР°СЏ Р±РёСЂРєР° СЃ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊСЋ С†РµРЅС‚СЂРёСЂРѕРІР°РЅРёСЏ
     def __init__(self, font):
-        #Заготовка бирки с числовым значением скорости
+        #Р—Р°РіРѕС‚РѕРІРєР° Р±РёСЂРєРё СЃ С‡РёСЃР»РѕРІС‹Рј Р·РЅР°С‡РµРЅРёРµРј СЃРєРѕСЂРѕСЃС‚Рё
         self.font = font
         self.halfheight = self.font.characters["0"].height / 2
         self.halfwidth  = self.font.characters["0"].width / 2
@@ -41,7 +41,7 @@ class Label():#{{{текстовая бирка с возможностью центрирования
         else:
             self.font.draw(text = text, position = position, color = color)
     #}}}
-class Leg():#{{{аутриггеры и проколы шин
+class Leg():#{{{Р°СѓС‚СЂРёРіРіРµСЂС‹ Рё РїСЂРѕРєРѕР»С‹ С€РёРЅ
     def __init__(self, bg, sygn_red, sygn_grey, position = (0,0)):
         self.tex_bg = Texture(RESPATH + bg)
         self.width = self.tex_bg.width
@@ -70,19 +70,19 @@ class Leg():#{{{аутриггеры и проколы шин
         else:
             self.sygn_grey.draw()
     #}}}
-class SymbolGrid():#{{{все-все значки дискретных датчиков
+class SymbolGrid():#{{{РІСЃРµ-РІСЃРµ Р·РЅР°С‡РєРё РґРёСЃРєСЂРµС‚РЅС‹С… РґР°С‚С‡РёРєРѕРІ
     def __init__(self):
-        self.grid_step = 85 # шаг сетки для значков
-        symbol_size = 70 # значки квадратные
+        self.grid_step = 85 # С€Р°Рі СЃРµС‚РєРё РґР»СЏ Р·РЅР°С‡РєРѕРІ
+        symbol_size = 70 # Р·РЅР°С‡РєРё РєРІР°РґСЂР°С‚РЅС‹Рµ
 
-        self.spritelst = [] # список всех дискретных индикаторов
-        self.n = 0 # вспомогательный счетчик для авторасстановки значков
+        self.spritelst = [] # СЃРїРёСЃРѕРє РІСЃРµС… РґРёСЃРєСЂРµС‚РЅС‹С… РёРЅРґРёРєР°С‚РѕСЂРѕРІ
+        self.n = 0 # РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ СЃС‡РµС‚С‡РёРє РґР»СЏ Р°РІС‚РѕСЂР°СЃСЃС‚Р°РЅРѕРІРєРё Р·РЅР°С‡РєРѕРІ
 
         def init_sprite(name):
-            """ Функция создающая спрайты и задающая координаты согласно сетке. """
+            """ Р¤СѓРЅРєС†РёСЏ СЃРѕР·РґР°СЋС‰Р°СЏ СЃРїСЂР°Р№С‚С‹ Рё Р·Р°РґР°СЋС‰Р°СЏ РєРѕРѕСЂРґРёРЅР°С‚С‹ СЃРѕРіР»Р°СЃРЅРѕ СЃРµС‚РєРµ. """
             clearance = ((self.grid_step - symbol_size) / 2) + 1
             y = 768 - 2*self.grid_step + clearance
-            if self.n > 11: # значит перешли на второй ряд
+            if self.n > 11: # Р·РЅР°С‡РёС‚ РїРµСЂРµС€Р»Рё РЅР° РІС‚РѕСЂРѕР№ СЂСЏРґ
                 y += self.grid_step
                 clearance = clearance - 12*self.grid_step
 
@@ -95,43 +95,43 @@ class SymbolGrid():#{{{все-все значки дискретных датчиков
             n += 1
             init_sprite(str(n/10) + str(n%10) + ".png")
 
-        # индикатор фар
+        # РёРЅРґРёРєР°С‚РѕСЂ С„Р°СЂ
         lights = Sprite(Texture(RESPATH + "lights.png"), position = (540, 330))
         self.spritelst.append(lights)
-        # ручник
+        # СЂСѓС‡РЅРёРє
         parking_break = Sprite(Texture(RESPATH + "parking_break.png"), position = (640, 330))
         self.spritelst.append(parking_break)
-        # движение запрещено
+        # РґРІРёР¶РµРЅРёРµ Р·Р°РїСЂРµС‰РµРЅРѕ
         stop = Sprite(Texture(RESPATH + "stop.png"), position = (510, 110))
         self.spritelst.append(stop)
-        # левый поворотник
+        # Р»РµРІС‹Р№ РїРѕРІРѕСЂРѕС‚РЅРёРє
         turnleft = Sprite(Texture(RESPATH + "turn_left.png"), position = (245, 5))
         self.spritelst.append(turnleft)
-        # левая часть тормзника
+        # Р»РµРІР°СЏ С‡Р°СЃС‚СЊ С‚РѕСЂРјР·РЅРёРєР°
         clearance = 5
         tex = Texture(RESPATH + "break_left.png")
         p = (turnleft.position[0] - tex.width - clearance, turnleft.position[1])
         breakleft = Sprite(tex, position = p)
         self.spritelst.append(breakleft)
-        # правый поворотник
+        # РїСЂР°РІС‹Р№ РїРѕРІРѕСЂРѕС‚РЅРёРє
         tex = Texture(RESPATH + "turn_right.png")
         turnright = Sprite(tex, position = (772, 5))
         self.spritelst.append(turnright)
-        # правая часть тормозника
+        # РїСЂР°РІР°СЏ С‡Р°СЃС‚СЊ С‚РѕСЂРјРѕР·РЅРёРєР°
         tex = Texture(RESPATH + "break_right.png")
         p = (turnright.position[0] + turnright.texture.width + clearance, turnright.position[1])
         breakright = Sprite(tex, position = p)
         self.spritelst.append(breakright)
 
     def draw(self, flags):
-        """ Принимает переменную с битовыми флагами """
+        """ РџСЂРёРЅРёРјР°РµС‚ РїРµСЂРµРјРµРЅРЅСѓСЋ СЃ Р±РёС‚РѕРІС‹РјРё С„Р»Р°РіР°РјРё """
         shift = 0
         for i in self.spritelst:
             if ((flags >> shift) & 1) == 1:
                 i.draw()
             shift += 1
 
-        #сетка для символики внизу экрана
+        #СЃРµС‚РєР° РґР»СЏ СЃРёРјРІРѕР»РёРєРё РІРЅРёР·Сѓ СЌРєСЂР°РЅР°
         i = 1
         color = Color.DARKGREY
         s = [0, 768-self.grid_step]
@@ -148,27 +148,27 @@ class SymbolGrid():#{{{все-все значки дискретных датчиков
             Gloss.draw_line(s, f, color, 2)
             i+=1
     #}}}
-class Hand():#{{{стрелка для стрелочных приборов
+class Hand():#{{{СЃС‚СЂРµР»РєР° РґР»СЏ СЃС‚СЂРµР»РѕС‡РЅС‹С… РїСЂРёР±РѕСЂРѕРІ
     """
-    Класс треугольной стрелки. Стрелка состоит из
-    треугольного полигона и прямоугольника по центру. Прямоугольник
-    нужен для того, чтобы кончик стрелки не был эфемерно-исчезающим.
+    РљР»Р°СЃСЃ С‚СЂРµСѓРіРѕР»СЊРЅРѕР№ СЃС‚СЂРµР»РєРё. РЎС‚СЂРµР»РєР° СЃРѕСЃС‚РѕРёС‚ РёР·
+    С‚СЂРµСѓРіРѕР»СЊРЅРѕРіРѕ РїРѕР»РёРіРѕРЅР° Рё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР° РїРѕ С†РµРЅС‚СЂСѓ. РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
+    РЅСѓР¶РµРЅ РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РєРѕРЅС‡РёРє СЃС‚СЂРµР»РєРё РЅРµ Р±С‹Р» СЌС„РµРјРµСЂРЅРѕ-РёСЃС‡РµР·Р°СЋС‰РёРј.
     """
     def __init__(self, length = 100, width = 10, position = (0, 0), origin = (0, 0)):
-        """Принимает:
-            длину
-            толщину основания
-            дефолтную позицию
-            координаты центра вращения
+        """РџСЂРёРЅРёРјР°РµС‚:
+            РґР»РёРЅСѓ
+            С‚РѕР»С‰РёРЅСѓ РѕСЃРЅРѕРІР°РЅРёСЏ
+            РґРµС„РѕР»С‚РЅСѓСЋ РїРѕР·РёС†РёСЋ
+            РєРѕРѕСЂРґРёРЅР°С‚С‹ С†РµРЅС‚СЂР° РІСЂР°С‰РµРЅРёСЏ
         """
         self.points = [(0.0, -width/2.0), (length, 0.0), (0.0, width/2.0)]
         self.position = position
         self.origin = origin
         self.length = length
     def draw(self, rotation = 0, color = Color.WHITE):
-        """Принимает:
-            угол поворота в градусах
-            цвет стрелки
+        """РџСЂРёРЅРёРјР°РµС‚:
+            СѓРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РІ РіСЂР°РґСѓСЃР°С…
+            С†РІРµС‚ СЃС‚СЂРµР»РєРё
         """
         Gloss.draw_triangle(points = self.points,
                     position = self.position,
@@ -183,15 +183,15 @@ class Hand():#{{{стрелка для стрелочных приборов
                     origin = (self.origin[0], self.origin[1] / 2),
                     color = color)
     #}}}
-class Dial():#{{{базовый метакласс для стрелочных приборов
+class Dial():#{{{Р±Р°Р·РѕРІС‹Р№ РјРµС‚Р°РєР»Р°СЃСЃ РґР»СЏ СЃС‚СЂРµР»РѕС‡РЅС‹С… РїСЂРёР±РѕСЂРѕРІ
     def __init__(self, texfile, hand, startangle = 0, endangle = 180, position = (0,0)):
         """
-        Принимает:
-            картинку фона
-            экземпляр класса стрелки
-            начальный угол в градусах
-            конечный угол в градусах
-            координаты
+        РџСЂРёРЅРёРјР°РµС‚:
+            РєР°СЂС‚РёРЅРєСѓ С„РѕРЅР°
+            СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° СЃС‚СЂРµР»РєРё
+            РЅР°С‡Р°Р»СЊРЅС‹Р№ СѓРіРѕР» РІ РіСЂР°РґСѓСЃР°С…
+            РєРѕРЅРµС‡РЅС‹Р№ СѓРіРѕР» РІ РіСЂР°РґСѓСЃР°С…
+            РєРѕРѕСЂРґРёРЅР°С‚С‹
         """
         self.angle = 0.0
         self.hand = hand
@@ -201,23 +201,23 @@ class Dial():#{{{базовый метакласс для стрелочных приборов
         self.startangle = startangle
         self.endangle = endangle
 
-        # координаты оси вращения стрелки
+        # РєРѕРѕСЂРґРёРЅР°С‚С‹ РѕСЃРё РІСЂР°С‰РµРЅРёСЏ СЃС‚СЂРµР»РєРё
         x = position[0] + self.tex.width / 2
         y = position[1] + self.tex.height / 2
         self.hand.position = (x, y)
 
     def draw(self, val):
         """
-        Принимает:
-            отображаемое значение (0.0 .. 1.0), что соответствует
-            минимальному и максимальному углу
+        РџСЂРёРЅРёРјР°РµС‚:
+            РѕС‚РѕР±СЂР°Р¶Р°РµРјРѕРµ Р·РЅР°С‡РµРЅРёРµ (0.0 .. 1.0), С‡С‚Рѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚
+            РјРёРЅРёРјР°Р»СЊРЅРѕРјСѓ Рё РјР°РєСЃРёРјР°Р»СЊРЅРѕРјСѓ СѓРіР»Сѓ
         """
         val = Gloss.clamp(val, 0.0, 1.0)
-        self.dial.draw() # главный пятак
+        self.dial.draw() # РіР»Р°РІРЅС‹Р№ РїСЏС‚Р°Рє
         angle = self.startangle + (self.endangle - self.startangle) * val
-        self.hand.draw(angle) # стрелка
+        self.hand.draw(angle) # СЃС‚СЂРµР»РєР°
     #}}}
-class Speedometer():#{{{спидометр, унаследованный от базового класса
+class Speedometer():#{{{СЃРїРёРґРѕРјРµС‚СЂ, СѓРЅР°СЃР»РµРґРѕРІР°РЅРЅС‹Р№ РѕС‚ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
     def __init__(self, position = (0,0)):
         self.position = position
         self.hand = Hand(length = 170, width = 26, origin = (-60, 0))
@@ -235,7 +235,7 @@ class Speedometer():#{{{спидометр, унаследованный от базового класса
         y = self.position[1] + self.dial.tex.height / 2
         self.label.draw(kmph, centered = True, position = (x, y))
     #}}}
-class Tachometer():#{{{тахометр, унаследованный от базового класса
+class Tachometer():#{{{С‚Р°С…РѕРјРµС‚СЂ, СѓРЅР°СЃР»РµРґРѕРІР°РЅРЅС‹Р№ РѕС‚ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
     def __init__(self, position = (0,0)):
         self.position = position
         self.hand = Hand(length = 145, width = 22, origin = (-60, 0))
@@ -256,8 +256,8 @@ class Tachometer():#{{{тахометр, унаследованный от базового класса
 class Counter():#{{{
     def __init__(self, capacity = 6, position = (0,0)):
         """
-        Принимает:
-            разрядность
+        РџСЂРёРЅРёРјР°РµС‚:
+            СЂР°Р·СЂСЏРґРЅРѕСЃС‚СЊ
         """
         self.capacity_len = len(str(10**capacity - 1))
         self.position = position
@@ -273,7 +273,7 @@ class Counter():#{{{
                         height = self.bgheight,
                         color = Color.WHITE)
 
-        # определим количество ведущих нулей
+        # РѕРїСЂРµРґРµР»РёРј РєРѕР»РёС‡РµСЃС‚РІРѕ РІРµРґСѓС‰РёС… РЅСѓР»РµР№
         st = '0' * (self.capacity_len - len(str(int(val))))
         self.font.draw(text = st + str(val), color = Color.BLACK, position = self.position)
     #}}}
@@ -306,7 +306,7 @@ class PressBlock():#{{{
         self.colornormal = Color(0, 0.5, 0, 1)
         self.coloralarm  = Color.RED
     def draw(self, poil, p1, p2):
-        """ Принимает значения давлений масла, тормозного контура 1 и 2"""
+        """ РџСЂРёРЅРёРјР°РµС‚ Р·РЅР°С‡РµРЅРёСЏ РґР°РІР»РµРЅРёР№ РјР°СЃР»Р°, С‚РѕСЂРјРѕР·РЅРѕРіРѕ РєРѕРЅС‚СѓСЂР° 1 Рё 2"""
         if poil > 0.8:
             self.oil_sym.draw(self.coloralarm)
         else:
@@ -324,7 +324,7 @@ class PressBlock():#{{{
         self.pressmeter1.draw(p1)
         self.pressmeter2.draw(p2)
     #}}}
-class Clock():#{{{ Часы с календарем, кукушкой, цыганами и медведями
+class Clock():#{{{ Р§Р°СЃС‹ СЃ РєР°Р»РµРЅРґР°СЂРµРј, РєСѓРєСѓС€РєРѕР№, С†С‹РіР°РЅР°РјРё Рё РјРµРґРІРµРґСЏРјРё
     def __init__(self, position = (0,0)):
         self.position = position
     def draw(self):
@@ -333,9 +333,9 @@ class Clock():#{{{ Часы с календарем, кукушкой, цыганами и медведями
         p = (self.position[0] + 5, self.position[1] + 35)
         footnotefont.draw(st[0:10], position = p)
     #}}}
-class MulticolorSymbol():#{{{значок с возможностью задания цвета
-    """ Значок рисуется с помощью цветного прямоугольника
-    с последующим наложением маски нужной формы. """
+class MulticolorSymbol():#{{{Р·РЅР°С‡РѕРє СЃ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊСЋ Р·Р°РґР°РЅРёСЏ С†РІРµС‚Р°
+    """ Р—РЅР°С‡РѕРє СЂРёСЃСѓРµС‚СЃСЏ СЃ РїРѕРјРѕС‰СЊСЋ С†РІРµС‚РЅРѕРіРѕ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+    СЃ РїРѕСЃР»РµРґСѓСЋС‰РёРј РЅР°Р»РѕР¶РµРЅРёРµРј РјР°СЃРєРё РЅСѓР¶РЅРѕР№ С„РѕСЂРјС‹. """
     def __init__(self, maskfile, position = (0,0)):
         self.position = position
         self.tex = Texture(RESPATH + maskfile)
@@ -343,23 +343,23 @@ class MulticolorSymbol():#{{{значок с возможностью задания цвета
         self.height = self.tex.height
         self.symmask = Sprite(self.tex, position = position)
     def draw(self, color = Color.WHITE):
-        # прямоугольник фона, который будет просвечивать сквозь маску значка
+        # РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє С„РѕРЅР°, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РїСЂРѕСЃРІРµС‡РёРІР°С‚СЊ СЃРєРІРѕР·СЊ РјР°СЃРєСѓ Р·РЅР°С‡РєР°
         Gloss.draw_box(width = self.width, height = self.height,
                        color = color, position = self.position)
-        # накладываем маску
+        # РЅР°РєР»Р°РґС‹РІР°РµРј РјР°СЃРєСѓ
         self.symmask.draw(position = self.position)
         pass
     #}}}
-class Thermometer():#{{{ термометр в виде столбика с шариком
+class Thermometer():#{{{ С‚РµСЂРјРѕРјРµС‚СЂ РІ РІРёРґРµ СЃС‚РѕР»Р±РёРєР° СЃ С€Р°СЂРёРєРѕРј
     def __init__(self, multicolorsym, masktex, position = (0,0)):
-        """ Рисует каноничный градусник в виде цветного прямоугольника
-        с наложенной на него маской, изображающей прибор. Под
-        градусником располагается символизирующий значок.
+        """ Р РёСЃСѓРµС‚ РєР°РЅРѕРЅРёС‡РЅС‹Р№ РіСЂР°РґСѓСЃРЅРёРє РІ РІРёРґРµ С†РІРµС‚РЅРѕРіРѕ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+        СЃ РЅР°Р»РѕР¶РµРЅРЅРѕР№ РЅР° РЅРµРіРѕ РјР°СЃРєРѕР№, РёР·РѕР±СЂР°Р¶Р°СЋС‰РµР№ РїСЂРёР±РѕСЂ. РџРѕРґ
+        РіСЂР°РґСѓСЃРЅРёРєРѕРј СЂР°СЃРїРѕР»Р°РіР°РµС‚СЃСЏ СЃРёРјРІРѕР»РёР·РёСЂСѓСЋС‰РёР№ Р·РЅР°С‡РѕРє.
 
-        Принимает:
-            объект многоцветного значка
-            название файла текстуры градусника
-            координаты
+        РџСЂРёРЅРёРјР°РµС‚:
+            РѕР±СЉРµРєС‚ РјРЅРѕРіРѕС†РІРµС‚РЅРѕРіРѕ Р·РЅР°С‡РєР°
+            РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° С‚РµРєСЃС‚СѓСЂС‹ РіСЂР°РґСѓСЃРЅРёРєР°
+            РєРѕРѕСЂРґРёРЅР°С‚С‹
         """
         self.tex_mask = Texture(RESPATH + masktex)
         self.mask = Sprite(self.tex_mask, position)
@@ -370,7 +370,7 @@ class Thermometer():#{{{ термометр в виде столбика с шариком
         y = position[1] + self.tex_mask.height + clearance
         self.multicolorsym.position = (x, y)
     def draw(self, t):
-        """ Принимает температуру, которую надо отобразить """
+        """ РџСЂРёРЅРёРјР°РµС‚ С‚РµРјРїРµСЂР°С‚СѓСЂСѓ, РєРѕС‚РѕСЂСѓСЋ РЅР°РґРѕ РѕС‚РѕР±СЂР°Р·РёС‚СЊ """
         bluet = 50
         yellowt = 70
         greent = 90
@@ -386,7 +386,7 @@ class Thermometer():#{{{ термометр в виде столбика с шариком
         floor = 40 # degrees
         top = 120 # degrees
         ppd = 3 # pixels per degree
-        minpix = 26 # столько пикселей должно быть, чтобы дотянуть до floor
+        minpix = 26 # СЃС‚РѕР»СЊРєРѕ РїРёРєСЃРµР»РµР№ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ, С‡С‚РѕР±С‹ РґРѕС‚СЏРЅСѓС‚СЊ РґРѕ floor
         h = minpix + (Gloss.clamp(t, floor, top) - floor) * ppd
         x = self.mask.position[0] + self.tex_mask.width
         y = self.mask.position[1] + self.tex_mask.height
@@ -396,15 +396,15 @@ class Thermometer():#{{{ термометр в виде столбика с шариком
                        color = color,
                        rotation = 180)
 
-        # рисуем маску самого градусника
+        # СЂРёСЃСѓРµРј РјР°СЃРєСѓ СЃР°РјРѕРіРѕ РіСЂР°РґСѓСЃРЅРёРєР°
         self.mask.draw()
-        # а теперь значок
+        # Р° С‚РµРїРµСЂСЊ Р·РЅР°С‡РѕРє
         self.multicolorsym.draw(color)
     #}}}
-class ThermoBlock():#{{{Два градусника собранные в единый блок с разметкой
+class ThermoBlock():#{{{Р”РІР° РіСЂР°РґСѓСЃРЅРёРєР° СЃРѕР±СЂР°РЅРЅС‹Рµ РІ РµРґРёРЅС‹Р№ Р±Р»РѕРє СЃ СЂР°Р·РјРµС‚РєРѕР№
     def __init__(self, position = (0,0)):
         self.position = position
-        self.clearance = 60 # зазор между градусниками
+        self.clearance = 60 # Р·Р°Р·РѕСЂ РјРµР¶РґСѓ РіСЂР°РґСѓСЃРЅРёРєР°РјРё
         self.oilsym = MulticolorSymbol("temp_oil_sym_mask.png")
         self.thermometer_oil = Thermometer(self.oilsym, "thermometer_mask_mirror.png",
                                            position = (position[0] + self.clearance, position[1]))
@@ -413,7 +413,7 @@ class ThermoBlock():#{{{Два градусника собранные в единый блок с разметкой
                                              position = position)
         self.label = Label(footnotefont)
     def draw(self, toil, twater):
-        """ Принимает температуры масла и воды (в алфавитном порядке)"""
+        """ РџСЂРёРЅРёРјР°РµС‚ С‚РµРјРїРµСЂР°С‚СѓСЂС‹ РјР°СЃР»Р° Рё РІРѕРґС‹ (РІ Р°Р»С„Р°РІРёС‚РЅРѕРј РїРѕСЂСЏРґРєРµ)"""
         self.thermometer_oil.draw(toil)
         self.thermometer_water.draw(twater)
         ppd = 3 # pixels per degree
@@ -424,12 +424,12 @@ class ThermoBlock():#{{{Два градусника собранные в единый блок с разметкой
         self.label.draw("80", centered = True, position = (x, y - 40*ppd))
         self.label.draw("100", centered = True, position = (x, y - 60*ppd))
     #}}}
-class Tank():#{{{Индикатор соляры
+class Tank():#{{{РРЅРґРёРєР°С‚РѕСЂ СЃРѕР»СЏСЂС‹
     def __init__(self, position = (0,0)):
         self.position = position
         self.fuelsym = MulticolorSymbol("fuel_sym_mask.png", position = position)
 
-        #нарисуем рамку, символизирующую бак
+        #РЅР°СЂРёСЃСѓРµРј СЂР°РјРєСѓ, СЃРёРјРІРѕР»РёР·РёСЂСѓСЋС‰СѓСЋ Р±Р°Рє
         self.width = 25
         self.height = 260
         p1 = (self.position[0] + self.width, self.position[1])
@@ -437,7 +437,7 @@ class Tank():#{{{Индикатор соляры
         p3 = (p2[0] - self.width, p2[1])
         self.lines = [self.position, p1, p2, p3]
 
-        # прикинем координаты для значка
+        # РїСЂРёРєРёРЅРµРј РєРѕРѕСЂРґРёРЅР°С‚С‹ РґР»СЏ Р·РЅР°С‡РєР°
         x = self.position[0] - 5
         y = self.position[1] + self.height + 5
         self.fuelsym.position = (x, y)
@@ -457,15 +457,15 @@ class Tank():#{{{Индикатор соляры
                 color = color,
                 rotation = 180)
 
-        # прямоугольник для легкого затемнения цвета
+        # РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РґР»СЏ Р»РµРіРєРѕРіРѕ Р·Р°С‚РµРјРЅРµРЅРёСЏ С†РІРµС‚Р°
         Gloss.draw_box(position = self.position,
                 width = self.width,
                 height = self.height,
                 color = Color(0,0,0,0.5))
-        # рамка
+        # СЂР°РјРєР°
         Gloss.draw_lines(self.lines, Color.WHITE, width = 2, join = True)
 
-        # разметка
+        # СЂР°Р·РјРµС‚РєР°
         start = (self.position[0] + self.width, self.position[1] + int(self.height / 2))
         finish = (start[0] - int(self.width / 1.5), start[1])
         Gloss.draw_line(start, finish, color = Color.WHITE, width = 2)
@@ -476,7 +476,7 @@ class Tank():#{{{Индикатор соляры
         finish = (start[0] - int(self.width / 2), start[1])
         Gloss.draw_line(start, finish, color = Color.WHITE, width = 1)
     #}}}
-class FuelBlock():#{{{Два индикатора в моноблоке
+class FuelBlock():#{{{Р”РІР° РёРЅРґРёРєР°С‚РѕСЂР° РІ РјРѕРЅРѕР±Р»РѕРєРµ
     def __init__(self, position = (0,0)):
         self.position = position
         self.clearance = 50
@@ -490,7 +490,7 @@ class FuelBlock():#{{{Два индикатора в моноблоке
         normalfont.draw(text = "1", position = (x, y), color = Color.BLACK)
         normalfont.draw(text = "2", position = (x + self.clearance, y), color = Color.BLACK)
     #}}}
-class Battery():#{{{батарейка с цикверками
+class Battery():#{{{Р±Р°С‚Р°СЂРµР№РєР° СЃ С†РёРєРІРµСЂРєР°РјРё
     def __init__(self, position = (0,0)):
         self.position = position
         self.sym = MulticolorSymbol("battery_sym_mask.png", position = position)
@@ -505,7 +505,7 @@ class Battery():#{{{батарейка с цикверками
         stringpos = self.position[0] + 9, self.position[1] + 32
         footnotefont.draw(string, position = stringpos)
     #}}}
-class ATM():#{{{ Меню а ля банкомат
+class ATM():#{{{ РњРµРЅСЋ Р° Р»СЏ Р±Р°РЅРєРѕРјР°С‚
     def __init__(self):
         pass
     def draw(self):
@@ -529,7 +529,7 @@ class WarningWindow():#{{{
 
 class Telemetry(GlossGame):#{{{
     def init(self, q_tlm):#{{{
-        #проброс глобальных переменных внутрь класса.
+        #РїСЂРѕР±СЂРѕСЃ РіР»РѕР±Р°Р»СЊРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С… РІРЅСѓС‚СЂСЊ РєР»Р°СЃСЃР°.
         self.q_tlm = q_tlm
         #}}}
     def preload_content(self):#{{{
@@ -543,14 +543,14 @@ class Telemetry(GlossGame):#{{{
     def load_content(self):#{{{
         self.mousepos = (0, 0)
         self.on_mouse_motion = self.handle_mouse_motion
-        # для обработки кликов
+        # РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РєР»РёРєРѕРІ
         self.on_mouse_down = self.handle_mouse_clicks
-        # для обработки клавиш
+        # РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РєР»Р°РІРёС€
         self.on_key_up = self.handle_key_presses
-        # переменная для слежения за присутствием увву
+        # РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ СЃР»РµР¶РµРЅРёСЏ Р·Р° РїСЂРёСЃСѓС‚СЃС‚РІРёРµРј СѓРІРІСѓ
         self.last_success_time = time.time()
 
-        # всякие полезные шрифты
+        # РІСЃСЏРєРёРµ РїРѕР»РµР·РЅС‹Рµ С€СЂРёС„С‚С‹
         global tinyfont
         global footnotefont
         global smallfont
@@ -564,7 +564,7 @@ class Telemetry(GlossGame):#{{{
         largefont    = SpriteFont(RESPATH + "DroidSansMono.ttf", size = 48, startcharacter = 32, endcharacter = 126)
         hugefont     = SpriteFont(RESPATH + "DroidSansMono.ttf", size = 64, startcharacter = 32, endcharacter = 126)
 
-        # константы для расчета координат объектов
+        # РєРѕРЅСЃС‚Р°РЅС‚С‹ РґР»СЏ СЂР°СЃС‡РµС‚Р° РєРѕРѕСЂРґРёРЅР°С‚ РѕР±СЉРµРєС‚РѕРІ
         legh = 220
         legw = 150
         symgridh = 85
@@ -572,13 +572,13 @@ class Telemetry(GlossGame):#{{{
         pressh = 180
         pressw = 180
 
-        # отображаемые значения. Обновляются функцией update
+        # РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ. РћР±РЅРѕРІР»СЏСЋС‚СЃСЏ С„СѓРЅРєС†РёРµР№ update
         self.speed = 0.0
         self.tacho = 0.0
         self.temp_oil = 0.0
         self.temp_water = 0.0
 
-        # инициализация объектов
+        # РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РѕР±СЉРµРєС‚РѕРІ
         self.speedometer = Speedometer(position = (380,10))
         self.tachometer = Tachometer(position = (145,45))
         self.thermoblock = ThermoBlock(position = (920,5))
@@ -610,7 +610,7 @@ class Telemetry(GlossGame):#{{{
         self.warning = WarningWindow()
 
         #self.tv = Sprite(Texture(RESPATH + "tv.png"), position = (400, 400))
-        #time.sleep(1)# имитация непосильной работы по загрузке ресурсов
+        #time.sleep(1)# РёРјРёС‚Р°С†РёСЏ РЅРµРїРѕСЃРёР»СЊРЅРѕР№ СЂР°Р±РѕС‚С‹ РїРѕ Р·Р°РіСЂСѓР·РєРµ СЂРµСЃСѓСЂСЃРѕРІ
     #}}}
     def draw(self):#{{{
         """The draw() method of your game automatically gets called by Gloss
@@ -640,7 +640,7 @@ class Telemetry(GlossGame):#{{{
         #self.tv.draw()
         #}}}
     def update(self):#{{{
-        """ Обновляет всякие флаги, согласно которым рисуется всякая ботва. """
+        """ РћР±РЅРѕРІР»СЏРµС‚ РІСЃСЏРєРёРµ С„Р»Р°РіРё, СЃРѕРіР»Р°СЃРЅРѕ РєРѕС‚РѕСЂС‹Рј СЂРёСЃСѓРµС‚СЃСЏ РІСЃСЏРєР°СЏ Р±РѕС‚РІР°. """
         if flags["debug"] is True:
             self.__debugupdate()
         else:
@@ -659,7 +659,7 @@ class Telemetry(GlossGame):#{{{
             self.mousepos = event.pos
         #}}}
     def __normalupdate(self):#{{{
-        """ Стандартная обновлялка флагов """
+        """ РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ РѕР±РЅРѕРІР»СЏР»РєР° С„Р»Р°РіРѕРІ """
         tlm_data = None
 
         try:
@@ -670,12 +670,12 @@ class Telemetry(GlossGame):#{{{
             self.last_success_time = time.time()
 
         if tlm_data is not None:
-            # растусовка всей ботвы из пакета
+            # СЂР°СЃС‚СѓСЃРѕРІРєР° РІСЃРµР№ Р±РѕС‚РІС‹ РёР· РїР°РєРµС‚Р°
             self.speed = tlm_data.speed / 256.0
             self.tacho = tlm_data.speed / 256.0
             self.temp_oil = tlm_data.speed / 2.0
             self.temp_water = tlm_data.speed / 2.0
-            # и в самом конце "сбрасываем флаг"
+            # Рё РІ СЃР°РјРѕРј РєРѕРЅС†Рµ "СЃР±СЂР°СЃС‹РІР°РµРј С„Р»Р°Рі"
             tlm_data = None
 
         self.autriggers_msk += 1
@@ -683,7 +683,7 @@ class Telemetry(GlossGame):#{{{
         self.sym_msk = random.randint(0, (2**32 - 1))
         #}}}
     def __debugupdate(self):#{{{
-        """ Отладочная обновлялка флагов """
+        """ РћС‚Р»Р°РґРѕС‡РЅР°СЏ РѕР±РЅРѕРІР»СЏР»РєР° С„Р»Р°РіРѕРІ """
         self.last_success_time = time.time()
 
         self.speed = self.mousepos[1] / 768.0

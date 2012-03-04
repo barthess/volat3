@@ -10,7 +10,7 @@ import os
 from struct import *
 from multiprocessing import Queue
 from multiprocessing import Event
-from Queue import Empty, Full # для отлова исключений
+from Queue import Empty, Full # РґР»СЏ РѕС‚Р»РѕРІР° РёСЃРєР»СЋС‡РµРЅРёР№
 import serial
 import io
 from binascii import hexlify
@@ -37,20 +37,20 @@ mav = mavlink.MAVLink(f)
 
 def linkin(q_tlm, q_log, e_pause, e_kill, config):
     """
-    менеджер сообщений
-    Принимает поток данных, выискивает пакеты, сортирует.
+    РјРµРЅРµРґР¶РµСЂ СЃРѕРѕР±С‰РµРЅРёР№
+    РџСЂРёРЅРёРјР°РµС‚ РїРѕС‚РѕРє РґР°РЅРЅС‹С…, РІС‹РёСЃРєРёРІР°РµС‚ РїР°РєРµС‚С‹, СЃРѕСЂС‚РёСЂСѓРµС‚.
 
     """
-    # сделаем файл для записи ошибок
+    # СЃРґРµР»Р°РµРј С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё РѕС€РёР±РѕРє
     errlog = open('logs/link.log', 'a')
 
-    #настройка верёвки для связи
+    #РЅР°СЃС‚СЂРѕР№РєР° РІРµСЂС‘РІРєРё РґР»СЏ СЃРІСЏР·Рё
     baudrate = config.getint('Link', 'baudrate')
     port     = config.getint('Link', 'port')
     ser = serial.Serial(port, baudrate, timeout = 0.01)
     sio = io.BufferedRWPair(ser, ser, 1024)
 
-    # ждем, пока нас снимут с паузы
+    # Р¶РґРµРј, РїРѕРєР° РЅР°СЃ СЃРЅРёРјСѓС‚ СЃ РїР°СѓР·С‹
     print "---- link input thread ready"
     e_pause.wait()
     print "---- link input thread run"
@@ -83,15 +83,15 @@ def linkin(q_tlm, q_log, e_pause, e_kill, config):
 
 #def linkout(q_out, e_pause, e_kill):
 #    """
-#    менеджер сообщений
-#    Принимает поток данных, выискивает пакеты, сортирует
+#    РјРµРЅРµРґР¶РµСЂ СЃРѕРѕР±С‰РµРЅРёР№
+#    РџСЂРёРЅРёРјР°РµС‚ РїРѕС‚РѕРє РґР°РЅРЅС‹С…, РІС‹РёСЃРєРёРІР°РµС‚ РїР°РєРµС‚С‹, СЃРѕСЂС‚РёСЂСѓРµС‚
 #
 #    """
 #
-#    xbee_response = None # пришедший с модема пакет
-#    msg_up = None # строка, которую надо запихнуть в пакет для отправки
+#    xbee_response = None # РїСЂРёС€РµРґС€РёР№ СЃ РјРѕРґРµРјР° РїР°РєРµС‚
+#    msg_up = None # СЃС‚СЂРѕРєР°, РєРѕС‚РѕСЂСѓСЋ РЅР°РґРѕ Р·Р°РїРёС…РЅСѓС‚СЊ РІ РїР°РєРµС‚ РґР»СЏ РѕС‚РїСЂР°РІРєРё
 #
-#    # ждем, пока нас снимут с паузы
+#    # Р¶РґРµРј, РїРѕРєР° РЅР°СЃ СЃРЅРёРјСѓС‚ СЃ РїР°СѓР·С‹
 #    print "---- linkout ready"
 #    e_pause.wait()
 #    print "---- linkout run"
@@ -104,7 +104,7 @@ def linkin(q_tlm, q_log, e_pause, e_kill, config):
 #        try: msg_out = q_out.get_nowait()
 #        except Empty: pass
 #
-#        if msg_out != None: # пихаем в провод
+#        if msg_out != None: # РїРёС…Р°РµРј РІ РїСЂРѕРІРѕРґ
 #            c = sio.write()
 #            msg_out = None
 #

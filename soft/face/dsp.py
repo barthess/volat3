@@ -24,7 +24,7 @@ def simpson_cubic(fa, fm1, fm2, fb):
 
 
 
-# кольцевой буфер для нужд трудящихся
+# РєРѕР»СЊС†РµРІРѕР№ Р±СѓС„РµСЂ РґР»СЏ РЅСѓР¶Рґ С‚СЂСѓРґСЏС‰РёС…СЃСЏ
 class RingBuffer:
     def __init__(self, size):
         self.data = [0.0 for i in xrange(size)]
