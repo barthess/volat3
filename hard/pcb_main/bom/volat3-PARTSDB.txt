@@ -1,0 +1,60 @@
+Mfg Part Num	Mfg Name	VID	Vendor Part Num	Unit Price	Description	Country of Origin	Local Availability	Customer Ref
+STM32F103VDT6	STMicroelectronics	FN				FR France		
+ERJ6GEYJ103V	Panasonic	FN	2057719		RESISTOR, 0805, 10K 5%, 0.125W	JP Japan	Warehouse	
+ERJ6GEY0R00V	Panasonic	FN	2057661		RESISTOR, 0805, 0R 5%, 0.125W	JP Japan	Warehouse	
+TUSB2046BVF	Texas Instruments	FN	1470507					
+USBDF01W5	STMicroelectronics	ME	511-USBDF01W5					
+USBUF01W6	STMicroelectronics	ME	511-USBUF01W6					
+TPS2041D	Texas Instruments	FN	8456739					
+ERJ6GEYJ101V		FN	2057681				warehouse	
+ERJ6GEYJ331V		FN	2057691					
+ERJ6GEYJ2R2V		FN	2057663				warehouse	
+ERJ6GEYJ152V		FN	2057704				warehouse	
+ERJP06F3602V		FN	1894205					
+ERJ6GEYJ330V		FN	2057675					
+ERJ6GEYJ102V		FN	2057701					
+ERJ6GEYJ222V		FN	2057708					
+ERJ6GEYJ473V		FN	2057728					
+MAX3232ID		FN	1652282				Desoldered	
+MCCA000386		FN	1759265				warehouse	
+24AA32A-I/SN		FN	1617659					
+BC848BLT1G		FN	1459039					
+74HC125D	Integral	Integral				BY Belarus	My own	
+74HC595D	Integral	Integral				BY Belarus	My own	
+EXC3BP121H		FN	1292698					
+LM1117IMP-3.3		FN	1469051					
+K9LBG08U0D					NAND Flash, 4GB		Desoldered	
+SMU4							Warehouse	
+ABM3B-12.000MHZ-B2-T		FN	1611810				Desoldered	
+battery_holder_2032	рога и копыта						Desoldered	
+AB38T-32.768KHZ		FN	1611828				Desoldered	
+BAS85		FN	1097282				desoldered	
+C1206C475K8NACTU		FN	1789741				Warehouse	
+293D106X96R3A2TE3		FN	1754143				warehouse	
+PLD_1X25_LONGPAD							warehouse	
+PLD_1X08_LONGPAD							warehouse	
+PLD_1X04_LONGPAD							warehouse	
+PLD_1X03_LONGPAD							warehouse	
+M05X2SHD							my own	
+B3F-1000	рога и копыта	FN	176432				My own	
+PLD_1X02_LONGPAD							warehouse	
+SM6T30A							desoldered	
+IRLML5103							my own	
+B45196H2107K409		FN	9753850				warehouse	
+2X10-SHROUDED							my own	
+598-8110107F		FN	1850742				my own	
+CRCW121801K0F100RT1							desoldered	
+RC12							desoldered	
+R080510k1%							desoldered	
+R0805100k1%							warehose	
+C0805-1uF-6.3v							desoldered	
+C0805-10pF-50v							warehouse	
+C0805-27pF-50v							warehouse	
+USB_A_ANGLE_DOUBLE							desoldered	
+67068-8011		FN	1258768					
+ERJ6GEYJ391V		FN	2057692				warehouse	
+BZV55-C3V3		FN	1097197				my own	
+C0805C105K8RACTU		FN	1353468				desoldered	
+C0805C100J5GAC-TU		FN	1650856				warehouse	
+C0805C220K5GACTU		FN	1878792				warehouse(27pF)	
+IRLML5103PBF		FN	8660085				my own	
