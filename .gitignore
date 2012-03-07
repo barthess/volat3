@@ -7,5 +7,4 @@ build/
 .dep/
 *.log
 doc/
-*.s#?
-*.b#?
+*.*#*
