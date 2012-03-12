@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -138,11 +138,36 @@
 <wire x1="45" y1="287" x2="10" y2="287" width="0.5" layer="100"/>
 <wire x1="45" y1="287" x2="45" y2="294" width="0.5" layer="100"/>
 </symbol>
+<symbol name="A2_PORTRAIT_NEXT_SCALED">
+<wire x1="206" y1="293" x2="206" y2="3" width="0.5" layer="100"/>
+<wire x1="206" y1="293" x2="10" y2="293" width="0.5" layer="100"/>
+<wire x1="10" y1="3" x2="10" y2="293" width="0.5" layer="100"/>
+<wire x1="10" y1="3" x2="206" y2="3" width="0.5" layer="100"/>
+<wire x1="209" y1="296" x2="209" y2="0" width="0.5" layer="100"/>
+<wire x1="209" y1="296" x2="0" y2="296" width="0.5" layer="100"/>
+<wire x1="0" y1="0" x2="0" y2="296" width="0.5" layer="100"/>
+<wire x1="0" y1="0" x2="209" y2="0" width="0.5" layer="100"/>
+<text x="184" y="5" size="2.54" layer="100">A2_scaled</text>
+<wire x1="114.5" y1="10.5" x2="114.5" y2="3" width="0.5" layer="100"/>
+<wire x1="114.5" y1="10.5" x2="206" y2="10.5" width="0.5" layer="100"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="A1_LANDSCAPE_FIRST_SCALED">
 <gates>
 <gate name="G$1" symbol="A1_LANDSCAPE_FIRST_SCALED" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="A2_PORTRAIT_NEXT_SCALED">
+<gates>
+<gate name="G$1" symbol="A2_PORTRAIT_NEXT_SCALED" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -949,6 +974,92 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 </deviceset>
 </devicesets>
 </library>
+<library name="power_converters">
+<packages>
+<package name="TO263-5">
+<description>&lt;b&gt;TO-263&lt;/b&gt;</description>
+<wire x1="5" y1="4.6" x2="5" y2="-3.7" width="0.2032" layer="51"/>
+<wire x1="5" y1="-3.7" x2="5" y2="-4.6" width="0.2032" layer="21"/>
+<wire x1="5" y1="-4.6" x2="-5" y2="-4.6" width="0.2032" layer="21"/>
+<wire x1="-5" y1="-4.6" x2="-5" y2="-3.7" width="0.2032" layer="21"/>
+<wire x1="-5" y1="-3.7" x2="-5" y2="4.6" width="0.2032" layer="51"/>
+<wire x1="-5" y1="4.6" x2="-5" y2="5.25" width="0.2032" layer="51"/>
+<wire x1="-5" y1="5.25" x2="-3.5" y2="5.8" width="0.2032" layer="51"/>
+<wire x1="-3.5" y1="5.8" x2="3.5" y2="5.8" width="0.2032" layer="51"/>
+<wire x1="3.5" y1="5.8" x2="5" y2="5.25" width="0.2032" layer="51"/>
+<wire x1="5" y1="5.25" x2="5" y2="4.6" width="0.2032" layer="51"/>
+<wire x1="5" y1="4.6" x2="-5" y2="4.6" width="0.2032" layer="51"/>
+<smd name="6" x="0" y="1.61" dx="11" dy="10" layer="1" thermals="no"/>
+<smd name="1" x="-3.4036" y="-8.7912" dx="1.0668" dy="2.413" layer="1"/>
+<smd name="2" x="-1.7018" y="-8.7912" dx="1.0668" dy="2.413" layer="1"/>
+<smd name="3" x="0" y="-8.7912" dx="1.0668" dy="2.413" layer="1"/>
+<smd name="4" x="1.7018" y="-8.7912" dx="1.0668" dy="2.413" layer="1"/>
+<smd name="5" x="3.4036" y="-8.7912" dx="1.0668" dy="2.413" layer="1"/>
+<text x="-6.0325" y="-4.4575" size="1.016" layer="25" ratio="18" rot="R90">&gt;NAME</text>
+<text x="6.985" y="-4.4575" size="0.8128" layer="27" ratio="10" rot="R90">&gt;VALUE</text>
+<rectangle x1="-3.8862" y1="-9.5" x2="-2.921" y2="-7.3" layer="51"/>
+<rectangle x1="-3.8862" y1="-7.3" x2="-2.921" y2="-4.6" layer="21"/>
+<rectangle x1="-2.1844" y1="-9.5" x2="-1.2192" y2="-7.3" layer="51"/>
+<rectangle x1="-0.4826" y1="-9.5" x2="0.4826" y2="-7.3" layer="51"/>
+<rectangle x1="1.2192" y1="-9.5" x2="2.1844" y2="-7.3" layer="51"/>
+<rectangle x1="2.921" y1="-9.5" x2="3.8862" y2="-7.3" layer="51"/>
+<rectangle x1="-2.1844" y1="-7.3" x2="-1.2192" y2="-4.6" layer="21"/>
+<rectangle x1="-0.4826" y1="-7.3" x2="0.4826" y2="-4.6" layer="21"/>
+<rectangle x1="1.2192" y1="-7.3" x2="2.1844" y2="-4.6" layer="21"/>
+<rectangle x1="2.921" y1="-7.3" x2="3.8862" y2="-4.6" layer="21"/>
+<polygon width="0.2032" layer="51">
+<vertex x="-5" y="4.6"/>
+<vertex x="-5" y="5.25"/>
+<vertex x="-3.5" y="5.8"/>
+<vertex x="3.5" y="5.8"/>
+<vertex x="5" y="5.25"/>
+<vertex x="5" y="4.6"/>
+</polygon>
+</package>
+</packages>
+<symbols>
+<symbol name="LM2596S">
+<wire x1="-10.16" y1="7.62" x2="10.16" y2="7.62" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="7.62" x2="10.16" y2="-7.62" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="-7.62" x2="-10.16" y2="-7.62" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="-7.62" x2="-10.16" y2="7.62" width="0.1524" layer="94"/>
+<text x="4.445" y="-5.8738" size="1.524" layer="95">GND</text>
+<text x="-10.16" y="8.89" size="1.524" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-10.16" size="1.524" layer="96">&gt;VALUE</text>
+<text x="3.81" y="4.2862" size="1.524" layer="95">FB</text>
+<pin name="GND" x="7.62" y="-10.16" visible="pad" length="short" direction="in" rot="R90"/>
+<pin name="!ON!/OFF" x="-12.7" y="-5.08" length="short" direction="in"/>
+<pin name="VIN" x="-12.7" y="5.08" length="short" direction="in"/>
+<pin name="OUT" x="12.7" y="0" length="short" direction="out" rot="R180"/>
+<pin name="FB" x="5.08" y="10.16" visible="pad" length="short" direction="in" rot="R270"/>
+<pin name="GND@6" x="5.08" y="-10.16" visible="pad" length="short" direction="in" rot="R90"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="LM2596S" prefix="DA">
+<description>SIMPLE SWITCHER&lt;p&gt;
+150 kHz, 3A Step-Down Voltage Regulator</description>
+<gates>
+<gate name="G$1" symbol="LM2596S" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TO263-5">
+<connects>
+<connect gate="G$1" pin="!ON!/OFF" pad="5"/>
+<connect gate="G$1" pin="FB" pad="4"/>
+<connect gate="G$1" pin="GND" pad="3"/>
+<connect gate="G$1" pin="GND@6" pad="6"/>
+<connect gate="G$1" pin="OUT" pad="2"/>
+<connect gate="G$1" pin="VIN" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.txt"/>
@@ -965,6 +1076,9 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 </part>
 <part name="U$2" library="frames_simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
 <part name="ZQ3" library="crystals" deviceset="CRYSTAL" device="HC49UV" value="4M"/>
+<part name="U$1" library="frames_simplified" deviceset="A2_PORTRAIT_NEXT_SCALED" device=""/>
+<part name="DA1" library="power_converters" deviceset="LM2596S" device=""/>
+<part name="DA2" library="power_converters" deviceset="LM2596S" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -986,6 +1100,9 @@ Various standard crystals. Proven footprints. Spark Fun Electronics SKU : COM-00
 <plain>
 </plain>
 <instances>
+<instance part="U$1" gate="G$1" x="0" y="0"/>
+<instance part="DA1" gate="G$1" x="45.72" y="223.52"/>
+<instance part="DA2" gate="G$1" x="45.72" y="127"/>
 </instances>
 <busses>
 </busses>
