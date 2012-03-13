@@ -1,5 +1,20 @@
 Mfg Part Num	Mfg Name	VID	Vendor Part Num	Unit Price	Description	Country of Origin	Customer Ref
-STM32F103VDT6	STMicroelectronics	FN				FR France	
+STM32F103VDT6	STMicroelectronics	FN	1624140			FR France	
+LM2596S-ADJ		FN	9494367				
+							
+VS-30BQ040PBF		FN	1651115				
+							
+DR125-470-R		FN	1612097				
+							
+516D108M050QS6AE3		FN	1351554				
+T491D227K010AT		FN	1457505				
+							
+ERJ6GEYJ153V		FN	2057721				
+ERJ6GEYJ332V		FN	2057711				
+							
+							
+							
+							
 ERJ6GEYJ103V	Panasonic	FN	2057719		RESISTOR, 0805, 10K 5%, 0.125W	JP Japan	
 ERJ6GEY0R00V	Panasonic	FN	2057661		RESISTOR, 0805, 0R 5%, 0.125W	JP Japan	
 TUSB2046BVF	Texas Instruments	FN	1470507				
@@ -26,7 +41,7 @@ LM1117IMP-3.3		FN	1469051
 K9LBG08U0D					NAND Flash, 4GB		
 SMU4							
 ABM3B-12.000MHZ-B2-T		FN	1611810				
-battery_holder_2032	рога и копыта						
+battery_holder_2032	пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ						
 AB38T-32.768KHZ		FN	1611828				
 BAS85		FN	1097282				
 C1206C475K8NACTU		FN	1789741				
@@ -36,7 +51,7 @@ PLD_1X08_LONGPAD
 PLD_1X04_LONGPAD							
 PLD_1X03_LONGPAD							
 M05X2SHD							
-B3F-1000	рога и копыта	FN	176432				
+B3F-1000	пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ	FN	176432				
 PLD_1X02_LONGPAD							
 SM6T30A							
 IRLML5103							
