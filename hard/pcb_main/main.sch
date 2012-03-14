@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -10649,16 +10649,16 @@ Vishay WSR Series, Power Metal Strip</description>
 <part name="GND2" library="supply" deviceset="GND" device=""/>
 <part name="P+1" library="supply" deviceset="+6V3" device=""/>
 <part name="P+3" library="supply" deviceset="-6V3" device=""/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="R0805" value="15k">
+<part name="R1" library="rcl" deviceset="R-EU_" device="R0805" value="15kOhm">
 <attribute name="PARTNO" value="ERJ6GEYJ153V"/>
 </part>
-<part name="R2" library="rcl" deviceset="R-EU_" device="R0805" value="3.3k">
+<part name="R2" library="rcl" deviceset="R-EU_" device="R0805" value="3.3kOhm">
 <attribute name="PARTNO" value="ERJ6GEYJ332V"/>
 </part>
-<part name="R3" library="rcl" deviceset="R-EU_" device="R0805" value="15k">
+<part name="R3" library="rcl" deviceset="R-EU_" device="R0805" value="15kOhm">
 <attribute name="PARTNO" value="ERJ6GEYJ153V"/>
 </part>
-<part name="R4" library="rcl" deviceset="R-EU_" device="R0805" value="3.3k">
+<part name="R4" library="rcl" deviceset="R-EU_" device="R0805" value="3.3kOhm">
 <attribute name="PARTNO" value="ERJ6GEYJ332V"/>
 </part>
 <part name="U$3" library="frames_simplified" deviceset="A2_LANDSCAPE_NEXT_SCALED" device=""/>

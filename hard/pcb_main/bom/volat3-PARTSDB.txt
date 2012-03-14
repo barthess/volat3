@@ -1,4 +1,4 @@
-Mfg Part Num	Mfg Name	VID	Vendor Part Num	Unit Price	Description	Country of Origin	Customer Ref
+Mfg Part Num	Mfg Name	VID	Vendor Part Num	Unit Price	Description (bom-ex)	Country of Origin	Customer Ref
 STM32F103VDT6	STMicroelectronics	FN	1624140			FR France	
 LM2596S-ADJ		FN	9494367				
 							
