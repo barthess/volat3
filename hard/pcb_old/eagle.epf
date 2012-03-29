@@ -11,7 +11,7 @@ AutoSaveProject=1
 [Win_1]
 Type="Board Editor"
 Loc="0 0 599 399"
-State=2
+State=0
 Number=1
 File="main.brd"
 View="-3.06 -2.01109 140.36 96.5076"
@@ -49,11 +49,11 @@ Layer=16
 
 [Win_2]
 Type="Schematic Editor"
-Loc="0 0 599 399"
-State=2
+Loc="0 0 1599 849"
+State=1
 Number=2
 File="main.sch"
-View="-36.9321 -63.2013 836.932 601.918"
+View="-6.06348 -128.1 1042.57 670.035"
 WireWidths=" 0 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -85,16 +85,17 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
+Views=" 1: -6.06348 -128.1 1042.57 670.035"
 Sheet=1
 
 [Win_3]
 Type="Control Panel"
-Loc="151 225 877 707"
-State=2
+Loc="0 0 1599 849"
+State=1
 Number=0
 
 [Desktop]
-Screen="1280 960"
+Screen="1600 900"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"
