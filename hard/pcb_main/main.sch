@@ -16645,8 +16645,8 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <attribute name="PARTNO" value="*" x="104.14" y="137.16" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND35" gate="1" x="104.14" y="127"/>
-<instance part="VT1" gate="G$1" x="109.22" y="162.56">
-<attribute name="PARTNO" x="109.22" y="162.56" size="1.778" layer="96" display="off"/>
+<instance part="VT1" gate="G$1" x="109.22" y="167.64">
+<attribute name="PARTNO" x="109.22" y="167.64" size="1.778" layer="96" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -16797,14 +16797,18 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <junction x="180.34" y="180.34"/>
 </segment>
 <segment>
-<wire x1="111.76" y1="160.02" x2="111.76" y2="147.32" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="165.1" x2="111.76" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="P+21" gate="G$1" pin="+24V_CLEAR"/>
 <pinref part="VD27" gate="G$1" pin="A1"/>
+<wire x1="111.76" y1="160.02" x2="111.76" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="147.32" x2="111.76" y2="127" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="139.7" x2="104.14" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="147.32" x2="111.76" y2="147.32" width="0.1524" layer="91"/>
 <junction x="111.76" y="147.32"/>
 <pinref part="VT1" gate="G$1" pin="S"/>
+<pinref part="R70" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="160.02" x2="96.52" y2="160.02" width="0.1524" layer="91"/>
+<junction x="111.76" y="160.02"/>
 </segment>
 </net>
 <net name="+24V" class="0">
@@ -16947,7 +16951,7 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <segment>
 <pinref part="VD21" gate="G$1" pin="C"/>
 <wire x1="119.38" y1="175.26" x2="111.76" y2="175.26" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="175.26" x2="111.76" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="175.26" x2="111.76" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="R71" gate="G$1" pin="2"/>
 <wire x1="104.14" y1="154.94" x2="104.14" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="175.26" x2="111.76" y2="175.26" width="0.1524" layer="91"/>
@@ -16965,9 +16969,10 @@ body 3.9 mm/JEDEC MS-012AA</description>
 </net>
 <net name="N$29" class="0">
 <segment>
-<pinref part="R70" gate="G$1" pin="2"/>
-<wire x1="106.68" y1="160.02" x2="96.52" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="VT1" gate="G$1" pin="G"/>
+<pinref part="DA4" gate="G$1" pin="GATE"/>
+<wire x1="106.68" y1="165.1" x2="86.36" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="165.1" x2="86.36" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
