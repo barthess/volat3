@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -13909,60 +13909,6 @@ body 3.9 mm/JEDEC MS-012AC</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="SparkFun">
-<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts. If you enjoy using this library, please buy one of our products at www.sparkfun.com.
-&lt;br&gt;&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; CC v3.0 Share-Alike You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="STAND-OFF">
-<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
-This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
-<wire x1="0" y1="1.8542" x2="0" y2="-1.8542" width="0.2032" layer="41" curve="-180"/>
-<wire x1="0" y1="-1.8542" x2="0" y2="1.8542" width="0.2032" layer="41" curve="-180"/>
-<wire x1="0" y1="-1.8542" x2="0" y2="1.8542" width="0.2032" layer="42" curve="180"/>
-<wire x1="0" y1="-1.8542" x2="0" y2="1.8542" width="0.2032" layer="42" curve="-180"/>
-<circle x="0" y="0" radius="2.794" width="0.127" layer="39"/>
-<hole x="0" y="0" drill="3.302"/>
-</package>
-<package name="STAND-OFF-TIGHT">
-<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
-This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
-<wire x1="0" y1="1.8542" x2="0" y2="-1.8542" width="0.2032" layer="41" curve="-180"/>
-<wire x1="0" y1="-1.8542" x2="0" y2="1.8542" width="0.2032" layer="41" curve="-180"/>
-<wire x1="0" y1="-1.8542" x2="0" y2="1.8542" width="0.2032" layer="42" curve="180"/>
-<wire x1="0" y1="-1.8542" x2="0" y2="1.8542" width="0.2032" layer="42" curve="-180"/>
-<circle x="0" y="0" radius="2.794" width="0.127" layer="39"/>
-<hole x="0" y="0" drill="3.048"/>
-</package>
-</packages>
-<symbols>
-<symbol name="STAND-OFF">
-<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="STAND-OFF" prefix="JP">
-<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
-This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
-<gates>
-<gate name="G$1" symbol="STAND-OFF" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="STAND-OFF">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="TIGHT" package="STAND-OFF-TIGHT">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="connector">
 <packages>
 <package name="PLD_2X10_SHROUDED">
@@ -15333,6 +15279,51 @@ body 3.9 mm/JEDEC MS-012AA</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="mount">
+<packages>
+<package name="STAND-OFF-LONG">
+<wire x1="-3.5" y1="6" x2="3.5" y2="6" width="0.127" layer="40" curve="-171.829"/>
+<wire x1="-3.5" y1="0" x2="-3.5" y2="6" width="0.127" layer="40"/>
+<wire x1="3.5" y1="0" x2="3.5" y2="6" width="0.127" layer="40"/>
+<circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
+<hole x="0" y="0" drill="3.3"/>
+<circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
+</package>
+<package name="STAND-OFF">
+<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
+This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
+<circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
+<hole x="0" y="0" drill="3.3"/>
+<circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
+</package>
+</packages>
+<symbols>
+<symbol name="STAND-OFF">
+<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="STAND-OFF" prefix="JP">
+<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
+This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
+<gates>
+<gate name="G$1" symbol="STAND-OFF" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="STAND-OFF">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="LONG" package="STAND-OFF-LONG">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv"/>
@@ -15393,22 +15384,22 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <part name="D1" library="optocoupler" deviceset="TCMT4100" device="">
 <attribute name="PARTNO" value="*"/>
 </part>
-<part name="JP1" library="SparkFun" deviceset="STAND-OFF" device="">
+<part name="JP1" library="mount" deviceset="STAND-OFF" device="LONG">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP2" library="SparkFun" deviceset="STAND-OFF" device="">
+<part name="JP2" library="mount" deviceset="STAND-OFF" device="LONG">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP3" library="SparkFun" deviceset="STAND-OFF" device="">
+<part name="JP3" library="mount" deviceset="STAND-OFF" device="LONG">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP4" library="SparkFun" deviceset="STAND-OFF" device="">
+<part name="JP4" library="mount" deviceset="STAND-OFF" device="LONG">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP5" library="SparkFun" deviceset="STAND-OFF" device="">
+<part name="JP5" library="mount" deviceset="STAND-OFF" device="LONG">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP6" library="SparkFun" deviceset="STAND-OFF" device="">
+<part name="JP6" library="mount" deviceset="STAND-OFF" device="LONG">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
 <part name="XP1" library="connector" deviceset="PLD_2X10" device="-SHROUDED" value="JTAG">
@@ -15846,9 +15837,6 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <part name="DA4" library="driver-fet" deviceset="MC33091A" device=""/>
 <part name="GND29" library="supply" deviceset="GND" device=""/>
 <part name="P+3" library="supply" deviceset="+24V" device=""/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
-<attribute name="PARTNO" value="RC0603FR-13100KL"/>
-</part>
 <part name="C29" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
@@ -16585,12 +16573,12 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <instance part="DA2" gate="G$1" x="208.28" y="139.7">
 <attribute name="PARTNO" value="LM2596S-5.0" x="208.28" y="139.7" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="XP9" gate="G$1" x="-7.62" y="116.84" rot="MR0">
-<attribute name="PARTNO" value="*" x="-7.62" y="116.84" size="1.524" layer="96" display="off"/>
+<instance part="XP9" gate="G$1" x="20.32" y="48.26" rot="MR0">
+<attribute name="PARTNO" value="*" x="20.32" y="48.26" size="1.524" layer="96" display="off"/>
 </instance>
-<instance part="GND26" gate="1" x="-5.08" y="93.98"/>
+<instance part="GND26" gate="1" x="22.86" y="25.4"/>
 <instance part="P+20" gate="G$1" x="180.34" y="187.96" rot="MR0"/>
-<instance part="P+19" gate="1" x="-5.08" y="129.54"/>
+<instance part="P+19" gate="1" x="22.86" y="60.96"/>
 <instance part="P+1" gate="1" x="256.54" y="177.8" rot="R270"/>
 <instance part="GND28" gate="1" x="251.46" y="157.48" rot="R90"/>
 <instance part="P-1" gate="1" x="259.08" y="134.62" rot="R90"/>
@@ -16606,9 +16594,6 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <instance part="DA4" gate="G$1" x="73.66" y="157.48"/>
 <instance part="GND29" gate="1" x="127" y="144.78"/>
 <instance part="P+3" gate="1" x="127" y="187.96"/>
-<instance part="R1" gate="G$1" x="58.42" y="170.18" rot="R90">
-<attribute name="PARTNO" value="RC0603FR-13100KL" x="58.42" y="170.18" size="1.778" layer="96" rot="R90" display="off"/>
-</instance>
 <instance part="C29" gate="G$1" x="91.44" y="147.32">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="91.44" y="147.32" size="1.524" layer="96" display="off"/>
 </instance>
@@ -16634,7 +16619,7 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <instance part="R71" gate="G$1" x="99.06" y="154.94">
 <attribute name="PARTNO" x="99.06" y="154.94" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="GND33" gate="1" x="58.42" y="180.34" rot="R180"/>
+<instance part="GND33" gate="1" x="50.8" y="180.34" rot="R180"/>
 <instance part="VD26" gate="G$1" x="50.8" y="170.18" rot="R270">
 <attribute name="PARTNO" x="50.8" y="170.18" size="1.778" layer="96" rot="R90" display="off"/>
 </instance>
@@ -16720,21 +16705,21 @@ body 3.9 mm/JEDEC MS-012AA</description>
 </segment>
 <segment>
 <pinref part="GND26" gate="1" pin="GND"/>
-<wire x1="-5.08" y1="93.98" x2="-5.08" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="25.4" x2="22.86" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="XP9" gate="G$1" pin="8"/>
-<wire x1="-5.08" y1="99.06" x2="-7.62" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="99.06" x2="-5.08" y2="101.6" width="0.1524" layer="91"/>
-<junction x="-5.08" y="99.06"/>
+<wire x1="22.86" y1="30.48" x2="20.32" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="30.48" x2="22.86" y2="33.02" width="0.1524" layer="91"/>
+<junction x="22.86" y="30.48"/>
 <pinref part="XP9" gate="G$1" pin="7"/>
-<wire x1="-5.08" y1="101.6" x2="-7.62" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="101.6" x2="-5.08" y2="104.14" width="0.1524" layer="91"/>
-<junction x="-5.08" y="101.6"/>
+<wire x1="22.86" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="33.02" x2="22.86" y2="35.56" width="0.1524" layer="91"/>
+<junction x="22.86" y="33.02"/>
 <pinref part="XP9" gate="G$1" pin="6"/>
-<wire x1="-5.08" y1="104.14" x2="-7.62" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="104.14" x2="-5.08" y2="106.68" width="0.1524" layer="91"/>
-<junction x="-5.08" y="104.14"/>
+<wire x1="22.86" y1="35.56" x2="20.32" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="35.56" x2="22.86" y2="38.1" width="0.1524" layer="91"/>
+<junction x="22.86" y="35.56"/>
 <pinref part="XP9" gate="G$1" pin="5"/>
-<wire x1="-5.08" y1="106.68" x2="-7.62" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="38.1" x2="20.32" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND29" gate="1" pin="GND"/>
@@ -16757,12 +16742,8 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <wire x1="48.26" y1="127" x2="48.26" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="R1" gate="G$1" pin="2"/>
 <pinref part="GND33" gate="1" pin="GND"/>
-<wire x1="58.42" y1="175.26" x2="58.42" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="172.72" x2="50.8" y2="180.34" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="180.34" x2="58.42" y2="180.34" width="0.1524" layer="91"/>
-<junction x="58.42" y="180.34"/>
 <pinref part="VD26" gate="G$1" pin="A"/>
 </segment>
 <segment>
@@ -16814,21 +16795,21 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <net name="+24V" class="0">
 <segment>
 <pinref part="XP9" gate="G$1" pin="4"/>
-<wire x1="-7.62" y1="109.22" x2="-5.08" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="109.22" x2="-5.08" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="20.32" y1="40.64" x2="22.86" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="40.64" x2="22.86" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="XP9" gate="G$1" pin="3"/>
-<wire x1="-5.08" y1="111.76" x2="-7.62" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="111.76" x2="-5.08" y2="114.3" width="0.1524" layer="91"/>
-<junction x="-5.08" y="111.76"/>
+<wire x1="22.86" y1="43.18" x2="20.32" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="43.18" x2="22.86" y2="45.72" width="0.1524" layer="91"/>
+<junction x="22.86" y="43.18"/>
 <pinref part="XP9" gate="G$1" pin="2"/>
-<wire x1="-5.08" y1="114.3" x2="-7.62" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="45.72" x2="20.32" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="XP9" gate="G$1" pin="1"/>
-<wire x1="-7.62" y1="116.84" x2="-5.08" y2="116.84" width="0.1524" layer="91"/>
-<wire x1="-5.08" y1="114.3" x2="-5.08" y2="116.84" width="0.1524" layer="91"/>
-<junction x="-5.08" y="114.3"/>
+<wire x1="20.32" y1="48.26" x2="22.86" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="45.72" x2="22.86" y2="48.26" width="0.1524" layer="91"/>
+<junction x="22.86" y="45.72"/>
 <pinref part="P+19" gate="1" pin="+24V"/>
-<wire x1="-5.08" y1="116.84" x2="-5.08" y2="127" width="0.1524" layer="91"/>
-<junction x="-5.08" y="116.84"/>
+<wire x1="22.86" y1="48.26" x2="22.86" y2="58.42" width="0.1524" layer="91"/>
+<junction x="22.86" y="48.26"/>
 </segment>
 <segment>
 <pinref part="VD23" gate="G$1" pin="A1"/>
@@ -16894,7 +16875,9 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <segment>
 <pinref part="VD22" gate="G$1" pin="C"/>
 <pinref part="VD23" gate="G$1" pin="A2"/>
-<wire x1="127" y1="154.94" x2="127" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="127" y1="154.94" x2="127" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="127" y1="160.02" x2="127" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="127" y1="160.02" x2="127" y2="157.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$23" class="0">
@@ -16919,11 +16902,7 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <pinref part="DA4" gate="G$1" pin="IN"/>
 <pinref part="R2" gate="G$1" pin="2"/>
 <wire x1="45.72" y1="162.56" x2="50.8" y2="162.56" width="0.1524" layer="91"/>
-<pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="50.8" y1="162.56" x2="58.42" y2="162.56" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="162.56" x2="60.96" y2="162.56" width="0.1524" layer="91"/>
-<wire x1="58.42" y1="165.1" x2="58.42" y2="162.56" width="0.1524" layer="91"/>
-<junction x="58.42" y="162.56"/>
+<wire x1="50.8" y1="162.56" x2="60.96" y2="162.56" width="0.1524" layer="91"/>
 <junction x="50.8" y="162.56"/>
 <pinref part="VD26" gate="G$1" pin="C"/>
 <wire x1="50.8" y1="162.56" x2="50.8" y2="167.64" width="0.1524" layer="91"/>
