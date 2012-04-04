@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -15155,6 +15155,19 @@ SMD Leds</description>
 <wire x1="201.5" y1="10.5" x2="201.5" y2="3" width="0.5" layer="100"/>
 <wire x1="201.5" y1="10.5" x2="293" y2="10.5" width="0.5" layer="100"/>
 </symbol>
+<symbol name="A2_PORTRAIT_NEXT_SCALED">
+<wire x1="206" y1="293" x2="206" y2="3" width="0.5" layer="100"/>
+<wire x1="206" y1="293" x2="10" y2="293" width="0.5" layer="100"/>
+<wire x1="10" y1="3" x2="10" y2="293" width="0.5" layer="100"/>
+<wire x1="10" y1="3" x2="206" y2="3" width="0.5" layer="100"/>
+<wire x1="209" y1="296" x2="209" y2="0" width="0.5" layer="100"/>
+<wire x1="209" y1="296" x2="0" y2="296" width="0.5" layer="100"/>
+<wire x1="0" y1="0" x2="0" y2="296" width="0.5" layer="100"/>
+<wire x1="0" y1="0" x2="209" y2="0" width="0.5" layer="100"/>
+<text x="184" y="5" size="2.54" layer="100">A2_scaled</text>
+<wire x1="114.5" y1="10.5" x2="114.5" y2="3" width="0.5" layer="100"/>
+<wire x1="114.5" y1="10.5" x2="206" y2="10.5" width="0.5" layer="100"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="A2_LANDSCAPE_NEXT_SCALED">
@@ -15172,6 +15185,18 @@ SMD Leds</description>
 <deviceset name="A1_PORTRAIT_NEXT_SCALED">
 <gates>
 <gate name="G$1" symbol="A1_PORTRAIT_NEXT_SCALED" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="A2_PORTRAIT_NEXT_SCALED">
+<gates>
+<gate name="G$1" symbol="A2_PORTRAIT_NEXT_SCALED" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -15355,7 +15380,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="LM2596S-5.0"/>
 </part>
 <part name="D1" library="optocoupler" deviceset="TCMT4100" device="">
-<attribute name="PARTNO" value="*"/>
+<attribute name="PARTNO" value="TCMT4100"/>
 </part>
 <part name="JP1" library="mount" deviceset="STAND-OFF" device="LONG">
 <attribute name="BOM" value="EXCLUDE"/>
@@ -15417,8 +15442,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C4" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD3" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD3" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND1" library="supply" deviceset="AGND" device=""/>
 <part name="GND1" library="supply" deviceset="GND" device=""/>
@@ -15510,8 +15535,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C8" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD6" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD6" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND3" library="supply" deviceset="AGND" device=""/>
 <part name="GND10" library="supply" deviceset="GND" device=""/>
@@ -15527,8 +15552,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C9" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD7" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD7" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND4" library="supply" deviceset="AGND" device=""/>
 <part name="GND11" library="supply" deviceset="GND" device=""/>
@@ -15544,8 +15569,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C10" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD8" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD8" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND5" library="supply" deviceset="AGND" device=""/>
 <part name="GND12" library="supply" deviceset="GND" device=""/>
@@ -15561,8 +15586,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C11" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD9" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD9" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND6" library="supply" deviceset="AGND" device=""/>
 <part name="GND13" library="supply" deviceset="GND" device=""/>
@@ -15578,8 +15603,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C12" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD10" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD10" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND7" library="supply" deviceset="AGND" device=""/>
 <part name="GND14" library="supply" deviceset="GND" device=""/>
@@ -15595,8 +15620,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C13" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD11" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD11" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND8" library="supply" deviceset="AGND" device=""/>
 <part name="GND15" library="supply" deviceset="GND" device=""/>
@@ -15612,8 +15637,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C14" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD12" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD12" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND9" library="supply" deviceset="AGND" device=""/>
 <part name="GND16" library="supply" deviceset="GND" device=""/>
@@ -15629,8 +15654,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C15" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD13" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD13" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND10" library="supply" deviceset="AGND" device=""/>
 <part name="GND17" library="supply" deviceset="GND" device=""/>
@@ -15646,8 +15671,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C16" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD14" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ30CA"/>
+<part name="VD14" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND11" library="supply" deviceset="AGND" device=""/>
 <part name="GND18" library="supply" deviceset="GND" device=""/>
@@ -15663,8 +15688,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C17" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD15" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD15" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND12" library="supply" deviceset="AGND" device=""/>
 <part name="GND19" library="supply" deviceset="GND" device=""/>
@@ -15680,8 +15705,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C18" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD16" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD16" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND13" library="supply" deviceset="AGND" device=""/>
 <part name="GND20" library="supply" deviceset="GND" device=""/>
@@ -15697,8 +15722,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C19" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD17" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD17" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND14" library="supply" deviceset="AGND" device=""/>
 <part name="GND21" library="supply" deviceset="GND" device=""/>
@@ -15714,8 +15739,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C20" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD18" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD18" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND15" library="supply" deviceset="AGND" device=""/>
 <part name="GND22" library="supply" deviceset="GND" device=""/>
@@ -15731,8 +15756,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C21" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD19" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD19" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND16" library="supply" deviceset="AGND" device=""/>
 <part name="GND23" library="supply" deviceset="GND" device=""/>
@@ -15748,8 +15773,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C22" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
 <attribute name="PARTNO" value="C0603C105K4PACTU"/>
 </part>
-<part name="VD20" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD20" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="AGND17" library="supply" deviceset="AGND" device=""/>
 <part name="GND24" library="supply" deviceset="GND" device=""/>
@@ -15772,7 +15797,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND25" library="supply" deviceset="GND" device=""/>
 <part name="+3V1" library="supply" deviceset="+3V3" device=""/>
 <part name="+3V4" library="supply" deviceset="+3V3" device=""/>
-<part name="U$5" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
 <part name="U$6" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
 <part name="U$7" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
 <part name="GND26" library="supply" deviceset="GND" device=""/>
@@ -15801,8 +15825,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD22" library="diode" deviceset="DIODE-TVS-UNIDIR-" device="SMB" value="SM6T220A">
 <attribute name="PARTNO" value="SM6T220A"/>
 </part>
-<part name="VD23" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD23" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="DA4" library="driver-fet" deviceset="MC33091A" device=""/>
 <part name="GND29" library="supply" deviceset="GND" device=""/>
@@ -15812,11 +15836,11 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="GND30" library="supply" deviceset="GND" device=""/>
 <part name="GND31" library="supply" deviceset="GND" device=""/>
-<part name="VD24" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD24" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
-<part name="VD25" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD25" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="GND32" library="supply" deviceset="GND" device=""/>
 <part name="R2" library="rcl" deviceset="R-EU_" device="R0805" value="15kOhm">
@@ -15839,8 +15863,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C28" library="rcl" deviceset="C-EU" device="C0805" value="0.01uF"/>
 <part name="GND34" library="supply" deviceset="GND" device=""/>
 <part name="P+21" library="supply" deviceset="+24V_CLEAR" device=""/>
-<part name="VD27" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ28CA">
-<attribute name="PARTNO" value="SMBJ28CA-TR"/>
+<part name="VD27" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="GND35" library="supply" deviceset="GND" device=""/>
 <part name="VT1" library="transistor-fet" deviceset="IRFR430" device="">
@@ -15918,6 +15942,35 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD43" library="diode" deviceset="DIODE-SCHOTTKY-" device="SOD323">
 <attribute name="PARTNO" value="BAT54JFILM"/>
 </part>
+<part name="R72" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<attribute name="PARTNO" value="ERJ6GEYJ102V"/>
+</part>
+<part name="D6" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D7" library="transistor-fet" deviceset="AUIPS7125" device="R">
+<attribute name="PARTNO" value="AUIPS7125RTRL"/>
+</part>
+<part name="D8" library="transistor-fet" deviceset="AUIPS7125" device="R">
+<attribute name="PARTNO" value="AUIPS7125RTRL"/>
+</part>
+<part name="R73" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<attribute name="PARTNO" value="ERJ6GEYJ102V"/>
+</part>
+<part name="R74" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<attribute name="PARTNO" value="ERJ6GEYJ102V"/>
+</part>
+<part name="R75" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<attribute name="PARTNO" value="ERJ6GEYJ102V"/>
+</part>
+<part name="D9" library="transistor-fet" deviceset="AUIPS7125" device="R">
+<attribute name="PARTNO" value="AUIPS7125RTRL"/>
+</part>
+<part name="D10" library="transistor-fet" deviceset="AUIPS7125" device="R">
+<attribute name="PARTNO" value="AUIPS7125RTRL"/>
+</part>
+<part name="GND36" library="supply" deviceset="GND" device=""/>
+<part name="U$8" library="frame-simplified" deviceset="A2_PORTRAIT_NEXT_SCALED" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -16619,30 +16672,30 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="*" x="20.32" y="48.26" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="GND26" gate="1" x="22.86" y="25.4"/>
-<instance part="P+20" gate="G$1" x="180.34" y="187.96" rot="MR0"/>
+<instance part="P+20" gate="G$1" x="167.64" y="180.34" rot="MR270"/>
 <instance part="P+19" gate="1" x="22.86" y="60.96"/>
 <instance part="P+1" gate="1" x="256.54" y="177.8" rot="R270"/>
 <instance part="GND28" gate="1" x="251.46" y="157.48" rot="R90"/>
 <instance part="P-1" gate="1" x="259.08" y="134.62" rot="R90"/>
-<instance part="VD22" gate="G$1" x="127" y="144.78" rot="R90">
-<attribute name="PARTNO" x="127" y="144.78" size="1.778" layer="96" rot="R270" display="off"/>
+<instance part="VD22" gate="G$1" x="127" y="160.02" rot="R90">
+<attribute name="PARTNO" x="127" y="160.02" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
-<instance part="VD23" gate="G$1" x="127" y="160.02" rot="R90">
-<attribute name="PARTNO" value="*" x="127" y="160.02" size="1.524" layer="96" rot="R270" display="off"/>
+<instance part="VD23" gate="G$1" x="127" y="167.64" rot="R90">
+<attribute name="PARTNO" value="SMBJ24CA" x="127" y="167.64" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="DA4" gate="G$1" x="73.66" y="157.48"/>
 <instance part="GND29" gate="1" x="127" y="127"/>
-<instance part="P+3" gate="1" x="127" y="187.96"/>
+<instance part="P+3" gate="1" x="139.7" y="175.26" rot="R270"/>
 <instance part="C29" gate="G$1" x="91.44" y="147.32">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="91.44" y="147.32" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="GND30" gate="1" x="86.36" y="127"/>
 <instance part="GND31" gate="1" x="91.44" y="127"/>
 <instance part="VD24" gate="G$1" x="48.26" y="149.86" rot="R270">
-<attribute name="PARTNO" value="*" x="45.72" y="149.86" size="1.524" layer="96" rot="R90" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="45.72" y="149.86" size="1.524" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="VD25" gate="G$1" x="48.26" y="142.24" rot="R270">
-<attribute name="PARTNO" value="*" x="45.72" y="139.7" size="1.524" layer="96" rot="R90" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="45.72" y="139.7" size="1.524" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="GND32" gate="1" x="48.26" y="127"/>
 <instance part="R2" gate="G$1" x="40.64" y="162.56">
@@ -16664,9 +16717,9 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="C28" gate="G$1" x="66.04" y="139.7"/>
 <instance part="GND34" gate="1" x="60.96" y="127"/>
-<instance part="P+21" gate="G$1" x="111.76" y="127" rot="R180"/>
+<instance part="P+21" gate="G$1" x="137.16" y="147.32" rot="R270"/>
 <instance part="VD27" gate="G$1" x="104.14" y="137.16" rot="R90">
-<attribute name="PARTNO" value="*" x="104.14" y="137.16" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="104.14" y="137.16" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND35" gate="1" x="104.14" y="127"/>
 <instance part="VT1" gate="G$1" x="109.22" y="167.64">
@@ -16765,7 +16818,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </segment>
 <segment>
 <pinref part="GND29" gate="1" pin="GND"/>
-<wire x1="127" y1="127" x2="127" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="127" y1="127" x2="127" y2="157.48" width="0.1524" layer="91"/>
 <pinref part="VD22" gate="G$1" pin="A"/>
 </segment>
 <segment>
@@ -16816,7 +16869,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <pinref part="DA1" gate="G$1" pin="VIN"/>
 <pinref part="DA2" gate="G$1" pin="VIN"/>
 <pinref part="P+20" gate="G$1" pin="+24V_CLEAR"/>
-<wire x1="180.34" y1="180.34" x2="180.34" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="180.34" x2="167.64" y2="180.34" width="0.1524" layer="91"/>
 <junction x="180.34" y="180.34"/>
 </segment>
 <segment>
@@ -16824,7 +16877,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <pinref part="P+21" gate="G$1" pin="+24V_CLEAR"/>
 <pinref part="VD27" gate="G$1" pin="A1"/>
 <wire x1="111.76" y1="160.02" x2="111.76" y2="147.32" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="147.32" x2="111.76" y2="127" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="147.32" x2="137.16" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="139.7" x2="104.14" y2="147.32" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="147.32" x2="111.76" y2="147.32" width="0.1524" layer="91"/>
 <junction x="111.76" y="147.32"/>
@@ -16856,8 +16909,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <segment>
 <pinref part="VD23" gate="G$1" pin="A1"/>
 <pinref part="P+3" gate="1" pin="+24V"/>
-<wire x1="127" y1="162.56" x2="127" y2="175.26" width="0.1524" layer="91"/>
-<wire x1="127" y1="175.26" x2="127" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="127" y1="170.18" x2="127" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="127" y1="175.26" x2="137.16" y2="175.26" width="0.1524" layer="91"/>
 <wire x1="127" y1="175.26" x2="124.46" y2="175.26" width="0.1524" layer="91"/>
 <junction x="127" y="175.26"/>
 <pinref part="VD21" gate="G$1" pin="A"/>
@@ -16917,7 +16970,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <segment>
 <pinref part="VD22" gate="G$1" pin="C"/>
 <pinref part="VD23" gate="G$1" pin="A2"/>
-<wire x1="127" y1="147.32" x2="127" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="127" y1="162.56" x2="127" y2="165.1" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$23" class="0">
@@ -17017,7 +17070,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="129.54" y="165.1" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD3" gate="G$1" x="96.52" y="162.56" rot="R90">
-<attribute name="PARTNO" value="*" x="96.52" y="162.56" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="96.52" y="162.56" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND1" gate="VR1" x="132.08" y="157.48"/>
 <instance part="GND1" gate="1" x="96.52" y="160.02"/>
@@ -17034,7 +17087,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="129.54" y="147.32" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD6" gate="G$1" x="96.52" y="144.78" rot="R90">
-<attribute name="PARTNO" value="*" x="96.52" y="144.78" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="96.52" y="144.78" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND3" gate="VR1" x="132.08" y="139.7"/>
 <instance part="GND10" gate="1" x="96.52" y="142.24"/>
@@ -17051,7 +17104,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="129.54" y="129.54" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD7" gate="G$1" x="96.52" y="127" rot="R90">
-<attribute name="PARTNO" value="*" x="96.52" y="127" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="96.52" y="127" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND4" gate="VR1" x="132.08" y="121.92"/>
 <instance part="GND11" gate="1" x="96.52" y="124.46"/>
@@ -17068,7 +17121,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="129.54" y="111.76" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD8" gate="G$1" x="96.52" y="109.22" rot="R90">
-<attribute name="PARTNO" value="*" x="96.52" y="109.22" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="96.52" y="109.22" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND5" gate="VR1" x="132.08" y="104.14"/>
 <instance part="GND12" gate="1" x="96.52" y="106.68"/>
@@ -17085,7 +17138,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="129.54" y="93.98" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD9" gate="G$1" x="96.52" y="91.44" rot="R90">
-<attribute name="PARTNO" value="*" x="96.52" y="91.44" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="96.52" y="91.44" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND6" gate="VR1" x="132.08" y="86.36"/>
 <instance part="GND13" gate="1" x="96.52" y="88.9"/>
@@ -17102,7 +17155,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="129.54" y="76.2" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD10" gate="G$1" x="96.52" y="73.66" rot="R90">
-<attribute name="PARTNO" value="*" x="96.52" y="73.66" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="96.52" y="73.66" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND7" gate="VR1" x="132.08" y="68.58"/>
 <instance part="GND14" gate="1" x="96.52" y="71.12"/>
@@ -17119,7 +17172,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="129.54" y="58.42" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD11" gate="G$1" x="96.52" y="55.88" rot="R90">
-<attribute name="PARTNO" value="*" x="96.52" y="55.88" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="96.52" y="55.88" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND8" gate="VR1" x="132.08" y="50.8"/>
 <instance part="GND15" gate="1" x="96.52" y="53.34"/>
@@ -17136,7 +17189,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="129.54" y="40.64" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD12" gate="G$1" x="96.52" y="38.1" rot="R90">
-<attribute name="PARTNO" value="*" x="96.52" y="38.1" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="96.52" y="38.1" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND9" gate="VR1" x="132.08" y="33.02"/>
 <instance part="GND16" gate="1" x="96.52" y="35.56"/>
@@ -17153,7 +17206,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="238.76" y="165.1" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD13" gate="G$1" x="205.74" y="162.56" rot="R90">
-<attribute name="PARTNO" value="*" x="205.74" y="162.56" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="205.74" y="162.56" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND10" gate="VR1" x="241.3" y="157.48"/>
 <instance part="GND17" gate="1" x="205.74" y="160.02"/>
@@ -17170,7 +17223,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="238.76" y="147.32" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD14" gate="G$1" x="205.74" y="144.78" rot="R90">
-<attribute name="PARTNO" value="*" x="205.74" y="144.78" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="205.74" y="144.78" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND11" gate="VR1" x="241.3" y="139.7"/>
 <instance part="GND18" gate="1" x="205.74" y="142.24"/>
@@ -17187,7 +17240,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="238.76" y="129.54" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD15" gate="G$1" x="205.74" y="127" rot="R90">
-<attribute name="PARTNO" value="*" x="205.74" y="127" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="205.74" y="127" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND12" gate="VR1" x="241.3" y="121.92"/>
 <instance part="GND19" gate="1" x="205.74" y="124.46"/>
@@ -17204,7 +17257,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="238.76" y="111.76" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD16" gate="G$1" x="205.74" y="109.22" rot="R90">
-<attribute name="PARTNO" value="*" x="205.74" y="109.22" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="205.74" y="109.22" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND13" gate="VR1" x="241.3" y="104.14"/>
 <instance part="GND20" gate="1" x="205.74" y="106.68"/>
@@ -17221,7 +17274,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="238.76" y="93.98" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD17" gate="G$1" x="205.74" y="91.44" rot="R90">
-<attribute name="PARTNO" value="*" x="205.74" y="91.44" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="205.74" y="91.44" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND14" gate="VR1" x="241.3" y="86.36"/>
 <instance part="GND21" gate="1" x="205.74" y="88.9"/>
@@ -17238,7 +17291,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="238.76" y="76.2" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD18" gate="G$1" x="205.74" y="73.66" rot="R90">
-<attribute name="PARTNO" value="*" x="205.74" y="73.66" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="205.74" y="73.66" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND15" gate="VR1" x="241.3" y="68.58"/>
 <instance part="GND22" gate="1" x="205.74" y="71.12"/>
@@ -17255,7 +17308,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="238.76" y="58.42" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD19" gate="G$1" x="205.74" y="55.88" rot="R90">
-<attribute name="PARTNO" value="*" x="205.74" y="55.88" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="205.74" y="55.88" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND16" gate="VR1" x="241.3" y="50.8"/>
 <instance part="GND23" gate="1" x="205.74" y="53.34"/>
@@ -17272,7 +17325,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="238.76" y="40.64" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="VD20" gate="G$1" x="205.74" y="38.1" rot="R90">
-<attribute name="PARTNO" value="*" x="205.74" y="38.1" size="1.524" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SMBJ24CA" x="205.74" y="38.1" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="AGND17" gate="VR1" x="241.3" y="33.02"/>
 <instance part="GND24" gate="1" x="205.74" y="35.56"/>
@@ -18312,40 +18365,71 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <plain>
 </plain>
 <instances>
-<instance part="R7" gate="G$1" x="111.76" y="182.88">
-<attribute name="PARTNO" value="ERJ6GEYJ102V" x="111.76" y="182.88" size="1.778" layer="96" display="off"/>
+<instance part="R7" gate="G$1" x="106.68" y="203.2">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="106.68" y="203.2" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="D1" gate=".1" x="91.44" y="193.04">
-<attribute name="PARTNO" value="*" x="91.44" y="193.04" size="1.524" layer="96" display="off"/>
+<instance part="D1" gate=".1" x="86.36" y="213.36">
+<attribute name="PARTNO" value="*" x="86.36" y="213.36" size="1.524" layer="96" display="off"/>
 </instance>
-<instance part="D1" gate=".2" x="91.44" y="172.72"/>
-<instance part="D1" gate=".3" x="91.44" y="152.4"/>
-<instance part="D1" gate=".4" x="91.44" y="132.08"/>
-<instance part="XP7" gate="G$1" x="27.94" y="129.54" rot="MR0">
-<attribute name="PARTNO" value="*" x="27.94" y="129.54" size="1.524" layer="96" display="off"/>
+<instance part="D1" gate=".2" x="86.36" y="193.04"/>
+<instance part="D1" gate=".3" x="86.36" y="172.72"/>
+<instance part="D1" gate=".4" x="86.36" y="152.4"/>
+<instance part="XP7" gate="G$1" x="170.18" y="165.1">
+<attribute name="PARTNO" value="*" x="170.18" y="165.1" size="1.524" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="U$5" gate="G$1" x="0" y="0"/>
-<instance part="D2" gate="G$1" x="129.54" y="193.04">
-<attribute name="PARTNO" x="129.54" y="193.04" size="1.778" layer="96" display="off"/>
+<instance part="D2" gate="G$1" x="124.46" y="213.36">
+<attribute name="PARTNO" x="124.46" y="213.36" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="D3" gate="G$1" x="129.54" y="172.72">
-<attribute name="PARTNO" x="129.54" y="172.72" size="1.778" layer="96" display="off"/>
+<instance part="D3" gate="G$1" x="124.46" y="193.04">
+<attribute name="PARTNO" x="124.46" y="193.04" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="R1" gate="G$1" x="111.76" y="162.56">
-<attribute name="PARTNO" value="ERJ6GEYJ102V" x="111.76" y="162.56" size="1.778" layer="96" display="off"/>
+<instance part="R1" gate="G$1" x="106.68" y="182.88">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="106.68" y="182.88" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="R5" gate="G$1" x="111.76" y="142.24">
-<attribute name="PARTNO" value="ERJ6GEYJ102V" x="114.3" y="142.24" size="1.778" layer="96" display="off"/>
+<instance part="R5" gate="G$1" x="106.68" y="162.56">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="109.22" y="162.56" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="R6" gate="G$1" x="111.76" y="121.92">
-<attribute name="PARTNO" value="ERJ6GEYJ102V" x="114.3" y="121.92" size="1.778" layer="96" display="off"/>
+<instance part="R6" gate="G$1" x="106.68" y="142.24">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="109.22" y="142.24" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="D4" gate="G$1" x="129.54" y="152.4">
-<attribute name="PARTNO" x="129.54" y="152.4" size="1.778" layer="96" display="off"/>
+<instance part="D4" gate="G$1" x="124.46" y="172.72">
+<attribute name="PARTNO" x="124.46" y="172.72" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="D5" gate="G$1" x="129.54" y="132.08">
-<attribute name="PARTNO" x="129.54" y="132.08" size="1.778" layer="96" display="off"/>
+<instance part="D5" gate="G$1" x="124.46" y="152.4">
+<attribute name="PARTNO" x="124.46" y="152.4" size="1.778" layer="96" display="off"/>
 </instance>
+<instance part="R72" gate="G$1" x="106.68" y="121.92">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="106.68" y="121.92" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="D6" gate=".1" x="86.36" y="132.08">
+<attribute name="PARTNO" value="*" x="86.36" y="132.08" size="1.524" layer="96" display="off"/>
+</instance>
+<instance part="D6" gate=".2" x="86.36" y="111.76"/>
+<instance part="D6" gate=".3" x="86.36" y="91.44"/>
+<instance part="D6" gate=".4" x="86.36" y="71.12"/>
+<instance part="D7" gate="G$1" x="124.46" y="132.08">
+<attribute name="PARTNO" x="124.46" y="132.08" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="D8" gate="G$1" x="124.46" y="111.76">
+<attribute name="PARTNO" x="124.46" y="111.76" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="R73" gate="G$1" x="106.68" y="101.6">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="106.68" y="101.6" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="R74" gate="G$1" x="106.68" y="81.28">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="109.22" y="81.28" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="R75" gate="G$1" x="106.68" y="60.96">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="109.22" y="60.96" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="D9" gate="G$1" x="124.46" y="91.44">
+<attribute name="PARTNO" x="124.46" y="91.44" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="D10" gate="G$1" x="124.46" y="71.12">
+<attribute name="PARTNO" x="124.46" y="71.12" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="GND36" gate="1" x="99.06" y="58.42"/>
+<instance part="U$8" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 </busses>
@@ -18354,89 +18438,180 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <segment>
 <pinref part="D2" gate="G$1" pin="IN"/>
 <pinref part="D1" gate=".1" pin="TC"/>
-<wire x1="116.84" y1="195.58" x2="101.6" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="215.9" x2="96.52" y2="215.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
 <pinref part="D3" gate="G$1" pin="IN"/>
 <pinref part="D1" gate=".2" pin="TC"/>
-<wire x1="116.84" y1="175.26" x2="101.6" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="195.58" x2="96.52" y2="195.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
 <segment>
 <pinref part="D4" gate="G$1" pin="IN"/>
 <pinref part="D1" gate=".3" pin="TC"/>
-<wire x1="116.84" y1="154.94" x2="101.6" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="175.26" x2="96.52" y2="175.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$5" class="0">
 <segment>
 <pinref part="D5" gate="G$1" pin="IN"/>
 <pinref part="D1" gate=".4" pin="TC"/>
-<wire x1="116.84" y1="134.62" x2="101.6" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="154.94" x2="96.52" y2="154.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$6" class="0">
 <segment>
 <pinref part="D5" gate="G$1" pin="IFB"/>
 <pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="116.84" y1="127" x2="116.84" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="147.32" x2="111.76" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
 <pinref part="D4" gate="G$1" pin="IFB"/>
 <pinref part="R5" gate="G$1" pin="2"/>
-<wire x1="116.84" y1="147.32" x2="116.84" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="167.64" x2="111.76" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$9" class="0">
 <segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <pinref part="D3" gate="G$1" pin="IFB"/>
-<wire x1="116.84" y1="162.56" x2="116.84" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="182.88" x2="111.76" y2="187.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$10" class="0">
 <segment>
 <pinref part="R7" gate="G$1" pin="2"/>
 <pinref part="D2" gate="G$1" pin="IFB"/>
-<wire x1="116.84" y1="182.88" x2="116.84" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="203.2" x2="111.76" y2="208.28" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$11" class="0">
+<net name="N$46" class="0">
 <segment>
+<pinref part="D7" gate="G$1" pin="IN"/>
+<pinref part="D6" gate=".1" pin="TC"/>
+<wire x1="111.76" y1="134.62" x2="96.52" y2="134.62" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$47" class="0">
+<segment>
+<pinref part="D8" gate="G$1" pin="IN"/>
+<pinref part="D6" gate=".2" pin="TC"/>
+<wire x1="111.76" y1="114.3" x2="96.52" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$48" class="0">
+<segment>
+<pinref part="D9" gate="G$1" pin="IN"/>
+<pinref part="D6" gate=".3" pin="TC"/>
+<wire x1="111.76" y1="93.98" x2="96.52" y2="93.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$49" class="0">
+<segment>
+<pinref part="D10" gate="G$1" pin="IN"/>
+<pinref part="D6" gate=".4" pin="TC"/>
+<wire x1="111.76" y1="73.66" x2="96.52" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$50" class="0">
+<segment>
+<pinref part="D10" gate="G$1" pin="IFB"/>
+<pinref part="R75" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="66.04" x2="111.76" y2="60.96" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$51" class="0">
+<segment>
+<pinref part="D9" gate="G$1" pin="IFB"/>
+<pinref part="R74" gate="G$1" pin="2"/>
+<wire x1="111.76" y1="86.36" x2="111.76" y2="81.28" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$52" class="0">
+<segment>
+<pinref part="R73" gate="G$1" pin="2"/>
+<pinref part="D8" gate="G$1" pin="IFB"/>
+<wire x1="111.76" y1="101.6" x2="111.76" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$53" class="0">
+<segment>
+<pinref part="R72" gate="G$1" pin="2"/>
+<pinref part="D7" gate="G$1" pin="IFB"/>
+<wire x1="111.76" y1="121.92" x2="111.76" y2="127" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<pinref part="D6" gate=".1" pin="TE"/>
+<wire x1="96.52" y1="129.54" x2="99.06" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="129.54" x2="99.06" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="D6" gate=".2" pin="TE"/>
+<wire x1="99.06" y1="121.92" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="109.22" x2="99.06" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="101.6" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="88.9" x2="99.06" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="81.28" x2="99.06" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="109.22" x2="99.06" y2="109.22" width="0.1524" layer="91"/>
+<junction x="99.06" y="109.22"/>
+<pinref part="D6" gate=".3" pin="TE"/>
+<wire x1="96.52" y1="88.9" x2="99.06" y2="88.9" width="0.1524" layer="91"/>
+<junction x="99.06" y="88.9"/>
+<pinref part="D6" gate=".4" pin="TE"/>
+<wire x1="96.52" y1="68.58" x2="99.06" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="R75" gate="G$1" pin="1"/>
+<wire x1="101.6" y1="60.96" x2="99.06" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="60.96" x2="99.06" y2="68.58" width="0.1524" layer="91"/>
+<junction x="99.06" y="68.58"/>
+<pinref part="R74" gate="G$1" pin="1"/>
+<wire x1="101.6" y1="81.28" x2="99.06" y2="81.28" width="0.1524" layer="91"/>
+<junction x="99.06" y="81.28"/>
+<pinref part="R73" gate="G$1" pin="1"/>
+<wire x1="101.6" y1="101.6" x2="99.06" y2="101.6" width="0.1524" layer="91"/>
+<junction x="99.06" y="101.6"/>
+<pinref part="R72" gate="G$1" pin="1"/>
+<wire x1="101.6" y1="121.92" x2="99.06" y2="121.92" width="0.1524" layer="91"/>
+<junction x="99.06" y="121.92"/>
 <pinref part="D1" gate=".1" pin="TE"/>
-<wire x1="101.6" y1="190.5" x2="104.14" y2="190.5" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="190.5" x2="104.14" y2="182.88" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="210.82" x2="99.06" y2="210.82" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="210.82" x2="99.06" y2="203.2" width="0.1524" layer="91"/>
 <pinref part="D1" gate=".2" pin="TE"/>
-<wire x1="104.14" y1="182.88" x2="104.14" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="170.18" x2="104.14" y2="162.56" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="162.56" x2="104.14" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="149.86" x2="104.14" y2="142.24" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="142.24" x2="104.14" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="101.6" y1="170.18" x2="104.14" y2="170.18" width="0.1524" layer="91"/>
-<junction x="104.14" y="170.18"/>
+<wire x1="99.06" y1="203.2" x2="99.06" y2="190.5" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="190.5" x2="99.06" y2="182.88" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="182.88" x2="99.06" y2="170.18" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="170.18" x2="99.06" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="162.56" x2="99.06" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="190.5" x2="99.06" y2="190.5" width="0.1524" layer="91"/>
+<junction x="99.06" y="190.5"/>
 <pinref part="D1" gate=".3" pin="TE"/>
-<wire x1="101.6" y1="149.86" x2="104.14" y2="149.86" width="0.1524" layer="91"/>
-<junction x="104.14" y="149.86"/>
+<wire x1="96.52" y1="170.18" x2="99.06" y2="170.18" width="0.1524" layer="91"/>
+<junction x="99.06" y="170.18"/>
 <pinref part="D1" gate=".4" pin="TE"/>
-<wire x1="101.6" y1="129.54" x2="104.14" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="96.52" y1="149.86" x2="99.06" y2="149.86" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="1"/>
-<wire x1="106.68" y1="121.92" x2="104.14" y2="121.92" width="0.1524" layer="91"/>
-<wire x1="104.14" y1="121.92" x2="104.14" y2="129.54" width="0.1524" layer="91"/>
-<junction x="104.14" y="129.54"/>
+<wire x1="101.6" y1="142.24" x2="99.06" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="99.06" y1="142.24" x2="99.06" y2="149.86" width="0.1524" layer="91"/>
+<junction x="99.06" y="149.86"/>
 <pinref part="R5" gate="G$1" pin="1"/>
-<wire x1="106.68" y1="142.24" x2="104.14" y2="142.24" width="0.1524" layer="91"/>
-<junction x="104.14" y="142.24"/>
+<wire x1="101.6" y1="162.56" x2="99.06" y2="162.56" width="0.1524" layer="91"/>
+<junction x="99.06" y="162.56"/>
 <pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="106.68" y1="162.56" x2="104.14" y2="162.56" width="0.1524" layer="91"/>
-<junction x="104.14" y="162.56"/>
+<wire x1="101.6" y1="182.88" x2="99.06" y2="182.88" width="0.1524" layer="91"/>
+<junction x="99.06" y="182.88"/>
 <pinref part="R7" gate="G$1" pin="1"/>
-<wire x1="106.68" y1="182.88" x2="104.14" y2="182.88" width="0.1524" layer="91"/>
-<junction x="104.14" y="182.88"/>
+<wire x1="101.6" y1="203.2" x2="99.06" y2="203.2" width="0.1524" layer="91"/>
+<junction x="99.06" y="203.2"/>
+<wire x1="99.06" y1="129.54" x2="99.06" y2="142.24" width="0.1524" layer="91"/>
+<junction x="99.06" y="129.54"/>
+<junction x="99.06" y="142.24"/>
+<pinref part="GND36" gate="1" pin="GND"/>
+<wire x1="99.06" y1="58.42" x2="99.06" y2="60.96" width="0.1524" layer="91"/>
+<junction x="99.06" y="60.96"/>
 </segment>
 </net>
 </nets>
