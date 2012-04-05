@@ -2981,6 +2981,10 @@ design rules under a new name.</description>
 <element name="D10" library="transistor-fet" package="TO252-5-11" value="AUIPS7125R" x="82" y="-37" rot="MR180">
 <attribute name="PARTNO" value="AUIPS7125RTRL" x="30.75" y="-33" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
+<element name="R76" library="rcl" package="R0805" value="1kOhm" x="10" y="-50">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="10" y="-50" size="1.778" layer="27" display="off"/>
+<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="10" y="-50" size="1.778" layer="27" display="off"/>
+</element>
 </elements>
 <signals>
 <signal name="VREF+">
@@ -4558,6 +4562,16 @@ design rules under a new name.</description>
 <contactref element="R72" pad="2"/>
 <contactref element="D7" pad="4"/>
 <wire x1="107.14" y1="-31.99" x2="107.9525" y2="-28" width="0" layer="19" extent="16-16"/>
+</signal>
+<signal name="N$11">
+<contactref element="R76" pad="2"/>
+<contactref element="D6" pad="7"/>
+<wire x1="10.9525" y1="-50" x2="97.445" y2="-17.575" width="0" layer="19" extent="1-16"/>
+</signal>
+<signal name="N$54">
+<contactref element="D6" pad="8"/>
+<contactref element="R76" pad="1"/>
+<wire x1="9.0475" y1="-50" x2="98.715" y2="-17.575" width="0" layer="19" extent="1-16"/>
 </signal>
 </signals>
 </board>

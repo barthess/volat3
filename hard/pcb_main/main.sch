@@ -15971,6 +15971,9 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="GND36" library="supply" deviceset="GND" device=""/>
 <part name="U$8" library="frame-simplified" deviceset="A2_PORTRAIT_NEXT_SCALED" device=""/>
+<part name="R76" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<attribute name="PARTNO" value="ERJ6GEYJ102V"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -18430,6 +18433,9 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="GND36" gate="1" x="99.06" y="58.42"/>
 <instance part="U$8" gate="G$1" x="0" y="0"/>
+<instance part="R76" gate="G$1" x="68.58" y="71.12">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="71.12" y="71.12" size="1.778" layer="96" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -18612,6 +18618,22 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <pinref part="GND36" gate="1" pin="GND"/>
 <wire x1="99.06" y1="58.42" x2="99.06" y2="60.96" width="0.1524" layer="91"/>
 <junction x="99.06" y="60.96"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="R76" gate="G$1" pin="2"/>
+<pinref part="D6" gate=".4" pin="DA"/>
+<wire x1="73.66" y1="71.12" x2="78.74" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="71.12" x2="78.74" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$54" class="0">
+<segment>
+<pinref part="D6" gate=".4" pin="DC"/>
+<pinref part="R76" gate="G$1" pin="1"/>
+<wire x1="78.74" y1="68.58" x2="63.5" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="63.5" y1="68.58" x2="63.5" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
