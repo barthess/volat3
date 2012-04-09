@@ -17458,6 +17458,9 @@ chip</description>
 </part>
 <part name="XP13" library="connector" deviceset="PLD_2X8" device="" value="DISCRETE(33..48)"/>
 <part name="U$8" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
+<part name="C49" library="rcl" deviceset="C-EU" device="C2220K" value="10uF/50V">
+<attribute name="PARTNO" value="22205C106KAT2A"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -18168,7 +18171,7 @@ chip</description>
 <instance part="C2" gate="G$1" x="165.1" y="170.18">
 <attribute name="PARTNO" value="516D108M050QS6AE3" x="165.1" y="170.18" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="GND2" gate="1" x="162.56" y="162.56" rot="R270"/>
+<instance part="GND2" gate="1" x="154.94" y="162.56" rot="R270"/>
 <instance part="U$3" gate="G$1" x="0" y="0"/>
 <instance part="VD1" gate="G$1" x="228.6" y="172.72" rot="R90">
 <attribute name="PARTNO" value="VS-30BQ060TRPBF" x="228.6" y="172.72" size="1.778" layer="96" rot="R90" display="off"/>
@@ -18186,7 +18189,7 @@ chip</description>
 <attribute name="PARTNO" value="*" x="20.32" y="48.26" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="GND26" gate="1" x="22.86" y="25.4"/>
-<instance part="P+20" gate="G$1" x="162.56" y="180.34" rot="MR270"/>
+<instance part="P+20" gate="G$1" x="152.4" y="180.34" rot="MR270"/>
 <instance part="P+19" gate="1" x="25.4" y="60.96"/>
 <instance part="P+1" gate="1" x="271.78" y="177.8" rot="R270"/>
 <instance part="GND28" gate="1" x="246.38" y="162.56" rot="R90"/>
@@ -18281,6 +18284,9 @@ chip</description>
 <instance part="GND38" gate="1" x="106.68" y="12.7"/>
 <instance part="VT2" gate="G$1" x="109.22" y="20.32" rot="MR0"/>
 <instance part="P+22" gate="G$1" x="50.8" y="22.86" rot="MR270"/>
+<instance part="C49" gate="G$1" x="157.48" y="170.18" rot="MR180">
+<attribute name="PARTNO" x="157.48" y="170.18" size="1.27" layer="96" rot="MR180" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -18319,8 +18325,9 @@ chip</description>
 <wire x1="195.58" y1="162.56" x2="185.42" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="162.56" x2="175.26" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="162.56" x2="165.1" y2="162.56" width="0.1524" layer="91"/>
-<wire x1="165.1" y1="162.56" x2="162.56" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="162.56" x2="157.48" y2="162.56" width="0.1524" layer="91"/>
 <junction x="223.52" y="162.56"/>
+<wire x1="157.48" y1="162.56" x2="154.94" y2="162.56" width="0.1524" layer="91"/>
 <wire x1="195.58" y1="170.18" x2="195.58" y2="162.56" width="0.1524" layer="91"/>
 <junction x="195.58" y="162.56"/>
 <wire x1="228.6" y1="170.18" x2="228.6" y2="162.56" width="0.1524" layer="91"/>
@@ -18357,6 +18364,9 @@ chip</description>
 <junction x="185.42" y="162.56"/>
 <pinref part="C31" gate="G$1" pin="1"/>
 <wire x1="185.42" y1="170.18" x2="185.42" y2="162.56" width="0.1524" layer="91"/>
+<pinref part="C49" gate="G$1" pin="1"/>
+<wire x1="157.48" y1="162.56" x2="157.48" y2="167.64" width="0.1524" layer="91"/>
+<junction x="157.48" y="162.56"/>
 </segment>
 <segment>
 <pinref part="GND29" gate="1" pin="GND"/>
@@ -18443,14 +18453,18 @@ chip</description>
 <pinref part="DA1" gate="G$1" pin="VIN"/>
 <pinref part="DA2" gate="G$1" pin="VIN"/>
 <pinref part="P+20" gate="G$1" pin="+24V_CLEAR"/>
-<wire x1="165.1" y1="180.34" x2="162.56" y2="180.34" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="180.34" x2="157.48" y2="180.34" width="0.1524" layer="91"/>
 <junction x="165.1" y="180.34"/>
 <pinref part="C32" gate="G$1" pin="1"/>
+<wire x1="157.48" y1="180.34" x2="152.4" y2="180.34" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="177.8" x2="175.26" y2="180.34" width="0.1524" layer="91"/>
 <junction x="175.26" y="180.34"/>
 <pinref part="C31" gate="G$1" pin="2"/>
 <wire x1="185.42" y1="175.26" x2="185.42" y2="180.34" width="0.1524" layer="91"/>
 <junction x="185.42" y="180.34"/>
+<pinref part="C49" gate="G$1" pin="2"/>
+<wire x1="157.48" y1="172.72" x2="157.48" y2="180.34" width="0.1524" layer="91"/>
+<junction x="157.48" y="180.34"/>
 </segment>
 <segment>
 <wire x1="111.76" y1="165.1" x2="111.76" y2="160.02" width="0.1524" layer="91"/>
