@@ -13274,6 +13274,21 @@ CASE 152AC-01</description>
 <rectangle x1="-4.094" y1="-1.0922" x2="-3.5606" y2="1.0922" layer="51"/>
 <rectangle x1="3.5606" y1="-1.0922" x2="4.094" y2="1.0922" layer="51"/>
 </package>
+<package name="SOD80">
+<description>&lt;b&gt;SOD80 Reflow soldering&lt;/b&gt; Philips SC01_Mounting_1996.pdf</description>
+<wire x1="1.3208" y1="0.7874" x2="-1.3208" y2="0.7874" width="0.1524" layer="51"/>
+<wire x1="1.3208" y1="-0.7874" x2="-1.3208" y2="-0.7874" width="0.1524" layer="51"/>
+<wire x1="0.627" y1="0.6" x2="-0.373" y2="0" width="0.2032" layer="21"/>
+<wire x1="-0.373" y1="0" x2="0.627" y2="-0.6" width="0.2032" layer="21"/>
+<wire x1="0.627" y1="-0.6" x2="0.627" y2="0.6" width="0.2032" layer="21"/>
+<smd name="C" x="-1.65" y="0" dx="1" dy="1.7" layer="1"/>
+<smd name="A" x="1.65" y="0" dx="1" dy="1.7" layer="1"/>
+<text x="-2.159" y="1.143" size="1.016" layer="25" ratio="18">&gt;NAME</text>
+<text x="-2.159" y="-1.778" size="0.8128" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.8542" y1="-0.8636" x2="-1.2954" y2="0.8636" layer="51"/>
+<rectangle x1="1.2954" y1="-0.8636" x2="1.8542" y2="0.8636" layer="51"/>
+<rectangle x1="-0.8636" y1="-0.7874" x2="-0.254" y2="0.7874" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="SCHOTTKY">
@@ -13675,6 +13690,22 @@ CASE 152AC-01</description>
 </technologies>
 </device>
 <device name="SOD323-W" package="D0603">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="C" pad="C"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="DIODE-ZENER-" prefix="VD" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="STABILITRON" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOD80">
 <connects>
 <connect gate="G$1" pin="A" pad="A"/>
 <connect gate="G$1" pin="C" pad="C"/>
@@ -14636,6 +14667,30 @@ body 3.9 mm/JEDEC MS-012AC</description>
 <text x="-2.54" y="-0.635" size="1.016" layer="21" ratio="18">1</text>
 <text x="-2.54" y="1.905" size="1.016" layer="21" ratio="18">2</text>
 </package>
+<package name="PLD_1X2">
+<wire x1="-0.635" y1="1.27" x2="0.635" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="0.635" y1="1.27" x2="1.27" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="1.27" y1="-0.635" x2="0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="1.27" y1="0.635" x2="1.905" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="1.905" y1="1.27" x2="3.175" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="3.175" y1="1.27" x2="3.81" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="-0.635" x2="3.175" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="3.175" y1="-1.27" x2="1.905" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="1.905" y1="-1.27" x2="1.27" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="-1.27" y1="0.635" x2="-1.27" y2="-0.635" width="0.2032" layer="21"/>
+<wire x1="-0.635" y1="1.27" x2="-1.27" y2="0.635" width="0.2032" layer="21"/>
+<wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="0.635" y1="-1.27" x2="-0.635" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="3.81" y1="0.635" x2="3.81" y2="-0.635" width="0.2032" layer="21"/>
+<pad name="1" x="0" y="0" drill="1" shape="square" rot="R90"/>
+<pad name="2" x="2.54" y="0" drill="1" rot="R90"/>
+<text x="-0.7112" y="1.8288" size="1.016" layer="25" ratio="18">&gt;NAME</text>
+<text x="-0.635" y="-2.54" size="0.8128" layer="27">&gt;VALUE</text>
+<rectangle x1="2.286" y1="-0.254" x2="2.794" y2="0.254" layer="51"/>
+<rectangle x1="-0.254" y1="-0.254" x2="0.254" y2="0.254" layer="51"/>
+<text x="-2.54" y="-0.635" size="1.016" layer="21" ratio="18">1</text>
+<text x="4.445" y="-0.635" size="1.016" layer="21" ratio="18">2</text>
+</package>
 </packages>
 <symbols>
 <symbol name="TYCO-174053">
@@ -15074,6 +15129,24 @@ body 3.9 mm/JEDEC MS-012AC</description>
 <wire x1="3.81" y1="-38.1" x2="5.08" y2="-38.1" width="0.1524" layer="94"/>
 <wire x1="5.08" y1="-38.1" x2="7.62" y2="-38.1" width="0.1524" layer="94"/>
 </symbol>
+<symbol name="PLD2">
+<pin name="1" x="0" y="0" visible="pad" length="short" direction="pas" swaplevel="1"/>
+<pin name="2" x="0" y="-2.54" visible="pad" length="short" direction="pas" swaplevel="1"/>
+<wire x1="3.81" y1="0" x2="3.81" y2="-2.54" width="0.1524" layer="94"/>
+<text x="0.635" y="-5.715" size="1.524" layer="96">&gt;VALUE</text>
+<text x="3.81" y="1.27" size="1.524" layer="95">&gt;NAME</text>
+<wire x1="7.62" y1="0" x2="6.35" y2="-0.635" width="0.1524" layer="94"/>
+<wire x1="7.62" y1="0" x2="6.35" y2="0.635" width="0.1524" layer="94"/>
+<wire x1="7.62" y1="-2.54" x2="6.35" y2="-1.905" width="0.1524" layer="94"/>
+<wire x1="7.62" y1="-2.54" x2="6.35" y2="-3.175" width="0.1524" layer="94"/>
+<wire x1="5.08" y1="0" x2="5.08" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="0" x2="3.81" y2="0" width="0.1524" layer="94"/>
+<wire x1="3.81" y1="0" x2="5.08" y2="0" width="0.1524" layer="94"/>
+<wire x1="5.08" y1="0" x2="7.62" y2="0" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="-2.54" x2="3.81" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="3.81" y1="-2.54" x2="5.08" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="5.08" y1="-2.54" x2="7.62" y2="-2.54" width="0.1524" layer="94"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="PLD_2X10" prefix="XP" uservalue="yes">
@@ -15335,6 +15408,22 @@ body 3.9 mm/JEDEC MS-012AC</description>
 <connect gate="G$1" pin="7" pad="7"/>
 <connect gate="G$1" pin="8" pad="8"/>
 <connect gate="G$1" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PLD_1X2" prefix="XP">
+<gates>
+<gate name="G$1" symbol="PLD2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="PLD_1X2">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -16451,6 +16540,138 @@ chip</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="transceiver">
+<packages>
+<package name="SO08">
+<description>&lt;b&gt;SMALL OUTLINE INTEGRATED CIRCUIT&lt;/b&gt;&lt;p&gt;
+body 3.9 mm/JEDEC MS-012AA</description>
+<wire x1="2.667" y1="1.905" x2="2.667" y2="-1.905" width="0.2032" layer="51"/>
+<wire x1="2.667" y1="-1.905" x2="-2.667" y2="-1.905" width="0.2032" layer="51"/>
+<wire x1="-2.667" y1="-1.905" x2="-2.667" y2="1.905" width="0.2032" layer="51"/>
+<wire x1="-2.667" y1="1.905" x2="2.667" y2="1.905" width="0.2032" layer="51"/>
+<wire x1="-2.667" y1="1.27" x2="2.667" y2="1.27" width="0.2032" layer="21"/>
+<wire x1="2.667" y1="1.27" x2="2.667" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="2.667" y1="-1.27" x2="-2.667" y2="-1.27" width="0.2032" layer="21"/>
+<wire x1="-2.667" y1="-1.27" x2="-2.667" y2="1.27" width="0.2032" layer="21"/>
+<circle x="-1.905" y="-0.635" radius="0.3175" width="0" layer="21"/>
+<smd name="2" x="-0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="7" x="-0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="1" x="-1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="3" x="0.635" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="4" x="1.905" y="-2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="8" x="-1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="6" x="0.635" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<smd name="5" x="1.905" y="2.6" dx="0.6" dy="2.2" layer="1"/>
+<text x="-3.175" y="-1.905" size="1.016" layer="25" ratio="18" rot="R90">&gt;NAME</text>
+<text x="-2.2225" y="-0.3175" size="0.8128" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="-2.1501" y1="-3.1001" x2="-1.6599" y2="-2" layer="51"/>
+<rectangle x1="-0.8801" y1="-3.1001" x2="-0.3899" y2="-2" layer="51"/>
+<rectangle x1="0.3899" y1="-3.1001" x2="0.8801" y2="-2" layer="51"/>
+<rectangle x1="1.6599" y1="-3.1001" x2="2.1501" y2="-2" layer="51"/>
+<rectangle x1="1.6599" y1="2" x2="2.1501" y2="3.1001" layer="51"/>
+<rectangle x1="0.3899" y1="2" x2="0.8801" y2="3.1001" layer="51"/>
+<rectangle x1="-0.8801" y1="2" x2="-0.3899" y2="3.1001" layer="51"/>
+<rectangle x1="-2.1501" y1="2" x2="-1.6599" y2="3.1001" layer="51"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SN65HVD232">
+<wire x1="-10.16" y1="5.08" x2="10.16" y2="5.08" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="5.08" x2="10.16" y2="-7.62" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="-7.62" x2="-10.16" y2="-7.62" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="-7.62" x2="-10.16" y2="5.08" width="0.1524" layer="94"/>
+<text x="-5.08" y="6.35" size="1.524" layer="95">&gt;NAME</text>
+<text x="-10.16" y="-10.16" size="1.524" layer="96">&gt;VALUE</text>
+<pin name="TXD" x="-15.24" y="-2.54" length="middle" direction="in"/>
+<pin name="RXD" x="-15.24" y="-5.08" length="middle" direction="out"/>
+<pin name="GND" x="15.24" y="2.54" length="middle" direction="pwr" rot="R180"/>
+<pin name="CANH" x="15.24" y="-2.54" length="middle" rot="R180"/>
+<pin name="CANL" x="15.24" y="-5.08" length="middle" rot="R180"/>
+<pin name="VCC" x="-15.24" y="2.54" length="middle" direction="pwr"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SN65HVD232" prefix="DA">
+<description>CAN TRANSCEIVER</description>
+<gates>
+<gate name="G$1" symbol="SN65HVD232" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SO08">
+<connects>
+<connect gate="G$1" pin="CANH" pad="7"/>
+<connect gate="G$1" pin="CANL" pad="6"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="RXD" pad="4"/>
+<connect gate="G$1" pin="TXD" pad="1"/>
+<connect gate="G$1" pin="VCC" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+<library name="usb">
+<packages>
+<package name="SOTT323-6L">
+<wire x1="-0.6" y1="1.1" x2="0.6" y2="1.1" width="0.254" layer="21"/>
+<wire x1="0.6" y1="-1.1" x2="-0.6" y2="-1.1" width="0.254" layer="21"/>
+<wire x1="-0.6" y1="1.1" x2="-0.6" y2="-1.1" width="0.127" layer="51"/>
+<wire x1="-0.6" y1="-1.1" x2="0.6" y2="-1.1" width="0.127" layer="51"/>
+<wire x1="0.6" y1="-1.1" x2="0.6" y2="1.1" width="0.127" layer="51"/>
+<wire x1="0.6" y1="1.1" x2="-0.6" y2="1.1" width="0.127" layer="51"/>
+<smd name="1" x="-1" y="0.65" dx="1.05" dy="0.4" layer="1" rot="R180"/>
+<smd name="2" x="-1" y="0" dx="1.05" dy="0.4" layer="1" rot="R180"/>
+<smd name="3" x="-1" y="-0.65" dx="1.05" dy="0.4" layer="1" rot="R180"/>
+<smd name="4" x="0.95" y="-0.65" dx="1.05" dy="0.4" layer="1" rot="R180"/>
+<smd name="5" x="0.95" y="0" dx="1.05" dy="0.4" layer="1" rot="R180"/>
+<smd name="6" x="0.95" y="0.65" dx="1.05" dy="0.4" layer="1" rot="R180"/>
+<circle x="-1.016" y="1.27" radius="0.127" width="0.254" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="USBUF01W6">
+<wire x1="-10.16" y1="5.08" x2="-10.16" y2="-5.08" width="0.1524" layer="94"/>
+<wire x1="-10.16" y1="-5.08" x2="10.16" y2="-5.08" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="-5.08" x2="10.16" y2="5.08" width="0.1524" layer="94"/>
+<wire x1="10.16" y1="5.08" x2="-10.16" y2="5.08" width="0.1524" layer="94"/>
+<text x="-4.826" y="-7.112" size="1.524" layer="96">&gt;VALUE</text>
+<text x="-5.08" y="6.096" size="1.524" layer="96">&gt;NAME</text>
+<pin name="D1" x="-15.24" y="2.54" length="middle"/>
+<pin name="GND" x="-15.24" y="0" length="middle" direction="pwr"/>
+<pin name="D2" x="-15.24" y="-2.54" length="middle"/>
+<pin name="D3" x="15.24" y="-2.54" length="middle" rot="R180"/>
+<pin name="3.3V" x="15.24" y="0" length="middle" direction="pwr" rot="R180"/>
+<pin name="D4" x="15.24" y="2.54" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="USBUF01W6" prefix="DA">
+<description>USB upstream EMI/ESD protection</description>
+<gates>
+<gate name="G$1" symbol="USBUF01W6" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOTT323-6L">
+<connects>
+<connect gate="G$1" pin="3.3V" pad="5"/>
+<connect gate="G$1" pin="D1" pad="1"/>
+<connect gate="G$1" pin="D2" pad="3"/>
+<connect gate="G$1" pin="D3" pad="4"/>
+<connect gate="G$1" pin="D4" pad="6"/>
+<connect gate="G$1" pin="GND" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv"/>
@@ -16564,9 +16785,6 @@ chip</description>
 </part>
 <part name="C6" library="rcl" deviceset="C-EU" device="C0603" value="22pF">
 <attribute name="PARTNO" value="C0603C220J5GACTU"/>
-</part>
-<part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="390Ohm">
-<attribute name="PARTNO" value="ERJ3GEYJ391V"/>
 </part>
 <part name="GND3" library="supply" deviceset="GND" device=""/>
 <part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
@@ -16954,7 +17172,9 @@ chip</description>
 <part name="R4" library="rcl" deviceset="R-EU_" device="R0805" value="470kOhm">
 <attribute name="PARTNO" value="ERJ6GEYJ474V"/>
 </part>
-<part name="R70" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm"/>
+<part name="R70" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<attribute name="PARTNO" value="ERJ6GEYJ102V"/>
+</part>
 <part name="R71" library="rcl" deviceset="R-EU_" device="R2512" value="3.3kOhm">
 <attribute name="PARTNO" value="35203K3JT"/>
 </part>
@@ -17120,7 +17340,9 @@ chip</description>
 <part name="VD59" library="diode" deviceset="DIODE-STANDARD-" device="SOD323">
 <attribute name="PARTNO" value="1N4148WS-V-GS18"/>
 </part>
-<part name="DD2" library="74xx" deviceset="74*595" device="D" technology="HC"/>
+<part name="DD2" library="74xx" deviceset="74*595" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC595AD"/>
+</part>
 <part name="GND37" library="supply" deviceset="GND" device=""/>
 <part name="+3V5" library="supply" deviceset="+3V3" device=""/>
 <part name="U$5" library="frame-simplified" deviceset="A2_LANDSCAPE_NEXT_SCALED" device=""/>
@@ -17365,9 +17587,15 @@ chip</description>
 <part name="R104" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="D11" library="optocoupler" deviceset="TCMT4100" device=""/>
-<part name="D13" library="optocoupler" deviceset="TCMT4100" device=""/>
-<part name="D14" library="optocoupler" deviceset="TCMT4100" device=""/>
+<part name="D11" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D13" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D14" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
 <part name="R105" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
@@ -17722,9 +17950,15 @@ chip</description>
 <part name="R152" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="D17" library="optocoupler" deviceset="TCMT4100" device=""/>
-<part name="D18" library="optocoupler" deviceset="TCMT4100" device=""/>
-<part name="D19" library="optocoupler" deviceset="TCMT4100" device=""/>
+<part name="D17" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D18" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D19" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
 <part name="R153" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
@@ -17921,8 +18155,12 @@ chip</description>
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
 <part name="XP5" library="connector" deviceset="PLD_2X8" device="" value="DISCRETE(49..64)"/>
-<part name="DD5" library="74xx" deviceset="74*165" device="D" technology="AC"/>
-<part name="DD6" library="74xx" deviceset="74*165" device="D" technology="AC"/>
+<part name="DD5" library="74xx" deviceset="74*165" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC165AD"/>
+</part>
+<part name="DD6" library="74xx" deviceset="74*165" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC165AD"/>
+</part>
 <part name="+3V40" library="supply" deviceset="+3V3" device=""/>
 <part name="GND105" library="supply" deviceset="GND" device=""/>
 <part name="+3V41" library="supply" deviceset="+3V3" device=""/>
@@ -17934,8 +18172,12 @@ chip</description>
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
 <part name="U$9" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
-<part name="DD3" library="74xx" deviceset="74*165" device="D" technology="AC"/>
-<part name="DD4" library="74xx" deviceset="74*165" device="D" technology="AC"/>
+<part name="DD3" library="74xx" deviceset="74*165" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC165AD"/>
+</part>
+<part name="DD4" library="74xx" deviceset="74*165" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC165AD"/>
+</part>
 <part name="U$10" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
 <part name="VD126" library="diode" deviceset="DIODE-TVS-UNIDIR-" device="SMB" value="SM6T200A">
 <attribute name="PARTNO" value="SM6T200A"/>
@@ -18081,9 +18323,15 @@ chip</description>
 <part name="R200" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="D21" library="optocoupler" deviceset="TCMT4100" device=""/>
-<part name="D22" library="optocoupler" deviceset="TCMT4100" device=""/>
-<part name="D23" library="optocoupler" deviceset="TCMT4100" device=""/>
+<part name="D21" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D22" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D23" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
 <part name="R201" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
@@ -18289,8 +18537,12 @@ chip</description>
 <part name="C87" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="DD7" library="74xx" deviceset="74*165" device="D" technology="AC"/>
-<part name="DD8" library="74xx" deviceset="74*165" device="D" technology="AC"/>
+<part name="DD7" library="74xx" deviceset="74*165" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC165AD"/>
+</part>
+<part name="DD8" library="74xx" deviceset="74*165" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC165AD"/>
+</part>
 <part name="VD158" library="diode" deviceset="DIODE-TVS-UNIDIR-" device="SMB" value="SM6T200A">
 <attribute name="PARTNO" value="SM6T200A"/>
 </part>
@@ -18435,9 +18687,15 @@ chip</description>
 <part name="R248" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="D25" library="optocoupler" deviceset="TCMT4100" device=""/>
-<part name="D26" library="optocoupler" deviceset="TCMT4100" device=""/>
-<part name="D27" library="optocoupler" deviceset="TCMT4100" device=""/>
+<part name="D25" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D26" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
+<part name="D27" library="optocoupler" deviceset="TCMT4100" device="">
+<attribute name="PARTNO" value="TCMT4100"/>
+</part>
 <part name="R249" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
@@ -18643,13 +18901,82 @@ chip</description>
 <part name="C105" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="DD9" library="74xx" deviceset="74*165" device="D" technology="AC"/>
-<part name="DD10" library="74xx" deviceset="74*165" device="D" technology="AC"/>
+<part name="DD9" library="74xx" deviceset="74*165" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC165AD"/>
+</part>
+<part name="DD10" library="74xx" deviceset="74*165" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC165AD"/>
+</part>
+<part name="DA3" library="transceiver" deviceset="SN65HVD232" device="">
+<attribute name="PARTNO" value="SN65HVD232D"/>
+</part>
+<part name="C106" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
+<attribute name="PARTNO" value="C0603C104K5RACTU"/>
+</part>
+<part name="GND175" library="supply" deviceset="GND" device=""/>
+<part name="+3V78" library="supply" deviceset="+3V3" device=""/>
+<part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<attribute name="PARTNO" value="ERJ3GEYJ101V"/>
+</part>
+<part name="R288" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<attribute name="PARTNO" value="ERJ3GEYJ101V"/>
+</part>
+<part name="R289" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<attribute name="PARTNO" value="ERJ3GEYJ101V"/>
+</part>
+<part name="R290" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<attribute name="PARTNO" value="ERJ3GEYJ101V"/>
+</part>
+<part name="R291" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<attribute name="PARTNO" value="ERJ3GEYJ101V"/>
+</part>
+<part name="R292" library="rcl" deviceset="R-EU_" device="R1206" value="120Ohm">
+<attribute name="PARTNO" value="RC1206JR-07120RL"/>
+</part>
+<part name="XP3" library="connector" deviceset="PLD_1X2" device=""/>
+<part name="DA5" library="usb" deviceset="USBUF01W6" device=""/>
+<part name="GND176" library="supply" deviceset="GND" device=""/>
+<part name="GND177" library="supply" deviceset="GND" device=""/>
+<part name="VD190" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
+<attribute name="PARTNO" value="S1G-E3/61T"/>
+</part>
+<part name="RK3" library="fuse" deviceset="RESETTABLE_FUSE_" device="1210" value="0.5A">
+<attribute name="PARTNO" value="1210L050YR"/>
+</part>
+<part name="GND178" library="supply" deviceset="GND" device=""/>
+<part name="VT3" library="transistor-npn" deviceset="BC817*" device="SMD" technology="-16"/>
+<part name="VT4" library="transistor-npn" deviceset="BC817*" device="SMD" technology="-16"/>
+<part name="R294" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<attribute name="PARTNO" value="ERJ6GEYJ102V"/>
+</part>
+<part name="R293" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<attribute name="PARTNO" value="RC0603FR-1010KL"/>
+</part>
+<part name="R295" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<attribute name="PARTNO" value="RC0603FR-1010KL"/>
+</part>
+<part name="+3V79" library="supply" deviceset="+3V3" device=""/>
+<part name="R296" library="rcl" deviceset="R-EU_" device="R0603" value="47kOhm">
+<attribute name="PARTNO" value="ERJ3GEYJ473V"/>
+</part>
+<part name="R297" library="rcl" deviceset="R-EU_" device="R0603" value="36kOhm">
+<attribute name="PARTNO" value="ERJ3GEYJ363V"/>
+</part>
+<part name="GND179" library="supply" deviceset="GND" device=""/>
+<part name="+3V80" library="supply" deviceset="+3V3" device=""/>
+<part name="VD191" library="diode" deviceset="DIODE-ZENER-" device="" value="3.3V">
+<attribute name="PARTNO" value="BZV55-C3V3"/>
+</part>
+<part name="GND180" library="supply" deviceset="GND" device=""/>
+<part name="R298" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<attribute name="PARTNO" value="ERJ6GEYJ102V"/>
+</part>
 </parts>
 <sheets>
 <sheet>
 <description>mcu</description>
 <plain>
+<text x="175.26" y="76.2" size="6.4516" layer="91" ratio="11">TODO:</text>
 </plain>
 <instances>
 <instance part="DD1" gate="G$1" x="200.66" y="187.96">
@@ -18674,9 +19001,6 @@ chip</description>
 </instance>
 <instance part="C6" gate="G$1" x="83.82" y="195.58" rot="R270">
 <attribute name="PARTNO" value="C0603C220J5GACTU" x="83.82" y="195.58" size="1.524" layer="96" display="off"/>
-</instance>
-<instance part="R11" gate="G$1" x="101.6" y="195.58">
-<attribute name="PARTNO" value="ERJ3GEYJ391V" x="101.6" y="195.58" size="1.524" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND3" gate="1" x="78.74" y="195.58" rot="R270"/>
 <instance part="R12" gate="G$1" x="33.02" y="15.24">
@@ -18753,6 +19077,21 @@ chip</description>
 <instance part="GND25" gate="1" x="63.5" y="210.82" rot="R270"/>
 <instance part="+3V1" gate="G$1" x="55.88" y="238.76" rot="MR270"/>
 <instance part="+3V4" gate="G$1" x="53.34" y="81.28" rot="MR0"/>
+<instance part="R11" gate="G$1" x="317.5" y="241.3" rot="MR0">
+<attribute name="PARTNO" value="ERJ3GEYJ101V" x="317.5" y="241.3" size="1.524" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="R288" gate="G$1" x="325.12" y="238.76" rot="MR0">
+<attribute name="PARTNO" value="ERJ3GEYJ101V" x="325.12" y="238.76" size="1.524" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="R289" gate="G$1" x="317.5" y="236.22" rot="MR0">
+<attribute name="PARTNO" value="ERJ3GEYJ101V" x="317.5" y="236.22" size="1.524" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="R290" gate="G$1" x="325.12" y="233.68" rot="MR0">
+<attribute name="PARTNO" value="ERJ3GEYJ101V" x="325.12" y="233.68" size="1.524" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="R291" gate="G$1" x="320.04" y="187.96" rot="MR0">
+<attribute name="PARTNO" value="ERJ3GEYJ101V" x="322.58" y="187.96" size="1.524" layer="96" rot="R270" display="off"/>
+</instance>
 </instances>
 <busses>
 <bus name="AN_FILTERED_[0..15]">
@@ -18777,8 +19116,11 @@ chip</description>
 <net name="N$14" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="OSC_OUT"/>
-<pinref part="R11" gate="G$1" pin="2"/>
-<wire x1="109.22" y1="195.58" x2="106.68" y2="195.58" width="0.1524" layer="91"/>
+<pinref part="ZQ1" gate="G$1" pin="P$1"/>
+<pinref part="C6" gate="G$1" pin="1"/>
+<junction x="91.44" y="195.58"/>
+<wire x1="91.44" y1="195.58" x2="86.36" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="195.58" x2="91.44" y2="195.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$15" class="0">
@@ -18791,16 +19133,6 @@ chip</description>
 <pinref part="C5" gate="G$1" pin="1"/>
 <junction x="91.44" y="200.66"/>
 <wire x1="91.44" y1="200.66" x2="86.36" y2="200.66" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$16" class="0">
-<segment>
-<pinref part="R11" gate="G$1" pin="1"/>
-<pinref part="ZQ1" gate="G$1" pin="P$1"/>
-<wire x1="96.52" y1="195.58" x2="91.44" y2="195.58" width="0.1524" layer="91"/>
-<pinref part="C6" gate="G$1" pin="1"/>
-<junction x="91.44" y="195.58"/>
-<wire x1="91.44" y1="195.58" x2="86.36" y2="195.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -19040,7 +19372,7 @@ chip</description>
 <segment>
 <pinref part="DD1" gate="G$1" pin="JTMS/SWDIO(PA13)*"/>
 <wire x1="109.22" y1="175.26" x2="91.44" y2="175.26" width="0.1524" layer="91"/>
-<label x="91.44" y="175.26" size="1.524" layer="95"/>
+<label x="91.44" y="175.26" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="XP1" gate="G$1" pin="7"/>
@@ -19049,14 +19381,14 @@ chip</description>
 <wire x1="38.1" y1="45.72" x2="60.96" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="38.1" y1="58.42" x2="38.1" y2="45.72" width="0.1524" layer="91"/>
 <junction x="38.1" y="45.72"/>
-<label x="60.96" y="45.72" size="1.524" layer="95"/>
+<label x="60.96" y="45.72" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTCK" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="JTCK/SWCLK(PA14)*"/>
 <wire x1="109.22" y1="172.72" x2="91.44" y2="172.72" width="0.1524" layer="91"/>
-<label x="91.44" y="172.72" size="1.524" layer="95"/>
+<label x="91.44" y="172.72" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="XP1" gate="G$1" pin="9"/>
@@ -19065,14 +19397,14 @@ chip</description>
 <wire x1="43.18" y1="40.64" x2="60.96" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="58.42" x2="43.18" y2="40.64" width="0.1524" layer="91"/>
 <junction x="43.18" y="40.64"/>
-<label x="60.96" y="40.64" size="1.524" layer="95"/>
+<label x="60.96" y="40.64" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTDI" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="JTDI(PA15/SPI3_NSS/I2S3_WS/TIM2_CH1_ETR/SPI1_NSS)*"/>
 <wire x1="109.22" y1="170.18" x2="91.44" y2="170.18" width="0.1524" layer="91"/>
-<label x="91.44" y="170.18" size="1.524" layer="95"/>
+<label x="91.44" y="170.18" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="XP1" gate="G$1" pin="5"/>
@@ -19081,14 +19413,14 @@ chip</description>
 <wire x1="33.02" y1="50.8" x2="60.96" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="58.42" x2="33.02" y2="50.8" width="0.1524" layer="91"/>
 <junction x="33.02" y="50.8"/>
-<label x="60.96" y="50.8" size="1.524" layer="95"/>
+<label x="60.96" y="50.8" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTRST" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="NJTRST(PB4/SPI3_MISO/TIM3_CH1/SPI1_MISO)*"/>
 <wire x1="109.22" y1="167.64" x2="91.44" y2="167.64" width="0.1524" layer="91"/>
-<label x="91.44" y="167.64" size="1.524" layer="95"/>
+<label x="91.44" y="167.64" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="XP1" gate="G$1" pin="3"/>
@@ -19097,14 +19429,14 @@ chip</description>
 <wire x1="27.94" y1="55.88" x2="60.96" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="58.42" x2="27.94" y2="55.88" width="0.1524" layer="91"/>
 <junction x="27.94" y="55.88"/>
-<label x="60.96" y="55.88" size="1.524" layer="95"/>
+<label x="60.96" y="55.88" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="JTDO" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="JTDO(PB3/SPI3_SCK/I2S3_CK/TRACEWO/TIM2_CH2/SPI1_SCK)*"/>
 <wire x1="109.22" y1="165.1" x2="91.44" y2="165.1" width="0.1524" layer="91"/>
-<label x="91.44" y="165.1" size="1.524" layer="95"/>
+<label x="91.44" y="165.1" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="XP1" gate="G$1" pin="13"/>
@@ -19113,14 +19445,14 @@ chip</description>
 <wire x1="48.26" y1="30.48" x2="60.96" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="48.26" y1="58.42" x2="48.26" y2="30.48" width="0.1524" layer="91"/>
 <junction x="48.26" y="30.48"/>
-<label x="60.96" y="30.48" size="1.524" layer="95"/>
+<label x="60.96" y="30.48" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="RST" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="NRST"/>
 <wire x1="109.22" y1="259.08" x2="91.44" y2="259.08" width="0.1524" layer="91"/>
-<label x="91.44" y="259.08" size="1.524" layer="95"/>
+<label x="91.44" y="259.08" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="XP1" gate="G$1" pin="15"/>
@@ -19131,26 +19463,26 @@ chip</description>
 <junction x="53.34" y="25.4"/>
 <pinref part="C7" gate="G$1" pin="1"/>
 <wire x1="53.34" y1="22.86" x2="53.34" y2="25.4" width="0.1524" layer="91"/>
-<label x="60.96" y="25.4" size="1.524" layer="95"/>
+<label x="60.96" y="25.4" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="BOOT_0" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="BOOT_0"/>
 <wire x1="109.22" y1="187.96" x2="91.44" y2="187.96" width="0.1524" layer="91"/>
-<label x="91.44" y="187.96" size="1.524" layer="95"/>
+<label x="91.44" y="187.96" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<label x="124.46" y="17.78" size="1.524" layer="95" rot="MR0"/>
 <pinref part="R22" gate="G$1" pin="1"/>
 <wire x1="116.84" y1="17.78" x2="124.46" y2="17.78" width="0.1524" layer="91"/>
+<label x="124.46" y="17.78" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="BOOT_1" class="0">
 <segment>
 <pinref part="DD1" gate="G$1" pin="PB2(BOOT_1)*"/>
 <wire x1="109.22" y1="185.42" x2="91.44" y2="185.42" width="0.1524" layer="91"/>
-<label x="91.44" y="185.42" size="1.524" layer="95"/>
+<label x="91.44" y="185.42" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="XP12" gate="G$1" pin="2"/>
@@ -19164,7 +19496,7 @@ chip</description>
 <segment>
 <pinref part="R21" gate="G$1" pin="1"/>
 <wire x1="116.84" y1="35.56" x2="124.46" y2="35.56" width="0.1524" layer="91"/>
-<label x="124.46" y="35.56" size="1.524" layer="95" rot="MR0"/>
+<label x="124.46" y="35.56" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="N$18" class="0">
@@ -19306,37 +19638,114 @@ chip</description>
 </net>
 <net name="SPI2_NSS" class="0">
 <segment>
-<pinref part="DD1" gate="G$1" pin="PB12(SPI2_NSS/I2S2_WS/I2C2_SMBA/USART3_CK/TIM1_BKIN)*"/>
-<wire x1="309.88" y1="241.3" x2="314.96" y2="241.3" width="0.1524" layer="91"/>
-<label x="314.96" y="241.3" size="1.27" layer="95" xref="yes"/>
+<label x="335.28" y="241.3" size="1.27" layer="95" xref="yes"/>
+<pinref part="R11" gate="G$1" pin="1"/>
+<wire x1="322.58" y1="241.3" x2="335.28" y2="241.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SPI2_SCK" class="0">
 <segment>
-<pinref part="DD1" gate="G$1" pin="PB13(SPI2_SCK/I2S2_SCK/USART3_CTS/TIM1_CH1N)*"/>
-<wire x1="309.88" y1="238.76" x2="314.96" y2="238.76" width="0.1524" layer="91"/>
-<label x="314.96" y="238.76" size="1.27" layer="95" xref="yes"/>
+<label x="335.28" y="238.76" size="1.27" layer="95" xref="yes"/>
+<pinref part="R288" gate="G$1" pin="1"/>
+<wire x1="330.2" y1="238.76" x2="335.28" y2="238.76" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SPI2_MISO" class="0">
 <segment>
-<pinref part="DD1" gate="G$1" pin="PB14(SPI2_MISO/USART3_RTS/TIM1_CH2N)*"/>
-<wire x1="309.88" y1="236.22" x2="314.96" y2="236.22" width="0.1524" layer="91"/>
-<label x="314.96" y="236.22" size="1.27" layer="95" xref="yes"/>
+<label x="335.28" y="236.22" size="1.27" layer="95" xref="yes"/>
+<pinref part="R289" gate="G$1" pin="1"/>
+<wire x1="322.58" y1="236.22" x2="335.28" y2="236.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SPI2_MOSI" class="0">
 <segment>
-<pinref part="DD1" gate="G$1" pin="PB15(SPI2_MOSI/I2S2_SD/TIM1_CH3N)*"/>
-<wire x1="309.88" y1="233.68" x2="314.96" y2="233.68" width="0.1524" layer="91"/>
-<label x="314.96" y="233.68" size="1.27" layer="95" xref="yes"/>
+<label x="335.28" y="233.68" size="1.27" layer="95" xref="yes"/>
+<pinref part="R290" gate="G$1" pin="1"/>
+<wire x1="330.2" y1="233.68" x2="335.28" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="!OUTPUT_ENABLE" class="0">
 <segment>
+<label x="330.2" y="187.96" size="1.27" layer="95" xref="yes"/>
+<pinref part="R291" gate="G$1" pin="1"/>
+<wire x1="325.12" y1="187.96" x2="330.2" y2="187.96" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="CAN_TX" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PD1(OSC_OUT/FSMC_D3/CAN_TX)*"/>
+<wire x1="109.22" y1="147.32" x2="91.44" y2="147.32" width="0.1524" layer="91"/>
+<label x="91.44" y="147.32" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="CAN_RX" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PD0(OSC_IN/FSMC_D2/CAN_RX)*"/>
+<wire x1="109.22" y1="149.86" x2="91.44" y2="149.86" width="0.1524" layer="91"/>
+<label x="91.44" y="149.86" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="USBDM" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PA11(USBDM/CAN_RX/USART1_CTS/TIM1_CH4)*"/>
+<wire x1="309.88" y1="200.66" x2="322.58" y2="200.66" width="0.1524" layer="91"/>
+<label x="322.58" y="200.66" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="USBDP" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PA12(USBDP/CAN_TX/USART1_RTS/TIM1_ETR)*"/>
+<wire x1="309.88" y1="198.12" x2="322.58" y2="198.12" width="0.1524" layer="91"/>
+<label x="322.58" y="198.12" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="R11" gate="G$1" pin="2"/>
+<pinref part="DD1" gate="G$1" pin="PB12(SPI2_NSS/I2S2_WS/I2C2_SMBA/USART3_CK/TIM1_BKIN)*"/>
+<wire x1="309.88" y1="241.3" x2="312.42" y2="241.3" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$220" class="0">
+<segment>
+<pinref part="R288" gate="G$1" pin="2"/>
+<pinref part="DD1" gate="G$1" pin="PB13(SPI2_SCK/I2S2_SCK/USART3_CTS/TIM1_CH1N)*"/>
+<wire x1="309.88" y1="238.76" x2="320.04" y2="238.76" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$221" class="0">
+<segment>
+<pinref part="R289" gate="G$1" pin="2"/>
+<pinref part="DD1" gate="G$1" pin="PB14(SPI2_MISO/USART3_RTS/TIM1_CH2N)*"/>
+<wire x1="309.88" y1="236.22" x2="312.42" y2="236.22" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$222" class="0">
+<segment>
+<pinref part="R290" gate="G$1" pin="2"/>
+<pinref part="DD1" gate="G$1" pin="PB15(SPI2_MOSI/I2S2_SD/TIM1_CH3N)*"/>
+<wire x1="309.88" y1="233.68" x2="320.04" y2="233.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$223" class="0">
+<segment>
 <pinref part="DD1" gate="G$1" pin="PE2(TRACECK/FSMC_A23)*"/>
-<wire x1="309.88" y1="187.96" x2="314.96" y2="187.96" width="0.1524" layer="91"/>
-<label x="314.96" y="187.96" size="1.27" layer="95" xref="yes"/>
+<pinref part="R291" gate="G$1" pin="2"/>
+<wire x1="314.96" y1="187.96" x2="309.88" y2="187.96" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="USB_PRESENT" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PE15(FSMC_D12/TIM1_BKIN)*"/>
+<wire x1="330.2" y1="154.94" x2="309.88" y2="154.94" width="0.1524" layer="91"/>
+<label x="330.2" y="154.94" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="USB_DISCOVERY" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PE14(FSMC_D11/TIM1_CH4)*"/>
+<wire x1="330.2" y1="157.48" x2="309.88" y2="157.48" width="0.1524" layer="91"/>
+<label x="330.2" y="157.48" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -19375,11 +19784,11 @@ chip</description>
 <instance part="GND26" gate="1" x="22.86" y="25.4"/>
 <instance part="P+20" gate="G$1" x="152.4" y="180.34" rot="MR270"/>
 <instance part="P+19" gate="1" x="25.4" y="60.96"/>
-<instance part="P+1" gate="1" x="271.78" y="177.8" rot="R270"/>
+<instance part="P+1" gate="1" x="276.86" y="177.8" rot="R270"/>
 <instance part="GND28" gate="1" x="246.38" y="162.56" rot="R90"/>
-<instance part="P-1" gate="1" x="271.78" y="139.7" rot="R90"/>
+<instance part="P-1" gate="1" x="276.86" y="139.7" rot="R90"/>
 <instance part="VD22" gate="G$1" x="127" y="154.94" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="127" y="154.94" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="127" y="154.94" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD23" gate="G$1" x="127" y="167.64" rot="R90">
 <attribute name="PARTNO" value="SMBJ24CA" x="127" y="167.64" size="1.524" layer="96" rot="R270" display="off"/>
@@ -19408,7 +19817,9 @@ chip</description>
 <instance part="R4" gate="G$1" x="60.96" y="139.7" rot="R90">
 <attribute name="PARTNO" value="ERJ6GEYJ474V" x="60.96" y="139.7" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="R70" gate="G$1" x="91.44" y="160.02"/>
+<instance part="R70" gate="G$1" x="91.44" y="160.02">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="91.44" y="160.02" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="R71" gate="G$1" x="99.06" y="154.94">
 <attribute name="PARTNO" value="35203K3JT" x="99.06" y="154.94" size="1.778" layer="96" display="off"/>
 </instance>
@@ -19442,7 +19853,7 @@ chip</description>
 <attribute name="PARTNO" value="1812L200DR" x="259.08" y="177.8" size="1.27" layer="96" display="off"/>
 </instance>
 <instance part="C31" gate="G$1" x="185.42" y="172.72" rot="MR180">
-<attribute name="PARTNO" x="185.42" y="172.72" size="1.27" layer="96" rot="MR180" display="off"/>
+<attribute name="PARTNO" value="22205C106KAT2A" x="185.42" y="172.72" size="1.27" layer="96" rot="MR180" display="off"/>
 </instance>
 <instance part="C32" gate="G$1" x="175.26" y="175.26">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="175.26" y="175.26" size="1.524" layer="96" display="off"/>
@@ -19469,7 +19880,13 @@ chip</description>
 <instance part="VT2" gate="G$1" x="109.22" y="20.32" rot="MR0"/>
 <instance part="P+22" gate="G$1" x="50.8" y="22.86" rot="MR270"/>
 <instance part="C49" gate="G$1" x="157.48" y="170.18" rot="MR180">
-<attribute name="PARTNO" x="157.48" y="170.18" size="1.27" layer="96" rot="MR180" display="off"/>
+<attribute name="PARTNO" value="22205C106KAT2A" x="157.48" y="170.18" size="1.27" layer="96" rot="MR180" display="off"/>
+</instance>
+<instance part="VD190" gate="G$1" x="187.96" y="78.74">
+<attribute name="PARTNO" value="S1G-E3/61T" x="187.96" y="78.74" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="RK3" gate="G$1" x="198.12" y="78.74">
+<attribute name="PARTNO" value="1210L050YR" x="198.12" y="78.74" size="1.27" layer="96" display="off"/>
 </instance>
 </instances>
 <busses>
@@ -19702,14 +20119,14 @@ chip</description>
 <net name="+5V" class="0">
 <segment>
 <pinref part="P+1" gate="1" pin="+5V"/>
-<wire x1="269.24" y1="177.8" x2="264.16" y2="177.8" width="0.1524" layer="91"/>
+<wire x1="274.32" y1="177.8" x2="264.16" y2="177.8" width="0.1524" layer="91"/>
 <pinref part="RK2" gate="G$1" pin="P$2"/>
 </segment>
 </net>
 <net name="-5V" class="0">
 <segment>
 <pinref part="P-1" gate="1" pin="-5V"/>
-<wire x1="266.7" y1="139.7" x2="269.24" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="139.7" x2="274.32" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="RK1" gate="G$1" pin="P$2"/>
 </segment>
 </net>
@@ -19895,6 +20312,26 @@ chip</description>
 <wire x1="55.88" y1="17.78" x2="50.8" y2="17.78" width="0.1524" layer="91"/>
 <junction x="55.88" y="17.78"/>
 <label x="50.8" y="17.78" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$225" class="0">
+<segment>
+<pinref part="RK3" gate="G$1" pin="P$1"/>
+<pinref part="VD190" gate="G$1" pin="C"/>
+<wire x1="193.04" y1="78.74" x2="190.5" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="+5V_USB" class="0">
+<segment>
+<pinref part="VD190" gate="G$1" pin="A"/>
+<wire x1="185.42" y1="78.74" x2="180.34" y2="78.74" width="0.1524" layer="91"/>
+<label x="180.34" y="78.74" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$226" class="0">
+<segment>
+<pinref part="RK3" gate="G$1" pin="P$2"/>
+<wire x1="203.2" y1="78.74" x2="205.74" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -21196,7 +21633,7 @@ chip</description>
 <attribute name="PARTNO" value="*" x="40.64" y="208.28" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="VD158" gate="G$1" x="109.22" y="388.62" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="388.62" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="388.62" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="D24" gate=".1" x="124.46" y="388.62">
 <attribute name="PARTNO" value="TCMT4100" x="124.46" y="388.62" size="1.524" layer="96" display="off"/>
@@ -21205,136 +21642,136 @@ chip</description>
 <instance part="D24" gate=".3" x="124.46" y="342.9"/>
 <instance part="D24" gate=".4" x="124.46" y="320.04"/>
 <instance part="VD159" gate="G$1" x="132.08" y="401.32" rot="R180">
-<attribute name="PARTNO" x="132.08" y="401.32" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="401.32" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C88" gate="G$1" x="137.16" y="388.62">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="388.62" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="R240" gate="G$1" x="121.92" y="401.32">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="401.32" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="401.32" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R241" gate="G$1" x="149.86" y="391.16" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="391.16" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R242" gate="G$1" x="116.84" y="396.24" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="396.24" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="396.24" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND141" gate="1" x="109.22" y="386.08"/>
 <instance part="GND142" gate="1" x="137.16" y="386.08"/>
 <instance part="+3V60" gate="G$1" x="157.48" y="391.16" rot="R270"/>
 <instance part="VD160" gate="G$1" x="109.22" y="365.76" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="365.76" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="365.76" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD161" gate="G$1" x="132.08" y="378.46" rot="R180">
-<attribute name="PARTNO" x="132.08" y="378.46" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="378.46" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C89" gate="G$1" x="137.16" y="365.76">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="365.76" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="R243" gate="G$1" x="121.92" y="378.46">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="378.46" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="378.46" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R244" gate="G$1" x="149.86" y="368.3" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="368.3" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R245" gate="G$1" x="116.84" y="373.38" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="373.38" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="373.38" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND143" gate="1" x="109.22" y="363.22"/>
 <instance part="GND144" gate="1" x="137.16" y="363.22"/>
 <instance part="+3V61" gate="G$1" x="157.48" y="368.3" rot="R270"/>
 <instance part="VD162" gate="G$1" x="109.22" y="342.9" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="342.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="342.9" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND145" gate="1" x="109.22" y="340.36"/>
 <instance part="GND146" gate="1" x="137.16" y="340.36"/>
 <instance part="+3V62" gate="G$1" x="157.48" y="345.44" rot="R270"/>
 <instance part="VD163" gate="G$1" x="109.22" y="320.04" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="320.04" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="320.04" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND147" gate="1" x="109.22" y="317.5"/>
 <instance part="GND148" gate="1" x="137.16" y="317.5"/>
 <instance part="+3V63" gate="G$1" x="157.48" y="322.58" rot="R270"/>
 <instance part="VD164" gate="G$1" x="109.22" y="297.18" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="297.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="297.18" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND149" gate="1" x="109.22" y="294.64"/>
 <instance part="GND150" gate="1" x="137.16" y="294.64"/>
 <instance part="+3V64" gate="G$1" x="157.48" y="299.72" rot="R270"/>
 <instance part="VD165" gate="G$1" x="109.22" y="274.32" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="274.32" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="274.32" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND151" gate="1" x="109.22" y="271.78"/>
 <instance part="GND152" gate="1" x="137.16" y="271.78"/>
 <instance part="+3V65" gate="G$1" x="157.48" y="276.86" rot="R270"/>
 <instance part="VD166" gate="G$1" x="109.22" y="251.46" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="251.46" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="251.46" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND153" gate="1" x="109.22" y="248.92"/>
 <instance part="GND154" gate="1" x="137.16" y="248.92"/>
 <instance part="+3V66" gate="G$1" x="157.48" y="254" rot="R270"/>
 <instance part="VD167" gate="G$1" x="109.22" y="228.6" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="228.6" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="228.6" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND155" gate="1" x="109.22" y="226.06"/>
 <instance part="GND156" gate="1" x="137.16" y="226.06"/>
 <instance part="+3V67" gate="G$1" x="157.48" y="231.14" rot="R270"/>
 <instance part="VD168" gate="G$1" x="111.76" y="185.42" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="185.42" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="185.42" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND157" gate="1" x="111.76" y="182.88"/>
 <instance part="GND158" gate="1" x="139.7" y="182.88"/>
 <instance part="+3V68" gate="G$1" x="160.02" y="187.96" rot="R270"/>
 <instance part="VD169" gate="G$1" x="111.76" y="162.56" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="162.56" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="162.56" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND159" gate="1" x="111.76" y="160.02"/>
 <instance part="GND160" gate="1" x="139.7" y="160.02"/>
 <instance part="+3V69" gate="G$1" x="160.02" y="165.1" rot="R270"/>
 <instance part="VD170" gate="G$1" x="111.76" y="139.7" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="139.7" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="139.7" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND161" gate="1" x="111.76" y="137.16"/>
 <instance part="GND162" gate="1" x="139.7" y="137.16"/>
 <instance part="+3V70" gate="G$1" x="160.02" y="142.24" rot="R270"/>
 <instance part="VD171" gate="G$1" x="111.76" y="116.84" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="116.84" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="116.84" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND163" gate="1" x="111.76" y="114.3"/>
 <instance part="GND164" gate="1" x="139.7" y="114.3"/>
 <instance part="+3V71" gate="G$1" x="160.02" y="119.38" rot="R270"/>
 <instance part="VD172" gate="G$1" x="111.76" y="93.98" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="93.98" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="93.98" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND165" gate="1" x="111.76" y="91.44"/>
 <instance part="GND166" gate="1" x="139.7" y="91.44"/>
 <instance part="+3V72" gate="G$1" x="160.02" y="96.52" rot="R270"/>
 <instance part="VD173" gate="G$1" x="111.76" y="71.12" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="71.12" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="71.12" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND167" gate="1" x="111.76" y="68.58"/>
 <instance part="GND168" gate="1" x="139.7" y="68.58"/>
 <instance part="+3V73" gate="G$1" x="160.02" y="73.66" rot="R270"/>
 <instance part="VD174" gate="G$1" x="111.76" y="48.26" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="48.26" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="48.26" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND169" gate="1" x="111.76" y="45.72"/>
 <instance part="GND170" gate="1" x="139.7" y="45.72"/>
 <instance part="+3V74" gate="G$1" x="160.02" y="50.8" rot="R270"/>
 <instance part="VD175" gate="G$1" x="111.76" y="25.4" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="25.4" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="25.4" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND171" gate="1" x="111.76" y="22.86"/>
 <instance part="GND172" gate="1" x="139.7" y="22.86"/>
 <instance part="+3V75" gate="G$1" x="160.02" y="27.94" rot="R270"/>
 <instance part="R246" gate="G$1" x="116.84" y="350.52" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="350.52" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="350.52" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R247" gate="G$1" x="121.92" y="355.6">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="355.6" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="355.6" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD176" gate="G$1" x="132.08" y="355.6" rot="R180">
-<attribute name="PARTNO" x="132.08" y="355.6" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="355.6" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C90" gate="G$1" x="137.16" y="342.9">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="342.9" size="1.524" layer="96" display="off"/>
@@ -21342,26 +21779,32 @@ chip</description>
 <instance part="R248" gate="G$1" x="149.86" y="345.44" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="345.44" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
-<instance part="D25" gate=".1" x="124.46" y="297.18"/>
+<instance part="D25" gate=".1" x="124.46" y="297.18">
+<attribute name="PARTNO" value="TCMT4100" x="124.46" y="297.18" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D25" gate=".2" x="124.46" y="274.32"/>
 <instance part="D25" gate=".3" x="124.46" y="251.46"/>
 <instance part="D25" gate=".4" x="124.46" y="228.6"/>
-<instance part="D26" gate=".1" x="127" y="185.42"/>
+<instance part="D26" gate=".1" x="127" y="185.42">
+<attribute name="PARTNO" value="TCMT4100" x="127" y="185.42" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D26" gate=".2" x="127" y="162.56"/>
 <instance part="D26" gate=".3" x="127" y="139.7"/>
 <instance part="D26" gate=".4" x="127" y="116.84"/>
-<instance part="D27" gate=".1" x="127" y="93.98"/>
+<instance part="D27" gate=".1" x="127" y="93.98">
+<attribute name="PARTNO" value="TCMT4100" x="127" y="93.98" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D27" gate=".2" x="127" y="71.12"/>
 <instance part="D27" gate=".3" x="127" y="48.26"/>
 <instance part="D27" gate=".4" x="127" y="25.4"/>
 <instance part="R249" gate="G$1" x="116.84" y="327.66" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="327.66" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="327.66" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R250" gate="G$1" x="121.92" y="332.74">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="332.74" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="332.74" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD177" gate="G$1" x="132.08" y="332.74" rot="R180">
-<attribute name="PARTNO" x="132.08" y="332.74" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="332.74" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C91" gate="G$1" x="137.16" y="320.04">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="320.04" size="1.524" layer="96" display="off"/>
@@ -21370,13 +21813,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="322.58" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R252" gate="G$1" x="116.84" y="304.8" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="304.8" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="304.8" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R253" gate="G$1" x="121.92" y="309.88">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="309.88" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="309.88" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD178" gate="G$1" x="132.08" y="309.88" rot="R180">
-<attribute name="PARTNO" x="132.08" y="309.88" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="309.88" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C92" gate="G$1" x="137.16" y="297.18">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="297.18" size="1.524" layer="96" display="off"/>
@@ -21385,13 +21828,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="299.72" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R255" gate="G$1" x="116.84" y="281.94" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="281.94" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="281.94" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R256" gate="G$1" x="121.92" y="287.02">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="287.02" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="287.02" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD179" gate="G$1" x="132.08" y="287.02" rot="R180">
-<attribute name="PARTNO" x="132.08" y="287.02" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="287.02" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C93" gate="G$1" x="137.16" y="274.32">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="274.32" size="1.524" layer="96" display="off"/>
@@ -21400,13 +21843,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="276.86" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R258" gate="G$1" x="116.84" y="259.08" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="259.08" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="259.08" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R259" gate="G$1" x="121.92" y="264.16">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="264.16" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="264.16" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD180" gate="G$1" x="132.08" y="264.16" rot="R180">
-<attribute name="PARTNO" x="132.08" y="264.16" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="264.16" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C94" gate="G$1" x="137.16" y="251.46">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="251.46" size="1.524" layer="96" display="off"/>
@@ -21415,13 +21858,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="254" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R261" gate="G$1" x="116.84" y="236.22" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="236.22" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="236.22" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R262" gate="G$1" x="121.92" y="241.3">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="241.3" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="241.3" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD181" gate="G$1" x="132.08" y="241.3" rot="R180">
-<attribute name="PARTNO" x="132.08" y="241.3" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="241.3" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C95" gate="G$1" x="137.16" y="228.6">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="228.6" size="1.524" layer="96" display="off"/>
@@ -21430,40 +21873,40 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="231.14" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R264" gate="G$1" x="119.38" y="193.04" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="193.04" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="193.04" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R265" gate="G$1" x="119.38" y="170.18" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="170.18" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="170.18" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R266" gate="G$1" x="119.38" y="147.32" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="147.32" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="147.32" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R267" gate="G$1" x="119.38" y="124.46" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="124.46" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="124.46" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R268" gate="G$1" x="124.46" y="198.12">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="198.12" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="198.12" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R269" gate="G$1" x="124.46" y="175.26">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="175.26" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="175.26" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R270" gate="G$1" x="124.46" y="152.4">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="152.4" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="152.4" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R271" gate="G$1" x="124.46" y="129.54">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="129.54" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="129.54" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD182" gate="G$1" x="134.62" y="198.12" rot="R180">
-<attribute name="PARTNO" x="134.62" y="198.12" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="198.12" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD183" gate="G$1" x="134.62" y="175.26" rot="R180">
-<attribute name="PARTNO" x="134.62" y="175.26" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="175.26" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD184" gate="G$1" x="134.62" y="152.4" rot="R180">
-<attribute name="PARTNO" x="134.62" y="152.4" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="152.4" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD185" gate="G$1" x="134.62" y="129.54" rot="R180">
-<attribute name="PARTNO" x="134.62" y="129.54" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="129.54" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C96" gate="G$1" x="139.7" y="185.42">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="185.42" size="1.524" layer="96" display="off"/>
@@ -21490,40 +21933,40 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="119.38" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R276" gate="G$1" x="119.38" y="101.6" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="101.6" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="101.6" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R277" gate="G$1" x="119.38" y="78.74" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="81.28" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="81.28" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R278" gate="G$1" x="119.38" y="55.88" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="58.42" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="58.42" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R279" gate="G$1" x="119.38" y="33.02" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="35.56" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="35.56" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R280" gate="G$1" x="124.46" y="106.68">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="106.68" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="106.68" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R281" gate="G$1" x="124.46" y="83.82">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="83.82" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="83.82" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R282" gate="G$1" x="124.46" y="60.96">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="60.96" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="60.96" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R283" gate="G$1" x="124.46" y="38.1">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="38.1" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="38.1" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD186" gate="G$1" x="134.62" y="106.68" rot="R180">
-<attribute name="PARTNO" x="134.62" y="106.68" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="106.68" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD187" gate="G$1" x="134.62" y="83.82" rot="R180">
-<attribute name="PARTNO" x="134.62" y="83.82" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="83.82" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD188" gate="G$1" x="134.62" y="60.96" rot="R180">
-<attribute name="PARTNO" x="134.62" y="60.96" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="60.96" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD189" gate="G$1" x="134.62" y="38.1" rot="R180">
-<attribute name="PARTNO" x="134.62" y="38.1" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="38.1" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="R284" gate="G$1" x="152.4" y="96.52" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="96.52" size="1.778" layer="96" rot="R270" display="off"/>
@@ -21559,8 +22002,12 @@ chip</description>
 <instance part="C105" gate="G$1" x="233.68" y="350.52" rot="R90">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="233.68" y="350.52" size="1.524" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="DD9" gate="A" x="233.68" y="322.58"/>
-<instance part="DD10" gate="A" x="228.6" y="111.76"/>
+<instance part="DD9" gate="A" x="233.68" y="322.58">
+<attribute name="PARTNO" value="IN74HC165AD" x="233.68" y="322.58" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="DD10" gate="A" x="228.6" y="111.76">
+<attribute name="PARTNO" value="IN74HC165AD" x="228.6" y="111.76" size="1.27" layer="96" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -22773,7 +23220,7 @@ chip</description>
 <attribute name="PARTNO" value="*" x="35.56" y="251.46" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="VD126" gate="G$1" x="111.76" y="388.62" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="388.62" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="388.62" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="D20" gate=".1" x="127" y="388.62">
 <attribute name="PARTNO" value="TCMT4100" x="127" y="388.62" size="1.524" layer="96" display="off"/>
@@ -22782,136 +23229,136 @@ chip</description>
 <instance part="D20" gate=".3" x="127" y="342.9"/>
 <instance part="D20" gate=".4" x="127" y="320.04"/>
 <instance part="VD127" gate="G$1" x="134.62" y="401.32" rot="R180">
-<attribute name="PARTNO" x="134.62" y="401.32" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="401.32" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C70" gate="G$1" x="139.7" y="388.62">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="388.62" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="R192" gate="G$1" x="124.46" y="401.32">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="401.32" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="401.32" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R193" gate="G$1" x="152.4" y="391.16" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="391.16" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R194" gate="G$1" x="119.38" y="396.24" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="396.24" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="396.24" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND107" gate="1" x="111.76" y="386.08"/>
 <instance part="GND108" gate="1" x="139.7" y="386.08"/>
 <instance part="+3V42" gate="G$1" x="160.02" y="391.16" rot="R270"/>
 <instance part="VD128" gate="G$1" x="111.76" y="365.76" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="365.76" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="365.76" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD129" gate="G$1" x="134.62" y="378.46" rot="R180">
-<attribute name="PARTNO" x="134.62" y="378.46" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="378.46" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C71" gate="G$1" x="139.7" y="365.76">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="365.76" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="R195" gate="G$1" x="124.46" y="378.46">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="378.46" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="378.46" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R196" gate="G$1" x="152.4" y="368.3" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="368.3" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R197" gate="G$1" x="119.38" y="373.38" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="373.38" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="373.38" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND109" gate="1" x="111.76" y="363.22"/>
 <instance part="GND110" gate="1" x="139.7" y="363.22"/>
 <instance part="+3V43" gate="G$1" x="160.02" y="368.3" rot="R270"/>
 <instance part="VD130" gate="G$1" x="111.76" y="342.9" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="342.9" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="342.9" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND111" gate="1" x="111.76" y="340.36"/>
 <instance part="GND112" gate="1" x="139.7" y="340.36"/>
 <instance part="+3V44" gate="G$1" x="160.02" y="345.44" rot="R270"/>
 <instance part="VD131" gate="G$1" x="111.76" y="320.04" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="320.04" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="320.04" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND113" gate="1" x="111.76" y="317.5"/>
 <instance part="GND114" gate="1" x="139.7" y="317.5"/>
 <instance part="+3V45" gate="G$1" x="160.02" y="322.58" rot="R270"/>
 <instance part="VD132" gate="G$1" x="111.76" y="297.18" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="297.18" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="297.18" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND115" gate="1" x="111.76" y="294.64"/>
 <instance part="GND116" gate="1" x="139.7" y="294.64"/>
 <instance part="+3V46" gate="G$1" x="160.02" y="299.72" rot="R270"/>
 <instance part="VD133" gate="G$1" x="111.76" y="274.32" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="274.32" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="274.32" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND117" gate="1" x="111.76" y="271.78"/>
 <instance part="GND118" gate="1" x="139.7" y="271.78"/>
 <instance part="+3V47" gate="G$1" x="160.02" y="276.86" rot="R270"/>
 <instance part="VD134" gate="G$1" x="111.76" y="251.46" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="251.46" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="251.46" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND119" gate="1" x="111.76" y="248.92"/>
 <instance part="GND120" gate="1" x="139.7" y="248.92"/>
 <instance part="+3V48" gate="G$1" x="160.02" y="254" rot="R270"/>
 <instance part="VD135" gate="G$1" x="111.76" y="228.6" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="111.76" y="228.6" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="111.76" y="228.6" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND121" gate="1" x="111.76" y="226.06"/>
 <instance part="GND122" gate="1" x="139.7" y="226.06"/>
 <instance part="+3V49" gate="G$1" x="160.02" y="231.14" rot="R270"/>
 <instance part="VD136" gate="G$1" x="114.3" y="185.42" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="114.3" y="185.42" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="114.3" y="185.42" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND123" gate="1" x="114.3" y="182.88"/>
 <instance part="GND124" gate="1" x="142.24" y="182.88"/>
 <instance part="+3V50" gate="G$1" x="162.56" y="187.96" rot="R270"/>
 <instance part="VD137" gate="G$1" x="114.3" y="162.56" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="114.3" y="162.56" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="114.3" y="162.56" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND125" gate="1" x="114.3" y="160.02"/>
 <instance part="GND126" gate="1" x="142.24" y="160.02"/>
 <instance part="+3V51" gate="G$1" x="162.56" y="165.1" rot="R270"/>
 <instance part="VD138" gate="G$1" x="114.3" y="139.7" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="114.3" y="139.7" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="114.3" y="139.7" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND127" gate="1" x="114.3" y="137.16"/>
 <instance part="GND128" gate="1" x="142.24" y="137.16"/>
 <instance part="+3V52" gate="G$1" x="162.56" y="142.24" rot="R270"/>
 <instance part="VD139" gate="G$1" x="114.3" y="116.84" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="114.3" y="116.84" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="114.3" y="116.84" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND129" gate="1" x="114.3" y="114.3"/>
 <instance part="GND130" gate="1" x="142.24" y="114.3"/>
 <instance part="+3V53" gate="G$1" x="162.56" y="119.38" rot="R270"/>
 <instance part="VD140" gate="G$1" x="114.3" y="93.98" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="114.3" y="93.98" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="114.3" y="93.98" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND131" gate="1" x="114.3" y="91.44"/>
 <instance part="GND132" gate="1" x="142.24" y="91.44"/>
 <instance part="+3V54" gate="G$1" x="162.56" y="96.52" rot="R270"/>
 <instance part="VD141" gate="G$1" x="114.3" y="71.12" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="114.3" y="71.12" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="114.3" y="71.12" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND133" gate="1" x="114.3" y="68.58"/>
 <instance part="GND134" gate="1" x="142.24" y="68.58"/>
 <instance part="+3V55" gate="G$1" x="162.56" y="73.66" rot="R270"/>
 <instance part="VD142" gate="G$1" x="114.3" y="48.26" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="114.3" y="48.26" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="114.3" y="48.26" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND135" gate="1" x="114.3" y="45.72"/>
 <instance part="GND136" gate="1" x="142.24" y="45.72"/>
 <instance part="+3V56" gate="G$1" x="162.56" y="50.8" rot="R270"/>
 <instance part="VD143" gate="G$1" x="114.3" y="25.4" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="114.3" y="25.4" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="114.3" y="25.4" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND137" gate="1" x="114.3" y="22.86"/>
 <instance part="GND138" gate="1" x="142.24" y="22.86"/>
 <instance part="+3V57" gate="G$1" x="162.56" y="27.94" rot="R270"/>
 <instance part="R198" gate="G$1" x="119.38" y="350.52" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="350.52" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="350.52" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R199" gate="G$1" x="124.46" y="355.6">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="355.6" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="355.6" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD144" gate="G$1" x="134.62" y="355.6" rot="R180">
-<attribute name="PARTNO" x="134.62" y="355.6" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="355.6" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C72" gate="G$1" x="139.7" y="342.9">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="342.9" size="1.524" layer="96" display="off"/>
@@ -22919,26 +23366,32 @@ chip</description>
 <instance part="R200" gate="G$1" x="152.4" y="345.44" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="345.44" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
-<instance part="D21" gate=".1" x="127" y="297.18"/>
+<instance part="D21" gate=".1" x="127" y="297.18">
+<attribute name="PARTNO" value="TCMT4100" x="127" y="297.18" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D21" gate=".2" x="127" y="274.32"/>
 <instance part="D21" gate=".3" x="127" y="251.46"/>
 <instance part="D21" gate=".4" x="127" y="228.6"/>
-<instance part="D22" gate=".1" x="129.54" y="185.42"/>
+<instance part="D22" gate=".1" x="129.54" y="185.42">
+<attribute name="PARTNO" value="TCMT4100" x="129.54" y="185.42" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D22" gate=".2" x="129.54" y="162.56"/>
 <instance part="D22" gate=".3" x="129.54" y="139.7"/>
 <instance part="D22" gate=".4" x="129.54" y="116.84"/>
-<instance part="D23" gate=".1" x="129.54" y="93.98"/>
+<instance part="D23" gate=".1" x="129.54" y="93.98">
+<attribute name="PARTNO" value="TCMT4100" x="129.54" y="93.98" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D23" gate=".2" x="129.54" y="71.12"/>
 <instance part="D23" gate=".3" x="129.54" y="48.26"/>
 <instance part="D23" gate=".4" x="129.54" y="25.4"/>
 <instance part="R201" gate="G$1" x="119.38" y="327.66" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="327.66" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="327.66" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R202" gate="G$1" x="124.46" y="332.74">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="332.74" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="332.74" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD145" gate="G$1" x="134.62" y="332.74" rot="R180">
-<attribute name="PARTNO" x="134.62" y="332.74" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="332.74" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C73" gate="G$1" x="139.7" y="320.04">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="320.04" size="1.524" layer="96" display="off"/>
@@ -22947,13 +23400,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="322.58" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R204" gate="G$1" x="119.38" y="304.8" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="304.8" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="304.8" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R205" gate="G$1" x="124.46" y="309.88">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="309.88" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="309.88" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD146" gate="G$1" x="134.62" y="309.88" rot="R180">
-<attribute name="PARTNO" x="134.62" y="309.88" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="309.88" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C74" gate="G$1" x="139.7" y="297.18">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="297.18" size="1.524" layer="96" display="off"/>
@@ -22962,13 +23415,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="299.72" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R207" gate="G$1" x="119.38" y="281.94" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="281.94" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="281.94" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R208" gate="G$1" x="124.46" y="287.02">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="287.02" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="287.02" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD147" gate="G$1" x="134.62" y="287.02" rot="R180">
-<attribute name="PARTNO" x="134.62" y="287.02" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="287.02" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C75" gate="G$1" x="139.7" y="274.32">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="274.32" size="1.524" layer="96" display="off"/>
@@ -22977,13 +23430,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="276.86" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R210" gate="G$1" x="119.38" y="259.08" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="259.08" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="259.08" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R211" gate="G$1" x="124.46" y="264.16">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="264.16" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="264.16" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD148" gate="G$1" x="134.62" y="264.16" rot="R180">
-<attribute name="PARTNO" x="134.62" y="264.16" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="264.16" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C76" gate="G$1" x="139.7" y="251.46">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="251.46" size="1.524" layer="96" display="off"/>
@@ -22992,13 +23445,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="254" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R213" gate="G$1" x="119.38" y="236.22" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="119.38" y="236.22" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="119.38" y="236.22" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R214" gate="G$1" x="124.46" y="241.3">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="124.46" y="241.3" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="124.46" y="241.3" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD149" gate="G$1" x="134.62" y="241.3" rot="R180">
-<attribute name="PARTNO" x="134.62" y="241.3" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="134.62" y="241.3" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C77" gate="G$1" x="139.7" y="228.6">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="139.7" y="228.6" size="1.524" layer="96" display="off"/>
@@ -23007,40 +23460,40 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="231.14" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R216" gate="G$1" x="121.92" y="193.04" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="121.92" y="193.04" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="121.92" y="193.04" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R217" gate="G$1" x="121.92" y="170.18" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="121.92" y="170.18" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="121.92" y="170.18" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R218" gate="G$1" x="121.92" y="147.32" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="121.92" y="147.32" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="121.92" y="147.32" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R219" gate="G$1" x="121.92" y="124.46" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="121.92" y="124.46" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="121.92" y="124.46" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R220" gate="G$1" x="127" y="198.12">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="127" y="198.12" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="127" y="198.12" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R221" gate="G$1" x="127" y="175.26">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="127" y="175.26" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="127" y="175.26" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R222" gate="G$1" x="127" y="152.4">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="127" y="152.4" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="127" y="152.4" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R223" gate="G$1" x="127" y="129.54">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="127" y="129.54" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="127" y="129.54" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD150" gate="G$1" x="137.16" y="198.12" rot="R180">
-<attribute name="PARTNO" x="137.16" y="198.12" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="137.16" y="198.12" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD151" gate="G$1" x="137.16" y="175.26" rot="R180">
-<attribute name="PARTNO" x="137.16" y="175.26" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="137.16" y="175.26" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD152" gate="G$1" x="137.16" y="152.4" rot="R180">
-<attribute name="PARTNO" x="137.16" y="152.4" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="137.16" y="152.4" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD153" gate="G$1" x="137.16" y="129.54" rot="R180">
-<attribute name="PARTNO" x="137.16" y="129.54" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="137.16" y="129.54" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C78" gate="G$1" x="142.24" y="185.42">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="142.24" y="185.42" size="1.524" layer="96" display="off"/>
@@ -23067,40 +23520,40 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="154.94" y="119.38" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R228" gate="G$1" x="121.92" y="101.6" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="121.92" y="101.6" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="121.92" y="101.6" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R229" gate="G$1" x="121.92" y="78.74" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="121.92" y="81.28" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="121.92" y="81.28" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R230" gate="G$1" x="121.92" y="55.88" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="121.92" y="58.42" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="121.92" y="58.42" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R231" gate="G$1" x="121.92" y="33.02" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="121.92" y="35.56" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="121.92" y="35.56" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R232" gate="G$1" x="127" y="106.68">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="127" y="106.68" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="127" y="106.68" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R233" gate="G$1" x="127" y="83.82">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="127" y="83.82" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="127" y="83.82" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R234" gate="G$1" x="127" y="60.96">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="127" y="60.96" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="127" y="60.96" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R235" gate="G$1" x="127" y="38.1">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="127" y="38.1" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="127" y="38.1" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD154" gate="G$1" x="137.16" y="106.68" rot="R180">
-<attribute name="PARTNO" x="137.16" y="106.68" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="137.16" y="106.68" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD155" gate="G$1" x="137.16" y="83.82" rot="R180">
-<attribute name="PARTNO" x="137.16" y="83.82" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="137.16" y="83.82" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD156" gate="G$1" x="137.16" y="60.96" rot="R180">
-<attribute name="PARTNO" x="137.16" y="60.96" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="137.16" y="60.96" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD157" gate="G$1" x="137.16" y="38.1" rot="R180">
-<attribute name="PARTNO" x="137.16" y="38.1" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="137.16" y="38.1" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="R236" gate="G$1" x="154.94" y="96.52" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="154.94" y="96.52" size="1.778" layer="96" rot="R270" display="off"/>
@@ -23136,8 +23589,12 @@ chip</description>
 <instance part="C87" gate="G$1" x="236.22" y="350.52" rot="R90">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="236.22" y="350.52" size="1.524" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="DD7" gate="A" x="236.22" y="322.58"/>
-<instance part="DD8" gate="A" x="231.14" y="111.76"/>
+<instance part="DD7" gate="A" x="236.22" y="322.58">
+<attribute name="PARTNO" value="IN74HC165AD" x="236.22" y="322.58" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="DD8" gate="A" x="231.14" y="111.76">
+<attribute name="PARTNO" value="IN74HC165AD" x="231.14" y="111.76" size="1.27" layer="96" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -24347,7 +24804,7 @@ chip</description>
 <instances>
 <instance part="U$1" gate="G$1" x="0" y="0"/>
 <instance part="VD60" gate="G$1" x="106.68" y="391.16" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="106.68" y="391.16" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="106.68" y="391.16" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="D12" gate=".1" x="121.92" y="391.16">
 <attribute name="PARTNO" value="TCMT4100" x="121.92" y="391.16" size="1.524" layer="96" display="off"/>
@@ -24356,136 +24813,136 @@ chip</description>
 <instance part="D12" gate=".3" x="121.92" y="345.44"/>
 <instance part="D12" gate=".4" x="121.92" y="322.58"/>
 <instance part="VD61" gate="G$1" x="129.54" y="403.86" rot="R180">
-<attribute name="PARTNO" x="129.54" y="403.86" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="129.54" y="403.86" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C30" gate="G$1" x="134.62" y="391.16">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="134.62" y="391.16" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="R93" gate="G$1" x="119.38" y="403.86">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="119.38" y="403.86" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="119.38" y="403.86" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R94" gate="G$1" x="147.32" y="393.7" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="147.32" y="393.7" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R95" gate="G$1" x="114.3" y="398.78" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="114.3" y="398.78" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="114.3" y="398.78" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND39" gate="1" x="106.68" y="388.62"/>
 <instance part="GND40" gate="1" x="134.62" y="388.62"/>
 <instance part="+3V6" gate="G$1" x="154.94" y="393.7" rot="R270"/>
 <instance part="VD64" gate="G$1" x="106.68" y="368.3" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="106.68" y="368.3" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="106.68" y="368.3" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD65" gate="G$1" x="129.54" y="381" rot="R180">
-<attribute name="PARTNO" x="129.54" y="381" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="129.54" y="381" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C33" gate="G$1" x="134.62" y="368.3">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="134.62" y="368.3" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="R99" gate="G$1" x="119.38" y="381">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="119.38" y="381" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="119.38" y="381" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R100" gate="G$1" x="147.32" y="370.84" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="147.32" y="370.84" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R101" gate="G$1" x="114.3" y="375.92" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="114.3" y="375.92" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="114.3" y="375.92" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND41" gate="1" x="106.68" y="365.76"/>
 <instance part="GND42" gate="1" x="134.62" y="365.76"/>
 <instance part="+3V7" gate="G$1" x="154.94" y="370.84" rot="R270"/>
 <instance part="VD66" gate="G$1" x="106.68" y="345.44" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="106.68" y="345.44" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="106.68" y="345.44" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND43" gate="1" x="106.68" y="342.9"/>
 <instance part="GND44" gate="1" x="134.62" y="342.9"/>
 <instance part="+3V8" gate="G$1" x="154.94" y="347.98" rot="R270"/>
 <instance part="VD68" gate="G$1" x="106.68" y="322.58" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="106.68" y="322.58" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="106.68" y="322.58" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND45" gate="1" x="106.68" y="320.04"/>
 <instance part="GND46" gate="1" x="134.62" y="320.04"/>
 <instance part="+3V9" gate="G$1" x="154.94" y="325.12" rot="R270"/>
 <instance part="VD70" gate="G$1" x="106.68" y="299.72" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="106.68" y="299.72" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="106.68" y="299.72" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND47" gate="1" x="106.68" y="297.18"/>
 <instance part="GND48" gate="1" x="134.62" y="297.18"/>
 <instance part="+3V10" gate="G$1" x="154.94" y="302.26" rot="R270"/>
 <instance part="VD72" gate="G$1" x="106.68" y="276.86" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="106.68" y="276.86" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="106.68" y="276.86" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND49" gate="1" x="106.68" y="274.32"/>
 <instance part="GND50" gate="1" x="134.62" y="274.32"/>
 <instance part="+3V11" gate="G$1" x="154.94" y="279.4" rot="R270"/>
 <instance part="VD74" gate="G$1" x="106.68" y="254" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="106.68" y="254" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="106.68" y="254" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND51" gate="1" x="106.68" y="251.46"/>
 <instance part="GND52" gate="1" x="134.62" y="251.46"/>
 <instance part="+3V12" gate="G$1" x="154.94" y="256.54" rot="R270"/>
 <instance part="VD76" gate="G$1" x="106.68" y="231.14" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="106.68" y="231.14" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="106.68" y="231.14" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND53" gate="1" x="106.68" y="228.6"/>
 <instance part="GND54" gate="1" x="134.62" y="228.6"/>
 <instance part="+3V13" gate="G$1" x="154.94" y="233.68" rot="R270"/>
 <instance part="VD78" gate="G$1" x="109.22" y="187.96" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="187.96" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="187.96" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND55" gate="1" x="109.22" y="185.42"/>
 <instance part="GND56" gate="1" x="137.16" y="185.42"/>
 <instance part="+3V14" gate="G$1" x="157.48" y="190.5" rot="R270"/>
 <instance part="VD80" gate="G$1" x="109.22" y="165.1" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="165.1" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="165.1" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND57" gate="1" x="109.22" y="162.56"/>
 <instance part="GND58" gate="1" x="137.16" y="162.56"/>
 <instance part="+3V15" gate="G$1" x="157.48" y="167.64" rot="R270"/>
 <instance part="VD82" gate="G$1" x="109.22" y="142.24" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="142.24" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="142.24" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND59" gate="1" x="109.22" y="139.7"/>
 <instance part="GND60" gate="1" x="137.16" y="139.7"/>
 <instance part="+3V16" gate="G$1" x="157.48" y="144.78" rot="R270"/>
 <instance part="VD84" gate="G$1" x="109.22" y="119.38" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="119.38" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="119.38" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND61" gate="1" x="109.22" y="116.84"/>
 <instance part="GND62" gate="1" x="137.16" y="116.84"/>
 <instance part="+3V17" gate="G$1" x="157.48" y="121.92" rot="R270"/>
 <instance part="VD86" gate="G$1" x="109.22" y="96.52" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="96.52" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="96.52" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND63" gate="1" x="109.22" y="93.98"/>
 <instance part="GND64" gate="1" x="137.16" y="93.98"/>
 <instance part="+3V18" gate="G$1" x="157.48" y="99.06" rot="R270"/>
 <instance part="VD88" gate="G$1" x="109.22" y="73.66" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="73.66" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="73.66" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND65" gate="1" x="109.22" y="71.12"/>
 <instance part="GND66" gate="1" x="137.16" y="71.12"/>
 <instance part="+3V19" gate="G$1" x="157.48" y="76.2" rot="R270"/>
 <instance part="VD90" gate="G$1" x="109.22" y="50.8" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="50.8" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="50.8" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND67" gate="1" x="109.22" y="48.26"/>
 <instance part="GND68" gate="1" x="137.16" y="48.26"/>
 <instance part="+3V20" gate="G$1" x="157.48" y="53.34" rot="R270"/>
 <instance part="VD92" gate="G$1" x="109.22" y="27.94" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="109.22" y="27.94" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="109.22" y="27.94" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND69" gate="1" x="109.22" y="25.4"/>
 <instance part="GND70" gate="1" x="137.16" y="25.4"/>
 <instance part="+3V21" gate="G$1" x="157.48" y="30.48" rot="R270"/>
 <instance part="R102" gate="G$1" x="114.3" y="353.06" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="114.3" y="353.06" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="114.3" y="353.06" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R103" gate="G$1" x="119.38" y="358.14">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="119.38" y="358.14" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="119.38" y="358.14" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD67" gate="G$1" x="129.54" y="358.14" rot="R180">
-<attribute name="PARTNO" x="129.54" y="358.14" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="129.54" y="358.14" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C35" gate="G$1" x="134.62" y="345.44">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="134.62" y="345.44" size="1.524" layer="96" display="off"/>
@@ -24493,26 +24950,32 @@ chip</description>
 <instance part="R104" gate="G$1" x="147.32" y="347.98" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="147.32" y="347.98" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
-<instance part="D11" gate=".1" x="121.92" y="299.72"/>
+<instance part="D11" gate=".1" x="121.92" y="299.72">
+<attribute name="PARTNO" value="TCMT4100" x="121.92" y="299.72" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D11" gate=".2" x="121.92" y="276.86"/>
 <instance part="D11" gate=".3" x="121.92" y="254"/>
 <instance part="D11" gate=".4" x="121.92" y="231.14"/>
-<instance part="D13" gate=".1" x="124.46" y="187.96"/>
+<instance part="D13" gate=".1" x="124.46" y="187.96">
+<attribute name="PARTNO" value="TCMT4100" x="124.46" y="187.96" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D13" gate=".2" x="124.46" y="165.1"/>
 <instance part="D13" gate=".3" x="124.46" y="142.24"/>
 <instance part="D13" gate=".4" x="124.46" y="119.38"/>
-<instance part="D14" gate=".1" x="124.46" y="96.52"/>
+<instance part="D14" gate=".1" x="124.46" y="96.52">
+<attribute name="PARTNO" value="TCMT4100" x="124.46" y="96.52" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D14" gate=".2" x="124.46" y="73.66"/>
 <instance part="D14" gate=".3" x="124.46" y="50.8"/>
 <instance part="D14" gate=".4" x="124.46" y="27.94"/>
 <instance part="R105" gate="G$1" x="114.3" y="330.2" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="114.3" y="330.2" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="114.3" y="330.2" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R106" gate="G$1" x="119.38" y="335.28">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="119.38" y="335.28" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="119.38" y="335.28" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD69" gate="G$1" x="129.54" y="335.28" rot="R180">
-<attribute name="PARTNO" x="129.54" y="335.28" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="129.54" y="335.28" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C36" gate="G$1" x="134.62" y="322.58">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="134.62" y="322.58" size="1.524" layer="96" display="off"/>
@@ -24521,13 +24984,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="147.32" y="325.12" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R108" gate="G$1" x="114.3" y="307.34" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="114.3" y="307.34" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="114.3" y="307.34" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R109" gate="G$1" x="119.38" y="312.42">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="119.38" y="312.42" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="119.38" y="312.42" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD71" gate="G$1" x="129.54" y="312.42" rot="R180">
-<attribute name="PARTNO" x="129.54" y="312.42" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="129.54" y="312.42" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C37" gate="G$1" x="134.62" y="299.72">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="134.62" y="299.72" size="1.524" layer="96" display="off"/>
@@ -24536,13 +24999,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="147.32" y="302.26" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R111" gate="G$1" x="114.3" y="284.48" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="114.3" y="284.48" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="114.3" y="284.48" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R112" gate="G$1" x="119.38" y="289.56">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="119.38" y="289.56" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="119.38" y="289.56" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD73" gate="G$1" x="129.54" y="289.56" rot="R180">
-<attribute name="PARTNO" x="129.54" y="289.56" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="129.54" y="289.56" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C38" gate="G$1" x="134.62" y="276.86">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="134.62" y="276.86" size="1.524" layer="96" display="off"/>
@@ -24551,13 +25014,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="147.32" y="279.4" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R114" gate="G$1" x="114.3" y="261.62" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="114.3" y="261.62" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="114.3" y="261.62" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R115" gate="G$1" x="119.38" y="266.7">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="119.38" y="266.7" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="119.38" y="266.7" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD75" gate="G$1" x="129.54" y="266.7" rot="R180">
-<attribute name="PARTNO" x="129.54" y="266.7" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="129.54" y="266.7" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C39" gate="G$1" x="134.62" y="254">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="134.62" y="254" size="1.524" layer="96" display="off"/>
@@ -24566,13 +25029,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="147.32" y="256.54" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R117" gate="G$1" x="114.3" y="238.76" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="114.3" y="238.76" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="114.3" y="238.76" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R118" gate="G$1" x="119.38" y="243.84">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="119.38" y="243.84" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="119.38" y="243.84" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD77" gate="G$1" x="129.54" y="243.84" rot="R180">
-<attribute name="PARTNO" x="129.54" y="243.84" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="129.54" y="243.84" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C40" gate="G$1" x="134.62" y="231.14">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="134.62" y="231.14" size="1.524" layer="96" display="off"/>
@@ -24581,40 +25044,40 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="147.32" y="233.68" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R120" gate="G$1" x="116.84" y="195.58" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="195.58" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="195.58" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R121" gate="G$1" x="116.84" y="172.72" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="172.72" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="172.72" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R122" gate="G$1" x="116.84" y="149.86" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="149.86" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="149.86" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R123" gate="G$1" x="116.84" y="127" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="127" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="127" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R124" gate="G$1" x="121.92" y="200.66">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="200.66" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="200.66" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R125" gate="G$1" x="121.92" y="177.8">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="177.8" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="177.8" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R126" gate="G$1" x="121.92" y="154.94">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="154.94" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="154.94" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R127" gate="G$1" x="121.92" y="132.08">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="132.08" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="132.08" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD79" gate="G$1" x="132.08" y="200.66" rot="R180">
-<attribute name="PARTNO" x="132.08" y="200.66" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="200.66" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD81" gate="G$1" x="132.08" y="177.8" rot="R180">
-<attribute name="PARTNO" x="132.08" y="177.8" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="177.8" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD83" gate="G$1" x="132.08" y="154.94" rot="R180">
-<attribute name="PARTNO" x="132.08" y="154.94" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="154.94" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD85" gate="G$1" x="132.08" y="132.08" rot="R180">
-<attribute name="PARTNO" x="132.08" y="132.08" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="132.08" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C41" gate="G$1" x="137.16" y="187.96">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="137.16" y="187.96" size="1.524" layer="96" display="off"/>
@@ -24641,40 +25104,40 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="121.92" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R132" gate="G$1" x="116.84" y="104.14" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="104.14" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="104.14" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R133" gate="G$1" x="116.84" y="81.28" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="83.82" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="83.82" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R134" gate="G$1" x="116.84" y="58.42" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="60.96" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="60.96" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R135" gate="G$1" x="116.84" y="35.56" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="116.84" y="38.1" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="116.84" y="38.1" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R136" gate="G$1" x="121.92" y="109.22">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="109.22" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="109.22" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R137" gate="G$1" x="121.92" y="86.36">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="86.36" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="86.36" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R138" gate="G$1" x="121.92" y="63.5">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="63.5" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="63.5" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R139" gate="G$1" x="121.92" y="40.64">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="121.92" y="40.64" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="121.92" y="40.64" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD87" gate="G$1" x="132.08" y="109.22" rot="R180">
-<attribute name="PARTNO" x="132.08" y="109.22" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="109.22" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD89" gate="G$1" x="132.08" y="86.36" rot="R180">
-<attribute name="PARTNO" x="132.08" y="86.36" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="86.36" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD91" gate="G$1" x="132.08" y="63.5" rot="R180">
-<attribute name="PARTNO" x="132.08" y="63.5" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="63.5" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD93" gate="G$1" x="132.08" y="40.64" rot="R180">
-<attribute name="PARTNO" x="132.08" y="40.64" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="132.08" y="40.64" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="R140" gate="G$1" x="149.86" y="99.06" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="149.86" y="99.06" size="1.778" layer="96" rot="R270" display="off"/>
@@ -24711,8 +25174,12 @@ chip</description>
 <instance part="C51" gate="G$1" x="231.14" y="353.06" rot="R90">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="231.14" y="353.06" size="1.524" layer="96" rot="R90" display="off"/>
 </instance>
-<instance part="DD3" gate="A" x="231.14" y="325.12"/>
-<instance part="DD4" gate="A" x="226.06" y="114.3"/>
+<instance part="DD3" gate="A" x="231.14" y="325.12">
+<attribute name="PARTNO" value="IN74HC165AD" x="231.14" y="325.12" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="DD4" gate="A" x="226.06" y="114.3">
+<attribute name="PARTNO" value="IN74HC165AD" x="226.06" y="114.3" size="1.27" layer="96" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -25922,7 +26389,7 @@ chip</description>
 <instances>
 <instance part="U$9" gate="G$1" x="0" y="0"/>
 <instance part="VD94" gate="G$1" x="132.08" y="386.08" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="132.08" y="386.08" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="132.08" y="386.08" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="D16" gate=".1" x="147.32" y="386.08">
 <attribute name="PARTNO" value="TCMT4100" x="147.32" y="386.08" size="1.524" layer="96" display="off"/>
@@ -25931,136 +26398,136 @@ chip</description>
 <instance part="D16" gate=".3" x="147.32" y="340.36"/>
 <instance part="D16" gate=".4" x="147.32" y="317.5"/>
 <instance part="VD95" gate="G$1" x="154.94" y="398.78" rot="R180">
-<attribute name="PARTNO" x="154.94" y="398.78" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="154.94" y="398.78" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C52" gate="G$1" x="160.02" y="386.08">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="160.02" y="386.08" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="R144" gate="G$1" x="144.78" y="398.78">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="144.78" y="398.78" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="144.78" y="398.78" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R145" gate="G$1" x="172.72" y="388.62" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="172.72" y="388.62" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R146" gate="G$1" x="137.16" y="393.7" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="137.16" y="393.7" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="137.16" y="393.7" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND73" gate="1" x="132.08" y="383.54"/>
 <instance part="GND74" gate="1" x="160.02" y="383.54"/>
 <instance part="+3V24" gate="G$1" x="180.34" y="388.62" rot="R270"/>
 <instance part="VD96" gate="G$1" x="132.08" y="363.22" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="132.08" y="363.22" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="132.08" y="363.22" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD97" gate="G$1" x="154.94" y="375.92" rot="R180">
-<attribute name="PARTNO" x="154.94" y="375.92" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="154.94" y="375.92" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C53" gate="G$1" x="160.02" y="363.22">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="160.02" y="363.22" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="R147" gate="G$1" x="144.78" y="375.92">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="144.78" y="375.92" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="144.78" y="375.92" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R148" gate="G$1" x="172.72" y="365.76" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="172.72" y="365.76" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R149" gate="G$1" x="137.16" y="370.84" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="137.16" y="370.84" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="137.16" y="370.84" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="GND75" gate="1" x="132.08" y="360.68"/>
 <instance part="GND76" gate="1" x="160.02" y="360.68"/>
 <instance part="+3V25" gate="G$1" x="180.34" y="365.76" rot="R270"/>
 <instance part="VD98" gate="G$1" x="132.08" y="340.36" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="132.08" y="340.36" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="132.08" y="340.36" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND77" gate="1" x="132.08" y="337.82"/>
 <instance part="GND78" gate="1" x="160.02" y="337.82"/>
 <instance part="+3V26" gate="G$1" x="180.34" y="342.9" rot="R270"/>
 <instance part="VD99" gate="G$1" x="132.08" y="317.5" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="132.08" y="317.5" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="132.08" y="317.5" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND79" gate="1" x="132.08" y="314.96"/>
 <instance part="GND80" gate="1" x="160.02" y="314.96"/>
 <instance part="+3V27" gate="G$1" x="180.34" y="320.04" rot="R270"/>
 <instance part="VD100" gate="G$1" x="132.08" y="294.64" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="132.08" y="294.64" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="132.08" y="294.64" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND81" gate="1" x="132.08" y="292.1"/>
 <instance part="GND82" gate="1" x="160.02" y="292.1"/>
 <instance part="+3V28" gate="G$1" x="180.34" y="297.18" rot="R270"/>
 <instance part="VD101" gate="G$1" x="132.08" y="271.78" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="132.08" y="271.78" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="132.08" y="271.78" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND83" gate="1" x="132.08" y="269.24"/>
 <instance part="GND84" gate="1" x="160.02" y="269.24"/>
 <instance part="+3V29" gate="G$1" x="180.34" y="274.32" rot="R270"/>
 <instance part="VD102" gate="G$1" x="132.08" y="248.92" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="132.08" y="248.92" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="132.08" y="248.92" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND85" gate="1" x="132.08" y="246.38"/>
 <instance part="GND86" gate="1" x="160.02" y="246.38"/>
 <instance part="+3V30" gate="G$1" x="180.34" y="251.46" rot="R270"/>
 <instance part="VD103" gate="G$1" x="132.08" y="226.06" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="132.08" y="226.06" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="132.08" y="226.06" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND87" gate="1" x="132.08" y="223.52"/>
 <instance part="GND88" gate="1" x="160.02" y="223.52"/>
 <instance part="+3V31" gate="G$1" x="180.34" y="228.6" rot="R270"/>
 <instance part="VD104" gate="G$1" x="134.62" y="182.88" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="134.62" y="182.88" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="134.62" y="182.88" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND89" gate="1" x="134.62" y="180.34"/>
 <instance part="GND90" gate="1" x="162.56" y="180.34"/>
 <instance part="+3V32" gate="G$1" x="182.88" y="185.42" rot="R270"/>
 <instance part="VD105" gate="G$1" x="134.62" y="160.02" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="134.62" y="160.02" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="134.62" y="160.02" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND91" gate="1" x="134.62" y="157.48"/>
 <instance part="GND92" gate="1" x="162.56" y="157.48"/>
 <instance part="+3V33" gate="G$1" x="182.88" y="162.56" rot="R270"/>
 <instance part="VD106" gate="G$1" x="134.62" y="137.16" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="134.62" y="137.16" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="134.62" y="137.16" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND93" gate="1" x="134.62" y="134.62"/>
 <instance part="GND94" gate="1" x="162.56" y="134.62"/>
 <instance part="+3V34" gate="G$1" x="182.88" y="139.7" rot="R270"/>
 <instance part="VD107" gate="G$1" x="134.62" y="114.3" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="134.62" y="114.3" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="134.62" y="114.3" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND95" gate="1" x="134.62" y="111.76"/>
 <instance part="GND96" gate="1" x="162.56" y="111.76"/>
 <instance part="+3V35" gate="G$1" x="182.88" y="116.84" rot="R270"/>
 <instance part="VD108" gate="G$1" x="134.62" y="91.44" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="134.62" y="91.44" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="134.62" y="91.44" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND97" gate="1" x="134.62" y="88.9"/>
 <instance part="GND98" gate="1" x="162.56" y="88.9"/>
 <instance part="+3V36" gate="G$1" x="182.88" y="93.98" rot="R270"/>
 <instance part="VD109" gate="G$1" x="134.62" y="68.58" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="134.62" y="68.58" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="134.62" y="68.58" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND99" gate="1" x="134.62" y="66.04"/>
 <instance part="GND100" gate="1" x="162.56" y="66.04"/>
 <instance part="+3V37" gate="G$1" x="182.88" y="71.12" rot="R270"/>
 <instance part="VD110" gate="G$1" x="134.62" y="45.72" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="134.62" y="45.72" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="134.62" y="45.72" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND101" gate="1" x="134.62" y="43.18"/>
 <instance part="GND102" gate="1" x="162.56" y="43.18"/>
 <instance part="+3V38" gate="G$1" x="182.88" y="48.26" rot="R270"/>
 <instance part="VD111" gate="G$1" x="134.62" y="22.86" rot="R90">
-<attribute name="PARTNO" value="SM6T220A" x="134.62" y="22.86" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="SM6T200A" x="134.62" y="22.86" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="GND103" gate="1" x="134.62" y="20.32"/>
 <instance part="GND104" gate="1" x="162.56" y="20.32"/>
 <instance part="+3V39" gate="G$1" x="182.88" y="25.4" rot="R270"/>
 <instance part="R150" gate="G$1" x="139.7" y="347.98" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="139.7" y="347.98" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="139.7" y="347.98" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R151" gate="G$1" x="144.78" y="353.06">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="144.78" y="353.06" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="144.78" y="353.06" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD112" gate="G$1" x="154.94" y="353.06" rot="R180">
-<attribute name="PARTNO" x="154.94" y="353.06" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="154.94" y="353.06" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C54" gate="G$1" x="160.02" y="340.36">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="160.02" y="340.36" size="1.524" layer="96" display="off"/>
@@ -26068,26 +26535,32 @@ chip</description>
 <instance part="R152" gate="G$1" x="172.72" y="342.9" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="172.72" y="342.9" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
-<instance part="D17" gate=".1" x="147.32" y="294.64"/>
+<instance part="D17" gate=".1" x="147.32" y="294.64">
+<attribute name="PARTNO" value="TCMT4100" x="147.32" y="294.64" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D17" gate=".2" x="147.32" y="271.78"/>
 <instance part="D17" gate=".3" x="147.32" y="248.92"/>
 <instance part="D17" gate=".4" x="147.32" y="226.06"/>
-<instance part="D18" gate=".1" x="149.86" y="182.88"/>
+<instance part="D18" gate=".1" x="149.86" y="182.88">
+<attribute name="PARTNO" value="TCMT4100" x="149.86" y="182.88" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D18" gate=".2" x="149.86" y="160.02"/>
 <instance part="D18" gate=".3" x="149.86" y="137.16"/>
 <instance part="D18" gate=".4" x="149.86" y="114.3"/>
-<instance part="D19" gate=".1" x="149.86" y="91.44"/>
+<instance part="D19" gate=".1" x="149.86" y="91.44">
+<attribute name="PARTNO" value="TCMT4100" x="149.86" y="91.44" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="D19" gate=".2" x="149.86" y="68.58"/>
 <instance part="D19" gate=".3" x="149.86" y="45.72"/>
 <instance part="D19" gate=".4" x="149.86" y="22.86"/>
 <instance part="R153" gate="G$1" x="139.7" y="325.12" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="139.7" y="325.12" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="139.7" y="325.12" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R154" gate="G$1" x="144.78" y="330.2">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="144.78" y="330.2" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="144.78" y="330.2" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD113" gate="G$1" x="154.94" y="330.2" rot="R180">
-<attribute name="PARTNO" x="154.94" y="330.2" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="154.94" y="330.2" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C55" gate="G$1" x="160.02" y="317.5">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="160.02" y="317.5" size="1.524" layer="96" display="off"/>
@@ -26096,13 +26569,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="172.72" y="320.04" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R156" gate="G$1" x="139.7" y="302.26" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="139.7" y="302.26" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="139.7" y="302.26" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R157" gate="G$1" x="144.78" y="307.34">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="144.78" y="307.34" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="144.78" y="307.34" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD114" gate="G$1" x="154.94" y="307.34" rot="R180">
-<attribute name="PARTNO" x="154.94" y="307.34" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="154.94" y="307.34" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C56" gate="G$1" x="160.02" y="294.64">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="160.02" y="294.64" size="1.524" layer="96" display="off"/>
@@ -26111,13 +26584,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="172.72" y="297.18" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R159" gate="G$1" x="139.7" y="279.4" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="139.7" y="279.4" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="139.7" y="279.4" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R160" gate="G$1" x="144.78" y="284.48">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="144.78" y="284.48" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="144.78" y="284.48" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD115" gate="G$1" x="154.94" y="284.48" rot="R180">
-<attribute name="PARTNO" x="154.94" y="284.48" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="154.94" y="284.48" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C57" gate="G$1" x="160.02" y="271.78">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="160.02" y="271.78" size="1.524" layer="96" display="off"/>
@@ -26126,13 +26599,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="172.72" y="274.32" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R162" gate="G$1" x="139.7" y="256.54" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="139.7" y="256.54" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="139.7" y="256.54" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R163" gate="G$1" x="144.78" y="261.62">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="144.78" y="261.62" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="144.78" y="261.62" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD116" gate="G$1" x="154.94" y="261.62" rot="R180">
-<attribute name="PARTNO" x="154.94" y="261.62" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="154.94" y="261.62" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C58" gate="G$1" x="160.02" y="248.92">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="160.02" y="248.92" size="1.524" layer="96" display="off"/>
@@ -26141,13 +26614,13 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="172.72" y="251.46" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R165" gate="G$1" x="139.7" y="233.68" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="139.7" y="233.68" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="139.7" y="233.68" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R166" gate="G$1" x="144.78" y="238.76">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="144.78" y="238.76" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="144.78" y="238.76" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD117" gate="G$1" x="154.94" y="238.76" rot="R180">
-<attribute name="PARTNO" x="154.94" y="238.76" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="154.94" y="238.76" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C59" gate="G$1" x="160.02" y="226.06">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="160.02" y="226.06" size="1.524" layer="96" display="off"/>
@@ -26156,40 +26629,40 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="172.72" y="228.6" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R168" gate="G$1" x="142.24" y="190.5" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="142.24" y="190.5" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="142.24" y="190.5" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R169" gate="G$1" x="142.24" y="167.64" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="142.24" y="167.64" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="142.24" y="167.64" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R170" gate="G$1" x="142.24" y="144.78" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="142.24" y="144.78" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="142.24" y="144.78" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R171" gate="G$1" x="142.24" y="121.92" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="142.24" y="121.92" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="142.24" y="121.92" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R172" gate="G$1" x="147.32" y="195.58">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="147.32" y="195.58" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="147.32" y="195.58" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R173" gate="G$1" x="147.32" y="172.72">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="147.32" y="172.72" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="147.32" y="172.72" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R174" gate="G$1" x="147.32" y="149.86">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="147.32" y="149.86" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="147.32" y="149.86" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R175" gate="G$1" x="147.32" y="127">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="147.32" y="127" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="147.32" y="127" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD118" gate="G$1" x="157.48" y="195.58" rot="R180">
-<attribute name="PARTNO" x="157.48" y="195.58" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="157.48" y="195.58" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD119" gate="G$1" x="157.48" y="172.72" rot="R180">
-<attribute name="PARTNO" x="157.48" y="172.72" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="157.48" y="172.72" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD120" gate="G$1" x="157.48" y="149.86" rot="R180">
-<attribute name="PARTNO" x="157.48" y="149.86" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="157.48" y="149.86" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD121" gate="G$1" x="157.48" y="127" rot="R180">
-<attribute name="PARTNO" x="157.48" y="127" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="157.48" y="127" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="C60" gate="G$1" x="162.56" y="182.88">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="162.56" y="182.88" size="1.524" layer="96" display="off"/>
@@ -26216,40 +26689,40 @@ chip</description>
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="175.26" y="116.84" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R180" gate="G$1" x="142.24" y="99.06" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="142.24" y="99.06" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="142.24" y="99.06" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R181" gate="G$1" x="142.24" y="76.2" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="142.24" y="78.74" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="142.24" y="78.74" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R182" gate="G$1" x="142.24" y="53.34" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="142.24" y="55.88" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="142.24" y="55.88" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R183" gate="G$1" x="142.24" y="30.48" rot="R270">
-<attribute name="PARTNO" value="RC0603FR-1010KL" x="142.24" y="33.02" size="1.778" layer="96" display="off"/>
+<attribute name="PARTNO" value="RC1206JR-074K7L" x="142.24" y="33.02" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="R184" gate="G$1" x="147.32" y="104.14">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="147.32" y="104.14" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="147.32" y="104.14" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R185" gate="G$1" x="147.32" y="81.28">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="147.32" y="81.28" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="147.32" y="81.28" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R186" gate="G$1" x="147.32" y="58.42">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="147.32" y="58.42" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="147.32" y="58.42" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="R187" gate="G$1" x="147.32" y="35.56">
-<attribute name="PARTNO" value="RC2512FK-071KL" x="147.32" y="35.56" size="1.778" layer="96" rot="R270" display="off"/>
+<attribute name="PARTNO" value="RC2512JK-071KL" x="147.32" y="35.56" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="VD122" gate="G$1" x="157.48" y="104.14" rot="R180">
-<attribute name="PARTNO" x="157.48" y="104.14" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="157.48" y="104.14" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD123" gate="G$1" x="157.48" y="81.28" rot="R180">
-<attribute name="PARTNO" x="157.48" y="81.28" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="157.48" y="81.28" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD124" gate="G$1" x="157.48" y="58.42" rot="R180">
-<attribute name="PARTNO" x="157.48" y="58.42" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="157.48" y="58.42" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="VD125" gate="G$1" x="157.48" y="35.56" rot="R180">
-<attribute name="PARTNO" x="157.48" y="35.56" size="1.27" layer="96" rot="R180" display="off"/>
+<attribute name="PARTNO" value="S1G-E3/61T" x="157.48" y="35.56" size="1.27" layer="96" rot="R180" display="off"/>
 </instance>
 <instance part="R188" gate="G$1" x="175.26" y="93.98" rot="R180">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="175.26" y="93.98" size="1.778" layer="96" rot="R270" display="off"/>
@@ -26276,8 +26749,12 @@ chip</description>
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="162.56" y="22.86" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="XP5" gate="G$1" x="45.72" y="233.68" rot="MR0"/>
-<instance part="DD5" gate="A" x="256.54" y="320.04"/>
-<instance part="DD6" gate="A" x="251.46" y="109.22"/>
+<instance part="DD5" gate="A" x="256.54" y="320.04">
+<attribute name="PARTNO" value="IN74HC165AD" x="256.54" y="320.04" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="DD6" gate="A" x="251.46" y="109.22">
+<attribute name="PARTNO" value="IN74HC165AD" x="251.46" y="109.22" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="+3V40" gate="G$1" x="233.68" y="340.36" rot="MR270"/>
 <instance part="GND105" gate="1" x="271.78" y="340.36" rot="R90"/>
 <instance part="+3V41" gate="G$1" x="231.14" y="129.54" rot="MR270"/>
@@ -27610,7 +28087,9 @@ chip</description>
 <instance part="VD59" gate="G$1" x="172.72" y="172.72" rot="MR0">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="175.26" y="167.64" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="DD2" gate="G$1" x="83.82" y="114.3"/>
+<instance part="DD2" gate="G$1" x="83.82" y="114.3">
+<attribute name="PARTNO" value="IN74HC595AD" x="83.82" y="114.3" size="1.27" layer="96" display="off"/>
+</instance>
 <instance part="GND37" gate="1" x="96.52" y="142.24" rot="R180"/>
 <instance part="+3V5" gate="G$1" x="68.58" y="147.32" rot="MR0"/>
 <instance part="U$5" gate="G$1" x="0" y="0"/>
@@ -28521,14 +29000,271 @@ chip</description>
 <plain>
 </plain>
 <instances>
-<instance part="XP6" gate="G$1" x="152.4" y="205.74" rot="MR0">
-<attribute name="PARTNO" value="*" x="152.4" y="205.74" size="1.524" layer="96" display="off"/>
+<instance part="XP6" gate="G$1" x="30.48" y="231.14" rot="MR0">
+<attribute name="PARTNO" value="*" x="30.48" y="231.14" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="U$6" gate="G$1" x="0" y="0"/>
+<instance part="DA3" gate="G$1" x="149.86" y="396.24" rot="MR0">
+<attribute name="PARTNO" value="SN65HVD232D" x="149.86" y="396.24" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="C106" gate="G$1" x="147.32" y="406.4" rot="R90">
+<attribute name="PARTNO" value="C0603C104K5RACTU" x="147.32" y="406.4" size="1.524" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="GND175" gate="1" x="129.54" y="398.78" rot="R270"/>
+<instance part="+3V78" gate="G$1" x="172.72" y="398.78" rot="R270"/>
+<instance part="R292" gate="G$1" x="129.54" y="383.54">
+<attribute name="PARTNO" value="RC1206JR-07120RL" x="129.54" y="383.54" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="XP3" gate="G$1" x="124.46" y="386.08" rot="MR0"/>
+<instance part="DA5" gate="G$1" x="195.58" y="101.6" rot="MR0"/>
+<instance part="GND176" gate="1" x="213.36" y="96.52"/>
+<instance part="GND177" gate="1" x="48.26" y="218.44" rot="R90"/>
+<instance part="GND178" gate="1" x="152.4" y="106.68" rot="MR0"/>
+<instance part="VT3" gate="G$1" x="149.86" y="114.3"/>
+<instance part="VT4" gate="G$1" x="175.26" y="129.54"/>
+<instance part="R294" gate="G$1" x="139.7" y="114.3" rot="MR0">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="137.16" y="114.3" size="1.778" layer="96" rot="MR0" display="off"/>
+</instance>
+<instance part="R293" gate="G$1" x="160.02" y="124.46" rot="R90">
+<attribute name="PARTNO" value="RC0603FR-1010KL" x="160.02" y="124.46" size="1.524" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R295" gate="G$1" x="152.4" y="144.78" rot="R90">
+<attribute name="PARTNO" value="RC0603FR-1010KL" x="152.4" y="144.78" size="1.524" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="+3V79" gate="G$1" x="177.8" y="137.16"/>
+<instance part="R296" gate="G$1" x="147.32" y="119.38" rot="R90">
+<attribute name="PARTNO" value="ERJ3GEYJ473V" x="147.32" y="119.38" size="1.27" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="R297" gate="G$1" x="160.02" y="111.76" rot="R90">
+<attribute name="PARTNO" value="ERJ3GEYJ363V" x="160.02" y="111.76" size="1.27" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="GND179" gate="1" x="160.02" y="106.68" rot="MR0"/>
+<instance part="+3V80" gate="G$1" x="147.32" y="129.54"/>
+<instance part="VD191" gate="G$1" x="152.4" y="137.16" rot="R90">
+<attribute name="PARTNO" x="152.4" y="137.16" size="1.27" layer="96" display="off"/>
+</instance>
+<instance part="GND180" gate="1" x="152.4" y="134.62" rot="MR0"/>
+<instance part="R298" gate="G$1" x="144.78" y="139.7" rot="MR0">
+<attribute name="PARTNO" value="ERJ6GEYJ102V" x="142.24" y="139.7" size="1.778" layer="96" rot="MR0" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
+<net name="CAN_TX" class="0">
+<segment>
+<pinref part="DA3" gate="G$1" pin="TXD"/>
+<wire x1="165.1" y1="393.7" x2="172.72" y2="393.7" width="0.1524" layer="91"/>
+<label x="172.72" y="393.7" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="CAN_RX" class="0">
+<segment>
+<pinref part="DA3" gate="G$1" pin="RXD"/>
+<wire x1="165.1" y1="391.16" x2="172.72" y2="391.16" width="0.1524" layer="91"/>
+<label x="172.72" y="391.16" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="+3V3" class="0">
+<segment>
+<pinref part="+3V78" gate="G$1" pin="+3V3"/>
+<pinref part="DA3" gate="G$1" pin="VCC"/>
+<wire x1="170.18" y1="398.78" x2="165.1" y2="398.78" width="0.1524" layer="91"/>
+<wire x1="165.1" y1="398.78" x2="165.1" y2="406.4" width="0.1524" layer="91"/>
+<junction x="165.1" y="398.78"/>
+<pinref part="C106" gate="G$1" pin="2"/>
+<wire x1="165.1" y1="406.4" x2="149.86" y2="406.4" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="VT4" gate="G$1" pin="C"/>
+<pinref part="+3V79" gate="G$1" pin="+3V3"/>
+<wire x1="177.8" y1="132.08" x2="177.8" y2="134.62" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R296" gate="G$1" pin="2"/>
+<pinref part="+3V80" gate="G$1" pin="+3V3"/>
+<wire x1="147.32" y1="124.46" x2="147.32" y2="127" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<pinref part="C106" gate="G$1" pin="1"/>
+<wire x1="144.78" y1="406.4" x2="134.62" y2="406.4" width="0.1524" layer="91"/>
+<wire x1="134.62" y1="406.4" x2="134.62" y2="398.78" width="0.1524" layer="91"/>
+<pinref part="DA3" gate="G$1" pin="GND"/>
+<pinref part="GND175" gate="1" pin="GND"/>
+<wire x1="134.62" y1="398.78" x2="129.54" y2="398.78" width="0.1524" layer="91"/>
+<junction x="134.62" y="398.78"/>
+</segment>
+<segment>
+<pinref part="DA5" gate="G$1" pin="GND"/>
+<wire x1="213.36" y1="101.6" x2="210.82" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="GND176" gate="1" pin="GND"/>
+<wire x1="213.36" y1="101.6" x2="213.36" y2="96.52" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="XP6" gate="G$1" pin="6"/>
+<pinref part="GND177" gate="1" pin="GND"/>
+<wire x1="48.26" y1="218.44" x2="30.48" y2="218.44" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND178" gate="1" pin="GND"/>
+<pinref part="VT3" gate="G$1" pin="E"/>
+<wire x1="152.4" y1="111.76" x2="152.4" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R297" gate="G$1" pin="1"/>
+<pinref part="GND179" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="GND180" gate="1" pin="GND"/>
+<pinref part="VD191" gate="G$1" pin="A"/>
+</segment>
+</net>
+<net name="CANL" class="0">
+<segment>
+<pinref part="XP6" gate="G$1" pin="1"/>
+<wire x1="38.1" y1="231.14" x2="30.48" y2="231.14" width="0.1524" layer="91"/>
+<label x="38.1" y="231.14" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="DA3" gate="G$1" pin="CANL"/>
+<wire x1="134.62" y1="391.16" x2="114.3" y2="391.16" width="0.1524" layer="91"/>
+<label x="114.3" y="391.16" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="R292" gate="G$1" pin="2"/>
+<wire x1="134.62" y1="383.54" x2="134.62" y2="391.16" width="0.1524" layer="91"/>
+<junction x="134.62" y="391.16"/>
+</segment>
+</net>
+<net name="CANH" class="0">
+<segment>
+<pinref part="DA3" gate="G$1" pin="CANH"/>
+<wire x1="134.62" y1="393.7" x2="124.46" y2="393.7" width="0.1524" layer="91"/>
+<label x="114.3" y="393.7" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="XP3" gate="G$1" pin="1"/>
+<wire x1="124.46" y1="393.7" x2="114.3" y2="393.7" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="386.08" x2="124.46" y2="393.7" width="0.1524" layer="91"/>
+<junction x="124.46" y="393.7"/>
+</segment>
+<segment>
+<pinref part="XP6" gate="G$1" pin="2"/>
+<wire x1="38.1" y1="228.6" x2="30.48" y2="228.6" width="0.1524" layer="91"/>
+<label x="38.1" y="228.6" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="+5V_USB" class="0">
+<segment>
+<pinref part="XP6" gate="G$1" pin="3"/>
+<wire x1="30.48" y1="226.06" x2="38.1" y2="226.06" width="0.1524" layer="91"/>
+<label x="38.1" y="226.06" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="VT4" gate="G$1" pin="B"/>
+<pinref part="R293" gate="G$1" pin="2"/>
+<wire x1="172.72" y1="129.54" x2="160.02" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="129.54" x2="160.02" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="149.86" x2="152.4" y2="149.86" width="0.1524" layer="91"/>
+<junction x="160.02" y="129.54"/>
+<label x="132.08" y="149.86" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="R295" gate="G$1" pin="2"/>
+<wire x1="152.4" y1="149.86" x2="132.08" y2="149.86" width="0.1524" layer="91"/>
+<junction x="152.4" y="149.86"/>
+</segment>
+</net>
+<net name="D-" class="0">
+<segment>
+<pinref part="XP6" gate="G$1" pin="4"/>
+<wire x1="30.48" y1="223.52" x2="38.1" y2="223.52" width="0.1524" layer="91"/>
+<label x="38.1" y="223.52" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="DA5" gate="G$1" pin="D3"/>
+<wire x1="175.26" y1="99.06" x2="180.34" y2="99.06" width="0.1524" layer="91"/>
+<label x="175.26" y="99.06" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="D+" class="0">
+<segment>
+<pinref part="XP6" gate="G$1" pin="5"/>
+<wire x1="30.48" y1="220.98" x2="38.1" y2="220.98" width="0.1524" layer="91"/>
+<label x="38.1" y="220.98" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="DA5" gate="G$1" pin="D4"/>
+<wire x1="175.26" y1="104.14" x2="180.34" y2="104.14" width="0.1524" layer="91"/>
+<label x="175.26" y="104.14" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$224" class="0">
+<segment>
+<pinref part="R292" gate="G$1" pin="1"/>
+<pinref part="XP3" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="USBDP" class="0">
+<segment>
+<pinref part="DA5" gate="G$1" pin="D1"/>
+<wire x1="215.9" y1="104.14" x2="210.82" y2="104.14" width="0.1524" layer="91"/>
+<label x="215.9" y="104.14" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="USBDM" class="0">
+<segment>
+<pinref part="DA5" gate="G$1" pin="D2"/>
+<wire x1="215.9" y1="99.06" x2="210.82" y2="99.06" width="0.1524" layer="91"/>
+<label x="215.9" y="99.06" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="N$229" class="0">
+<segment>
+<pinref part="DA5" gate="G$1" pin="3.3V"/>
+<wire x1="177.8" y1="101.6" x2="180.34" y2="101.6" width="0.1524" layer="91"/>
+<pinref part="VT4" gate="G$1" pin="E"/>
+<wire x1="177.8" y1="127" x2="177.8" y2="101.6" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$227" class="0">
+<segment>
+<wire x1="144.78" y1="114.3" x2="147.32" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="VT3" gate="G$1" pin="B"/>
+<pinref part="R294" gate="G$1" pin="1"/>
+<pinref part="R296" gate="G$1" pin="1"/>
+<junction x="147.32" y="114.3"/>
+</segment>
+</net>
+<net name="USB_DISCOVERY" class="0">
+<segment>
+<pinref part="R294" gate="G$1" pin="2"/>
+<wire x1="134.62" y1="114.3" x2="132.08" y2="114.3" width="0.1524" layer="91"/>
+<label x="132.08" y="114.3" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$228" class="0">
+<segment>
+<pinref part="VT3" gate="G$1" pin="C"/>
+<wire x1="152.4" y1="116.84" x2="160.02" y2="116.84" width="0.1524" layer="91"/>
+<pinref part="R293" gate="G$1" pin="1"/>
+<wire x1="160.02" y1="116.84" x2="160.02" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="R297" gate="G$1" pin="2"/>
+<junction x="160.02" y="116.84"/>
+</segment>
+</net>
+<net name="USB_PRESENT" class="0">
+<segment>
+<label x="132.08" y="139.7" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="R298" gate="G$1" pin="2"/>
+<wire x1="139.7" y1="139.7" x2="132.08" y2="139.7" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$230" class="0">
+<segment>
+<pinref part="VD191" gate="G$1" pin="C"/>
+<pinref part="R295" gate="G$1" pin="1"/>
+<junction x="152.4" y="139.7"/>
+<wire x1="152.4" y1="139.7" x2="149.86" y2="139.7" width="0.1524" layer="91"/>
+<pinref part="R298" gate="G$1" pin="1"/>
+</segment>
+</net>
 </nets>
 </sheet>
 <sheet>
