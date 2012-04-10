@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -14139,26 +14139,26 @@ body 3.9 mm/JEDEC MS-012AC</description>
 <rectangle x1="-1.27" y1="-11.7475" x2="8.255" y2="-11.1125" layer="51"/>
 </package>
 <package name="TYCO-174053(2.54)">
-<pad name="1" x="5.3848" y="7.5692" drill="1" shape="square" first="yes"/>
-<pad name="2" x="5.3848" y="5.0292" drill="1"/>
-<pad name="3" x="7.9248" y="7.5692" drill="1"/>
-<pad name="4" x="7.9248" y="5.0292" drill="1"/>
-<pad name="5" x="10.4648" y="7.5692" drill="1"/>
-<pad name="6" x="10.4648" y="5.0292" drill="1"/>
-<pad name="7" x="13.0048" y="7.5692" drill="1"/>
-<pad name="8" x="13.0048" y="5.0292" drill="1"/>
-<pad name="9" x="15.5448" y="7.5692" drill="1"/>
-<pad name="10" x="15.5448" y="5.0292" drill="1"/>
-<pad name="11" x="18.0848" y="7.5692" drill="1"/>
-<pad name="12" x="18.0848" y="5.0292" drill="1"/>
-<pad name="13" x="20.6248" y="7.5692" drill="1"/>
-<pad name="14" x="20.6248" y="5.0292" drill="1"/>
-<pad name="15" x="23.1648" y="7.5692" drill="1"/>
-<pad name="16" x="23.1648" y="5.0292" drill="1"/>
-<text x="0.9825" y="6.95" size="1.016" layer="21" ratio="18">1</text>
-<text x="26.8675" y="7.2" size="1.016" layer="21" ratio="18">15</text>
-<text x="0.9825" y="4.2" size="1.016" layer="21" ratio="18">2</text>
-<text x="26.8675" y="3.95" size="1.016" layer="21" ratio="18">16</text>
+<pad name="1" x="5.3848" y="5.0292" drill="1" shape="square" first="yes"/>
+<pad name="2" x="5.3848" y="7.5692" drill="1"/>
+<pad name="3" x="7.9248" y="5.0292" drill="1"/>
+<pad name="4" x="7.9248" y="7.5692" drill="1"/>
+<pad name="5" x="10.4648" y="5.0292" drill="1"/>
+<pad name="6" x="10.4648" y="7.5692" drill="1"/>
+<pad name="7" x="13.0048" y="5.0292" drill="1"/>
+<pad name="8" x="13.0048" y="7.5692" drill="1"/>
+<pad name="9" x="15.5448" y="5.0292" drill="1"/>
+<pad name="10" x="15.5448" y="7.5692" drill="1"/>
+<pad name="11" x="18.0848" y="5.0292" drill="1"/>
+<pad name="12" x="18.0848" y="7.5692" drill="1"/>
+<pad name="13" x="20.6248" y="5.0292" drill="1"/>
+<pad name="14" x="20.6248" y="7.5692" drill="1"/>
+<pad name="15" x="23.1648" y="5.0292" drill="1"/>
+<pad name="16" x="23.1648" y="7.5692" drill="1"/>
+<text x="1.27" y="3.81" size="1.016" layer="21" ratio="18">1</text>
+<text x="26.67" y="3.81" size="1.016" layer="21" ratio="18">15</text>
+<text x="1.27" y="6.35" size="1.016" layer="21" ratio="18">2</text>
+<text x="26.67" y="6.35" size="1.016" layer="21" ratio="18">16</text>
 <hole x="0" y="0" drill="3.5"/>
 <hole x="28.6" y="0" drill="3.5"/>
 <circle x="0" y="0" radius="2.5" width="0.127" layer="40"/>
@@ -14189,18 +14189,18 @@ body 3.9 mm/JEDEC MS-012AC</description>
 <text x="3.81" y="0" size="0.8128" layer="27">&gt;VALUE</text>
 </package>
 <package name="TYCO-174049(2.54)">
-<pad name="1" x="5.969" y="7.239" drill="1" shape="square" first="yes"/>
-<pad name="2" x="5.969" y="4.699" drill="1"/>
-<pad name="3" x="8.509" y="7.239" drill="1"/>
-<pad name="4" x="8.509" y="4.699" drill="1"/>
-<pad name="5" x="11.049" y="7.239" drill="1"/>
-<pad name="6" x="11.049" y="4.699" drill="1"/>
-<pad name="7" x="13.589" y="7.239" drill="1"/>
-<pad name="8" x="13.589" y="4.699" drill="1"/>
-<text x="0.9825" y="6.95" size="1.016" layer="21" ratio="18">1</text>
-<text x="17.7075" y="7.2" size="1.016" layer="21" ratio="18">7</text>
-<text x="0.9825" y="4.2" size="1.016" layer="21" ratio="18">2</text>
-<text x="17.7075" y="3.95" size="1.016" layer="21" ratio="18">8</text>
+<pad name="1" x="5.969" y="4.699" drill="1" shape="square" first="yes"/>
+<pad name="2" x="5.969" y="7.239" drill="1"/>
+<pad name="3" x="8.509" y="4.699" drill="1"/>
+<pad name="4" x="8.509" y="7.239" drill="1"/>
+<pad name="5" x="11.049" y="4.699" drill="1"/>
+<pad name="6" x="11.049" y="7.239" drill="1"/>
+<pad name="7" x="13.589" y="4.699" drill="1"/>
+<pad name="8" x="13.589" y="7.239" drill="1"/>
+<text x="1.27" y="3.81" size="1.016" layer="21" ratio="18">1</text>
+<text x="17.78" y="3.81" size="1.016" layer="21" ratio="18">7</text>
+<text x="1.27" y="6.35" size="1.016" layer="21" ratio="18">2</text>
+<text x="17.78" y="6.35" size="1.016" layer="21" ratio="18">8</text>
 <hole x="0" y="0" drill="3.5"/>
 <hole x="19.5" y="0" drill="3.5"/>
 <circle x="0" y="0" radius="2.5" width="0.127" layer="40"/>
@@ -14554,6 +14554,8 @@ body 3.9 mm/JEDEC MS-012AC</description>
 <pad name="30" x="35.56" y="2.54" drill="1"/>
 <pad name="31" x="38.1" y="0" drill="1"/>
 <pad name="32" x="38.1" y="2.54" drill="1"/>
+<text x="-2.54" y="-0.635" size="1.016" layer="21" ratio="18">1</text>
+<text x="-2.54" y="1.905" size="1.016" layer="21" ratio="18">2</text>
 </package>
 <package name="PLD_2X8">
 <wire x1="-1.27" y1="-0.635" x2="-0.635" y2="-1.27" width="0.1524" layer="21"/>
@@ -19237,24 +19239,6 @@ chip</description>
 <wire x1="104.14" y1="127" x2="104.14" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="GND26" gate="1" pin="GND"/>
-<wire x1="22.86" y1="25.4" x2="22.86" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="XP9" gate="G$1" pin="8"/>
-<wire x1="22.86" y1="30.48" x2="20.32" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="30.48" x2="22.86" y2="35.56" width="0.1524" layer="91"/>
-<junction x="22.86" y="30.48"/>
-<pinref part="XP9" gate="G$1" pin="6"/>
-<wire x1="22.86" y1="35.56" x2="20.32" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="35.56" x2="22.86" y2="40.64" width="0.1524" layer="91"/>
-<junction x="22.86" y="35.56"/>
-<pinref part="XP9" gate="G$1" pin="4"/>
-<wire x1="22.86" y1="40.64" x2="20.32" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="40.64" x2="22.86" y2="45.72" width="0.1524" layer="91"/>
-<junction x="22.86" y="40.64"/>
-<pinref part="XP9" gate="G$1" pin="2"/>
-<wire x1="22.86" y1="45.72" x2="20.32" y2="45.72" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="GND38" gate="1" pin="GND"/>
 <pinref part="R98" gate="G$1" pin="1"/>
 <wire x1="99.06" y1="15.24" x2="106.68" y2="15.24" width="0.1524" layer="91"/>
@@ -19265,6 +19249,24 @@ chip</description>
 <pinref part="VT2" gate="G$1" pin="E"/>
 <wire x1="106.68" y1="17.78" x2="106.68" y2="15.24" width="0.1524" layer="91"/>
 <junction x="106.68" y="15.24"/>
+</segment>
+<segment>
+<pinref part="GND26" gate="1" pin="GND"/>
+<pinref part="XP9" gate="G$1" pin="7"/>
+<wire x1="22.86" y1="25.4" x2="22.86" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="XP9" gate="G$1" pin="5"/>
+<wire x1="22.86" y1="33.02" x2="22.86" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="38.1" x2="20.32" y2="38.1" width="0.1524" layer="91"/>
+<junction x="22.86" y="33.02"/>
+<pinref part="XP9" gate="G$1" pin="3"/>
+<wire x1="22.86" y1="38.1" x2="22.86" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="43.18" x2="20.32" y2="43.18" width="0.1524" layer="91"/>
+<junction x="22.86" y="38.1"/>
+<pinref part="XP9" gate="G$1" pin="1"/>
+<wire x1="22.86" y1="43.18" x2="22.86" y2="48.26" width="0.1524" layer="91"/>
+<wire x1="22.86" y1="48.26" x2="20.32" y2="48.26" width="0.1524" layer="91"/>
+<junction x="22.86" y="43.18"/>
 </segment>
 </net>
 <net name="+24V_CLEAR" class="0">
@@ -19317,21 +19319,21 @@ chip</description>
 <net name="+24V" class="0">
 <segment>
 <pinref part="P+19" gate="1" pin="+24V"/>
-<wire x1="25.4" y1="58.42" x2="25.4" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="XP9" gate="G$1" pin="1"/>
-<wire x1="25.4" y1="48.26" x2="25.4" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="43.18" x2="25.4" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="38.1" x2="25.4" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="48.26" x2="20.32" y2="48.26" width="0.1524" layer="91"/>
-<junction x="25.4" y="48.26"/>
-<pinref part="XP9" gate="G$1" pin="3"/>
-<wire x1="25.4" y1="43.18" x2="20.32" y2="43.18" width="0.1524" layer="91"/>
-<junction x="25.4" y="43.18"/>
-<pinref part="XP9" gate="G$1" pin="5"/>
-<wire x1="25.4" y1="38.1" x2="20.32" y2="38.1" width="0.1524" layer="91"/>
-<junction x="25.4" y="38.1"/>
-<pinref part="XP9" gate="G$1" pin="7"/>
-<wire x1="25.4" y1="33.02" x2="20.32" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="58.42" x2="25.4" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="XP9" gate="G$1" pin="2"/>
+<wire x1="25.4" y1="45.72" x2="25.4" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="40.64" x2="25.4" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="45.72" x2="20.32" y2="45.72" width="0.1524" layer="91"/>
+<junction x="25.4" y="45.72"/>
+<pinref part="XP9" gate="G$1" pin="4"/>
+<wire x1="25.4" y1="40.64" x2="20.32" y2="40.64" width="0.1524" layer="91"/>
+<junction x="25.4" y="40.64"/>
+<pinref part="XP9" gate="G$1" pin="6"/>
+<wire x1="25.4" y1="35.56" x2="20.32" y2="35.56" width="0.1524" layer="91"/>
+<junction x="25.4" y="35.56"/>
+<wire x1="25.4" y1="35.56" x2="25.4" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="XP9" gate="G$1" pin="8"/>
+<wire x1="25.4" y1="30.48" x2="20.32" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="VD23" gate="G$1" pin="A1"/>
