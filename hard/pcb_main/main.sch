@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -33192,9 +33192,9 @@ Manufacturer TE CONNECTIVITY</description>
 <instance part="DA8" gate=".2" x="93.98" y="162.56"/>
 <instance part="DA8" gate=".3" x="185.42" y="266.7"/>
 <instance part="U$7" gate="G$1" x="0" y="0"/>
-<instance part="GND189" gate="1" x="129.54" y="241.3" rot="MR0"/>
-<instance part="P+24" gate="1" x="137.16" y="241.3" rot="R270"/>
-<instance part="P-2" gate="1" x="137.16" y="236.22" rot="R90"/>
+<instance part="GND189" gate="1" x="114.3" y="317.5" rot="MR0"/>
+<instance part="P+24" gate="1" x="121.92" y="317.5" rot="R270"/>
+<instance part="P-2" gate="1" x="121.92" y="312.42" rot="R90"/>
 <instance part="C112" gate="G$1" x="185.42" y="274.32" rot="R90">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="185.42" y="274.32" size="1.524" layer="96" rot="R90" display="off"/>
 </instance>
@@ -33361,11 +33361,11 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="378.46" y="177.8" size="1.524" layer="96" display="off"/>
 </instance>
 <instance part="GND209" gate="1" x="378.46" y="170.18"/>
-<instance part="R319" gate="G$1" x="193.04" y="134.62" rot="MR0">
-<attribute name="PARTNO" x="193.04" y="134.62" size="1.27" layer="96" rot="MR0" display="off"/>
+<instance part="R319" gate="G$1" x="149.86" y="320.04" rot="MR0">
+<attribute name="PARTNO" x="149.86" y="320.04" size="1.27" layer="96" rot="MR0" display="off"/>
 </instance>
-<instance part="P+34" gate="1" x="193.04" y="144.78"/>
-<instance part="P-5" gate="1" x="193.04" y="124.46"/>
+<instance part="P+34" gate="1" x="149.86" y="330.2"/>
+<instance part="P-5" gate="1" x="149.86" y="309.88"/>
 </instances>
 <busses>
 </busses>
@@ -33379,13 +33379,6 @@ Manufacturer TE CONNECTIVITY</description>
 <junction x="198.12" y="266.7"/>
 <pinref part="C112" gate="G$1" pin="2"/>
 <wire x1="198.12" y1="274.32" x2="187.96" y2="274.32" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="256.54" x2="198.12" y2="266.7" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="256.54" x2="187.96" y2="256.54" width="0.1524" layer="91"/>
-<junction x="198.12" y="256.54"/>
-<wire x1="187.96" y1="238.76" x2="198.12" y2="238.76" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="238.76" x2="198.12" y2="231.14" width="0.1524" layer="91"/>
-<wire x1="198.12" y1="238.76" x2="198.12" y2="256.54" width="0.1524" layer="91"/>
-<junction x="198.12" y="238.76"/>
 </segment>
 <segment>
 <pinref part="P-4" gate="1" pin="-5V"/>
@@ -33399,7 +33392,7 @@ Manufacturer TE CONNECTIVITY</description>
 <segment>
 <pinref part="P-5" gate="1" pin="-5V"/>
 <pinref part="R319" gate="G$1" pin="E"/>
-<wire x1="193.04" y1="127" x2="193.04" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="312.42" x2="149.86" y2="314.96" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="+5V" class="0">
@@ -33411,13 +33404,6 @@ Manufacturer TE CONNECTIVITY</description>
 <pinref part="P+25" gate="1" pin="+5V"/>
 <wire x1="172.72" y1="266.7" x2="170.18" y2="266.7" width="0.1524" layer="91"/>
 <junction x="172.72" y="266.7"/>
-<wire x1="182.88" y1="256.54" x2="172.72" y2="256.54" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="256.54" x2="172.72" y2="266.7" width="0.1524" layer="91"/>
-<junction x="172.72" y="256.54"/>
-<wire x1="172.72" y1="231.14" x2="172.72" y2="238.76" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="238.76" x2="172.72" y2="256.54" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="238.76" x2="172.72" y2="238.76" width="0.1524" layer="91"/>
-<junction x="172.72" y="238.76"/>
 </segment>
 <segment>
 <pinref part="C125" gate="G$1" pin="1"/>
@@ -33489,7 +33475,7 @@ Manufacturer TE CONNECTIVITY</description>
 <segment>
 <pinref part="R319" gate="G$1" pin="A"/>
 <pinref part="P+34" gate="1" pin="+5V"/>
-<wire x1="193.04" y1="139.7" x2="193.04" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="149.86" y1="325.12" x2="149.86" y2="327.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PHASE_1" class="0">
@@ -33851,17 +33837,6 @@ Manufacturer TE CONNECTIVITY</description>
 <wire x1="195.58" y1="160.02" x2="200.66" y2="160.02" width="0.1524" layer="91"/>
 <pinref part="DA10" gate=".1" pin="D"/>
 <pinref part="DA10" gate=".2" pin="!D"/>
-</segment>
-</net>
-<net name="N$254" class="0">
-<segment>
-<pinref part="R310" gate="G$1" pin="2"/>
-<wire x1="165.1" y1="157.48" x2="182.88" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="157.48" x2="190.5" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="157.48" x2="182.88" y2="134.62" width="0.1524" layer="91"/>
-<junction x="182.88" y="157.48"/>
-<pinref part="R319" gate="G$1" pin="S"/>
-<wire x1="182.88" y1="134.62" x2="187.96" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$253" class="0">
