@@ -21771,12 +21771,6 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
 <part name="GND186" library="supply" deviceset="GND" device=""/>
-<part name="R300" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
-<attribute name="PARTNO" value="ERJ3GEYJ101V"/>
-</part>
-<part name="R301" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
-<attribute name="PARTNO" value="ERJ3GEYJ101V"/>
-</part>
 <part name="DD12" library="rom" deviceset="IN24*" device="D" technology="AA32A">
 <attribute name="PARTNO" value="IN24AA32AD"/>
 </part>
@@ -22227,12 +22221,35 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="PARTNO" value="C0603C102K5RACTU"/>
 </part>
 <part name="P+46" library="supply" deviceset="+5V" device=""/>
+<part name="VD211" library="diode" deviceset="DIODE-ZENER-" device="" value="3.3V">
+<attribute name="PARTNO" value="BZV55-C3V3"/>
+</part>
+<part name="VD212" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
+<attribute name="PARTNO" value="SMBJ24CA"/>
+</part>
+<part name="GND189" library="supply" deviceset="GND" device=""/>
+<part name="R364" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<attribute name="PARTNO" value="RC2512JK-071KL"/>
+</part>
+<part name="C147" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
+<attribute name="PARTNO" value="C0603C104K5RACTU"/>
+</part>
+<part name="GND232" library="supply" deviceset="GND" device=""/>
+<part name="R365" library="rcl" deviceset="R-EU_" device="R0603" value="36kOhm">
+<attribute name="PARTNO" value="ERJ3GEYJ363V"/>
+</part>
+<part name="R366" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<attribute name="PARTNO" value="RC0603FR-13100KL"/>
+</part>
+<part name="GND233" library="supply" deviceset="GND" device=""/>
+<part name="GND234" library="supply" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <description>mcu</description>
 <plain>
 <text x="327.66" y="17.78" size="6.4516" layer="91" ratio="11">TODO:</text>
+<text x="355.6" y="20.32" size="1.778" layer="91">external connector for mesonin board</text>
 </plain>
 <instances>
 <instance part="DD1" gate="G$1" x="200.66" y="187.96">
@@ -22356,12 +22373,6 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="PARTNO" x="86.36" y="251.46" size="1.27" layer="96" display="off"/>
 </instance>
 <instance part="+3V82" gate="G$1" x="63.5" y="251.46" rot="MR270"/>
-<instance part="R300" gate="G$1" x="317.5" y="205.74" rot="MR0">
-<attribute name="PARTNO" value="ERJ3GEYJ101V" x="317.5" y="205.74" size="1.524" layer="96" rot="R270" display="off"/>
-</instance>
-<instance part="R301" gate="G$1" x="322.58" y="203.2" rot="MR0">
-<attribute name="PARTNO" value="ERJ3GEYJ101V" x="322.58" y="203.2" size="1.524" layer="96" rot="R270" display="off"/>
-</instance>
 <instance part="DD12" gate="G$1" x="256.54" y="76.2">
 <attribute name="PARTNO" x="256.54" y="76.2" size="1.27" layer="96" display="off"/>
 </instance>
@@ -23125,32 +23136,18 @@ Manufacturer TE CONNECTIVITY</description>
 <wire x1="162.56" y1="12.7" x2="160.02" y2="12.7" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$236" class="0">
-<segment>
-<pinref part="DD1" gate="G$1" pin="PA10(USART1_RX/TIM1_CH3)*"/>
-<pinref part="R301" gate="G$1" pin="2"/>
-<wire x1="309.88" y1="203.2" x2="317.5" y2="203.2" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="USART_TO_MCU" class="0">
 <segment>
-<pinref part="R301" gate="G$1" pin="1"/>
-<wire x1="327.66" y1="203.2" x2="330.2" y2="203.2" width="0.1524" layer="91"/>
 <label x="330.2" y="203.2" size="1.27" layer="95" xref="yes"/>
-</segment>
-</net>
-<net name="N$242" class="0">
-<segment>
-<pinref part="DD1" gate="G$1" pin="PA9(USART1_TX/TIM1_CH2)*"/>
-<pinref part="R300" gate="G$1" pin="2"/>
-<wire x1="309.88" y1="205.74" x2="312.42" y2="205.74" width="0.1524" layer="91"/>
+<pinref part="DD1" gate="G$1" pin="PA10(USART1_RX/TIM1_CH3)*"/>
+<wire x1="330.2" y1="203.2" x2="309.88" y2="203.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="USART_FROM_MCU" class="0">
 <segment>
-<pinref part="R300" gate="G$1" pin="1"/>
-<wire x1="322.58" y1="205.74" x2="330.2" y2="205.74" width="0.1524" layer="91"/>
 <label x="330.2" y="205.74" size="1.27" layer="95" xref="yes"/>
+<pinref part="DD1" gate="G$1" pin="PA9(USART1_TX/TIM1_CH2)*"/>
+<wire x1="330.2" y1="205.74" x2="309.88" y2="205.74" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="I2C_SCL" class="0">
@@ -23274,6 +23271,27 @@ Manufacturer TE CONNECTIVITY</description>
 <pinref part="R320" gate="G$1" pin="1"/>
 <pinref part="DD1" gate="G$1" pin="PE0(TIM4_ETR/FSMC_NBL0)*"/>
 <wire x1="317.5" y1="193.04" x2="309.88" y2="193.04" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="SPEEDOMETER" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PE9(FSMC_D6/TIM1_CH1)*"/>
+<wire x1="309.88" y1="170.18" x2="330.2" y2="170.18" width="0.1524" layer="91"/>
+<label x="330.2" y="170.18" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="TACHOMETER" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PD12(FSMC_A17/USART3_RTS/TIM4_CH1)*"/>
+<wire x1="109.22" y1="119.38" x2="91.44" y2="119.38" width="0.1524" layer="91"/>
+<label x="91.44" y="119.38" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="FREQMETER" class="0">
+<segment>
+<pinref part="DD1" gate="G$1" pin="PC6(I2S2_MCK/TIM8_CH1/SDIO_D6/TIM3_CH1)*"/>
+<wire x1="309.88" y1="134.62" x2="330.2" y2="134.62" width="0.1524" layer="91"/>
+<label x="330.2" y="134.62" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
@@ -33777,6 +33795,28 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="256.54" y="96.52" size="1.524" layer="96" rot="R90" display="off"/>
 </instance>
 <instance part="P+46" gate="1" x="264.16" y="106.68" rot="R270"/>
+<instance part="VD211" gate="G$1" x="48.26" y="111.76" rot="MR0">
+<attribute name="PARTNO" x="45.72" y="111.76" size="1.27" layer="96" rot="MR270" display="off"/>
+</instance>
+<instance part="VD212" gate="G$1" x="48.26" y="142.24" rot="MR0">
+<attribute name="PARTNO" value="SMBJ24CA" x="48.26" y="142.24" size="1.524" layer="96" rot="MR180" display="off"/>
+</instance>
+<instance part="GND189" gate="1" x="55.88" y="142.24" rot="MR270"/>
+<instance part="R364" gate="G$1" x="43.18" y="149.86" rot="MR90">
+<attribute name="PARTNO" value="RC2512JK-071KL" x="43.18" y="149.86" size="1.778" layer="96" rot="MR0" display="off"/>
+</instance>
+<instance part="C147" gate="G$1" x="48.26" y="134.62" rot="R270">
+<attribute name="PARTNO" value="C0603C104K5RACTU" x="48.26" y="134.62" size="1.524" layer="96" rot="R270" display="off"/>
+</instance>
+<instance part="GND232" gate="1" x="55.88" y="134.62" rot="MR270"/>
+<instance part="R365" gate="G$1" x="48.26" y="119.38" rot="MR0">
+<attribute name="PARTNO" value="ERJ3GEYJ363V" x="48.26" y="119.38" size="1.27" layer="96" rot="MR0" display="off"/>
+</instance>
+<instance part="R366" gate="G$1" x="43.18" y="127" rot="MR270">
+<attribute name="PARTNO" value="RC0603FR-13100KL" x="43.18" y="127" size="1.778" layer="96" rot="MR270" display="off"/>
+</instance>
+<instance part="GND233" gate="1" x="55.88" y="119.38" rot="MR270"/>
+<instance part="GND234" gate="1" x="55.88" y="111.76" rot="MR270"/>
 </instances>
 <busses>
 </busses>
@@ -34061,10 +34101,10 @@ Manufacturer TE CONNECTIVITY</description>
 <wire x1="81.28" y1="160.02" x2="81.28" y2="182.88" width="0.1524" layer="91"/>
 <junction x="81.28" y="160.02"/>
 <junction x="81.28" y="182.88"/>
-<wire x1="68.58" y1="182.88" x2="68.58" y2="175.26" width="0.1524" layer="91"/>
-<pinref part="XP10" gate="G$1" pin="3"/>
-<pinref part="XP10" gate="G$1" pin="3"/>
-<wire x1="68.58" y1="175.26" x2="30.48" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="182.88" x2="68.58" y2="172.72" width="0.1524" layer="91"/>
+<pinref part="XP10" gate="G$1" pin="4"/>
+<pinref part="XP10" gate="G$1" pin="4"/>
+<wire x1="30.48" y1="172.72" x2="68.58" y2="172.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PHASE_3" class="0">
@@ -34077,13 +34117,12 @@ Manufacturer TE CONNECTIVITY</description>
 <wire x1="81.28" y1="93.98" x2="81.28" y2="116.84" width="0.1524" layer="91"/>
 <junction x="81.28" y="93.98"/>
 <junction x="81.28" y="116.84"/>
-<wire x1="66.04" y1="116.84" x2="66.04" y2="172.72" width="0.1524" layer="91"/>
-<pinref part="XP10" gate="G$1" pin="4"/>
-<pinref part="XP10" gate="G$1" pin="4"/>
-<wire x1="66.04" y1="172.72" x2="30.48" y2="172.72" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="116.84" x2="66.04" y2="167.64" width="0.1524" layer="91"/>
+<pinref part="XP10" gate="G$1" pin="6"/>
+<wire x1="66.04" y1="167.64" x2="30.48" y2="167.64" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="TACHO" class="0">
+<net name="TACHO_RAW" class="0">
 <segment>
 <pinref part="R302" gate="G$1" pin="2"/>
 <pinref part="XP10" gate="G$1" pin="1"/>
@@ -34309,6 +34348,26 @@ Manufacturer TE CONNECTIVITY</description>
 <wire x1="220.98" y1="121.92" x2="220.98" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="DA17" gate=".1" pin="!D"/>
 </segment>
+<segment>
+<pinref part="VD212" gate="G$1" pin="A2"/>
+<pinref part="GND189" gate="1" pin="GND"/>
+<wire x1="55.88" y1="142.24" x2="50.8" y2="142.24" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C147" gate="G$1" pin="1"/>
+<pinref part="GND232" gate="1" pin="GND"/>
+<wire x1="50.8" y1="134.62" x2="55.88" y2="134.62" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND233" gate="1" pin="GND"/>
+<pinref part="R365" gate="G$1" pin="1"/>
+<wire x1="55.88" y1="119.38" x2="53.34" y2="119.38" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND234" gate="1" pin="GND"/>
+<pinref part="VD211" gate="G$1" pin="A"/>
+<wire x1="55.88" y1="111.76" x2="50.8" y2="111.76" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$243" class="0">
 <segment>
@@ -34325,7 +34384,7 @@ Manufacturer TE CONNECTIVITY</description>
 <junction x="43.18" y="208.28"/>
 </segment>
 </net>
-<net name="TACHO_CLEAN" class="0">
+<net name="TACHOMETER" class="0">
 <segment>
 <pinref part="R303" gate="G$1" pin="2"/>
 <pinref part="R306" gate="G$1" pin="2"/>
@@ -34953,6 +35012,44 @@ Manufacturer TE CONNECTIVITY</description>
 <wire x1="200.66" y1="91.44" x2="182.88" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="200.66" y1="83.82" x2="200.66" y2="91.44" width="0.1524" layer="91"/>
 <junction x="200.66" y="91.44"/>
+</segment>
+</net>
+<net name="FREQ_RAW" class="0">
+<segment>
+<pinref part="XP10" gate="G$1" pin="3"/>
+<pinref part="XP10" gate="G$1" pin="3"/>
+<pinref part="R364" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="154.94" x2="43.18" y2="175.26" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="175.26" x2="30.48" y2="175.26" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$313" class="0">
+<segment>
+<pinref part="R364" gate="G$1" pin="1"/>
+<pinref part="VD212" gate="G$1" pin="A1"/>
+<wire x1="43.18" y1="144.78" x2="43.18" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="142.24" x2="45.72" y2="142.24" width="0.1524" layer="91"/>
+<pinref part="C147" gate="G$1" pin="2"/>
+<wire x1="45.72" y1="134.62" x2="43.18" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="134.62" x2="43.18" y2="142.24" width="0.1524" layer="91"/>
+<junction x="43.18" y="142.24"/>
+<pinref part="R366" gate="G$1" pin="1"/>
+<wire x1="43.18" y1="132.08" x2="43.18" y2="134.62" width="0.1524" layer="91"/>
+<junction x="43.18" y="134.62"/>
+</segment>
+</net>
+<net name="FREQMETER" class="0">
+<segment>
+<pinref part="R365" gate="G$1" pin="2"/>
+<pinref part="R366" gate="G$1" pin="2"/>
+<wire x1="43.18" y1="119.38" x2="43.18" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="119.38" x2="43.18" y2="111.76" width="0.1524" layer="91"/>
+<junction x="43.18" y="119.38"/>
+<pinref part="VD211" gate="G$1" pin="C"/>
+<wire x1="43.18" y1="111.76" x2="45.72" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="111.76" x2="43.18" y2="106.68" width="0.1524" layer="91"/>
+<junction x="43.18" y="111.76"/>
+<label x="43.18" y="106.68" size="1.27" layer="95" rot="MR270" xref="yes"/>
 </segment>
 </net>
 </nets>
