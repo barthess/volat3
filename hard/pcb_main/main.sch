@@ -22366,7 +22366,7 @@ Manufacturer TE CONNECTIVITY</description>
 <instance part="R299" gate="G$1" x="231.14" y="30.48">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="231.14" y="30.48" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="AGND18" gate="VR1" x="238.76" y="30.48"/>
+<instance part="AGND18" gate="VR1" x="241.3" y="30.48"/>
 <instance part="C111" gate="G$1" x="96.52" y="248.92">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="96.52" y="248.92" size="1.778" layer="96" display="off"/>
 </instance>
@@ -22444,7 +22444,7 @@ Manufacturer TE CONNECTIVITY</description>
 <segment>
 <pinref part="AGND18" gate="VR1" pin="AGND"/>
 <pinref part="R299" gate="G$1" pin="2"/>
-<wire x1="238.76" y1="30.48" x2="236.22" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="30.48" x2="236.22" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$14" class="0">
