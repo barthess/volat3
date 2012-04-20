@@ -5810,10 +5810,10 @@ design rules under a new name.</description>
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="97" y="47" size="1.778" layer="27" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="97" y="47" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R319" library="rcl" package="RTRIMTSM53YJ" value="" x="94" y="36.5" rot="R180">
+<element name="R319" library="rcl" package="RTRIMTSM53YJ" value="1kOhm" x="94" y="36.5" rot="R180">
 <attribute name="PARTNO" value="TSM4YJ102KR05" x="94" y="36.5" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="S1" library="switch" package="B3S-10XX" value="" x="5" y="16" rot="R270">
+<element name="S1" library="switch" package="B3S-10XX" value="RESET" x="5" y="16" rot="R270">
 <attribute name="LABEL" value="RESET" x="5" y="16" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="PARTNO" value="4-1437565-2" x="5" y="16" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
