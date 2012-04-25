@@ -116,15 +116,11 @@
 </layers>
 <board>
 <plain>
-<wire x1="10" y1="0" x2="56" y2="0" width="0" layer="20"/>
-<wire x1="64" y1="0" x2="100" y2="0" width="0" layer="20"/>
-<wire x1="110" y1="0" x2="146" y2="0" width="0" layer="20"/>
-<wire x1="154" y1="0" x2="200" y2="0" width="0" layer="20"/>
+<wire x1="10" y1="0" x2="100" y2="0" width="0" layer="20"/>
+<wire x1="110" y1="0" x2="200" y2="0" width="0" layer="20"/>
 <wire x1="210" y1="10" x2="210" y2="122" width="0" layer="20"/>
-<wire x1="200" y1="132" x2="154" y2="132" width="0" layer="20"/>
-<wire x1="146" y1="132" x2="110" y2="132" width="0" layer="20"/>
-<wire x1="100" y1="132" x2="64" y2="132" width="0" layer="20"/>
-<wire x1="56" y1="132" x2="10" y2="132" width="0" layer="20"/>
+<wire x1="200" y1="132" x2="110" y2="132" width="0" layer="20"/>
+<wire x1="100" y1="132" x2="10" y2="132" width="0" layer="20"/>
 <wire x1="0" y1="122" x2="0" y2="10" width="0" layer="20"/>
 <wire x1="0" y1="10" x2="10" y2="0" width="0" layer="20" curve="-90"/>
 <wire x1="210" y1="10" x2="200" y2="0" width="0" layer="20" curve="90"/>
@@ -136,33 +132,25 @@
 <wire x1="100" y1="132" x2="100" y2="122" width="0" layer="20"/>
 <wire x1="100" y1="122" x2="110" y2="122" width="0" layer="20"/>
 <wire x1="110" y1="122" x2="110" y2="132" width="0" layer="20"/>
-<wire x1="64" y1="132" x2="64" y2="127" width="0" layer="20"/>
-<wire x1="64" y1="127" x2="56" y2="127" width="0" layer="20"/>
-<wire x1="56" y1="127" x2="56" y2="132" width="0" layer="20"/>
-<wire x1="146" y1="132" x2="146" y2="127" width="0" layer="20"/>
-<wire x1="146" y1="127" x2="154" y2="127" width="0" layer="20"/>
-<wire x1="154" y1="127" x2="154" y2="132" width="0" layer="20"/>
-<wire x1="146" y1="0" x2="146" y2="5" width="0" layer="20"/>
-<wire x1="146" y1="5" x2="154" y2="5" width="0" layer="20"/>
-<wire x1="154" y1="5" x2="154" y2="0" width="0" layer="20"/>
-<wire x1="64" y1="0" x2="64" y2="5" width="0" layer="20"/>
-<wire x1="64" y1="5" x2="56" y2="5" width="0" layer="20"/>
-<wire x1="56" y1="5" x2="56" y2="0" width="0" layer="20"/>
-<dimension x1="0" y1="10" x2="13" y2="4" x3="6.5" y3="-16" layer="48" dtype="horizontal"/>
-<dimension x1="10" y1="0" x2="13" y2="4" x3="-7" y3="2" layer="48" dtype="vertical"/>
 <dimension x1="0" y1="10" x2="210" y2="10" x3="105" y3="-30" layer="48"/>
-<dimension x1="56" y1="0" x2="13" y2="0" x3="34.5" y3="-16" layer="48" dtype="diameter"/>
-<dimension x1="56" y1="5" x2="64" y2="5" x3="60" y3="-16" layer="48"/>
-<dimension x1="64" y1="5" x2="100" y2="5" x3="82" y3="-16" layer="48"/>
 <dimension x1="100" y1="10" x2="110" y2="7" x3="105" y3="-16" layer="48" dtype="horizontal"/>
-<wire x1="105" y1="4" x2="105" y2="134" width="0.15" layer="48" style="dashdot"/>
+<wire x1="105" y1="-1" x2="105" y2="136" width="0.15" layer="48" style="dashdot"/>
 <dimension x1="200" y1="0" x2="200" y2="132" x3="223" y3="66" layer="48" dtype="vertical"/>
-<dimension x1="206" y1="0" x2="206" y2="13" x3="218" y3="6.5" layer="48" dtype="vertical"/>
-<dimension x1="210" y1="10" x2="206" y2="13" x3="208" y3="-8" layer="48" dtype="horizontal"/>
 <dimension x1="0" y1="132" x2="9.138115625" y2="127.938615625" x3="4.56905625" y3="129.96930625" layer="48" dtype="radius"/>
-<dimension x1="100" y1="0" x2="96" y2="4" x3="98" y3="-7" layer="48" dtype="horizontal"/>
-<dimension x1="100" y1="0" x2="96" y2="4" x3="89" y3="2" layer="48" dtype="vertical"/>
 <wire x1="213" y1="66" x2="-4" y2="66" width="0.15" layer="48" style="dashdot"/>
+<dimension x1="13" y1="-16" x2="100" y2="-16" x3="56.5" y3="-16" layer="48"/>
+<dimension x1="18" y1="4" x2="18" y2="0" x3="-8" y3="2" layer="48" dtype="vertical"/>
+<dimension x1="13" y1="8" x2="0" y2="8" x3="6.5" y3="-16" layer="48" dtype="vertical"/>
+<dimension x1="100" y1="0" x2="100" y2="4" x3="90" y3="2" layer="48"/>
+<dimension x1="96" y1="9" x2="100" y2="9" x3="98" y3="-8" layer="48"/>
+<wire x1="13" y1="133" x2="13" y2="123" width="0.15" layer="48"/>
+<wire x1="7" y1="128" x2="18" y2="128" width="0.15" layer="48"/>
+<wire x1="109" y1="128" x2="119" y2="128" width="0.15" layer="48"/>
+<wire x1="114" y1="133" x2="114" y2="124" width="0.15" layer="48"/>
+<wire x1="202" y1="119" x2="211" y2="119" width="0.15" layer="48"/>
+<wire x1="206" y1="124" x2="206" y2="115" width="0.15" layer="48"/>
+<dimension x1="206" y1="17" x2="210" y2="17" x3="208" y3="-8" layer="48"/>
+<dimension x1="203" y1="13" x2="203" y2="0" x3="218" y3="6.5" layer="48"/>
 </plain>
 <libraries>
 <library name="mcu">
@@ -6238,6 +6226,7 @@ design rules under a new name.</description>
 <polygon width="0.3" layer="1" spacing="0.5" isolate="0.2" rank="6">
 <vertex x="0" y="132"/>
 <vertex x="0" y="0"/>
+<vertex x="210" y="0"/>
 <vertex x="210" y="20"/>
 <vertex x="171" y="20"/>
 <vertex x="171" y="74"/>
