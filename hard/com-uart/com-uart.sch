@@ -299,8 +299,8 @@ RJ45 with Ethernet Balun</description>
 <pad name="6" x="-1.905" y="-8.89" drill="0.9144" diameter="1.9"/>
 <pad name="7" x="-3.175" y="-6.35" drill="0.9144" diameter="1.9"/>
 <pad name="8" x="-4.445" y="-8.89" drill="0.9144" diameter="1.9"/>
-<pad name="S1" x="-7.874" y="-3.048" drill="1.6" diameter="2.54"/>
-<pad name="S2" x="7.874" y="-3.048" drill="1.6" diameter="2.54"/>
+<pad name="S1" x="-7.874" y="3.302" drill="1.6" diameter="3.81"/>
+<pad name="S2" x="7.874" y="3.302" drill="1.6" diameter="3.81"/>
 <text x="-10.16" y="-10.16" size="1.016" layer="25" ratio="18" rot="R90">&gt;NAME</text>
 <text x="11.43" y="-10.795" size="0.8128" layer="27" rot="R90">&gt;VALUE</text>
 <text x="5.08" y="-5.715" size="0.8128" layer="51" ratio="12">1</text>
@@ -450,7 +450,6 @@ RJ45 with Ethernet Balun</description>
 </symbols>
 <devicesets>
 <deviceset name="PLD_2X05" prefix="XP">
-<description>LUT optimized header.</description>
 <gates>
 <gate name="G$1" symbol="HEADER-10" x="0" y="0"/>
 </gates>
