@@ -10359,8 +10359,8 @@ Cermet, abgedichtet nach IP67</description>
 <wire x1="-12.7" y1="0" x2="-11.557" y2="0" width="0.2032" layer="21"/>
 <wire x1="16.51" y1="0" x2="14.732" y2="0" width="0.762" layer="51"/>
 <wire x1="-19.05" y1="0" x2="-17.272" y2="0" width="0.762" layer="51"/>
-<pad name="+" x="-19.05" y="0" drill="1.1176" diameter="3.1496"/>
-<pad name="-" x="16.51" y="0" drill="1.1176" diameter="3.1496" shape="octagon"/>
+<pad name="+" x="-19.05" y="0" drill="1" diameter="3.1496"/>
+<pad name="-" x="16.51" y="0" drill="1" diameter="3.1496" shape="octagon"/>
 <text x="-16.1925" y="8.89" size="1.016" layer="25" ratio="18">&gt;NAME</text>
 <text x="-8.89" y="-2.54" size="0.8128" layer="27" ratio="10">&gt;VALUE</text>
 <rectangle x1="-10.541" y1="-1.524" x2="-10.033" y2="1.524" layer="21"/>
@@ -17466,14 +17466,14 @@ body 3.9 mm/JEDEC MS-012AA</description>
 <wire x1="-3.5" y1="0" x2="-3.5" y2="6" width="0.127" layer="40"/>
 <wire x1="3.5" y1="0" x2="3.5" y2="6" width="0.127" layer="40"/>
 <circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
-<hole x="0" y="0" drill="3.3"/>
+<hole x="0" y="0" drill="3.5"/>
 <circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
 </package>
 <package name="STAND-OFF">
 <description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
 This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
 <circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
-<hole x="0" y="0" drill="3.3"/>
+<hole x="0" y="0" drill="3.5"/>
 <circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
 </package>
 </packages>
