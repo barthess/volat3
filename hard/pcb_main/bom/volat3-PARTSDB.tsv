@@ -2,18 +2,18 @@ Mfg Part Num	Mfg Name	VID	Vendor Part Num	Unit Price	Description (bom-ex)	Countr
 							
 STM32F103VDT6	STMicroelectronics	Farnell	1624140			FR France	
 LM2596S-5.0		Farnell	1469195		IC, DC/DC CONVERTER, 3A		
-IN74HC11AD		Integral	хз		Triple 3AND		
-IN74HC123AD		Integral	хз		Double monostable multivibrator		
-IN74HC165AD		Integral	хз		8-Bit Parallel-Input Serial-Output Shift Register		
-IN74HC595AD		Integral	хз		8-bit serial-in, parallel-out shift register		
-IN24AA32AD		Integral	хз		EEPROM, I2C, 32K		
+IN74HC11AD		Integral			Triple 3AND		
+IN74HC123AD		Integral			Double monostable multivibrator		
+IN74HC165AD		Integral			8-Bit Parallel-Input Serial-Output Shift Register		
+IN74HC595AD		Integral			8-bit serial-in, parallel-out shift register		
+IN24AA32AD		Integral			EEPROM, I2C, 32K		
 SN65HVD232D		Farnell	1103107		CAN TRANSCEIVER, SOIC8		
 USBUF01W6	STMicroelectronics	Mouser	511-USBUF01W6				
-IL5233G		Integral	хз		POSITIVE VOLTAGE REGULATOR, 3V3, 800mA		
-ILX3232D		Integral	хз		RS-232 transceiver, 3V3		
+IL5233G		Integral			POSITIVE VOLTAGE REGULATOR, 3V3, 800mA		
+ILX3232D		Integral			RS-232 transceiver, 3V3		
 SA555D		Farnell	9589945		TIMER PRECISION, SMD, SOIC8, 555, -40°C to +85°C		
-IL311AD		Integral	хз		Voltage comparator		
-IL33091AD		Integral	хз		MOSFET driver		
+IL311AD		Integral			Voltage comparator		
+IL33091AD		Integral			MOSFET driver		
 LM2904M		Farnell	9486860		OP AMP, DUAL IND SPEC, 2904, SOIC8		
 							
 IRFR430APBF		Farnell	8658846		MOSFET, N, 500V, 5A, D-PAK		

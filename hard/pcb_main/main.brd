@@ -36,8 +36,8 @@
 <layer number="26" name="bNames" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -132,11 +132,11 @@
 <wire x1="100" y1="132" x2="100" y2="122" width="0" layer="20"/>
 <wire x1="100" y1="122" x2="110" y2="122" width="0" layer="20"/>
 <wire x1="110" y1="122" x2="110" y2="132" width="0" layer="20"/>
-<dimension x1="0" y1="10" x2="210" y2="10" x3="105" y3="-30" layer="48"/>
+<dimension x1="0" y1="10" x2="210" y2="10" x3="105" y3="-25" layer="48"/>
 <dimension x1="100" y1="10" x2="110" y2="7" x3="105" y3="-16" layer="48" dtype="horizontal"/>
 <wire x1="105" y1="-1" x2="105" y2="136" width="0.15" layer="48" style="dashdot"/>
 <dimension x1="200" y1="0" x2="200" y2="132" x3="223" y3="66" layer="48" dtype="vertical"/>
-<dimension x1="0" y1="132" x2="9.138115625" y2="127.938615625" x3="4.56905625" y3="129.96930625" layer="48" dtype="radius"/>
+<dimension x1="0" y1="132" x2="7.845128125" y2="125.798875" x3="3.9225625" y3="128.8994375" layer="48" dtype="radius"/>
 <wire x1="213" y1="66" x2="-4" y2="66" width="0.15" layer="48" style="dashdot"/>
 <dimension x1="13" y1="-16" x2="100" y2="-16" x3="56.5" y3="-16" layer="48"/>
 <dimension x1="18" y1="4" x2="18" y2="0" x3="-8" y3="2" layer="48" dtype="vertical"/>
@@ -151,6 +151,12 @@
 <wire x1="206" y1="124" x2="206" y2="115" width="0.15" layer="48"/>
 <dimension x1="206" y1="17" x2="210" y2="17" x3="208" y3="-8" layer="48"/>
 <dimension x1="203" y1="13" x2="203" y2="0" x3="218" y3="6.5" layer="48"/>
+<dimension x1="18" y1="128" x2="18" y2="132" x3="23" y3="130" layer="48"/>
+<dimension x1="114" y1="133" x2="110" y2="133" x3="112" y3="139" layer="48"/>
+<dimension x1="119" y1="128" x2="119" y2="132" x3="125" y3="130" layer="48"/>
+<dimension x1="206" y1="115" x2="210" y2="115" x3="208" y3="115" layer="48"/>
+<dimension x1="202" y1="119" x2="202" y2="132" x3="196" y3="125.5" layer="48"/>
+<dimension x1="0" y1="122" x2="13" y2="122" x3="6.5" y3="139" layer="48"/>
 </plain>
 <libraries>
 <library name="mcu">
@@ -3305,7 +3311,7 @@ design rules under a new name.</description>
 <element name="VD17" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="54" y="92" rot="R270">
 <attribute name="PARTNO" value="SMBJ24CA" x="54" y="92" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="ZQ1" library="crystal" package="HC49U-V" value="8MHz" x="44.13369375" y="76.47815" rot="MR225">
+<element name="ZQ1" library="crystal" package="HC49U-V" value="4MHz" x="44.13369375" y="76.47815" rot="MR225">
 <attribute name="PARTNO" value="CA-4.000-18-3050-X" x="44.13369375" y="76.47815" size="1.778" layer="28" rot="MR225" display="off"/>
 </element>
 <element name="C5" library="rcl" package="C0603" value="22pF" x="46.42623125" y="76.4333875" rot="R135">
