@@ -10,7 +10,7 @@ AutoSaveProject=1
 
 [Win_1]
 Type="Schematic Editor"
-Loc="0 0 1599 849"
+Loc="0 0 1279 849"
 State=3
 Number=2
 File="com-uart.sch"
@@ -51,7 +51,7 @@ Sheet=1
 
 [Win_2]
 Type="Board Editor"
-Loc="0 0 1599 849"
+Loc="0 0 1279 849"
 State=1
 Number=1
 File="com-uart.brd"
@@ -95,7 +95,7 @@ State=2
 Number=0
 
 [Desktop]
-Screen="1600 900"
+Screen="1280 960"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"

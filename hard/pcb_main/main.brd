@@ -8,7 +8,7 @@
 </settings>
 <grid distance="0.5" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -28,14 +28,14 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="5" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="5" fill="1" visible="yes" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="5" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -46,9 +46,9 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
@@ -58,7 +58,7 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="6" fill="1" visible="no" active="yes"/>
 <layer number="52" name="bDocu" color="3" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
@@ -14436,10 +14436,14 @@ design rules under a new name.</description>
 <contactref element="DD3" pad="6"/>
 <contactref element="DD3" pad="11"/>
 <wire x1="74.9266" y1="38.46" x2="77.96" y2="38.46" width="0.15" layer="1"/>
-<wire x1="77.96" y1="38.46" x2="79" y2="39.5" width="0.15" layer="1"/>
-<wire x1="79" y1="39.5" x2="80.8434" y2="39.5" width="0.15" layer="1"/>
-<wire x1="80.8434" y1="39.5" x2="81.0734" y2="39.73" width="0.15" layer="1"/>
-<wire x1="81.0734" y1="39.73" x2="81.0734" y2="41" width="0.15" layer="1"/>
+<wire x1="77.96" y1="38.46" x2="79.23" y2="39.73" width="0.15" layer="1"/>
+<wire x1="81.0734" y1="39.73" x2="79.77" y2="39.73" width="0.15" layer="1"/>
+<wire x1="79.77" y1="39.73" x2="79.5" y2="40" width="0.15" layer="1"/>
+<wire x1="79.5" y1="40" x2="79.5" y2="40.5" width="0.15" layer="1"/>
+<wire x1="79.5" y1="40.5" x2="80" y2="41" width="0.15" layer="1"/>
+<wire x1="80" y1="41" x2="81" y2="41" width="0.15" layer="1"/>
+<wire x1="81.0734" y1="39.73" x2="79.23" y2="39.73" width="0.15" layer="1"/>
+<wire x1="81" y1="41" x2="81.0734" y2="41" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$246">
 <contactref element="DD3" pad="9"/>
@@ -14634,13 +14638,17 @@ design rules under a new name.</description>
 <contactref element="DA10" pad="6"/>
 <contactref element="C34" pad="1"/>
 <contactref element="R79" pad="1"/>
-<wire x1="91.365" y1="46.5734" x2="92.635" y2="46.5734" width="0.15" layer="1"/>
 <wire x1="96.2062" y1="45" x2="93.5" y2="45" width="0.15" layer="1"/>
 <wire x1="93.5" y1="45" x2="92.635" y2="45.865" width="0.15" layer="1"/>
 <wire x1="92.635" y1="45.865" x2="92.635" y2="46.5734" width="0.15" layer="1"/>
 <wire x1="96.2062" y1="45" x2="96.2062" y2="42.5" width="0.15" layer="1"/>
 <wire x1="96.2062" y1="42.5" x2="96.2062" y2="41.0876" width="0.15" layer="1"/>
 <wire x1="96.2062" y1="41.0876" x2="97.2938" y2="40" width="0.15" layer="1"/>
+<wire x1="92.635" y1="46.5734" x2="92.635" y2="47.865" width="0.15" layer="1"/>
+<wire x1="92.635" y1="47.865" x2="92.5" y2="48" width="0.15" layer="1"/>
+<wire x1="92.5" y1="48" x2="91.5" y2="48" width="0.15" layer="1"/>
+<wire x1="91.5" y1="48" x2="91.365" y2="47.865" width="0.15" layer="1"/>
+<wire x1="91.365" y1="47.865" x2="91.365" y2="46.5734" width="0.15" layer="1"/>
 </signal>
 <signal name="N$265">
 <contactref element="C39" pad="1"/>
