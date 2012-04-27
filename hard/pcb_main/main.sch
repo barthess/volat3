@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -34610,7 +34610,7 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="NAME" x="98.044" y="136.7" size="1.524" layer="95" rot="MR180"/>
 <attribute name="VALUE" x="93.298" y="131.445" size="1.524" layer="96" rot="MR90"/>
 </instance>
-<instance part="+3V79" gate="G$1" x="81.28" y="144.78" rot="MR270"/>
+<instance part="+3V79" gate="G$1" x="106.68" y="144.78" rot="MR90"/>
 <instance part="R309" gate="G$1" x="101.6" y="114.3" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ3GEYJ473V" x="101.6" y="114.3" size="1.27" layer="96" rot="MR90" display="off"/>
 <attribute name="NAME" x="103.759" y="117.015" size="1.524" layer="95" rot="MR180"/>
@@ -34642,7 +34642,7 @@ Manufacturer TE CONNECTIVITY</description>
 <instance part="GND181" gate="1" x="60.96" y="167.64" rot="R90"/>
 <instance part="XS1" gate="G$1" x="58.42" y="177.8" smashed="yes" rot="MR0">
 <attribute name="PARTNO" x="58.42" y="177.8" size="1.27" layer="96" rot="MR0" display="off"/>
-<attribute name="NAME" x="53.34" y="181.102" size="1.524" layer="95" rot="MR0"/>
+<attribute name="NAME" x="48.895" y="179.832" size="1.524" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="53.594" y="152.654" size="1.524" layer="96" rot="MR0"/>
 </instance>
 <instance part="L4" gate="G$1" x="68.58" y="177.8" smashed="yes">
@@ -34720,6 +34720,7 @@ Manufacturer TE CONNECTIVITY</description>
 <segment>
 <pinref part="VT3" gate="G$1" pin="C"/>
 <pinref part="+3V79" gate="G$1" pin="+3V3"/>
+<wire x1="104.14" y1="144.78" x2="83.82" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="144.78" x2="83.82" y2="142.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
