@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.5" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
+<grid distance="0.25" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.005" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -2007,15 +2007,15 @@ Source: www.infineon.com .. BTS428L2_20030912.pdf</description>
 <smd name="TAB" x="0" y="1.5" dx="6" dy="6.4" layer="1" thermals="no"/>
 <text x="-3.61" y="-3.175" size="1.016" layer="25" ratio="18" rot="R90">&gt;NAME</text>
 <text x="4.48" y="-3.175" size="0.762" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-2.58" y1="-3.85" x2="-1.98" y2="-3.05" layer="21"/>
-<rectangle x1="-1.44" y1="-3.85" x2="-0.84" y2="-3.05" layer="21"/>
-<rectangle x1="-0.3" y1="-3.85" x2="0.3" y2="-3.05" layer="21"/>
-<rectangle x1="0.84" y1="-3.85" x2="1.44" y2="-3.05" layer="21"/>
-<rectangle x1="1.98" y1="-3.85" x2="2.58" y2="-3.05" layer="21"/>
-<rectangle x1="-2.58" y1="-5.25" x2="-1.98" y2="-3.85" layer="51"/>
-<rectangle x1="-1.44" y1="-5.25" x2="-0.84" y2="-3.85" layer="51"/>
-<rectangle x1="0.84" y1="-5.25" x2="1.44" y2="-3.85" layer="51"/>
-<rectangle x1="1.98" y1="-5.25" x2="2.58" y2="-3.85" layer="51"/>
+<rectangle x1="-2.58" y1="-3.723" x2="-1.98" y2="-2.923" layer="21"/>
+<rectangle x1="-1.44" y1="-3.723" x2="-0.84" y2="-2.923" layer="21"/>
+<rectangle x1="-0.3" y1="-3.723" x2="0.3" y2="-2.923" layer="21"/>
+<rectangle x1="0.84" y1="-3.723" x2="1.44" y2="-2.923" layer="21"/>
+<rectangle x1="1.98" y1="-3.723" x2="2.58" y2="-2.923" layer="21"/>
+<rectangle x1="-2.58" y1="-5.123" x2="-1.98" y2="-3.723" layer="51"/>
+<rectangle x1="-1.44" y1="-5.123" x2="-0.84" y2="-3.723" layer="51"/>
+<rectangle x1="0.84" y1="-5.123" x2="1.44" y2="-3.723" layer="51"/>
+<rectangle x1="1.98" y1="-5.123" x2="2.58" y2="-3.723" layer="51"/>
 <polygon width="0.0102" layer="51">
 <vertex x="-0.0833" y="2.2133" curve="1.332929"/>
 <vertex x="-0.5816" y="2.2075" curve="6.144407"/>
@@ -2436,8 +2436,8 @@ body 3.9 mm/JEDEC MS-012AC</description>
 <wire x1="-0.635" y1="0" x2="-1.27" y2="0" width="0.1524" layer="21"/>
 <pad name="1" x="-2.413" y="0" drill="0.8"/>
 <pad name="2" x="2.413" y="0" drill="0.8"/>
-<text x="-5.08" y="2.921" size="1.27" layer="25" ratio="10">&gt;NAME</text>
-<text x="-5.08" y="-4.191" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<text x="-2.54" y="2.921" size="1.016" layer="25" ratio="18">&gt;NAME</text>
+<text x="-2.54" y="-3.556" size="0.8128" layer="27" ratio="10">&gt;VALUE</text>
 <rectangle x1="-3.81" y1="-2.794" x2="3.81" y2="2.794" layer="43"/>
 <rectangle x1="-4.318" y1="-2.54" x2="-3.81" y2="2.54" layer="43"/>
 <rectangle x1="-4.826" y1="-2.286" x2="-4.318" y2="2.286" layer="43"/>
@@ -2753,69 +2753,6 @@ body 3.9 mm/JEDEC MS-012AA</description>
 </package>
 </packages>
 </library>
-<library name="74xx-eu">
-<description>&lt;b&gt;TTL Devices, 74xx Series with European Symbols&lt;/b&gt;&lt;p&gt;
-Based on the following sources:
-&lt;ul&gt;
-&lt;li&gt;Texas Instruments &lt;i&gt;TTL Data Book&lt;/i&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;Volume 1, 1996.
-&lt;li&gt;TTL Data Book, Volume 2 , 1993
-&lt;li&gt;National Seminconductor Databook 1990, ALS/LS Logic
-&lt;li&gt;ttl 74er digital data dictionary, ECA Electronic + Acustic GmbH, ISBN 3-88109-032-0
-&lt;li&gt;http://icmaster.com/ViewCompare.asp
-&lt;/ul&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="SO16">
-<description>&lt;b&gt;Small Outline package&lt;/b&gt; 150 mil</description>
-<wire x1="4.699" y1="1.9558" x2="-4.699" y2="1.9558" width="0.1524" layer="51"/>
-<wire x1="4.699" y1="-1.9558" x2="5.08" y2="-1.5748" width="0.1524" layer="21" curve="90"/>
-<wire x1="-5.08" y1="1.5748" x2="-4.699" y2="1.9558" width="0.1524" layer="21" curve="-90"/>
-<wire x1="4.699" y1="1.9558" x2="5.08" y2="1.5748" width="0.1524" layer="21" curve="-90"/>
-<wire x1="-5.08" y1="-1.5748" x2="-4.699" y2="-1.9558" width="0.1524" layer="21" curve="90"/>
-<wire x1="-4.699" y1="-1.9558" x2="4.699" y2="-1.9558" width="0.1524" layer="51"/>
-<wire x1="5.08" y1="-1.5748" x2="5.08" y2="1.5748" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="1.5748" x2="-5.08" y2="0.508" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="0.508" x2="-5.08" y2="-0.508" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="-0.508" x2="-5.08" y2="-1.5748" width="0.1524" layer="21"/>
-<wire x1="-5.08" y1="0.508" x2="-5.08" y2="-0.508" width="0.1524" layer="21" curve="-180"/>
-<wire x1="-5.08" y1="-1.6002" x2="5.08" y2="-1.6002" width="0.0508" layer="21"/>
-<smd name="1" x="-4.445" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="16" x="-4.445" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="2" x="-3.175" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="3" x="-1.905" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="15" x="-3.175" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="14" x="-1.905" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="4" x="-0.635" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="13" x="-0.635" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="5" x="0.635" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="12" x="0.635" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="6" x="1.905" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="7" x="3.175" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="11" x="1.905" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="10" x="3.175" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="8" x="4.445" y="-3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<smd name="9" x="4.445" y="3.0734" dx="0.6604" dy="2.032" layer="1"/>
-<text x="-3.81" y="-0.762" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
-<text x="-5.461" y="-1.905" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
-<rectangle x1="-0.889" y1="1.9558" x2="-0.381" y2="3.0988" layer="51"/>
-<rectangle x1="-4.699" y1="-3.0988" x2="-4.191" y2="-1.9558" layer="51"/>
-<rectangle x1="-3.429" y1="-3.0988" x2="-2.921" y2="-1.9558" layer="51"/>
-<rectangle x1="-2.159" y1="-3.0734" x2="-1.651" y2="-1.9304" layer="51"/>
-<rectangle x1="-0.889" y1="-3.0988" x2="-0.381" y2="-1.9558" layer="51"/>
-<rectangle x1="-2.159" y1="1.9558" x2="-1.651" y2="3.0988" layer="51"/>
-<rectangle x1="-3.429" y1="1.9558" x2="-2.921" y2="3.0988" layer="51"/>
-<rectangle x1="-4.699" y1="1.9558" x2="-4.191" y2="3.0988" layer="51"/>
-<rectangle x1="0.381" y1="-3.0988" x2="0.889" y2="-1.9558" layer="51"/>
-<rectangle x1="1.651" y1="-3.0988" x2="2.159" y2="-1.9558" layer="51"/>
-<rectangle x1="2.921" y1="-3.0988" x2="3.429" y2="-1.9558" layer="51"/>
-<rectangle x1="4.191" y1="-3.0988" x2="4.699" y2="-1.9558" layer="51"/>
-<rectangle x1="0.381" y1="1.9558" x2="0.889" y2="3.0988" layer="51"/>
-<rectangle x1="1.651" y1="1.9558" x2="2.159" y2="3.0988" layer="51"/>
-<rectangle x1="2.921" y1="1.9558" x2="3.429" y2="3.0988" layer="51"/>
-<rectangle x1="4.191" y1="1.9558" x2="4.699" y2="3.0988" layer="51"/>
-</package>
-</packages>
-</library>
 <library name="74xx">
 <description>&lt;b&gt;TTL Devices, 74xx Series with European Symbols&lt;/b&gt;&lt;p&gt;
 Based on the following sources:
@@ -2930,10 +2867,7 @@ Based on the following sources:
 <smd name="2" x="0" y="0" dx="5" dy="3" layer="1"/>
 <smd name="1" x="-4.5" y="0" dx="2" dy="3" layer="1"/>
 <smd name="3" x="4.5" y="0" dx="2" dy="3" layer="1"/>
-<wire x1="-3.25" y1="1.25" x2="-2.75" y2="1.25" width="0.3048" layer="21"/>
-<wire x1="-3.25" y1="-1.25" x2="-2.75" y2="-1.25" width="0.3048" layer="21"/>
-<wire x1="2.75" y1="-1.25" x2="3.25" y2="-1.25" width="0.3048" layer="21"/>
-<wire x1="2.75" y1="1.25" x2="3.25" y2="1.25" width="0.3048" layer="21"/>
+<wire x1="-3.21825" y1="1.25" x2="-2.78175" y2="1.25" width="0.3048" layer="21"/>
 <wire x1="-5" y1="1.25" x2="5" y2="1.25" width="0.127" layer="51"/>
 <wire x1="5" y1="1.25" x2="5" y2="-1.25" width="0.127" layer="51"/>
 <wire x1="5" y1="-1.25" x2="-5" y2="-1.25" width="0.127" layer="51"/>
@@ -2941,7 +2875,10 @@ Based on the following sources:
 <rectangle x1="4.25" y1="-1.25" x2="5" y2="1.25" layer="51"/>
 <rectangle x1="-5" y1="-1.25" x2="-4.25" y2="1.25" layer="51"/>
 <text x="-2.25" y="1.75" size="1.016" layer="25" ratio="18">&gt;NAME</text>
-<text x="-2.5" y="-0.5" size="0.8128" layer="27">&gt;VALUE</text>
+<text x="-2.373" y="-2.532" size="0.8128" layer="27">&gt;VALUE</text>
+<wire x1="2.7825" y1="1.25" x2="3.219" y2="1.25" width="0.3048" layer="21"/>
+<wire x1="-3.21825" y1="-1.25825" x2="-2.78175" y2="-1.25825" width="0.3048" layer="21"/>
+<wire x1="2.7825" y1="-1.25825" x2="3.219" y2="-1.25825" width="0.3048" layer="21"/>
 </package>
 </packages>
 </library>
@@ -3257,7 +3194,7 @@ design rules under a new name.</description>
 </element>
 <element name="R354" library="rcl" package="R0805" value="1kOhm" x="182.25" y="70.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="216.54" y="157.11" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="180.8212" y="69.6387" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.8212" y="70.8887" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="180.8213" y="72.4963" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD58" library="diode" package="SMC" value="3A/60V" x="193.15" y="56.05" smashed="yes" rot="R270">
@@ -3282,7 +3219,7 @@ design rules under a new name.</description>
 </element>
 <element name="D18" library="optocoupler" package="SO16" value="TCMT4100" x="175" y="63" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="TCMT4100" x="175" y="63" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="172.46" y="58.555" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="169.945" y="63.21" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="173.73" y="61.095" size="0.762" layer="28" rot="MR90"/>
 </element>
 <element name="JP1" library="mount" package="STAND-OFF-LONG" value="STAND-OFFLONG" x="13" y="4" locked="yes" smashed="yes">
@@ -3356,8 +3293,8 @@ design rules under a new name.</description>
 </element>
 <element name="ZQ1" library="crystal" package="HC49U-V" value="4MHz" x="44.13369375" y="76.47815" smashed="yes" rot="MR225">
 <attribute name="PARTNO" value="CA-4.000-18-3050-X" x="44.13369375" y="76.47815" size="1.778" layer="28" rot="MR225" display="off"/>
-<attribute name="NAME" x="38.476134375" y="78.004790625" size="1.27" layer="26" ratio="10" rot="MR225"/>
-<attribute name="VALUE" x="43.505078125" y="83.033734375" size="1.27" layer="28" ratio="10" rot="MR225"/>
+<attribute name="NAME" x="40.772184375" y="75.708740625" size="1.016" layer="26" ratio="18" rot="MR225"/>
+<attribute name="VALUE" x="44.852115625" y="80.788671875" size="0.8128" layer="28" ratio="10" rot="MR225"/>
 </element>
 <element name="C5" library="rcl" package="C0603" value="22pF" x="46.42623125" y="76.4333875" smashed="yes" rot="R135">
 <attribute name="PARTNO" value="C0603C220J5GACTU" x="46.42623125" y="76.4333875" size="1.778" layer="27" rot="R135" display="off"/>
@@ -3492,7 +3429,7 @@ design rules under a new name.</description>
 </element>
 <element name="R48" library="rcl" package="R0603" value="10kOhm" x="44" y="103" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="44" y="103" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="45.27" y="103.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="45.23" y="102.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="45.27" y="101.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R40" library="rcl" package="R0603" value="100kOhm" x="44" y="104.5" smashed="yes" rot="MR0">
@@ -3502,22 +3439,22 @@ design rules under a new name.</description>
 </element>
 <element name="R32" library="rcl" package="R2512" value="1kOhm" x="44" y="111" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC2512FK-071KL" x="44" y="111" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="45.905" y="107.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="45.655" y="109.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="41.1425" y="107.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C14" library="rcl" package="C0603" value="1uF/16V" x="44" y="101.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="44" y="101.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="42.73" y="100.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="45.23" y="101.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="42.73" y="103.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD6" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="44" y="95" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="44" y="95" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="41.7775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="47.2775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="47.175" y="97.2225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R49" library="rcl" package="R0603" value="10kOhm" x="50" y="103" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="50" y="103" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="51.27" y="103.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="51.23" y="102.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="51.27" y="101.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R41" library="rcl" package="R0603" value="100kOhm" x="50" y="104.5" smashed="yes" rot="MR0">
@@ -3527,17 +3464,17 @@ design rules under a new name.</description>
 </element>
 <element name="R33" library="rcl" package="R2512" value="1kOhm" x="50" y="111" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC2512FK-071KL" x="50" y="111" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="51.905" y="107.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="51.655" y="109.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="47.1425" y="107.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C15" library="rcl" package="C0603" value="1uF/16V" x="50" y="101.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="50" y="101.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="48.73" y="100.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="51.23" y="101.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="48.73" y="103.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD7" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="50" y="95" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="50" y="95" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="47.7775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="53.2775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="53.175" y="97.2225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R50" library="rcl" package="R0603" value="10kOhm" x="42" y="99" smashed="yes">
@@ -3592,7 +3529,7 @@ design rules under a new name.</description>
 </element>
 <element name="R52" library="rcl" package="R0603" value="10kOhm" x="32" y="103" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="32" y="103" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="33.27" y="103.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="33.23" y="102.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="33.27" y="101.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R44" library="rcl" package="R0603" value="100kOhm" x="32" y="104.5" smashed="yes" rot="MR0">
@@ -3602,22 +3539,22 @@ design rules under a new name.</description>
 </element>
 <element name="R36" library="rcl" package="R2512" value="1kOhm" x="32" y="111" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC2512FK-071KL" x="32" y="111" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="33.905" y="107.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="33.655" y="109.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="29.1425" y="107.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C18" library="rcl" package="C0603" value="1uF/16V" x="32" y="101.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="32" y="101.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="30.73" y="100.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="33.23" y="101.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="30.73" y="103.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD10" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="32" y="95" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="32" y="95" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="29.7775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="35.2775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="35.175" y="97.2225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R53" library="rcl" package="R0603" value="10kOhm" x="38" y="103" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="38" y="103" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="39.27" y="103.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="39.23" y="102.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="39.27" y="101.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R45" library="rcl" package="R0603" value="100kOhm" x="38" y="104.5" smashed="yes" rot="MR0">
@@ -3627,17 +3564,17 @@ design rules under a new name.</description>
 </element>
 <element name="R37" library="rcl" package="R2512" value="1kOhm" x="38" y="111" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC2512FK-071KL" x="38" y="111" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="39.905" y="107.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="39.655" y="109.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="35.1425" y="107.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C19" library="rcl" package="C0603" value="1uF/16V" x="38" y="101.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="38" y="101.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="36.73" y="100.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="39.23" y="101.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="36.73" y="103.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD11" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="38" y="95" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="38" y="95" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="35.7775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="41.2775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="41.175" y="97.2225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R70" library="rcl" package="R0603" value="10kOhm" x="25" y="99" smashed="yes">
@@ -3692,7 +3629,7 @@ design rules under a new name.</description>
 </element>
 <element name="R72" library="rcl" package="R0603" value="10kOhm" x="15" y="103" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="15" y="103" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="16.27" y="103.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="16.23" y="102.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="16.27" y="101.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R64" library="rcl" package="R0603" value="100kOhm" x="15" y="104.5" smashed="yes" rot="MR0">
@@ -3702,22 +3639,22 @@ design rules under a new name.</description>
 </element>
 <element name="R56" library="rcl" package="R2512" value="1kOhm" x="15" y="111" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC2512FK-071KL" x="15" y="111" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="16.905" y="107.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="16.655" y="109.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="12.1425" y="107.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C22" library="rcl" package="C0603" value="1uF/16V" x="15" y="101.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="15" y="101.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="13.73" y="100.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="16.23" y="101.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="13.73" y="103.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD22" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="15" y="95" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="15" y="95" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="12.7775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="18.2775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="18.175" y="97.2225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R73" library="rcl" package="R0603" value="10kOhm" x="21" y="103" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="21" y="103" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="22.27" y="103.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="22.23" y="102.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="22.27" y="101.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R65" library="rcl" package="R0603" value="100kOhm" x="21" y="104.5" smashed="yes" rot="MR0">
@@ -3727,17 +3664,17 @@ design rules under a new name.</description>
 </element>
 <element name="R57" library="rcl" package="R2512" value="1kOhm" x="21" y="111" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC2512FK-071KL" x="21" y="111" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="22.905" y="107.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="22.655" y="109.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="18.1425" y="107.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C23" library="rcl" package="C0603" value="1uF/16V" x="21" y="101.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="21" y="101.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="19.73" y="100.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="22.23" y="101.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="19.73" y="103.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD23" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="21" y="95" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="21" y="95" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="18.7775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="24.2775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="24.175" y="97.2225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R74" library="rcl" package="R0603" value="10kOhm" x="13" y="99" smashed="yes">
@@ -3792,7 +3729,7 @@ design rules under a new name.</description>
 </element>
 <element name="R76" library="rcl" package="R0603" value="10kOhm" x="3" y="103" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="3" y="103" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="4.27" y="103.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="4.48" y="102.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="4.27" y="101.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R68" library="rcl" package="R0603" value="100kOhm" x="3" y="104.5" smashed="yes" rot="MR0">
@@ -3802,22 +3739,22 @@ design rules under a new name.</description>
 </element>
 <element name="R60" library="rcl" package="R2512" value="1kOhm" x="3" y="111" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC2512FK-071KL" x="3" y="111" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="4.905" y="107.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="4.655" y="109.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="0.1425" y="107.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C26" library="rcl" package="C0603" value="1uF/16V" x="3" y="101.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="3" y="101.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="1.73" y="100.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="4.48" y="101.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="1.73" y="103.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD26" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="3" y="95" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="3" y="95" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="0.7775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="6.2775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="6.175" y="97.2225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R77" library="rcl" package="R0603" value="10kOhm" x="9" y="103" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="9" y="103" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="10.27" y="103.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="10.23" y="102.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="10.27" y="101.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R69" library="rcl" package="R0603" value="100kOhm" x="9" y="104.5" smashed="yes" rot="MR0">
@@ -3827,17 +3764,17 @@ design rules under a new name.</description>
 </element>
 <element name="R61" library="rcl" package="R2512" value="1kOhm" x="9" y="111" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC2512FK-071KL" x="9" y="111" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="10.905" y="107.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="10.655" y="109.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="6.1425" y="107.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C27" library="rcl" package="C0603" value="1uF/16V" x="9" y="101.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C105K4PACTU" x="9" y="101.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="7.73" y="100.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="10.23" y="101.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="7.73" y="103.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD27" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="9" y="95" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="9" y="95" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="6.7775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="12.2775" y="97.2225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="12.175" y="97.2225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="C10" library="rcl" package="C0603" value="0.1uF" x="44.5" y="61.25" smashed="yes" rot="R315">
@@ -3893,13 +3830,13 @@ design rules under a new name.</description>
 <element name="VD53" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="196.01" y="2.71" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="SMBJ24CA" x="196.01" y="2.71" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="196.01" y="2.71" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="193.7875" y="0.4875" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="192.4125" y="5.8625" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="193.7875" y="5.885" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD54" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="188.54" y="2.52" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="SMBJ24CA" x="188.54" y="2.52" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="188.54" y="2.52" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="186.3175" y="0.2975" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.8275" y="0.5675" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="186.3175" y="5.695" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R135" library="rcl" package="R0805" value="15kOhm" x="198.25" y="19.66" smashed="yes" rot="R270">
@@ -3941,7 +3878,7 @@ design rules under a new name.</description>
 <element name="VD57" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="187.1" y="6.88" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="SMBJ24CA" x="187.1" y="6.88" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="187.1" y="6.88" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="189.3225" y="9.1025" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="183.3975" y="8.4475" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="189.3225" y="3.705" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="VT1" library="transistor-fet" package="DPAK" value="IRFR430" x="188.19" y="4.31" smashed="yes" rot="R90">
@@ -3952,19 +3889,19 @@ design rules under a new name.</description>
 <element name="R355" library="rcl" package="R0805" value="1kOhm" x="182.25" y="62.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="182.25" y="62.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="62.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="180.8212" y="61.6387" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.8212" y="62.8887" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="180.8213" y="64.4963" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R356" library="rcl" package="R0805" value="1kOhm" x="182.25" y="54.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="182.25" y="54.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="54.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="180.8212" y="53.6387" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.9462" y="54.7637" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="180.8213" y="56.4963" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R357" library="rcl" package="R0805" value="1kOhm" x="182.25" y="46.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="182.25" y="46.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="46.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="180.8212" y="45.6387" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.8212" y="46.7637" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="180.8213" y="48.4963" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD61" library="diode" package="DPAK" value="600V/6A" x="181.5" y="12" smashed="yes" rot="R270">
@@ -4069,7 +4006,7 @@ design rules under a new name.</description>
 </element>
 <element name="R358" library="rcl" package="R0805" value="1kOhm" x="182.25" y="38.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="169.75" y="16.25" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="180.8212" y="37.6387" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.9462" y="38.7637" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="180.8213" y="40.4963" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="D19" library="optocoupler" package="SO16" value="TCMT4100" x="175.25" y="26.75" smashed="yes" rot="MR90">
@@ -4079,164 +4016,164 @@ design rules under a new name.</description>
 </element>
 <element name="R359" library="rcl" package="R0805" value="1kOhm" x="182.25" y="30.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="144.75" y="19.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="180.8212" y="29.6387" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.8212" y="30.8887" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="180.8213" y="32.4963" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R360" library="rcl" package="R0805" value="1kOhm" x="182.25" y="22.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="161.75" y="10.25" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="180.8212" y="21.6387" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.8212" y="22.8887" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="180.8213" y="24.4963" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R361" library="rcl" package="R0805" value="1kOhm" x="182.25" y="14.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="157.25" y="7.25" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="180.8212" y="13.6387" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="183.8212" y="14.8887" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="180.8213" y="16.4963" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R338" library="rcl" package="R0603" value="100Ohm" x="171.75" y="57" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="171.75" y="57" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="170.9562" y="58.27" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="167.2062" y="58.77" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="173.3375" y="58.27" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R339" library="rcl" package="R0603" value="100Ohm" x="173.25" y="57" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="173.25" y="57" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="173.25" y="57" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="172.4562" y="58.27" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="168.4562" y="58.77" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="174.8375" y="58.27" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R340" library="rcl" package="R0603" value="100Ohm" x="174.75" y="57" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="174.75" y="57" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="174.75" y="57" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="173.9562" y="58.27" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="169.7062" y="58.77" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="176.3375" y="58.27" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R341" library="rcl" package="R0603" value="100Ohm" x="176.25" y="57" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="176.25" y="57" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="176.25" y="57" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="175.4562" y="58.27" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="170.9562" y="58.77" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="177.8375" y="58.27" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R342" library="rcl" package="R0603" value="100Ohm" x="176.75" y="35.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="176.75" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="176.75" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="177.5438" y="34.48" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="170.5438" y="34.23" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="175.1625" y="34.48" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R343" library="rcl" package="R0603" value="100Ohm" x="175.25" y="35.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="175.25" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="175.25" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="176.0438" y="34.48" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="169.2938" y="34.23" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="173.6625" y="34.48" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R344" library="rcl" package="R0603" value="100Ohm" x="173.75" y="35.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="173.75" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="173.75" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="174.5438" y="34.48" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="168.0438" y="34.23" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="172.1625" y="34.48" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R345" library="rcl" package="R0603" value="100Ohm" x="172.25" y="35.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="172.25" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="172.25" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="173.0438" y="34.48" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="166.7938" y="34.23" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="170.6625" y="34.48" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD196" library="diode" package="SOD323" value="100V" x="182.25" y="72.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="182.25" y="72.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="181.35" y="71.97" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="178.845" y="75.275" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="181.35" y="74.555" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD197" library="diode" package="SOD323" value="100V" x="182.25" y="64.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="182.25" y="64.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="64.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="181.35" y="63.97" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="177.78" y="62.225" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="181.35" y="66.555" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD198" library="diode" package="SOD323" value="100V" x="182.25" y="56.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="182.25" y="56.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="56.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="181.35" y="55.97" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="178.72" y="58.525" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="181.35" y="58.555" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD199" library="diode" package="SOD323" value="100V" x="182.25" y="48.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="182.25" y="48.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="48.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="181.35" y="47.97" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="177.78" y="46.6" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="181.35" y="50.555" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD200" library="diode" package="SOD323" value="100V" x="182.25" y="40.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="182.25" y="40.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="40.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="181.35" y="39.97" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="177.905" y="38.725" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="181.35" y="42.555" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD201" library="diode" package="SOD323" value="100V" x="182.25" y="32.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="182.25" y="32.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="32.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="181.35" y="31.97" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="178.03" y="30.725" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="181.35" y="34.555" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD202" library="diode" package="SOD323" value="100V" x="182.25" y="24.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="182.25" y="24.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="24.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="181.35" y="23.97" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="178.155" y="22.6" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="181.35" y="26.555" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD203" library="diode" package="SOD323" value="100V" x="182.25" y="16.75" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="182.25" y="16.75" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="182.25" y="16.75" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="181.35" y="15.97" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="178.03" y="14.6" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="181.35" y="18.555" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD211" library="diode" package="SOD323" value="100V" x="183.25" y="19.75" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="183.25" y="19.75" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="183.25" y="19.75" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="182.47" y="20.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.97" y="21.775" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.055" y="20.65" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD210" library="diode" package="SOD323" value="100V" x="183.25" y="27.75" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="183.25" y="27.75" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="183.25" y="27.75" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="182.47" y="28.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.97" y="29.9" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.055" y="28.65" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD209" library="diode" package="SOD323" value="100V" x="183.25" y="35.75" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="183.25" y="35.75" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="183.25" y="35.75" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="182.47" y="36.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.97" y="37.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.055" y="36.65" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD208" library="diode" package="SOD323" value="100V" x="183.25" y="43.75" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="183.25" y="43.75" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="183.25" y="43.75" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="182.47" y="44.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.97" y="45.775" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.055" y="44.65" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD207" library="diode" package="SOD323" value="100V" x="183.25" y="51.75" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="183.25" y="51.75" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="183.25" y="51.75" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="182.47" y="52.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.97" y="53.775" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.055" y="52.65" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD206" library="diode" package="SOD323" value="100V" x="183.25" y="59.75" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="183.25" y="59.75" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="183.25" y="59.75" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="182.47" y="60.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.97" y="61.9" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.055" y="60.65" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD205" library="diode" package="SOD323" value="100V" x="183.25" y="67.75" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="183.25" y="67.75" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="183.25" y="67.75" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="182.47" y="68.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.97" y="69.9" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.055" y="68.65" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD204" library="diode" package="SOD323" value="100V" x="183.25" y="75.75" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="183.25" y="75.75" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="183.25" y="75.75" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="182.47" y="76.65" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.97" y="77.775" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.055" y="76.65" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R337" library="rcl" package="R0603" value="10kOhm" x="173.25" y="53.5" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="173.25" y="53.5" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="174.0438" y="52.23" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="173.73" y="54.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="171.6625" y="52.23" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="XP11" library="connector" package="MOLEX-90130-*34" value="" x="203.25" y="66.25" smashed="yes" rot="R270">
@@ -4248,89 +4185,89 @@ design rules under a new name.</description>
 <element name="R353" library="rcl" package="R0805" value="1kOhm" x="181.25" y="19.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="181.25" y="19.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="181.25" y="19.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="182.3613" y="18.3212" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="179.2363" y="18.0712" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="179.5037" y="18.3213" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R352" library="rcl" package="R0805" value="1kOhm" x="181.25" y="27.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="181.25" y="27.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="181.25" y="27.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="182.3613" y="26.3212" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="179.2363" y="26.1962" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="179.5037" y="26.3213" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R351" library="rcl" package="R0805" value="1kOhm" x="181.25" y="35.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="181.25" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="181.25" y="35.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="182.3613" y="34.3212" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="179.2363" y="34.0712" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="179.5037" y="34.3213" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R350" library="rcl" package="R0805" value="1kOhm" x="181.25" y="43.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="181.25" y="43.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="181.25" y="43.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="182.3613" y="42.3212" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="179.2363" y="42.0712" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="179.5037" y="42.3213" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R349" library="rcl" package="R0805" value="1kOhm" x="181.25" y="51.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="181.25" y="51.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="181.25" y="51.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="182.3613" y="50.3212" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="179.1113" y="50.0712" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="179.5037" y="50.3213" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R348" library="rcl" package="R0805" value="1kOhm" x="181.25" y="59.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="181.25" y="59.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="181.25" y="59.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="182.3613" y="58.3212" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="179.2363" y="58.0712" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="179.5037" y="58.3213" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R347" library="rcl" package="R0805" value="1kOhm" x="181.25" y="67.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="181.25" y="67.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="181.25" y="67.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="182.3613" y="66.3212" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="179.2363" y="66.0712" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="179.5037" y="66.3213" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R346" library="rcl" package="R0805" value="1kOhm" x="181.25" y="75.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="181.25" y="75.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="181.25" y="75.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="182.3613" y="74.3212" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="179.2363" y="74.0712" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="179.5037" y="74.3213" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="D20" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="191.25" y="73.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="191.25" y="73.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="188.075" y="70.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.075" y="74.39" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="188.075" y="78.23" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="D21" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="191.25" y="65.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="191.25" y="65.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="188.075" y="62.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.075" y="66.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="188.075" y="70.23" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="D22" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="191.25" y="57.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="191.25" y="57.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="188.075" y="54.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.075" y="58.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="188.075" y="62.23" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="D23" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="191.25" y="49.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="191.25" y="49.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="188.075" y="46.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.075" y="50.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="188.075" y="54.23" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="D24" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="191.25" y="41.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="191.25" y="41.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="188.075" y="38.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.075" y="41.89" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="188.075" y="46.23" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="D25" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="191.25" y="33.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="191.25" y="33.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="188.075" y="30.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.075" y="34.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="188.075" y="38.23" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="D26" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="191.25" y="25.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="191.25" y="25.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="188.075" y="22.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.075" y="25.89" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="188.075" y="30.23" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="D27" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="191.25" y="17.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="191.25" y="17.75" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="188.075" y="14.14" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.325" y="17.64" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="188.075" y="22.23" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="C66" library="rcl" package="TE-D-7343" value="220uF/10V" x="173.15" y="60.05" smashed="yes" rot="R90">
@@ -4365,7 +4302,7 @@ design rules under a new name.</description>
 </element>
 <element name="C141" library="rcl" package="C0603" value="0.1uF" x="171" y="53.5" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="171" y="53.5" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="171.7938" y="52.23" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="170.27" y="53.0438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="169.4125" y="52.23" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD132" library="diode" package="SMB" value="SM6T200A" x="199.55" y="118.35" smashed="yes" rot="R270">
@@ -4406,7 +4343,7 @@ design rules under a new name.</description>
 </element>
 <element name="R190" library="rcl" package="R0805" value="1kOhm" x="155.5" y="70" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="142.5" y="58" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="154.0712" y="68.8887" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="157.3212" y="69.8887" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="154.0713" y="71.7463" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD99" library="diode" package="SOD323" value="100V" x="148.25" y="70" smashed="yes" rot="MR0">
@@ -4416,22 +4353,22 @@ design rules under a new name.</description>
 </element>
 <element name="VD98" library="diode" package="SOD323" value="100V" x="156" y="72.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="1N4148WS-V-GS18" x="156" y="69.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="155.1" y="71.72" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="153.85" y="74.47" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="155.1" y="74.305" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R191" library="rcl" package="R0805" value="1kOhm" x="154.5" y="67.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="154.5" y="73.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="153.0712" y="66.3887" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="156.0712" y="67.8887" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="153.0713" y="69.2463" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="D5" library="transistor-fet" package="TO252-5-11" value="AUIPS7111S" x="164.5" y="73" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="AUIPS7111S" x="146.5" y="62" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="161.325" y="69.39" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="164.825" y="69.64" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="161.325" y="77.48" size="0.762" layer="28" rot="MR180"/>
 </element>
 <element name="VT2" library="transistor-npn" package="SOT23-BEC" value="BC817-16SMD" x="151.5" y="71.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="BC817" x="151.5" y="71.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="152.77" y="70.23" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="150.02" y="74.73" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="149.595" y="74.675" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="XP7" library="connector" package="TYCO-174053(2.54)" value="" x="96.49" y="128.437" smashed="yes" rot="R180">
@@ -4443,7 +4380,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD133" library="diode" package="SMB" value="SM6T200A" x="197.05" y="118.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="189.05" y="126.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="194.8275" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="194.9525" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="200.225" y="120.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD149" library="diode" package="SMA" value="400V" x="197.25" y="96.75" smashed="yes" rot="MR270">
@@ -4478,7 +4415,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD135" library="diode" package="SMB" value="SM6T200A" x="192.05" y="118.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="214.05" y="148.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="189.8275" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="189.9525" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="195.225" y="120.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD136" library="diode" package="SMB" value="SM6T200A" x="189.55" y="118.35" smashed="yes" rot="R270">
@@ -4488,7 +4425,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD137" library="diode" package="SMB" value="SM6T200A" x="187.05" y="118.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="209.05" y="148.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="184.8275" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="184.9525" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="190.225" y="120.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD138" library="diode" package="SMB" value="SM6T200A" x="184.55" y="118.35" smashed="yes" rot="R270">
@@ -4498,7 +4435,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD139" library="diode" package="SMB" value="SM6T200A" x="182.05" y="118.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="264.05" y="192.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="179.8275" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="179.9525" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="185.225" y="120.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD140" library="diode" package="SMB" value="SM6T200A" x="179.55" y="118.35" smashed="yes" rot="R270">
@@ -4508,7 +4445,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD141" library="diode" package="SMB" value="SM6T200A" x="177.05" y="118.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="199.05" y="148.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="174.8275" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="174.9525" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="180.225" y="120.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD142" library="diode" package="SMB" value="SM6T200A" x="174.55" y="118.35" smashed="yes" rot="R270">
@@ -4518,7 +4455,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD143" library="diode" package="SMB" value="SM6T200A" x="172.05" y="118.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="254.05" y="192.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="169.8275" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="169.9525" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="175.225" y="120.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD144" library="diode" package="SMB" value="SM6T200A" x="169.55" y="118.35" smashed="yes" rot="R270">
@@ -4528,7 +4465,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD145" library="diode" package="SMB" value="SM6T200A" x="167.05" y="118.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="309.05" y="236.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="164.8275" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="164.9525" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="170.225" y="120.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD146" library="diode" package="SMB" value="SM6T200A" x="164.55" y="118.35" smashed="yes" rot="R270">
@@ -4538,7 +4475,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD147" library="diode" package="SMB" value="SM6T200A" x="162.05" y="118.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="356.05" y="232.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="159.8275" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="159.9525" y="120.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="165.225" y="120.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R243" library="rcl" package="R1206" value="4.7kOhm" x="193.65" y="111.55" smashed="yes" rot="R270">
@@ -4985,7 +4922,7 @@ design rules under a new name.</description>
 <element name="C56" library="rcl" package="C2220K" value="10uF/50V" x="175.5" y="10" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="22205C106KAT2A" x="175.5" y="10" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="175.5" y="10" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="178.675" y="6.5075" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="176.7425" y="13.8" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="171.3725" y="6.5075" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C122" library="rcl" package="C0603" value="0.1uF" x="177.25" y="81" smashed="yes" rot="MR180">
@@ -4995,7 +4932,7 @@ design rules under a new name.</description>
 </element>
 <element name="C121" library="rcl" package="C0603" value="0.1uF" x="198" y="81.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="198" y="81.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="196.73" y="80.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="196.48" y="80.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="196.73" y="83.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="VD164" library="diode" package="SMB" value="SM6T200A" x="106.45" y="17.15" smashed="yes" rot="R90">
@@ -5036,7 +4973,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD165" library="diode" package="SMB" value="SM6T200A" x="108.95" y="17.15" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="SM6T200A" x="116.95" y="9.15" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="111.1725" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="110.9225" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="105.775" y="14.9275" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD181" library="diode" package="SMA" value="400V" x="108.75" y="38.75" smashed="yes" rot="MR90">
@@ -5071,7 +5008,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD167" library="diode" package="SMB" value="SM6T200A" x="113.95" y="17.15" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="SM6T200A" x="91.95" y="-12.85" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="116.1725" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="115.9225" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="110.775" y="14.9275" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD168" library="diode" package="SMB" value="SM6T200A" x="116.45" y="17.15" smashed="yes" rot="R90">
@@ -5081,7 +5018,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD169" library="diode" package="SMB" value="SM6T200A" x="118.95" y="17.15" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="SM6T200A" x="96.95" y="-12.85" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="121.1725" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="120.9225" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="115.775" y="14.9275" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD170" library="diode" package="SMB" value="SM6T200A" x="121.45" y="17.15" smashed="yes" rot="R90">
@@ -5091,7 +5028,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD171" library="diode" package="SMB" value="SM6T200A" x="123.95" y="17.15" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="SM6T200A" x="41.95" y="-56.85" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="126.1725" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="125.9225" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="120.775" y="14.9275" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD172" library="diode" package="SMB" value="SM6T200A" x="126.45" y="17.15" smashed="yes" rot="R90">
@@ -5101,7 +5038,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD173" library="diode" package="SMB" value="SM6T200A" x="128.95" y="17.15" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="SM6T200A" x="106.95" y="-12.85" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="131.1725" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="130.9225" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="125.775" y="14.9275" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD174" library="diode" package="SMB" value="SM6T200A" x="131.45" y="17.15" smashed="yes" rot="R90">
@@ -5111,7 +5048,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD175" library="diode" package="SMB" value="SM6T200A" x="133.95" y="17.15" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="SM6T200A" x="51.95" y="-56.85" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="136.1725" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="135.9225" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="130.775" y="14.9275" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD176" library="diode" package="SMB" value="SM6T200A" x="136.45" y="17.15" smashed="yes" rot="R90">
@@ -5121,7 +5058,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD177" library="diode" package="SMB" value="SM6T200A" x="138.95" y="17.15" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="SM6T200A" x="-3.05" y="-100.85" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="141.1725" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="140.9225" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="135.775" y="14.9275" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="VD178" library="diode" package="SMB" value="SM6T200A" x="141.45" y="17.15" smashed="yes" rot="R90">
@@ -5131,7 +5068,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD179" library="diode" package="SMB" value="SM6T200A" x="143.95" y="17.15" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="SM6T200A" x="-50.05" y="-96.85" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="146.1725" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="145.9225" y="14.9275" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="140.775" y="14.9275" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="R291" library="rcl" package="R1206" value="4.7kOhm" x="112.35" y="23.95" smashed="yes" rot="R90">
@@ -5582,7 +5519,7 @@ design rules under a new name.</description>
 </element>
 <element name="C139" library="rcl" package="C0603" value="0.1uF" x="107.215" y="54.43" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="107.215" y="54.43" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="108.485" y="55.2238" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="105.735" y="53.9738" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="108.485" y="52.8425" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="VD100" library="diode" package="SMB" value="SM6T200A" x="156.8" y="116.35" smashed="yes" rot="R270">
@@ -5623,7 +5560,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD101" library="diode" package="SMB" value="SM6T200A" x="154.3" y="116.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="146.3" y="124.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="152.0775" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="152.2025" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="157.475" y="118.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD117" library="diode" package="SMA" value="400V" x="154.5" y="94.75" smashed="yes" rot="MR270">
@@ -5658,7 +5595,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD103" library="diode" package="SMB" value="SM6T200A" x="149.3" y="116.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="171.3" y="146.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="147.0775" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="147.2025" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="152.475" y="118.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD104" library="diode" package="SMB" value="SM6T200A" x="146.8" y="116.35" smashed="yes" rot="R270">
@@ -5668,7 +5605,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD105" library="diode" package="SMB" value="SM6T200A" x="144.3" y="116.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="166.3" y="146.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="142.0775" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="142.2025" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="147.475" y="118.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD106" library="diode" package="SMB" value="SM6T200A" x="141.8" y="116.35" smashed="yes" rot="R270">
@@ -5678,7 +5615,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD107" library="diode" package="SMB" value="SM6T200A" x="139.3" y="116.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="221.3" y="190.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="137.0775" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="137.2025" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="142.475" y="118.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD108" library="diode" package="SMB" value="SM6T200A" x="136.8" y="116.35" smashed="yes" rot="R270">
@@ -5688,7 +5625,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD109" library="diode" package="SMB" value="SM6T200A" x="134.3" y="116.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="156.3" y="146.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="132.0775" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="132.2025" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="137.475" y="118.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD110" library="diode" package="SMB" value="SM6T200A" x="131.8" y="116.35" smashed="yes" rot="R270">
@@ -5698,7 +5635,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD111" library="diode" package="SMB" value="SM6T200A" x="129.3" y="116.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="211.3" y="190.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="127.0775" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="127.2025" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="132.475" y="118.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD112" library="diode" package="SMB" value="SM6T200A" x="126.8" y="116.35" smashed="yes" rot="R270">
@@ -5708,7 +5645,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD113" library="diode" package="SMB" value="SM6T200A" x="124.3" y="116.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="266.3" y="234.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="122.0775" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="122.2025" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="127.475" y="118.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD114" library="diode" package="SMB" value="SM6T200A" x="121.8" y="116.35" smashed="yes" rot="R270">
@@ -5718,7 +5655,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD115" library="diode" package="SMB" value="SM6T200A" x="119.3" y="116.35" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="313.3" y="230.35" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="117.0775" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="117.2025" y="118.5725" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="122.475" y="118.5725" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R195" library="rcl" package="R1206" value="4.7kOhm" x="150.9" y="109.55" smashed="yes" rot="R270">
@@ -6204,7 +6141,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD67" library="diode" package="SMB" value="SM6T200A" x="105.75" y="110.8" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="97.75" y="118.8" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="103.5275" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="103.6525" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="108.925" y="113.0225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD83" library="diode" package="SMA" value="400V" x="105.95" y="89.2" smashed="yes" rot="MR270">
@@ -6239,7 +6176,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD69" library="diode" package="SMB" value="SM6T200A" x="100.75" y="110.8" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="122.75" y="140.8" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="98.5275" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="98.6525" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="103.925" y="113.0225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD70" library="diode" package="SMB" value="SM6T200A" x="98.25" y="110.8" smashed="yes" rot="R270">
@@ -6249,7 +6186,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD71" library="diode" package="SMB" value="SM6T200A" x="95.75" y="110.8" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="117.75" y="140.8" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="93.5275" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="93.6525" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="98.925" y="113.0225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD72" library="diode" package="SMB" value="SM6T200A" x="93.25" y="110.8" smashed="yes" rot="R270">
@@ -6259,7 +6196,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD73" library="diode" package="SMB" value="SM6T200A" x="90.75" y="110.8" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="172.75" y="184.8" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="88.5275" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="88.6525" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="93.925" y="113.0225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD74" library="diode" package="SMB" value="SM6T200A" x="88.25" y="110.8" smashed="yes" rot="R270">
@@ -6269,7 +6206,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD75" library="diode" package="SMB" value="SM6T200A" x="85.75" y="110.8" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="107.75" y="140.8" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="83.5275" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="83.6525" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="88.925" y="113.0225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD76" library="diode" package="SMB" value="SM6T200A" x="83.25" y="110.8" smashed="yes" rot="R270">
@@ -6279,7 +6216,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD77" library="diode" package="SMB" value="SM6T200A" x="80.75" y="110.8" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="162.75" y="184.8" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="78.5275" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="78.6525" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="83.925" y="113.0225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD78" library="diode" package="SMB" value="SM6T200A" x="78.25" y="110.8" smashed="yes" rot="R270">
@@ -6289,7 +6226,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD79" library="diode" package="SMB" value="SM6T200A" x="75.75" y="110.8" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="217.75" y="228.8" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="73.5275" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="73.6525" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="78.925" y="113.0225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="VD80" library="diode" package="SMB" value="SM6T200A" x="73.25" y="110.8" smashed="yes" rot="R270">
@@ -6299,7 +6236,7 @@ design rules under a new name.</description>
 </element>
 <element name="VD81" library="diode" package="SMB" value="SM6T200A" x="70.75" y="110.8" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SM6T200A" x="264.75" y="224.8" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="68.5275" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="68.6525" y="113.0225" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="73.925" y="113.0225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="R144" library="rcl" package="R1206" value="4.7kOhm" x="102.35" y="104" smashed="yes" rot="R270">
@@ -6760,36 +6697,36 @@ design rules under a new name.</description>
 <element name="R15" library="rcl" package="R0603" value="100Ohm" x="72" y="76.5" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="72" y="76.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="72" y="76.5" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="73.27" y="77.2938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="70.27" y="76.0438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="73.27" y="74.9125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R23" library="rcl" package="R0603" value="100Ohm" x="72" y="75" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="72" y="75" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="72" y="75" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="73.27" y="75.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="70.27" y="74.5438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="73.27" y="73.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R16" library="rcl" package="R0603" value="100Ohm" x="104.875" y="45.625" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="104.875" y="45.625" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="104.875" y="45.625" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="106.145" y="46.4188" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="107.145" y="46.4188" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="106.145" y="44.0375" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R24" library="rcl" package="R0603" value="100Ohm" x="110.25" y="57.5" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="110.25" y="57.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="110.25" y="57.5" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="111.52" y="58.2938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="108.77" y="57.0438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="111.52" y="55.9125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R19" library="rcl" package="R0603" value="100Ohm" x="110.25" y="55.75" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="110.25" y="55.75" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="110.25" y="55.75" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="111.52" y="56.5438" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="108.77" y="55.2938" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="111.52" y="54.1625" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R362" library="rcl" package="R1206" value="120Ohm" x="35.4" y="8.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="RC1206JR-07120RL" x="35.4" y="8.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="33.1775" y="7.23" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="33.1775" y="7.355" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="33.1775" y="10.7225" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="XP13" library="connector" package="PLD_1X2" value="PLD_1X2" x="31.8" y="11.8" smashed="yes" rot="R270">
@@ -6939,36 +6876,36 @@ design rules under a new name.</description>
 </element>
 <element name="DA17" library="transceiver" package="SO16" value="ILX3232D" x="37" y="19" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="ILX3232D" x="37" y="19" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="38.905" y="24.715" size="1.016" layer="26" font="vector" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="38.78" y="12.465" size="1.016" layer="26" font="vector" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="37.635" y="22.175" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="C143" library="rcl" package="C0603" value="0.1uF" x="34.75" y="25.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="34.75" y="25.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="33.48" y="24.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="34.4188" y="26.355" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="33.48" y="27.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="C146" library="rcl" package="C0603" value="0.1uF" x="42" y="22" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="42" y="22" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="42" y="22" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="41.2062" y="23.27" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="42.73" y="22.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="43.5875" y="23.27" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="C147" library="rcl" package="C0603" value="0.1uF" x="42" y="19" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="42" y="19" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="42" y="19" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="41.2062" y="20.27" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="42.73" y="19.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="43.5875" y="20.27" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="C144" library="rcl" package="C0603" value="0.1uF" x="42.25" y="15.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="42.25" y="15.5" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="42.25" y="15.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="41.4562" y="16.77" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="42.855" y="16.0812" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="43.8375" y="16.77" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="C142" library="rcl" package="C0603" value="0.1uF" x="37.75" y="25.5" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="37.75" y="25.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="37.75" y="25.5" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="39.02" y="26.2938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="37.2938" y="26.355" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="39.02" y="23.9125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="DD2" library="rom" package="SO-08" value="IN24AA32AD" x="11.5" y="70.25" smashed="yes" rot="R270">
@@ -6993,11 +6930,6 @@ design rules under a new name.</description>
 <attribute name="NAME" x="15.98" y="73.0438" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="18.77" y="73.8375" size="0.8128" layer="27" ratio="10" rot="R180"/>
 </element>
-<element name="DD12" library="74xx-eu" package="SO16" value="74HC595D" x="173" y="46.3" smashed="yes" rot="MR270">
-<attribute name="PARTNO" value="IN74HC595AD" x="173" y="46.3" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="VALUE" x="173.762" y="50.11" size="1.27" layer="28" ratio="10" rot="MR270"/>
-<attribute name="NAME" x="174.905" y="51.761" size="1.27" layer="26" ratio="10" rot="MR0"/>
-</element>
 <element name="DD11" library="74xx" package="SO16" value="74HC165D" x="135" y="50" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="IN74HC165AD" x="135" y="50" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" x="135.762" y="53.81" size="0.8128" layer="28" rot="MR270"/>
@@ -7011,36 +6943,36 @@ design rules under a new name.</description>
 <element name="DD8" library="74xx" package="SO16" value="74HC165D" x="192" y="85.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="IN74HC165AD" x="192" y="85.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="191.238" y="81.94" size="0.8128" layer="28" rot="MR90"/>
-<attribute name="NAME" x="190.095" y="80.289" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="190.845" y="80.539" size="1.016" layer="26" ratio="18" rot="MR180"/>
 </element>
 <element name="DD9" library="74xx" package="SO16" value="74HC165D" x="171" y="85.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="IN74HC165AD" x="171" y="85.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="170.238" y="81.94" size="0.8128" layer="28" rot="MR90"/>
-<attribute name="NAME" x="169.095" y="80.289" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="169.595" y="80.539" size="1.016" layer="26" ratio="18" rot="MR180"/>
 </element>
 <element name="DD6" library="74xx" package="SO16" value="74HC165D" x="149" y="83.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="IN74HC165AD" x="149" y="83.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="148.238" y="79.94" size="0.8128" layer="28" rot="MR90"/>
-<attribute name="NAME" x="147.095" y="78.289" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="147.845" y="78.539" size="1.016" layer="26" ratio="18" rot="MR180"/>
 </element>
 <element name="DD7" library="74xx" package="SO16" value="74HC165D" x="128" y="83.75" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="IN74HC165AD" x="128" y="83.75" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="127.238" y="79.94" size="0.8128" layer="28" rot="MR90"/>
-<attribute name="NAME" x="126.095" y="78.289" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="126.595" y="78.289" size="1.016" layer="26" ratio="18" rot="MR180"/>
 </element>
 <element name="DD5" library="74xx" package="SO16" value="74HC165D" x="79.45" y="78.2" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="IN74HC165AD" x="79.45" y="78.2" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="78.688" y="74.39" size="0.8128" layer="28" rot="MR90"/>
-<attribute name="NAME" x="77.545" y="72.739" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="78.045" y="72.739" size="1.016" layer="26" ratio="18" rot="MR180"/>
 </element>
 <element name="DD4" library="74xx" package="SO16" value="74HC165D" x="100.45" y="78.2" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="IN74HC165AD" x="100.45" y="78.2" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" x="99.688" y="74.39" size="0.8128" layer="28" rot="MR90"/>
-<attribute name="NAME" x="98.545" y="72.739" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="99.295" y="72.739" size="1.016" layer="26" ratio="18" rot="MR180"/>
 </element>
 <element name="Z1" library="emi-filter" package="TUSONIX-4701" value="4701-001LF" x="184.5" y="11" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="4701-001LF" x="184.5" y="11" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="186.75" y="12.75" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="191.875" y="10.75" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="187" y="10.5" size="0.8128" layer="28" rot="MR0"/>
 </element>
 <element name="DA1" library="op-amp" package="SO08" value="LM2904M" x="60.5" y="22" smashed="yes" rot="R270">
@@ -7061,12 +6993,12 @@ design rules under a new name.</description>
 </element>
 <element name="VD48" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="60" y="8" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="SMBJ24CA" x="67.5" y="15.5" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="62.2225" y="10.2225" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="61.8475" y="4.8475" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="62.2225" y="4.825" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R128" library="rcl" package="R2512" value="1kOhm" x="75" y="3" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="RC2512JK-071KL" x="75" y="3" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="71.5075" y="1.095" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="72.8825" y="5.845" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="71.5075" y="5.8575" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="C53" library="rcl" package="C0603" value="0.1uF" x="65.5" y="7.5" smashed="yes" rot="MR90">
@@ -7099,22 +7031,22 @@ design rules under a new name.</description>
 </element>
 <element name="VD43" library="diode" package="SOD80" value="3.3V" x="54.5" y="18.5" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="BZV55-C3V3" x="54.5" y="18.5" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="55.643" y="16.341" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="53.5" y="20.75" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="52.722" y="16.341" size="0.8128" layer="28" rot="MR90"/>
 </element>
 <element name="VD42" library="diode" package="SOD80" value="3.3V" x="58" y="18.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="58" y="18.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="56.857" y="20.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="57" y="20.75" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="59.778" y="20.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="VD37" library="diode" package="SOD80" value="3.3V" x="66" y="18.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="66" y="18.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="64.857" y="20.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="65" y="20.75" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="67.778" y="20.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="VD36" library="diode" package="SOD80" value="3.3V" x="62" y="18.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="62" y="18.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="60.857" y="20.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="61" y="20.75" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="63.778" y="20.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="R87" library="rcl" package="R0603" value="100kOhm" x="64" y="17" smashed="yes" rot="R180">
@@ -7187,7 +7119,7 @@ design rules under a new name.</description>
 <element name="C40" library="rcl" package="C0603" value="0.1uF" x="64" y="21.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="64" y="21.5" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="64" y="21.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="62.73" y="20.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="65.23" y="21.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="62.73" y="23.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="DD3" library="74xx" package="SO14" value="74HC11D" x="78" y="41" smashed="yes" rot="R270">
@@ -7245,34 +7177,34 @@ design rules under a new name.</description>
 <element name="R117" library="rcl" package="R0603" value="1.2kOhm/5%" x="63" y="23" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="RC0603JR-071K2L" x="63" y="23" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="63" y="23" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="61.73" y="22.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="64.23" y="23.4562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="61.73" y="24.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R121" library="rcl" package="R0603" value="51kOhm/5%" x="64.5" y="34" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="RC0603JR-0751KL" x="64.5" y="34" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="64.5" y="34" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="63.23" y="33.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="65.73" y="34.4562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="63.23" y="35.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="C43" library="rcl" package="C0603" value="1000pF" x="61.5" y="34" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C102K5RACTU" x="61.5" y="34" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="61.5" y="34" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="60.23" y="33.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="60.02" y="33.5438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="60.23" y="35.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="DA7" library="74xx" package="SO16" value="74HC123D" x="60.5" y="28.5" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="IN74HC123AD" x="60.5" y="28.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VALUE" x="64.31" y="27.738" size="0.8128" layer="28" rot="MR0"/>
-<attribute name="NAME" x="65.961" y="26.595" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="65.961" y="27.345" size="1.016" layer="26" ratio="18" rot="MR90"/>
 </element>
 <element name="R122" library="rcl" package="R0603" value="51kOhm/5%" x="54.5" y="29" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC0603JR-0751KL" x="54.5" y="29" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="55.2938" y="27.73" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="52.5438" y="27.48" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="52.9125" y="27.73" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C44" library="rcl" package="C0603" value="1000pF" x="58" y="23" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="C0603C102K5RACTU" x="58" y="23" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="59.27" y="23.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="56.52" y="22.5438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="59.27" y="21.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="C51" library="rcl" package="C0603" value="5600pF" x="97" y="45" smashed="yes">
@@ -7366,7 +7298,7 @@ design rules under a new name.</description>
 <element name="R192" library="rcl" package="R0603" value="10kOhm" x="106.825" y="81.2" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="106.825" y="81.2" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="106.825" y="81.2" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="108.095" y="81.9938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="105.405" y="83.0062" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="108.095" y="79.6125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R26" library="rcl" package="R0603" value="100Ohm" x="103" y="47.75" smashed="yes" rot="MR0">
@@ -7378,7 +7310,7 @@ design rules under a new name.</description>
 <element name="R20" library="rcl" package="R0603" value="100Ohm" x="72" y="73.5" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="72" y="73.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="72" y="73.5" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="73.27" y="74.2938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="70.27" y="73.0438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="73.27" y="71.9125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="R27" library="rcl" package="R0603" value="100Ohm" x="148" y="72.75" smashed="yes" rot="MR0">
@@ -7411,22 +7343,22 @@ design rules under a new name.</description>
 </element>
 <element name="VD45" library="diode" package="SOD80" value="3.3V" x="71.5" y="18.5" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="BZV55-C3V3" x="71.5" y="18.5" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="72.643" y="16.341" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="70.5" y="20.75" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="69.722" y="16.341" size="0.8128" layer="28" rot="MR90"/>
 </element>
 <element name="VD44" library="diode" package="SOD80" value="3.3V" x="75" y="18.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="75" y="18.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="73.857" y="20.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="74" y="20.75" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="76.778" y="20.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="VD39" library="diode" package="SOD80" value="3.3V" x="83" y="18.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="83" y="18.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="81.857" y="20.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="82" y="20.75" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="84.778" y="20.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="VD38" library="diode" package="SOD80" value="3.3V" x="79" y="18.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="79" y="18.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="77.857" y="20.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="78" y="20.75" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="80.778" y="20.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="R88" library="rcl" package="R0603" value="100kOhm" x="81" y="17" smashed="yes" rot="R180">
@@ -7499,7 +7431,7 @@ design rules under a new name.</description>
 <element name="C41" library="rcl" package="C0603" value="0.1uF" x="81" y="21.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="81" y="21.5" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="81" y="21.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="79.73" y="20.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="82.23" y="21.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="79.73" y="23.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R114" library="rcl" package="R0603" value="22kOhm/5%" x="82.5" y="34" smashed="yes" rot="R180">
@@ -7523,34 +7455,34 @@ design rules under a new name.</description>
 <element name="R118" library="rcl" package="R0603" value="1.2kOhm/5%" x="80" y="23" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="RC0603JR-071K2L" x="80" y="23" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="80" y="23" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="78.73" y="22.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="81.23" y="23.4562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="78.73" y="24.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R123" library="rcl" package="R0603" value="51kOhm/5%" x="81.5" y="34" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="RC0603JR-0751KL" x="81.5" y="34" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="81.5" y="34" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="80.23" y="33.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="82.73" y="34.4562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="80.23" y="35.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="C45" library="rcl" package="C0603" value="1000pF" x="78.5" y="34" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C102K5RACTU" x="78.5" y="34" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="78.5" y="34" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="77.23" y="33.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="77.02" y="33.5438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="77.23" y="35.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="DA8" library="74xx" package="SO16" value="74HC123D" x="77.5" y="28.5" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="IN74HC123AD" x="77.5" y="28.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VALUE" x="81.31" y="27.738" size="0.8128" layer="28" rot="MR0"/>
-<attribute name="NAME" x="82.961" y="26.595" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="82.961" y="27.095" size="1.016" layer="26" ratio="18" rot="MR90"/>
 </element>
 <element name="R124" library="rcl" package="R0603" value="51kOhm/5%" x="71.5" y="29" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC0603JR-0751KL" x="71.5" y="29" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="72.2938" y="27.73" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="69.7938" y="27.23" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="69.9125" y="27.73" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C46" library="rcl" package="C0603" value="1000pF" x="75" y="23" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="C0603C102K5RACTU" x="75" y="23" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="76.27" y="23.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="73.52" y="22.5438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="76.27" y="21.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="DA3" library="op-amp" package="SO08" value="LM2904M" x="94.5" y="21" smashed="yes" rot="R270">
@@ -7577,22 +7509,22 @@ design rules under a new name.</description>
 </element>
 <element name="VD47" library="diode" package="SOD80" value="3.3V" x="88.5" y="17.5" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="BZV55-C3V3" x="88.5" y="17.5" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="89.643" y="15.341" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="87.5" y="20" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="86.722" y="15.341" size="0.8128" layer="28" rot="MR90"/>
 </element>
 <element name="VD46" library="diode" package="SOD80" value="3.3V" x="92" y="17.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="92" y="17.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="90.857" y="19.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="91" y="20" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="93.778" y="19.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="VD41" library="diode" package="SOD80" value="3.3V" x="100" y="17.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="100" y="17.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="98.857" y="19.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="99" y="20" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="101.778" y="19.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="VD40" library="diode" package="SOD80" value="3.3V" x="96" y="17.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="BZV55-C3V3" x="96" y="17.5" size="1.778" layer="28" rot="MR270" display="off"/>
-<attribute name="NAME" x="94.857" y="19.659" size="1.016" layer="26" ratio="18" rot="MR270"/>
+<attribute name="NAME" x="95" y="20" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="97.778" y="19.659" size="0.8128" layer="28" rot="MR270"/>
 </element>
 <element name="R89" library="rcl" package="R0603" value="100kOhm" x="98" y="16" smashed="yes" rot="R180">
@@ -7665,7 +7597,7 @@ design rules under a new name.</description>
 <element name="C42" library="rcl" package="C0603" value="0.1uF" x="98" y="20.5" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="98" y="20.5" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="98" y="20.5" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="96.73" y="19.7062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="99.23" y="20.9562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="96.73" y="22.0875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R116" library="rcl" package="R0603" value="22kOhm/5%" x="99.5" y="33" smashed="yes" rot="R180">
@@ -7689,34 +7621,34 @@ design rules under a new name.</description>
 <element name="R119" library="rcl" package="R0603" value="1.2kOhm/5%" x="97" y="22" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="RC0603JR-071K2L" x="97" y="22" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="97" y="22" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="95.73" y="21.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="98.23" y="22.4562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="95.73" y="23.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="R125" library="rcl" package="R0603" value="51kOhm/5%" x="98.5" y="33" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="RC0603JR-0751KL" x="98.5" y="33" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="98.5" y="33" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="97.23" y="32.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="99.73" y="33.4562" size="1.016" layer="26" ratio="18" rot="MR180"/>
 <attribute name="VALUE" x="97.23" y="34.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="C47" library="rcl" package="C0603" value="1000pF" x="95.5" y="33" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="C0603C102K5RACTU" x="95.5" y="33" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="95.5" y="33" size="1.778" layer="28" rot="MR180" display="off"/>
-<attribute name="NAME" x="94.23" y="32.2062" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="NAME" x="94.02" y="32.5438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="94.23" y="34.5875" size="0.8128" layer="28" ratio="10" rot="MR180"/>
 </element>
 <element name="DA9" library="74xx" package="SO16" value="74HC123D" x="94.5" y="27.5" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="IN74HC123AD" x="94.5" y="27.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VALUE" x="98.31" y="26.738" size="0.8128" layer="28" rot="MR0"/>
-<attribute name="NAME" x="99.961" y="25.595" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="99.711" y="25.845" size="1.016" layer="26" ratio="18" rot="MR90"/>
 </element>
 <element name="R126" library="rcl" package="R0603" value="51kOhm/5%" x="88.5" y="28" smashed="yes" rot="MR90">
 <attribute name="PARTNO" value="RC0603JR-0751KL" x="88.5" y="28" size="1.778" layer="28" rot="MR90" display="off"/>
-<attribute name="NAME" x="89.2938" y="26.73" size="1.016" layer="26" ratio="18" rot="MR90"/>
+<attribute name="NAME" x="86.7938" y="26.23" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="86.9125" y="26.73" size="0.8128" layer="28" ratio="10" rot="MR90"/>
 </element>
 <element name="C48" library="rcl" package="C0603" value="1000pF" x="92" y="22" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="C0603C102K5RACTU" x="92" y="22" size="1.778" layer="28" rot="MR0" display="off"/>
-<attribute name="NAME" x="93.27" y="22.7938" size="1.016" layer="26" ratio="18" rot="MR0"/>
+<attribute name="NAME" x="90.52" y="21.5438" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="93.27" y="20.4125" size="0.8128" layer="28" ratio="10" rot="MR0"/>
 </element>
 <element name="VD51" library="diode" package="SOD80" value="3.3V" x="56.5" y="13.5" smashed="yes" rot="R180">
@@ -7772,6 +7704,10 @@ design rules under a new name.</description>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="37" y="51" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="36.5438" y="49.77" size="1.016" layer="25" ratio="18" rot="R270"/>
 <attribute name="VALUE" x="38.5875" y="49.73" size="0.8128" layer="27" ratio="10" rot="R90"/>
+</element>
+<element name="DD12" library="74xx" package="SO16" value="74HC595D" x="173" y="46.25" smashed="yes" rot="MR270">
+<attribute name="VALUE" x="173.762" y="50.06" size="0.8128" layer="28" rot="MR270"/>
+<attribute name="NAME" x="167.711" y="44.595" size="1.016" layer="26" ratio="18" rot="MR90"/>
 </element>
 </elements>
 <signals>
@@ -8249,8 +8185,6 @@ design rules under a new name.</description>
 <contactref element="DD2" pad="1"/>
 <contactref element="C11" pad="1"/>
 <contactref element="DD2" pad="7"/>
-<contactref element="DD12" pad="8"/>
-<contactref element="DD12" pad="8"/>
 <contactref element="C141" pad="2"/>
 <contactref element="C86" pad="2"/>
 <contactref element="C104" pad="2"/>
@@ -8439,6 +8373,8 @@ design rules under a new name.</description>
 <via x="173" y="14.25" extent="1-16" drill="0.5"/>
 <via x="31" y="79" extent="1-16" drill="0.5"/>
 <via x="29" y="79" extent="1-16" drill="0.5"/>
+<contactref element="DD12" pad="8"/>
+<contactref element="DD12" pad="8"/>
 </signal>
 <signal name="AN_RAW_0">
 <contactref element="VD4" pad="A1"/>
@@ -8819,10 +8755,8 @@ design rules under a new name.</description>
 <contactref element="R29" pad="1"/>
 <contactref element="R22" pad="1"/>
 <contactref element="R337" pad="2"/>
-<contactref element="DD12" pad="10"/>
-<contactref element="DD12" pad="16"/>
 <contactref element="C141" pad="1"/>
-<wire x1="173.925" y1="43.175" x2="174.5" y2="43.75" width="0.15" layer="16"/>
+<wire x1="173.825" y1="43.075" x2="174.5" y2="43.75" width="0.15" layer="16"/>
 <wire x1="174.5" y1="43.75" x2="174.5" y2="53.75" width="0.15" layer="16"/>
 <wire x1="174.5" y1="53.75" x2="174" y2="54.25" width="0.15" layer="16"/>
 <wire x1="174" y1="54.25" x2="173.2938" y2="54.25" width="0.15" layer="16"/>
@@ -8833,8 +8767,6 @@ design rules under a new name.</description>
 <wire x1="169.9266" y1="50.745" x2="169.9266" y2="51.6328" width="0.4" layer="16"/>
 <wire x1="169.9266" y1="51.6328" x2="171" y2="52.7062" width="0.4" layer="16"/>
 <wire x1="171" y1="52.7062" x2="171" y2="52.75" width="0.15" layer="16"/>
-<wire x1="173.925" y1="43.175" x2="169.9766" y2="43.175" width="0.15" layer="16"/>
-<wire x1="169.9766" y1="43.175" x2="169.9266" y2="43.125" width="0.15" layer="16"/>
 <contactref element="C104" pad="1"/>
 <contactref element="C85" pad="1"/>
 <contactref element="C86" pad="1"/>
@@ -9325,7 +9257,11 @@ design rules under a new name.</description>
 <wire x1="44.75" y1="64" x2="48.25" y2="60.5" width="0.6" layer="1"/>
 <wire x1="43.938696875" y1="61.8113" x2="43.938696875" y2="63.188696875" width="0.6" layer="1"/>
 <wire x1="43.938696875" y1="63.188696875" x2="44.75" y2="64" width="0.6" layer="1"/>
-<wire x1="16.5" y1="60.125" x2="16.5" y2="60.1688" width="0" layer="19" extent="1-1"/>
+<contactref element="DD12" pad="10"/>
+<contactref element="DD12" pad="16"/>
+<wire x1="169.9266" y1="43.075" x2="173.825" y2="43.075" width="0.15" layer="16"/>
+<wire x1="169.9266" y1="50.695" x2="169.9266" y2="50.745" width="0.15" layer="16"/>
+<wire x1="16.5" y1="60.125" x2="16.5" y2="60.1688" width="0.15" layer="1"/>
 </signal>
 <signal name="JTMS">
 <contactref element="DD1" pad="72"/>
@@ -11120,93 +11056,97 @@ design rules under a new name.</description>
 <wire x1="171.75" y1="53.5" x2="169.75" y2="53.5" width="0.15" layer="16"/>
 <wire x1="169.75" y1="53.5" x2="168.5" y2="52.25" width="0.15" layer="16"/>
 <wire x1="168.5" y1="52.25" x2="168.5" y2="49.75" width="0.15" layer="16"/>
-<wire x1="168.5" y1="49.75" x2="168.75" y2="49.5" width="0.15" layer="16"/>
-<wire x1="168.75" y1="49.5" x2="170" y2="49.5" width="0.15" layer="16"/>
-<contactref element="DD12" pad="15"/>
+<wire x1="168.5" y1="49.75" x2="168.825" y2="49.425" width="0.15" layer="16"/>
 <wire x1="171.7062" y1="56.2062" x2="172" y2="55.9124" width="0.15" layer="16"/>
 <wire x1="172" y1="55.9124" x2="172" y2="53.75" width="0.15" layer="16"/>
-<wire x1="170" y1="49.5" x2="169.975" y2="49.475" width="0.15" layer="16"/>
-<wire x1="169.975" y1="49.475" x2="169.9266" y2="49.475" width="0.15" layer="16"/>
+<contactref element="DD12" pad="15"/>
+<wire x1="169.9266" y1="49.425" x2="168.825" y2="49.425" width="0.15" layer="16"/>
+<wire x1="169.9266" y1="49.425" x2="169.9266" y2="49.4266" width="0.15" layer="16"/>
+<wire x1="169.9266" y1="49.4266" x2="169.975" y2="49.475" width="0.15" layer="16"/>
+<wire x1="169.9266" y1="49.475" x2="169.975" y2="49.475" width="0.15" layer="16"/>
+<wire x1="169.975" y1="49.475" x2="170" y2="49.5" width="0.15" layer="16"/>
 </signal>
 <signal name="N$70">
 <contactref element="R339" pad="2"/>
 <wire x1="173.5" y1="55.9562" x2="173.25" y2="56.2062" width="0.15" layer="16"/>
-<contactref element="DD12" pad="1"/>
-<wire x1="176.0734" y1="50.745" x2="175" y2="51.8184" width="0.15" layer="16"/>
 <wire x1="175" y1="51.8184" x2="175" y2="54.25" width="0.15" layer="16"/>
 <wire x1="175" y1="54.25" x2="173.5" y2="55.75" width="0.15" layer="16"/>
 <wire x1="173.5" y1="55.75" x2="173.5" y2="55.9562" width="0.15" layer="16"/>
 <wire x1="173.5" y1="55.9562" x2="173.5" y2="56" width="0.15" layer="16"/>
+<contactref element="DD12" pad="1"/>
+<wire x1="176.0734" y1="50.695" x2="176.0734" y2="50.745" width="0.15" layer="16"/>
+<wire x1="176.0734" y1="50.745" x2="175" y2="51.8184" width="0.15" layer="16"/>
 </signal>
 <signal name="N$71">
 <contactref element="R340" pad="2"/>
 <wire x1="174.75" y1="56.2062" x2="174.75" y2="56.25" width="0.15" layer="16"/>
-<contactref element="DD12" pad="2"/>
-<wire x1="176.0984" y1="49.5" x2="177.25" y2="49.5" width="0.15" layer="16"/>
-<wire x1="177.25" y1="49.5" x2="177.5" y2="49.75" width="0.15" layer="16"/>
-<wire x1="177.5" y1="49.75" x2="177.5" y2="52.75" width="0.15" layer="16"/>
 <wire x1="177.5" y1="52.75" x2="174.75" y2="55.5" width="0.15" layer="16"/>
 <wire x1="174.75" y1="55.5" x2="174.75" y2="56.2062" width="0.15" layer="16"/>
-<wire x1="176.0984" y1="49.5" x2="176.0734" y2="49.475" width="0.15" layer="16"/>
+<contactref element="DD12" pad="2"/>
+<wire x1="176.0734" y1="49.425" x2="176.925" y2="49.425" width="0.15" layer="16"/>
+<wire x1="176.925" y1="49.425" x2="177.5" y2="50" width="0.15" layer="16"/>
+<wire x1="177.5" y1="50" x2="177.5" y2="52.75" width="0.15" layer="16"/>
 </signal>
 <signal name="N$72">
 <contactref element="R345" pad="2"/>
-<contactref element="DD12" pad="7"/>
-<wire x1="176.0734" y1="43.125" x2="177.875" y2="43.125" width="0.15" layer="16"/>
-<wire x1="177.875" y1="43.125" x2="178" y2="43" width="0.15" layer="16"/>
-<wire x1="178" y1="43" x2="178" y2="41.25" width="0.15" layer="16"/>
+<wire x1="178" y1="42.5" x2="178" y2="41.25" width="0.15" layer="16"/>
 <wire x1="172.25" y1="36.5438" x2="173.7062" y2="38" width="0.15" layer="16"/>
 <wire x1="173.7062" y1="38" x2="174.75" y2="38" width="0.15" layer="16"/>
 <wire x1="174.75" y1="38" x2="178" y2="41.25" width="0.15" layer="16"/>
+<contactref element="DD12" pad="7"/>
+<wire x1="176.0734" y1="43.075" x2="177.425" y2="43.075" width="0.15" layer="16"/>
+<wire x1="177.425" y1="43.075" x2="178" y2="42.5" width="0.15" layer="16"/>
 </signal>
 <signal name="N$73">
 <contactref element="R344" pad="2"/>
 <wire x1="178.5" y1="41" x2="178.5" y2="44" width="0.15" layer="16"/>
-<wire x1="178.5" y1="44" x2="178" y2="44.5" width="0.15" layer="16"/>
-<wire x1="178" y1="44.5" x2="176.1284" y2="44.5" width="0.15" layer="16"/>
-<contactref element="DD12" pad="6"/>
 <wire x1="178.5" y1="41" x2="175" y2="37.5" width="0.15" layer="16"/>
 <wire x1="175" y1="37.5" x2="174" y2="37.5" width="0.15" layer="16"/>
 <wire x1="174" y1="37.5" x2="173.75" y2="37.25" width="0.15" layer="16"/>
 <wire x1="173.75" y1="37.25" x2="173.75" y2="36.5438" width="0.15" layer="16"/>
-<wire x1="176.0734" y1="44.395" x2="176.1284" y2="44.45" width="0.15" layer="16"/>
 <wire x1="176.1284" y1="44.45" x2="176.1284" y2="44.5" width="0.15" layer="16"/>
+<contactref element="DD12" pad="6"/>
+<wire x1="176.0734" y1="44.345" x2="178.155" y2="44.345" width="0.15" layer="16"/>
+<wire x1="178.155" y1="44.345" x2="178.5" y2="44" width="0.15" layer="16"/>
+<wire x1="176.0734" y1="44.345" x2="176.0734" y2="44.395" width="0.15" layer="16"/>
+<wire x1="176.0734" y1="44.395" x2="176.1284" y2="44.45" width="0.15" layer="16"/>
 </signal>
 <signal name="N$74">
 <contactref element="R343" pad="2"/>
 <wire x1="179" y1="40.75" x2="179" y2="45" width="0.15" layer="16"/>
-<wire x1="179" y1="45" x2="178.25" y2="45.75" width="0.15" layer="16"/>
-<wire x1="178.25" y1="45.75" x2="176.1084" y2="45.75" width="0.15" layer="16"/>
-<contactref element="DD12" pad="5"/>
 <wire x1="179" y1="40.75" x2="175.25" y2="37" width="0.15" layer="16"/>
 <wire x1="175.25" y1="37" x2="175.25" y2="36.5438" width="0.15" layer="16"/>
 <wire x1="176.0734" y1="45.665" x2="176.1084" y2="45.7" width="0.15" layer="16"/>
-<wire x1="176.1084" y1="45.7" x2="176.1084" y2="45.75" width="0.15" layer="16"/>
 <wire x1="175.25" y1="36.5438" x2="175.25" y2="36.5" width="0.15" layer="16"/>
+<contactref element="DD12" pad="5"/>
+<wire x1="176.0734" y1="45.615" x2="178.385" y2="45.615" width="0.15" layer="16"/>
+<wire x1="178.385" y1="45.615" x2="179" y2="45" width="0.15" layer="16"/>
+<wire x1="176.0734" y1="45.665" x2="176.0734" y2="45.615" width="0.15" layer="16"/>
 </signal>
 <signal name="N$80">
 <contactref element="R341" pad="2"/>
 <wire x1="178" y1="53" x2="178" y2="49" width="0.15" layer="16"/>
-<wire x1="178" y1="49" x2="177.25" y2="48.25" width="0.15" layer="16"/>
-<wire x1="177.25" y1="48.25" x2="176.0284" y2="48.25" width="0.15" layer="16"/>
-<contactref element="DD12" pad="3"/>
 <wire x1="178" y1="53" x2="176.25" y2="54.75" width="0.15" layer="16"/>
 <wire x1="176.25" y1="54.75" x2="176.25" y2="56.2062" width="0.15" layer="16"/>
-<wire x1="176.25" y1="56.25" x2="176.25" y2="56.5" width="0.15" layer="16"/>
+<wire x1="176.25" y1="56.2062" x2="176.25" y2="56.5" width="0.15" layer="16"/>
 <wire x1="176.0734" y1="48.205" x2="176.0284" y2="48.25" width="0.15" layer="16"/>
 <wire x1="176.0284" y1="48.25" x2="176" y2="48.25" width="0.15" layer="16"/>
-<wire x1="176.25" y1="56.2062" x2="176.25" y2="56.25" width="0.15" layer="16"/>
+<contactref element="DD12" pad="3"/>
+<wire x1="176.0734" y1="48.155" x2="177.155" y2="48.155" width="0.15" layer="16"/>
+<wire x1="177.155" y1="48.155" x2="178" y2="49" width="0.15" layer="16"/>
+<wire x1="176.0734" y1="48.205" x2="176.0734" y2="48.155" width="0.15" layer="16"/>
 </signal>
 <signal name="N$81">
 <contactref element="R342" pad="2"/>
 <wire x1="179.5" y1="40.5" x2="179.5" y2="45.25" width="0.15" layer="16"/>
-<wire x1="179.5" y1="45.25" x2="177.75" y2="47" width="0.15" layer="16"/>
-<wire x1="177.75" y1="47" x2="176.0884" y2="47" width="0.15" layer="16"/>
-<contactref element="DD12" pad="4"/>
 <wire x1="179.5" y1="40.5" x2="176.75" y2="37.75" width="0.15" layer="16"/>
 <wire x1="176.75" y1="37.75" x2="176.75" y2="36.5438" width="0.15" layer="16"/>
 <wire x1="176.0734" y1="46.935" x2="176.0884" y2="46.95" width="0.15" layer="16"/>
 <wire x1="176.0884" y1="46.95" x2="176.0884" y2="47" width="0.15" layer="16"/>
+<contactref element="DD12" pad="4"/>
+<wire x1="176.0734" y1="46.885" x2="177.865" y2="46.885" width="0.15" layer="16"/>
+<wire x1="177.865" y1="46.885" x2="179.5" y2="45.25" width="0.15" layer="16"/>
+<wire x1="176.0734" y1="46.935" x2="176.0734" y2="46.885" width="0.15" layer="16"/>
 </signal>
 <signal name="VCC_DRW1">
 <contactref element="D20" pad="TAB"/>
@@ -16070,9 +16010,8 @@ design rules under a new name.</description>
 <wire x1="79.77" y1="39.73" x2="79.5" y2="40" width="0.15" layer="1"/>
 <wire x1="79.5" y1="40" x2="79.5" y2="40.5" width="0.15" layer="1"/>
 <wire x1="79.5" y1="40.5" x2="80" y2="41" width="0.15" layer="1"/>
-<wire x1="80" y1="41" x2="81" y2="41" width="0.15" layer="1"/>
+<wire x1="80" y1="41" x2="81.0734" y2="41" width="0.15" layer="1"/>
 <wire x1="81.0734" y1="39.73" x2="79.23" y2="39.73" width="0.15" layer="1"/>
-<wire x1="81" y1="41" x2="81.0734" y2="41" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$246">
 <contactref element="DD3" pad="9"/>
@@ -16310,7 +16249,6 @@ design rules under a new name.</description>
 <contactref element="DD10" pad="2"/>
 <contactref element="DD11" pad="2"/>
 <contactref element="R23" pad="1"/>
-<contactref element="DD12" pad="11"/>
 <wire x1="138.0734" y1="53.175" x2="137.375" y2="53.175" width="0.15" layer="16"/>
 <wire x1="137.375" y1="53.175" x2="136.7" y2="52.5" width="0.15" layer="16"/>
 <wire x1="136.7" y1="52.5" x2="117.9984" y2="52.5" width="0.15" layer="16"/>
@@ -16379,8 +16317,7 @@ design rules under a new name.</description>
 <wire x1="100.55" y1="74.25" x2="100.5" y2="74.25" width="0.15" layer="16"/>
 <wire x1="118.75" y1="76.25" x2="115" y2="76.25" width="0.15" layer="16"/>
 <wire x1="115" y1="76.25" x2="114.75" y2="76" width="0.15" layer="16"/>
-<wire x1="169.9266" y1="44.395" x2="171.395" y2="44.395" width="0.15" layer="16"/>
-<wire x1="171.395" y1="44.395" x2="171.7" y2="44.7" width="0.15" layer="16"/>
+<wire x1="171.345" y1="44.345" x2="171.7" y2="44.7" width="0.15" layer="16"/>
 <wire x1="171.7" y1="44.7" x2="171.7" y2="45.9" width="0.15" layer="16"/>
 <wire x1="171.7" y1="45.9" x2="171.3" y2="46.3" width="0.15" layer="16"/>
 <wire x1="171.3" y1="46.3" x2="167.7" y2="46.3" width="0.15" layer="16"/>
@@ -16391,6 +16328,8 @@ design rules under a new name.</description>
 <wire x1="139.25" y1="53" x2="138.2484" y2="53" width="0.15" layer="16"/>
 <wire x1="138.2484" y1="53" x2="138.0734" y2="53.175" width="0.15" layer="16"/>
 <wire x1="76.4016" y1="75" x2="72.7938" y2="75" width="0.15" layer="16"/>
+<contactref element="DD12" pad="11"/>
+<wire x1="169.9266" y1="44.345" x2="171.345" y2="44.345" width="0.15" layer="16"/>
 </signal>
 <signal name="SR_IN_NSS">
 <contactref element="DD5" pad="15"/>
@@ -16596,10 +16535,8 @@ design rules under a new name.</description>
 <wire x1="105.6688" y1="45.625" x2="105.6688" y2="45.6688" width="0.15" layer="16"/>
 </signal>
 <signal name="SR_OUT_NSS">
-<contactref element="DD12" pad="12"/>
 <contactref element="R26" pad="1"/>
-<wire x1="169.9266" y1="45.665" x2="167.585" y2="45.665" width="0.15" layer="16"/>
-<wire x1="167.585" y1="45.665" x2="164.25" y2="49" width="0.15" layer="16"/>
+<wire x1="167.635" y1="45.615" x2="164.25" y2="49" width="0.15" layer="16"/>
 <wire x1="164.25" y1="49" x2="145" y2="49" width="0.15" layer="16"/>
 <wire x1="145" y1="49" x2="143.75" y2="47.75" width="0.15" layer="16"/>
 <wire x1="143.75" y1="47.75" x2="142.75" y2="47.75" width="0.15" layer="16"/>
@@ -16620,25 +16557,26 @@ design rules under a new name.</description>
 <wire x1="106.125" y1="48.125" x2="105.625" y2="47.625" width="0.15" layer="16"/>
 <wire x1="105.625" y1="47.625" x2="104.3312" y2="47.625" width="0.15" layer="16"/>
 <wire x1="104.3312" y1="47.625" x2="103.7938" y2="47.75" width="0.15" layer="16"/>
+<contactref element="DD12" pad="12"/>
+<wire x1="169.9266" y1="45.615" x2="167.635" y2="45.615" width="0.15" layer="16"/>
 </signal>
 <signal name="!SR_OUT_ENABLE">
-<contactref element="R337" pad="1"/>
-<contactref element="DD12" pad="13"/>
-<wire x1="173.25" y1="52.7062" x2="173.25" y2="47.75" width="0.15" layer="16"/>
-<wire x1="173.25" y1="47.75" x2="172.5" y2="47" width="0.15" layer="16"/>
-<wire x1="172.5" y1="47" x2="169.9416" y2="47" width="0.15" layer="16"/>
 <contactref element="R19" pad="1"/>
-<wire x1="169.9266" y1="46.935" x2="167.815" y2="46.935" width="0.15" layer="16"/>
-<wire x1="167.815" y1="46.935" x2="164.75" y2="50" width="0.15" layer="16"/>
+<wire x1="167.865" y1="46.885" x2="164.75" y2="50" width="0.15" layer="16"/>
 <wire x1="164.75" y1="50" x2="144.75" y2="50" width="0.15" layer="16"/>
 <wire x1="137.5" y1="57.25" x2="113" y2="57.25" width="0.15" layer="16"/>
 <wire x1="113" y1="57.25" x2="111.75" y2="56" width="0.15" layer="16"/>
 <wire x1="111.75" y1="56" x2="111.25" y2="56" width="0.15" layer="16"/>
 <wire x1="111.25" y1="56" x2="111" y2="55.75" width="0.15" layer="16"/>
 <wire x1="137.5" y1="57.25" x2="144.75" y2="50" width="0.15" layer="16"/>
-<wire x1="169.9266" y1="46.935" x2="169.9416" y2="46.95" width="0.15" layer="16"/>
-<wire x1="169.9416" y1="46.95" x2="169.9416" y2="47" width="0.15" layer="16"/>
 <wire x1="111.0438" y1="55.75" x2="111" y2="55.75" width="0.15" layer="16"/>
+<contactref element="DD12" pad="13"/>
+<contactref element="R337" pad="1"/>
+<wire x1="169.9266" y1="46.885" x2="167.865" y2="46.885" width="0.15" layer="16"/>
+<wire x1="169.9266" y1="46.885" x2="172.135" y2="46.885" width="0.15" layer="16"/>
+<wire x1="172.135" y1="46.885" x2="173.25" y2="48" width="0.15" layer="16"/>
+<wire x1="173.25" y1="48" x2="173.25" y2="52.7062" width="0.15" layer="16"/>
+<wire x1="173.25" y1="52.75" x2="173.25" y2="52.7062" width="0.15" layer="16"/>
 </signal>
 <signal name="N$275">
 <contactref element="R26" pad="2"/>
@@ -16658,15 +16596,15 @@ design rules under a new name.</description>
 <wire x1="102.2062" y1="48.7938" x2="99.5" y2="51.5" width="0.15" layer="16"/>
 </signal>
 <signal name="SR_MOSI">
-<contactref element="DD12" pad="14"/>
 <contactref element="R24" pad="1"/>
-<wire x1="169.9266" y1="48.205" x2="167.295" y2="48.205" width="0.15" layer="16"/>
-<wire x1="167.295" y1="48.205" x2="165" y2="50.5" width="0.15" layer="16"/>
+<wire x1="167.345" y1="48.155" x2="165" y2="50.5" width="0.15" layer="16"/>
 <wire x1="165" y1="50.5" x2="145" y2="50.5" width="0.15" layer="16"/>
 <wire x1="137.75" y1="57.75" x2="111.25" y2="57.75" width="0.15" layer="16"/>
 <wire x1="111.25" y1="57.75" x2="111" y2="57.5" width="0.15" layer="16"/>
 <wire x1="145" y1="50.5" x2="137.75" y2="57.75" width="0.15" layer="16"/>
 <wire x1="111" y1="57.5" x2="111.0438" y2="57.5" width="0.15" layer="16"/>
+<contactref element="DD12" pad="14"/>
+<wire x1="169.9266" y1="48.155" x2="167.345" y2="48.155" width="0.15" layer="16"/>
 </signal>
 <signal name="N$276">
 <contactref element="R20" pad="2"/>
