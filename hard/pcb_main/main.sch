@@ -35919,7 +35919,7 @@ Manufacturer TE CONNECTIVITY</description>
 <pinref part="DD12" gate=".1" pin="QE"/>
 </segment>
 </net>
-<net name="VCC_DRW1" class="0">
+<net name="VCC_DRV1" class="0">
 <segment>
 <pinref part="D20" gate="G$1" pin="VCC"/>
 <wire x1="218.44" y1="182.88" x2="193.04" y2="182.88" width="0.1524" layer="91"/>
@@ -35936,7 +35936,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="150.495" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="OUT_DRW1" class="0">
+<net name="OUT_DRV1" class="0">
 <segment>
 <pinref part="D20" gate="G$1" pin="OUT2"/>
 <pinref part="D20" gate="G$1" pin="OUT1"/>
@@ -35956,7 +35956,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="153.035" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="VCC_DRW2" class="0">
+<net name="VCC_DRV2" class="0">
 <segment>
 <pinref part="D21" gate="G$1" pin="VCC"/>
 <wire x1="218.44" y1="162.56" x2="193.04" y2="162.56" width="0.1524" layer="91"/>
@@ -35973,7 +35973,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="140.335" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="OUT_DRW2" class="0">
+<net name="OUT_DRV2" class="0">
 <segment>
 <pinref part="D21" gate="G$1" pin="OUT2"/>
 <pinref part="D21" gate="G$1" pin="OUT1"/>
@@ -35993,7 +35993,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="142.875" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="VCC_DRW3" class="0">
+<net name="VCC_DRV3" class="0">
 <segment>
 <pinref part="D22" gate="G$1" pin="VCC"/>
 <wire x1="218.44" y1="142.24" x2="193.04" y2="142.24" width="0.1524" layer="91"/>
@@ -36010,7 +36010,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="130.175" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="OUT_DRW3" class="0">
+<net name="OUT_DRV3" class="0">
 <segment>
 <pinref part="D22" gate="G$1" pin="OUT2"/>
 <pinref part="D22" gate="G$1" pin="OUT1"/>
@@ -36030,7 +36030,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="132.715" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="VCC_DRW4" class="0">
+<net name="VCC_DRV4" class="0">
 <segment>
 <pinref part="D23" gate="G$1" pin="VCC"/>
 <wire x1="218.44" y1="121.92" x2="193.04" y2="121.92" width="0.1524" layer="91"/>
@@ -36047,7 +36047,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="120.015" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="OUT_DRW4" class="0">
+<net name="OUT_DRV4" class="0">
 <segment>
 <pinref part="D23" gate="G$1" pin="OUT2"/>
 <pinref part="D23" gate="G$1" pin="OUT1"/>
@@ -36067,7 +36067,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="122.555" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="VCC_DRW5" class="0">
+<net name="VCC_DRV5" class="0">
 <segment>
 <pinref part="D24" gate="G$1" pin="VCC"/>
 <wire x1="218.44" y1="101.6" x2="193.04" y2="101.6" width="0.1524" layer="91"/>
@@ -36084,7 +36084,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="109.855" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="OUT_DRW5" class="0">
+<net name="OUT_DRV5" class="0">
 <segment>
 <pinref part="D24" gate="G$1" pin="OUT2"/>
 <pinref part="D24" gate="G$1" pin="OUT1"/>
@@ -36104,7 +36104,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="112.395" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="VCC_DRW6" class="0">
+<net name="VCC_DRV6" class="0">
 <segment>
 <pinref part="D25" gate="G$1" pin="VCC"/>
 <wire x1="218.44" y1="81.28" x2="193.04" y2="81.28" width="0.1524" layer="91"/>
@@ -36121,7 +36121,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="99.695" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="OUT_DRW6" class="0">
+<net name="OUT_DRV6" class="0">
 <segment>
 <pinref part="D25" gate="G$1" pin="OUT2"/>
 <pinref part="D25" gate="G$1" pin="OUT1"/>
@@ -36141,7 +36141,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="102.235" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="VCC_DRW7" class="0">
+<net name="VCC_DRV7" class="0">
 <segment>
 <pinref part="D26" gate="G$1" pin="VCC"/>
 <wire x1="218.44" y1="60.96" x2="193.04" y2="60.96" width="0.1524" layer="91"/>
@@ -36158,7 +36158,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="89.535" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="OUT_DRW7" class="0">
+<net name="OUT_DRV7" class="0">
 <segment>
 <pinref part="D26" gate="G$1" pin="OUT2"/>
 <pinref part="D26" gate="G$1" pin="OUT1"/>
@@ -36178,7 +36178,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="92.075" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="VCC_DRW8" class="0">
+<net name="VCC_DRV8" class="0">
 <segment>
 <pinref part="D27" gate="G$1" pin="VCC"/>
 <wire x1="218.44" y1="40.64" x2="193.04" y2="40.64" width="0.1524" layer="91"/>
@@ -36195,7 +36195,7 @@ Manufacturer TE CONNECTIVITY</description>
 <label x="238.76" y="79.375" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="OUT_DRW8" class="0">
+<net name="OUT_DRV8" class="0">
 <segment>
 <pinref part="D27" gate="G$1" pin="OUT2"/>
 <pinref part="D27" gate="G$1" pin="OUT1"/>
