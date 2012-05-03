@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -68,7 +68,7 @@
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
 <layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="no" active="yes"/>
 <layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="100" name="DocFrame" color="15" fill="1" visible="yes" active="yes"/>
@@ -26853,7 +26853,7 @@ Manufacturer TE CONNECTIVITY</description>
 <instance part="GND2" gate="1" x="33.02" y="137.16"/>
 <instance part="VD58" gate="G$1" x="96.52" y="147.32" smashed="yes" rot="R90">
 <attribute name="PARTNO" value="VS-30BQ060TRPBF" x="96.52" y="147.32" size="1.778" layer="96" rot="R90" display="off"/>
-<attribute name="NAME" x="102.829" y="147.725" size="1.524" layer="95" rot="R180"/>
+<attribute name="NAME" x="98.466" y="147.725" size="1.524" layer="95" rot="MR180"/>
 <attribute name="VALUE" x="93.25" y="149.954" size="1.524" layer="96" rot="R270"/>
 </instance>
 <instance part="VD59" gate="G$1" x="96.52" y="116.84" smashed="yes" rot="R90">
@@ -26929,7 +26929,7 @@ Manufacturer TE CONNECTIVITY</description>
 </instance>
 <instance part="R137" gate="G$1" x="43.18" y="30.48" smashed="yes" rot="R90">
 <attribute name="PARTNO" value="ERJ6GEYJ474V" x="43.18" y="30.48" size="1.778" layer="96" display="off"/>
-<attribute name="NAME" x="48.006" y="35.1" size="1.524" layer="95" rot="R180"/>
+<attribute name="NAME" x="44.069" y="35.1" size="1.524" layer="95" rot="MR180"/>
 <attribute name="VALUE" x="41.322" y="26.035" size="1.524" layer="96" rot="R90"/>
 </instance>
 <instance part="R138" gate="G$1" x="73.66" y="50.8" smashed="yes">
@@ -26948,16 +26948,16 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="NAME" x="34.966" y="58.015" size="1.524" layer="95"/>
 <attribute name="VALUE" x="31.209" y="58.325" size="1.524" layer="96" rot="MR0"/>
 </instance>
-<instance part="C59" gate="G$1" x="48.26" y="30.48" smashed="yes">
-<attribute name="PARTNO" x="48.26" y="30.48" size="1.778" layer="96" display="off"/>
-<attribute name="NAME" x="48.974" y="31.21" size="1.524" layer="95"/>
-<attribute name="VALUE" x="48.974" y="27.718" size="1.524" layer="96" font="vector"/>
+<instance part="C59" gate="G$1" x="50.8" y="30.48" smashed="yes">
+<attribute name="PARTNO" x="50.8" y="30.48" size="1.778" layer="96" display="off"/>
+<attribute name="NAME" x="51.514" y="31.21" size="1.524" layer="95"/>
+<attribute name="VALUE" x="51.514" y="27.718" size="1.524" layer="96" font="vector"/>
 </instance>
 <instance part="GND34" gate="1" x="43.18" y="22.86"/>
 <instance part="P+21" gate="G$1" x="124.46" y="38.1" rot="R270"/>
 <instance part="VD57" gate="G$1" x="86.36" y="27.94" smashed="yes" rot="R90">
 <attribute name="PARTNO" value="SMBJ24CA" x="86.36" y="27.94" size="1.524" layer="96" rot="R270" display="off"/>
-<attribute name="NAME" x="92.669" y="30.25" size="1.524" layer="95" rot="R180"/>
+<attribute name="NAME" x="88.306" y="29.615" size="1.524" layer="95" rot="MR180"/>
 <attribute name="VALUE" x="84.55" y="23.401" size="1.524" layer="96" rot="R90"/>
 </instance>
 <instance part="GND35" gate="1" x="86.36" y="22.86"/>
@@ -27003,7 +27003,7 @@ Manufacturer TE CONNECTIVITY</description>
 </instance>
 <instance part="C56" gate="G$1" x="33.02" y="144.78" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="22205C106KAT2A" x="33.02" y="144.78" size="1.27" layer="96" rot="MR180" display="off"/>
-<attribute name="NAME" x="33.734" y="147.225" size="1.524" layer="95" rot="MR180"/>
+<attribute name="NAME" x="33.734" y="146.145" size="1.524" layer="95"/>
 <attribute name="VALUE" x="29.623" y="140.414" size="1.524" layer="96" font="vector" rot="MR90"/>
 </instance>
 <instance part="VD56" gate="G$1" x="68.58" y="182.88" smashed="yes">
@@ -27198,8 +27198,8 @@ Manufacturer TE CONNECTIVITY</description>
 <pinref part="GND34" gate="1" pin="GND"/>
 <pinref part="C59" gate="G$1" pin="2"/>
 <wire x1="43.18" y1="22.86" x2="43.18" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="27.94" x2="48.26" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="22.86" x2="43.18" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="27.94" x2="50.8" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="22.86" x2="43.18" y2="22.86" width="0.1524" layer="91"/>
 <junction x="43.18" y="22.86"/>
 </segment>
 <segment>
@@ -27410,8 +27410,8 @@ Manufacturer TE CONNECTIVITY</description>
 <pinref part="R137" gate="G$1" pin="2"/>
 <wire x1="43.18" y1="35.56" x2="43.18" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="43.18" y1="38.1" x2="43.18" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="33.02" x2="48.26" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="38.1" x2="43.18" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="33.02" x2="50.8" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="38.1" x2="43.18" y2="38.1" width="0.1524" layer="91"/>
 <junction x="43.18" y="38.1"/>
 </segment>
 </net>

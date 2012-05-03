@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.025" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -956,19 +956,19 @@
 <text x="17.78" y="10.16" size="1.524" layer="94">Цепи выполнить проводом МГТФ 0.35</text>
 <text x="17.78" y="7.62" size="1.524" layer="94">Для обжима использовать контакты типа 00000 "Molex"</text>
 <text x="132.08" y="370.84" size="1.524" layer="94">Плата КСАУ.666666.000</text>
-<wire x1="101.6" y1="88.9" x2="101.6" y2="111.76" width="0.1524" layer="94"/>
-<wire x1="193.04" y1="88.9" x2="193.04" y2="134.62" width="0.1524" layer="94"/>
-<wire x1="193.04" y1="88.9" x2="101.6" y2="88.9" width="0.1524" layer="94"/>
-<wire x1="101.6" y1="375.92" x2="101.6" y2="345.44" width="0.1524" layer="94"/>
-<wire x1="193.04" y1="375.92" x2="193.04" y2="345.44" width="0.1524" layer="94"/>
-<wire x1="101.6" y1="375.92" x2="193.04" y2="375.92" width="0.1524" layer="94"/>
-<wire x1="101.6" y1="302.26" x2="101.6" y2="292.1" width="0.1524" layer="94"/>
-<wire x1="101.6" y1="248.92" x2="101.6" y2="238.76" width="0.1524" layer="94"/>
-<wire x1="101.6" y1="195.58" x2="101.6" y2="185.42" width="0.1524" layer="94"/>
-<wire x1="101.6" y1="142.24" x2="101.6" y2="134.62" width="0.1524" layer="94"/>
-<wire x1="193.04" y1="157.48" x2="193.04" y2="167.64" width="0.1524" layer="94"/>
-<wire x1="193.04" y1="190.5" x2="193.04" y2="198.12" width="0.1524" layer="94"/>
-<wire x1="193.04" y1="287.02" x2="193.04" y2="302.26" width="0.1524" layer="94"/>
+<wire x1="104.14" y1="88.9" x2="104.14" y2="111.76" width="0.1524" layer="94"/>
+<wire x1="190.5" y1="88.9" x2="190.5" y2="134.62" width="0.1524" layer="94"/>
+<wire x1="190.5" y1="88.9" x2="104.14" y2="88.9" width="0.1524" layer="94"/>
+<wire x1="104.14" y1="375.92" x2="104.14" y2="345.44" width="0.1524" layer="94"/>
+<wire x1="190.5" y1="375.92" x2="190.5" y2="345.44" width="0.1524" layer="94"/>
+<wire x1="104.14" y1="375.92" x2="190.5" y2="375.92" width="0.1524" layer="94"/>
+<wire x1="104.14" y1="302.26" x2="104.14" y2="292.1" width="0.1524" layer="94"/>
+<wire x1="104.14" y1="248.92" x2="104.14" y2="238.76" width="0.1524" layer="94"/>
+<wire x1="104.14" y1="195.58" x2="104.14" y2="185.42" width="0.1524" layer="94"/>
+<wire x1="104.14" y1="142.24" x2="104.14" y2="134.62" width="0.1524" layer="94"/>
+<wire x1="190.5" y1="157.48" x2="190.5" y2="167.64" width="0.1524" layer="94"/>
+<wire x1="190.5" y1="190.5" x2="190.5" y2="198.12" width="0.1524" layer="94"/>
+<wire x1="190.5" y1="287.02" x2="190.5" y2="302.26" width="0.1524" layer="94"/>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="0" y="0"/>
