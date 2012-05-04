@@ -22192,7 +22192,9 @@ Manufacturer TE CONNECTIVITY</description>
 <part name="R28" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="DD12" library="74xx" deviceset="74*595" device="D" technology="HC"/>
+<part name="DD12" library="74xx" deviceset="74*595" device="D" technology="HC">
+<attribute name="PARTNO" value="IN74HC595AD"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -35466,7 +35468,9 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="NAME" x="77.549" y="69.31" size="1.524" layer="95"/>
 <attribute name="VALUE" x="77.549" y="66.453" size="1.524" layer="96" font="vector"/>
 </instance>
-<instance part="DD12" gate=".1" x="76.2" y="111.76"/>
+<instance part="DD12" gate=".1" x="76.2" y="111.76">
+<attribute name="PARTNO" x="76.2" y="111.76" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="DD12" gate=".2" x="76.2" y="78.74"/>
 </instances>
 <busses>
