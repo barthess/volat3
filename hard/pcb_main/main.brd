@@ -32,12 +32,12 @@
 <layer number="22" name="bPlace" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="26" name="bNames" color="15" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -7244,7 +7244,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="97.5175" y="34.97" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="90.19" y="38.405" size="0.8128" layer="27" ratio="10" rot="R270"/>
 </element>
-<element name="S1" library="switch" package="B3S-10XX" value="RESET" x="5" y="16" smashed="yes" rot="R270">
+<element name="SB1" library="switch" package="B3S-10XX" value="RESET" x="5" y="16" smashed="yes" rot="R270">
 <attribute name="LABEL" value="RESET" x="8.685" y="19.8575" size="1.6764" layer="25" ratio="18" rot="R270"/>
 <attribute name="PARTNO" value="4-1437565-2" x="5" y="16" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="5" y="12.5075" size="1.016" layer="25" ratio="18" rot="R270"/>
@@ -8246,8 +8246,8 @@ design rules under a new name.</description>
 <contactref element="C50" pad="2"/>
 <contactref element="C51" pad="2"/>
 <contactref element="C55" pad="2"/>
-<contactref element="S1" pad="2"/>
-<contactref element="S1" pad="1"/>
+<contactref element="SB1" pad="2"/>
+<contactref element="SB1" pad="1"/>
 <contactref element="XP1" pad="4"/>
 <contactref element="XP1" pad="6"/>
 <contactref element="XP1" pad="8"/>
@@ -9375,8 +9375,8 @@ design rules under a new name.</description>
 <contactref element="DD1" pad="14"/>
 <contactref element="R9" pad="1"/>
 <contactref element="C2" pad="1"/>
-<contactref element="S1" pad="3"/>
-<contactref element="S1" pad="4"/>
+<contactref element="SB1" pad="3"/>
+<contactref element="SB1" pad="4"/>
 <contactref element="XP1" pad="15"/>
 <wire x1="2.75" y1="11.45" x2="2.75" y2="20.55" width="0.15" layer="1"/>
 <wire x1="2.75" y1="20.55" x2="2.75" y2="24.75" width="0.15" layer="1"/>
