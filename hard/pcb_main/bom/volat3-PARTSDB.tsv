@@ -1,6 +1,6 @@
 Mfg Part Num	Mfg Name	VID	Vendor Part Num	Unit Price	Description (bom-ex)	Country of Origin	Customer Ref
 STM32F103VDT6	STMICROELECTRONICS	Farnell	1624140	18.48	MCU, 32BIT, CORTEXM3, 384KFLASH	France	
-LM2596S-5.0	NATIONAL SEMICONDUCTOR	Farnell	1469195	7.6	IC, DC/DC CONVERTER, 3A	United States	
+LM2596S-5.0/NOPB	NATIONAL SEMICONDUCTOR	Farnell	1469195	7.6	IC, DC/DC CONVERTER, 3A	United States	
 IN74HC11AD	INTEGRAL	Integral			Triple 3AND		
 IN74HC123AD	INTEGRAL	Integral			Double monostable multivibrator		
 IN74HC165AD	INTEGRAL	Integral			8-Bit Parallel-Input Serial-Output Shift Register		

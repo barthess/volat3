@@ -68,7 +68,7 @@
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
 <layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="96" name="Values" color="7" fill="1" visible="no" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="100" name="DocFrame" color="15" fill="1" visible="yes" active="yes"/>
@@ -19351,10 +19351,10 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="PARTNO" value="VS-10BQ060TRPBF"/>
 </part>
 <part name="DA12" library="vreg" deviceset="LM2596?-*" device="S" technology="5.0">
-<attribute name="PARTNO" value="LM2596S-5.0"/>
+<attribute name="PARTNO" value="LM2596S-5.0/NOPB"/>
 </part>
 <part name="DA13" library="vreg" deviceset="LM2596?-*" device="S" technology="5.0">
-<attribute name="PARTNO" value="LM2596S-5.0"/>
+<attribute name="PARTNO" value="LM2596S-5.0/NOPB"/>
 </part>
 <part name="D18" library="optocoupler" deviceset="TCMT4100" device="">
 <attribute name="PARTNO" value="TCMT4100"/>
