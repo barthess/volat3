@@ -36468,6 +36468,7 @@ Manufacturer TE CONNECTIVITY</description>
 <sheet>
 <description>Interfaces</description>
 <plain>
+<text x="20.32" y="187.96" size="1.778" layer="92" rot="MR0">C(1,3)</text>
 </plain>
 <instances>
 <instance part="DA16" gate="G$1" x="88.9" y="73.66" smashed="yes" rot="MR0">
@@ -36507,7 +36508,7 @@ Manufacturer TE CONNECTIVITY</description>
 <instance part="VT3" gate="G$1" x="81.28" y="137.16" smashed="yes" rot="MR0">
 <attribute name="PARTNO" x="81.28" y="137.16" size="1.778" layer="96" rot="MR0" display="off"/>
 <attribute name="NAME" x="83.615" y="140.43" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="80.44" y="136.97" size="1.524" layer="96" rot="MR0"/>
+<attribute name="VALUE" x="81.47" y="133.78" size="1.524" layer="96" rot="MR270"/>
 </instance>
 <instance part="R368" gate="G$1" x="109.22" y="106.68" smashed="yes">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="111.76" y="106.68" size="1.778" layer="96" display="off"/>
@@ -36602,7 +36603,7 @@ Manufacturer TE CONNECTIVITY</description>
 <busses>
 <bus name="TACHOMETER,FREQMETER,SPEEDOMETER,USB_DISCOVERY,USB_PRESENT,USBDP,USBDM,USART_FROM_MCU,USART_TO_MCU,CAN_TX,CAN_RX">
 <segment>
-<wire x1="17.78" y1="187.96" x2="137.16" y2="187.96" width="0.762" layer="92"/>
+<wire x1="22.86" y1="187.96" x2="137.16" y2="187.96" width="0.762" layer="92"/>
 <wire x1="137.16" y1="187.96" x2="137.16" y2="20.32" width="0.762" layer="92"/>
 </segment>
 </bus>
