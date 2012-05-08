@@ -17461,51 +17461,6 @@ body 3.9 mm/JEDEC MS-012AA</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="mount">
-<packages>
-<package name="STAND-OFF-LONG">
-<wire x1="-3.5" y1="6" x2="3.5" y2="6" width="0.127" layer="40" curve="-171.829"/>
-<wire x1="-3.5" y1="0" x2="-3.5" y2="6" width="0.127" layer="40"/>
-<wire x1="3.5" y1="0" x2="3.5" y2="6" width="0.127" layer="40"/>
-<circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
-<hole x="0" y="0" drill="3.5"/>
-<circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
-</package>
-<package name="STAND-OFF">
-<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
-This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
-<circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
-<hole x="0" y="0" drill="3.5"/>
-<circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
-</package>
-</packages>
-<symbols>
-<symbol name="STAND-OFF">
-<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="STAND-OFF" prefix="JP">
-<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
-This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
-<gates>
-<gate name="G$1" symbol="STAND-OFF" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="STAND-OFF">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="LONG" package="STAND-OFF-LONG">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="fuse">
 <packages>
 <package name="RK1210">
@@ -18905,18 +18860,6 @@ Based on the following sources:
 <wire x1="-3.21825" y1="-1.25825" x2="-2.78175" y2="-1.25825" width="0.3048" layer="21"/>
 <wire x1="2.7825" y1="-1.25825" x2="3.219" y2="-1.25825" width="0.3048" layer="21"/>
 </package>
-<package name="NFE31">
-<rectangle x1="1.1" y1="0" x2="2.1" y2="1.6" layer="51"/>
-<rectangle x1="2.5" y1="0" x2="3.2" y2="1.6" layer="51"/>
-<rectangle x1="0" y1="0" x2="0.7" y2="1.6" layer="51"/>
-<smd name="P$1" x="0.2" y="0.8" dx="2" dy="1" layer="1" rot="R90"/>
-<smd name="P$2" x="1.6" y="0.8" dx="2" dy="1" layer="1" rot="R90"/>
-<smd name="P$3" x="3" y="0.8" dx="2" dy="1" layer="1" rot="R90"/>
-<text x="-0.1175" y="2.23625" size="1.016" layer="25" ratio="18">&gt;NAME</text>
-<text x="-0.1325" y="-1.4275" size="0.8128" layer="27">&gt;VALUE</text>
-<wire x1="-0.3" y1="2" x2="3.5" y2="2" width="0.15" layer="21"/>
-<wire x1="-0.3" y1="-0.4" x2="3.5" y2="-0.4" width="0.15" layer="21"/>
-</package>
 </packages>
 <symbols>
 <symbol name="4701">
@@ -18956,30 +18899,6 @@ Based on the following sources:
 <circle x="5.08" y="2.54" radius="0.254" width="0.254" layer="94"/>
 <circle x="0" y="-2.54" radius="0.254" width="0.254" layer="94"/>
 </symbol>
-<symbol name="NFE31P">
-<pin name="1" x="-12.7" y="2.54" visible="off" length="short" direction="pas" swaplevel="1"/>
-<wire x1="1.968" y1="1.778" x2="0" y2="1.778" width="0.1524" layer="94"/>
-<wire x1="0" y1="1.778" x2="-2.032" y2="1.778" width="0.1524" layer="94"/>
-<text x="-4.366" y="5.81" size="1.524" layer="95">&gt;NAME</text>
-<text x="0.714" y="-2.762" size="1.524" layer="96" font="vector">&gt;VALUE</text>
-<pin name="3" x="12.7" y="2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
-<pin name="2" x="0" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
-<wire x1="-7.62" y1="2.54" x2="-5.08" y2="2.54" width="0.1524" layer="94" curve="-180"/>
-<wire x1="-5.08" y1="2.54" x2="-2.54" y2="2.54" width="0.1524" layer="94" curve="-180"/>
-<wire x1="-10.16" y1="5.08" x2="-10.16" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="-10.16" y1="2.54" x2="-10.16" y2="0" width="0.1524" layer="94"/>
-<wire x1="-10.16" y1="0" x2="0" y2="0" width="0.1524" layer="94"/>
-<wire x1="0" y1="0" x2="10.16" y2="0" width="0.1524" layer="94"/>
-<wire x1="10.16" y1="0" x2="10.16" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="10.16" y1="2.54" x2="10.16" y2="5.08" width="0.1524" layer="94"/>
-<wire x1="10.16" y1="5.08" x2="-10.16" y2="5.08" width="0.1524" layer="94"/>
-<wire x1="-10.16" y1="2.54" x2="-7.62" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="10.16" y1="2.54" x2="7.62" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="0" y1="0" x2="0" y2="1.778" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="2.54" x2="5.08" y2="2.54" width="0.1524" layer="94" curve="-180"/>
-<wire x1="5.08" y1="2.54" x2="7.62" y2="2.54" width="0.1524" layer="94" curve="-180"/>
-<wire x1="-2.54" y1="2.54" x2="2.54" y2="2.54" width="0.1524" layer="94"/>
-</symbol>
 </symbols>
 <devicesets>
 <deviceset name="4701-*" prefix="Z">
@@ -18996,23 +18915,6 @@ Based on the following sources:
 <technologies>
 <technology name=""/>
 <technology name="001LF"/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="NFE31PT" prefix="Z">
-<gates>
-<gate name="G$1" symbol="NFE31P" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="NFE31">
-<connects>
-<connect gate="G$1" pin="1" pad="P$1"/>
-<connect gate="G$1" pin="2" pad="P$2"/>
-<connect gate="G$1" pin="3" pad="P$3"/>
-</connects>
-<technologies>
-<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -19359,6 +19261,54 @@ Manufacturer TE CONNECTIVITY</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="mount">
+<packages>
+<package name="STAND-OFF">
+<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
+This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
+<circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
+<hole x="0" y="0" drill="3.5"/>
+<circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
+</package>
+<package name="STAND-OFF-LONG">
+<wire x1="-3.5" y1="6" x2="3.5" y2="6" width="0.127" layer="40" curve="-171.829"/>
+<wire x1="-3.5" y1="0" x2="-3.5" y2="6" width="0.127" layer="40"/>
+<wire x1="3.5" y1="0" x2="3.5" y2="6" width="0.127" layer="40"/>
+<circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
+<hole x="0" y="0" drill="3.5"/>
+<circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
+</package>
+</packages>
+<symbols>
+<symbol name="STAND-OFF">
+<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="STAND-OFF-*" prefix="JP">
+<description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
+This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
+<gates>
+<gate name="G$1" symbol="STAND-OFF" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="STAND-OFF">
+<technologies>
+<technology name=""/>
+<technology name="M3"/>
+<technology name="M4"/>
+</technologies>
+</device>
+<device name="LONG" package="STAND-OFF-LONG">
+<technologies>
+<technology name="M3"/>
+<technology name="M4"/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv"/>
@@ -19402,24 +19352,6 @@ Manufacturer TE CONNECTIVITY</description>
 </part>
 <part name="D18" library="optocoupler" deviceset="TCMT4100" device="">
 <attribute name="PARTNO" value="TCMT4100"/>
-</part>
-<part name="JP1" library="mount" deviceset="STAND-OFF" device="LONG">
-<attribute name="BOM" value="EXCLUDE"/>
-</part>
-<part name="JP2" library="mount" deviceset="STAND-OFF" device="LONG">
-<attribute name="BOM" value="EXCLUDE"/>
-</part>
-<part name="JP3" library="mount" deviceset="STAND-OFF" device="LONG">
-<attribute name="BOM" value="EXCLUDE"/>
-</part>
-<part name="JP4" library="mount" deviceset="STAND-OFF" device="LONG">
-<attribute name="BOM" value="EXCLUDE"/>
-</part>
-<part name="JP5" library="mount" deviceset="STAND-OFF" device="LONG">
-<attribute name="BOM" value="EXCLUDE"/>
-</part>
-<part name="JP6" library="mount" deviceset="STAND-OFF" device="LONG">
-<attribute name="BOM" value="EXCLUDE"/>
 </part>
 <part name="XP8" library="connector" deviceset="MOLEX-90130-*16" device="">
 <attribute name="LABEL" value="DISCRETE(17..32)"/>
@@ -22240,7 +22172,14 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="PARTNO" value="IN74HC595AD"/>
 </part>
 <part name="U$1" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
-<part name="Z2" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="JP1" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP2" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP3" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP4" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP5" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP6" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP7" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP8" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
 </parts>
 <sheets>
 <sheet>
@@ -22528,7 +22467,6 @@ Manufacturer TE CONNECTIVITY</description>
 <attribute name="NAME" x="307.594" y="89.36" size="1.524" layer="95"/>
 <attribute name="VALUE" x="316.23" y="86.948" size="1.524" layer="96" rot="MR0"/>
 </instance>
-<instance part="Z2" gate="G$1" x="401.32" y="175.26"/>
 </instances>
 <busses>
 <bus name="AN_FILTERED_[0..15]">
@@ -36959,24 +36897,14 @@ Manufacturer TE CONNECTIVITY</description>
 <plain>
 </plain>
 <instances>
-<instance part="JP1" gate="G$1" x="0" y="48.26" smashed="yes">
-<attribute name="BOM" value="EXCLUDE" x="0" y="48.26" size="1.524" layer="96" display="off"/>
-</instance>
-<instance part="JP2" gate="G$1" x="0" y="40.64" smashed="yes">
-<attribute name="BOM" value="EXCLUDE" x="0" y="40.64" size="1.524" layer="96" display="off"/>
-</instance>
-<instance part="JP3" gate="G$1" x="0" y="33.02" smashed="yes">
-<attribute name="BOM" value="EXCLUDE" x="0" y="33.02" size="1.524" layer="96" display="off"/>
-</instance>
-<instance part="JP4" gate="G$1" x="0" y="25.4" smashed="yes">
-<attribute name="BOM" value="EXCLUDE" x="0" y="25.4" size="1.524" layer="96" display="off"/>
-</instance>
-<instance part="JP5" gate="G$1" x="0" y="17.78" smashed="yes">
-<attribute name="BOM" value="EXCLUDE" x="0" y="17.78" size="1.524" layer="96" display="off"/>
-</instance>
-<instance part="JP6" gate="G$1" x="0" y="10.16" smashed="yes">
-<attribute name="BOM" value="EXCLUDE" x="0" y="10.16" size="1.524" layer="96" display="off"/>
-</instance>
+<instance part="JP1" gate="G$1" x="0" y="2.54"/>
+<instance part="JP2" gate="G$1" x="0" y="7.62"/>
+<instance part="JP3" gate="G$1" x="0" y="12.7"/>
+<instance part="JP4" gate="G$1" x="0" y="17.78"/>
+<instance part="JP5" gate="G$1" x="0" y="22.86"/>
+<instance part="JP6" gate="G$1" x="0" y="27.94"/>
+<instance part="JP7" gate="G$1" x="0" y="33.02"/>
+<instance part="JP8" gate="G$1" x="0" y="38.1"/>
 </instances>
 <busses>
 </busses>
