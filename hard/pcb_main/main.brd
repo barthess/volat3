@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -119,17 +119,17 @@
 <wire x1="230" y1="150" x2="0" y2="150" width="0" layer="20"/>
 <wire x1="0" y1="150" x2="0" y2="0" width="0" layer="20"/>
 <wire x1="115" y1="156" x2="115" y2="-10.5" width="0.15" layer="48" style="dashdot"/>
-<wire x1="-5" y1="75" x2="243" y2="75" width="0.15" layer="48" style="dashdot"/>
+<wire x1="-14" y1="75" x2="243" y2="75" width="0.15" layer="48" style="dashdot"/>
 <wire x1="-10.5" y1="3.5" x2="242" y2="3.5" width="0.15" layer="48"/>
 <wire x1="-11.5" y1="146.5" x2="239" y2="146.5" width="0.15" layer="48"/>
 <wire x1="20" y1="160" x2="20" y2="-10" width="0.15" layer="48"/>
 <wire x1="210" y1="160" x2="210" y2="-9" width="0.15" layer="48"/>
-<wire x1="3.5" y1="160" x2="3.5" y2="-16" width="0.15" layer="48"/>
-<wire x1="226.5" y1="159" x2="226.5" y2="-16" width="0.15" layer="48"/>
-<dimension x1="115" y1="-9" x2="20" y2="-9" x3="67.5" y3="-9" layer="48"/>
-<dimension x1="115" y1="-9" x2="210" y2="-9" x3="162.5" y3="-9" layer="48"/>
-<dimension x1="3.5" y1="-16" x2="226.5" y2="-16" x3="115" y3="-16" layer="48"/>
-<dimension x1="-10.5" y1="3.5" x2="-10.5" y2="146.5" x3="-10.5" y3="75" layer="48"/>
+<wire x1="3.5" y1="160" x2="3.5" y2="-4" width="0.15" layer="48"/>
+<wire x1="226.5" y1="159" x2="226.5" y2="-4" width="0.15" layer="48"/>
+<dimension x1="115" y1="-9" x2="20" y2="-9" x3="67.5" y3="-14.78" layer="48"/>
+<dimension x1="115" y1="-9" x2="210" y2="-9" x3="162.5" y3="-14.78" layer="48"/>
+<dimension x1="3.5" y1="-4" x2="226.5" y2="-4" x3="115" y3="-23.05" layer="48"/>
+<dimension x1="-10.5" y1="3.5" x2="-10.5" y2="146.5" x3="-20.74" y3="75" layer="48"/>
 <wire x1="108" y1="3.5" x2="122" y2="3.5" width="0.15" layer="42" curve="-180"/>
 <wire x1="108" y1="3.5" x2="108" y2="0" width="0.15" layer="42" style="dashdot"/>
 <wire x1="122" y1="3.5" x2="122" y2="0" width="0.15" layer="42" style="dashdot"/>
@@ -162,6 +162,15 @@
 <wire x1="15" y1="95" x2="67.5" y2="95" width="1.2" layer="30"/>
 <wire x1="67.5" y1="95" x2="67.5" y2="53" width="1.2" layer="30"/>
 <wire x1="67.5" y1="53" x2="15" y2="53" width="1.2" layer="30"/>
+<dimension x1="131" y1="79" x2="115" y2="-8" x3="123" y3="-8" layer="48" dtype="horizontal"/>
+<dimension x1="99" y1="64" x2="-14" y2="75" x3="-12" y3="69.5" layer="48" dtype="vertical"/>
+<dimension x1="131" y1="79" x2="-13" y2="75" x3="-7" y3="77" layer="48" dtype="vertical"/>
+<wire x1="95" y1="64" x2="104" y2="64" width="0.15" layer="48"/>
+<wire x1="131" y1="85" x2="131" y2="79" width="0.15" layer="48"/>
+<wire x1="131" y1="79" x2="131" y2="78" width="0.15" layer="48"/>
+<wire x1="131" y1="79" x2="138" y2="79" width="0.15" layer="48"/>
+<dimension x1="100" y1="63" x2="115" y2="-8" x3="107.5" y3="-8" layer="48" dtype="horizontal"/>
+<wire x1="100" y1="63" x2="100" y2="68" width="0.15" layer="48"/>
 </plain>
 <libraries>
 <library name="mcu">
@@ -7821,11 +7830,11 @@ design rules under a new name.</description>
 <attribute name="NAME" x="70.76375" y="69.3825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="65.5675" y="68.3725" size="0.8128" layer="27"/>
 </element>
-<element name="JP9" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="130.81" y="78.74">
-<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="130.81" y="78.74" size="1.778" layer="27" display="off"/>
+<element name="JP9" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="131" y="79">
+<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="131" y="79" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP10" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="99.06" y="63.5">
-<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="99.06" y="63.5" size="1.778" layer="27" display="off"/>
+<element name="JP10" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="100" y="64">
+<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="100" y="64" size="1.778" layer="27" display="off"/>
 </element>
 </elements>
 <signals>
@@ -11903,7 +11912,9 @@ design rules under a new name.</description>
 <wire x1="173.0275" y1="104.5275" x2="173.0275" y2="104.0275" width="0.4" layer="16"/>
 <wire x1="173.0275" y1="104.0275" x2="170.5" y2="101.5" width="0.4" layer="16"/>
 <wire x1="170.5" y1="101.5" x2="168.75" y2="99.875" width="0.4" layer="16"/>
-<wire x1="169.99" y1="84.14" x2="122.485" y2="84.14" width="0.4" layer="16"/>
+<wire x1="169.99" y1="84.14" x2="134.5" y2="84.25" width="0.4" layer="16"/>
+<wire x1="134.5" y1="84.25" x2="133.5" y2="85.25" width="0.4" layer="16"/>
+<wire x1="133.5" y1="85.25" x2="130.25" y2="85.25" width="0.4" layer="16"/>
 <wire x1="169.99" y1="84.14" x2="171.36" y2="84.14" width="0.4" layer="16"/>
 <wire x1="171.36" y1="84.14" x2="172" y2="83.5" width="0.4" layer="16"/>
 <wire x1="172" y1="83.5" x2="172" y2="78.5" width="0.4" layer="16"/>
@@ -11935,6 +11946,10 @@ design rules under a new name.</description>
 <wire x1="153.9725" y1="50.9725" x2="154" y2="51" width="0.15" layer="16"/>
 <wire x1="121.75" y1="94.125" x2="121.735" y2="94.14" width="0.15" layer="1"/>
 <wire x1="170" y1="57.25" x2="170" y2="51" width="0.4" layer="1"/>
+<wire x1="130.25" y1="85.25" x2="129.75" y2="84.75" width="0.4" layer="16"/>
+<wire x1="129.75" y1="84.75" x2="127.65" y2="84.75" width="0.4" layer="16"/>
+<wire x1="127.65" y1="84.75" x2="127.04" y2="84.14" width="0.4" layer="16"/>
+<wire x1="127.04" y1="84.14" x2="122.485" y2="84.14" width="0.4" layer="16"/>
 </signal>
 <signal name="DISCRETE_33">
 <contactref element="R269" pad="2"/>
@@ -16766,8 +16781,9 @@ design rules under a new name.</description>
 <wire x1="111.75" y1="79.25" x2="111.75" y2="63.75" width="0.15" layer="1"/>
 <wire x1="111.75" y1="63.75" x2="111.5" y2="63.5" width="0.15" layer="1"/>
 <via x="111.5" y="63.5" extent="1-16" drill="0.5"/>
-<wire x1="133.555" y1="89.305" x2="129.25" y2="85" width="0.15" layer="16"/>
-<wire x1="129.25" y1="85" x2="126.5" y2="85" width="0.15" layer="16"/>
+<wire x1="133.555" y1="89.305" x2="129.5" y2="85.25" width="0.15" layer="16"/>
+<wire x1="129.5" y1="85.25" x2="126.75" y2="85.25" width="0.15" layer="16"/>
+<wire x1="126.75" y1="85.25" x2="126.5" y2="85" width="0.15" layer="16"/>
 <via x="126.5" y="85" extent="1-16" drill="0.5"/>
 <wire x1="126.5" y1="85" x2="126.5" y2="83.25" width="0.15" layer="1"/>
 <via x="126.5" y="83.25" extent="1-16" drill="0.5"/>
@@ -17968,9 +17984,9 @@ design rules under a new name.</description>
 <wire x1="95.2" y1="53.35" x2="95.2" y2="53.3" width="0.15" layer="1"/>
 <wire x1="89.75" y1="54.75" x2="89.75" y2="57.25" width="0.15" layer="1"/>
 <wire x1="89.75" y1="57.25" x2="91.5" y2="59" width="0.15" layer="1"/>
-<wire x1="91.5" y1="59" x2="101" y2="59" width="0.15" layer="1"/>
-<wire x1="101" y1="59" x2="107.5" y2="65.5" width="0.15" layer="1"/>
-<wire x1="107.5" y1="65.5" x2="107.5" y2="79" width="0.15" layer="1"/>
+<wire x1="91.5" y1="59" x2="103" y2="59" width="0.15" layer="1"/>
+<wire x1="103" y1="59" x2="107.5" y2="63.5" width="0.15" layer="1"/>
+<wire x1="107.5" y1="63.5" x2="107.5" y2="79" width="0.15" layer="1"/>
 <via x="106.25" y="79.75" extent="1-16" drill="0.5"/>
 <wire x1="107.5" y1="79" x2="106.75" y2="79.75" width="0.15" layer="1"/>
 <wire x1="106.75" y1="79.75" x2="106.25" y2="79.75" width="0.15" layer="1"/>
@@ -18030,8 +18046,12 @@ design rules under a new name.</description>
 <signal name="N$354">
 <contactref element="R24" pad="2"/>
 <wire x1="157.7062" y1="82.75" x2="156.9562" y2="83.5" width="0.15" layer="16"/>
-<wire x1="156.9562" y1="83.5" x2="128" y2="83.5" width="0.15" layer="16"/>
-<wire x1="128" y1="83.5" x2="124.5" y2="80" width="0.15" layer="16"/>
+<wire x1="156.9562" y1="83.5" x2="134.5" y2="83.5" width="0.15" layer="16"/>
+<wire x1="134.5" y1="83.5" x2="133.25" y2="84.75" width="0.15" layer="16"/>
+<wire x1="133.25" y1="84.75" x2="130.5" y2="84.75" width="0.15" layer="16"/>
+<wire x1="130.5" y1="84.75" x2="130" y2="84.25" width="0.15" layer="16"/>
+<wire x1="130" y1="84.25" x2="128.75" y2="84.25" width="0.15" layer="16"/>
+<wire x1="128.75" y1="84.25" x2="124.5" y2="80" width="0.15" layer="16"/>
 <wire x1="109" y1="79.5" x2="105.25" y2="83.25" width="0.15" layer="16"/>
 <wire x1="105.25" y1="83.25" x2="99" y2="83.25" width="0.15" layer="16"/>
 <wire x1="99" y1="83.25" x2="97.75" y2="82" width="0.15" layer="16"/>
