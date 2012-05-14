@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -21980,6 +21980,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="U$6" library="frame-simplified" deviceset="A3_LANDSCAPE_NEXT_SCALED" device=""/>
 <part name="GND179" library="supply" deviceset="GND" device=""/>
 <part name="XP13" library="connector" deviceset="PLD_1X02" device=""/>
+<part name="JP9" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP10" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
 </parts>
 <sheets>
 <sheet>
@@ -37337,6 +37339,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="JP3" gate="G$1" x="0" y="27.94"/>
 <instance part="JP2" gate="G$1" x="0" y="33.02"/>
 <instance part="JP1" gate="G$1" x="0" y="38.1"/>
+<instance part="JP9" gate="G$1" x="0" y="43.18"/>
+<instance part="JP10" gate="G$1" x="0" y="48.26"/>
 </instances>
 <busses>
 </busses>

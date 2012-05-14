@@ -32,11 +32,11 @@
 <layer number="22" name="bPlace" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="15" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="15" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
@@ -55,7 +55,7 @@
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="6" fill="1" visible="yes" active="yes"/>
@@ -7820,6 +7820,12 @@ design rules under a new name.</description>
 <element name="Z1" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="70.5" smashed="yes">
 <attribute name="NAME" x="70.76375" y="69.3825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="65.5675" y="68.3725" size="0.8128" layer="27"/>
+</element>
+<element name="JP9" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="130.81" y="78.74">
+<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="130.81" y="78.74" size="1.778" layer="27" display="off"/>
+</element>
+<element name="JP10" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="99.06" y="63.5">
+<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="99.06" y="63.5" size="1.778" layer="27" display="off"/>
 </element>
 </elements>
 <signals>
