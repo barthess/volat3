@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -921,38 +921,22 @@
 <sheets>
 <sheet>
 <plain>
-<text x="257.81" y="342.265" size="1.524" layer="94">AN1</text>
-<text x="257.81" y="339.725" size="1.524" layer="94">AN2</text>
-<text x="257.81" y="337.185" size="1.524" layer="94">AN3</text>
-<text x="257.81" y="334.645" size="1.524" layer="94">AN4</text>
-<text x="257.81" y="332.105" size="1.524" layer="94">AN5</text>
-<text x="257.81" y="329.565" size="1.524" layer="94">AN6</text>
-<text x="257.81" y="327.025" size="1.524" layer="94">AN7</text>
-<text x="257.81" y="324.485" size="1.524" layer="94">AN8</text>
-<text x="257.81" y="321.945" size="1.524" layer="94">AN9</text>
-<text x="257.81" y="319.405" size="1.524" layer="94">AN10</text>
-<text x="257.81" y="316.865" size="1.524" layer="94">AN11</text>
-<text x="257.81" y="314.325" size="1.524" layer="94">AN12</text>
-<text x="257.81" y="311.785" size="1.524" layer="94">AN13</text>
-<text x="257.81" y="309.245" size="1.524" layer="94">AN14</text>
-<text x="257.81" y="306.705" size="1.524" layer="94">AN15</text>
-<text x="257.81" y="304.165" size="1.524" layer="94">AN16</text>
-<text x="186.69" y="342.265" size="1.524" layer="94" rot="MR0">AN1</text>
-<text x="186.69" y="339.725" size="1.524" layer="94" rot="MR0">AN2</text>
-<text x="186.69" y="337.185" size="1.524" layer="94" rot="MR0">AN3</text>
-<text x="186.69" y="334.645" size="1.524" layer="94" rot="MR0">AN4</text>
-<text x="186.69" y="332.105" size="1.524" layer="94" rot="MR0">AN5</text>
-<text x="186.69" y="329.565" size="1.524" layer="94" rot="MR0">AN6</text>
-<text x="186.69" y="327.025" size="1.524" layer="94" rot="MR0">AN7</text>
-<text x="186.69" y="324.485" size="1.524" layer="94" rot="MR0">AN8</text>
-<text x="186.69" y="321.945" size="1.524" layer="94" rot="MR0">AN9</text>
-<text x="186.69" y="319.405" size="1.524" layer="94" rot="MR0">AN10</text>
-<text x="186.69" y="316.865" size="1.524" layer="94" rot="MR0">AN11</text>
-<text x="186.69" y="314.325" size="1.524" layer="94" rot="MR0">AN12</text>
-<text x="186.69" y="311.785" size="1.524" layer="94" rot="MR0">AN13</text>
-<text x="186.69" y="309.245" size="1.524" layer="94" rot="MR0">AN14</text>
-<text x="186.69" y="306.705" size="1.524" layer="94" rot="MR0">AN15</text>
-<text x="186.69" y="304.165" size="1.524" layer="94" rot="MR0">AN16</text>
+<text x="186.69" y="342.265" size="1.524" layer="94" rot="MR0">AN_RAW_1</text>
+<text x="186.69" y="339.725" size="1.524" layer="94" rot="MR0">AN_RAW_2</text>
+<text x="186.69" y="337.185" size="1.524" layer="94" rot="MR0">AN_RAW_3</text>
+<text x="186.69" y="334.645" size="1.524" layer="94" rot="MR0">AN_RAW_4</text>
+<text x="186.69" y="332.105" size="1.524" layer="94" rot="MR0">AN_RAW_5</text>
+<text x="186.69" y="329.565" size="1.524" layer="94" rot="MR0">AN_RAW_6</text>
+<text x="186.69" y="327.025" size="1.524" layer="94" rot="MR0">AN_RAW_7</text>
+<text x="186.69" y="324.485" size="1.524" layer="94" rot="MR0">AN_RAW_8</text>
+<text x="186.69" y="321.945" size="1.524" layer="94" rot="MR0">AN_RAW_9</text>
+<text x="186.69" y="319.405" size="1.524" layer="94" rot="MR0">AN_RAW_10</text>
+<text x="186.69" y="316.865" size="1.524" layer="94" rot="MR0">AN_RAW_11</text>
+<text x="186.69" y="314.325" size="1.524" layer="94" rot="MR0">AN_RAW_12</text>
+<text x="186.69" y="311.785" size="1.524" layer="94" rot="MR0">AN_RAW_13</text>
+<text x="186.69" y="309.245" size="1.524" layer="94" rot="MR0">AN_RAW_14</text>
+<text x="186.69" y="306.705" size="1.524" layer="94" rot="MR0">AN_RAW_15</text>
+<text x="186.69" y="304.165" size="1.524" layer="94" rot="MR0">AN_RAW_16</text>
 <text x="17.78" y="15.24" size="3.048" layer="94">Цепи выполнить проводом МГТФ 0.35</text>
 <text x="17.78" y="10.16" size="3.048" layer="94">Для обжима использовать контакты типа 90119-2110 "Molex"</text>
 <text x="132.08" y="370.84" size="1.524" layer="94">Плата КСАУ.123456.000</text>
@@ -1184,6 +1168,22 @@
 <text x="46.99" y="156.845" size="1.524" layer="94" rot="MR0">REL_RAW_62</text>
 <text x="46.99" y="154.305" size="1.524" layer="94" rot="MR0">REL_RAW_63</text>
 <text x="46.99" y="151.765" size="1.524" layer="94" rot="MR0">REL_RAW_64</text>
+<text x="257.81" y="342.265" size="1.524" layer="94">AN_RAW_1</text>
+<text x="257.81" y="339.725" size="1.524" layer="94">AN_RAW_2</text>
+<text x="257.81" y="337.185" size="1.524" layer="94">AN_RAW_3</text>
+<text x="257.81" y="334.645" size="1.524" layer="94">AN_RAW_4</text>
+<text x="257.81" y="332.105" size="1.524" layer="94">AN_RAW_5</text>
+<text x="257.81" y="329.565" size="1.524" layer="94">AN_RAW_6</text>
+<text x="257.81" y="327.025" size="1.524" layer="94">AN_RAW_7</text>
+<text x="257.81" y="324.485" size="1.524" layer="94">AN_RAW_8</text>
+<text x="257.81" y="321.945" size="1.524" layer="94">AN_RAW_9</text>
+<text x="257.81" y="319.405" size="1.524" layer="94">AN_RAW_10</text>
+<text x="257.81" y="316.865" size="1.524" layer="94">AN_RAW_11</text>
+<text x="257.81" y="314.325" size="1.524" layer="94">AN_RAW_12</text>
+<text x="257.81" y="311.785" size="1.524" layer="94">AN_RAW_13</text>
+<text x="257.81" y="309.245" size="1.524" layer="94">AN_RAW_14</text>
+<text x="257.81" y="306.705" size="1.524" layer="94">AN_RAW_15</text>
+<text x="257.81" y="304.165" size="1.524" layer="94">AN_RAW_16</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="0" y="0"/>
