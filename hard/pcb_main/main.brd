@@ -8627,7 +8627,7 @@ design rules under a new name.</description>
 <via x="106" y="67.5" extent="1-16" drill="0.5"/>
 <via x="8.75" y="98.75" extent="1-16" drill="0.5"/>
 </signal>
-<signal name="AN_RAW_0">
+<signal name="AN_RAW_10">
 <contactref element="VD4" pad="A1"/>
 <contactref element="R26" pad="2"/>
 <via x="64.5" y="112.5" extent="1-16" drill="0.5"/>
@@ -8827,7 +8827,7 @@ design rules under a new name.</description>
 <wire x1="42.75" y1="105" x2="42.75" y2="96.75" width="0.4" layer="1"/>
 <wire x1="42.75" y1="96.75" x2="43" y2="96.5" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_0">
+<signal name="AN_FILTERED_10">
 <contactref element="DD1" pad="15"/>
 <wire x1="50.75" y1="90" x2="50.75" y2="84.25" width="0.15" layer="1"/>
 <wire x1="50.75" y1="84.25" x2="47.7166" y2="81.2166" width="0.15" layer="1"/>
@@ -9641,7 +9641,7 @@ design rules under a new name.</description>
 <wire x1="6" y1="62.2062" x2="4.8338" y2="61.04" width="0.15" layer="1"/>
 <wire x1="4.8338" y1="61.04" x2="3.5" y2="61.04" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_1">
+<signal name="AN_RAW_11">
 <contactref element="VD5" pad="A1"/>
 <contactref element="R27" pad="2"/>
 <via x="58.5" y="112.5" extent="1-16" drill="0.5"/>
@@ -9672,7 +9672,7 @@ design rules under a new name.</description>
 <wire x1="58.2" y1="103.55" x2="58.5" y2="103.85" width="0.15" layer="1"/>
 <wire x1="58.5" y1="103.85" x2="58.5" y2="104.2225" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_1">
+<signal name="AN_FILTERED_11">
 <contactref element="DD1" pad="16"/>
 <wire x1="47.302134375" y1="81.570153125" x2="47.320153125" y2="81.570153125" width="0.15" layer="1"/>
 <wire x1="47.320153125" y1="81.570153125" x2="50.25" y2="84.5" width="0.15" layer="1"/>
@@ -9682,7 +9682,7 @@ design rules under a new name.</description>
 <wire x1="51.625" y1="91.5" x2="50.25" y2="90.125" width="0.15" layer="1"/>
 <wire x1="50.25" y1="90.125" x2="50.25" y2="84.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_2">
+<signal name="AN_RAW_2_SUPPLY">
 <contactref element="VD6" pad="A1"/>
 <contactref element="R28" pad="2"/>
 <via x="55.5" y="116" extent="1-16" drill="0.5"/>
@@ -9702,7 +9702,7 @@ design rules under a new name.</description>
 <wire x1="57.75" y1="113" x2="57.75" y2="114.893" width="0.4" layer="16"/>
 <wire x1="57.75" y1="114.893" x2="56.75" y2="115.893" width="0.4" layer="16"/>
 </signal>
-<signal name="AN_FILTERED_2">
+<signal name="AN_FILTERED_0">
 <contactref element="DD1" pad="23"/>
 <wire x1="44.827259375" y1="84.045028125" x2="44.827259375" y2="84.077259375" width="0.15" layer="1"/>
 <contactref element="Z24" pad="3"/>
@@ -9714,7 +9714,7 @@ design rules under a new name.</description>
 <wire x1="50.75" y1="92.125" x2="52.125" y2="93.5" width="0.15" layer="1"/>
 <wire x1="52.125" y1="93.5" x2="53.5" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_3">
+<signal name="AN_RAW_12">
 <contactref element="VD7" pad="A1"/>
 <contactref element="R29" pad="2"/>
 <via x="61.5" y="116" extent="1-16" drill="0.5"/>
@@ -9738,7 +9738,7 @@ design rules under a new name.</description>
 <wire x1="51.25" y1="125.25" x2="47.6806" y2="125.25" width="0.4" layer="1"/>
 <wire x1="47.6806" y1="125.25" x2="41.88805625" y2="130.95656875" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_3">
+<signal name="AN_FILTERED_12">
 <contactref element="DD1" pad="17"/>
 <wire x1="46.94858125" y1="81.92370625" x2="46.94858125" y2="81.94858125" width="0.15" layer="1"/>
 <wire x1="46.94858125" y1="81.94858125" x2="49.75" y2="84.75" width="0.15" layer="1"/>
@@ -9748,7 +9748,7 @@ design rules under a new name.</description>
 <wire x1="51.625" y1="92" x2="49.75" y2="90.125" width="0.15" layer="1"/>
 <wire x1="49.75" y1="90.125" x2="49.75" y2="84.75" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_4">
+<signal name="AN_RAW_13">
 <contactref element="VD8" pad="A1"/>
 <contactref element="R30" pad="2"/>
 <via x="52.5" y="112.5" extent="1-16" drill="0.5"/>
@@ -9776,7 +9776,7 @@ design rules under a new name.</description>
 <wire x1="52.5" y1="104.2225" x2="52.5" y2="104.25" width="0.15" layer="1"/>
 <wire x1="39.34805625" y1="133.49656875" x2="39.34805625" y2="135.34805625" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_4">
+<signal name="AN_FILTERED_13">
 <contactref element="DD1" pad="18"/>
 <wire x1="46.595025" y1="82.277259375" x2="46.595025" y2="82.345025" width="0.15" layer="1"/>
 <wire x1="46.595025" y1="82.345025" x2="49.25" y2="85" width="0.15" layer="1"/>
@@ -9786,7 +9786,7 @@ design rules under a new name.</description>
 <wire x1="51.625" y1="92.5" x2="49.25" y2="90.125" width="0.15" layer="1"/>
 <wire x1="49.25" y1="90.125" x2="49.25" y2="85" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_5">
+<signal name="AN_RAW_1">
 <contactref element="VD9" pad="A1"/>
 <contactref element="R31" pad="2"/>
 <via x="46.5" y="112.5" extent="1-16" drill="0.5"/>
@@ -9810,7 +9810,7 @@ design rules under a new name.</description>
 <wire x1="54.58805625" y1="133.49656875" x2="56.25" y2="131.834625" width="0.4" layer="1"/>
 <wire x1="56.25" y1="131.834625" x2="56.25" y2="124.75" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_5">
+<signal name="AN_FILTERED_1">
 <contactref element="DD1" pad="24"/>
 <contactref element="Z27" pad="3"/>
 <wire x1="44.47370625" y1="84.39858125" x2="44.47370625" y2="84.47370625" width="0.15" layer="1"/>
@@ -9820,7 +9820,7 @@ design rules under a new name.</description>
 <wire x1="46" y1="92.5" x2="49" y2="92.5" width="0.15" layer="1"/>
 <wire x1="49" y1="92.5" x2="50" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_6">
+<signal name="AN_RAW_3">
 <contactref element="VD10" pad="A1"/>
 <contactref element="R32" pad="2"/>
 <via x="43.5" y="116" extent="1-16" drill="0.5"/>
@@ -9848,14 +9848,14 @@ design rules under a new name.</description>
 <wire x1="53.375" y1="129.875" x2="49" y2="125.5" width="0.4" layer="16"/>
 <wire x1="52.12843125" y1="133.49656875" x2="52.04805625" y2="133.49656875" width="0.4" layer="16"/>
 </signal>
-<signal name="AN_FILTERED_6">
+<signal name="AN_FILTERED_3">
 <contactref element="DD1" pad="26"/>
 <wire x1="40.75" y1="85.293859375" x2="41.291725" y2="84.752134375" width="0.15" layer="1"/>
 <contactref element="Z28" pad="3"/>
 <wire x1="40.75" y1="85.293859375" x2="40.75" y2="92.25" width="0.15" layer="1"/>
 <wire x1="40.75" y1="92.25" x2="39.5" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_7">
+<signal name="AN_RAW_2">
 <contactref element="VD11" pad="A1"/>
 <contactref element="R33" pad="2"/>
 <via x="49.5" y="116" extent="1-16" drill="0.5"/>
@@ -9876,14 +9876,14 @@ design rules under a new name.</description>
 <wire x1="54.58805625" y1="130.95656875" x2="54.58805625" y2="129.94555625" width="0.4" layer="16"/>
 <wire x1="54.58805625" y1="129.94555625" x2="48.5" y2="123.8575" width="0.4" layer="16"/>
 </signal>
-<signal name="AN_FILTERED_7">
+<signal name="AN_FILTERED_2">
 <contactref element="DD1" pad="25"/>
 <wire x1="44.120153125" y1="84.752134375" x2="44.5" y2="85.13198125" width="0.15" layer="1"/>
 <contactref element="Z29" pad="3"/>
 <wire x1="44.5" y1="85.13198125" x2="44.5" y2="91.5" width="0.15" layer="1"/>
 <wire x1="44.5" y1="91.5" x2="46.5" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_8">
+<signal name="AN_RAW_4">
 <contactref element="VD20" pad="A1"/>
 <contactref element="R50" pad="2"/>
 <via x="35.5" y="112.5" extent="1-16" drill="0.5"/>
@@ -9913,13 +9913,13 @@ design rules under a new name.</description>
 <wire x1="55.5" y1="127.5" x2="55.5" y2="125" width="0.4" layer="1"/>
 <wire x1="55.5" y1="125" x2="55.1875" y2="124.6875" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_8">
+<signal name="AN_FILTERED_4">
 <contactref element="DD1" pad="29"/>
 <contactref element="Z30" pad="3"/>
 <wire x1="40.231065625" y1="83.691475" x2="36" y2="87.922540625" width="0.15" layer="1"/>
 <wire x1="36" y1="87.922540625" x2="36" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_9">
+<signal name="AN_RAW_5">
 <contactref element="VD21" pad="A1"/>
 <contactref element="R51" pad="2"/>
 <via x="29.5" y="112.5" extent="1-16" drill="0.5"/>
@@ -9947,14 +9947,14 @@ design rules under a new name.</description>
 <wire x1="49.50805625" y1="133.49656875" x2="49.50805625" y2="133.49194375" width="0.4" layer="1"/>
 <wire x1="49.50805625" y1="133.49194375" x2="50.75" y2="132.25" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_9">
+<signal name="AN_FILTERED_5">
 <contactref element="DD1" pad="30"/>
 <wire x1="39.8775125" y1="83.337921875" x2="39.8775125" y2="83.3724875" width="0.15" layer="1"/>
 <contactref element="Z31" pad="3"/>
 <wire x1="39.8775125" y1="83.3724875" x2="32.5" y2="90.75" width="0.15" layer="1"/>
 <wire x1="32.5" y1="90.75" x2="32.5" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_10">
+<signal name="AN_RAW_14">
 <contactref element="VD22" pad="A1"/>
 <contactref element="R52" pad="2"/>
 <via x="26.5" y="116" extent="1-16" drill="0.5"/>
@@ -9982,14 +9982,14 @@ design rules under a new name.</description>
 <wire x1="39.34805625" y1="130.95656875" x2="39.34805625" y2="130.81225625" width="0.4" layer="1"/>
 <wire x1="39.34805625" y1="130.81225625" x2="36.0358" y2="127.5" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_10">
+<signal name="AN_FILTERED_14">
 <contactref element="DD1" pad="33"/>
 <contactref element="Z32" pad="3"/>
 <wire x1="38.816853125" y1="82.277259375" x2="29.0941125" y2="92" width="0.15" layer="1"/>
 <wire x1="29.0941125" y1="92" x2="23.5" y2="92" width="0.15" layer="1"/>
 <wire x1="23.5" y1="92" x2="22" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_11">
+<signal name="AN_RAW_6">
 <contactref element="VD23" pad="A1"/>
 <contactref element="R53" pad="2"/>
 <via x="32.5" y="116" extent="1-16" drill="0.5"/>
@@ -10014,13 +10014,13 @@ design rules under a new name.</description>
 <wire x1="49.50805625" y1="130.95656875" x2="49.50805625" y2="129.00805625" width="0.4" layer="16"/>
 <wire x1="49.50805625" y1="129.00805625" x2="46.75" y2="126.25" width="0.4" layer="16"/>
 </signal>
-<signal name="AN_FILTERED_11">
+<signal name="AN_FILTERED_6">
 <contactref element="DD1" pad="31"/>
 <wire x1="39.523959375" y1="82.984365625" x2="39.515634375" y2="82.984365625" width="0.15" layer="1"/>
 <contactref element="Z33" pad="3"/>
 <wire x1="39.515634375" y1="82.984365625" x2="29" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_12">
+<signal name="AN_RAW_7">
 <contactref element="VD24" pad="A1"/>
 <contactref element="R54" pad="2"/>
 <via x="23.5" y="112.5" extent="1-16" drill="0.5"/>
@@ -10050,14 +10050,14 @@ design rules under a new name.</description>
 <wire x1="41.375" y1="132.25" x2="45.7214875" y2="132.25" width="0.4" layer="1"/>
 <wire x1="45.7214875" y1="132.25" x2="46.96805625" y2="133.49656875" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_12">
+<signal name="AN_FILTERED_7">
 <contactref element="DD1" pad="32"/>
 <contactref element="Z34" pad="3"/>
 <wire x1="39.17040625" y1="82.6308125" x2="29.30121875" y2="92.5" width="0.15" layer="1"/>
 <wire x1="29.30121875" y1="92.5" x2="26.5" y2="92.5" width="0.15" layer="1"/>
 <wire x1="26.5" y1="92.5" x2="25.5" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_13">
+<signal name="AN_RAW_15">
 <contactref element="VD25" pad="A1"/>
 <contactref element="R55" pad="2"/>
 <via x="17.5" y="112.5" extent="1-16" drill="0.5"/>
@@ -10084,14 +10084,14 @@ design rules under a new name.</description>
 <wire x1="35.2174" y1="133.4674" x2="23.5" y2="121.75" width="0.4" layer="1"/>
 <wire x1="36.7788875" y1="133.4674" x2="36.80805625" y2="133.49656875" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_13">
+<signal name="AN_FILTERED_15">
 <contactref element="DD1" pad="34"/>
 <contactref element="Z35" pad="3"/>
 <wire x1="38.463296875" y1="81.92370625" x2="28.887003125" y2="91.5" width="0.15" layer="1"/>
 <wire x1="28.887003125" y1="91.5" x2="20.5" y2="91.5" width="0.15" layer="1"/>
 <wire x1="20.5" y1="91.5" x2="18.5" y2="93.5" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_14">
+<signal name="AN_RAW_9">
 <contactref element="VD26" pad="A1"/>
 <contactref element="R56" pad="2"/>
 <via x="14.5" y="116" extent="1-16" drill="0.5"/>
@@ -10120,7 +10120,7 @@ design rules under a new name.</description>
 <wire x1="44.42805625" y1="133.49656875" x2="44.42805625" y2="133.57194375" width="0.4" layer="1"/>
 <wire x1="44.42805625" y1="133.57194375" x2="42.25" y2="135.75" width="0.4" layer="1"/>
 </signal>
-<signal name="AN_FILTERED_14">
+<signal name="AN_FILTERED_9">
 <contactref element="DD1" pad="36"/>
 <contactref element="Z36" pad="3"/>
 <wire x1="37.756190625" y1="81.2166" x2="28.472790625" y2="90.5" width="0.15" layer="1"/>
@@ -10128,7 +10128,7 @@ design rules under a new name.</description>
 <wire x1="18.5" y1="90.5" x2="16.5" y2="88.5" width="0.15" layer="1"/>
 <wire x1="16.5" y1="88.5" x2="16.5" y2="88" width="0.15" layer="1"/>
 </signal>
-<signal name="AN_RAW_15">
+<signal name="AN_RAW_8">
 <contactref element="VD27" pad="A1"/>
 <contactref element="R57" pad="2"/>
 <via x="20.5" y="116" extent="1-16" drill="0.5"/>
@@ -10155,7 +10155,7 @@ design rules under a new name.</description>
 <wire x1="46.96805625" y1="130.95656875" x2="46.96805625" y2="127.96805625" width="0.4" layer="16"/>
 <wire x1="46.96805625" y1="127.96805625" x2="46" y2="127" width="0.4" layer="16"/>
 </signal>
-<signal name="AN_FILTERED_15">
+<signal name="AN_FILTERED_8">
 <contactref element="DD1" pad="35"/>
 <contactref element="Z37" pad="3"/>
 <wire x1="38.10974375" y1="81.570153125" x2="28.679896875" y2="91" width="0.15" layer="1"/>
@@ -11501,7 +11501,7 @@ design rules under a new name.</description>
 <wire x1="161.05" y1="82.6" x2="160.9" y2="82.75" width="0.15" layer="16"/>
 <wire x1="160.9" y1="82.75" x2="159.2938" y2="82.75" width="0.15" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_33">
+<signal name="REL_RAW_33">
 <contactref element="R253" pad="1"/>
 <contactref element="R237" pad="1"/>
 <contactref element="VD132" pad="C"/>
@@ -11958,7 +11958,7 @@ design rules under a new name.</description>
 <contactref element="VD149" pad="C"/>
 <wire x1="207.75" y1="108.9725" x2="207.75" y2="111.6925" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_34">
+<signal name="REL_RAW_34">
 <contactref element="R254" pad="1"/>
 <contactref element="R238" pad="1"/>
 <contactref element="VD133" pad="C"/>
@@ -11976,7 +11976,7 @@ design rules under a new name.</description>
 <wire x1="204.75" y1="133" x2="207.1775" y2="130.5725" width="0.4" layer="16"/>
 <wire x1="207.1775" y1="130.5725" x2="207.55" y2="130.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_35">
+<signal name="REL_RAW_35">
 <contactref element="VD134" pad="C"/>
 <contactref element="R239" pad="1"/>
 <contactref element="R255" pad="1"/>
@@ -11997,7 +11997,7 @@ design rules under a new name.</description>
 <wire x1="204.25" y1="132" x2="204.25" y2="131.3725" width="0.4" layer="1"/>
 <wire x1="204.25" y1="131.3725" x2="205.05" y2="130.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_36">
+<signal name="REL_RAW_36">
 <contactref element="VD135" pad="C"/>
 <contactref element="R240" pad="1"/>
 <contactref element="R256" pad="1"/>
@@ -12014,7 +12014,7 @@ design rules under a new name.</description>
 <wire x1="195.96005625" y1="135.70996875" x2="201.097525" y2="130.5725" width="0.4" layer="16"/>
 <wire x1="201.097525" y1="130.5725" x2="202.55" y2="130.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_37">
+<signal name="REL_RAW_37">
 <contactref element="VD136" pad="C"/>
 <contactref element="R241" pad="1"/>
 <contactref element="R257" pad="1"/>
@@ -12035,7 +12035,7 @@ design rules under a new name.</description>
 <wire x1="196.25" y1="133.25" x2="197.3725" y2="133.25" width="0.4" layer="1"/>
 <wire x1="197.3725" y1="133.25" x2="200.05" y2="130.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_38">
+<signal name="REL_RAW_38">
 <contactref element="VD137" pad="C"/>
 <contactref element="R242" pad="1"/>
 <contactref element="R258" pad="1"/>
@@ -12052,7 +12052,7 @@ design rules under a new name.</description>
 <wire x1="193.42005625" y1="135.70996875" x2="197.55" y2="131.580025" width="0.4" layer="16"/>
 <wire x1="197.55" y1="131.580025" x2="197.55" y2="130.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_39">
+<signal name="REL_RAW_39">
 <contactref element="VD138" pad="C"/>
 <contactref element="R243" pad="1"/>
 <contactref element="R259" pad="1"/>
@@ -12070,7 +12070,7 @@ design rules under a new name.</description>
 <wire x1="192.25" y1="136.5" x2="192.25" y2="133.3725" width="0.4" layer="1"/>
 <wire x1="192.25" y1="133.3725" x2="195.05" y2="130.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_40">
+<signal name="REL_RAW_40">
 <contactref element="VD139" pad="C"/>
 <contactref element="R244" pad="1"/>
 <contactref element="R260" pad="1"/>
@@ -12087,7 +12087,7 @@ design rules under a new name.</description>
 <wire x1="190.88005625" y1="135.70996875" x2="192.55" y2="134.040025" width="0.4" layer="16"/>
 <wire x1="192.55" y1="134.040025" x2="192.55" y2="130.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_42">
+<signal name="REL_RAW_42">
 <contactref element="XP9" pad="10"/>
 <contactref element="VD141" pad="C"/>
 <wire x1="187.6775" y1="130.5725" x2="187.55" y2="130.5725" width="0.3" layer="16"/>
@@ -12104,7 +12104,7 @@ design rules under a new name.</description>
 <wire x1="188.34005625" y1="135.70996875" x2="187.55" y2="134.9199125" width="0.4" layer="16"/>
 <wire x1="187.55" y1="134.9199125" x2="187.55" y2="130.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_43">
+<signal name="REL_RAW_43">
 <contactref element="VD142" pad="C"/>
 <contactref element="R247" pad="1"/>
 <contactref element="R263" pad="1"/>
@@ -12125,7 +12125,7 @@ design rules under a new name.</description>
 <wire x1="185.05" y1="130.5725" x2="185.05" y2="130.55" width="0.15" layer="1"/>
 <wire x1="185.05" y1="130.55" x2="185" y2="130.5" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_44">
+<signal name="REL_RAW_44">
 <contactref element="VD143" pad="C"/>
 <contactref element="R248" pad="1"/>
 <contactref element="R264" pad="1"/>
@@ -12142,7 +12142,7 @@ design rules under a new name.</description>
 <wire x1="185.80005625" y1="135.70996875" x2="182.55" y2="132.4599125" width="0.4" layer="16"/>
 <wire x1="182.55" y1="132.4599125" x2="182.55" y2="130.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_46">
+<signal name="REL_RAW_46">
 <contactref element="VD145" pad="C"/>
 <contactref element="R250" pad="1"/>
 <contactref element="R266" pad="1"/>
@@ -12159,7 +12159,7 @@ design rules under a new name.</description>
 <wire x1="183.26005625" y1="135.70996875" x2="178" y2="130.4499125" width="0.4" layer="16"/>
 <wire x1="178" y1="130.4499125" x2="178" y2="130.25" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_47">
+<signal name="REL_RAW_47">
 <contactref element="VD146" pad="C"/>
 <contactref element="R251" pad="1"/>
 <contactref element="R267" pad="1"/>
@@ -12736,7 +12736,7 @@ design rules under a new name.</description>
 <wire x1="206.9" y1="95.15" x2="206.9" y2="95.1" width="0.15" layer="1"/>
 <wire x1="206.8515" y1="95.41875" x2="206.9" y2="95.15" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_41">
+<signal name="REL_RAW_41">
 <contactref element="VD140" pad="C"/>
 <contactref element="R245" pad="1"/>
 <contactref element="R261" pad="1"/>
@@ -12754,7 +12754,7 @@ design rules under a new name.</description>
 <wire x1="189.5" y1="136.75" x2="189.5" y2="131.1225" width="0.4" layer="1"/>
 <wire x1="189.5" y1="131.1225" x2="190.05" y2="130.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_45">
+<signal name="REL_RAW_45">
 <contactref element="VD144" pad="C"/>
 <contactref element="R249" pad="1"/>
 <contactref element="R265" pad="1"/>
@@ -12772,7 +12772,7 @@ design rules under a new name.</description>
 <wire x1="182" y1="133.25" x2="180.05" y2="131.3" width="0.4" layer="1"/>
 <wire x1="180.05" y1="131.3" x2="180.05" y2="130.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_48">
+<signal name="REL_RAW_48">
 <contactref element="VD147" pad="C"/>
 <contactref element="R252" pad="1"/>
 <contactref element="R268" pad="1"/>
@@ -12791,7 +12791,7 @@ design rules under a new name.</description>
 <wire x1="174.75" y1="132.75" x2="172.5725" y2="130.5725" width="0.4" layer="16"/>
 <wire x1="172.5725" y1="130.5725" x2="172.55" y2="130.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_49">
+<signal name="REL_RAW_49">
 <contactref element="R301" pad="1"/>
 <contactref element="R285" pad="1"/>
 <contactref element="VD164" pad="C"/>
@@ -12842,7 +12842,7 @@ design rules under a new name.</description>
 <contactref element="VD181" pad="C"/>
 <wire x1="119.25" y1="46.5275" x2="119.25" y2="43.8075" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_50">
+<signal name="REL_RAW_50">
 <contactref element="R302" pad="1"/>
 <contactref element="R286" pad="1"/>
 <contactref element="VD165" pad="C"/>
@@ -12861,7 +12861,7 @@ design rules under a new name.</description>
 <wire x1="119.45" y1="24.9275" x2="119.5025" y2="24.875" width="0.15" layer="16"/>
 <wire x1="119.5025" y1="24.875" x2="119.625" y2="24.875" width="0.15" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_51">
+<signal name="REL_RAW_51">
 <contactref element="VD166" pad="C"/>
 <contactref element="R287" pad="1"/>
 <contactref element="R303" pad="1"/>
@@ -12882,7 +12882,7 @@ design rules under a new name.</description>
 <wire x1="122.0725" y1="24.9275" x2="122" y2="25" width="0.4" layer="1"/>
 <wire x1="121.95" y1="24.9275" x2="122.0725" y2="24.9275" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_52">
+<signal name="REL_RAW_52">
 <contactref element="VD167" pad="C"/>
 <contactref element="R288" pad="1"/>
 <contactref element="R304" pad="1"/>
@@ -12899,7 +12899,7 @@ design rules under a new name.</description>
 <wire x1="130.03994375" y1="16.29003125" x2="130.03994375" y2="19.33755625" width="0.4" layer="16"/>
 <wire x1="130.03994375" y1="19.33755625" x2="124.45" y2="24.9275" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_53">
+<signal name="REL_RAW_53">
 <contactref element="VD168" pad="C"/>
 <contactref element="R289" pad="1"/>
 <contactref element="R305" pad="1"/>
@@ -12918,7 +12918,7 @@ design rules under a new name.</description>
 <wire x1="131.25" y1="14.5" x2="131.25" y2="20.6275" width="0.4" layer="1"/>
 <wire x1="131.25" y1="20.6275" x2="126.95" y2="24.9275" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_54">
+<signal name="REL_RAW_54">
 <contactref element="VD169" pad="C"/>
 <contactref element="R290" pad="1"/>
 <contactref element="R306" pad="1"/>
@@ -12935,7 +12935,7 @@ design rules under a new name.</description>
 <wire x1="132.57994375" y1="16.29003125" x2="132.57994375" y2="21.79755625" width="0.4" layer="16"/>
 <wire x1="132.57994375" y1="21.79755625" x2="129.45" y2="24.9275" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_55">
+<signal name="REL_RAW_55">
 <contactref element="VD170" pad="C"/>
 <contactref element="R291" pad="1"/>
 <contactref element="R307" pad="1"/>
@@ -12953,7 +12953,7 @@ design rules under a new name.</description>
 <wire x1="133.75" y1="14.75" x2="133.75" y2="23.1275" width="0.4" layer="1"/>
 <wire x1="133.75" y1="23.1275" x2="131.95" y2="24.9275" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_56">
+<signal name="REL_RAW_56">
 <contactref element="VD171" pad="C"/>
 <contactref element="R292" pad="1"/>
 <contactref element="R308" pad="1"/>
@@ -12970,7 +12970,7 @@ design rules under a new name.</description>
 <wire x1="135.11994375" y1="16.29003125" x2="135.11994375" y2="24.25755625" width="0.4" layer="16"/>
 <wire x1="135.11994375" y1="24.25755625" x2="134.45" y2="24.9275" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_58">
+<signal name="REL_RAW_58">
 <contactref element="XP10" pad="10"/>
 <contactref element="VD173" pad="C"/>
 <wire x1="139.3225" y1="24.9275" x2="139.45" y2="24.9275" width="0.3" layer="16"/>
@@ -12987,7 +12987,7 @@ design rules under a new name.</description>
 <wire x1="137.65994375" y1="16.29003125" x2="137.65994375" y2="23.13744375" width="0.4" layer="16"/>
 <wire x1="137.65994375" y1="23.13744375" x2="139.45" y2="24.9275" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_59">
+<signal name="REL_RAW_59">
 <contactref element="VD174" pad="C"/>
 <contactref element="R295" pad="1"/>
 <contactref element="R311" pad="1"/>
@@ -13008,7 +13008,7 @@ design rules under a new name.</description>
 <wire x1="142" y1="24.75" x2="142" y2="24.8775" width="0.15" layer="1"/>
 <wire x1="142" y1="24.8775" x2="141.95" y2="24.9275" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_60">
+<signal name="REL_RAW_60">
 <contactref element="VD175" pad="C"/>
 <contactref element="R296" pad="1"/>
 <contactref element="R312" pad="1"/>
@@ -13025,7 +13025,7 @@ design rules under a new name.</description>
 <wire x1="140.19994375" y1="16.29003125" x2="140.19994375" y2="20.67744375" width="0.4" layer="16"/>
 <wire x1="140.19994375" y1="20.67744375" x2="144.45" y2="24.9275" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_62">
+<signal name="REL_RAW_62">
 <contactref element="VD177" pad="C"/>
 <contactref element="R298" pad="1"/>
 <contactref element="R314" pad="1"/>
@@ -13042,7 +13042,7 @@ design rules under a new name.</description>
 <wire x1="142.73994375" y1="16.29003125" x2="142.73994375" y2="18.21744375" width="0.4" layer="16"/>
 <wire x1="142.73994375" y1="18.21744375" x2="149.45" y2="24.9275" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_63">
+<signal name="REL_RAW_63">
 <contactref element="VD178" pad="C"/>
 <contactref element="R299" pad="1"/>
 <contactref element="R315" pad="1"/>
@@ -13615,7 +13615,7 @@ design rules under a new name.</description>
 <wire x1="118.875" y1="58.375" x2="120.155" y2="59.655" width="0.15" layer="1"/>
 <wire x1="120.155" y1="59.655" x2="120.1485" y2="60.08125" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_57">
+<signal name="REL_RAW_57">
 <contactref element="VD172" pad="C"/>
 <contactref element="R293" pad="1"/>
 <contactref element="R309" pad="1"/>
@@ -13633,7 +13633,7 @@ design rules under a new name.</description>
 <wire x1="136.5" y1="14.75" x2="136.5" y2="24.4775" width="0.4" layer="1"/>
 <wire x1="136.5" y1="24.4775" x2="136.95" y2="24.9275" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_61">
+<signal name="REL_RAW_61">
 <contactref element="VD176" pad="C"/>
 <contactref element="R297" pad="1"/>
 <contactref element="R313" pad="1"/>
@@ -13651,7 +13651,7 @@ design rules under a new name.</description>
 <wire x1="144" y1="14.25" x2="144" y2="21.9775" width="0.4" layer="1"/>
 <wire x1="144" y1="21.9775" x2="146.95" y2="24.9275" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_64">
+<signal name="REL_RAW_64">
 <contactref element="VD179" pad="C"/>
 <contactref element="R300" pad="1"/>
 <contactref element="R316" pad="1"/>
@@ -13668,7 +13668,7 @@ design rules under a new name.</description>
 <wire x1="145.27994375" y1="16.29003125" x2="145.81253125" y2="16.29003125" width="0.4" layer="16"/>
 <wire x1="145.81253125" y1="16.29003125" x2="154.45" y2="24.9275" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_17">
+<signal name="REL_RAW_17">
 <contactref element="R205" pad="1"/>
 <contactref element="R189" pad="1"/>
 <contactref element="VD100" pad="C"/>
@@ -13717,7 +13717,7 @@ design rules under a new name.</description>
 <contactref element="VD117" pad="C"/>
 <wire x1="165" y1="106.9725" x2="165" y2="109.6925" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_18">
+<signal name="REL_RAW_18">
 <contactref element="R206" pad="1"/>
 <contactref element="R190" pad="1"/>
 <contactref element="VD101" pad="C"/>
@@ -13735,7 +13735,7 @@ design rules under a new name.</description>
 <wire x1="161" y1="132.75" x2="164.8" y2="128.95" width="0.4" layer="16"/>
 <wire x1="164.8" y1="128.95" x2="164.8" y2="128.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_19">
+<signal name="REL_RAW_19">
 <contactref element="VD102" pad="C"/>
 <contactref element="R191" pad="1"/>
 <contactref element="R207" pad="1"/>
@@ -13757,7 +13757,7 @@ design rules under a new name.</description>
 <wire x1="158.5" y1="132.5" x2="161.86375" y2="129.13625" width="0.4" layer="1"/>
 <wire x1="161.86375" y1="129.13625" x2="161.86375" y2="128.13625" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_20">
+<signal name="REL_RAW_20">
 <contactref element="VD103" pad="C"/>
 <contactref element="R192" pad="1"/>
 <contactref element="R208" pad="1"/>
@@ -13776,7 +13776,7 @@ design rules under a new name.</description>
 <wire x1="157.25" y1="131.25" x2="159.8" y2="128.7" width="0.4" layer="16"/>
 <wire x1="159.8" y1="128.7" x2="159.8" y2="128.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_21">
+<signal name="REL_RAW_21">
 <contactref element="VD104" pad="C"/>
 <contactref element="R193" pad="1"/>
 <contactref element="R209" pad="1"/>
@@ -13797,7 +13797,7 @@ design rules under a new name.</description>
 <wire x1="154.75" y1="131" x2="157.1775" y2="128.5725" width="0.4" layer="1"/>
 <wire x1="157.1775" y1="128.5725" x2="157.3" y2="128.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_22">
+<signal name="REL_RAW_22">
 <contactref element="VD105" pad="C"/>
 <contactref element="R194" pad="1"/>
 <contactref element="R210" pad="1"/>
@@ -13814,7 +13814,7 @@ design rules under a new name.</description>
 <wire x1="147.67005625" y1="135.70996875" x2="154.8" y2="128.580025" width="0.4" layer="16"/>
 <wire x1="154.8" y1="128.580025" x2="154.8" y2="128.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_23">
+<signal name="REL_RAW_23">
 <contactref element="VD106" pad="C"/>
 <contactref element="R195" pad="1"/>
 <contactref element="R211" pad="1"/>
@@ -13832,7 +13832,7 @@ design rules under a new name.</description>
 <wire x1="146.5" y1="135" x2="152.3" y2="129.2" width="0.4" layer="1"/>
 <wire x1="152.3" y1="129.2" x2="152.3" y2="128.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_24">
+<signal name="REL_RAW_24">
 <contactref element="VD107" pad="C"/>
 <contactref element="R196" pad="1"/>
 <contactref element="R212" pad="1"/>
@@ -13849,7 +13849,7 @@ design rules under a new name.</description>
 <wire x1="145.13005625" y1="135.70996875" x2="149.8" y2="131.040025" width="0.4" layer="16"/>
 <wire x1="149.8" y1="131.040025" x2="149.8" y2="128.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_26">
+<signal name="REL_RAW_26">
 <contactref element="VD109" pad="C"/>
 <wire x1="144.9275" y1="128.5725" x2="144.8" y2="128.5725" width="0.3" layer="16"/>
 <wire x1="146.75" y1="126.75" x2="144.9275" y2="128.5725" width="0.4" layer="16"/>
@@ -13866,7 +13866,7 @@ design rules under a new name.</description>
 <wire x1="142.59005625" y1="135.70996875" x2="144.8" y2="133.500025" width="0.4" layer="16"/>
 <wire x1="144.8" y1="133.500025" x2="144.8" y2="128.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_27">
+<signal name="REL_RAW_27">
 <contactref element="VD110" pad="C"/>
 <contactref element="R199" pad="1"/>
 <contactref element="R215" pad="1"/>
@@ -13887,7 +13887,7 @@ design rules under a new name.</description>
 <wire x1="142.3" y1="128.5725" x2="142.3" y2="128.7" width="0.15" layer="1"/>
 <wire x1="142.3" y1="128.7" x2="142.25" y2="128.75" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_28">
+<signal name="REL_RAW_28">
 <contactref element="VD111" pad="C"/>
 <contactref element="R200" pad="1"/>
 <contactref element="R216" pad="1"/>
@@ -13904,7 +13904,7 @@ design rules under a new name.</description>
 <wire x1="140.05005625" y1="135.70996875" x2="139.8" y2="135.4599125" width="0.4" layer="16"/>
 <wire x1="139.8" y1="135.4599125" x2="139.8" y2="128.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_30">
+<signal name="REL_RAW_30">
 <contactref element="VD113" pad="C"/>
 <contactref element="R202" pad="1"/>
 <contactref element="R218" pad="1"/>
@@ -13920,7 +13920,7 @@ design rules under a new name.</description>
 <wire x1="137.51005625" y1="135.70996875" x2="134.8" y2="132.9999125" width="0.4" layer="16"/>
 <wire x1="134.8" y1="132.9999125" x2="134.8" y2="128.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_31">
+<signal name="REL_RAW_31">
 <contactref element="VD114" pad="C"/>
 <contactref element="R203" pad="1"/>
 <contactref element="R219" pad="1"/>
@@ -14475,7 +14475,7 @@ design rules under a new name.</description>
 <wire x1="164.5" y1="95" x2="164.095" y2="94.595" width="0.15" layer="1"/>
 <wire x1="164.095" y1="94.595" x2="164.1015" y2="93.41875" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_25">
+<signal name="REL_RAW_25">
 <contactref element="VD108" pad="C"/>
 <contactref element="R197" pad="1"/>
 <contactref element="R213" pad="1"/>
@@ -14493,7 +14493,7 @@ design rules under a new name.</description>
 <wire x1="144" y1="135" x2="147.3" y2="131.7" width="0.4" layer="1"/>
 <wire x1="147.3" y1="131.7" x2="147.3" y2="128.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_29">
+<signal name="REL_RAW_29">
 <contactref element="VD112" pad="C"/>
 <contactref element="R201" pad="1"/>
 <contactref element="R217" pad="1"/>
@@ -14511,7 +14511,7 @@ design rules under a new name.</description>
 <wire x1="136.25" y1="131.5" x2="137.3" y2="130.45" width="0.4" layer="1"/>
 <wire x1="137.3" y1="130.45" x2="137.3" y2="128.5725" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_32">
+<signal name="REL_RAW_32">
 <contactref element="VD115" pad="C"/>
 <contactref element="R204" pad="1"/>
 <contactref element="R220" pad="1"/>
@@ -14528,7 +14528,7 @@ design rules under a new name.</description>
 <wire x1="134.97005625" y1="135.70996875" x2="129.8" y2="130.5399125" width="0.4" layer="16"/>
 <wire x1="129.8" y1="130.5399125" x2="129.8" y2="128.5725" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_1">
+<signal name="REL_RAW_1">
 <contactref element="R154" pad="1"/>
 <contactref element="R138" pad="1"/>
 <contactref element="VD66" pad="C"/>
@@ -14577,7 +14577,7 @@ design rules under a new name.</description>
 <contactref element="VD83" pad="C"/>
 <wire x1="116.45" y1="101.4225" x2="116.45" y2="104.1425" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_2">
+<signal name="REL_RAW_2">
 <contactref element="R155" pad="1"/>
 <contactref element="R139" pad="1"/>
 <contactref element="VD67" pad="C"/>
@@ -14595,7 +14595,7 @@ design rules under a new name.</description>
 <wire x1="110.7725" y1="128.5" x2="116.25" y2="123.0225" width="0.4" layer="16"/>
 <wire x1="103.887025" y1="128.5" x2="101.49005625" y2="130.89696875" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_3">
+<signal name="REL_RAW_3">
 <contactref element="VD68" pad="C"/>
 <contactref element="R140" pad="1"/>
 <contactref element="R156" pad="1"/>
@@ -14616,7 +14616,7 @@ design rules under a new name.</description>
 <wire x1="100.25" y1="132.137025" x2="100.25" y2="130" width="0.4" layer="1"/>
 <wire x1="100.25" y1="130" x2="101.759" y2="128.491" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_4">
+<signal name="REL_RAW_4">
 <contactref element="VD69" pad="C"/>
 <contactref element="R141" pad="1"/>
 <contactref element="R157" pad="1"/>
@@ -14635,7 +14635,7 @@ design rules under a new name.</description>
 <wire x1="107.2725" y1="127" x2="111.25" y2="123.0225" width="0.4" layer="16"/>
 <wire x1="102.847025" y1="127" x2="98.95005625" y2="130.89696875" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_5">
+<signal name="REL_RAW_5">
 <contactref element="VD70" pad="C"/>
 <contactref element="R142" pad="1"/>
 <contactref element="R158" pad="1"/>
@@ -14656,7 +14656,7 @@ design rules under a new name.</description>
 <wire x1="97.625" y1="132.222025" x2="97.625" y2="129.875" width="0.4" layer="1"/>
 <wire x1="97.625" y1="129.875" x2="100.406" y2="127.094" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_6">
+<signal name="REL_RAW_6">
 <contactref element="VD71" pad="C"/>
 <contactref element="R143" pad="1"/>
 <contactref element="R159" pad="1"/>
@@ -14675,7 +14675,7 @@ design rules under a new name.</description>
 <wire x1="106.25" y1="123.75" x2="106.25" y2="123.0225" width="0.4" layer="16"/>
 <wire x1="101.807025" y1="125.5" x2="96.41005625" y2="130.89696875" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_7">
+<signal name="REL_RAW_7">
 <contactref element="VD72" pad="C"/>
 <contactref element="R144" pad="1"/>
 <contactref element="R160" pad="1"/>
@@ -14697,7 +14697,7 @@ design rules under a new name.</description>
 <wire x1="95.125" y1="129.875" x2="99.684" y2="125.316" width="0.4" layer="1"/>
 <wire x1="99.684" y1="125.316" x2="100.125" y2="125.316" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_8">
+<signal name="REL_RAW_8">
 <contactref element="VD73" pad="C"/>
 <contactref element="R145" pad="1"/>
 <contactref element="R161" pad="1"/>
@@ -14715,7 +14715,7 @@ design rules under a new name.</description>
 <wire x1="101.25" y1="123.603" x2="101.164025" y2="123.603" width="0.4" layer="16"/>
 <wire x1="101.164025" y1="123.603" x2="93.87005625" y2="130.89696875" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_9">
+<signal name="REL_RAW_9">
 <contactref element="VD74" pad="C"/>
 <contactref element="R146" pad="1"/>
 <contactref element="R162" pad="1"/>
@@ -14734,7 +14734,7 @@ design rules under a new name.</description>
 <wire x1="92.625" y1="129.75" x2="98.75" y2="123.625" width="0.4" layer="1"/>
 <wire x1="98.75" y1="123.625" x2="98.75" y2="123.0225" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_12">
+<signal name="REL_RAW_12">
 <contactref element="VD77" pad="C"/>
 <contactref element="R149" pad="1"/>
 <contactref element="R165" pad="1"/>
@@ -14752,7 +14752,7 @@ design rules under a new name.</description>
 <wire x1="91.164025" y1="128.523" x2="91.164025" y2="123.108475" width="0.4" layer="16"/>
 <wire x1="91.164025" y1="123.108475" x2="91.25" y2="123.0225" width="0.4" layer="16"/>
 </signal>
-<signal name="RAW_DISCRETE_14">
+<signal name="REL_RAW_14">
 <contactref element="VD79" pad="C"/>
 <contactref element="R151" pad="1"/>
 <contactref element="R167" pad="1"/>
@@ -15115,7 +15115,7 @@ design rules under a new name.</description>
 <wire x1="96.95" y1="90.2" x2="94.315" y2="87.565" width="0.15" layer="16"/>
 <wire x1="96.71" y1="85.6938" x2="96.7162" y2="85.7" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_11">
+<signal name="REL_RAW_11">
 <contactref element="R164" pad="1"/>
 <wire x1="92.95" y1="109.8575" x2="92.5425" y2="109.8575" width="0.4" layer="1"/>
 <wire x1="92.5425" y1="109.8575" x2="91.2" y2="111.2" width="0.4" layer="1"/>
@@ -15173,7 +15173,7 @@ design rules under a new name.</description>
 <wire x1="94.545" y1="89.295" x2="94.5515" y2="87.86875" width="0.15" layer="1"/>
 <wire x1="94.17" y1="85.6938" x2="94.1762" y2="85.7" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_10">
+<signal name="REL_RAW_10">
 <contactref element="VD75" pad="C"/>
 <wire x1="96.3775" y1="123.0225" x2="96.25" y2="123.0225" width="0.3" layer="16"/>
 <wire x1="98.2" y1="121.2" x2="96.3775" y2="123.0225" width="0.4" layer="16"/>
@@ -15263,7 +15263,7 @@ design rules under a new name.</description>
 <wire x1="84" y1="88.25" x2="83.2" y2="89.05" width="0.15" layer="1"/>
 <wire x1="83.2" y1="89.05" x2="83.2" y2="90.2" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_13">
+<signal name="REL_RAW_13">
 <contactref element="R166" pad="1"/>
 <wire x1="87.95" y1="109.8575" x2="87.5425" y2="109.8575" width="0.4" layer="1"/>
 <wire x1="87.5425" y1="109.8575" x2="86.2" y2="111.2" width="0.4" layer="1"/>
@@ -15369,7 +15369,7 @@ design rules under a new name.</description>
 <wire x1="115.95" y1="89.7" x2="115.545" y2="89.295" width="0.15" layer="1"/>
 <wire x1="115.545" y1="89.295" x2="115.5515" y2="87.86875" width="0.15" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_15">
+<signal name="REL_RAW_15">
 <contactref element="VD80" pad="C"/>
 <contactref element="R152" pad="1"/>
 <contactref element="R168" pad="1"/>
@@ -15392,7 +15392,7 @@ design rules under a new name.</description>
 <wire x1="83.75" y1="133.375" x2="83.75" y2="133.397025" width="0.4" layer="1"/>
 <wire x1="83.75" y1="133.397025" x2="83.71005625" y2="133.43696875" width="0.4" layer="1"/>
 </signal>
-<signal name="RAW_DISCRETE_16">
+<signal name="REL_RAW_16">
 <contactref element="VD81" pad="C"/>
 <contactref element="R153" pad="1"/>
 <contactref element="R169" pad="1"/>

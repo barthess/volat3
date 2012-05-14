@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1056,7 +1056,134 @@
 <text x="46.99" y="131.445" size="1.524" layer="94" rot="MR0">CAN_L</text>
 <text x="46.99" y="126.365" size="1.524" layer="94" rot="MR0">RS232_RX</text>
 <text x="46.99" y="123.825" size="1.524" layer="94" rot="MR0">RS232_TX</text>
-<text x="107.95" y="342.265" size="1.524" layer="94">RAW_DISCRETE_1</text>
+<text x="107.95" y="342.265" size="1.524" layer="94">REL_RAW_1</text>
+<text x="107.95" y="339.725" size="1.524" layer="94">REL_RAW_2</text>
+<text x="107.95" y="337.185" size="1.524" layer="94">REL_RAW_3</text>
+<text x="107.95" y="334.645" size="1.524" layer="94">REL_RAW_4</text>
+<text x="107.95" y="332.105" size="1.524" layer="94">REL_RAW_5</text>
+<text x="107.95" y="329.565" size="1.524" layer="94">REL_RAW_6</text>
+<text x="107.95" y="327.025" size="1.524" layer="94">REL_RAW_7</text>
+<text x="107.95" y="324.485" size="1.524" layer="94">REL_RAW_8</text>
+<text x="107.95" y="321.945" size="1.524" layer="94">REL_RAW_9</text>
+<text x="107.95" y="319.405" size="1.524" layer="94">REL_RAW_10</text>
+<text x="107.95" y="316.865" size="1.524" layer="94">REL_RAW_11</text>
+<text x="107.95" y="314.325" size="1.524" layer="94">REL_RAW_12</text>
+<text x="107.95" y="311.785" size="1.524" layer="94">REL_RAW_13</text>
+<text x="107.95" y="309.245" size="1.524" layer="94">REL_RAW_14</text>
+<text x="107.95" y="306.705" size="1.524" layer="94">REL_RAW_15</text>
+<text x="107.95" y="304.165" size="1.524" layer="94">REL_RAW_16</text>
+<text x="46.99" y="342.265" size="1.524" layer="94" rot="MR0">REL_RAW_1</text>
+<text x="46.99" y="339.725" size="1.524" layer="94" rot="MR0">REL_RAW_2</text>
+<text x="46.99" y="337.185" size="1.524" layer="94" rot="MR0">REL_RAW_3</text>
+<text x="46.99" y="334.645" size="1.524" layer="94" rot="MR0">REL_RAW_4</text>
+<text x="46.99" y="332.105" size="1.524" layer="94" rot="MR0">REL_RAW_5</text>
+<text x="46.99" y="329.565" size="1.524" layer="94" rot="MR0">REL_RAW_6</text>
+<text x="46.99" y="327.025" size="1.524" layer="94" rot="MR0">REL_RAW_7</text>
+<text x="46.99" y="324.485" size="1.524" layer="94" rot="MR0">REL_RAW_8</text>
+<text x="46.99" y="321.945" size="1.524" layer="94" rot="MR0">REL_RAW_9</text>
+<text x="46.99" y="319.405" size="1.524" layer="94" rot="MR0">REL_RAW_10</text>
+<text x="46.99" y="316.865" size="1.524" layer="94" rot="MR0">REL_RAW_11</text>
+<text x="46.99" y="314.325" size="1.524" layer="94" rot="MR0">REL_RAW_12</text>
+<text x="46.99" y="311.785" size="1.524" layer="94" rot="MR0">REL_RAW_13</text>
+<text x="46.99" y="309.245" size="1.524" layer="94" rot="MR0">REL_RAW_14</text>
+<text x="46.99" y="306.705" size="1.524" layer="94" rot="MR0">REL_RAW_15</text>
+<text x="46.99" y="304.165" size="1.524" layer="94" rot="MR0">REL_RAW_16</text>
+<text x="107.95" y="288.925" size="1.524" layer="94">REL_RAW_17</text>
+<text x="107.95" y="286.385" size="1.524" layer="94">REL_RAW_18</text>
+<text x="107.95" y="283.845" size="1.524" layer="94">REL_RAW_19</text>
+<text x="107.95" y="278.765" size="1.524" layer="94">REL_RAW_21</text>
+<text x="107.95" y="276.225" size="1.524" layer="94">REL_RAW_22</text>
+<text x="107.95" y="273.685" size="1.524" layer="94">REL_RAW_23</text>
+<text x="107.95" y="271.145" size="1.524" layer="94">REL_RAW_24</text>
+<text x="107.95" y="268.605" size="1.524" layer="94">REL_RAW_25</text>
+<text x="107.95" y="266.065" size="1.524" layer="94">REL_RAW_26</text>
+<text x="107.95" y="263.525" size="1.524" layer="94">REL_RAW_27</text>
+<text x="107.95" y="260.985" size="1.524" layer="94">REL_RAW_28</text>
+<text x="107.95" y="258.445" size="1.524" layer="94">REL_RAW_29</text>
+<text x="107.95" y="255.905" size="1.524" layer="94">REL_RAW_30</text>
+<text x="107.95" y="253.365" size="1.524" layer="94">REL_RAW_31</text>
+<text x="107.95" y="250.825" size="1.524" layer="94">REL_RAW_32</text>
+<text x="107.95" y="233.045" size="1.524" layer="94">REL_RAW_34</text>
+<text x="107.95" y="235.585" size="1.524" layer="94">REL_RAW_33</text>
+<text x="107.95" y="281.305" size="1.524" layer="94">REL_RAW_20</text>
+<text x="107.95" y="230.505" size="1.524" layer="94">REL_RAW_35</text>
+<text x="107.95" y="227.965" size="1.524" layer="94">REL_RAW_36</text>
+<text x="107.95" y="225.425" size="1.524" layer="94">REL_RAW_37</text>
+<text x="107.95" y="222.885" size="1.524" layer="94">REL_RAW_38</text>
+<text x="107.95" y="220.345" size="1.524" layer="94">REL_RAW_39</text>
+<text x="107.95" y="217.805" size="1.524" layer="94">REL_RAW_40</text>
+<text x="107.95" y="215.265" size="1.524" layer="94">REL_RAW_41</text>
+<text x="107.95" y="212.725" size="1.524" layer="94">REL_RAW_42</text>
+<text x="107.95" y="210.185" size="1.524" layer="94">REL_RAW_43</text>
+<text x="107.95" y="207.645" size="1.524" layer="94">REL_RAW_44</text>
+<text x="107.95" y="205.105" size="1.524" layer="94">REL_RAW_45</text>
+<text x="107.95" y="202.565" size="1.524" layer="94">REL_RAW_46</text>
+<text x="107.95" y="200.025" size="1.524" layer="94">REL_RAW_47</text>
+<text x="107.95" y="197.485" size="1.524" layer="94">REL_RAW_48</text>
+<text x="107.95" y="182.245" size="1.524" layer="94">REL_RAW_49</text>
+<text x="107.95" y="179.705" size="1.524" layer="94">REL_RAW_50</text>
+<text x="107.95" y="177.165" size="1.524" layer="94">REL_RAW_51</text>
+<text x="107.95" y="174.625" size="1.524" layer="94">REL_RAW_52</text>
+<text x="107.95" y="172.085" size="1.524" layer="94">REL_RAW_53</text>
+<text x="107.95" y="169.545" size="1.524" layer="94">REL_RAW_54</text>
+<text x="107.95" y="167.005" size="1.524" layer="94">REL_RAW_55</text>
+<text x="107.95" y="164.465" size="1.524" layer="94">REL_RAW_56</text>
+<text x="107.95" y="161.925" size="1.524" layer="94">REL_RAW_57</text>
+<text x="107.95" y="159.385" size="1.524" layer="94">REL_RAW_58</text>
+<text x="107.95" y="156.845" size="1.524" layer="94">REL_RAW_59</text>
+<text x="107.95" y="154.305" size="1.524" layer="94">REL_RAW_60</text>
+<text x="107.95" y="151.765" size="1.524" layer="94">REL_RAW_61</text>
+<text x="107.95" y="149.225" size="1.524" layer="94">REL_RAW_62</text>
+<text x="107.95" y="146.685" size="1.524" layer="94">REL_RAW_63</text>
+<text x="107.95" y="144.145" size="1.524" layer="94">REL_RAW_64</text>
+<text x="46.99" y="301.625" size="1.524" layer="94" rot="MR0">REL_RAW_17</text>
+<text x="46.99" y="299.085" size="1.524" layer="94" rot="MR0">REL_RAW_18</text>
+<text x="46.99" y="296.545" size="1.524" layer="94" rot="MR0">REL_RAW_19</text>
+<text x="46.99" y="291.465" size="1.524" layer="94" rot="MR0">REL_RAW_21</text>
+<text x="46.99" y="288.925" size="1.524" layer="94" rot="MR0">REL_RAW_22</text>
+<text x="46.99" y="286.385" size="1.524" layer="94" rot="MR0">REL_RAW_23</text>
+<text x="46.99" y="283.845" size="1.524" layer="94" rot="MR0">REL_RAW_24</text>
+<text x="46.99" y="281.305" size="1.524" layer="94" rot="MR0">REL_RAW_25</text>
+<text x="46.99" y="278.765" size="1.524" layer="94" rot="MR0">REL_RAW_26</text>
+<text x="46.99" y="276.225" size="1.524" layer="94" rot="MR0">REL_RAW_27</text>
+<text x="46.99" y="273.685" size="1.524" layer="94" rot="MR0">REL_RAW_28</text>
+<text x="46.99" y="271.145" size="1.524" layer="94" rot="MR0">REL_RAW_29</text>
+<text x="46.99" y="268.605" size="1.524" layer="94" rot="MR0">REL_RAW_30</text>
+<text x="46.99" y="266.065" size="1.524" layer="94" rot="MR0">REL_RAW_31</text>
+<text x="46.99" y="263.525" size="1.524" layer="94" rot="MR0">REL_RAW_32</text>
+<text x="46.99" y="294.005" size="1.524" layer="94" rot="MR0">REL_RAW_20</text>
+<text x="46.99" y="227.965" size="1.524" layer="94" rot="MR0">REL_RAW_34</text>
+<text x="46.99" y="230.505" size="1.524" layer="94" rot="MR0">REL_RAW_33</text>
+<text x="46.99" y="225.425" size="1.524" layer="94" rot="MR0">REL_RAW_35</text>
+<text x="46.99" y="222.885" size="1.524" layer="94" rot="MR0">REL_RAW_36</text>
+<text x="46.99" y="220.345" size="1.524" layer="94" rot="MR0">REL_RAW_37</text>
+<text x="46.99" y="217.805" size="1.524" layer="94" rot="MR0">REL_RAW_38</text>
+<text x="46.99" y="215.265" size="1.524" layer="94" rot="MR0">REL_RAW_39</text>
+<text x="46.99" y="212.725" size="1.524" layer="94" rot="MR0">REL_RAW_40</text>
+<text x="46.99" y="210.185" size="1.524" layer="94" rot="MR0">REL_RAW_41</text>
+<text x="46.99" y="207.645" size="1.524" layer="94" rot="MR0">REL_RAW_42</text>
+<text x="46.99" y="205.105" size="1.524" layer="94" rot="MR0">REL_RAW_43</text>
+<text x="46.99" y="202.565" size="1.524" layer="94" rot="MR0">REL_RAW_44</text>
+<text x="46.99" y="200.025" size="1.524" layer="94" rot="MR0">REL_RAW_45</text>
+<text x="46.99" y="197.485" size="1.524" layer="94" rot="MR0">REL_RAW_46</text>
+<text x="46.99" y="194.945" size="1.524" layer="94" rot="MR0">REL_RAW_47</text>
+<text x="46.99" y="192.405" size="1.524" layer="94" rot="MR0">REL_RAW_48</text>
+<text x="46.99" y="189.865" size="1.524" layer="94" rot="MR0">REL_RAW_49</text>
+<text x="46.99" y="187.325" size="1.524" layer="94" rot="MR0">REL_RAW_50</text>
+<text x="46.99" y="184.785" size="1.524" layer="94" rot="MR0">REL_RAW_51</text>
+<text x="46.99" y="182.245" size="1.524" layer="94" rot="MR0">REL_RAW_52</text>
+<text x="46.99" y="179.705" size="1.524" layer="94" rot="MR0">REL_RAW_53</text>
+<text x="46.99" y="177.165" size="1.524" layer="94" rot="MR0">REL_RAW_54</text>
+<text x="46.99" y="174.625" size="1.524" layer="94" rot="MR0">REL_RAW_55</text>
+<text x="46.99" y="172.085" size="1.524" layer="94" rot="MR0">REL_RAW_56</text>
+<text x="46.99" y="169.545" size="1.524" layer="94" rot="MR0">REL_RAW_57</text>
+<text x="46.99" y="167.005" size="1.524" layer="94" rot="MR0">REL_RAW_58</text>
+<text x="46.99" y="164.465" size="1.524" layer="94" rot="MR0">REL_RAW_59</text>
+<text x="46.99" y="161.925" size="1.524" layer="94" rot="MR0">REL_RAW_60</text>
+<text x="46.99" y="159.385" size="1.524" layer="94" rot="MR0">REL_RAW_61</text>
+<text x="46.99" y="156.845" size="1.524" layer="94" rot="MR0">REL_RAW_62</text>
+<text x="46.99" y="154.305" size="1.524" layer="94" rot="MR0">REL_RAW_63</text>
+<text x="46.99" y="151.765" size="1.524" layer="94" rot="MR0">REL_RAW_64</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="0" y="0"/>
