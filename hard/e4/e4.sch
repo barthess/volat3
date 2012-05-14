@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -978,6 +978,85 @@
 <text x="187.96" y="190.5" size="1.524" layer="94" rot="MR0">XP6</text>
 <text x="187.96" y="157.48" size="1.524" layer="94" rot="MR0">XP5</text>
 <text x="106.68" y="134.62" size="1.524" layer="94">XP12</text>
+<text x="186.69" y="283.845" size="1.524" layer="94" rot="MR0">OUT_DRV1</text>
+<text x="186.69" y="276.225" size="1.524" layer="94" rot="MR0">OUT_DRV1</text>
+<text x="186.69" y="273.685" size="1.524" layer="94" rot="MR0">OUT_DRV2</text>
+<text x="186.69" y="266.065" size="1.524" layer="94" rot="MR0">OUT_DRV2</text>
+<text x="186.69" y="263.525" size="1.524" layer="94" rot="MR0">OUT_DRV3</text>
+<text x="186.69" y="255.905" size="1.524" layer="94" rot="MR0">OUT_DRV3</text>
+<text x="186.69" y="253.365" size="1.524" layer="94" rot="MR0">OUT_DRV4</text>
+<text x="186.69" y="245.745" size="1.524" layer="94" rot="MR0">OUT_DRV4</text>
+<text x="186.69" y="243.205" size="1.524" layer="94" rot="MR0">OUT_DRV5</text>
+<text x="186.69" y="235.585" size="1.524" layer="94" rot="MR0">OUT_DRV5</text>
+<text x="186.69" y="233.045" size="1.524" layer="94" rot="MR0">OUT_DRV6</text>
+<text x="186.69" y="225.425" size="1.524" layer="94" rot="MR0">OUT_DRV6</text>
+<text x="186.69" y="222.885" size="1.524" layer="94" rot="MR0">OUT_DRV7</text>
+<text x="186.69" y="215.265" size="1.524" layer="94" rot="MR0">OUT_DRV7</text>
+<text x="186.69" y="212.725" size="1.524" layer="94" rot="MR0">OUT_DRV8</text>
+<text x="186.69" y="205.105" size="1.524" layer="94" rot="MR0">OUT_DRV8</text>
+<text x="186.69" y="281.305" size="1.524" layer="94" rot="MR0">VCC_DRV1</text>
+<text x="186.69" y="278.765" size="1.524" layer="94" rot="MR0">VCC_DRV1</text>
+<text x="186.69" y="271.145" size="1.524" layer="94" rot="MR0">VCC_DRV2</text>
+<text x="186.69" y="268.605" size="1.524" layer="94" rot="MR0">VCC_DRV2</text>
+<text x="186.69" y="260.985" size="1.524" layer="94" rot="MR0">VCC_DRV3</text>
+<text x="186.69" y="258.445" size="1.524" layer="94" rot="MR0">VCC_DRV3</text>
+<text x="186.69" y="250.825" size="1.524" layer="94" rot="MR0">VCC_DRV4</text>
+<text x="186.69" y="248.285" size="1.524" layer="94" rot="MR0">VCC_DRV4</text>
+<text x="186.69" y="240.665" size="1.524" layer="94" rot="MR0">VCC_DRV5</text>
+<text x="186.69" y="238.125" size="1.524" layer="94" rot="MR0">VCC_DRV5</text>
+<text x="186.69" y="230.505" size="1.524" layer="94" rot="MR0">VCC_DRV6</text>
+<text x="186.69" y="227.965" size="1.524" layer="94" rot="MR0">VCC_DRV6</text>
+<text x="186.69" y="220.345" size="1.524" layer="94" rot="MR0">VCC_DRV7</text>
+<text x="186.69" y="217.805" size="1.524" layer="94" rot="MR0">VCC_DRV7</text>
+<text x="186.69" y="210.185" size="1.524" layer="94" rot="MR0">VCC_DRV8</text>
+<text x="186.69" y="207.645" size="1.524" layer="94" rot="MR0">VCC_DRV8</text>
+<text x="257.81" y="283.845" size="1.524" layer="94">OUT_DRV1</text>
+<text x="257.81" y="281.305" size="1.524" layer="94">VCC_DRV1</text>
+<text x="257.81" y="278.765" size="1.524" layer="94">OUT_DRV2</text>
+<text x="257.81" y="276.225" size="1.524" layer="94">VCC_DRV2</text>
+<text x="257.81" y="273.685" size="1.524" layer="94">OUT_DRV3</text>
+<text x="257.81" y="271.145" size="1.524" layer="94">VCC_DRV3</text>
+<text x="257.81" y="268.605" size="1.524" layer="94">OUT_DRV4</text>
+<text x="257.81" y="266.065" size="1.524" layer="94">VCC_DRV4</text>
+<text x="257.81" y="263.525" size="1.524" layer="94">OUT_DRV5</text>
+<text x="257.81" y="260.985" size="1.524" layer="94">VCC_DRV5</text>
+<text x="257.81" y="258.445" size="1.524" layer="94">OUT_DRV6</text>
+<text x="257.81" y="255.905" size="1.524" layer="94">VCC_DRV6</text>
+<text x="257.81" y="253.365" size="1.524" layer="94">OUT_DRV7</text>
+<text x="257.81" y="250.825" size="1.524" layer="94">VCC_DRV7</text>
+<text x="257.81" y="248.285" size="1.524" layer="94">OUT_DRV8</text>
+<text x="257.81" y="245.745" size="1.524" layer="94">VCC_DRV8</text>
+<text x="186.69" y="154.305" size="1.524" layer="94" rot="MR0">TACHO_RAW</text>
+<text x="186.69" y="151.765" size="1.524" layer="94" rot="MR0">PHASE_1</text>
+<text x="186.69" y="146.685" size="1.524" layer="94" rot="MR0">PHASE_2</text>
+<text x="186.69" y="141.605" size="1.524" layer="94" rot="MR0">PHASE_3</text>
+<text x="186.69" y="149.225" size="1.524" layer="94" rot="MR0">FREQ_RAW</text>
+<text x="260.35" y="154.305" size="1.524" layer="94">TACHO_RAW</text>
+<text x="260.35" y="151.765" size="1.524" layer="94">PHASE_1</text>
+<text x="260.35" y="146.685" size="1.524" layer="94">PHASE_2</text>
+<text x="260.35" y="141.605" size="1.524" layer="94">PHASE_3</text>
+<text x="260.35" y="149.225" size="1.524" layer="94">FREQ_RAW</text>
+<text x="186.69" y="187.325" size="1.524" layer="94" rot="MR0">GND</text>
+<text x="186.69" y="182.245" size="1.524" layer="94" rot="MR0">GND</text>
+<text x="186.69" y="177.165" size="1.524" layer="94" rot="MR0">GND</text>
+<text x="186.69" y="172.085" size="1.524" layer="94" rot="MR0">GND</text>
+<text x="186.69" y="184.785" size="1.524" layer="94" rot="MR0">+24V</text>
+<text x="186.69" y="179.705" size="1.524" layer="94" rot="MR0">+24V</text>
+<text x="186.69" y="174.625" size="1.524" layer="94" rot="MR0">+24V</text>
+<text x="186.69" y="169.545" size="1.524" layer="94" rot="MR0">+24V</text>
+<text x="260.35" y="179.705" size="1.524" layer="94">GND</text>
+<text x="260.35" y="182.245" size="1.524" layer="94">GND</text>
+<text x="260.35" y="184.785" size="1.524" layer="94">+24V</text>
+<text x="260.35" y="187.325" size="1.524" layer="94">+24V</text>
+<text x="107.95" y="128.905" size="1.524" layer="94">CAN_H</text>
+<text x="107.95" y="131.445" size="1.524" layer="94">CAN_L</text>
+<text x="107.95" y="126.365" size="1.524" layer="94">RS232_RX</text>
+<text x="107.95" y="123.825" size="1.524" layer="94">RS232_TX</text>
+<text x="46.99" y="128.905" size="1.524" layer="94" rot="MR0">CAN_H</text>
+<text x="46.99" y="131.445" size="1.524" layer="94" rot="MR0">CAN_L</text>
+<text x="46.99" y="126.365" size="1.524" layer="94" rot="MR0">RS232_RX</text>
+<text x="46.99" y="123.825" size="1.524" layer="94" rot="MR0">RS232_TX</text>
+<text x="107.95" y="342.265" size="1.524" layer="94">RAW_DISCRETE_1</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="0" y="0"/>
@@ -2339,7 +2418,7 @@
 <label x="228.6" y="247.015" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="+24" class="0">
+<net name="+24V" class="0">
 <segment>
 <pinref part="XP3" gate="G$1" pin="1"/>
 <wire x1="226.06" y1="187.96" x2="248.92" y2="187.96" width="0.1524" layer="91"/>
@@ -2403,7 +2482,7 @@
 <label x="213.36" y="178.435" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="PHASE1" class="0">
+<net name="PHASE_1" class="0">
 <segment>
 <wire x1="226.06" y1="152.4" x2="248.92" y2="152.4" width="0.1524" layer="91"/>
 <label x="228.6" y="153.035" size="1.524" layer="95"/>
@@ -2415,7 +2494,7 @@
 <label x="203.2" y="153.035" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="PHASE2" class="0">
+<net name="PHASE_2" class="0">
 <segment>
 <wire x1="226.06" y1="147.32" x2="248.92" y2="147.32" width="0.1524" layer="91"/>
 <label x="228.6" y="147.955" size="1.524" layer="95"/>
@@ -2427,7 +2506,7 @@
 <label x="203.2" y="147.955" size="1.524" layer="95"/>
 </segment>
 </net>
-<net name="PHASE3" class="0">
+<net name="PHASE_3" class="0">
 <segment>
 <wire x1="226.06" y1="142.24" x2="248.92" y2="142.24" width="0.1524" layer="91"/>
 <label x="228.6" y="142.875" size="1.524" layer="95"/>
