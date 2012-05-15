@@ -22091,8 +22091,12 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="U$6" library="frame-simplified" deviceset="A3_LANDSCAPE_NEXT_SCALED" device=""/>
 <part name="GND179" library="supply" deviceset="GND" device=""/>
 <part name="XP13" library="connector" deviceset="PLD_1X02" device=""/>
-<part name="JP9" library="mount" deviceset="STAND-OFF-*" device="M3"/>
-<part name="JP10" library="mount" deviceset="STAND-OFF-*" device="M3"/>
+<part name="JP9" library="mount" deviceset="STAND-OFF-*" device="M3">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP10" library="mount" deviceset="STAND-OFF-*" device="M3">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
 <part name="U$1" library="frame-simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
 </parts>
 <sheets>
@@ -37573,8 +37577,12 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="JP1" gate="G$1" x="0" y="38.1">
 <attribute name="BOM" x="0" y="38.1" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="JP9" gate="G$1" x="10.16" y="38.1"/>
-<instance part="JP10" gate="G$1" x="10.16" y="33.02"/>
+<instance part="JP9" gate="G$1" x="10.16" y="38.1">
+<attribute name="BOM" x="10.16" y="38.1" size="6.4516" layer="96" display="off"/>
+</instance>
+<instance part="JP10" gate="G$1" x="10.16" y="33.02">
+<attribute name="BOM" x="10.16" y="33.02" size="6.4516" layer="96" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
