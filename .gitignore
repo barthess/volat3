@@ -6,7 +6,7 @@
 build/
 .dep/
 *.log
-doc/
+bureaucracy/
 *.*#*
 *.eps
 hard/pcb_main/3d/
