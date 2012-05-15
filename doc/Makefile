@@ -3,11 +3,7 @@
 TOP_DIR = .
 OUTPUT_DIR=$(TOP_DIR)/output
 
-SUBDIRS = documents/manual\
-	documents/component_parts/replicator/passport\
-	documents/component_parts/bis2/manual\
-	documents/component_parts/uvvu/protocol\
-	documents/inventory\
+SUBDIRS = documents/component_parts/uvvu/e3
 
 #include $(TOP_DIR)/include.mak
 

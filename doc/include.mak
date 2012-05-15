@@ -9,7 +9,7 @@ OUTPUT_DIR = $(TOP_DIR)/output
 SCRIPTS_DIR = $(TOP_DIR)/scripts
 
 DEPS = $(TOP_DIR)/tex/*.sty $(TOP_DIR)/tex/*.tex $(SCRIPTS_DIR)/*.sh
-DEPS += $(shell /bin/find $(TOP_DIR)/templates -name '*.tex')
+DEPS += $(shell find $(TOP_DIR)/templates -name '*.tex')
 DEPS += $(LOCAL_DEPS) # а это в каждом локальном мейкфайле своё, по каким-то причинам не находящееся общими алгоритмами
 
 # *.aux файлы будем складывать в отдельную директорию, чтобы
@@ -43,17 +43,17 @@ HYPERREFOPTS = bookmarksopen=true,bookmarksnumbered=true,colorlinks=true,unicode
 # если рисунок изменился. После чего надо будет руками его преобразовать
 # в pdf
 #
-figpdf := 	$(shell /bin/find $(TOP_DIR) -name '*.svg' | sed -e 's/.svg$$/.pdf/')
+figpdf := 	$(shell find $(TOP_DIR) -name '*.svg' | sed -e 's/.svg$$/.pdf/')
 
-figeps := 	$(shell /bin/find $(TOP_DIR) -name '*.svg' | sed -e 's/.svg$$/.eps/';\
-   			/bin/find $(TOP_DIR) -name '*.jpg' | sed -e 's/.jpg$$/.eps/';\
-			/bin/find $(TOP_DIR) -name '*.png' | sed -e 's/.png$$/.eps/')
+figeps := 	$(shell find $(TOP_DIR) -name '*.svg' | sed -e 's/.svg$$/.eps/';\
+   			find $(TOP_DIR) -name '*.jpg' | sed -e 's/.jpg$$/.eps/';\
+			find $(TOP_DIR) -name '*.png' | sed -e 's/.png$$/.eps/')
 
-figvsdpdf:=	$(shell /bin/find $(TOP_DIR) -name '*.vsd' | sed -e 's/.vsd$$/.pdf/')
-figvsdeps:=	$(shell /bin/find $(TOP_DIR) -name '*.vsd' | sed -e 's/.vsd$$/.eps/')
+figvsdpdf:=	$(shell find $(TOP_DIR) -name '*.vsd' | sed -e 's/.vsd$$/.pdf/')
+figvsdeps:=	$(shell find $(TOP_DIR) -name '*.vsd' | sed -e 's/.vsd$$/.eps/')
 
 # а исходники латеха ищутся только в текущей дире
-texsrc := 	$(shell /bin/find -name '*.tex')
+texsrc := 	$(shell find -name '*.tex')
 
 # при запуске inkscape под виндой необходимо указывать абсолютные пути к файлам
 # сделал это через cygpath
