@@ -1,0 +1,38 @@
+\newcommand{\rootdir}{../../../..} % корень всех документов
+\newcommand{\localtex}{\rootdir/tex} % локальные макросы
+\newcommand{\templatedir}{\rootdir/templates} % шаблоны разных документов
+
+\documentclass[russian,
+  utf8,
+  columnsxxiv,    % первичное применение
+  nocolumnxxxi,   % выкл. доп. поле <<копировал>>
+  nocolumnxxxii,  % выкл. доп. поле <<формат>>
+  columnsxxvii,
+  emptylinetop,
+  emptylinebottom,
+  footwhitespace=1]{eskdtab}
+\usepackage{eskdcmplist}
+\usepackage{eskdchngsheet}
+\usepackage[T2A]{fontenc}
+\usepackage{textcomp}
+\renewcommand{\ESKDfontShape}{\upshape}
+
+\usepackage{\localtex/commondata}
+
+\ESKDtitle{\nameUVVUpcb}
+\ESKDdocName{\large{Перечень элементов}}
+\ESKDsignature{\ksauUVVUpcb[ПЭ3]}
+\ESKDauthor{Пылинский}
+\ESKDchecker{Михайлов}
+\ESKDnormContr{Бурш}
+\ESKDdate{2012/11/11}
+\ESKDcolumnXXV{\ksauUVVU} % первичное применение
+
+\begin{document}
+\begin{ESKDcomponentList}
+  \input{pe3_table.tex}
+\end{ESKDcomponentList}
+\begin{ESKDchangeSheet}
+  \ESKDchangeSheetFill
+\end{ESKDchangeSheet}
+\end{document}
