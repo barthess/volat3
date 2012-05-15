@@ -1,0 +1,59 @@
+%\special{papersize=a4}
+
+\usepackage{cmap} % Поддержка поиска русских слов в PDF (pdflatex), ЗАГРУЖАТЬ САМЫМ ПЕРВЫМ!
+% \usepackage[math]{pscyr} % PSCyr ЗАГРУЖАТЬ ПЕРЕД inputenc и babel!!!
+\usepackage{mathtext} % Поддержка кириллицы в математическом режиме. ЗАГРУЖАТЬ ДО fontenc
+\usepackage{amssymb,amsmath} %
+% \usepackage{nccmath} % расширяет пакет amsmath
+
+
+\usepackage[T2A]{fontenc}
+
+
+
+%\usepackage{listings}
+\usepackage{eskdlongtable}  %для таблиц, которые длиннее одной страницы
+  % представляет собой набор патчей для longtable.sty
+  % для соответствия ГОСТ 2.105
+  \setcounter{LTchunksize}{100} %количество строк, которые
+  \setlength{\LTleft}{0pt}  % прижать таблицы к левому краю
+%\usepackage[pageshow]{xtab} %альтернативная реализация длинных таблиц
+  %мне не понравилась из-за слишком больших промежутков на месте разрыва
+\usepackage{array}    %добавляет для _всех_ таблиц вкусную возможность
+  %задавать характеристики столбцов m{..} и b{..}
+  %а так же >{} и <{}
+\usepackage{tabularx} %для таблиц с автоматическим подбором ширины колонок
+  %\tracingtabularx %tabularx будет в выводе писать свои сообщения
+\usepackage{tabulary} %для таблиц с еще более автоматическим подбором ширины колонок
+\usepackage{textcomp}   %позволяет печатать разные доп. символы,
+  %в частности градус Цельсия (\textcelsius)
+\usepackage{xcolor}   %по названию понятно
+\usepackage{multirow} %позволяет объединять клетки таблицы по вертикали
+\usepackage{graphicx} %для вставки рисунков
+  \graphicspath{{\rootdir/common_images/}{./include/}} %искать рисунки тут
+  %\graphicspath{{../../../../common_images/}{../../common_images/}{./include/}} %искать рисунки тут
+\usepackage{afterpage}  %для вставки больших рисунков по окончании страницы
+%\usepackage{multicol}
+\usepackage{pdflscape}  %для листов в альбомной ориентации,
+  %при этом переворачивается не только текст, но и вся
+  %страница, чтобы не вертеть головой при просмотре
+  %работает только в pdf
+%\usepackage{layout}    %добавляет возможность командой
+  %\layout посмотреть используемые на странице размеры
+\usepackage{calc}   %добавляет возможность использовать простую арифметику
+% \usepackage{flafter} %заботится о том, чтобы вся плавучка была всталена после ссылки на нее
+%\usepackage{colortbl}  %цветные таблицы
+
+%\usepackage{showkeys}  %над ссылкой печатет в документе ее название
+  %целесообразно применять только во время отладки
+
+%\usepackage[bookmarksopen=true,bookmarksnumbered=true,colorlinks=true,unicode]{hyperref}
+  %этот пакет нужен для "кликабельных" ссылок.
+  %он должен подключаться последним
+  %но с ним почему-то в самых неожиданных местах
+  %рвется текст
+
+
+
+\usepackage{eskdchngsheet}  %лист регистрации изменений
+

@@ -1,0 +1,38 @@
+%\input{\rootdir/common_data} % данные по внешним воздействиям
+
+\begin{tabular}{|b{0.7\textwidth}|b{0.25\textwidth}|}
+  \hline
+  % шапка===================================================================
+  \multicolumn{1}{|c|}{Наименование внешнего воздействующего фактора} &
+    \multicolumn{1}{c|}{Значение}
+      \\\hline
+  % содержимое==============================================================
+  \setcounter{tablerowcounter}{0}
+  
+  \inTableEnum Температура окружающей среды, \textcelsius:          &\\
+    \inTableItemize предельная повышенная                 &\temperaturestoragemax, не более \\
+    \inTableItemize рабочая повышенная                    &\temperatureworkingmax, не более \\
+    \inTableItemize рабочая пониженная при выдаче информации на ВМ и ПСУ &\mbox{минус 30}, не менее\\
+    \inTableItemize рабочая пониженная при выдаче информации на ПСУ      &\temperaturestoragemin, не менее\\
+    \inTableItemize предельная пониженная                 &\temperaturestoragemin, не менее\\\hline
+    
+    \inTableEnum Повышенная относительная влажность 
+    воздуха при температуре \airhumiditywithtemp{}
+    \textcelsius, \%                                  &\ \newline\airhumidity, не более\\\hline
+        
+  \inTableEnum Атмосферное пониженное 
+        давление, \mbox{кПа (мм рт. ст.):}                &\\
+    \inTableItemize рабочее                                         &\pressureworkingmin, не менее\\
+    \inTableItemize при транспортировании на высоте 10000",м         &\pressurestoragemin, не менее\\\hline
+    
+  \inTableEnum Синусоидальная вибрация:                             &\\
+    \inTableItemize ускорение, м/с\texttwosuperior\ (g)   &\vibrationacceleration, не более\\
+    \inTableItemize диапазон частот, Гц               
+            &от~{\vibrationfrequencymin} до~\vibrationfrequencymax\\\hline
+    
+  \inTableEnum Механические удары одиночного действия:&\\
+    \inTableItemize пиковое значение ударного ускорения, 
+            м/с\texttwosuperior\ (g)        &\shockacceleration, не более\\
+    \inTableItemize длительность ударного импульса, мс
+            &от~{\shockpulsewidthmin} до~\shockpulsewidthmax \\\hline
+\end{tabular}

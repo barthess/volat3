@@ -1,0 +1,140 @@
+% Стилевой файл предоставляет настройки, приближенные к требованиям
+% камертоновского нормоконтроля
+
+\NeedsTeXFormat{LaTeX2e}
+%\ProvidesPackage{kamertonstyle}
+
+
+
+%======== заполнение основной надписи и титульного листа ==========================
+%\ESKDdepartment{Ведомство}
+%\ESKDcompany{\nameManufacturer}
+\ESKDtitleApprovedBy{Директор \nameManufacturer}{В.И.~Толкачев}
+%\ESKDtitleAgreedBy{Должность первого согласовавшего}{Фам. первого согл.}
+%\ESKDtitleAgreedBy{Должность второго согласовавшего}{Фам. второго согл.}
+%\ESKDtitleAgreedBy{Должность третьего согласовавшего}{Фам. третьего согл.}
+%\ESKDtitleDesignedBy{Должность первого автора}{Фам. первого автора}
+\ESKDtitleDesignedBy{Главный конструктор ОКР\\ начальник отдела 12\par \nameManufacturer}{В.В.~Полстюк}
+
+ 
+
+
+%===== заменим шрифты титульника, штампов, рамок с наклонных на прямые ===================
+\renewcommand{\ESKDfontShape}{\upshape}
+
+% 3-я графа (утверждаю, согласовано), увеличен междустрочный интервал
+\renewcommand{\ESKDtitleFontIII}{\ESKDfontIII\renewcommand{%
+  \baselinestretch}{2}\selectfont\upshape}
+\renewcommand{\ESKDtitleFontIV}{\ESKDfontV\upshape}
+\renewcommand{\ESKDtitleFontV}{\ESKDfontV\upshape}
+\renewcommand{\ESKDtitleFontVI}{\ESKDfontV\upshape}
+\renewcommand{\ESKDtitleFontVII}{\ESKDfontIII\upshape}
+% 8-я графа (исполняющие), увеличен междустрочный интервал
+\renewcommand{\ESKDtitleFontVIII}{\ESKDfontIII\renewcommand{%
+  \baselinestretch}{1.5}\selectfont\upshape}
+\renewcommand{\ESKDtitleFontX}{\ESKDfontV\upshape}
+
+
+% слова УTВЕРЖДАЮ и СОГЛАСОВАННО по умолчаюнию печатаются жирным шрифтом
+% поправим это
+\makeatletter
+
+\renewcommand{\ESKDtheTitleFieldIIIl}{% СОГЛАСНОВАНО
+  \ifx\ESKD@title@approving@sheet\@undefined
+    \expandafter\ifx\csname ESKD@title@agreed@name@1\endcsname\relax\else
+      \MakeUppercase{\ESKDagreedName}\\
+      \ESKD@title@make@stamp{agreed}{1}
+    \fi
+  \else
+    \textbf{\MakeUppercase{\ESKDapprovedName}}\\
+    \ESKD@title@approving@sheet
+  \fi}
+
+\renewcommand{\ESKDtheTitleFieldIIIr}{% УTВЕРЖДАЮ
+  \ifx\ESKD@title@approving@sheet\@undefined
+    \expandafter\ifx\csname ESKD@title@approved@name@1\endcsname\relax\else
+      \MakeUppercase{\ESKDapprovingName}\\
+      \ESKD@title@make@stamp{approved}{1}
+    \fi
+  \fi}
+
+% Эта команда задает пропорции, в которых делится страница
+% для вывода грифов, по умолчанию .4
+\renewcommand{\ESKD@title@split@field}[2]{%
+  \parbox[t]{.45\hsize}{\raggedright#1}\hfill
+  \parbox[t]{.45\hsize}{\raggedright#2}}
+
+% поля для подписи и даты
+\renewcommand{\ESKDtitleMakeStamp}[2]{#1\\\hfill #2\makebox[2mm]{}\\
+<<\rule{1cm}{.1mm}>> \rule{3cm}{.1mm}\ \ESKDtheYear}
+
+% Добавлена разреженность в название документа
+\renewcommand{\ESKDtheTitleFieldIV}{%
+  \renewcommand{\baselinestretch}{1.5}
+  \selectfont
+  \MakeUppercase{\ESKDtheTitle}\par\bigskip\ESKDtheDocName}
+
+% Вывод названия документа.
+% Tеперь без выравнивания по центру и без выделения жирным шрифтом
+\newcommand{\makekamertontitle}{%
+  \begin{ESKDtitlePage}
+  \setlength{\topsep}{0mm}
+  \noindent
+  \parbox[c][.28\vsize][t]{\hsize}{%
+    \begin{center}\ESKDtitleFontI\bfseries\ESKDtheTitleFieldI\end{center}
+    \vspace{5mm \@plus 15mm \@minus 3mm}
+    \begin{center}\ESKDtitleFontII\ESKDtheTitleFieldII\end{center}
+    \vspace{10mm \@plus 20mm \@minus 6mm}
+    \begin{center}\ESKDtitleFontIII\ESKDtheTitleFieldIII\end{center}}
+  \par\vspace{10mm \@plus 2mm \@minus 4mm}\noindent
+  \begin{center}
+      \parbox[c][.30\vsize][t]{.7\hsize}{%
+      \raggedright
+    \ESKDtitleFontIV\ESKDtheTitleFieldIV
+    \ESKDtitleFontV\ESKDtheTitleFieldV\\\bigskip
+    \ESKDtitleFontVI\ESKDtheTitleFieldVI
+    \ESKDtitleFontVII\ESKDtheTitleFieldVII}
+  \end{center}
+  \par\vspace{4mm \@plus 2mm \@minus 2mm}\noindent
+  \begin{center}\ESKDtitleFontVIII\ESKDtheTitleFieldVIII\end{center}
+  \vfill
+  \begin{center}\ESKDtitleFontX\ESKDtheTitleFieldX\end{center}
+  \end{ESKDtitlePage}			
+}
+
+
+
+% Названия разделов по умолчанию печатаюатся целиком в верхнем регистре
+% Нормоконтроль такое не пропускает. Переопределим \ESKDsectionStyle
+%\renewcommand{\ESKDsectionStyle}{\normalfont\Large\bfseries}
+\ESKDsectStyle{section}{\normalfont\Large\bfseries}
+
+
+% уберем год внизу титульника
+\renewcommand{\ESKDtheTitleFieldX}{} 
+
+% Уменьшим наименование документа в основной надписи и добавим небольшой промежуток
+% Имя девайса оставим прежним размером
+\renewcommand{\ESKDtheColumnI}{\ESKDtheTitle\par\medskip\ESKDfontIII\ESKDtheDocName}
+
+
+
+% стиль подписей к картинкам. 
+% Нас интересуют вертикальные отбивки. 
+% По умолчанию aboveskip=0mm,belowskip=3mm
+% Приемлемые размеры формируются, если сделать вот так: 
+% 
+% \begin{figure}%[hb]
+%   \begin{center}
+%     \includegraphics{picture}
+%   \end{center}
+%   \caption{Схема}
+%   \label{fig:p}
+% \end{figure} 
+% обратите внимание, что \caption{} находится _вне_ окружения {center}
+%
+% но лучше грамотно настроить пакет сaption, что мы и сделаем:
+\captionsetup[figure]{font=small,labelfont=bf,labelsep=dash,justification=centering,singlelinecheck=false,aboveskip=3mm,belowskip=3mm} 
+
+% стиль подписей к таблицам 
+\captionsetup[table]{format=hang,labelfont=bf,labelsep=dash,justification=raggedright,singlelinecheck=false,aboveskip=3mm,belowskip=0mm}

@@ -1,0 +1,26 @@
+\newcommand{\rootdir}{../../}					%корень всех документов
+\newcommand{\settingsdir}{\rootdir/settings}	%файлы настроек
+\newcommand{\templatedir}{\rootdir/templates}	%общие для всех шаблоны
+
+
+\documentclass[14pt,russian,cp1251,pointsubsection,floatsingle,paralist]{eskdtext}
+
+\input{\rootdir/common_packages.tex}			%общие для всех документов пакеты
+\input{\settingsdir/hyphenation.tex}			%список слов, которые нельзя разрывать переносами
+ 
+\usepackage{\rootdir/commondata}
+\usepackage{\rootdir/macros}
+\usepackage{\rootdir/layout}
+\usepackage{\rootdir/kamertonstyle}
+\usepackage{\rootdir/passportkamertonstyle}
+
+\begin{document}
+
+
+		\begin{table}[h]
+			\caption{\markout{климматика}}
+			\input{./impact_table}
+		\end{table}
+
+
+\end{document}

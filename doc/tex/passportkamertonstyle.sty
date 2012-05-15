@@ -1,0 +1,12 @@
+% Стилевой файл меняет шрифты названий разделов и подразделов
+% на основной шрифт документа, чтобы не выделялись
+\NeedsTeXFormat{LaTeX2e}
+%\ProvidesPackage{passportkamertonstyle}
+
+
+
+% Названия разделов по умолчанию печатаюатся целиком в верхнем регистре
+% Нормоконтроль такое не пропускает. Переключим на обычный шрифт
+\ESKDsectStyle{section}{\normalfont}
+\ESKDsectStyle{subsection}{\normalfont}
+\ESKDsectStyle{subsubsection}{\normalfont}

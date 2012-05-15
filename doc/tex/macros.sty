@@ -1,0 +1,348 @@
+\NeedsTeXFormat{LaTeX2e}
+%\ProvidesPackage{macros}
+\RequirePackage{ifthen}
+\RequirePackage{soulutf8,xcolor} % для хитрых выделений текста
+\RequirePackage[T2A]{fontenc}
+
+
+%-----------------------------------------------------------------------------
+% всякая мелочь
+%
+\newcommand{\gost}[1]{\mbox{ГОСТ #1}}
+\newcommand{\ksau}[1]{\mbox{КСАУ.#1}}
+
+
+%-----------------------------------------------------------------------------
+% выделение для вычитки
+% 
+\newboolean{reading}
+\setboolean{reading}{true}  % будет значением по умолчанию
+
+\newcommand{\markout}[1]{%
+  \ifthenelse{\boolean{reading}}
+    % {\colorbox{yellow}{#1}}
+    {\hl{#1}}
+    {#1}%
+}
+
+
+%-----------------------------------------------------------------------------
+% выделения особо важных моментов
+%
+\newboolean{blacknwhite}
+\setboolean{blacknwhite}{false}  % будет значением по умолчанию
+
+\newcommand{\warnmnemonic}{prohibit}                % предупреждающий символ
+\newcommand{\warntextcolor}{red}                    % цвет текста
+\newcommand{\warnskip}{2em plus 0.5ex minus 0.5ex}  % вертикальные отбивки
+% \newcommand{\warnskip}{\baselineskip}  % вертикальные отбивки
+
+% !внимание:
+\newcommand{\attention}[1]{%
+\addvspace{\warnskip}
+\vbox{
+  \ifthenelse{\boolean{blacknwhite}}%
+    {\renewcommand{\warnmnemonic}{attention_bw}\renewcommand{\warntextcolor}{black}}%
+    {\renewcommand{\warnmnemonic}{attention}\renewcommand{\warntextcolor}{blue}}%
+  \noindent\raisebox{-3.5mm}{\makebox[\parindent][l]{\includegraphics[width=10mm]{\warnmnemonic}}}%
+  \parbox[c]{\textwidth-\parindent}
+  {\textcolor{\warntextcolor}{\bfseries\textsc{Внимание: #1}}}}
+\addvspace{\warnskip}
+}
+
+% !запрещается:
+\newcommand{\prohibit}[1]{%
+\addvspace{\warnskip}
+\vbox{
+  \ifthenelse{\boolean{blacknwhite}}%
+    {\renewcommand{\warnmnemonic}{prohibit_bw}\renewcommand{\warntextcolor}{black}}%
+    {\renewcommand{\warnmnemonic}{prohibit}\renewcommand{\warntextcolor}{red}}%
+  \large
+  \noindent\raisebox{-3.5mm}{\makebox[\parindent][l]{\includegraphics[width=10mm]{\warnmnemonic}}}%
+  \parbox[c]{\textwidth-\parindent}
+  {\textcolor{\warntextcolor}{\bfseries\textsc{Запрещается #1}}}}
+\addvspace{\warnskip}
+}
+
+
+
+%-----------------------------------------------------------------------------
+% выделение шоткатов
+%
+\newcommand{\shortcut}[1]{\textsl{\textbf{#1}}}
+
+
+%-----------------------------------------------------------------------------
+% выделение 16-ых чисел
+%
+\newcommand{\hexval}[1]{\textbf{#1}}
+
+
+%-----------------------------------------------------------------------------
+% номеров битов
+%
+\newcommand{\bitval}[1]{\textsl{#1}}
+
+
+%-----------------------------------------------------------------------------
+% примечание
+%
+% типографские торадиции рекомендуют слово "примечание" набирать курсивом
+% а весь текст примечания давать меньшим кеглем
+% после вставки текста примечания надо вставить еще \par, чтобы сменить
+% интерлиньяж примечания на соответствующей кеглю самого примечания
+% \newcommand{\note}[1]{\itshape\bfseries{Примечание}\mdseries \cdash--- #1\normalfont}
+% Но камертоновский нормоконтроль курсив категорически не приемлит, 
+% поэтому он был заменен на полужирный
+\newcommand{\note}[1]{{{\textbf{Примечание} \cdash--- #1}}}
+
+%-----------------------------------------------------------------------------
+% список примечаний
+% \newcommand{\notes}[1]{\itshape\bfseries{Примечания}\mdseries\par #1\normalfont}
+\newcommand{\notes}[1]{{\textbf{Примечания}\par #1}}
+
+
+
+
+
+%-----------------------------------------------------------------------------
+% включение картинок в таблицу 
+%
+%#1 - ширина картинки
+%#2 - имя файла картинки
+\newcommand{\tabfigure}[2]{%
+  \parbox[c]{#1}{%
+    \vspace{0.5ex}%
+    \includegraphics[width=#1]{#2}%
+    \vspace{0.5ex}%
+  }%
+}
+
+
+%-----------------------------------------------------------------------------
+% центрированиt текста в ячейке
+%
+% решение некрасивое, лучше объявить собственные типы колонок
+%#1 - ширина текста на выходе
+%#2 - сам текст
+\newcommand{\cellVcenter}[2]{%
+  \parbox[c][1\height]{#1}{\vspace{0.4em}#2\vspace{0.4em}}}
+  
+\newcommand{\cellHcenter}[2]{%
+  \parbox[c][1\height]{#1}{\vspace{0.4em}\centering #2\vspace{0.4em}}}
+  
+\newcommand{\cellHVcenter}[2]{%
+  \parbox[c][1\height]{#1}{\vspace{0.4em}\centering #2\vspace{0.4em}}}
+
+
+%-----------------------------------------------------------------------------
+% врЕменные переменные для расчетов ширины граф таблиц
+%
+% Перед каждым использованием не забываем 
+% присваивать им необходимые значения
+\newlength{\cI}
+\newlength{\cII}
+\newlength{\cIII}
+\newlength{\cIV}
+\newlength{\cV}
+\newlength{\cVI}
+\newlength{\cVII}
+\newlength{\cVIII}
+\newlength{\cIX}
+\newlength{\cX}
+\newlength{\figw} %ширина рисунка при вставке в таблицу
+
+
+
+%-----------------------------------------------------------------------------
+% символ постоянного напряжения
+%
+\newcommand{\textdcvoltage}{%
+  \,%
+    \parbox[b][1ex]{2.7ex}{%
+      \begin{picture}(3,1)%
+        \linethickness{0.13ex}%   %толщина линии
+        \unitlength=1ex%      %единицы измерения
+        \put(0,0.2){\line(1,0){0.5}}%
+        \put(1,0.2){\line(1,0){0.5}}%
+        \put(2,0.2){\line(1,0){0.5}}%
+        \put(0,0.8){\line(1,0){2.5}}%
+      \end{picture}%
+    }%
+  \,%
+}
+
+
+%-----------------------------------------------------------------------------
+% символ заземления
+%
+\newcommand{\textelectricground}{%
+  \,%
+    \parbox[b][1em]{1.0em}{%
+      \begin{picture}(3,1)%
+        \linethickness{0.13ex}%   %толщина линии
+        \unitlength=1em%      %единицы измерения
+        \put(0.0,0.4) {\line(1,0){1}}%
+        \put(0.2,0.2) {\line(1,0){0.6}}%
+        \put(0.4,0.0) {\line(1,0){0.2}}%
+        \put(0.5,0.4) {\line(0,1){0.5}}%
+      \end{picture}%
+    }%
+  \,%
+}
+
+
+%-----------------------------------------------------------------------------
+% символ зануления
+%
+\newcommand{\textelectriczero}{%
+  \,%
+    \parbox[b][1em]{1.0em}{%
+      \begin{picture}(3,1)%
+        \linethickness{0.13ex}%   %толщина линии
+        \unitlength=1em%      %единицы измерения
+        \put(0.0,0.0) {\line(1,0){1}}%
+        \put(0.5,0.0) {\line(0,1){0.7}}%
+      \end{picture}%
+    }%
+  \,%
+}
+
+
+%-----------------------------------------------------------------------------
+% нумерация внутри таблиц
+%
+% внутри таблиц нельзя использовать окружения, напр.: begin{enumerate},
+% но это часто бывает необходимо.
+% Так же необходимо учитывать, что все счетчики LaTex являются глобальными
+% поэтому перед каждой таблицей его необходимо сбрасывать в ноль (\setcounter)
+% расширение listliketab делает примерно то же самое
+%
+\newcounter{tablerowcounter}
+\newcommand{\inTableEnum}{\refstepcounter{tablerowcounter}\hangindent=2em \makebox[2em][l]{\thetablerowcounter}}
+\newcommand{\inTableItemize}{\qquad \hangindent=3em \makebox[1em][l]{--}}
+
+
+%-----------------------------------------------------------------------------
+% смена глубины вложенности пунктов на лету
+%
+% в пределах subsubsection
+\newcommand{\switchpointsubsubsection}{%
+  \renewcommand{\thepoint}{\thesubsubsection.\arabic{point}}%
+  \@addtoreset{point}{subsubsection}}
+
+% в пределах subsection
+\newcommand{\switchpointsubsection}{%
+  \renewcommand{\thepoint}{\thesubsection.\arabic{point}} 
+  \@addtoreset{point}{subsection}}
+
+% в пределах section
+\newcommand{\switchpointsection}{%
+  \renewcommand{\thepoint}{\thesection.\arabic{point}}  
+  \@addtoreset{point}{section}}
+
+
+%-----------------------------------------------------------------------------
+% обертка для окружения ESKDexplanation
+%
+% в качестве параметра может принимать текст
+\setlength{\ESKDexplanIndent}{\parindent} % сдвиг списка пояснений к формулам вправо
+\newlength{\explanation@markerwidth}
+\newenvironment{explanation}[1][где ]
+  {\settowidth{\explanation@markerwidth}{#1}%
+  \begin{ESKDexplanation}[\explanation@markerwidth]}
+  {\end{ESKDexplanation}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Сомопальные патчи к неудачным пакетам
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%-----------------------------------------------------------------------------
+% костыль для \longtable
+%
+% замазывает белой линейкой линию таблицы
+% недостаток метода в наличии невидимой пустой табличной строки 
+% на месте разрыва таблицы 
+% но разрыв в любом случае получается меньше, чем при использовании xtab
+%
+%    УСТАРЕЛО! Взамен написан более толковый патч для longtable (см. ниже)
+\newcommand{\hidehline}{%
+  \raisebox{2.15ex}[1pt]{%
+    \makebox[\textwidth-2em][c]{%
+      \textcolor{white}{%
+        \rule{\columnwidth+2ex}{3pt}%
+      }%
+    }%
+  }%
+}
+
+
+%-----------------------------------------------------------------------------
+% патч для longtable (Он уже внесен в eskdlongtable.sty)
+%
+% по госту, если таблица не умещается на странице, ее можно разорвать
+% а на месте разрыва закрывающую линию рисовать не положено
+% longtable по умолчанию рисует обе линии. Поправим это
+%\renewcommand\LT@@hline{%
+% \def\LT@@hline{%
+%   \ifx\@let@token\hline
+%     \global\let\@gtempa\@gobble
+%     \gdef\LT@sep{\penalty-\@medpenalty\vskip\doublerulesep}%
+%   \else
+%     \global\let\@gtempa\@empty
+%     \gdef\LT@sep{\penalty-\@lowpenalty\vskip-\arrayrulewidth}%
+%   \fi
+%   \ifnum0=`{\fi}%
+%   \multispan\LT@cols
+% %     \unskip\leaders\hrule\@height\arrayrulewidth\hfill\cr % родная строка
+%       \cr% пропатченная строка
+%   \noalign{\LT@sep}%
+%   \multispan\LT@cols
+%      \unskip\leaders\hrule\@height\arrayrulewidth\hfill\cr
+%   \noalign{\penalty\@M}%
+%   \@gtempa}
+
+
+
+%-----------------------------------------------------------------------------
+% приложения в eskdx 
+%
+% подразделы приложений нумеруются и отображаются как разделы
+% хотя разделом является само приложение (А, Б и т.д.)
+% Оглавление получается тоже кривым.
+\renewcommand{\ESKDappendix}[2]{%
+  \ESKDclearDoublePage%
+  \refstepcounter{appendix}%
+  \setcounter{point}{0}%
+  \ifESKD@point@style@single%
+    \renewcommand{\thepoint}{\theappendix.\arabic{point}}%
+  \fi
+  \setcounter{subsection}{0}%
+  \renewcommand{\thesubsection}{\theappendix.\arabic{subsection}}%
+  \setcounter{equation}{0}%
+  \renewcommand{\theequation}{\theappendix.\arabic{equation}}%
+  \setcounter{figure}{0}%
+  \renewcommand{\thefigure}{\theappendix.\arabic{figure}}%
+  \setcounter{table}{0}%
+  \renewcommand{\thetable}{\theappendix.\arabic{table}}%
+  \addcontentsline{toc}{section}{\appendixname\ \theappendix\ #2}%
+  \begin{list}{}{%
+    \setlength{\itemindent}{0mm}%
+    \setlength{\labelwidth}{0mm}%
+    \setlength{\labelsep}{0mm}%
+    \setlength{\leftmargin}{0mm}%
+    \setlength{\topsep}{0mm}%
+    \setlength{\parskip}{0mm}%
+    \setlength{\partopsep}{0mm}%
+    \setlength{\itemsep}{0mm}%
+    \setlength{\parsep}{0mm}}
+    \item\centering\appendixname\ \theappendix
+    \ifx#1\@empty\else\\(#1)\fi\\
+    \item\centering\bf #2
+  \end{list}%
+  \par\nobreak\addvspace{\ESKDappendixSkip}}
+
+

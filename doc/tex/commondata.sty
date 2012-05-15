@@ -1,0 +1,289 @@
+% Стилевой пакет с общими для все данными
+\NeedsTeXFormat{LaTeX2e}
+%\ProvidesPackage{commondata}
+
+% У данного метода включения данных есть отрицательный момент,
+% заключается он в том, что при раскрытии
+% макроса, пробелы после него игнорируются.
+% Чтобы бороться с этим, надо либо брать вызов макроса в фигурные скобки, 
+% либо вставлять \+пробел. 
+% Напр.: \LaTeX\ --- система верстки.
+% Первый вариант предпочтительней.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Данные по климатике и механике
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% в соответствии с ТЗ. 
+% Голые данные. В таблицу они будут собираться
+% по мере надобности и там уже обрастать всякими <<не менее>>. 
+% Эти числа приведены для всего комплекса, 
+% если у какой-то составноЙ части другие параметры,
+% то перед забиением в таблицу следует переопределить
+% этот параметр с помощью \renewcommand{}
+
+% температурные диапазоны, градусы
+\newcommand{\temperaturestoragemax}{\mbox{плюс~50}}%, не~более}
+\newcommand{\temperatureworkingmax}{\mbox{плюс~50}}%, не~более}
+\newcommand{\temperatureworkingmin}{\mbox{минус~30}}%, не~менее}
+\newcommand{\temperaturestoragemin}{\mbox{минус~40}}%, не~менее}
+
+% влажность, проценты
+\newcommand{\airhumidity}{98}%, не~более}
+% при температуре, градусы
+\newcommand{\airhumiditywithtemp}{\mbox{плюс~35}}
+
+% довление, кПа (мм рт. ст.)
+\newcommand{\pressureworkingmin}{52,0 (390)}
+\newcommand{\pressurestoragemin}{24,3 (182)}
+
+% вибрация, м/с2 (g)
+\newcommand{\vibrationacceleration}{49 (5,0)}
+\newcommand{\vibrationfrequencymin}{10}
+\newcommand{\vibrationfrequencymax}{300}
+
+% удары, м/с2 (g)
+\newcommand{\shockacceleration}{147 (15,0)}
+\newcommand{\shockpulsewidthmin}{5}
+\newcommand{\shockpulsewidthmax}{15}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Данные на весь комплекс
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Если какой-то девайс имеет другие параметры - 
+% не забываем переопределить нужные перед употреблением
+
+\newcommand{\MTBF}{1000}        % нарпаботка на отказ, ч
+\newcommand{\averagelifetime}{20}   % среднее время службы, годы
+
+
+
+\newcommand{\minsupplyvoltage}{21,6}    % вольты
+\newcommand{\nominalsupplyvoltage}{24}  % вольты
+\newcommand{\maxsupplyvoltage}{30}      % вольты
+
+\newcommand{\nominalsupplypower}{140}   % Вт
+\newcommand{\maxsupplypower}{300}       % Вт
+
+\newcommand{\UPSworkingtime}{5}         % минут
+\newcommand{\continuousworkingtime}{48} % время непр. работы, часы
+
+\newcommand{\binsensorscount}{42}       % кол. дискр. датчиков
+\newcommand{\analogsensorscount}{8}     % кол. анал. датчиков
+\newcommand{\actuatorcount}{3}          % кол. исп. механизмов
+\newcommand{\maxbinsensorscount}{46}
+\newcommand{\maxanalogsensorscount}{11}
+\newcommand{\maxactuatorcount}{8}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% - Децимальные номера
+% - наименования
+% - массы (кг)
+% - габариты LxBxH (мм)
+% на все составные части, упоминаемые в документации.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% маленький макрос для подавления пробела после децимального номера
+% в случае отстутствия постфикса документа (напр. ПС, ФО и т.д.)
+% поскольку параметр необязательный - его надо брать в квадратные
+% скобки, иначе он будет воспринят как обычный текст
+\newcommand{\decimalpostfix}[1][]{%
+  \ifthenelse{\equal{}{#1}}
+    {}
+    { #1}%
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% общее
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\nameManufacturer}{\mbox{УП <<СКБ Камертон>>}}
+\newcommand{\addressManufacturer}{220001, \mbox{г. Минск}, \mbox{ул. Могилевская, 28}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% покупные части
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% в перечне элементов БИУС название рабито на 2 части
+% ввиду особенностей перечня автоматический перенос невозможен
+% поэтому разобьем название на 2 части
+\newcommand{\nameVBupper}{Вычислитель бортовой ВБ}
+\newcommand{\nameVBlower}{814200, Micro Space MPCX47 Vehicle PC}
+% соберем из двух кусков единое целое
+\newcommand{\nameVB}{{\nameVBupper} {\nameVBlower}}
+\newcommand{\ksauVB}[1][]{} %нету на него номера
+\newcommand{\massVB}{4,0}
+\newcommand{\dimensionVBL}{300}
+\newcommand{\dimensionVBB}{160}
+\newcommand{\dimensionVBH}{75}
+\newcommand{\dimensionsVB}
+  {\dimensionVBL\texttimes\dimensionVBB\texttimes\dimensionVBH}
+
+\newcommand{\nameMonitor}{Видеомонитор МР-10}
+\newcommand{\ksauMonitor}[1][]{\mbox{НВИТ.467846.024%
+  \decimalpostfix[#1]}}
+\newcommand{\massMonitor}{6,0}
+\newcommand{\dimensionMonitorL}{297}
+\newcommand{\dimensionMonitorB}{250}
+\newcommand{\dimensionMonitorH}{114}
+\newcommand{\dimensionsMonitor}
+  {\dimensionMonitorL\texttimes\dimensionMonitorB\texttimes\dimensionMonitorH}
+
+\newcommand{\nameCamera}{Видеокамера УКБ}
+\newcommand{\ksauCamera}[1][]{\mbox{ИМПФ.463142.001%
+  \decimalpostfix[#1]}}
+\newcommand{\massCamera}{3,0}
+\newcommand{\dimensionCameraL}{174}
+\newcommand{\dimensionCameraB}{100}
+\newcommand{\dimensionCameraH}{140}
+\newcommand{\dimensionsCamera}
+  {\dimensionCameraL\texttimes\dimensionCameraB\texttimes\dimensionCameraH}
+
+\newcommand{\nameGPSReceiver}{NAVIOR-24}
+\newcommand{\ksauGPSReceiver}[1][]{\mbox{АПМА.468173.002-02%
+  \decimalpostfix[#1]}}
+
+% амортизированная платформа под MPCX-47 (верхняя часть)
+\newcommand{\namePlatform}{Панель}
+\newcommand{\ksauPlatform}[1][]{\mbox{МИ-172-ВД-ЗПИ-001.000%
+  \decimalpostfix[#1]}}
+\newcommand{\massPlatform}{0,4}
+\newcommand{\dimensionPlatformL}{277}
+\newcommand{\dimensionPlatformB}{195}
+\newcommand{\dimensionPlatformH}{38}
+\newcommand{\dimensionsPlatform}
+  {\dimensionPlatformL\texttimes\dimensionPlatformB\texttimes\dimensionPlatformH}
+
+
+% амортизированная платформа под MPCX-47 (амортизаторы)
+\newcommand{\namePlatformbase}{Панель основания}
+\newcommand{\ksauPlatformbase}[1][]{\mbox{МИ-172-ВД-ЗПИ-002.000%
+  \decimalpostfix[#1]}}
+\newcommand{\massPlatformbase}{0,5}
+\newcommand{\dimensionPlatformbaseL}{285}
+\newcommand{\dimensionPlatformbaseB}{190}
+\newcommand{\dimensionPlatformbaseH}{60}
+\newcommand{\dimensionsPlatformbase}
+  {\dimensionPlatformbaseL\texttimes\dimensionPlatformbaseB\texttimes\dimensionPlatformbaseH}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% изделия камертона
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\nameMain}{Система бортовая информационно-управляющая~БИУС}
+%\newcommand{\nameMain}{Гравицапа} % для тестов
+\newcommand{\ksauMain}[1][]{\mbox{КСАУ.424349.001%
+  \decimalpostfix[#1]}}
+\newcommand{\massMain}{22}
+\newcommand{\massbruttoMain}{30}
+
+
+
+% \newsavebox{\abbrBISblock}
+% \sbox{\abbrBISblock}{БИС-2}
+\newcommand{\nameBIS}{Блок измерительный спутниковый \mbox{\uppercase{БИС-2}}} 
+\newcommand{\abbrBIS}{\mbox{БИС-2}} 
+\newcommand{\ksauBIS}[1][]{\mbox{КСАУ.464349.019%
+  \decimalpostfix[#1]}}
+\newcommand{\ksauBISAntenna}[1][]{\mbox{КСАУ.464656.004%
+  \decimalpostfix[#1]}}
+\newcommand{\massBIS}{1,5}
+\newcommand{\powerconsumptionBIS}{3}
+\newcommand{\dimensionBISL}{134}
+\newcommand{\dimensionBISB}{103}
+\newcommand{\dimensionBISH}{134}
+\newcommand{\dimensionsBIS}
+  {\dimensionBISL\texttimes\dimensionBISB\texttimes\dimensionBISH}
+
+\newcommand{\namePSU}{Панель сигнализации и управления ПСУ}
+\newcommand{\ksauPSU}[1][]{\mbox{КСАУ.426489.011%
+  \decimalpostfix[#1]}}
+\newcommand{\massPSU}{2,0}
+\newcommand{\dimensionPSUL}{298}
+\newcommand{\dimensionPSUB}{146}
+\newcommand{\dimensionPSUH}{107}
+\newcommand{\dimensionsPSU}
+  {\dimensionPSUL\texttimes\dimensionPSUB\texttimes\dimensionPSUH}
+
+\newcommand{\nameUVVU}{Устройство ввода-вывода и управления УВВУ}
+\newcommand{\ksauUVVU}[1][]{\mbox{КСАУ.467239.014%
+  \decimalpostfix[#1]}}
+\newcommand{\massUVVU}{1,5}
+\newcommand{\dimensionUVVUL}{255}
+\newcommand{\dimensionUVVUB}{163}
+\newcommand{\dimensionUVVUH}{60}
+\newcommand{\dimensionsUVVU}
+  {\dimensionUVVUL\texttimes\dimensionUVVUB\texttimes\dimensionUVVUH}
+
+\newcommand{\nameReplicator}{Репликатор}
+\newcommand{\ksauReplicator}[1][]{\mbox{КСАУ.468352.006%
+  \decimalpostfix[#1]}}
+\newcommand{\massReplicator}{0,5}
+\newcommand{\dimensionReplicatorL}{62}
+\newcommand{\dimensionReplicatorB}{159}
+\newcommand{\dimensionReplicatorH}{61}
+\newcommand{\dimensionsReplicator}
+  {\dimensionReplicatorL\texttimes\dimensionReplicatorB\texttimes\dimensionReplicatorH}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% жгуты. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% И жгуты и кабели будут обзываться одним заморским словом cabel
+
+\newcommand{\namecabelVMVideo}{Жгут <<ВМ-Видео>>}
+\newcommand{\ksaucabelVMVideo}[1][]{\mbox{КСАУ.685625.018%
+  \decimalpostfix[#1]}}
+\newcommand{\masscabelVMVideo}{2,2} 
+\newcommand{\dimensionscabelVMVideo}{4500}
+
+\newcommand{\namecabelBISData}{Жгут <<БИС-Данные>>}
+\newcommand{\ksaucabelBISData}[1][]{\mbox{КСАУ.685622.063%
+  \decimalpostfix[#1]}}
+\newcommand{\masscabelBISData}{0,5} 
+\newcommand{\dimensionscabelBISData}{1600} 
+
+\newcommand{\namecabelUVVUReplicator}{Жгут <<УВВУ-Репликатор>>}
+\newcommand{\ksaucabelUVVUReplicator}[1][]{\mbox{КСАУ.685624.054%
+  \decimalpostfix[#1]}}
+\newcommand{\masscabelUVVUReplicator}{0,2}
+\newcommand{\dimensionscabelUVVUReplicator}{600}
+
+\newcommand{\namecabelPSUUVVU}{Жгут <<ПСУ-УВВУ>>}
+\newcommand{\ksaucabelPSUUVVU}[1][]{\mbox{КСАУ.685621.131%
+  \decimalpostfix[#1]}}
+\newcommand{\masscabelPSUUVVU}{0,5}
+\newcommand{\dimensionscabelPSUUVVU}{800}
+
+\newcommand{\namecabelKTV}{Жгут <<КТВ>>}
+\newcommand{\ksaucabelKTV}[1][]{\mbox{КСАУ.685621.132%
+  \decimalpostfix[#1]}}
+\newcommand{\masscabelKTV}{4,5}
+\newcommand{\dimensionscabelKTV}{18000}
+
+\newcommand{\namecabelPTS}{Кабель <<ПТС>>}
+\newcommand{\ksaucabelPTS}[1][]{\mbox{КСАУ.685661.053%
+  \decimalpostfix[#1]}}
+\newcommand{\masscabelPTS}{0,1}
+\newcommand{\dimensionscabelPTS}{4600}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% разное
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\nameMountingkit}{Комплект монтажных частей}
+\newcommand{\ksauMountingkit}[1][]{\mbox{КСАУ.424931.001%
+  \decimalpostfix[#1]}}
+\newcommand{\massMountingkit}{1,4}
+
+\newcommand{\nameZIPG}{Комплект запасных частей, инструмента и принадлежностей групповой (ЗИП-Г)}
+\newcommand{\ksauZIPG}[1][]{\mbox{КСАУ.424349.001%
+  \decimalpostfix[#1]}}
+\newcommand{\massZIPG}{\markout{40}}
+  
+
+
+
+
