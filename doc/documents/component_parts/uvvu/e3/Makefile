@@ -13,7 +13,7 @@ $(document).tex: pe3_table.tex
 
 # пока что автоматически сконвертать не получается
 pe3_table.tex: $(TOP_DIR)/../hard/pcb_main/bom/volat3-PARTSDB.tsv
-	$(error ERROR!. File $@ is out of date. Generate new table from $<)
+	$(error ERROR!. File $@ is out of date. Generate new table from $< manually)
 
 # clean: localclean
 # 

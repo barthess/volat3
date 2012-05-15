@@ -11,3 +11,4 @@ bureaucracy/
 *.eps
 hard/pcb_main/3d/
 *.swp
+*.fdb_latexmk

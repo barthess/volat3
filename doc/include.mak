@@ -15,14 +15,17 @@ DEPS += $(LOCAL_DEPS) # а это в каждом локальном мейкфайле своё, по каким-то при
 # *.aux файлы будем складывать в отдельную директорию, чтобы
 # параллельные сборки не мешали друг-другу
 AUX_DIR = aux_files/$@
-TEXOPTION = --max-print-line=65000 --time-statistics
+TEXOPTION = ""#--max-print-line=65000 --time-statistics
 # TEXOPTION = --max-print-line=65000 --time-statistics --aux-directory=$(AUX_DIR)
 
-TEX = latex $(TEXOPTION)
-PDFTEX = pdflatex $(TEXOPTION)
+TEX = latex
+PDFTEX = pdflatex
 
-TEXIFY = mkdir -p $(AUX_DIR) ; texify --tex-option="$(TEXOPTION)" 
-PDFTEXIFY = mkdir -p $(AUX_DIR) ; texify --tex-option="$(TEXOPTION)" -p
+TEXIFY = latexmk -dvi -latexoption=$(TEXOPTION) 
+PDFTEXIFY = latexmk -pdf -latexoption=$(TEXOPTION) 
+
+# TEXIFY = mkdir -p $(AUX_DIR) ; texify --tex-option="$(TEXOPTION)" 
+# PDFTEXIFY = mkdir -p $(AUX_DIR) ; texify --tex-option="$(TEXOPTION)" -p
 
 HYPERREFOPTS = bookmarksopen=true,bookmarksnumbered=true,colorlinks=true,unicode
 
@@ -119,7 +122,7 @@ reallyall: all allbw
 # По умолчанию будут собираться только цветные документы
 # Цели *.touch.tmp используются в тех случаях, когда заранее не известно,
 # какие файлы будут собраны в результате отработки правила
-#
+
 # доки для вычитки
 reading: pdf hyperref
 	cp $(document).pdf $(document)__reading.pdf
