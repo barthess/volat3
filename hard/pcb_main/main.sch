@@ -16972,6 +16972,24 @@ SMD Leds</description>
 <wire x1="114.5" y1="10.5" x2="114.5" y2="3" width="0.5" layer="100"/>
 <wire x1="114.5" y1="10.5" x2="206" y2="10.5" width="0.5" layer="100"/>
 </symbol>
+<symbol name="A1_LANDSCAPE_FIRST_SCALED">
+<wire x1="325.5" y1="27.5" x2="325.5" y2="2" width="0.5" layer="100"/>
+<wire x1="325.5" y1="27.5" x2="417" y2="27.5" width="0.5" layer="100"/>
+<wire x1="0" y1="0" x2="0" y2="296" width="0.5" layer="100"/>
+<wire x1="0" y1="0" x2="419" y2="0" width="0.5" layer="100"/>
+<wire x1="419" y1="296" x2="419" y2="0" width="0.5" layer="100"/>
+<wire x1="419" y1="296" x2="0" y2="296" width="0.5" layer="100"/>
+<wire x1="10" y1="2" x2="10" y2="287" width="0.5" layer="100"/>
+<wire x1="10" y1="287" x2="10" y2="294" width="0.5" layer="100"/>
+<wire x1="10" y1="2" x2="417" y2="2" width="0.5" layer="100"/>
+<wire x1="417" y1="294" x2="417" y2="27.5" width="0.5" layer="100"/>
+<wire x1="417" y1="27.5" x2="417" y2="2" width="0.5" layer="100"/>
+<wire x1="417" y1="294" x2="45" y2="294" width="0.5" layer="100"/>
+<text x="396" y="4" size="2.54" layer="100">A1_scaled</text>
+<wire x1="45" y1="294" x2="10" y2="294" width="0.5" layer="100"/>
+<wire x1="45" y1="287" x2="10" y2="287" width="0.5" layer="100"/>
+<wire x1="45" y1="287" x2="45" y2="294" width="0.5" layer="100"/>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="A2_LANDSCAPE_NEXT_SCALED">
@@ -17025,6 +17043,18 @@ SMD Leds</description>
 <deviceset name="A3_LANDSCAPE_NEXT_SCALED">
 <gates>
 <gate name="G$1" symbol="A3_LANDSCAPE_NEXT_SCALED" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="A1_LANDSCAPE_FIRST_SCALED">
+<gates>
+<gate name="G$1" symbol="A1_LANDSCAPE_FIRST_SCALED" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -22063,6 +22093,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="XP13" library="connector" deviceset="PLD_1X02" device=""/>
 <part name="JP9" library="mount" deviceset="STAND-OFF-*" device="M3"/>
 <part name="JP10" library="mount" deviceset="STAND-OFF-*" device="M3"/>
+<part name="U$1" library="frame-simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -22405,6 +22436,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="+3V1" gate="G$1" x="58.42" y="274.32" rot="MR90"/>
 <instance part="GND269" gate="1" x="40.64" y="269.24"/>
+<instance part="U$1" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 <bus name="AN_FILTERED_[0..15]">
