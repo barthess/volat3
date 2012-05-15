@@ -1,93 +1,93 @@
-% Стилевой пакет с общими для все данными
+% РЎС‚РёР»РµРІРѕР№ РїР°РєРµС‚ СЃ РѕР±С‰РёРјРё РґР»СЏ РІСЃРµ РґР°РЅРЅС‹РјРё
 \NeedsTeXFormat{LaTeX2e}
 %\ProvidesPackage{commondata}
 
-% У данного метода включения данных есть отрицательный момент,
-% заключается он в том, что при раскрытии
-% макроса, пробелы после него игнорируются.
-% Чтобы бороться с этим, надо либо брать вызов макроса в фигурные скобки, 
-% либо вставлять \+пробел. 
-% Напр.: \LaTeX\ --- система верстки.
-% Первый вариант предпочтительней.
+% РЈ РґР°РЅРЅРѕРіРѕ РјРµС‚РѕРґР° РІРєР»СЋС‡РµРЅРёСЏ РґР°РЅРЅС‹С… РµСЃС‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№ РјРѕРјРµРЅС‚,
+% Р·Р°РєР»СЋС‡Р°РµС‚СЃСЏ РѕРЅ РІ С‚РѕРј, С‡С‚Рѕ РїСЂРё СЂР°СЃРєСЂС‹С‚РёРё
+% РјР°РєСЂРѕСЃР°, РїСЂРѕР±РµР»С‹ РїРѕСЃР»Рµ РЅРµРіРѕ РёРіРЅРѕСЂРёСЂСѓСЋС‚СЃСЏ.
+% Р§С‚РѕР±С‹ Р±РѕСЂРѕС‚СЊСЃСЏ СЃ СЌС‚РёРј, РЅР°РґРѕ Р»РёР±Рѕ Р±СЂР°С‚СЊ РІС‹Р·РѕРІ РјР°РєСЂРѕСЃР° РІ С„РёРіСѓСЂРЅС‹Рµ СЃРєРѕР±РєРё, 
+% Р»РёР±Рѕ РІСЃС‚Р°РІР»СЏС‚СЊ \+РїСЂРѕР±РµР». 
+% РќР°РїСЂ.: \LaTeX\ --- СЃРёСЃС‚РµРјР° РІРµСЂСЃС‚РєРё.
+% РџРµСЂРІС‹Р№ РІР°СЂРёР°РЅС‚ РїСЂРµРґРїРѕС‡С‚РёС‚РµР»СЊРЅРµР№.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Данные по климатике и механике
+% Р”Р°РЅРЅС‹Рµ РїРѕ РєР»РёРјР°С‚РёРєРµ Рё РјРµС…Р°РЅРёРєРµ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% в соответствии с ТЗ. 
-% Голые данные. В таблицу они будут собираться
-% по мере надобности и там уже обрастать всякими <<не менее>>. 
-% Эти числа приведены для всего комплекса, 
-% если у какой-то составноЙ части другие параметры,
-% то перед забиением в таблицу следует переопределить
-% этот параметр с помощью \renewcommand{}
+% РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РўР—. 
+% Р“РѕР»С‹Рµ РґР°РЅРЅС‹Рµ. Р’ С‚Р°Р±Р»РёС†Сѓ РѕРЅРё Р±СѓРґСѓС‚ СЃРѕР±РёСЂР°С‚СЊСЃСЏ
+% РїРѕ РјРµСЂРµ РЅР°РґРѕР±РЅРѕСЃС‚Рё Рё С‚Р°Рј СѓР¶Рµ РѕР±СЂР°СЃС‚Р°С‚СЊ РІСЃСЏРєРёРјРё <<РЅРµ РјРµРЅРµРµ>>. 
+% Р­С‚Рё С‡РёСЃР»Р° РїСЂРёРІРµРґРµРЅС‹ РґР»СЏ РІСЃРµРіРѕ РєРѕРјРїР»РµРєСЃР°, 
+% РµСЃР»Рё Сѓ РєР°РєРѕР№-С‚Рѕ СЃРѕСЃС‚Р°РІРЅРѕР™ С‡Р°СЃС‚Рё РґСЂСѓРіРёРµ РїР°СЂР°РјРµС‚СЂС‹,
+% С‚Рѕ РїРµСЂРµРґ Р·Р°Р±РёРµРЅРёРµРј РІ С‚Р°Р±Р»РёС†Сѓ СЃР»РµРґСѓРµС‚ РїРµСЂРµРѕРїСЂРµРґРµР»РёС‚СЊ
+% СЌС‚РѕС‚ РїР°СЂР°РјРµС‚СЂ СЃ РїРѕРјРѕС‰СЊСЋ \renewcommand{}
 
-% температурные диапазоны, градусы
-\newcommand{\temperaturestoragemax}{\mbox{плюс~50}}%, не~более}
-\newcommand{\temperatureworkingmax}{\mbox{плюс~50}}%, не~более}
-\newcommand{\temperatureworkingmin}{\mbox{минус~30}}%, не~менее}
-\newcommand{\temperaturestoragemin}{\mbox{минус~40}}%, не~менее}
+% С‚РµРјРїРµСЂР°С‚СѓСЂРЅС‹Рµ РґРёР°РїР°Р·РѕРЅС‹, РіСЂР°РґСѓСЃС‹
+\newcommand{\temperaturestoragemax}{\mbox{РїР»СЋСЃ~50}}%, РЅРµ~Р±РѕР»РµРµ}
+\newcommand{\temperatureworkingmax}{\mbox{РїР»СЋСЃ~50}}%, РЅРµ~Р±РѕР»РµРµ}
+\newcommand{\temperatureworkingmin}{\mbox{РјРёРЅСѓСЃ~30}}%, РЅРµ~РјРµРЅРµРµ}
+\newcommand{\temperaturestoragemin}{\mbox{РјРёРЅСѓСЃ~40}}%, РЅРµ~РјРµРЅРµРµ}
 
-% влажность, проценты
-\newcommand{\airhumidity}{98}%, не~более}
-% при температуре, градусы
-\newcommand{\airhumiditywithtemp}{\mbox{плюс~35}}
+% РІР»Р°Р¶РЅРѕСЃС‚СЊ, РїСЂРѕС†РµРЅС‚С‹
+\newcommand{\airhumidity}{98}%, РЅРµ~Р±РѕР»РµРµ}
+% РїСЂРё С‚РµРјРїРµСЂР°С‚СѓСЂРµ, РіСЂР°РґСѓСЃС‹
+\newcommand{\airhumiditywithtemp}{\mbox{РїР»СЋСЃ~35}}
 
-% довление, кПа (мм рт. ст.)
+% РґРѕРІР»РµРЅРёРµ, РєРџР° (РјРј СЂС‚. СЃС‚.)
 \newcommand{\pressureworkingmin}{52,0 (390)}
 \newcommand{\pressurestoragemin}{24,3 (182)}
 
-% вибрация, м/с2 (g)
+% РІРёР±СЂР°С†РёСЏ, Рј/СЃ2 (g)
 \newcommand{\vibrationacceleration}{49 (5,0)}
 \newcommand{\vibrationfrequencymin}{10}
 \newcommand{\vibrationfrequencymax}{300}
 
-% удары, м/с2 (g)
+% СѓРґР°СЂС‹, Рј/СЃ2 (g)
 \newcommand{\shockacceleration}{147 (15,0)}
 \newcommand{\shockpulsewidthmin}{5}
 \newcommand{\shockpulsewidthmax}{15}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Данные на весь комплекс
+% Р”Р°РЅРЅС‹Рµ РЅР° РІРµСЃСЊ РєРѕРјРїР»РµРєСЃ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Если какой-то девайс имеет другие параметры - 
-% не забываем переопределить нужные перед употреблением
+% Р•СЃР»Рё РєР°РєРѕР№-С‚Рѕ РґРµРІР°Р№СЃ РёРјРµРµС‚ РґСЂСѓРіРёРµ РїР°СЂР°РјРµС‚СЂС‹ - 
+% РЅРµ Р·Р°Р±С‹РІР°РµРј РїРµСЂРµРѕРїСЂРµРґРµР»РёС‚СЊ РЅСѓР¶РЅС‹Рµ РїРµСЂРµРґ СѓРїРѕС‚СЂРµР±Р»РµРЅРёРµРј
 
-\newcommand{\MTBF}{1000}        % нарпаботка на отказ, ч
-\newcommand{\averagelifetime}{20}   % среднее время службы, годы
+\newcommand{\MTBF}{1000}        % РЅР°СЂРїР°Р±РѕС‚РєР° РЅР° РѕС‚РєР°Р·, С‡
+\newcommand{\averagelifetime}{20}   % СЃСЂРµРґРЅРµРµ РІСЂРµРјСЏ СЃР»СѓР¶Р±С‹, РіРѕРґС‹
 
 
 
-\newcommand{\minsupplyvoltage}{21,6}    % вольты
-\newcommand{\nominalsupplyvoltage}{24}  % вольты
-\newcommand{\maxsupplyvoltage}{30}      % вольты
+\newcommand{\minsupplyvoltage}{21,6}    % РІРѕР»СЊС‚С‹
+\newcommand{\nominalsupplyvoltage}{24}  % РІРѕР»СЊС‚С‹
+\newcommand{\maxsupplyvoltage}{30}      % РІРѕР»СЊС‚С‹
 
-\newcommand{\nominalsupplypower}{140}   % Вт
-\newcommand{\maxsupplypower}{300}       % Вт
+\newcommand{\nominalsupplypower}{140}   % Р’С‚
+\newcommand{\maxsupplypower}{300}       % Р’С‚
 
-\newcommand{\UPSworkingtime}{5}         % минут
-\newcommand{\continuousworkingtime}{48} % время непр. работы, часы
+\newcommand{\UPSworkingtime}{5}         % РјРёРЅСѓС‚
+\newcommand{\continuousworkingtime}{48} % РІСЂРµРјСЏ РЅРµРїСЂ. СЂР°Р±РѕС‚С‹, С‡Р°СЃС‹
 
-\newcommand{\binsensorscount}{42}       % кол. дискр. датчиков
-\newcommand{\analogsensorscount}{8}     % кол. анал. датчиков
-\newcommand{\actuatorcount}{3}          % кол. исп. механизмов
+\newcommand{\binsensorscount}{42}       % РєРѕР». РґРёСЃРєСЂ. РґР°С‚С‡РёРєРѕРІ
+\newcommand{\analogsensorscount}{8}     % РєРѕР». Р°РЅР°Р». РґР°С‚С‡РёРєРѕРІ
+\newcommand{\actuatorcount}{3}          % РєРѕР». РёСЃРї. РјРµС…Р°РЅРёР·РјРѕРІ
 \newcommand{\maxbinsensorscount}{46}
 \newcommand{\maxanalogsensorscount}{11}
 \newcommand{\maxactuatorcount}{8}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% - Децимальные номера
-% - наименования
-% - массы (кг)
-% - габариты LxBxH (мм)
-% на все составные части, упоминаемые в документации.
+% - Р”РµС†РёРјР°Р»СЊРЅС‹Рµ РЅРѕРјРµСЂР°
+% - РЅР°РёРјРµРЅРѕРІР°РЅРёСЏ
+% - РјР°СЃСЃС‹ (РєРі)
+% - РіР°Р±Р°СЂРёС‚С‹ LxBxH (РјРј)
+% РЅР° РІСЃРµ СЃРѕСЃС‚Р°РІРЅС‹Рµ С‡Р°СЃС‚Рё, СѓРїРѕРјРёРЅР°РµРјС‹Рµ РІ РґРѕРєСѓРјРµРЅС‚Р°С†РёРё.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% маленький макрос для подавления пробела после децимального номера
-% в случае отстутствия постфикса документа (напр. ПС, ФО и т.д.)
-% поскольку параметр необязательный - его надо брать в квадратные
-% скобки, иначе он будет воспринят как обычный текст
+% РјР°Р»РµРЅСЊРєРёР№ РјР°РєСЂРѕСЃ РґР»СЏ РїРѕРґР°РІР»РµРЅРёСЏ РїСЂРѕР±РµР»Р° РїРѕСЃР»Рµ РґРµС†РёРјР°Р»СЊРЅРѕРіРѕ РЅРѕРјРµСЂР°
+% РІ СЃР»СѓС‡Р°Рµ РѕС‚СЃС‚СѓС‚СЃС‚РІРёСЏ РїРѕСЃС‚С„РёРєСЃР° РґРѕРєСѓРјРµРЅС‚Р° (РЅР°РїСЂ. РџРЎ, Р¤Рћ Рё С‚.Рґ.)
+% РїРѕСЃРєРѕР»СЊРєСѓ РїР°СЂР°РјРµС‚СЂ РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅС‹Р№ - РµРіРѕ РЅР°РґРѕ Р±СЂР°С‚СЊ РІ РєРІР°РґСЂР°С‚РЅС‹Рµ
+% СЃРєРѕР±РєРё, РёРЅР°С‡Рµ РѕРЅ Р±СѓРґРµС‚ РІРѕСЃРїСЂРёРЅСЏС‚ РєР°Рє РѕР±С‹С‡РЅС‹Р№ С‚РµРєСЃС‚
 \newcommand{\decimalpostfix}[1][]{%
   \ifthenelse{\equal{}{#1}}
     {}
@@ -95,25 +95,25 @@
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% общее
+% РѕР±С‰РµРµ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\nameManufacturer}{\mbox{УП <<СКБ Камертон>>}}
-\newcommand{\addressManufacturer}{220001, \mbox{г. Минск}, \mbox{ул. Могилевская, 28}}
+\newcommand{\nameManufacturer}{\mbox{РЈРџ <<РЎРљР‘ РљР°РјРµСЂС‚РѕРЅ>>}}
+\newcommand{\addressManufacturer}{220001, \mbox{Рі. РњРёРЅСЃРє}, \mbox{СѓР». РњРѕРіРёР»РµРІСЃРєР°СЏ, 28}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% покупные части
+% РїРѕРєСѓРїРЅС‹Рµ С‡Р°СЃС‚Рё
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% в перечне элементов БИУС название рабито на 2 части
-% ввиду особенностей перечня автоматический перенос невозможен
-% поэтому разобьем название на 2 части
-\newcommand{\nameVBupper}{Вычислитель бортовой ВБ}
+% РІ РїРµСЂРµС‡РЅРµ СЌР»РµРјРµРЅС‚РѕРІ Р‘РРЈРЎ РЅР°Р·РІР°РЅРёРµ СЂР°Р±РёС‚Рѕ РЅР° 2 С‡Р°СЃС‚Рё
+% РІРІРёРґСѓ РѕСЃРѕР±РµРЅРЅРѕСЃС‚РµР№ РїРµСЂРµС‡РЅСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ РїРµСЂРµРЅРѕСЃ РЅРµРІРѕР·РјРѕР¶РµРЅ
+% РїРѕСЌС‚РѕРјСѓ СЂР°Р·РѕР±СЊРµРј РЅР°Р·РІР°РЅРёРµ РЅР° 2 С‡Р°СЃС‚Рё
+\newcommand{\nameVBupper}{Р’С‹С‡РёСЃР»РёС‚РµР»СЊ Р±РѕСЂС‚РѕРІРѕР№ Р’Р‘}
 \newcommand{\nameVBlower}{814200, Micro Space MPCX47 Vehicle PC}
-% соберем из двух кусков единое целое
+% СЃРѕР±РµСЂРµРј РёР· РґРІСѓС… РєСѓСЃРєРѕРІ РµРґРёРЅРѕРµ С†РµР»РѕРµ
 \newcommand{\nameVB}{{\nameVBupper} {\nameVBlower}}
-\newcommand{\ksauVB}[1][]{} %нету на него номера
+\newcommand{\ksauVB}[1][]{} %РЅРµС‚Сѓ РЅР° РЅРµРіРѕ РЅРѕРјРµСЂР°
 \newcommand{\massVB}{4,0}
 \newcommand{\dimensionVBL}{300}
 \newcommand{\dimensionVBB}{160}
@@ -121,8 +121,8 @@
 \newcommand{\dimensionsVB}
   {\dimensionVBL\texttimes\dimensionVBB\texttimes\dimensionVBH}
 
-\newcommand{\nameMonitor}{Видеомонитор МР-10}
-\newcommand{\ksauMonitor}[1][]{\mbox{НВИТ.467846.024%
+\newcommand{\nameMonitor}{Р’РёРґРµРѕРјРѕРЅРёС‚РѕСЂ РњР -10}
+\newcommand{\ksauMonitor}[1][]{\mbox{РќР’РРў.467846.024%
   \decimalpostfix[#1]}}
 \newcommand{\massMonitor}{6,0}
 \newcommand{\dimensionMonitorL}{297}
@@ -131,8 +131,8 @@
 \newcommand{\dimensionsMonitor}
   {\dimensionMonitorL\texttimes\dimensionMonitorB\texttimes\dimensionMonitorH}
 
-\newcommand{\nameCamera}{Видеокамера УКБ}
-\newcommand{\ksauCamera}[1][]{\mbox{ИМПФ.463142.001%
+\newcommand{\nameCamera}{Р’РёРґРµРѕРєР°РјРµСЂР° РЈРљР‘}
+\newcommand{\ksauCamera}[1][]{\mbox{РРњРџР¤.463142.001%
   \decimalpostfix[#1]}}
 \newcommand{\massCamera}{3,0}
 \newcommand{\dimensionCameraL}{174}
@@ -142,12 +142,12 @@
   {\dimensionCameraL\texttimes\dimensionCameraB\texttimes\dimensionCameraH}
 
 \newcommand{\nameGPSReceiver}{NAVIOR-24}
-\newcommand{\ksauGPSReceiver}[1][]{\mbox{АПМА.468173.002-02%
+\newcommand{\ksauGPSReceiver}[1][]{\mbox{РђРџРњРђ.468173.002-02%
   \decimalpostfix[#1]}}
 
-% амортизированная платформа под MPCX-47 (верхняя часть)
-\newcommand{\namePlatform}{Панель}
-\newcommand{\ksauPlatform}[1][]{\mbox{МИ-172-ВД-ЗПИ-001.000%
+% Р°РјРѕСЂС‚РёР·РёСЂРѕРІР°РЅРЅР°СЏ РїР»Р°С‚С„РѕСЂРјР° РїРѕРґ MPCX-47 (РІРµСЂС…РЅСЏСЏ С‡Р°СЃС‚СЊ)
+\newcommand{\namePlatform}{РџР°РЅРµР»СЊ}
+\newcommand{\ksauPlatform}[1][]{\mbox{РњР-172-Р’Р”-Р—РџР-001.000%
   \decimalpostfix[#1]}}
 \newcommand{\massPlatform}{0,4}
 \newcommand{\dimensionPlatformL}{277}
@@ -157,9 +157,9 @@
   {\dimensionPlatformL\texttimes\dimensionPlatformB\texttimes\dimensionPlatformH}
 
 
-% амортизированная платформа под MPCX-47 (амортизаторы)
-\newcommand{\namePlatformbase}{Панель основания}
-\newcommand{\ksauPlatformbase}[1][]{\mbox{МИ-172-ВД-ЗПИ-002.000%
+% Р°РјРѕСЂС‚РёР·РёСЂРѕРІР°РЅРЅР°СЏ РїР»Р°С‚С„РѕСЂРјР° РїРѕРґ MPCX-47 (Р°РјРѕСЂС‚РёР·Р°С‚РѕСЂС‹)
+\newcommand{\namePlatformbase}{РџР°РЅРµР»СЊ РѕСЃРЅРѕРІР°РЅРёСЏ}
+\newcommand{\ksauPlatformbase}[1][]{\mbox{РњР-172-Р’Р”-Р—РџР-002.000%
   \decimalpostfix[#1]}}
 \newcommand{\massPlatformbase}{0,5}
 \newcommand{\dimensionPlatformbaseL}{285}
@@ -170,12 +170,12 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% изделия камертона
+% РёР·РґРµР»РёСЏ РєР°РјРµСЂС‚РѕРЅР°
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\nameMain}{Система бортовая информационно-управляющая~БИУС}
-%\newcommand{\nameMain}{Гравицапа} % для тестов
-\newcommand{\ksauMain}[1][]{\mbox{КСАУ.424349.001%
+\newcommand{\nameMain}{РЎРёСЃС‚РµРјР° Р±РѕСЂС‚РѕРІР°СЏ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕ-СѓРїСЂР°РІР»СЏСЋС‰Р°СЏ~Р‘РРЈРЎ}
+%\newcommand{\nameMain}{Р“СЂР°РІРёС†Р°РїР°} % РґР»СЏ С‚РµСЃС‚РѕРІ
+\newcommand{\ksauMain}[1][]{\mbox{РљРЎРђРЈ.424349.001%
   \decimalpostfix[#1]}}
 \newcommand{\massMain}{22}
 \newcommand{\massbruttoMain}{30}
@@ -183,12 +183,12 @@
 
 
 % \newsavebox{\abbrBISblock}
-% \sbox{\abbrBISblock}{БИС-2}
-\newcommand{\nameBIS}{Блок измерительный спутниковый \mbox{\uppercase{БИС-2}}} 
-\newcommand{\abbrBIS}{\mbox{БИС-2}} 
-\newcommand{\ksauBIS}[1][]{\mbox{КСАУ.464349.019%
+% \sbox{\abbrBISblock}{Р‘РРЎ-2}
+\newcommand{\nameBIS}{Р‘Р»РѕРє РёР·РјРµСЂРёС‚РµР»СЊРЅС‹Р№ СЃРїСѓС‚РЅРёРєРѕРІС‹Р№ \mbox{\uppercase{Р‘РРЎ-2}}} 
+\newcommand{\abbrBIS}{\mbox{Р‘РРЎ-2}} 
+\newcommand{\ksauBIS}[1][]{\mbox{РљРЎРђРЈ.464349.019%
   \decimalpostfix[#1]}}
-\newcommand{\ksauBISAntenna}[1][]{\mbox{КСАУ.464656.004%
+\newcommand{\ksauBISAntenna}[1][]{\mbox{РљРЎРђРЈ.464656.004%
   \decimalpostfix[#1]}}
 \newcommand{\massBIS}{1,5}
 \newcommand{\powerconsumptionBIS}{3}
@@ -198,8 +198,8 @@
 \newcommand{\dimensionsBIS}
   {\dimensionBISL\texttimes\dimensionBISB\texttimes\dimensionBISH}
 
-\newcommand{\namePSU}{Панель сигнализации и управления ПСУ}
-\newcommand{\ksauPSU}[1][]{\mbox{КСАУ.426489.011%
+\newcommand{\namePSU}{РџР°РЅРµР»СЊ СЃРёРіРЅР°Р»РёР·Р°С†РёРё Рё СѓРїСЂР°РІР»РµРЅРёСЏ РџРЎРЈ}
+\newcommand{\ksauPSU}[1][]{\mbox{РљРЎРђРЈ.426489.011%
   \decimalpostfix[#1]}}
 \newcommand{\massPSU}{2,0}
 \newcommand{\dimensionPSUL}{298}
@@ -208,8 +208,9 @@
 \newcommand{\dimensionsPSU}
   {\dimensionPSUL\texttimes\dimensionPSUB\texttimes\dimensionPSUH}
 
-\newcommand{\nameUVVU}{Устройство ввода-вывода и управления УВВУ}
-\newcommand{\ksauUVVU}[1][]{\mbox{КСАУ.467239.014%
+% РЈР’Р’РЈ
+\newcommand{\nameUVVU}{РЈСЃС‚СЂРѕР№СЃС‚РІРѕ РІРІРѕРґР°-РІС‹РІРѕРґР° Рё СѓРїСЂР°РІР»РµРЅРёСЏ РЈР’Р’РЈ}
+\newcommand{\ksauUVVU}[1][]{\mbox{РљРЎРђРЈ.467239.014%
   \decimalpostfix[#1]}}
 \newcommand{\massUVVU}{1,5}
 \newcommand{\dimensionUVVUL}{255}
@@ -218,8 +219,14 @@
 \newcommand{\dimensionsUVVU}
   {\dimensionUVVUL\texttimes\dimensionUVVUB\texttimes\dimensionUVVUH}
 
-\newcommand{\nameReplicator}{Репликатор}
-\newcommand{\ksauReplicator}[1][]{\mbox{КСАУ.468352.006%
+% РџР»Р°С‚Р° РЈР’Р’РЈ
+\newcommand{\nameUVVUpcb}{РџР»Р°С‚Р° РЈР’Р’РЈ}
+\newcommand{\ksauUVVUpcb}[1][]{\mbox{РљРЎРђРЈ.469555.025%
+  \decimalpostfix[#1]}}
+
+% Р РµРїР»РёРєР°С‚РѕСЂ
+\newcommand{\nameReplicator}{Р РµРїР»РёРєР°С‚РѕСЂ}
+\newcommand{\ksauReplicator}[1][]{\mbox{РљРЎРђРЈ.468352.006%
   \decimalpostfix[#1]}}
 \newcommand{\massReplicator}{0,5}
 \newcommand{\dimensionReplicatorL}{62}
@@ -230,56 +237,56 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% жгуты. 
+% Р¶РіСѓС‚С‹. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% И жгуты и кабели будут обзываться одним заморским словом cabel
+% Р Р¶РіСѓС‚С‹ Рё РєР°Р±РµР»Рё Р±СѓРґСѓС‚ РѕР±Р·С‹РІР°С‚СЊСЃСЏ РѕРґРЅРёРј Р·Р°РјРѕСЂСЃРєРёРј СЃР»РѕРІРѕРј cabel
 
-\newcommand{\namecabelVMVideo}{Жгут <<ВМ-Видео>>}
-\newcommand{\ksaucabelVMVideo}[1][]{\mbox{КСАУ.685625.018%
+\newcommand{\namecabelVMVideo}{Р–РіСѓС‚ <<Р’Рњ-Р’РёРґРµРѕ>>}
+\newcommand{\ksaucabelVMVideo}[1][]{\mbox{РљРЎРђРЈ.685625.018%
   \decimalpostfix[#1]}}
 \newcommand{\masscabelVMVideo}{2,2} 
 \newcommand{\dimensionscabelVMVideo}{4500}
 
-\newcommand{\namecabelBISData}{Жгут <<БИС-Данные>>}
-\newcommand{\ksaucabelBISData}[1][]{\mbox{КСАУ.685622.063%
+\newcommand{\namecabelBISData}{Р–РіСѓС‚ <<Р‘РРЎ-Р”Р°РЅРЅС‹Рµ>>}
+\newcommand{\ksaucabelBISData}[1][]{\mbox{РљРЎРђРЈ.685622.063%
   \decimalpostfix[#1]}}
 \newcommand{\masscabelBISData}{0,5} 
 \newcommand{\dimensionscabelBISData}{1600} 
 
-\newcommand{\namecabelUVVUReplicator}{Жгут <<УВВУ-Репликатор>>}
-\newcommand{\ksaucabelUVVUReplicator}[1][]{\mbox{КСАУ.685624.054%
+\newcommand{\namecabelUVVUReplicator}{Р–РіСѓС‚ <<РЈР’Р’РЈ-Р РµРїР»РёРєР°С‚РѕСЂ>>}
+\newcommand{\ksaucabelUVVUReplicator}[1][]{\mbox{РљРЎРђРЈ.685624.054%
   \decimalpostfix[#1]}}
 \newcommand{\masscabelUVVUReplicator}{0,2}
 \newcommand{\dimensionscabelUVVUReplicator}{600}
 
-\newcommand{\namecabelPSUUVVU}{Жгут <<ПСУ-УВВУ>>}
-\newcommand{\ksaucabelPSUUVVU}[1][]{\mbox{КСАУ.685621.131%
+\newcommand{\namecabelPSUUVVU}{Р–РіСѓС‚ <<РџРЎРЈ-РЈР’Р’РЈ>>}
+\newcommand{\ksaucabelPSUUVVU}[1][]{\mbox{РљРЎРђРЈ.685621.131%
   \decimalpostfix[#1]}}
 \newcommand{\masscabelPSUUVVU}{0,5}
 \newcommand{\dimensionscabelPSUUVVU}{800}
 
-\newcommand{\namecabelKTV}{Жгут <<КТВ>>}
-\newcommand{\ksaucabelKTV}[1][]{\mbox{КСАУ.685621.132%
+\newcommand{\namecabelKTV}{Р–РіСѓС‚ <<РљРўР’>>}
+\newcommand{\ksaucabelKTV}[1][]{\mbox{РљРЎРђРЈ.685621.132%
   \decimalpostfix[#1]}}
 \newcommand{\masscabelKTV}{4,5}
 \newcommand{\dimensionscabelKTV}{18000}
 
-\newcommand{\namecabelPTS}{Кабель <<ПТС>>}
-\newcommand{\ksaucabelPTS}[1][]{\mbox{КСАУ.685661.053%
+\newcommand{\namecabelPTS}{РљР°Р±РµР»СЊ <<РџРўРЎ>>}
+\newcommand{\ksaucabelPTS}[1][]{\mbox{РљРЎРђРЈ.685661.053%
   \decimalpostfix[#1]}}
 \newcommand{\masscabelPTS}{0,1}
 \newcommand{\dimensionscabelPTS}{4600}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% разное
+% СЂР°Р·РЅРѕРµ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\nameMountingkit}{Комплект монтажных частей}
-\newcommand{\ksauMountingkit}[1][]{\mbox{КСАУ.424931.001%
+\newcommand{\nameMountingkit}{РљРѕРјРїР»РµРєС‚ РјРѕРЅС‚Р°Р¶РЅС‹С… С‡Р°СЃС‚РµР№}
+\newcommand{\ksauMountingkit}[1][]{\mbox{РљРЎРђРЈ.424931.001%
   \decimalpostfix[#1]}}
 \newcommand{\massMountingkit}{1,4}
 
-\newcommand{\nameZIPG}{Комплект запасных частей, инструмента и принадлежностей групповой (ЗИП-Г)}
-\newcommand{\ksauZIPG}[1][]{\mbox{КСАУ.424349.001%
+\newcommand{\nameZIPG}{РљРѕРјРїР»РµРєС‚ Р·Р°РїР°СЃРЅС‹С… С‡Р°СЃС‚РµР№, РёРЅСЃС‚СЂСѓРјРµРЅС‚Р° Рё РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚РµР№ РіСЂСѓРїРїРѕРІРѕР№ (Р—РРџ-Р“)}
+\newcommand{\ksauZIPG}[1][]{\mbox{РљРЎРђРЈ.424349.001%
   \decimalpostfix[#1]}}
 \newcommand{\massZIPG}{\markout{40}}
   

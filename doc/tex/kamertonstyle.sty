@@ -1,45 +1,45 @@
-% Стилевой файл предоставляет настройки, приближенные к требованиям
-% камертоновского нормоконтроля
+% РЎС‚РёР»РµРІРѕР№ С„Р°Р№Р» РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ РЅР°СЃС‚СЂРѕР№РєРё, РїСЂРёР±Р»РёР¶РµРЅРЅС‹Рµ Рє С‚СЂРµР±РѕРІР°РЅРёСЏРј
+% РєР°РјРµСЂС‚РѕРЅРѕРІСЃРєРѕРіРѕ РЅРѕСЂРјРѕРєРѕРЅС‚СЂРѕР»СЏ
 
 \NeedsTeXFormat{LaTeX2e}
 %\ProvidesPackage{kamertonstyle}
 
 
 
-%======== заполнение основной надписи и титульного листа ==========================
-%\ESKDdepartment{Ведомство}
+%======== Р·Р°РїРѕР»РЅРµРЅРёРµ РѕСЃРЅРѕРІРЅРѕР№ РЅР°РґРїРёСЃРё Рё С‚РёС‚СѓР»СЊРЅРѕРіРѕ Р»РёСЃС‚Р° ==========================
+%\ESKDdepartment{Р’РµРґРѕРјСЃС‚РІРѕ}
 %\ESKDcompany{\nameManufacturer}
-\ESKDtitleApprovedBy{Директор \nameManufacturer}{В.И.~Толкачев}
-%\ESKDtitleAgreedBy{Должность первого согласовавшего}{Фам. первого согл.}
-%\ESKDtitleAgreedBy{Должность второго согласовавшего}{Фам. второго согл.}
-%\ESKDtitleAgreedBy{Должность третьего согласовавшего}{Фам. третьего согл.}
-%\ESKDtitleDesignedBy{Должность первого автора}{Фам. первого автора}
-\ESKDtitleDesignedBy{Главный конструктор ОКР\\ начальник отдела 12\par \nameManufacturer}{В.В.~Полстюк}
+\ESKDtitleApprovedBy{Р”РёСЂРµРєС‚РѕСЂ \nameManufacturer}{Р’.Р.~РўРѕР»РєР°С‡РµРІ}
+%\ESKDtitleAgreedBy{Р”РѕР»Р¶РЅРѕСЃС‚СЊ РїРµСЂРІРѕРіРѕ СЃРѕРіР»Р°СЃРѕРІР°РІС€РµРіРѕ}{Р¤Р°Рј. РїРµСЂРІРѕРіРѕ СЃРѕРіР».}
+%\ESKDtitleAgreedBy{Р”РѕР»Р¶РЅРѕСЃС‚СЊ РІС‚РѕСЂРѕРіРѕ СЃРѕРіР»Р°СЃРѕРІР°РІС€РµРіРѕ}{Р¤Р°Рј. РІС‚РѕСЂРѕРіРѕ СЃРѕРіР».}
+%\ESKDtitleAgreedBy{Р”РѕР»Р¶РЅРѕСЃС‚СЊ С‚СЂРµС‚СЊРµРіРѕ СЃРѕРіР»Р°СЃРѕРІР°РІС€РµРіРѕ}{Р¤Р°Рј. С‚СЂРµС‚СЊРµРіРѕ СЃРѕРіР».}
+%\ESKDtitleDesignedBy{Р”РѕР»Р¶РЅРѕСЃС‚СЊ РїРµСЂРІРѕРіРѕ Р°РІС‚РѕСЂР°}{Р¤Р°Рј. РїРµСЂРІРѕРіРѕ Р°РІС‚РѕСЂР°}
+\ESKDtitleDesignedBy{Р“Р»Р°РІРЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РћРљР \\ РЅР°С‡Р°Р»СЊРЅРёРє РѕС‚РґРµР»Р° 12\par \nameManufacturer}{Р’.Р’.~РџРѕР»СЃС‚СЋРє}
 
  
 
 
-%===== заменим шрифты титульника, штампов, рамок с наклонных на прямые ===================
+%===== Р·Р°РјРµРЅРёРј С€СЂРёС„С‚С‹ С‚РёС‚СѓР»СЊРЅРёРєР°, С€С‚Р°РјРїРѕРІ, СЂР°РјРѕРє СЃ РЅР°РєР»РѕРЅРЅС‹С… РЅР° РїСЂСЏРјС‹Рµ ===================
 \renewcommand{\ESKDfontShape}{\upshape}
 
-% 3-я графа (утверждаю, согласовано), увеличен междустрочный интервал
+% 3-СЏ РіСЂР°С„Р° (СѓС‚РІРµСЂР¶РґР°СЋ, СЃРѕРіР»Р°СЃРѕРІР°РЅРѕ), СѓРІРµР»РёС‡РµРЅ РјРµР¶РґСѓСЃС‚СЂРѕС‡РЅС‹Р№ РёРЅС‚РµСЂРІР°Р»
 \renewcommand{\ESKDtitleFontIII}{\ESKDfontIII\renewcommand{%
   \baselinestretch}{2}\selectfont\upshape}
 \renewcommand{\ESKDtitleFontIV}{\ESKDfontV\upshape}
 \renewcommand{\ESKDtitleFontV}{\ESKDfontV\upshape}
 \renewcommand{\ESKDtitleFontVI}{\ESKDfontV\upshape}
 \renewcommand{\ESKDtitleFontVII}{\ESKDfontIII\upshape}
-% 8-я графа (исполняющие), увеличен междустрочный интервал
+% 8-СЏ РіСЂР°С„Р° (РёСЃРїРѕР»РЅСЏСЋС‰РёРµ), СѓРІРµР»РёС‡РµРЅ РјРµР¶РґСѓСЃС‚СЂРѕС‡РЅС‹Р№ РёРЅС‚РµСЂРІР°Р»
 \renewcommand{\ESKDtitleFontVIII}{\ESKDfontIII\renewcommand{%
   \baselinestretch}{1.5}\selectfont\upshape}
 \renewcommand{\ESKDtitleFontX}{\ESKDfontV\upshape}
 
 
-% слова УTВЕРЖДАЮ и СОГЛАСОВАННО по умолчаюнию печатаются жирным шрифтом
-% поправим это
+% СЃР»РѕРІР° РЈTР’Р•Р Р–Р”РђР® Рё РЎРћР“Р›РђРЎРћР’РђРќРќРћ РїРѕ СѓРјРѕР»С‡Р°СЋРЅРёСЋ РїРµС‡Р°С‚Р°СЋС‚СЃСЏ Р¶РёСЂРЅС‹Рј С€СЂРёС„С‚РѕРј
+% РїРѕРїСЂР°РІРёРј СЌС‚Рѕ
 \makeatletter
 
-\renewcommand{\ESKDtheTitleFieldIIIl}{% СОГЛАСНОВАНО
+\renewcommand{\ESKDtheTitleFieldIIIl}{% РЎРћР“Р›РђРЎРќРћР’РђРќРћ
   \ifx\ESKD@title@approving@sheet\@undefined
     \expandafter\ifx\csname ESKD@title@agreed@name@1\endcsname\relax\else
       \MakeUppercase{\ESKDagreedName}\\
@@ -50,7 +50,7 @@
     \ESKD@title@approving@sheet
   \fi}
 
-\renewcommand{\ESKDtheTitleFieldIIIr}{% УTВЕРЖДАЮ
+\renewcommand{\ESKDtheTitleFieldIIIr}{% РЈTР’Р•Р Р–Р”РђР®
   \ifx\ESKD@title@approving@sheet\@undefined
     \expandafter\ifx\csname ESKD@title@approved@name@1\endcsname\relax\else
       \MakeUppercase{\ESKDapprovingName}\\
@@ -58,24 +58,24 @@
     \fi
   \fi}
 
-% Эта команда задает пропорции, в которых делится страница
-% для вывода грифов, по умолчанию .4
+% Р­С‚Р° РєРѕРјР°РЅРґР° Р·Р°РґР°РµС‚ РїСЂРѕРїРѕСЂС†РёРё, РІ РєРѕС‚РѕСЂС‹С… РґРµР»РёС‚СЃСЏ СЃС‚СЂР°РЅРёС†Р°
+% РґР»СЏ РІС‹РІРѕРґР° РіСЂРёС„РѕРІ, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ .4
 \renewcommand{\ESKD@title@split@field}[2]{%
   \parbox[t]{.45\hsize}{\raggedright#1}\hfill
   \parbox[t]{.45\hsize}{\raggedright#2}}
 
-% поля для подписи и даты
+% РїРѕР»СЏ РґР»СЏ РїРѕРґРїРёСЃРё Рё РґР°С‚С‹
 \renewcommand{\ESKDtitleMakeStamp}[2]{#1\\\hfill #2\makebox[2mm]{}\\
 <<\rule{1cm}{.1mm}>> \rule{3cm}{.1mm}\ \ESKDtheYear}
 
-% Добавлена разреженность в название документа
+% Р”РѕР±Р°РІР»РµРЅР° СЂР°Р·СЂРµР¶РµРЅРЅРѕСЃС‚СЊ РІ РЅР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°
 \renewcommand{\ESKDtheTitleFieldIV}{%
   \renewcommand{\baselinestretch}{1.5}
   \selectfont
   \MakeUppercase{\ESKDtheTitle}\par\bigskip\ESKDtheDocName}
 
-% Вывод названия документа.
-% Tеперь без выравнивания по центру и без выделения жирным шрифтом
+% Р’С‹РІРѕРґ РЅР°Р·РІР°РЅРёСЏ РґРѕРєСѓРјРµРЅС‚Р°.
+% TРµРїРµСЂСЊ Р±РµР· РІС‹СЂР°РІРЅРёРІР°РЅРёСЏ РїРѕ С†РµРЅС‚СЂСѓ Рё Р±РµР· РІС‹РґРµР»РµРЅРёСЏ Р¶РёСЂРЅС‹Рј С€СЂРёС„С‚РѕРј
 \newcommand{\makekamertontitle}{%
   \begin{ESKDtitlePage}
   \setlength{\topsep}{0mm}
@@ -104,37 +104,37 @@
 
 
 
-% Названия разделов по умолчанию печатаюатся целиком в верхнем регистре
-% Нормоконтроль такое не пропускает. Переопределим \ESKDsectionStyle
+% РќР°Р·РІР°РЅРёСЏ СЂР°Р·РґРµР»РѕРІ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїРµС‡Р°С‚Р°СЋР°С‚СЃСЏ С†РµР»РёРєРѕРј РІ РІРµСЂС…РЅРµРј СЂРµРіРёСЃС‚СЂРµ
+% РќРѕСЂРјРѕРєРѕРЅС‚СЂРѕР»СЊ С‚Р°РєРѕРµ РЅРµ РїСЂРѕРїСѓСЃРєР°РµС‚. РџРµСЂРµРѕРїСЂРµРґРµР»РёРј \ESKDsectionStyle
 %\renewcommand{\ESKDsectionStyle}{\normalfont\Large\bfseries}
 \ESKDsectStyle{section}{\normalfont\Large\bfseries}
 
 
-% уберем год внизу титульника
+% СѓР±РµСЂРµРј РіРѕРґ РІРЅРёР·Сѓ С‚РёС‚СѓР»СЊРЅРёРєР°
 \renewcommand{\ESKDtheTitleFieldX}{} 
 
-% Уменьшим наименование документа в основной надписи и добавим небольшой промежуток
-% Имя девайса оставим прежним размером
+% РЈРјРµРЅСЊС€РёРј РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р° РІ РѕСЃРЅРѕРІРЅРѕР№ РЅР°РґРїРёСЃРё Рё РґРѕР±Р°РІРёРј РЅРµР±РѕР»СЊС€РѕР№ РїСЂРѕРјРµР¶СѓС‚РѕРє
+% РРјСЏ РґРµРІР°Р№СЃР° РѕСЃС‚Р°РІРёРј РїСЂРµР¶РЅРёРј СЂР°Р·РјРµСЂРѕРј
 \renewcommand{\ESKDtheColumnI}{\ESKDtheTitle\par\medskip\ESKDfontIII\ESKDtheDocName}
 
 
 
-% стиль подписей к картинкам. 
-% Нас интересуют вертикальные отбивки. 
-% По умолчанию aboveskip=0mm,belowskip=3mm
-% Приемлемые размеры формируются, если сделать вот так: 
+% СЃС‚РёР»СЊ РїРѕРґРїРёСЃРµР№ Рє РєР°СЂС‚РёРЅРєР°Рј. 
+% РќР°СЃ РёРЅС‚РµСЂРµСЃСѓСЋС‚ РІРµСЂС‚РёРєР°Р»СЊРЅС‹Рµ РѕС‚Р±РёРІРєРё. 
+% РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ aboveskip=0mm,belowskip=3mm
+% РџСЂРёРµРјР»РµРјС‹Рµ СЂР°Р·РјРµСЂС‹ С„РѕСЂРјРёСЂСѓСЋС‚СЃСЏ, РµСЃР»Рё СЃРґРµР»Р°С‚СЊ РІРѕС‚ С‚Р°Рє: 
 % 
 % \begin{figure}%[hb]
 %   \begin{center}
 %     \includegraphics{picture}
 %   \end{center}
-%   \caption{Схема}
+%   \caption{РЎС…РµРјР°}
 %   \label{fig:p}
 % \end{figure} 
-% обратите внимание, что \caption{} находится _вне_ окружения {center}
+% РѕР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ \caption{} РЅР°С…РѕРґРёС‚СЃСЏ _РІРЅРµ_ РѕРєСЂСѓР¶РµРЅРёСЏ {center}
 %
-% но лучше грамотно настроить пакет сaption, что мы и сделаем:
+% РЅРѕ Р»СѓС‡С€Рµ РіСЂР°РјРѕС‚РЅРѕ РЅР°СЃС‚СЂРѕРёС‚СЊ РїР°РєРµС‚ СЃaption, С‡С‚Рѕ РјС‹ Рё СЃРґРµР»Р°РµРј:
 \captionsetup[figure]{font=small,labelfont=bf,labelsep=dash,justification=centering,singlelinecheck=false,aboveskip=3mm,belowskip=3mm} 
 
-% стиль подписей к таблицам 
+% СЃС‚РёР»СЊ РїРѕРґРїРёСЃРµР№ Рє С‚Р°Р±Р»РёС†Р°Рј 
 \captionsetup[table]{format=hang,labelfont=bf,labelsep=dash,justification=raggedright,singlelinecheck=false,aboveskip=3mm,belowskip=0mm}
