@@ -79,6 +79,7 @@
 <layer number="105" name="tPlate" color="7" fill="1" visible="no" active="yes"/>
 <layer number="106" name="bPlate" color="7" fill="1" visible="no" active="yes"/>
 <layer number="107" name="Crop" color="7" fill="1" visible="no" active="yes"/>
+<layer number="116" name="Patch_BOT" color="9" fill="4" visible="yes" active="yes"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="122" name="_bsilk" color="7" fill="1" visible="no" active="yes"/>
 <layer number="125" name="_tNames" color="7" fill="1" visible="no" active="yes"/>
@@ -106,6 +107,7 @@
 <layer number="219" name="219bmp" color="20" fill="1" visible="no" active="no"/>
 <layer number="220" name="220bmp" color="21" fill="1" visible="no" active="no"/>
 <layer number="221" name="221bmp" color="22" fill="1" visible="no" active="no"/>
+<layer number="222" name="222bmp" color="23" fill="1" visible="no" active="no"/>
 <layer number="223" name="223bmp" color="24" fill="1" visible="no" active="no"/>
 <layer number="224" name="224bmp" color="25" fill="1" visible="no" active="no"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
@@ -2907,7 +2909,12 @@ Based on the following sources:
 </library>
 <library name="mount">
 <packages>
-<package name="STAND-OFF">
+<package name="STAND-OFF-M4">
+<circle x="0" y="0" radius="5" width="0.127" layer="41"/>
+<hole x="0" y="0" drill="4.5"/>
+<circle x="0" y="0" radius="5" width="0.127" layer="42"/>
+</package>
+<package name="STAND-OFF-M3">
 <description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
 This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
 <circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
@@ -7593,28 +7600,28 @@ design rules under a new name.</description>
 <attribute name="NAME" x="178.211" y="54.595" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="PARTNO" value="IN74HC595AD" x="183.5" y="56.25" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
-<element name="JP8" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="20" y="3.5" locked="yes">
+<element name="JP8" library="mount" package="STAND-OFF-M4" value="STAND-OFF-M4" x="20" y="3.5" locked="yes">
 <attribute name="BOM" value="EXCLUDE" x="20" y="3.5" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP7" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="115" y="3.5" locked="yes">
+<element name="JP7" library="mount" package="STAND-OFF-M4" value="STAND-OFF-M4" x="115" y="3.5" locked="yes">
 <attribute name="BOM" value="EXCLUDE" x="115" y="3.5" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP6" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="210" y="3.5" locked="yes">
+<element name="JP6" library="mount" package="STAND-OFF-M4" value="STAND-OFF-M4" x="210" y="3.5" locked="yes">
 <attribute name="BOM" value="EXCLUDE" x="210" y="3.5" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP5" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="3.5" y="75" locked="yes">
+<element name="JP5" library="mount" package="STAND-OFF-M4" value="STAND-OFF-M4" x="3.5" y="75" locked="yes">
 <attribute name="BOM" value="EXCLUDE" x="3.5" y="75" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP4" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="226.5" y="75" locked="yes">
+<element name="JP4" library="mount" package="STAND-OFF-M4" value="STAND-OFF-M4" x="226.5" y="75" locked="yes">
 <attribute name="BOM" value="EXCLUDE" x="226.5" y="75" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP3" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="115" y="146.5" locked="yes">
+<element name="JP3" library="mount" package="STAND-OFF-M4" value="STAND-OFF-M4" x="115" y="146.5" locked="yes">
 <attribute name="BOM" value="EXCLUDE" x="115" y="146.5" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP2" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="210" y="146.5" locked="yes">
+<element name="JP2" library="mount" package="STAND-OFF-M4" value="STAND-OFF-M4" x="210" y="146.5" locked="yes">
 <attribute name="BOM" value="EXCLUDE" x="210" y="146.5" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP1" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="20" y="146.5" locked="yes">
+<element name="JP1" library="mount" package="STAND-OFF-M4" value="STAND-OFF-M4" x="20" y="146.5" locked="yes">
 <attribute name="BOM" value="EXCLUDE" x="20" y="146.5" size="1.778" layer="27" display="off"/>
 </element>
 <element name="XP12" library="connector" package="MOLEX-90130-08" value="" x="49.5" y="18.25" smashed="yes">
@@ -7895,14 +7902,8 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="65.5675" y="68.3725" size="0.8128" layer="27"/>
 <attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="70.5" size="1.778" layer="27" display="off"/>
 </element>
-<element name="JP9" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="131" y="79">
-<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="131" y="79" size="1.778" layer="27" display="off"/>
-<attribute name="BOM" value="EXCLUDE" x="131" y="79" size="1.778" layer="27" display="off"/>
-</element>
-<element name="JP10" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="100" y="64">
-<attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="100" y="64" size="1.778" layer="27" display="off"/>
-<attribute name="BOM" value="EXCLUDE" x="100" y="64" size="1.778" layer="27" display="off"/>
-</element>
+<element name="JP9" library="mount" package="STAND-OFF-M3" value="STAND-OFF-M3" x="131" y="79"/>
+<element name="JP10" library="mount" package="STAND-OFF-M3" value="STAND-OFF-M3" x="100" y="64"/>
 </elements>
 <signals>
 <signal name="N$2">

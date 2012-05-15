@@ -116,44 +116,6 @@
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
-<library name="frames_simplified">
-<packages>
-</packages>
-<symbols>
-<symbol name="A1_LANDSCAPE_FIRST_SCALED">
-<wire x1="325.5" y1="27.5" x2="325.5" y2="2" width="0.5" layer="100"/>
-<wire x1="325.5" y1="27.5" x2="417" y2="27.5" width="0.5" layer="100"/>
-<wire x1="0" y1="0" x2="0" y2="296" width="0.5" layer="100"/>
-<wire x1="0" y1="0" x2="419" y2="0" width="0.5" layer="100"/>
-<wire x1="419" y1="296" x2="419" y2="0" width="0.5" layer="100"/>
-<wire x1="419" y1="296" x2="0" y2="296" width="0.5" layer="100"/>
-<wire x1="10" y1="2" x2="10" y2="287" width="0.5" layer="100"/>
-<wire x1="10" y1="287" x2="10" y2="294" width="0.5" layer="100"/>
-<wire x1="10" y1="2" x2="417" y2="2" width="0.5" layer="100"/>
-<wire x1="417" y1="294" x2="417" y2="27.5" width="0.5" layer="100"/>
-<wire x1="417" y1="27.5" x2="417" y2="2" width="0.5" layer="100"/>
-<wire x1="417" y1="294" x2="45" y2="294" width="0.5" layer="100"/>
-<text x="396" y="4" size="2.54" layer="100">A1_scaled</text>
-<wire x1="45" y1="294" x2="10" y2="294" width="0.5" layer="100"/>
-<wire x1="45" y1="287" x2="10" y2="287" width="0.5" layer="100"/>
-<wire x1="45" y1="287" x2="45" y2="294" width="0.5" layer="100"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="A1_LANDSCAPE_FIRST_SCALED">
-<gates>
-<gate name="G$1" symbol="A1_LANDSCAPE_FIRST_SCALED" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="mcu">
 <packages>
 <package name="TQFP100">
@@ -19007,7 +18969,7 @@ Manufacturer TE CONNECTIVITY</description>
 </library>
 <library name="mount">
 <packages>
-<package name="STAND-OFF">
+<package name="STAND-OFF-M3">
 <description>&lt;b&gt;Stand Off&lt;/b&gt;&lt;p&gt;
 This is the mechanical footprint for a #4 phillips button head screw. Use the keepout ring to avoid running the screw head into surrounding components. SKU : PRT-00447</description>
 <circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
@@ -19021,6 +18983,11 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <circle x="0" y="0" radius="3.5" width="0.127" layer="41"/>
 <hole x="0" y="0" drill="3.5"/>
 <circle x="0" y="0" radius="3.5" width="0.127" layer="42"/>
+</package>
+<package name="STAND-OFF-M4">
+<circle x="0" y="0" radius="5" width="0.127" layer="41"/>
+<hole x="0" y="0" drill="4.5"/>
+<circle x="0" y="0" radius="5" width="0.127" layer="42"/>
 </package>
 </packages>
 <symbols>
@@ -19036,17 +19003,19 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <gate name="G$1" symbol="STAND-OFF" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="STAND-OFF">
+<device name="M3-LONG" package="STAND-OFF-LONG">
 <technologies>
 <technology name=""/>
-<technology name="M3"/>
-<technology name="M4"/>
 </technologies>
 </device>
-<device name="LONG" package="STAND-OFF-LONG">
+<device name="M3" package="STAND-OFF-M3">
 <technologies>
-<technology name="M3"/>
-<technology name="M4"/>
+<technology name=""/>
+</technologies>
+</device>
+<device name="M4" package="STAND-OFF-M4">
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -19068,7 +19037,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="DD1" library="mcu" deviceset="STM32F103VDT6" device="">
 <attribute name="PARTNO" value="STM32F103VDT6"/>
 </part>
-<part name="U$2" library="frames_simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
 <part name="L2" library="inductor-cooper" deviceset="DRA127" device="" value="47uH">
 <attribute name="PARTNO" value="DR127-470-R"/>
 </part>
@@ -21874,29 +21842,28 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="DD12" library="74xx" deviceset="74*595" device="D" technology="HC">
 <attribute name="PARTNO" value="IN74HC595AD"/>
 </part>
-<part name="U$1" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
-<part name="JP8" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<part name="JP8" library="mount" deviceset="STAND-OFF-*" device="M4">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP7" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<part name="JP7" library="mount" deviceset="STAND-OFF-*" device="M4">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP6" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<part name="JP6" library="mount" deviceset="STAND-OFF-*" device="M4">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP5" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<part name="JP5" library="mount" deviceset="STAND-OFF-*" device="M4">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP4" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<part name="JP4" library="mount" deviceset="STAND-OFF-*" device="M4">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP3" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<part name="JP3" library="mount" deviceset="STAND-OFF-*" device="M4">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP2" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<part name="JP2" library="mount" deviceset="STAND-OFF-*" device="M4">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="JP1" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<part name="JP1" library="mount" deviceset="STAND-OFF-*" device="M4">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
 <part name="XP12" library="connector" deviceset="MOLEX-90130-*08" device="">
@@ -22094,12 +22061,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="U$6" library="frame-simplified" deviceset="A3_LANDSCAPE_NEXT_SCALED" device=""/>
 <part name="GND179" library="supply" deviceset="GND" device=""/>
 <part name="XP13" library="connector" deviceset="PLD_1X02" device=""/>
-<part name="JP9" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
-<attribute name="BOM" value="EXCLUDE"/>
-</part>
-<part name="JP10" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
-<attribute name="BOM" value="EXCLUDE"/>
-</part>
+<part name="JP9" library="mount" deviceset="STAND-OFF-*" device="M3"/>
+<part name="JP10" library="mount" deviceset="STAND-OFF-*" device="M3"/>
 </parts>
 <sheets>
 <sheet>
@@ -22117,7 +22080,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="NAME" x="147.32" y="260.096" size="1.524" layer="95"/>
 <attribute name="VALUE" x="144.526" y="177.038" size="1.524" layer="95"/>
 </instance>
-<instance part="U$2" gate="G$1" x="0" y="0"/>
 <instance part="AGND2" gate="VR1" x="116.84" y="274.32"/>
 <instance part="ZQ1" gate="G$1" x="40.64" y="195.58" smashed="yes" rot="R90">
 <attribute name="PARTNO" value="CA-4.000-18-3050-X" x="40.64" y="195.58" size="1.524" layer="96" rot="R90" display="off"/>
@@ -32570,7 +32532,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="DD9" gate=".2" x="226.06" y="86.36" smashed="yes">
 <attribute name="NAME" x="223.139" y="89.789" size="1.524" layer="95"/>
 </instance>
-<instance part="U$1" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 <bus name="IO_EXPAND:SR_MISO,SR_MOSI,SR_SCK,!SR_SAMPLE,SR_IN_NSS,SR_OUT_NSS,!SR_OUT_ENABLE,SR_OUT_[1..7],Z_CHECK_TOGGLE,Z_CHECK">
@@ -37552,6 +37513,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <sheet>
 <description>hidden devices</description>
 <plain>
+<text x="-2.54" y="40.64" size="2.54" layer="91">M4</text>
+<text x="7.62" y="40.64" size="2.54" layer="91">M3</text>
 </plain>
 <instances>
 <instance part="JP8" gate="G$1" x="0" y="2.54">
@@ -37578,12 +37541,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="JP1" gate="G$1" x="0" y="38.1">
 <attribute name="BOM" x="0" y="38.1" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="JP9" gate="G$1" x="0" y="43.18">
-<attribute name="BOM" x="0" y="43.18" size="1.778" layer="96" display="off"/>
-</instance>
-<instance part="JP10" gate="G$1" x="0" y="48.26">
-<attribute name="BOM" x="0" y="48.26" size="1.778" layer="96" display="off"/>
-</instance>
+<instance part="JP9" gate="G$1" x="10.16" y="38.1"/>
+<instance part="JP10" gate="G$1" x="10.16" y="33.02"/>
 </instances>
 <busses>
 </busses>

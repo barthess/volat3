@@ -1,0 +1,22 @@
+\documentclass[russian,
+  utf8,
+  columnsxxiv,    % первичное применение
+  nocolumnxxxi,   % выкл. доп. поле <<копировал>>
+  nocolumnxxxii,  % выкл. доп. поле <<формат>>
+  columnsxxvii,
+  emptylinetop,
+  emptylinebottom,
+  footwhitespace=1]{eskdtab}
+\usepackage{eskdcmplist}
+\usepackage{eskdchngsheet}
+\usepackage[T2A]{fontenc}
+\usepackage{textcomp}
+\renewcommand{\ESKDfontShape}{\upshape}
+\begin{document}
+\begin{ESKDcomponentList}
+  \input{../pe3_table.tex}
+\end{ESKDcomponentList}
+\begin{ESKDchangeSheet}
+  \ESKDchangeSheetFill
+\end{ESKDchangeSheet}
+\end{document}
