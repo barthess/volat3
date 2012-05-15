@@ -4,3 +4,5 @@
 *.toc
 *.pdf
 *.origin
+*.fdb_latexmk
+
