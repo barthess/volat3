@@ -7593,14 +7593,30 @@ design rules under a new name.</description>
 <attribute name="NAME" x="178.211" y="54.595" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="PARTNO" value="IN74HC595AD" x="183.5" y="56.25" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
-<element name="JP8" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="20" y="3.5" locked="yes"/>
-<element name="JP7" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="115" y="3.5" locked="yes"/>
-<element name="JP6" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="210" y="3.5" locked="yes"/>
-<element name="JP5" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="3.5" y="75" locked="yes"/>
-<element name="JP4" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="226.5" y="75" locked="yes"/>
-<element name="JP3" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="115" y="146.5" locked="yes"/>
-<element name="JP2" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="210" y="146.5" locked="yes"/>
-<element name="JP1" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="20" y="146.5" locked="yes"/>
+<element name="JP8" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="20" y="3.5" locked="yes">
+<attribute name="BOM" value="EXCLUDE" x="20" y="3.5" size="1.778" layer="27" display="off"/>
+</element>
+<element name="JP7" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="115" y="3.5" locked="yes">
+<attribute name="BOM" value="EXCLUDE" x="115" y="3.5" size="1.778" layer="27" display="off"/>
+</element>
+<element name="JP6" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="210" y="3.5" locked="yes">
+<attribute name="BOM" value="EXCLUDE" x="210" y="3.5" size="1.778" layer="27" display="off"/>
+</element>
+<element name="JP5" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="3.5" y="75" locked="yes">
+<attribute name="BOM" value="EXCLUDE" x="3.5" y="75" size="1.778" layer="27" display="off"/>
+</element>
+<element name="JP4" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="226.5" y="75" locked="yes">
+<attribute name="BOM" value="EXCLUDE" x="226.5" y="75" size="1.778" layer="27" display="off"/>
+</element>
+<element name="JP3" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="115" y="146.5" locked="yes">
+<attribute name="BOM" value="EXCLUDE" x="115" y="146.5" size="1.778" layer="27" display="off"/>
+</element>
+<element name="JP2" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="210" y="146.5" locked="yes">
+<attribute name="BOM" value="EXCLUDE" x="210" y="146.5" size="1.778" layer="27" display="off"/>
+</element>
+<element name="JP1" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="20" y="146.5" locked="yes">
+<attribute name="BOM" value="EXCLUDE" x="20" y="146.5" size="1.778" layer="27" display="off"/>
+</element>
 <element name="XP12" library="connector" package="MOLEX-90130-08" value="" x="49.5" y="18.25" smashed="yes">
 <attribute name="LABEL" value="INTERFACES" x="46.3088" y="12.0388" size="1.6764" layer="25" ratio="18"/>
 <attribute name="NAME" x="61.285" y="17.44" size="1.016" layer="25" ratio="18" rot="R90"/>
@@ -7609,120 +7625,147 @@ design rules under a new name.</description>
 <element name="Z22" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="91.5" smashed="yes" rot="R180">
 <attribute name="NAME" x="70.76375" y="90.3825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="69.4325" y="93.6275" size="0.8128" layer="27" rot="R180"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="91.5" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="Z23" library="emi-filter" package="NFE31" value="NFE31PT" x="64" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="62.9825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="61.8725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="64" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z24" library="emi-filter" package="NFE31" value="NFE31PT" x="53.5" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="52.2825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="51.3725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="53.5" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z25" library="emi-filter" package="NFE31" value="NFE31PT" x="60.5" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="59.3825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="58.3725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="60.5" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z26" library="emi-filter" package="NFE31" value="NFE31PT" x="57" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="55.8825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="54.8725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="57" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z27" library="emi-filter" package="NFE31" value="NFE31PT" x="50" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="48.9825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="47.8725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="50" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z28" library="emi-filter" package="NFE31" value="NFE31PT" x="39.5" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="38.3825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="37.3725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="39.5" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z29" library="emi-filter" package="NFE31" value="NFE31PT" x="46.5" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="45.3825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="44.3725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="46.5" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z30" library="emi-filter" package="NFE31" value="NFE31PT" x="36" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="34.8825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="33.8725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="36" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z31" library="emi-filter" package="NFE31" value="NFE31PT" x="32.5" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="31.3825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="30.3725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="32.5" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z32" library="emi-filter" package="NFE31" value="NFE31PT" x="22" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="20.8825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="19.8725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="22" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z33" library="emi-filter" package="NFE31" value="NFE31PT" x="29" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="27.8825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="26.8725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="29" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z34" library="emi-filter" package="NFE31" value="NFE31PT" x="25.5" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="24.3825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="23.3725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="25.5" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z35" library="emi-filter" package="NFE31" value="NFE31PT" x="18.5" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="17.2825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="16.3725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="18.5" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z36" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="88" smashed="yes">
 <attribute name="NAME" x="12.76375" y="86.8825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="13.0675" y="85.8725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="88" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z37" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="91.5" smashed="yes">
 <attribute name="NAME" x="12.76375" y="90.4825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="13.0675" y="89.3725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="91.5" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z5" library="emi-filter" package="NFE31" value="NFE31PT" x="43" y="95" smashed="yes" rot="R270">
 <attribute name="NAME" x="41.9825" y="97.23625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="40.8725" y="96.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="43" y="95" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z2" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="60" smashed="yes" rot="MR0">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="60" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="NAME" x="12.66375" y="60.8175" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="16.9325" y="57.8725" size="0.8128" layer="28" rot="MR0"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="60" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 <element name="Z6" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="63.5" smashed="yes" rot="MR0">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="63.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="NAME" x="12.66375" y="64.3175" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="16.9325" y="61.3725" size="0.8128" layer="28" rot="MR0"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="63.5" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 <element name="Z9" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="84.5" smashed="yes">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="84.5" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="12.76375" y="83.4825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="13.0675" y="82.3725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="84.5" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z10" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="74" smashed="yes">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="74" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="12.76375" y="72.8825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="13.0675" y="71.8725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="74" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z7" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="67" smashed="yes" rot="MR0">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="67" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="NAME" x="12.66375" y="67.8175" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="16.9325" y="64.8725" size="0.8128" layer="28" rot="MR0"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="67" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 <element name="Z3" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="56.5" smashed="yes" rot="MR0">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="56.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="NAME" x="12.66375" y="57.3175" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="16.9325" y="54.3725" size="0.8128" layer="28" rot="MR0"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="56.5" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 <element name="Z4" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="70.5" smashed="yes" rot="MR0">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="70.5" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="NAME" x="12.66375" y="71.3175" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="16.9325" y="68.3725" size="0.8128" layer="28" rot="MR0"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="70.5" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 <element name="Z8" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="74" smashed="yes" rot="MR0">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="74" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="NAME" x="12.66375" y="74.8175" size="1.016" layer="26" ratio="18" rot="MR270"/>
 <attribute name="VALUE" x="16.9325" y="71.8725" size="0.8128" layer="28" rot="MR0"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="74" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
 <element name="Z11" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="81" smashed="yes">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="81" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="12.76375" y="79.9825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="13.0675" y="78.8725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="81" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z17" library="emi-filter" package="NFE31" value="NFE31PT" x="15" y="77.5" smashed="yes">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="15" y="77.5" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="12.76375" y="76.4825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="13.0675" y="75.3725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="77.5" size="1.778" layer="27" display="off"/>
 </element>
 <element name="VD212" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="54.5" y="29.5" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="46.5" y="37" size="1.778" layer="28" rot="MR270" display="off"/>
@@ -7733,108 +7776,132 @@ design rules under a new name.</description>
 <element name="Z45" library="emi-filter" package="NFE31" value="NFE31PT" x="57" y="53" smashed="yes" rot="MR90">
 <attribute name="NAME" x="58.1175" y="49.63625" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="54.8725" y="51.0675" size="0.8128" layer="28" rot="MR90"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="57" y="53" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="Z46" library="emi-filter" package="NFE31" value="NFE31PT" x="53.5" y="53" smashed="yes" rot="MR90">
 <attribute name="NAME" x="54.6175" y="49.63625" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="51.3725" y="51.0675" size="0.8128" layer="28" rot="MR90"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="53.5" y="53" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="Z47" library="emi-filter" package="NFE31" value="NFE31PT" x="46.5" y="53" smashed="yes" rot="R90">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="46.5" y="53" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="45.2825" y="49.73625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="48.6275" y="51.0675" size="0.8128" layer="27" rot="R90"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="46.5" y="53" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="Z50" library="emi-filter" package="NFE31" value="NFE31PT" x="50" y="53" smashed="yes" rot="R90">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="50" y="53" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="48.8825" y="49.63625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="52.1275" y="51.0675" size="0.8128" layer="27" rot="R90"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="50" y="53" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="Z43" library="emi-filter" package="NFE31" value="NFE31PT" x="32.5" y="53" smashed="yes" rot="R270">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="32.5" y="53" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="31.2825" y="49.73625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="30.3725" y="54.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="32.5" y="53" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z42" library="emi-filter" package="NFE31" value="NFE31PT" x="36" y="53" smashed="yes" rot="R270">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="36" y="53" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="34.7825" y="49.73625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="33.8725" y="54.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="36" y="53" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z48" library="emi-filter" package="NFE31" value="NFE31PT" x="22" y="53" smashed="yes" rot="R90">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="22" y="53" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="20.8" y="49.7" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="24.1275" y="51.0675" size="0.8128" layer="27" rot="R90"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="22" y="53" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="Z49" library="emi-filter" package="NFE31" value="NFE31PT" x="25.5" y="53" smashed="yes" rot="R90">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="25.5" y="53" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="NAME" x="24.3" y="49.7" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="27.6275" y="51.0675" size="0.8128" layer="27" rot="R90"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="25.5" y="53" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="Z44" library="emi-filter" package="NFE31" value="NFE31PT" x="29" y="53" smashed="yes" rot="R270">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="29" y="53" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="NAME" x="27.7825" y="49.73625" size="1.016" layer="25" ratio="18"/>
 <attribute name="VALUE" x="26.8725" y="54.9325" size="0.8128" layer="27" rot="R270"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="29" y="53" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
 <element name="Z38" library="emi-filter" package="NFE31" value="NFE31PT" x="39.5" y="53" smashed="yes" rot="MR90">
 <attribute name="NAME" x="40.6175" y="49.63625" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="37.3725" y="51.0675" size="0.8128" layer="28" rot="MR90"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="39.5" y="53" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="Z39" library="emi-filter" package="NFE31" value="NFE31PT" x="43" y="53" smashed="yes" rot="MR90">
 <attribute name="NAME" x="44.1175" y="49.63625" size="1.016" layer="26" ratio="18" rot="MR0"/>
 <attribute name="VALUE" x="40.8725" y="51.0675" size="0.8128" layer="28" rot="MR90"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="43" y="53" size="1.778" layer="28" rot="MR90" display="off"/>
 </element>
 <element name="Z40" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="81" smashed="yes" rot="R180">
 <attribute name="NAME" x="70.76375" y="79.7825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="69.4325" y="83.1275" size="0.8128" layer="27" rot="R180"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="81" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
 <element name="Z14" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="67" smashed="yes">
 <attribute name="NAME" x="70.76375" y="65.8825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="65.5675" y="64.8725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="67" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z20" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="77.5" smashed="yes">
 <attribute name="NAME" x="70.76375" y="76.3825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="65.5675" y="75.3725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="77.5" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z21" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="84.5" smashed="yes">
 <attribute name="NAME" x="70.76375" y="83.2825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="65.5675" y="82.3725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="84.5" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z15" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="77.5" smashed="yes" rot="MR180">
 <attribute name="NAME" x="69.83625" y="76.3825" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="65.5675" y="79.6275" size="0.8128" layer="28" rot="MR180"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="77.5" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="Z16" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="84.5" smashed="yes" rot="MR180">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="67.5" y="84.5" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="NAME" x="69.83625" y="83.3825" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="65.5675" y="86.6275" size="0.8128" layer="28" rot="MR180"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="84.5" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="Z12" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="88" smashed="yes">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="67.5" y="88" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="70.76375" y="86.7825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="65.5675" y="85.8725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="88" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z18" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="88" smashed="yes" rot="MR180">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="67.5" y="88" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="NAME" x="69.83625" y="86.8825" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="65.5675" y="90.1275" size="0.8128" layer="28" rot="MR180"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="88" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="Z19" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="74" smashed="yes" rot="MR180">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="67.5" y="74" size="1.778" layer="28" rot="MR180" display="off"/>
 <attribute name="NAME" x="69.83625" y="72.7825" size="1.016" layer="26" ratio="18" rot="MR90"/>
 <attribute name="VALUE" x="65.5675" y="76.1275" size="0.8128" layer="28" rot="MR180"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="74" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
 <element name="Z13" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="74" smashed="yes">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="67.5" y="74" size="1.778" layer="27" display="off"/>
 <attribute name="NAME" x="70.76375" y="72.8825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="65.5675" y="71.8725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="74" size="1.778" layer="27" display="off"/>
 </element>
 <element name="Z1" library="emi-filter" package="NFE31" value="NFE31PT" x="67.5" y="70.5" smashed="yes">
 <attribute name="NAME" x="70.76375" y="69.3825" size="1.016" layer="25" ratio="18" rot="R90"/>
 <attribute name="VALUE" x="65.5675" y="68.3725" size="0.8128" layer="27"/>
+<attribute name="PARTNO" value="NFE31PT152Z1E9" x="67.5" y="70.5" size="1.778" layer="27" display="off"/>
 </element>
 <element name="JP9" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="131" y="79">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="131" y="79" size="1.778" layer="27" display="off"/>
+<attribute name="BOM" value="EXCLUDE" x="131" y="79" size="1.778" layer="27" display="off"/>
 </element>
 <element name="JP10" library="mount" package="STAND-OFF" value="STAND-OFF-M4" x="100" y="64">
 <attribute name="DATABASE" value="./bom/volat3-PARTSDB.tsv" x="100" y="64" size="1.778" layer="27" display="off"/>
+<attribute name="BOM" value="EXCLUDE" x="100" y="64" size="1.778" layer="27" display="off"/>
 </element>
 </elements>
 <signals>

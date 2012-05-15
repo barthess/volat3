@@ -21875,34 +21875,84 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="IN74HC595AD"/>
 </part>
 <part name="U$1" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
-<part name="JP8" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
-<part name="JP7" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
-<part name="JP6" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
-<part name="JP5" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
-<part name="JP4" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
-<part name="JP3" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
-<part name="JP2" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
-<part name="JP1" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP8" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP7" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP6" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP5" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP4" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP3" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP2" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP1" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
 <part name="XP12" library="connector" deviceset="MOLEX-90130-*08" device="">
 <attribute name="LABEL" value="INTERFACES"/>
 </part>
-<part name="Z22" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z23" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z24" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z25" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z26" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z27" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z28" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z29" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z30" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z31" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z32" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z33" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z34" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z35" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z36" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z37" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z5" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="Z22" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z23" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z24" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z25" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z26" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z27" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z28" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z29" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z30" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z31" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z32" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z33" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z34" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z35" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z36" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z37" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z5" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
 <part name="GND235" library="supply" deviceset="GND" device=""/>
 <part name="GND236" library="supply" deviceset="GND" device=""/>
 <part name="GND237" library="supply" deviceset="GND" device=""/>
@@ -21920,17 +21970,37 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND249" library="supply" deviceset="GND" device=""/>
 <part name="GND250" library="supply" deviceset="GND" device=""/>
 <part name="GND251" library="supply" deviceset="GND" device=""/>
-<part name="Z2" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z6" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z9" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z10" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z7" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z3" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z4" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z8" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="Z2" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z6" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z9" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z10" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z7" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z3" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z4" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z8" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
 <part name="GND252" library="supply" deviceset="GND" device=""/>
-<part name="Z11" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z17" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="Z11" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z17" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
 <part name="GND253" library="supply" deviceset="GND" device=""/>
 <part name="GND254" library="supply" deviceset="GND" device=""/>
 <part name="VD212" library="diode" deviceset="DIODE-TVS-BIDIR-" device="SMB" value="SMBJ24CA">
@@ -21940,48 +22010,96 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="GND255" library="supply" deviceset="GND" device=""/>
-<part name="Z45" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z46" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z47" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z50" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="Z45" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z46" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z47" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z50" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
 <part name="GND256" library="supply" deviceset="GND" device=""/>
-<part name="Z43" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z42" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z48" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z49" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z44" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z38" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z39" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z40" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="Z43" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z42" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z48" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z49" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z44" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z38" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z39" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z40" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
 <part name="GND257" library="supply" deviceset="GND" device=""/>
 <part name="GND258" library="supply" deviceset="GND" device=""/>
 <part name="GND259" library="supply" deviceset="GND" device=""/>
-<part name="Z14" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z20" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z21" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z15" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z16" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="Z14" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z20" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z21" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z15" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z16" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
 <part name="GND260" library="supply" deviceset="GND" device=""/>
 <part name="GND261" library="supply" deviceset="GND" device=""/>
 <part name="GND262" library="supply" deviceset="GND" device=""/>
 <part name="GND263" library="supply" deviceset="GND" device=""/>
 <part name="GND264" library="supply" deviceset="GND" device=""/>
-<part name="Z12" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z18" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z19" library="emi-filter" deviceset="NFE31PT" device=""/>
-<part name="Z13" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="Z12" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z18" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z19" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
+<part name="Z13" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
 <part name="GND265" library="supply" deviceset="GND" device=""/>
 <part name="GND266" library="supply" deviceset="GND" device=""/>
 <part name="GND267" library="supply" deviceset="GND" device=""/>
 <part name="GND268" library="supply" deviceset="GND" device=""/>
-<part name="Z1" library="emi-filter" deviceset="NFE31PT" device=""/>
+<part name="Z1" library="emi-filter" deviceset="NFE31PT" device="">
+<attribute name="PARTNO" value="NFE31PT152Z1E9"/>
+</part>
 <part name="+3V1" library="supply" deviceset="+3V3" device=""/>
 <part name="GND269" library="supply" deviceset="GND" device=""/>
 <part name="U$6" library="frame-simplified" deviceset="A3_LANDSCAPE_NEXT_SCALED" device=""/>
 <part name="GND179" library="supply" deviceset="GND" device=""/>
 <part name="XP13" library="connector" deviceset="PLD_1X02" device=""/>
-<part name="JP9" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
-<part name="JP10" library="mount" deviceset="STAND-OFF-*" device="" technology="M4"/>
+<part name="JP9" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
+<part name="JP10" library="mount" deviceset="STAND-OFF-*" device="" technology="M4">
+<attribute name="BOM" value="EXCLUDE"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -21990,6 +22108,8 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <text x="403.86" y="73.66" size="1.778" layer="92">A(2)</text>
 <text x="401.32" y="63.5" size="1.778" layer="92">C(3,10)</text>
 <text x="393.7" y="68.58" size="1.778" layer="92">B(5,6,7,8,9)</text>
+<text x="259.08" y="43.18" size="6.4516" layer="91">KCAY.467239.018 --- device</text>
+<text x="259.08" y="33.02" size="6.4516" layer="91">KCAY.469555.025 --- PCB</text>
 </plain>
 <instances>
 <instance part="DD1" gate="G$1" x="149.86" y="180.34" smashed="yes">
@@ -22245,40 +22365,82 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="NAME" x="336.296" y="159.21" size="1.524" layer="95"/>
 <attribute name="VALUE" x="349.25" y="155.528" size="1.524" layer="96" rot="MR0"/>
 </instance>
-<instance part="Z5" gate="G$1" x="99.06" y="274.32" rot="MR0"/>
+<instance part="Z5" gate="G$1" x="99.06" y="274.32" rot="MR0">
+<attribute name="PARTNO" x="99.06" y="274.32" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND235" gate="1" x="99.06" y="269.24"/>
-<instance part="Z2" gate="G$1" x="91.44" y="73.66" rot="MR0"/>
-<instance part="Z6" gate="G$1" x="121.92" y="66.04" rot="MR0"/>
-<instance part="Z9" gate="G$1" x="165.1" y="55.88" rot="MR0"/>
-<instance part="Z10" gate="G$1" x="165.1" y="38.1" rot="MR0"/>
-<instance part="Z7" gate="G$1" x="121.92" y="50.8" rot="MR0"/>
-<instance part="Z3" gate="G$1" x="91.44" y="58.42" rot="MR0"/>
-<instance part="Z4" gate="G$1" x="91.44" y="43.18" rot="MR0"/>
-<instance part="Z8" gate="G$1" x="121.92" y="35.56" rot="MR0"/>
+<instance part="Z2" gate="G$1" x="91.44" y="73.66" rot="MR0">
+<attribute name="PARTNO" x="91.44" y="73.66" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z6" gate="G$1" x="121.92" y="66.04" rot="MR0">
+<attribute name="PARTNO" x="121.92" y="66.04" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z9" gate="G$1" x="165.1" y="55.88" rot="MR0">
+<attribute name="PARTNO" x="165.1" y="55.88" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z10" gate="G$1" x="165.1" y="38.1" rot="MR0">
+<attribute name="PARTNO" x="165.1" y="38.1" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z7" gate="G$1" x="121.92" y="50.8" rot="MR0">
+<attribute name="PARTNO" x="121.92" y="50.8" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z3" gate="G$1" x="91.44" y="58.42" rot="MR0">
+<attribute name="PARTNO" x="91.44" y="58.42" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z4" gate="G$1" x="91.44" y="43.18" rot="MR0">
+<attribute name="PARTNO" x="91.44" y="43.18" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z8" gate="G$1" x="121.92" y="35.56" rot="MR0">
+<attribute name="PARTNO" x="121.92" y="35.56" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND252" gate="1" x="106.68" y="30.48"/>
-<instance part="Z11" gate="G$1" x="304.8" y="279.4" rot="MR0"/>
-<instance part="Z17" gate="G$1" x="320.04" y="269.24" rot="MR0"/>
+<instance part="Z11" gate="G$1" x="304.8" y="279.4" rot="MR0">
+<attribute name="PARTNO" x="304.8" y="279.4" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z17" gate="G$1" x="320.04" y="269.24" rot="MR0">
+<attribute name="PARTNO" x="320.04" y="269.24" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND253" gate="1" x="320.04" y="266.7"/>
 <instance part="GND254" gate="1" x="304.8" y="276.86"/>
-<instance part="Z14" gate="G$1" x="304.8" y="187.96"/>
-<instance part="Z20" gate="G$1" x="320.04" y="180.34"/>
-<instance part="Z21" gate="G$1" x="320.04" y="165.1"/>
-<instance part="Z15" gate="G$1" x="304.8" y="172.72"/>
-<instance part="Z16" gate="G$1" x="304.8" y="157.48"/>
+<instance part="Z14" gate="G$1" x="304.8" y="187.96">
+<attribute name="PARTNO" x="304.8" y="187.96" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z20" gate="G$1" x="320.04" y="180.34">
+<attribute name="PARTNO" x="320.04" y="180.34" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z21" gate="G$1" x="320.04" y="165.1">
+<attribute name="PARTNO" x="320.04" y="165.1" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z15" gate="G$1" x="304.8" y="172.72">
+<attribute name="PARTNO" x="304.8" y="172.72" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z16" gate="G$1" x="304.8" y="157.48">
+<attribute name="PARTNO" x="304.8" y="157.48" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND260" gate="1" x="304.8" y="154.94"/>
 <instance part="GND261" gate="1" x="320.04" y="162.56"/>
 <instance part="GND262" gate="1" x="304.8" y="170.18"/>
 <instance part="GND263" gate="1" x="320.04" y="177.8"/>
 <instance part="GND264" gate="1" x="304.8" y="185.42"/>
-<instance part="Z12" gate="G$1" x="304.8" y="251.46"/>
-<instance part="Z18" gate="G$1" x="320.04" y="243.84"/>
-<instance part="Z19" gate="G$1" x="320.04" y="228.6"/>
-<instance part="Z13" gate="G$1" x="304.8" y="236.22"/>
+<instance part="Z12" gate="G$1" x="304.8" y="251.46">
+<attribute name="PARTNO" x="304.8" y="251.46" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z18" gate="G$1" x="320.04" y="243.84">
+<attribute name="PARTNO" x="320.04" y="243.84" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z19" gate="G$1" x="320.04" y="228.6">
+<attribute name="PARTNO" x="320.04" y="228.6" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z13" gate="G$1" x="304.8" y="236.22">
+<attribute name="PARTNO" x="304.8" y="236.22" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND265" gate="1" x="320.04" y="226.06"/>
 <instance part="GND266" gate="1" x="304.8" y="233.68"/>
 <instance part="GND267" gate="1" x="320.04" y="241.3"/>
 <instance part="GND268" gate="1" x="304.8" y="248.92"/>
-<instance part="Z1" gate="G$1" x="40.64" y="274.32"/>
+<instance part="Z1" gate="G$1" x="40.64" y="274.32">
+<attribute name="PARTNO" x="40.64" y="274.32" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="+3V1" gate="G$1" x="58.42" y="274.32" rot="MR90"/>
 <instance part="GND269" gate="1" x="40.64" y="269.24"/>
 </instances>
@@ -23980,22 +24142,54 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="NAME" x="201.336" y="167.235" size="1.524" layer="95"/>
 <attribute name="VALUE" x="201.201" y="161.83" size="1.524" layer="96"/>
 </instance>
-<instance part="Z22" gate="G$1" x="121.92" y="165.1"/>
-<instance part="Z23" gate="G$1" x="121.92" y="147.32"/>
-<instance part="Z24" gate="G$1" x="121.92" y="129.54"/>
-<instance part="Z25" gate="G$1" x="121.92" y="111.76"/>
-<instance part="Z26" gate="G$1" x="121.92" y="93.98"/>
-<instance part="Z27" gate="G$1" x="121.92" y="76.2"/>
-<instance part="Z28" gate="G$1" x="121.92" y="58.42"/>
-<instance part="Z29" gate="G$1" x="121.92" y="40.64"/>
-<instance part="Z30" gate="G$1" x="241.3" y="165.1"/>
-<instance part="Z31" gate="G$1" x="241.3" y="147.32"/>
-<instance part="Z32" gate="G$1" x="241.3" y="129.54"/>
-<instance part="Z33" gate="G$1" x="241.3" y="111.76"/>
-<instance part="Z34" gate="G$1" x="241.3" y="93.98"/>
-<instance part="Z35" gate="G$1" x="241.3" y="76.2"/>
-<instance part="Z36" gate="G$1" x="241.3" y="58.42"/>
-<instance part="Z37" gate="G$1" x="241.3" y="40.64"/>
+<instance part="Z22" gate="G$1" x="121.92" y="165.1">
+<attribute name="PARTNO" x="121.92" y="165.1" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z23" gate="G$1" x="121.92" y="147.32">
+<attribute name="PARTNO" x="121.92" y="147.32" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z24" gate="G$1" x="121.92" y="129.54">
+<attribute name="PARTNO" x="121.92" y="129.54" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z25" gate="G$1" x="121.92" y="111.76">
+<attribute name="PARTNO" x="121.92" y="111.76" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z26" gate="G$1" x="121.92" y="93.98">
+<attribute name="PARTNO" x="121.92" y="93.98" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z27" gate="G$1" x="121.92" y="76.2">
+<attribute name="PARTNO" x="121.92" y="76.2" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z28" gate="G$1" x="121.92" y="58.42">
+<attribute name="PARTNO" x="121.92" y="58.42" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z29" gate="G$1" x="121.92" y="40.64">
+<attribute name="PARTNO" x="121.92" y="40.64" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z30" gate="G$1" x="241.3" y="165.1">
+<attribute name="PARTNO" x="241.3" y="165.1" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z31" gate="G$1" x="241.3" y="147.32">
+<attribute name="PARTNO" x="241.3" y="147.32" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z32" gate="G$1" x="241.3" y="129.54">
+<attribute name="PARTNO" x="241.3" y="129.54" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z33" gate="G$1" x="241.3" y="111.76">
+<attribute name="PARTNO" x="241.3" y="111.76" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z34" gate="G$1" x="241.3" y="93.98">
+<attribute name="PARTNO" x="241.3" y="93.98" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z35" gate="G$1" x="241.3" y="76.2">
+<attribute name="PARTNO" x="241.3" y="76.2" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z36" gate="G$1" x="241.3" y="58.42">
+<attribute name="PARTNO" x="241.3" y="58.42" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z37" gate="G$1" x="241.3" y="40.64">
+<attribute name="PARTNO" x="241.3" y="40.64" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND236" gate="1" x="121.92" y="160.02"/>
 <instance part="GND237" gate="1" x="121.92" y="142.24"/>
 <instance part="GND238" gate="1" x="121.92" y="124.46"/>
@@ -25780,9 +25974,15 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="GND233" gate="1" x="342.9" y="172.72"/>
 <instance part="GND234" gate="1" x="355.6" y="172.72"/>
-<instance part="Z38" gate="G$1" x="373.38" y="210.82"/>
-<instance part="Z39" gate="G$1" x="373.38" y="185.42"/>
-<instance part="Z40" gate="G$1" x="373.38" y="111.76"/>
+<instance part="Z38" gate="G$1" x="373.38" y="210.82">
+<attribute name="PARTNO" x="373.38" y="210.82" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z39" gate="G$1" x="373.38" y="185.42">
+<attribute name="PARTNO" x="373.38" y="185.42" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z40" gate="G$1" x="373.38" y="111.76">
+<attribute name="PARTNO" x="373.38" y="111.76" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND257" gate="1" x="373.38" y="172.72"/>
 <instance part="GND258" gate="1" x="373.38" y="198.12"/>
 <instance part="GND259" gate="1" x="373.38" y="86.36"/>
@@ -36873,16 +37073,34 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="VALUE" x="69.755" y="28.034" size="1.524" layer="96" rot="R270"/>
 </instance>
 <instance part="GND255" gate="1" x="66.04" y="12.7" rot="MR0"/>
-<instance part="Z45" gate="G$1" x="96.52" y="25.4"/>
-<instance part="Z46" gate="G$1" x="111.76" y="17.78"/>
-<instance part="Z47" gate="G$1" x="144.78" y="63.5"/>
-<instance part="Z50" gate="G$1" x="160.02" y="71.12"/>
+<instance part="Z45" gate="G$1" x="96.52" y="25.4">
+<attribute name="PARTNO" x="96.52" y="25.4" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z46" gate="G$1" x="111.76" y="17.78">
+<attribute name="PARTNO" x="111.76" y="17.78" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z47" gate="G$1" x="144.78" y="63.5">
+<attribute name="PARTNO" x="144.78" y="63.5" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z50" gate="G$1" x="160.02" y="71.12">
+<attribute name="PARTNO" x="160.02" y="71.12" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND256" gate="1" x="160.02" y="58.42" rot="R90"/>
-<instance part="Z43" gate="G$1" x="78.74" y="99.06"/>
-<instance part="Z42" gate="G$1" x="78.74" y="116.84"/>
-<instance part="Z48" gate="G$1" x="160.02" y="109.22"/>
-<instance part="Z49" gate="G$1" x="160.02" y="91.44"/>
-<instance part="Z44" gate="G$1" x="93.98" y="106.68"/>
+<instance part="Z43" gate="G$1" x="78.74" y="99.06">
+<attribute name="PARTNO" x="78.74" y="99.06" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z42" gate="G$1" x="78.74" y="116.84">
+<attribute name="PARTNO" x="78.74" y="116.84" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z48" gate="G$1" x="160.02" y="109.22">
+<attribute name="PARTNO" x="160.02" y="109.22" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z49" gate="G$1" x="160.02" y="91.44">
+<attribute name="PARTNO" x="160.02" y="91.44" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="Z44" gate="G$1" x="93.98" y="106.68">
+<attribute name="PARTNO" x="93.98" y="106.68" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="U$6" gate="G$1" x="0" y="0"/>
 <instance part="GND179" gate="1" x="160.02" y="83.82"/>
 <instance part="XP13" gate="G$1" x="83.82" y="58.42" smashed="yes" rot="MR0">
@@ -37336,16 +37554,36 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <plain>
 </plain>
 <instances>
-<instance part="JP8" gate="G$1" x="0" y="2.54"/>
-<instance part="JP7" gate="G$1" x="0" y="7.62"/>
-<instance part="JP6" gate="G$1" x="0" y="12.7"/>
-<instance part="JP5" gate="G$1" x="0" y="17.78"/>
-<instance part="JP4" gate="G$1" x="0" y="22.86"/>
-<instance part="JP3" gate="G$1" x="0" y="27.94"/>
-<instance part="JP2" gate="G$1" x="0" y="33.02"/>
-<instance part="JP1" gate="G$1" x="0" y="38.1"/>
-<instance part="JP9" gate="G$1" x="0" y="43.18"/>
-<instance part="JP10" gate="G$1" x="0" y="48.26"/>
+<instance part="JP8" gate="G$1" x="0" y="2.54">
+<attribute name="BOM" x="0" y="2.54" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP7" gate="G$1" x="0" y="7.62">
+<attribute name="BOM" x="0" y="7.62" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP6" gate="G$1" x="0" y="12.7">
+<attribute name="BOM" x="0" y="12.7" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP5" gate="G$1" x="0" y="17.78">
+<attribute name="BOM" x="0" y="17.78" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP4" gate="G$1" x="0" y="22.86">
+<attribute name="BOM" x="0" y="22.86" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP3" gate="G$1" x="0" y="27.94">
+<attribute name="BOM" x="0" y="27.94" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP2" gate="G$1" x="0" y="33.02">
+<attribute name="BOM" x="0" y="33.02" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP1" gate="G$1" x="0" y="38.1">
+<attribute name="BOM" x="0" y="38.1" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP9" gate="G$1" x="0" y="43.18">
+<attribute name="BOM" x="0" y="43.18" size="1.778" layer="96" display="off"/>
+</instance>
+<instance part="JP10" gate="G$1" x="0" y="48.26">
+<attribute name="BOM" x="0" y="48.26" size="1.778" layer="96" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>
