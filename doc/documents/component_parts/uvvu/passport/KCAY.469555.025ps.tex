@@ -1,0 +1,92 @@
+\newcommand{\rootdir}{../../../..}				% корень всех документов
+\newcommand{\localtex}{\rootdir/tex}	        % файлы настроек
+\newcommand{\templatedir}{\rootdir/templates}	% общие для всех шаблоны
+ 
+\documentclass[
+	14pt,
+	russian,
+	cp1251,
+        columnsxxiv, % первичное применение
+        nocolumnxxxi,
+	nocolumnxxxii, 
+	pointsubsection,
+	floatsingle,
+	listlikepar,
+	%footnoteasterisk
+	]
+{eskdtext}
+
+\input{\localtex/common_packages.tex}	% общие для всех документов пакеты
+\input{\localtex/hyphenation.tex}	% список сллов, которые нельзя разрывать переносами
+
+
+% Cамодельные пакеты 
+\usepackage{\localtex/commondata}
+\usepackage{\localtex/macros}
+\usepackage{\localtex/layout}
+\usepackage{\localtex/kamertonstyle}
+\usepackage{\localtex/passportkamertonstyle}
+\usepackage{\templatedir/passport/passport_macros}	% паспортспецифичные макросы
+
+%========================================================================
+%======== переменные для автозаполнения паспорта ========================
+%========================================================================
+% для облегчения создания паспортов на 
+% другие устроЙства копипастом
+\newcommand{\nameDevice}{\nameReplicator}
+\newcommand{\nameDeviceAbbr}{\nameReplicator}
+\newcommand{\nameDeviceFull}{\nameReplicator}
+\newcommand{\ksauDevice}{\ksauReplicator}
+
+
+% названия устройства в падежах, отличных от именителного
+\newcommand{\genitivecasename}{репликатора} 		% родительном падеже
+\newcommand{\prepositionalcasename}{репликаторе} 	% предложный падеж
+
+% род устройства (мужской/женский), нужен дальше по тексту
+% для правильного использования зависимых 
+% слов (напр. <<вышедшей из строя>>).
+% Принимает значения либо female, либо что угодно другое, в т.ч. пустую строку
+\newcommand{\gender}{}
+
+
+%========================================================================
+%======== заполнение основной надписи ===================================
+%========================================================================
+\ESKDclassCode{\markout{ОКП 68 1100}}
+\ESKDtitle{\nameDevice}
+\ESKDdocName{Паспорт}
+\newcommand{\ESKDtheDocNameAbbr}{ПC}
+\ESKDsignature{\ksauDevice[\ESKDtheDocNameAbbr]}
+\ESKDauthor{Пылинский}
+\ESKDchecker{Артемьев}
+\ESKDnormContr{Степаненко}
+\ESKDdate{2009/12/11}
+\ESKDcolumnXXV{\ksauDevice}
+
+%========================================================================
+%======== собсна документ ===============================================
+%========================================================================
+\begin{document}
+\makekamertontitle
+%\maketitle
+
+\input{\templatedir/passport/specs} 				        % технические характеристики
+\input{\templatedir/passport/completeness} 		    % комплектоность
+\input{\templatedir/passport/warranty}			        % гарантия и сроки службы
+\input{\templatedir/passport/conservation}		      % консервация
+\input{\templatedir/passport/packing_certificate}  % свид. об упаковке
+\input{\templatedir/passport/test_certificate} 	  % свид. о приемке
+\input{\templatedir/passport/repair}	
+\input{\templatedir/passport/usage_storage}		    % хранение использование
+\input{\templatedir/passport/utilization}
+
+
+
+%========================================================================
+%=========================== лист регистрации изменений =================
+%========================================================================
+\input{\templatedir/change_sheet}
+
+\end{document}
+% vim:tw=70

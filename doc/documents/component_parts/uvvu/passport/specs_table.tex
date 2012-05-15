@@ -1,0 +1,26 @@
+% таблица просто форматирует включенные в нее данные
+
+% данные для заполнения нижеследующей таблицы
+\input{\rootdir/documents/component_parts/replicator/passport/specs_data_additional.tex}
+
+
+\begin{tabularx}{\textwidth}{|X|p{3.1cm}|p{3.1cm}|}
+  \hline
+  %--- шапка---------------------------------
+  \multicolumn{1}{|c|}{Наименование параметра}&
+  \multicolumn{1}{c|}{Значение}&
+  \multicolumn{1}{c|}{Примечания}\\\hline 
+  
+  %-----содержимое---------------------------
+  \setcounter{tablerowcounter}{0}
+  \inTableEnum Допустимое напряжение бортовой сети, В   &от~{\minsupplyvoltage}
+                              до~\maxsupplyvoltage &\\\hline
+  \inTableEnum Потребляемая мощность, Вт    &\nominalsupplypower, не более  &\\\hline
+  \inTableEnum Время непрерывной работы, часов  &\continuousworkingtime, не менее &\\\hline
+  
+  \inTableEnum Габаритные размеры, мм&
+  \dimensionsReplicator, \mbox{не более}&\\\hline
+
+  \inTableEnum Масса, кг, не более&\massReplicator & \\\hline
+
+\end{tabularx}
