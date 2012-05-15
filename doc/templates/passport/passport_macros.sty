@@ -1,0 +1,75 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% немножко макросов, которые облегчают и обеспечивают
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+% определим команду создани€ пол€ дл€ заполнени€
+% така€ горизонтальна€ черта, под которой по€снени€
+% а над ней может быть текст, а так же справа и слева.
+% ѕринимает:
+% #1 форматирование (по умолчанию `b')
+% #2 длину      (обща€ длина линейки + обрамл€ющий текст)
+% #3 текст-сверху  
+% #4 текст-снизу
+% и дл€ автоматического расчета длинны линеек:
+% #5 текст-слева    (от линейки)
+% #6 текст-справа
+
+
+% переменные
+\newlength{\strlength}
+\newlength{\strlengthleft}
+\newlength{\strlengthright}
+\newlength{\overheight}
+\newlength{\underheight}
+\newcommand{\rulelength}{\textwidth}
+\newcommand{\righttext}{}
+
+
+\newcommand{\blankfieldtxt}[6][b]{%
+  %\mbox{}%
+  %
+  \settowidth{\strlengthleft}{#5}% длина текста слева
+  \settowidth{\strlengthright}{#6}% длина текста справа
+  \renewcommand{\rulelength}{#2-\strlengthright-\strlengthleft}% длина бокса с линейкой
+  %
+  % следующие ветвлени€ нужны дл€ правильных отбивок
+  % по бокам линеек
+  \ifthenelse{\equal{}{#5}}% есть ли что в #5
+    {}%
+    {#5\strut\hspace{1ex plus 2ex minus 0ex}%
+    \renewcommand{\rulelength}{#2-\strlengthright-\strlengthleft-1ex}}%
+  \ifthenelse{\equal{}{#6}}% есть ли что в #6
+    {\renewcommand{\righttext}{}}%
+    {\renewcommand{\righttext}{\hspace{1ex plus 2ex minus 0ex}#6}%
+    \renewcommand{\rulelength}{#2-\strlengthright-\strlengthleft-2ex}}%
+  %
+  % а теперь немножко особой боксовой магии
+  \parbox[#1]{\rulelength}{% 
+    \underline{% линейка
+    \rule{0pt}{4ex}\parbox[b]{\rulelength}{#3\raisebox{-1ex}{\rule{0pt}{1ex}}}}\\ %содержимое над лине…ко…
+    %----------- линейко ------------------------------
+    \parbox[t][3ex]{\rulelength}{%
+      \centering\footnotesize%
+      \renewcommand{\baselinestretch}{0.7}%
+      \selectfont%
+      \strut#4}%содержимое под лине…ко…
+    }%
+  \righttext\strut% текст справа
+}
+
+
+
+% теперь соберем в кучу 3 частоупотребимых строки:
+\newcommand{\nameksaunumber}{%
+  \blankfieldtxt{0.45\textwidth}{\raggedright\nameDeviceFull}{наименование издели€}{}{} \hfill 
+  \blankfieldtxt{0.25\textwidth}{\ksauDevice}{обозначение}{}{} \hfill 
+  \blankfieldtxt{0.25\textwidth}{є}{заводской номер}{}{}\par
+}
+
+
+% скрипт вставл€ет 3 пол€ дл€ заполнени€ с непон€тной пометкой ``ћѕ''
+\newcommand{\MPscript}{%
+  ћѕ  \hfill \blankfieldtxt[c]{0.35\textwidth}{}{лична€ подпись}{}{}
+    \hfill \blankfieldtxt[c]{0.45\textwidth}{}{расшифровка подписи}{}{}\par
+    \blankfieldtxt[c]{0.45\textwidth}{}{год, мес€ц, число}{}{}
+}

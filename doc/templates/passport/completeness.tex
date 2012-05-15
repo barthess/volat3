@@ -1,0 +1,23 @@
+% Данный файл предоставляет только шапку таблицы
+% содержимое необходимо записать в файл completeness_content.tex,
+% который должен находиться рядом с главным файлом
+% паспорта/формуляра 
+% Заполнять его надо, как обычную таблицу на 4 столбца
+\newpage
+
+\section{Комплектность}
+
+{
+
+  \begin{table}[h]
+    \caption{Комплектность поставки \genitivecasename}
+    \centering
+    % \small
+    \begin{tabularx}{\textwidth}{|m{7.2cm}|c|l|X|}
+      \hline
+      Наименование, обозначение&Количество&Заводской номер&Примечание\\\hline
+      \input{completeness_content}
+    \end{tabularx}
+    \label{tab:replicator_complect}
+  \end{table}
+}

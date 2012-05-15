@@ -1,0 +1,33 @@
+\newpage
+\makeatletter
+\section{Консервация}
+
+
+\cI=1.6cm
+\cII=6cm
+\cIII=2.5cm
+\cIV=6cm
+
+  \begin{table}[!ht]
+    \centering
+    \caption{Консервация \genitivecasename}
+    \begin{tabular}{|p{\cI}|p{\cII}|>{\centering}m{\cIII}|m{\cIV}|}
+      \hline
+      \multicolumn{1}{|c|}{Дата}&
+      \multicolumn{1}{m{\cII}|}{\centering Наименование операции}&
+      \multicolumn{1}{m{\cIII}|}{\centering Срок действия, годы}&
+      \multicolumn{1}{m{\cIV}|}{\centering Должность, фамилия и подпись}\tabularnewline\hline
+      {\mbox{}
+      \protect\ifthenelse{\equal{\ESKD@docfont}{12pt}} 
+      {\vspace{0.75\textheight}}
+      {\vspace{0.72\textheight}}
+      \mbox{}}&
+        Консервация помещением в пленочный чехол с 
+        осушителем-силикагелем \gost{3956-76}, и упаковывание&
+          пять&\\\hline
+    \end{tabular}
+    \label{tab:replicator_conservation}
+  \end{table}
+
+\makeatother
+\clearpage
