@@ -54,7 +54,7 @@
 % Если какой-то девайс имеет другие параметры - 
 % не забываем переопределить нужные перед употреблением
 
-\newcommand{\MTBF}{1000}        % нарпаботка на отказ, ч
+\newcommand{\MTBF}{1000}        % наработка на отказ, ч
 \newcommand{\averagelifetime}{20}   % среднее время службы, годы
 
 
@@ -180,12 +180,9 @@
 \newcommand{\massMain}{22}
 \newcommand{\massbruttoMain}{30}
 
-
-
-% \newsavebox{\abbrBISblock}
-% \sbox{\abbrBISblock}{БИС-2}
-\newcommand{\nameBIS}{Блок измерительный спутниковый \mbox{\uppercase{БИС-2}}} 
+% БИС
 \newcommand{\abbrBIS}{\mbox{БИС-2}} 
+\newcommand{\nameBIS}{Блок измерительный спутниковый~\abbrBIS} 
 \newcommand{\ksauBIS}[1][]{\mbox{КСАУ.464349.019%
   \decimalpostfix[#1]}}
 \newcommand{\ksauBISAntenna}[1][]{\mbox{КСАУ.464656.004%
@@ -198,6 +195,7 @@
 \newcommand{\dimensionsBIS}
   {\dimensionBISL\texttimes\dimensionBISB\texttimes\dimensionBISH}
 
+% ПСУ
 \newcommand{\namePSU}{Панель сигнализации и управления ПСУ}
 \newcommand{\ksauPSU}[1][]{\mbox{КСАУ.426489.011%
   \decimalpostfix[#1]}}
@@ -208,9 +206,10 @@
 \newcommand{\dimensionsPSU}
   {\dimensionPSUL\texttimes\dimensionPSUB\texttimes\dimensionPSUH}
 
-% УВВУ
-\newcommand{\nameUVVU}{Устройство ввода-вывода и управления УВВУ}
-\newcommand{\ksauUVVU}[1][]{\mbox{КСАУ.467239.014%
+% УВВУ (теперь это превратилось в M-641608-1)
+\newcommand{\abbrUVVU}{\mbox{M-641608-1}}
+\newcommand{\nameUVVU}{Модуль приема информации от внешних датчиков~\abbrUVVU}
+\newcommand{\ksauUVVU}[1][]{\mbox{КСАУ.467239.018%
   \decimalpostfix[#1]}}
 \newcommand{\massUVVU}{1,5}
 \newcommand{\dimensionUVVUL}{255}
@@ -220,7 +219,7 @@
   {\dimensionUVVUL\texttimes\dimensionUVVUB\texttimes\dimensionUVVUH}
 
 % Плата УВВУ
-\newcommand{\nameUVVUpcb}{Плата УВВУ}
+\newcommand{\nameUVVUpcb}{Плата \abbrUVVU}
 \newcommand{\ksauUVVUpcb}[1][]{\mbox{КСАУ.469555.025%
   \decimalpostfix[#1]}}
 

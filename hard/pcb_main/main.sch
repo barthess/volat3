@@ -68,7 +68,7 @@
 <layer number="93" name="Pins" color="2" fill="1" visible="no" active="yes"/>
 <layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="no" active="yes"/>
 <layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="100" name="DocFrame" color="5" fill="1" visible="yes" active="yes"/>
@@ -22101,6 +22101,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
 <part name="U$1" library="frame-simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
+<part name="U$2" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -22109,8 +22110,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <text x="403.86" y="73.66" size="1.778" layer="92">A(2)</text>
 <text x="401.32" y="63.5" size="1.778" layer="92">C(3,10)</text>
 <text x="393.7" y="68.58" size="1.778" layer="92">B(5,6,7,8,9)</text>
-<text x="259.08" y="43.18" size="6.4516" layer="91">KCAY.467239.018 --- device</text>
-<text x="259.08" y="33.02" size="6.4516" layer="91">KCAY.469555.025 --- PCB</text>
 </plain>
 <instances>
 <instance part="DD1" gate="G$1" x="149.86" y="180.34" smashed="yes">
@@ -23649,7 +23648,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="VD4" gate="G$1" x="81.28" y="160.02" smashed="yes" rot="R90">
 <attribute name="PARTNO" value="SMBJ24CA" x="81.28" y="160.02" size="1.524" layer="96" rot="R270" display="off"/>
-<attribute name="NAME" x="83.779" y="161.695" size="1.524" layer="95" rot="R180"/>
+<attribute name="NAME" x="83.861" y="158.345" size="1.524" layer="95"/>
 <attribute name="VALUE" x="79.47" y="155.481" size="1.524" layer="96" rot="R90"/>
 </instance>
 <instance part="AGND1" gate="VR1" x="106.68" y="154.94"/>
@@ -23703,7 +23702,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="VD6" gate="G$1" x="81.28" y="124.46" smashed="yes" rot="R90">
 <attribute name="PARTNO" value="SMBJ24CA" x="81.28" y="124.46" size="1.524" layer="96" rot="R270" display="off"/>
-<attribute name="NAME" x="83.779" y="125.5" size="1.524" layer="95" rot="R180"/>
+<attribute name="NAME" x="83.861" y="123.42" size="1.524" layer="95"/>
 <attribute name="VALUE" x="79.47" y="121.826" size="1.524" layer="96" rot="R90"/>
 </instance>
 <instance part="AGND4" gate="VR1" x="106.68" y="119.38"/>
@@ -32571,6 +32570,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="DD9" gate=".2" x="226.06" y="86.36" smashed="yes">
 <attribute name="NAME" x="223.139" y="89.789" size="1.524" layer="95"/>
 </instance>
+<instance part="U$2" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 <bus name="IO_EXPAND:SR_MISO,SR_MOSI,SR_SCK,!SR_SAMPLE,SR_IN_NSS,SR_OUT_NSS,!SR_OUT_ENABLE,SR_OUT_[1..7],Z_CHECK_TOGGLE,Z_CHECK">
