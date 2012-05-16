@@ -1,0 +1,93 @@
+\newcommand{\rootdir}{../../../..} % корень всех документов
+\newcommand{\localtex}{\rootdir/tex} % локальные макросы
+\newcommand{\templatedir}{\rootdir/templates} % шаблоны разных документов
+
+\documentclass[
+  russian,
+  utf8,
+  columnsxxiv,    % первичное применение
+  nocolumnxxxi,   % выкл. доп. поле <<копировал>>
+  nocolumnxxxii,  % выкл. доп. поле <<формат>>
+  a1paper,
+  ignorestamp,
+  columnsxxvii]{eskdgraph}
+
+\usepackage[T2A]{fontenc}
+\renewcommand{\ESKDfontShape}{\upshape}
+\usepackage{\localtex/commondata}
+\usepackage{eskdfreesize}
+\newboolean{reading} % stub for table documents, remove it
+
+
+\ESKDtitle{\nameUVVUpcb}
+\ESKDdocName{\large{Схема электрическая принципиальная}}
+\ESKDsignature{\ksauUVVUpcb[Э3]}
+\ESKDauthor{Пылинский}
+\ESKDchecker{Малышко}
+\ESKDapprovedBy{Михайлов}
+\ESKDnormContr{Бурш}
+\ESKDdate{2012/11/11}
+\ESKDcolumnXXV{\ksauUVVU} % первичное применение
+
+
+\unitlength=1mm
+\begin{document}
+\newsavebox{\block}
+
+
+
+\begin{picture}(0,0)
+  \put(-30,-575){\includegraphics[scale=1]{main_01}} % 575 = (594-19)
+\end{picture}
+
+\ESKDlandscapeAII{
+\begin{picture}(0,0)
+  \put(-30,-401){\includegraphics[scale=1]{main_02}} %(420 - 19)
+\end{picture}
+}
+
+\ESKDlandscapeAI{
+\begin{picture}(0,0)
+  \put(-30,-575){\includegraphics[scale=1]{main_03}} %(420 - 19)
+\end{picture}
+}
+
+\ESKDportraitAIII{
+\begin{picture}(0,0)
+  \put(-30,-401){\includegraphics[scale=1]{main_04}}
+\end{picture}
+}
+
+\ESKDportraitAI{
+\begin{picture}(0,0)
+  \put(-30,-822){\includegraphics[scale=1]{main_05}}
+\end{picture}
+\clearpage
+\begin{picture}(0,0)
+  \put(-30,-822){\includegraphics[scale=1]{main_06}}
+\end{picture}
+\clearpage
+\begin{picture}(0,0)
+  \put(-30,-822){\includegraphics[scale=1]{main_07}}
+\end{picture}
+\clearpage
+\begin{picture}(0,0)
+  \put(-30,-822){\includegraphics[scale=1]{main_08}}
+\end{picture}
+}
+
+\ESKDlandscapeAII{
+\begin{picture}(0,0)
+  \put(-30,-401){\includegraphics[scale=1]{main_09}}
+\end{picture}
+}
+
+\ESKDlandscapeAIII{
+\begin{picture}(0,0)
+  \put(-30,-278){\includegraphics[scale=1]{main_10}}
+\end{picture}
+}
+
+
+\end{document}
+% vim:tw=70
