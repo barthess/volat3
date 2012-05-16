@@ -8,6 +8,7 @@
   columnsxxiv,    % первичное применение
   nocolumnxxxi,   % выкл. доп. поле <<копировал>>
   nocolumnxxxii,  % выкл. доп. поле <<формат>>
+  columnsxxvii,
   a1paper,
   ignorestamp]{eskdgraph}
 
@@ -28,16 +29,19 @@
 \ESKDdate{2012/11/11}
 \ESKDcolumnXXV{\ksauUVVU} % первичное применение
 
-
 \unitlength=1mm
 \begin{document}
 \newsavebox{\block}
 
-
+\ESKDremoveFromStyle{formI}{stamp}
 
 \begin{picture}(0,0)
   \put(-30,-575){\includegraphics[scale=1]{main_01}} % 575 = (594-19)
 \end{picture}
+
+\ESKDremoveFromStyle{freesize}{columnxxvi}
+\ESKDremoveFromStyle{freesize}{columnsxxvii}
+\ESKDremoveFromStyle{freesize}{columnsxxxi}
 
 \ESKDlandscapeAII{
 \begin{picture}(0,0)
