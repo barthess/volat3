@@ -21898,6 +21898,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="XP12" library="connector" deviceset="MOLEX-90130-*08" device="">
 <attribute name="LABEL" value="INTERFACES"/>
+<attribute name="PARTNO" value="90142-0008"/>
 </part>
 <part name="Z22" library="emi-filter" deviceset="NFE31PT" device="">
 <attribute name="PARTNO" value="NFE31PT152Z1E9"/>
@@ -22090,7 +22091,9 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND269" library="supply" deviceset="GND" device=""/>
 <part name="U$6" library="frame-simplified" deviceset="A3_LANDSCAPE_NEXT_SCALED" device=""/>
 <part name="GND179" library="supply" deviceset="GND" device=""/>
-<part name="XP13" library="connector" deviceset="PLD_1X02" device=""/>
+<part name="XP13" library="connector" deviceset="PLD_1X02" device="">
+<attribute name="PARTNO" value="825433-2"/>
+</part>
 <part name="JP9" library="mount" deviceset="STAND-OFF-*" device="M3">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
@@ -22258,7 +22261,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="R18" gate="G$1" x="337.82" y="236.22" smashed="yes" rot="MR0">
 <attribute name="PARTNO" value="ERJ3GEYJ101V" x="337.82" y="236.22" size="1.524" layer="96" rot="R270" display="off"/>
-<attribute name="NAME" x="338.582" y="240.49" size="1.524" layer="95"/>
+<attribute name="NAME" x="336.042" y="237.95" size="1.524" layer="95"/>
 <attribute name="VALUE" x="349.25" y="234.268" size="1.524" layer="96" rot="MR0"/>
 </instance>
 <instance part="R19" gate="G$1" x="337.82" y="228.6" smashed="yes" rot="MR0">
@@ -22300,17 +22303,17 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="GND187" gate="1" x="383.54" y="269.24" rot="R90"/>
 <instance part="R25" gate="G$1" x="342.9" y="279.4" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="342.9" y="276.86" size="1.778" layer="96" rot="MR270" display="off"/>
-<attribute name="NAME" x="341.376" y="279.86" size="1.524" layer="95" rot="MR0"/>
+<attribute name="NAME" x="343.408" y="282.654" size="1.524" layer="95"/>
 <attribute name="VALUE" x="340.995" y="276.272" size="1.524" layer="96" rot="MR180"/>
 </instance>
 <instance part="R15" gate="G$1" x="335.28" y="279.4" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="ERJ6GEYJ102V" x="335.28" y="276.86" size="1.778" layer="96" rot="MR270" display="off"/>
-<attribute name="NAME" x="333.121" y="280.495" size="1.524" layer="95" rot="MR0"/>
+<attribute name="NAME" x="335.915" y="282.527" size="1.524" layer="95"/>
 <attribute name="VALUE" x="332.74" y="276.272" size="1.524" layer="96" rot="MR180"/>
 </instance>
 <instance part="C11" gate="G$1" x="350.52" y="287.02" smashed="yes" rot="R270">
 <attribute name="PARTNO" value="C0603C104K5RACTU" x="350.52" y="287.02" size="1.524" layer="96" rot="R270" display="off"/>
-<attribute name="NAME" x="348.536" y="288.385" size="1.524" layer="95" rot="MR0"/>
+<attribute name="NAME" x="351.742" y="288.385" size="1.524" layer="95"/>
 <attribute name="VALUE" x="348.694" y="283.623" size="1.524" layer="96" font="vector"/>
 </instance>
 <instance part="+3V83" gate="G$1" x="327.66" y="287.02" rot="MR270"/>
@@ -27322,7 +27325,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="NAME" x="21.59" y="97.79" size="1.524" layer="95" rot="MR0"/>
 </instance>
 <instance part="GND26" gate="1" x="35.56" y="81.28" rot="R90"/>
-<instance part="P+20" gate="G$1" x="25.4" y="160.02" rot="MR0"/>
+<instance part="P+20" gate="G$1" x="25.4" y="154.94" rot="MR0"/>
 <instance part="P+19" gate="1" x="38.1" y="93.98" rot="R270"/>
 <instance part="P+1" gate="1" x="127" y="149.86" rot="R270"/>
 <instance part="GND28" gate="1" x="129.54" y="134.62" rot="R90"/>
@@ -27436,15 +27439,15 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="NAME" x="109.474" y="152.86" size="1.524" layer="95"/>
 <attribute name="VALUE" x="110.49" y="145.368" size="1.524" layer="96"/>
 </instance>
-<instance part="C60" gate="G$1" x="50.165" y="144.78" smashed="yes" rot="MR180">
-<attribute name="PARTNO" value="22205C106KAT2A" x="50.165" y="144.78" size="1.27" layer="96" rot="MR180" display="off"/>
-<attribute name="NAME" x="50.879" y="146.145" size="1.524" layer="95"/>
-<attribute name="VALUE" x="53.562" y="145.971" size="1.524" layer="96" font="vector" rot="MR270"/>
+<instance part="C60" gate="G$1" x="50.165" y="142.24" smashed="yes" rot="MR180">
+<attribute name="PARTNO" value="22205C106KAT2A" x="50.165" y="142.24" size="1.27" layer="96" rot="MR180" display="off"/>
+<attribute name="NAME" x="50.879" y="143.605" size="1.524" layer="95"/>
+<attribute name="VALUE" x="53.562" y="140.891" size="1.524" layer="96" font="vector" rot="MR270"/>
 </instance>
-<instance part="C59" gate="G$1" x="43.18" y="145.415" smashed="yes">
-<attribute name="PARTNO" value="C0603C104K5RACTU" x="43.18" y="145.415" size="1.524" layer="96" display="off"/>
-<attribute name="NAME" x="43.894" y="146.145" size="1.524" layer="95"/>
-<attribute name="VALUE" x="43.894" y="142.653" size="1.524" layer="96" font="vector"/>
+<instance part="C59" gate="G$1" x="43.18" y="142.875" smashed="yes">
+<attribute name="PARTNO" value="C0603C104K5RACTU" x="43.18" y="142.875" size="1.524" layer="96" display="off"/>
+<attribute name="NAME" x="43.894" y="143.605" size="1.524" layer="95"/>
+<attribute name="VALUE" x="43.894" y="140.113" size="1.524" layer="96" font="vector"/>
 </instance>
 <instance part="C56" gate="G$1" x="25.4" y="142.24" smashed="yes" rot="MR180">
 <attribute name="PARTNO" value="22205C106KAT2A" x="25.4" y="142.24" size="1.27" layer="96" rot="MR180" display="off"/>
@@ -27598,11 +27601,11 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <pinref part="C66" gate="G$1" pin="-"/>
 <pinref part="C67" gate="G$1" pin="+"/>
 <pinref part="C59" gate="G$1" pin="2"/>
-<wire x1="43.18" y1="142.875" x2="43.18" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="140.335" x2="43.18" y2="134.62" width="0.1524" layer="91"/>
 <junction x="43.18" y="134.62"/>
 <junction x="50.165" y="134.62"/>
 <pinref part="C60" gate="G$1" pin="1"/>
-<wire x1="50.165" y1="142.24" x2="50.165" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="50.165" y1="139.7" x2="50.165" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="C56" gate="G$1" pin="1"/>
 <wire x1="25.4" y1="134.62" x2="25.4" y2="139.7" width="0.1524" layer="91"/>
 <junction x="25.4" y="134.62"/>
@@ -27716,11 +27719,11 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <pinref part="C59" gate="G$1" pin="1"/>
 <wire x1="38.1" y1="152.4" x2="33.02" y2="152.4" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="152.4" x2="25.4" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="25.4" y1="152.4" x2="25.4" y2="160.02" width="0.1524" layer="91"/>
-<wire x1="43.18" y1="147.955" x2="43.18" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="25.4" y1="152.4" x2="25.4" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="145.415" x2="43.18" y2="152.4" width="0.1524" layer="91"/>
 <junction x="43.18" y="152.4"/>
 <pinref part="C60" gate="G$1" pin="2"/>
-<wire x1="50.165" y1="147.32" x2="50.165" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="50.165" y1="144.78" x2="50.165" y2="152.4" width="0.1524" layer="91"/>
 <junction x="50.165" y="152.4"/>
 <pinref part="C56" gate="G$1" pin="2"/>
 <wire x1="25.4" y1="144.78" x2="25.4" y2="152.4" width="0.1524" layer="91"/>
@@ -37058,7 +37061,9 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="GND186" gate="1" x="116.84" y="33.02" rot="MR0"/>
 <instance part="P+47" gate="G$1" x="139.7" y="119.38" rot="MR90"/>
-<instance part="XP12" gate="G$1" x="60.96" y="58.42" rot="MR0"/>
+<instance part="XP12" gate="G$1" x="60.96" y="58.42" rot="MR0">
+<attribute name="PARTNO" x="60.96" y="58.42" size="6.4516" layer="96" rot="MR0" display="off"/>
+</instance>
 <instance part="VD212" gate="G$1" x="66.04" y="20.32" smashed="yes" rot="R270">
 <attribute name="PARTNO" value="SMBJ24CA" x="63.5" y="20.32" size="1.524" layer="96" rot="R90" display="off"/>
 <attribute name="NAME" x="67.986" y="21.185" size="1.524" layer="95"/>
@@ -37067,7 +37072,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="VD213" gate="G$1" x="71.12" y="15.24" smashed="yes" rot="R180">
 <attribute name="PARTNO" value="SMBJ24CA" x="68.58" y="17.78" size="1.524" layer="96" display="off"/>
 <attribute name="NAME" x="67.986" y="17.375" size="1.524" layer="95"/>
-<attribute name="VALUE" x="69.755" y="28.034" size="1.524" layer="96" rot="R270"/>
+<attribute name="VALUE" x="73.566" y="13.367" size="1.524" layer="96"/>
 </instance>
 <instance part="GND255" gate="1" x="66.04" y="12.7" rot="MR0"/>
 <instance part="Z45" gate="G$1" x="96.52" y="25.4">
@@ -37103,6 +37108,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="XP13" gate="G$1" x="83.82" y="58.42" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="83.185" y="52.705" size="1.524" layer="96" rot="MR0"/>
 <attribute name="NAME" x="80.01" y="59.69" size="1.524" layer="95" rot="MR0"/>
+<attribute name="PARTNO" x="83.82" y="58.42" size="6.4516" layer="96" rot="MR0" display="off"/>
 </instance>
 </instances>
 <busses>

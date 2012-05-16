@@ -2,6 +2,8 @@
 document := KCAY.469555.025pe3
 
 TOP_DIR = ../../../..
+HTM2TSV_CMD = $(TOP_DIR)/../../eclgen/htm2tsv.sh
+PE3GEN_CMD =  $(TOP_DIR)/../../eclgen/gen.py
 
 include $(TOP_DIR)/include.mak
 
@@ -12,13 +14,15 @@ semiallbw: archivebw
 $(document).tex: pe3_table.tex 
 
 # пока что автоматически сконвертать не получается
-pe3_table.tex: $(TOP_DIR)/../hard/pcb_main/bom/volat3-PARTSDB.tsv
-	$(error ERROR!. File $@ is out of date. Generate new table from $< manually)
+pe3_table.tex: $(TOP_DIR)/../hard/pcb_main/bom/main_ListByParts.htm
+	-rm -f uvvu.tsv
+	$(HTM2TSV_CMD) $< > uvvu.tsv
+	$(PE3GEN_CMD) uvvu.tsv
 
-# clean: localclean
-# 
-# localclean:
-# 	-rm -f content_single.tmp
+clean: localclean
+
+localclean:
+	-rm -f pe3_table.tex uvvu.tsv
 
 
 

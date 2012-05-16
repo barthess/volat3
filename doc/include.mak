@@ -245,7 +245,7 @@ $(document)__distrib-bw-booklet-1.pdf $(document)__distrib-bw-booklet-2.pdf : $(
 #------------------------------------------------------------------------------
 # очистки
 clean:
-	-rm -f $(document)*.{tex~,tps,aux,lof,bak,lot,dvi,toc,blg,bbl,idx,*.gz*,tmp,out,pdf}
+	-rm -f $(document)*.{tex~,tps,aux,lof,bak,lot,dvi,toc,blg,bbl,idx,*.gz*,tmp,out,pdf,fdb_latexmk}
 	-rm -f *latexSuiteTemp* *.origin *.ps *.bak *.log _tmp*.* *.fls
 	-find -name '*.aux'    | xargs rm -f
 	-find -name '*.tmp'    | xargs rm -f
