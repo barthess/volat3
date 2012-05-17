@@ -1073,8 +1073,6 @@
 <text x="186.69" y="321.945" size="1.524" layer="94" rot="MR0">AN_RAW_14</text>
 <text x="186.69" y="319.405" size="1.524" layer="94" rot="MR0">AN_RAW_15</text>
 <text x="186.69" y="316.865" size="1.524" layer="94" rot="MR0">AN_RAW_16</text>
-<text x="17.78" y="15.24" size="3.048" layer="94" font="fixed">Make nets from MGTF-0.35 wire</text>
-<text x="17.78" y="10.16" size="3.048" layer="94" font="fixed">Crimp contacts 90119-2110 "Molex"</text>
 <text x="132.08" y="373.38" size="1.524" layer="94">KCAY.469555.025</text>
 <wire x1="104.14" y1="83.82" x2="104.14" y2="97.79" width="0.1524" layer="94"/>
 <wire x1="190.5" y1="83.82" x2="190.5" y2="113.03" width="0.1524" layer="94"/>
@@ -1353,47 +1351,47 @@
 <instance part="U$1" gate="G$1" x="0" y="0"/>
 <instance part="XS9" gate="G$1" x="198.12" y="175.26" smashed="yes" rot="MR0">
 <attribute name="NAME" x="193.04" y="180.34" size="1.524" layer="95"/>
-<attribute name="VALUE" x="205.74" y="153.67" size="1.524" layer="96" rot="MR0"/>
+<attribute name="VALUE" x="205.74" y="153.67" size="1.524" layer="96" font="fixed" rot="MR0"/>
 <attribute name="PARTNO" x="198.12" y="175.26" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="XS2" gate="G$1" x="96.52" y="355.6" smashed="yes">
 <attribute name="NAME" x="101.6" y="360.68" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="89.535" y="313.69" size="1.524" layer="96"/>
+<attribute name="VALUE" x="89.535" y="313.69" size="1.524" layer="96" font="fixed"/>
 <attribute name="PARTNO" x="96.52" y="355.6" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="XS3" gate="G$1" x="96.52" y="302.26" smashed="yes">
 <attribute name="NAME" x="101.6" y="307.34" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="90.17" y="260.35" size="1.524" layer="96"/>
+<attribute name="VALUE" x="90.17" y="260.35" size="1.524" layer="96" font="fixed"/>
 <attribute name="PARTNO" x="96.52" y="302.26" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="XS4" gate="G$1" x="96.52" y="236.22" smashed="yes">
 <attribute name="NAME" x="101.6" y="241.3" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="90.17" y="194.31" size="1.524" layer="96"/>
+<attribute name="VALUE" x="90.17" y="194.31" size="1.524" layer="96" font="fixed"/>
 <attribute name="PARTNO" x="96.52" y="236.22" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="XS5" gate="G$1" x="96.52" y="182.88" smashed="yes">
 <attribute name="NAME" x="101.6" y="187.96" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="89.535" y="140.97" size="1.524" layer="96"/>
+<attribute name="VALUE" x="89.535" y="140.97" size="1.524" layer="96" font="fixed"/>
 <attribute name="PARTNO" x="96.52" y="182.88" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="XS7" gate="G$1" x="198.12" y="355.6" smashed="yes" rot="MR0">
 <attribute name="NAME" x="193.04" y="360.68" size="1.524" layer="95"/>
-<attribute name="VALUE" x="195.58" y="313.69" size="1.524" layer="96"/>
+<attribute name="VALUE" x="195.58" y="313.69" size="1.524" layer="96" font="fixed"/>
 <attribute name="PARTNO" x="198.12" y="355.6" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="XS8" gate="G$1" x="198.12" y="284.48" smashed="yes" rot="MR0">
 <attribute name="NAME" x="193.04" y="289.56" size="1.524" layer="95"/>
-<attribute name="VALUE" x="195.58" y="196.85" size="1.524" layer="96"/>
+<attribute name="VALUE" x="195.58" y="196.85" size="1.524" layer="96" font="fixed"/>
 <attribute name="PARTNO" x="198.12" y="284.48" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="XS10" gate="G$1" x="198.12" y="132.08" smashed="yes" rot="MR0">
 <attribute name="NAME" x="193.04" y="137.16" size="1.524" layer="95"/>
-<attribute name="VALUE" x="195.58" y="110.49" size="1.524" layer="96"/>
+<attribute name="VALUE" x="195.58" y="110.49" size="1.524" layer="96" font="fixed"/>
 <attribute name="PARTNO" x="198.12" y="132.08" size="1.778" layer="96" rot="MR0" display="off"/>
 </instance>
 <instance part="XS6" gate="G$1" x="96.52" y="116.84" smashed="yes">
 <attribute name="NAME" x="101.6" y="121.92" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="88.9" y="95.25" size="1.524" layer="96"/>
+<attribute name="VALUE" x="88.9" y="95.25" size="1.524" layer="96" font="fixed"/>
 <attribute name="PARTNO" x="96.52" y="116.84" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="XP4" gate="G$1" x="248.92" y="175.26" smashed="yes">
@@ -1434,27 +1432,27 @@
 <instance part="U$33" gate="G$1" x="189.23" y="286.385"/>
 <instance part="XS1" gate="G$1" x="58.42" y="231.14" smashed="yes" rot="MR0">
 <attribute name="NAME" x="55.88" y="236.22" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="53.34" y="148.59" size="1.524" layer="96" rot="MR0"/>
+<attribute name="VALUE" x="53.34" y="148.59" size="1.524" layer="96" font="fixed" rot="MR0"/>
 </instance>
 <instance part="XP1" gate="G$1" x="58.42" y="355.6" smashed="yes" rot="MR0">
 <attribute name="NAME" x="55.88" y="360.68" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="53.34" y="273.05" size="1.524" layer="96" rot="MR0"/>
+<attribute name="VALUE" x="53.34" y="273.05" size="1.524" layer="96" font="fixed" rot="MR0"/>
 </instance>
 <instance part="XP2" gate="G$1" x="58.42" y="116.84" smashed="yes" rot="MR0">
 <attribute name="NAME" x="55.88" y="121.92" size="1.524" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="53.34" y="90.17" size="1.524" layer="96" rot="MR0"/>
+<attribute name="VALUE" x="53.34" y="90.17" size="1.524" layer="96" font="fixed" rot="MR0"/>
 </instance>
 <instance part="XS11" gate="G$1" x="246.38" y="355.6" smashed="yes">
 <attribute name="NAME" x="248.92" y="360.68" size="1.524" layer="95"/>
-<attribute name="VALUE" x="251.46" y="306.07" size="1.524" layer="96"/>
+<attribute name="VALUE" x="251.46" y="306.07" size="1.524" layer="96" font="fixed"/>
 </instance>
 <instance part="XP3" gate="G$1" x="246.38" y="284.48" smashed="yes">
 <attribute name="NAME" x="248.92" y="289.56" size="1.524" layer="95"/>
-<attribute name="VALUE" x="251.46" y="234.95" size="1.524" layer="96"/>
+<attribute name="VALUE" x="251.46" y="234.95" size="1.524" layer="96" font="fixed"/>
 </instance>
 <instance part="XS12" gate="G$1" x="248.92" y="132.08" smashed="yes">
 <attribute name="NAME" x="251.46" y="137.16" size="1.524" layer="95"/>
-<attribute name="VALUE" x="254" y="105.41" size="1.524" layer="96"/>
+<attribute name="VALUE" x="254" y="105.41" size="1.524" layer="96" font="fixed"/>
 </instance>
 </instances>
 <busses>
