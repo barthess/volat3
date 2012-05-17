@@ -13,7 +13,6 @@ semiallbw: archivebw
 
 $(document).tex: pe3_table.tex 
 
-# пока что автоматически сконвертать не получается
 pe3_table.tex: $(TOP_DIR)/../hard/pcb_main/bom/main_ListByParts.htm
 	-rm -f uvvu.tsv
 	$(HTM2TSV_CMD) $< > uvvu.tsv
