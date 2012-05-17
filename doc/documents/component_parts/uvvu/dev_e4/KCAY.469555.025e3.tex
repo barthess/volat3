@@ -1,0 +1,45 @@
+\newcommand{\rootdir}{../../../..} % корень всех документов
+\newcommand{\localtex}{\rootdir/tex} % локальные макросы
+\newcommand{\templatedir}{\rootdir/templates} % шаблоны разных документов
+
+\documentclass[
+  russian,
+  utf8,
+  columnsxxiv,    % первичное применение
+  nocolumnxxxi,   % выкл. доп. поле <<копировал>>
+  nocolumnxxxii,  % выкл. доп. поле <<формат>>
+  columnsxxvii,
+  a1paper,
+  portrait,
+  ignorestamp]{eskdgraph}
+
+\usepackage[T2A]{fontenc}
+\renewcommand{\ESKDfontShape}{\upshape}
+\usepackage{\localtex/commondata}
+\usepackage{eskdfreesize}
+\newboolean{reading} % stub for table documents, remove it
+
+
+\ESKDtitle{\large{\nameUVVU}}
+\ESKDdocName{\vspace*{4mm}\small{Схема электрическая принципиальная}}
+\ESKDsignature{\ksauUVVU[Э4]}
+\ESKDauthor{Пылинский}
+\ESKDchecker{Малышко}
+\ESKDapprovedBy{Михайлов}
+\ESKDnormContr{Бурш}
+\ESKDdate{2012/11/11}
+\ESKDcolumnXXV{\ksauMain} % первичное применение
+
+\unitlength=1mm
+\begin{document}
+
+
+
+\begin{picture}(0,0)
+  \put(-30,-822){\includegraphics[scale=1]{e4_01}} % 575 = (594-19)
+\end{picture}
+
+
+
+\end{document}
+% vim:tw=70
