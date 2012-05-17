@@ -3,7 +3,10 @@
 TOP_DIR = .
 OUTPUT_DIR=$(TOP_DIR)/output
 
-SUBDIRS = documents/component_parts/uvvu/e3
+SUBDIRS = documents/component_parts/uvvu/pcb_e3\
+		 documents/component_parts/uvvu/pcb_pe3\
+		 documents/component_parts/uvvu/dev_e4\
+		 documents/component_parts/uvvu/dev_pe4\
 
 #include $(TOP_DIR)/include.mak
 
