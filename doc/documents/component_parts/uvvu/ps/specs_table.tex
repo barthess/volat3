@@ -1,26 +1,26 @@
-% таблица просто форматирует включенные в нее данные
+% С‚Р°Р±Р»РёС†Р° РїСЂРѕСЃС‚Рѕ С„РѕСЂРјР°С‚РёСЂСѓРµС‚ РІРєР»СЋС‡РµРЅРЅС‹Рµ РІ РЅРµРµ РґР°РЅРЅС‹Рµ
 
-% данные для заполнения нижеследующей таблицы
-\input{\rootdir/documents/component_parts/replicator/passport/specs_data_additional.tex}
+% РґР°РЅРЅС‹Рµ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РЅРёР¶РµСЃР»РµРґСѓСЋС‰РµР№ С‚Р°Р±Р»РёС†С‹
+\input{specs_data_additional.tex}
 
 
 \begin{tabularx}{\textwidth}{|X|p{3.1cm}|p{3.1cm}|}
   \hline
-  %--- шапка---------------------------------
-  \multicolumn{1}{|c|}{Наименование параметра}&
-  \multicolumn{1}{c|}{Значение}&
-  \multicolumn{1}{c|}{Примечания}\\\hline 
+  %--- С€Р°РїРєР°---------------------------------
+  \multicolumn{1}{|c|}{РќР°РёРјРµРЅРѕРІР°РЅРёРµ РїР°СЂР°РјРµС‚СЂР°}&
+  \multicolumn{1}{c|}{Р—РЅР°С‡РµРЅРёРµ}&
+  \multicolumn{1}{c|}{РџСЂРёРјРµС‡Р°РЅРёСЏ}\\\hline 
   
-  %-----содержимое---------------------------
+  %-----СЃРѕРґРµСЂР¶РёРјРѕРµ---------------------------
   \setcounter{tablerowcounter}{0}
-  \inTableEnum Допустимое напряжение бортовой сети, В   &от~{\minsupplyvoltage}
-                              до~\maxsupplyvoltage &\\\hline
-  \inTableEnum Потребляемая мощность, Вт    &\nominalsupplypower, не более  &\\\hline
-  \inTableEnum Время непрерывной работы, часов  &\continuousworkingtime, не менее &\\\hline
+  \inTableEnum Р”РѕРїСѓСЃС‚РёРјРѕРµ РЅР°РїСЂСЏР¶РµРЅРёРµ Р±РѕСЂС‚РѕРІРѕР№ СЃРµС‚Рё, Р’   &РѕС‚~{\minsupplyvoltage}
+                              РґРѕ~\maxsupplyvoltage &\\\hline
+  \inTableEnum РџРѕС‚СЂРµР±Р»СЏРµРјР°СЏ РјРѕС‰РЅРѕСЃС‚СЊ, Р’С‚    &\nominalsupplypower, РЅРµ Р±РѕР»РµРµ  &\\\hline
+  \inTableEnum Р’СЂРµРјСЏ РЅРµРїСЂРµСЂС‹РІРЅРѕР№ СЂР°Р±РѕС‚С‹, С‡Р°СЃРѕРІ  &\continuousworkingtime, РЅРµ РјРµРЅРµРµ &\\\hline
   
-  \inTableEnum Габаритные размеры, мм&
-  \dimensionsReplicator, \mbox{не более}&\\\hline
+  \inTableEnum Р“Р°Р±Р°СЂРёС‚РЅС‹Рµ СЂР°Р·РјРµСЂС‹, РјРј&
+  \dimensionsReplicator, \mbox{РЅРµ Р±РѕР»РµРµ}&\\\hline
 
-  \inTableEnum Масса, кг, не более&\massReplicator & \\\hline
+  \inTableEnum РњР°СЃСЃР°, РєРі, РЅРµ Р±РѕР»РµРµ&\massReplicator & \\\hline
 
 \end{tabularx}

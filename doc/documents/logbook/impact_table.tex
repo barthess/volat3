@@ -1,38 +1,38 @@
-%\input{\rootdir/common_data} % данные по внешним воздействиям
+%\input{\rootdir/common_data} % РґР°РЅРЅС‹Рµ РїРѕ РІРЅРµС€РЅРёРј РІРѕР·РґРµР№СЃС‚РІРёСЏРј
 
 \begin{tabular}{|b{0.7\textwidth}|b{0.25\textwidth}|}
   \hline
-  % шапка===================================================================
-  \multicolumn{1}{|c|}{Наименование внешнего воздействующего фактора} &
-    \multicolumn{1}{c|}{Значение}
+  % С€Р°РїРєР°===================================================================
+  \multicolumn{1}{|c|}{РќР°РёРјРµРЅРѕРІР°РЅРёРµ РІРЅРµС€РЅРµРіРѕ РІРѕР·РґРµР№СЃС‚РІСѓСЋС‰РµРіРѕ С„Р°РєС‚РѕСЂР°} &
+    \multicolumn{1}{c|}{Р—РЅР°С‡РµРЅРёРµ}
       \\\hline
-  % содержимое==============================================================
+  % СЃРѕРґРµСЂР¶РёРјРѕРµ==============================================================
   \setcounter{tablerowcounter}{0}
   
-  \inTableEnum Температура окружающей среды, \textcelsius:          &\\
-    \inTableItemize предельная повышенная                 &\temperaturestoragemax, не более \\
-    \inTableItemize рабочая повышенная                    &\temperatureworkingmax, не более \\
-    \inTableItemize рабочая пониженная при выдаче информации на ВМ и ПСУ &\mbox{минус 30}, не менее\\
-    \inTableItemize рабочая пониженная при выдаче информации на ПСУ      &\temperaturestoragemin, не менее\\
-    \inTableItemize предельная пониженная                 &\temperaturestoragemin, не менее\\\hline
+  \inTableEnum РўРµРјРїРµСЂР°С‚СѓСЂР° РѕРєСЂСѓР¶Р°СЋС‰РµР№ СЃСЂРµРґС‹, \textcelsius:          &\\
+    \inTableItemize РїСЂРµРґРµР»СЊРЅР°СЏ РїРѕРІС‹С€РµРЅРЅР°СЏ                 &\temperaturestoragemax, РЅРµ Р±РѕР»РµРµ \\
+    \inTableItemize СЂР°Р±РѕС‡Р°СЏ РїРѕРІС‹С€РµРЅРЅР°СЏ                    &\temperatureworkingmax, РЅРµ Р±РѕР»РµРµ \\
+    \inTableItemize СЂР°Р±РѕС‡Р°СЏ РїРѕРЅРёР¶РµРЅРЅР°СЏ РїСЂРё РІС‹РґР°С‡Рµ РёРЅС„РѕСЂРјР°С†РёРё РЅР° Р’Рњ Рё РџРЎРЈ &\mbox{РјРёРЅСѓСЃ 30}, РЅРµ РјРµРЅРµРµ\\
+    \inTableItemize СЂР°Р±РѕС‡Р°СЏ РїРѕРЅРёР¶РµРЅРЅР°СЏ РїСЂРё РІС‹РґР°С‡Рµ РёРЅС„РѕСЂРјР°С†РёРё РЅР° РџРЎРЈ      &\temperaturestoragemin, РЅРµ РјРµРЅРµРµ\\
+    \inTableItemize РїСЂРµРґРµР»СЊРЅР°СЏ РїРѕРЅРёР¶РµРЅРЅР°СЏ                 &\temperaturestoragemin, РЅРµ РјРµРЅРµРµ\\\hline
     
-    \inTableEnum Повышенная относительная влажность 
-    воздуха при температуре \airhumiditywithtemp{}
-    \textcelsius, \%                                  &\ \newline\airhumidity, не более\\\hline
+    \inTableEnum РџРѕРІС‹С€РµРЅРЅР°СЏ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅР°СЏ РІР»Р°Р¶РЅРѕСЃС‚СЊ 
+    РІРѕР·РґСѓС…Р° РїСЂРё С‚РµРјРїРµСЂР°С‚СѓСЂРµ \airhumiditywithtemp{}
+    \textcelsius, \%                                  &\ \newline\airhumidity, РЅРµ Р±РѕР»РµРµ\\\hline
         
-  \inTableEnum Атмосферное пониженное 
-        давление, \mbox{кПа (мм рт. ст.):}                &\\
-    \inTableItemize рабочее                                         &\pressureworkingmin, не менее\\
-    \inTableItemize при транспортировании на высоте 10000",м         &\pressurestoragemin, не менее\\\hline
+  \inTableEnum РђС‚РјРѕСЃС„РµСЂРЅРѕРµ РїРѕРЅРёР¶РµРЅРЅРѕРµ 
+        РґР°РІР»РµРЅРёРµ, \mbox{РєРџР° (РјРј СЂС‚. СЃС‚.):}                &\\
+    \inTableItemize СЂР°Р±РѕС‡РµРµ                                         &\pressureworkingmin, РЅРµ РјРµРЅРµРµ\\
+    \inTableItemize РїСЂРё С‚СЂР°РЅСЃРїРѕСЂС‚РёСЂРѕРІР°РЅРёРё РЅР° РІС‹СЃРѕС‚Рµ 10000",Рј         &\pressurestoragemin, РЅРµ РјРµРЅРµРµ\\\hline
     
-  \inTableEnum Синусоидальная вибрация:                             &\\
-    \inTableItemize ускорение, м/с\texttwosuperior\ (g)   &\vibrationacceleration, не более\\
-    \inTableItemize диапазон частот, Гц               
-            &от~{\vibrationfrequencymin} до~\vibrationfrequencymax\\\hline
+  \inTableEnum РЎРёРЅСѓСЃРѕРёРґР°Р»СЊРЅР°СЏ РІРёР±СЂР°С†РёСЏ:                             &\\
+    \inTableItemize СѓСЃРєРѕСЂРµРЅРёРµ, Рј/СЃ\texttwosuperior\ (g)   &\vibrationacceleration, РЅРµ Р±РѕР»РµРµ\\
+    \inTableItemize РґРёР°РїР°Р·РѕРЅ С‡Р°СЃС‚РѕС‚, Р“С†               
+            &РѕС‚~{\vibrationfrequencymin} РґРѕ~\vibrationfrequencymax\\\hline
     
-  \inTableEnum Механические удары одиночного действия:&\\
-    \inTableItemize пиковое значение ударного ускорения, 
-            м/с\texttwosuperior\ (g)        &\shockacceleration, не более\\
-    \inTableItemize длительность ударного импульса, мс
-            &от~{\shockpulsewidthmin} до~\shockpulsewidthmax \\\hline
+  \inTableEnum РњРµС…Р°РЅРёС‡РµСЃРєРёРµ СѓРґР°СЂС‹ РѕРґРёРЅРѕС‡РЅРѕРіРѕ РґРµР№СЃС‚РІРёСЏ:&\\
+    \inTableItemize РїРёРєРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ СѓРґР°СЂРЅРѕРіРѕ СѓСЃРєРѕСЂРµРЅРёСЏ, 
+            Рј/СЃ\texttwosuperior\ (g)        &\shockacceleration, РЅРµ Р±РѕР»РµРµ\\
+    \inTableItemize РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ СѓРґР°СЂРЅРѕРіРѕ РёРјРїСѓР»СЊСЃР°, РјСЃ
+            &РѕС‚~{\shockpulsewidthmin} РґРѕ~\shockpulsewidthmax \\\hline
 \end{tabular}
