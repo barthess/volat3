@@ -19143,7 +19143,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="516D108M050QS6AE3"/>
 </part>
 <part name="GND2" library="supply" deviceset="GND" device=""/>
-<part name="R350" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R350" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="VD58" library="diode" deviceset="DIODE-SCHOTTKY-" device="SMC" value="3A/60V">
@@ -19177,13 +19177,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="LABEL" value="FREQUENCY"/>
 <attribute name="PARTNO" value="90130-1208"/>
 </part>
-<part name="R42" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R42" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R34" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R34" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R26" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R26" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C12" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19205,33 +19205,33 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C220J5GACTU"/>
 </part>
 <part name="GND3" library="supply" deviceset="GND" device=""/>
-<part name="R5" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R5" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R3" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="GND4" library="supply" deviceset="GND" device=""/>
 <part name="GND5" library="supply" deviceset="GND" device=""/>
-<part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R9" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="C10" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
@@ -19240,10 +19240,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND6" library="supply" deviceset="GND" device=""/>
 <part name="GND7" library="supply" deviceset="GND" device=""/>
 <part name="+3V3" library="supply" deviceset="+3V3" device=""/>
-<part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
 <part name="VD2" library="led" deviceset="LED" device="0805" value="RED">
@@ -19252,21 +19252,21 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD1" library="led" deviceset="LED" device="0805" value="RED">
 <attribute name="PARTNO" value="KPHCM-2012EC-T"/>
 </part>
-<part name="R14" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm">
+<part name="R14" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ331V"/>
 </part>
-<part name="R13" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm">
+<part name="R13" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ331V"/>
 </part>
 <part name="GND8" library="supply" deviceset="GND" device=""/>
 <part name="GND9" library="supply" deviceset="GND" device=""/>
-<part name="R43" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R43" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R35" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R35" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R27" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R27" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C13" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19277,13 +19277,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND3" library="supply" deviceset="AGND" device=""/>
 <part name="GND10" library="supply" deviceset="GND" device=""/>
-<part name="R44" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R44" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R36" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R36" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R28" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R28" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C14" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19294,13 +19294,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND4" library="supply" deviceset="AGND" device=""/>
 <part name="GND11" library="supply" deviceset="GND" device=""/>
-<part name="R45" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R45" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R37" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R37" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R29" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R29" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C15" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19311,13 +19311,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND5" library="supply" deviceset="AGND" device=""/>
 <part name="GND12" library="supply" deviceset="GND" device=""/>
-<part name="R46" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R46" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R38" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R38" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R30" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R30" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C16" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19328,13 +19328,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND6" library="supply" deviceset="AGND" device=""/>
 <part name="GND13" library="supply" deviceset="GND" device=""/>
-<part name="R47" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R47" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R39" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R39" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R31" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R31" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C17" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19345,13 +19345,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND7" library="supply" deviceset="AGND" device=""/>
 <part name="GND14" library="supply" deviceset="GND" device=""/>
-<part name="R48" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R48" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R40" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R40" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R32" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R32" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C18" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19362,13 +19362,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND8" library="supply" deviceset="AGND" device=""/>
 <part name="GND15" library="supply" deviceset="GND" device=""/>
-<part name="R49" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R49" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R41" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R41" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R33" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R33" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C19" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19379,13 +19379,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND9" library="supply" deviceset="AGND" device=""/>
 <part name="GND16" library="supply" deviceset="GND" device=""/>
-<part name="R66" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R66" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R58" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R58" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R50" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R50" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C20" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19396,13 +19396,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND10" library="supply" deviceset="AGND" device=""/>
 <part name="GND17" library="supply" deviceset="GND" device=""/>
-<part name="R67" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R67" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R59" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R59" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R51" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R51" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C21" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19413,13 +19413,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND11" library="supply" deviceset="AGND" device=""/>
 <part name="GND18" library="supply" deviceset="GND" device=""/>
-<part name="R68" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R68" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R60" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R60" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R52" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R52" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C22" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19430,13 +19430,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND12" library="supply" deviceset="AGND" device=""/>
 <part name="GND19" library="supply" deviceset="GND" device=""/>
-<part name="R69" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R69" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R61" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R61" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R53" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R53" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C23" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19447,13 +19447,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND13" library="supply" deviceset="AGND" device=""/>
 <part name="GND20" library="supply" deviceset="GND" device=""/>
-<part name="R70" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R70" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R62" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R62" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R54" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R54" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C24" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19464,13 +19464,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND14" library="supply" deviceset="AGND" device=""/>
 <part name="GND21" library="supply" deviceset="GND" device=""/>
-<part name="R71" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R71" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R63" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R63" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R55" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R55" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C25" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19481,13 +19481,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND15" library="supply" deviceset="AGND" device=""/>
 <part name="GND22" library="supply" deviceset="GND" device=""/>
-<part name="R72" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R72" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R64" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R64" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R56" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R56" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C26" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19498,13 +19498,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND16" library="supply" deviceset="AGND" device=""/>
 <part name="GND23" library="supply" deviceset="GND" device=""/>
-<part name="R73" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R73" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R65" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R65" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R57" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R57" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/1%">
 <attribute name="PARTNO" value="RC2512FK-071KL"/>
 </part>
 <part name="C27" library="rcl" deviceset="C-EU" device="C0603" value="1uF/16V">
@@ -19565,19 +19565,19 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="GND32" library="supply" deviceset="GND" device=""/>
-<part name="R131" library="rcl" deviceset="R-EU_" device="R0805" value="15kOhm">
+<part name="R131" library="rcl" deviceset="R-EU_" device="R0805" value="15kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ153V"/>
 </part>
-<part name="R132" library="rcl" deviceset="R-EU_" device="R0805" value="82kOhm">
+<part name="R132" library="rcl" deviceset="R-EU_" device="R0805" value="82kOhm/5%">
 <attribute name="PARTNO" value="RC0805JR-0782KL"/>
 </part>
-<part name="R133" library="rcl" deviceset="R-EU_" device="R0805" value="470kOhm">
+<part name="R133" library="rcl" deviceset="R-EU_" device="R0805" value="470kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ474V"/>
 </part>
-<part name="R134" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R134" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R135" library="rcl" deviceset="R-EU_" device="R2512" value="3.3kOhm">
+<part name="R135" library="rcl" deviceset="R-EU_" device="R2512" value="3.3kOhm/5%">
 <attribute name="PARTNO" value="35203K3JT"/>
 </part>
 <part name="GND33" library="supply" deviceset="GND" device=""/>
@@ -19596,13 +19596,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VT1" library="transistor-fet" deviceset="IRFR430" device="">
 <attribute name="PARTNO" value="IRFR430APBF"/>
 </part>
-<part name="R351" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R351" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R352" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R352" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R353" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R353" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="VD61" library="diode" deviceset="IDD06SG60C" device="" value="600V/6A">
@@ -19656,44 +19656,44 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD28" library="diode" deviceset="DIODE-SCHOTTKY-" device="SOD323" value="40V">
 <attribute name="PARTNO" value="BAT54JFILM"/>
 </part>
-<part name="R354" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R354" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="D19" library="optocoupler" deviceset="TCMT4100" device="">
 <attribute name="PARTNO" value="TCMT4100"/>
 </part>
-<part name="R355" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R355" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R356" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R356" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R357" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R357" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="GND36" library="supply" deviceset="GND" device=""/>
-<part name="R334" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R334" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R335" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R335" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R336" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R336" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R337" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R337" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R338" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R338" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R339" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R339" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R340" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R340" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R341" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R341" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
 <part name="VD196" library="diode" deviceset="DIODE-STANDARD-" device="SOD323" value="100V">
@@ -19747,35 +19747,35 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND37" library="supply" deviceset="GND" device=""/>
 <part name="+3V5" library="supply" deviceset="+3V3" device=""/>
 <part name="U$5" library="frame-simplified" deviceset="A2_LANDSCAPE_NEXT_SCALED" device=""/>
-<part name="R333" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R333" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="XP11" library="connector" deviceset="MOLEX-90130-*34" device="">
 <attribute name="LABEL" value="OUTPUTS"/>
 <attribute name="PARTNO" value="90130-1234"/>
 </part>
-<part name="R349" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R349" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R348" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R348" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R347" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R347" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R346" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R346" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R345" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R345" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R344" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R344" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R343" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R343" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R342" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R342" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="D20" library="transistor-fet" deviceset="AUIPS7111S" device="">
@@ -19835,16 +19835,16 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C105" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R253" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R253" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R269" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R269" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R237" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R237" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R186" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R186" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="VD99" library="diode" deviceset="DIODE-STANDARD-" device="SOD323" value="100V">
@@ -19853,7 +19853,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD98" library="diode" deviceset="DIODE-STANDARD-" device="SOD323" value="100V">
 <attribute name="PARTNO" value="1N4148WS-V-GS18"/>
 </part>
-<part name="R187" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R187" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="D5" library="transistor-fet" deviceset="AUIPS7111S" device="">
@@ -19880,13 +19880,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C106" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R254" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R254" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R270" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R270" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R238" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R238" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
 <part name="GND41" library="supply" deviceset="GND" device=""/>
@@ -19976,10 +19976,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND69" library="supply" deviceset="GND" device=""/>
 <part name="GND70" library="supply" deviceset="GND" device=""/>
 <part name="+3V21" library="supply" deviceset="+3V3" device=""/>
-<part name="R239" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R239" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R255" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R255" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD150" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -19988,7 +19988,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C107" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R271" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R271" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="D11" library="optocoupler" deviceset="TCMT4100" device="">
@@ -20000,10 +20000,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="D13" library="optocoupler" deviceset="TCMT4100" device="">
 <attribute name="PARTNO" value="TCMT4100"/>
 </part>
-<part name="R240" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R240" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R256" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R256" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD151" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20012,13 +20012,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C108" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R272" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R272" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R241" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R241" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R257" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R257" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD152" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20027,13 +20027,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C109" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R273" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R273" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R242" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R242" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R258" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R258" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD153" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20042,13 +20042,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C110" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R274" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R274" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R243" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R243" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R259" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R259" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD154" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20057,13 +20057,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C111" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R275" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R275" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R244" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R244" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R260" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R260" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD155" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20072,31 +20072,31 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C112" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R276" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R276" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R245" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R245" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R246" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R246" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R247" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R247" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R248" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R248" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R261" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R261" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R262" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R262" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R263" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R263" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R264" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R264" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD156" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20123,40 +20123,40 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C116" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R277" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R277" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R278" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R278" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R279" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R279" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R280" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R280" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R249" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R249" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R250" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R250" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R251" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R251" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R252" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R252" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R265" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R265" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R266" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R266" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R267" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R267" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R268" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R268" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD160" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20171,16 +20171,16 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD163" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
 <attribute name="PARTNO" value="S1G-E3/61T"/>
 </part>
-<part name="R281" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R281" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R282" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R282" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R283" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R283" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R284" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R284" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="C117" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
@@ -20225,13 +20225,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C123" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R301" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R301" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R317" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R317" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R285" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R285" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
 <part name="GND73" library="supply" deviceset="GND" device=""/>
@@ -20246,13 +20246,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C124" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R302" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R302" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R318" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R318" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R286" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R286" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
 <part name="GND75" library="supply" deviceset="GND" device=""/>
@@ -20342,10 +20342,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND103" library="supply" deviceset="GND" device=""/>
 <part name="GND104" library="supply" deviceset="GND" device=""/>
 <part name="+3V39" library="supply" deviceset="+3V3" device=""/>
-<part name="R287" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R287" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R303" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R303" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD182" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20354,7 +20354,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C125" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R319" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R319" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="D15" library="optocoupler" deviceset="TCMT4100" device="">
@@ -20366,10 +20366,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="D17" library="optocoupler" deviceset="TCMT4100" device="">
 <attribute name="PARTNO" value="TCMT4100"/>
 </part>
-<part name="R288" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R288" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R304" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R304" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD183" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20378,13 +20378,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C126" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R320" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R320" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R289" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R289" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R305" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R305" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD184" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20393,13 +20393,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C127" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R321" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R321" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R290" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R290" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R306" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R306" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD185" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20408,13 +20408,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C128" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R322" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R322" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R291" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R291" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R307" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R307" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD186" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20423,13 +20423,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C129" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R323" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R323" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R292" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R292" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R308" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R308" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD187" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20438,31 +20438,31 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C130" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R324" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R324" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R293" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R293" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R294" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R294" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R295" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R295" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R296" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R296" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R309" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R309" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R310" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R310" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R311" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R311" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R312" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R312" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD188" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20489,40 +20489,40 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C134" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R325" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R325" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R326" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R326" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R327" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R327" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R328" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R328" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R297" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R297" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R298" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R298" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R299" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R299" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R300" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R300" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R313" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R313" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R314" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R314" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R315" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R315" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R316" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R316" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD192" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20537,16 +20537,16 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD195" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
 <attribute name="PARTNO" value="S1G-E3/61T"/>
 </part>
-<part name="R329" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R329" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R330" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R330" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R331" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R331" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R332" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R332" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="C135" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
@@ -20589,13 +20589,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C87" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R205" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R205" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R221" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R221" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R189" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R189" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
 <part name="GND107" library="supply" deviceset="GND" device=""/>
@@ -20610,13 +20610,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C88" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R206" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R206" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R222" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R222" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R190" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R190" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
 <part name="GND109" library="supply" deviceset="GND" device=""/>
@@ -20706,10 +20706,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND137" library="supply" deviceset="GND" device=""/>
 <part name="GND138" library="supply" deviceset="GND" device=""/>
 <part name="+3V57" library="supply" deviceset="+3V3" device=""/>
-<part name="R191" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R191" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R207" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R207" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD118" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20718,7 +20718,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C89" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R223" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R223" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="D7" library="optocoupler" deviceset="TCMT4100" device="">
@@ -20730,10 +20730,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="D9" library="optocoupler" deviceset="TCMT4100" device="">
 <attribute name="PARTNO" value="TCMT4100"/>
 </part>
-<part name="R192" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R192" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R208" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R208" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD119" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20742,13 +20742,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C90" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R224" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R224" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R193" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R193" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R209" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R209" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD120" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20757,13 +20757,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C91" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R225" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R225" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R194" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R194" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R210" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R210" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD121" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20772,13 +20772,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C92" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R226" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R226" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R195" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R195" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R211" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R211" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD122" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20787,13 +20787,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C93" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R227" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R227" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R196" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R196" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R212" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R212" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD123" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20802,31 +20802,31 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C94" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R228" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R228" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R197" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R197" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R198" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R198" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R199" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R199" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R200" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R200" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R213" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R213" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R214" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R214" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R215" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R215" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R216" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R216" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD124" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20853,40 +20853,40 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C98" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R229" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R229" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R230" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R230" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R231" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R231" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R232" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R232" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R201" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R201" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R202" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R202" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R203" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R203" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R204" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R204" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R217" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R217" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R218" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R218" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R219" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R219" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R220" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R220" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD128" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -20901,16 +20901,16 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD131" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
 <attribute name="PARTNO" value="S1G-E3/61T"/>
 </part>
-<part name="R233" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R233" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R234" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R234" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R235" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R235" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R236" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R236" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="C99" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
@@ -20947,13 +20947,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C69" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R154" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R154" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R170" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R170" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R138" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R138" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
 <part name="GND141" library="supply" deviceset="GND" device=""/>
@@ -20968,13 +20968,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C70" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R155" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R155" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R171" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R171" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R139" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R139" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
 <part name="GND143" library="supply" deviceset="GND" device=""/>
@@ -21064,10 +21064,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="GND171" library="supply" deviceset="GND" device=""/>
 <part name="GND172" library="supply" deviceset="GND" device=""/>
 <part name="+3V75" library="supply" deviceset="+3V3" device=""/>
-<part name="R140" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R140" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R156" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R156" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD84" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -21076,7 +21076,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C71" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R172" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R172" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="D2" library="optocoupler" deviceset="TCMT4100" device="">
@@ -21088,10 +21088,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="D4" library="optocoupler" deviceset="TCMT4100" device="">
 <attribute name="PARTNO" value="TCMT4100"/>
 </part>
-<part name="R141" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R141" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R157" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R157" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD85" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -21100,13 +21100,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C72" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R173" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R173" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R142" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R142" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R158" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R158" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD86" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -21115,13 +21115,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C73" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R174" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R174" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R143" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R143" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R159" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R159" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD87" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -21130,13 +21130,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C74" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R175" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R175" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R144" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R144" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R160" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R160" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD88" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -21145,13 +21145,13 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C75" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R176" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R176" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R145" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R145" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R161" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R161" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD89" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -21160,31 +21160,31 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C76" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R177" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R177" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R146" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R146" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R147" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R147" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R148" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R148" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R149" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R149" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R162" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R162" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R163" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R163" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R164" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R164" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R165" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R165" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD90" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -21211,40 +21211,40 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="C80" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
-<part name="R178" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R178" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R179" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R179" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R180" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R180" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R181" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R181" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R150" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R150" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R151" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R151" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R152" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R152" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R153" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm">
+<part name="R153" library="rcl" deviceset="R-EU_" device="R1206" value="4.7kOhm/5%">
 <attribute name="PARTNO" value="RC1206JR-074K7L"/>
 </part>
-<part name="R166" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R166" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R167" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R167" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R168" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R168" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
-<part name="R169" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R169" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="VD94" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
@@ -21259,16 +21259,16 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VD97" library="diode" deviceset="DIODE-STANDARD-" device="SMA" value="400V">
 <attribute name="PARTNO" value="S1G-E3/61T"/>
 </part>
-<part name="R182" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R182" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R183" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R183" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R184" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R184" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R185" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R185" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="C81" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
@@ -21301,22 +21301,22 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="GND175" library="supply" deviceset="GND" device=""/>
 <part name="+3V78" library="supply" deviceset="+3V3" device=""/>
-<part name="R16" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R16" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R17" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R17" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R18" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R18" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R19" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R19" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R21" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R21" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R358" library="rcl" deviceset="R-EU_" device="R1206" value="120Ohm">
+<part name="R358" library="rcl" deviceset="R-EU_" device="R1206" value="120Ohm/5%">
 <attribute name="PARTNO" value="RC1206JR-07120RL"/>
 </part>
 <part name="DA15" library="usb" deviceset="USBUF01W6" device="">
@@ -21335,20 +21335,20 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="VT3" library="transistor-npn" deviceset="BC817*" device="SMD" technology="-16">
 <attribute name="PARTNO" value="BC817"/>
 </part>
-<part name="R364" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R364" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R359" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R359" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R361" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R361" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="+3V79" library="supply" deviceset="+3V3" device=""/>
-<part name="R362" library="rcl" deviceset="R-EU_" device="R0603" value="47kOhm">
+<part name="R362" library="rcl" deviceset="R-EU_" device="R0603" value="47kOhm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ473V"/>
 </part>
-<part name="R360" library="rcl" deviceset="R-EU_" device="R0603" value="36kOhm">
+<part name="R360" library="rcl" deviceset="R-EU_" device="R0603" value="36kOhm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ363V"/>
 </part>
 <part name="+3V80" library="supply" deviceset="+3V3" device=""/>
@@ -21356,7 +21356,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="BZV55-C3V3"/>
 </part>
 <part name="GND180" library="supply" deviceset="GND" device=""/>
-<part name="R363" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R363" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="GND181" library="supply" deviceset="GND" device=""/>
@@ -21429,10 +21429,10 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="IN24AA32AD"/>
 </part>
 <part name="GND187" library="supply" deviceset="GND" device=""/>
-<part name="R25" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R25" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
-<part name="R15" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm">
+<part name="R15" library="rcl" deviceset="R-EU_" device="R0805" value="1kOhm/5%">
 <attribute name="PARTNO" value="ERJ6GEYJ102V"/>
 </part>
 <part name="C11" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
@@ -21483,17 +21483,17 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="GND190" library="supply" deviceset="GND" device=""/>
-<part name="R124" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R124" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="C53" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
 <part name="GND191" library="supply" deviceset="GND" device=""/>
-<part name="R128" library="rcl" deviceset="R-EU_" device="R0603" value="36kOhm">
+<part name="R128" library="rcl" deviceset="R-EU_" device="R0603" value="36kOhm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ363V"/>
 </part>
-<part name="R126" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R126" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
 <part name="GND192" library="supply" deviceset="GND" device=""/>
@@ -21518,19 +21518,19 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="BZV55-C3V3"/>
 </part>
 <part name="GND199" library="supply" deviceset="GND" device=""/>
-<part name="R83" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R83" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R90" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R90" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R89" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R89" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R88" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R88" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R87" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R87" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="GND200" library="supply" deviceset="GND" device=""/>
@@ -21585,7 +21585,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="BZV55-C3V3"/>
 </part>
 <part name="GND201" library="supply" deviceset="GND" device=""/>
-<part name="R130" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R130" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
 <part name="R108" library="rcl" deviceset="R-EU_" device="R0603" value="22kOhm/5%">
@@ -21637,7 +21637,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
 <part name="GND209" library="supply" deviceset="GND" device=""/>
-<part name="R116" library="rcl" deviceset="R-TRIMM" device="TSM4YJ" value="1kOhm">
+<part name="R116" library="rcl" deviceset="R-TRIMM" device="TSM4YJ" value="1kOhm/20%">
 <attribute name="PARTNO" value="TSM4YJ102KR05"/>
 </part>
 <part name="P+34" library="supply" deviceset="+5V" device=""/>
@@ -21671,27 +21671,27 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="LABEL" value=""/>
 <attribute name="PARTNO" value="KPHCM-2012SGC-T"/>
 </part>
-<part name="R20" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm">
+<part name="R20" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ331V"/>
 </part>
-<part name="R137" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm">
+<part name="R137" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ331V"/>
 </part>
-<part name="R136" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm">
+<part name="R136" library="rcl" deviceset="R-EU_" device="R0603" value="330Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ331V"/>
 </part>
 <part name="+3V84" library="supply" deviceset="+3V3" device=""/>
-<part name="R188" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R188" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="GND211" library="supply" deviceset="GND" device=""/>
-<part name="R22" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R22" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R23" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R23" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
-<part name="R24" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm">
+<part name="R24" library="rcl" deviceset="R-EU_" device="R0603" value="100Ohm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ101V"/>
 </part>
 <part name="U$11" library="frame-simplified" deviceset="A3_PORTRAIT_NEXT_SCALED" device=""/>
@@ -21723,19 +21723,19 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="BZV55-C3V3"/>
 </part>
 <part name="GND213" library="supply" deviceset="GND" device=""/>
-<part name="R84" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R84" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R95" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R95" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R94" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R94" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R93" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R93" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R92" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R92" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="GND214" library="supply" deviceset="GND" device=""/>
@@ -21831,19 +21831,19 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="BZV55-C3V3"/>
 </part>
 <part name="GND223" library="supply" deviceset="GND" device=""/>
-<part name="R85" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R85" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
-<part name="R100" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R100" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R99" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R99" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R98" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R98" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
-<part name="R97" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm">
+<part name="R97" library="rcl" deviceset="R-EU_" device="R0603" value="10kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-1010KL"/>
 </part>
 <part name="GND224" library="supply" deviceset="GND" device=""/>
@@ -21918,17 +21918,17 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="PARTNO" value="SMBJ24CA"/>
 </part>
 <part name="GND189" library="supply" deviceset="GND" device=""/>
-<part name="R125" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm">
+<part name="R125" library="rcl" deviceset="R-EU_" device="R2512" value="1kOhm/5%">
 <attribute name="PARTNO" value="RC2512JK-071KL"/>
 </part>
 <part name="C54" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
 <part name="GND232" library="supply" deviceset="GND" device=""/>
-<part name="R129" library="rcl" deviceset="R-EU_" device="R0603" value="36kOhm">
+<part name="R129" library="rcl" deviceset="R-EU_" device="R0603" value="36kOhm/5%">
 <attribute name="PARTNO" value="ERJ3GEYJ363V"/>
 </part>
-<part name="R127" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm">
+<part name="R127" library="rcl" deviceset="R-EU_" device="R0603" value="100kOhm/1%">
 <attribute name="PARTNO" value="RC0603FR-13100KL"/>
 </part>
 <part name="GND233" library="supply" deviceset="GND" device=""/>
@@ -22237,7 +22237,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="R3" gate="G$1" x="38.1" y="38.1" smashed="yes">
 <attribute name="PARTNO" value="RC0603FR-1010KL" x="38.1" y="38.1" size="1.524" layer="96" display="off"/>
-<attribute name="NAME" x="35.814" y="39.83" size="1.524" layer="95"/>
+<attribute name="NAME" x="37.084" y="39.83" size="1.524" layer="95"/>
 <attribute name="VALUE" x="35.56" y="34.878" size="1.524" layer="96"/>
 </instance>
 <instance part="GND4" gate="1" x="30.48" y="12.7"/>

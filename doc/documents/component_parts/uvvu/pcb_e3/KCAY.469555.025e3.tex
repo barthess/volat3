@@ -10,6 +10,7 @@
   % nocolumnxxxii,  % выкл. доп. поле <<формат>>
   columnsxxvii,
   a1paper,
+  % portrait,
   ignorestamp]{eskdgraph}
 
 \usepackage[T2A]{fontenc}
@@ -27,17 +28,22 @@
 \ESKDapprovedBy{Михайлов}
 \ESKDnormContr{Бурш}
 \ESKDdate{2012/11/11}
-\ESKDcolumnXXV{\ksauUVVU} % первичное применение
+\ESKDcolumnXXV{\ksauUVVUpcb} % первичное применение
 
 \unitlength=1mm
 \begin{document}
 \newsavebox{\block}
 
+% \begin{picture}(0,0)
+%   \put(-30,-575){\includegraphics[scale=1]{main_01}} % 575 = (594-19)
+% \end{picture}
+% \clearpage
+
 \begin{picture}(0,0)
   \put(-30,-575){\includegraphics[scale=1]{main_01}} % 575 = (594-19)
 \end{picture}
 
-\ESKDremoveFromStyle{freesize}{columnxxvi}
+% \ESKDremoveFromStyle{freesize}{columnxxvi}
 \ESKDremoveFromStyle{freesize}{columnsxxvii}
 \ESKDremoveFromStyle{freesize}{columnsxxxi}
 
