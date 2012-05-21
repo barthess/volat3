@@ -18599,13 +18599,14 @@ Based on the following sources:
 <wire x1="5" y1="1.25" x2="5" y2="-1.25" width="0.127" layer="51"/>
 <wire x1="5" y1="-1.25" x2="-5" y2="-1.25" width="0.127" layer="51"/>
 <wire x1="-5" y1="-1.25" x2="-5" y2="1.25" width="0.127" layer="51"/>
-<rectangle x1="4.25" y1="-1.25" x2="5" y2="1.25" layer="51"/>
-<rectangle x1="-5" y1="-1.25" x2="-4.25" y2="1.25" layer="51"/>
 <text x="-2.25" y="1.75" size="1.016" layer="25" ratio="18">&gt;NAME</text>
 <text x="-2.373" y="-2.532" size="0.8128" layer="27">&gt;VALUE</text>
 <wire x1="2.7825" y1="1.25" x2="3.219" y2="1.25" width="0.3048" layer="21"/>
 <wire x1="-3.21825" y1="-1.25825" x2="-2.78175" y2="-1.25825" width="0.3048" layer="21"/>
 <wire x1="2.7825" y1="-1.25825" x2="3.219" y2="-1.25825" width="0.3048" layer="21"/>
+<rectangle x1="-4.953" y1="-1.27" x2="-3.81" y2="1.27" layer="51"/>
+<rectangle x1="3.81" y1="-1.27" x2="4.953" y2="1.27" layer="51"/>
+<rectangle x1="-2.032" y1="-1.27" x2="2.032" y2="1.27" layer="51"/>
 </package>
 <package name="NFE31">
 <rectangle x1="-0.5" y1="-0.8" x2="0.5" y2="0.8" layer="51"/>

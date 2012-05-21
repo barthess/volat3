@@ -7,13 +7,11 @@ Desktop="Desktop"
 
 [Globals]
 AutoSaveProject=1
-UsedLibrary="/mnt/work/projects/eagle_libs/frame-simplified.lbr"
-UsedLibrary="/mnt/work/projects/eagle_libs/mount.lbr"
 UsedLibrary="/home/barthess/eagle/user_lbr/SparkFun.lbr"
 
 [Win_1]
 Type="Library Editor"
-Loc="0 0 1599 849"
+Loc="0 0 1279 849"
 State=1
 Number=3
 File="/mnt/work/projects/eagle_libs/connector.lbr"
@@ -49,11 +47,10 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=21
-Package="MOLEX-90130-08"
 
 [Win_2]
 Type="Schematic Editor"
-Loc="0 0 1599 849"
+Loc="0 0 1279 849"
 State=1
 Number=1
 File="main.sch"
@@ -94,7 +91,7 @@ Sheet=1
 
 [Win_3]
 Type="Board Editor"
-Loc="0 0 1599 849"
+Loc="0 0 1279 849"
 State=1
 Number=2
 File="main.brd"
@@ -138,7 +135,7 @@ State=2
 Number=0
 
 [Desktop]
-Screen="1600 900"
+Screen="1280 960"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"

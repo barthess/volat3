@@ -28,16 +28,16 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="5" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="5" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
-<layer number="30" name="bStop" color="15" fill="6" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="15" fill="6" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
@@ -56,10 +56,10 @@
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="6" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="3" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="6" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="3" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -2846,13 +2846,14 @@ Based on the following sources:
 <wire x1="5" y1="1.25" x2="5" y2="-1.25" width="0.127" layer="51"/>
 <wire x1="5" y1="-1.25" x2="-5" y2="-1.25" width="0.127" layer="51"/>
 <wire x1="-5" y1="-1.25" x2="-5" y2="1.25" width="0.127" layer="51"/>
-<rectangle x1="4.25" y1="-1.25" x2="5" y2="1.25" layer="51"/>
-<rectangle x1="-5" y1="-1.25" x2="-4.25" y2="1.25" layer="51"/>
 <text x="-2.25" y="1.75" size="1.016" layer="25" ratio="18">&gt;NAME</text>
 <text x="-2.373" y="-2.532" size="0.8128" layer="27">&gt;VALUE</text>
 <wire x1="2.7825" y1="1.25" x2="3.219" y2="1.25" width="0.3048" layer="21"/>
 <wire x1="-3.21825" y1="-1.25825" x2="-2.78175" y2="-1.25825" width="0.3048" layer="21"/>
 <wire x1="2.7825" y1="-1.25825" x2="3.219" y2="-1.25825" width="0.3048" layer="21"/>
+<rectangle x1="-4.953" y1="-1.27" x2="-3.81" y2="1.27" layer="51"/>
+<rectangle x1="3.81" y1="-1.27" x2="4.953" y2="1.27" layer="51"/>
+<rectangle x1="-2.032" y1="-1.27" x2="2.032" y2="1.27" layer="51"/>
 </package>
 <package name="NFE31">
 <rectangle x1="-0.5" y1="-0.8" x2="0.5" y2="0.8" layer="51"/>
@@ -7839,11 +7840,15 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="13.0675" y="75.3725" size="0.8128" layer="27"/>
 <attribute name="PARTNO" value="NFE31PT152Z1E9" x="15" y="77.5" size="1.778" layer="27" display="off"/>
 </element>
-<element name="VD212" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="54.5" y="29.5" rot="MR270">
+<element name="VD212" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="54.5" y="29.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="46.5" y="37" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="NAME" x="53" y="25" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="VALUE" x="57.675" y="31.7225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
-<element name="VD213" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="50" y="29.5" rot="MR270">
+<element name="VD213" library="diode" package="SMB-BIDIR" value="SMBJ24CA" x="50" y="29.5" smashed="yes" rot="MR270">
 <attribute name="PARTNO" value="SMBJ24CA" x="34.5" y="44.5" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="NAME" x="47" y="25" size="1.016" layer="26" ratio="18" rot="MR180"/>
+<attribute name="VALUE" x="53.175" y="31.7225" size="0.8128" layer="28" ratio="10" rot="MR270"/>
 </element>
 <element name="Z45" library="emi-filter" package="NFE31" value="NFE31PT" x="57" y="53" smashed="yes" rot="MR90">
 <attribute name="NAME" x="58.1175" y="49.63625" size="1.016" layer="26" ratio="18" rot="MR0"/>
