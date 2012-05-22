@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -22167,7 +22167,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
 <part name="U$1" library="frame-simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
-<part name="U$2" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -32647,7 +32646,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="DD9" gate=".2" x="231.14" y="83.82" smashed="yes">
 <attribute name="NAME" x="228.219" y="87.249" size="1.524" layer="95"/>
 </instance>
-<instance part="U$2" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 <bus name="IO_EXPAND:SR_MISO,SR_MOSI,SR_SCK,!SR_SAMPLE,SR_IN_NSS,SR_OUT_NSS,!SR_OUT_ENABLE,SR_OUT_[1..7],Z_CHECK_TOGGLE,Z_CHECK">

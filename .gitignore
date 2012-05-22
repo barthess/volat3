@@ -9,5 +9,5 @@ build/
 bureaucracy/
 *.*#*
 *.eps
-hard/pcb_main/3d/
+hard/mpiovd/3d/
 *.swp
