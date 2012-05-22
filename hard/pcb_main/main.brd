@@ -23,7 +23,7 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
@@ -55,7 +55,7 @@
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="6" fill="1" visible="no" active="yes"/>
@@ -116,21 +116,20 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="230" y2="0" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="30" y2="0" width="0" layer="20"/>
+<wire x1="82" y1="0" x2="134" y2="0" width="0" layer="20"/>
+<wire x1="195" y1="0" x2="230" y2="0" width="0" layer="20"/>
 <wire x1="230" y1="0" x2="230" y2="150" width="0" layer="20"/>
 <wire x1="230" y1="150" x2="0" y2="150" width="0" layer="20"/>
 <wire x1="0" y1="150" x2="0" y2="0" width="0" layer="20"/>
-<wire x1="115" y1="156" x2="115" y2="-10.5" width="0.15" layer="48" style="dashdot"/>
-<wire x1="-14" y1="75" x2="243" y2="75" width="0.15" layer="48" style="dashdot"/>
+<wire x1="115" y1="153" x2="115" y2="-3.5" width="0.15" layer="48" style="dashdot"/>
+<wire x1="-14" y1="75" x2="235" y2="75" width="0.15" layer="48" style="dashdot"/>
 <wire x1="-10.5" y1="3.5" x2="242" y2="3.5" width="0.15" layer="48"/>
 <wire x1="-11.5" y1="146.5" x2="239" y2="146.5" width="0.15" layer="48"/>
-<wire x1="20" y1="160" x2="20" y2="-10" width="0.15" layer="48"/>
-<wire x1="210" y1="160" x2="210" y2="-9" width="0.15" layer="48"/>
-<wire x1="3.5" y1="160" x2="3.5" y2="-4" width="0.15" layer="48"/>
-<wire x1="226.5" y1="159" x2="226.5" y2="-4" width="0.15" layer="48"/>
-<dimension x1="115" y1="-9" x2="20" y2="-9" x3="67.5" y3="-14.78" layer="48"/>
-<dimension x1="115" y1="-9" x2="210" y2="-9" x3="162.5" y3="-14.78" layer="48"/>
-<dimension x1="3.5" y1="-4" x2="226.5" y2="-4" x3="115" y3="-23.05" layer="48"/>
+<wire x1="20" y1="154" x2="20" y2="-2" width="0.15" layer="48"/>
+<wire x1="210" y1="153" x2="210" y2="-4" width="0.15" layer="48"/>
+<wire x1="3.5" y1="154" x2="3.5" y2="-4" width="0.15" layer="48"/>
+<wire x1="226.5" y1="154" x2="226.5" y2="-4" width="0.15" layer="48"/>
 <dimension x1="-10.5" y1="3.5" x2="-10.5" y2="146.5" x3="-20.74" y3="75" layer="48"/>
 <wire x1="108" y1="3.5" x2="122" y2="3.5" width="0.15" layer="42" curve="-180"/>
 <wire x1="108" y1="3.5" x2="108" y2="0" width="0.15" layer="42" style="dashdot"/>
@@ -164,15 +163,30 @@
 <wire x1="15" y1="95" x2="67.5" y2="95" width="1.2" layer="30"/>
 <wire x1="67.5" y1="95" x2="67.5" y2="53" width="1.2" layer="30"/>
 <wire x1="67.5" y1="53" x2="15" y2="53" width="1.2" layer="30"/>
-<dimension x1="131" y1="79" x2="115" y2="-8" x3="123" y3="-8" layer="48" dtype="horizontal"/>
+<dimension x1="131" y1="79" x2="115" y2="153" x3="123" y3="157" layer="48" dtype="horizontal"/>
 <dimension x1="99" y1="64" x2="-14" y2="75" x3="-12" y3="69.5" layer="48" dtype="vertical"/>
 <dimension x1="131" y1="79" x2="-13" y2="75" x3="-7" y3="77" layer="48" dtype="vertical"/>
 <wire x1="95" y1="64" x2="104" y2="64" width="0.15" layer="48"/>
 <wire x1="131" y1="85" x2="131" y2="79" width="0.15" layer="48"/>
 <wire x1="131" y1="79" x2="131" y2="78" width="0.15" layer="48"/>
 <wire x1="131" y1="79" x2="138" y2="79" width="0.15" layer="48"/>
-<dimension x1="100" y1="63" x2="115" y2="-8" x3="107.5" y3="-8" layer="48" dtype="horizontal"/>
+<dimension x1="100" y1="63" x2="115" y2="146" x3="107.5" y3="157" layer="48" dtype="horizontal"/>
 <wire x1="100" y1="63" x2="100" y2="68" width="0.15" layer="48"/>
+<wire x1="30" y1="0" x2="30" y2="7" width="0" layer="20"/>
+<wire x1="30" y1="7" x2="82" y2="7" width="0" layer="20"/>
+<wire x1="82" y1="7" x2="82" y2="0" width="0" layer="20"/>
+<wire x1="134" y1="0" x2="134" y2="7" width="0" layer="20"/>
+<wire x1="134" y1="7" x2="195" y2="7" width="0" layer="20"/>
+<wire x1="195" y1="7" x2="195" y2="0" width="0" layer="20"/>
+<dimension x1="0" y1="150" x2="230" y2="150" x3="115" y3="188" layer="20"/>
+<dimension x1="230" y1="0" x2="230" y2="150" x3="243" y3="75" layer="20"/>
+<dimension x1="20" y1="154" x2="115" y2="154" x3="67.5" y3="167" layer="20"/>
+<dimension x1="210" y1="153" x2="115" y2="153" x3="162.5" y3="167" layer="20"/>
+<dimension x1="226.5" y1="154" x2="3.5" y2="154" x3="115" y3="178" layer="20"/>
+<dimension x1="0" y1="0" x2="30" y2="0" x3="15" y3="-11" layer="20"/>
+<dimension x1="82" y1="0" x2="30" y2="0" x3="56" y3="-11" layer="20"/>
+<dimension x1="134" y1="0" x2="0" y2="0" x3="67" y3="-19" layer="20"/>
+<dimension x1="195" y1="0" x2="134" y2="0" x3="164.5" y3="-19" layer="20"/>
 </plain>
 <libraries>
 <library name="mcu">
