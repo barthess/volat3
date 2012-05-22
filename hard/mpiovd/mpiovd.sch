@@ -22166,7 +22166,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="JP10" library="mount" deviceset="STAND-OFF-*" device="M3">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="U$1" library="frame-simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
+<part name="U$3" library="frame-simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -22507,7 +22507,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="+3V1" gate="G$1" x="58.42" y="274.32" rot="MR90"/>
 <instance part="GND269" gate="1" x="40.64" y="269.24"/>
-<instance part="U$1" gate="G$1" x="0" y="0"/>
+<instance part="U$3" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 <bus name="AN_FILTERED_[0..15]">
