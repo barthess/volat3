@@ -8,7 +8,7 @@ include $(TOP_DIR)/include.mak
 $(document).tex: pics
 
 pics:
-	cp $(TOP_DIR)/../hard/pcb_main/main_*.eps ./
+	cp $(TOP_DIR)/../hard/mpiovd/mpiovd_*.eps ./
 
 semiall: pdf $(document)_crop.pdf 
 
