@@ -19515,7 +19515,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </part>
 <part name="AGND17" library="supply" deviceset="AGND" device=""/>
 <part name="GND24" library="supply" deviceset="GND" device=""/>
-<part name="U$4" library="frame-simplified" deviceset="A2_LANDSCAPE_NEXT_SCALED" device=""/>
 <part name="C9" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF">
 <attribute name="PARTNO" value="C0603C104K5RACTU"/>
 </part>
@@ -22166,7 +22165,9 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <part name="JP10" library="mount" deviceset="STAND-OFF-*" device="M3">
 <attribute name="BOM" value="EXCLUDE"/>
 </part>
-<part name="U$3" library="frame-simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
+<part name="U$4" library="frame-simplified" deviceset="A1_LANDSCAPE_FIRST_SCALED" device=""/>
+<part name="U$12" library="frame-simplified" deviceset="A2_LANDSCAPE_NEXT_SCALED" device=""/>
+<part name="U$13" library="frame-simplified" deviceset="A1_PORTRAIT_NEXT_SCALED" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -22507,7 +22508,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="+3V1" gate="G$1" x="58.42" y="274.32" rot="MR90"/>
 <instance part="GND269" gate="1" x="40.64" y="269.24"/>
-<instance part="U$3" gate="G$1" x="0" y="0"/>
+<instance part="U$4" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 <bus name="AN_FILTERED_[0..15]">
@@ -24123,7 +24124,6 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 </instance>
 <instance part="AGND17" gate="VR1" x="236.22" y="35.56"/>
 <instance part="GND24" gate="1" x="210.82" y="38.1"/>
-<instance part="U$4" gate="G$1" x="0" y="0"/>
 <instance part="P+10" gate="G$1" x="83.82" y="182.88" rot="MR90"/>
 <instance part="P+18" gate="G$1" x="203.2" y="182.88" rot="MR90"/>
 <instance part="GND27" gate="1" x="38.1" y="88.9"/>
@@ -24271,6 +24271,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="GND249" gate="1" x="251.46" y="76.2"/>
 <instance part="GND250" gate="1" x="251.46" y="58.42"/>
 <instance part="GND251" gate="1" x="251.46" y="40.64"/>
+<instance part="U$12" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 <bus name="AN_FILTERED_[0..15]">
@@ -32646,6 +32647,7 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <instance part="DD9" gate=".2" x="231.14" y="83.82" smashed="yes">
 <attribute name="NAME" x="228.219" y="87.249" size="1.524" layer="95"/>
 </instance>
+<instance part="U$13" gate="G$1" x="0" y="0"/>
 </instances>
 <busses>
 <bus name="IO_EXPAND:SR_MISO,SR_MOSI,SR_SCK,!SR_SAMPLE,SR_IN_NSS,SR_OUT_NSS,!SR_OUT_ENABLE,SR_OUT_[1..7],Z_CHECK_TOGGLE,Z_CHECK">
