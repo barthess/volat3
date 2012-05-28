@@ -20,7 +20,7 @@
             <field type="uint16_t[16]" name="analog">Analog sensors data</field>
             <field type="uint16_t"     name="actuators">Actuators state</field>
             <field type="uint32_t"     name="trip">Vehicle mileage (meters)</field>
-            <field type="uint32_t"     name="motor_uptime">Vehicle motor uptime (seconds)</field>
+            <field type="uint32_t"     name="engine_uptime">Vehicle motor uptime (seconds)</field>
             <field type="uint16_t"     name="speed">Vehicle speed</field>
             <field type="uint16_t"     name="rpm">Vehicle engine RPM</field>
         </message>

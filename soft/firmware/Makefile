@@ -117,7 +117,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(CHIBIOS)/os/various \
          $(MAVLINKDIR) \
          $(MAVLINKDIR)/common \
-         $(MAVLINKDIR)/uvvu
+         $(MAVLINKDIR)/mpiovd
 
 #
 # Project, sources and paths

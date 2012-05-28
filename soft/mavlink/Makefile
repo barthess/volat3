@@ -2,7 +2,7 @@
 .PHONY: all mavlink_c mavlink_py clean
 
 TOP_DIR = $(shell pwd)
-MAVGEN_DIR = ../../../pymavlink/generator
+MAVGEN_DIR = ../../../mavlink
 FIXED_PY = mavutil.py mavextra.py mavwp.py scanwin32.py
 
 all: mavlink_c mavlink_py
