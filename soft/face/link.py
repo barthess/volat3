@@ -16,6 +16,9 @@ import io
 from binascii import hexlify
 from localconfig import *
 
+import globalflags
+flags = globalflags.flags
+
 # allow import from the parent directory, where mavlink.py and its stuff are
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
 import mavlink
@@ -46,18 +49,20 @@ def linkin(q_tlm, q_log, e_pause, e_kill, config):
 
     #настройка верёвки для связи
     baudrate = config.getint('Link', 'baudrate')
-    port     = config.getint('Link', 'port')
+    port     = config.get('Link', 'port')
     ser = serial.Serial(port, baudrate, timeout = 0.01)
     sio = io.BufferedRWPair(ser, ser, 1024)
 
     # ждем, пока нас снимут с паузы
-    print "---- link input thread ready"
+    if flags["debug"]:
+        print "**** link input thread ready"
     e_pause.wait()
-    print "---- link input thread run"
+    if flags["debug"]:
+        print "**** link input thread run"
 
     while True:
         if e_kill.is_set():
-            print "=== Link input thread. Kill signal received. Exiting"
+            print "**** Link input thread. Kill signal received. Exiting"
             return
         c = sio.read()
         try:

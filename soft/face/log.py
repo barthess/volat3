@@ -9,6 +9,9 @@ import struct
 import os
 from binascii import hexlify
 
+import globalflags
+flags = globalflags.flags
+
 
 # logging facilities
 def record(q_log, e_pause, e_kill):
@@ -27,13 +30,15 @@ def record(q_log, e_pause, e_kill):
     # откроем на запись файл
     csvwriter = csv.writer(open("logs/" + clear_datetime + '.csv', 'wb'), delimiter=';')
 
-    print "--- logwriter ready"
+    if flags["debug"]:
+        print "**** logwriter ready"
     e_pause.wait()
-    print "--- logwriter run"
+    if flags["debug"]:
+        print "**** logwriter run"
 
     while True:
         if e_kill.is_set():
-            print "=== LogWriter. Kill signal received. Exiting"
+            print "**** LogWriter. Kill signal received. Exiting"
             return
 
         try:
@@ -61,13 +66,15 @@ def play(filename, q_tlm, e_pause, e_kill, ):
     time_n = float(row[0])
     time_p = float(row[0])
     # ждем, пока нас снимут с паузы
-    print "--- play ready"
+    if flags["debug"]:
+        print "**** play ready"
     e_pause.wait()
-    print "--- play run"
+    if flags["debug"]:
+        print "**** play run"
 
     for row in logReader:
         if e_kill.is_set():
-            print "=== Play. Kill signal received. Exiting"
+            print "**** Play. Kill signal received. Exiting"
             return
 
         time_p = time_n

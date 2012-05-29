@@ -655,7 +655,7 @@ class Telemetry(GlossGame):#{{{
         pygame.display.set_caption(str(event.pos[0]) + "x" + str(event.pos[1]))
         #}}}
     def handle_mouse_motion(self, event):#{{{
-        if flags["debug"] is True:
+        if flags["mouse_capture"] is True:
             self.mousepos = event.pos
         #}}}
     def __normalupdate(self):#{{{
