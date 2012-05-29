@@ -4,6 +4,7 @@
 import sys
 import serial
 import os
+import signal
 import time
 import argparse
 import ConfigParser
@@ -26,7 +27,7 @@ import tuner
 # глобальные переменные между модулями
 import globalflags
 
-sys.dont_write_bytecode = True # не компилировать исходники
+# sys.dont_write_bytecode = True # не компилировать исходники
 
 # Очереди сообщений
 q_log  = Queue(1) # записывальщика лога
@@ -89,6 +90,7 @@ if __name__ == '__main__':
                                   args=(args.input_file.name, q_tlm, e_pause, e_kill, ))
         p_logreader.start()
     else:
+        pass
         p_linkin = Process(target=link.linkin,
                              args=(q_tlm, q_log, e_pause, e_kill, config))
         p_linkin.start()
@@ -107,14 +109,27 @@ if __name__ == '__main__':
     print "--- clear global pause"
     e_pause.set() # снимаем с паузы порожденные процессы
 
-    p_main.join() # ждем завершения главного процесса
+    p_main.join() # тусим тут, пока главный процесс не выйдет
+    print "Telemetry joined"
     e_kill.set()  # предлагаем всем остальным выйти
 
-    time.sleep(0.5)
-    # http://metazin.wordpress.com/2008/08/09/how-to-kill-a-process-in-windows-using-python/
-    os.system("taskkill /im python.exe /f")
-    p_protomanager.join()
-    p_link.join()
-    p_logwriter.join()
+    time.sleep(1)
+    try:
+        if p_protomanager != None: p_protomanager.join()
+    except:
+        pass
 
+    try:
+        if p_link != None: p_link.join()
+    except:
+        pass
+
+    try:
+        if p_logwriter != None: p_logwriter.join()
+        print "killed"
+    except:
+        pass
+
+
+os.kill(os.getpid(), signal.SIGABRT)
 

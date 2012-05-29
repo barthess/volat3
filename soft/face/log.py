@@ -46,6 +46,7 @@ def record(q_log, e_pause, e_kill):
 
 
 
+
 def play(filename, q_tlm, e_pause, e_kill, ):
     """ смотрелка телеметрии
     Парсит файл лога и передает его в функцию рисования телеметрии.

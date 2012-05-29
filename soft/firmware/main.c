@@ -401,9 +401,9 @@ int main(void) {
     chThdSleepMilliseconds(1000);
     raw.speed++;
 
-//    mavlink_msg_mpiovd_sensors_raw_encode(mavlink_system.sysid, mavlink_system.compid, &msg, &raw);
-//    len = mavlink_msg_to_send_buffer(buf, &msg);
-//    sdWrite(&SDU1, buf, len);
+    mavlink_msg_mpiovd_sensors_raw_encode(mavlink_system.sysid, mavlink_system.compid, &msg, &raw);
+    len = mavlink_msg_to_send_buffer(buf, &msg);
+    sdWrite(&SDU1, buf, len);
 
     mavlink_msg_heartbeat_pack(mavlink_system.sysid, mavlink_system.compid, &msg, system_type, autopilot_type, system_mode, custom_mode, system_state);
     len = mavlink_msg_to_send_buffer(buf, &msg);
