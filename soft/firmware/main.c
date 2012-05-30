@@ -399,7 +399,6 @@ int main(void) {
   uint16_t len = 0;
   while (TRUE) {
     chThdSleepMilliseconds(1000);
-    raw.speed++;
 
     mavlink_msg_mpiovd_sensors_raw_encode(mavlink_system.sysid, mavlink_system.compid, &msg, &raw);
     len = mavlink_msg_to_send_buffer(buf, &msg);
@@ -417,5 +416,18 @@ int main(void) {
   return 0;
 }
 
+
+/**
+ * «полн€лка структуры
+ */
+void fill_raw(mavlink_mpiovd_sensors_raw_t *raw){
+
+  if (raw->speed < 200)
+    raw->speed++;
+  else
+    raw->speed = 0;
+
+  if (raw->relay)
+}
 
 
