@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O0 -ggdb -fomit-frame-pointer -falign-functions=16
+  USE_OPT = -O0 -ggdb -fomit-frame-pointer -falign-functions=16 -std=gnu99
 endif
 
 # C specific options here (added to USE_OPT).
@@ -81,6 +81,23 @@ CSRC = $(PORTSRC) \
        $(CHIBIOS)/os/various/chprintf.c \
        main.c \
        board.c \
+       src/message.c \
+       src/utils.c \
+       src/stubs.c \
+       src/sanity.c \
+       src/i2c_local.c \
+       src/exti_local.c \
+       src/eeprom/24aa.c \
+       src/eeprom/eeprom.c \
+       src/link/usb_local.c \
+       src/link/uart_local.c \
+       src/link/cli.c \
+       src/link/cli_cmd.c \
+       src/link/link.c \
+       src/link/link_sortin.c \
+       src/link/link_sortout.c \
+       src/microrl/src/microrl.c \
+       
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -116,6 +133,10 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC) \
          $(CHIBIOS)/os/various \
          $(MAVLINKDIR) \
+         include \
+         src/sensors \
+         src/eeprom \
+         src/link \
          $(MAVLINKDIR)/common \
          $(MAVLINKDIR)/mpiovd
 

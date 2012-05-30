@@ -659,7 +659,7 @@ class Telemetry(GlossGame):#{{{
             self.mousepos = event.pos
         #}}}
     def __normalupdate(self):#{{{
-        """ Стандартная обновлялка флагов """
+        """ Стандартная обновлялка инфы """
         tlm_data = None
 
         try:
@@ -672,9 +672,9 @@ class Telemetry(GlossGame):#{{{
         if tlm_data is not None:
             # растусовка всей ботвы из пакета
             self.speed = tlm_data.speed / 256.0
-            self.tacho = tlm_data.speed / 256.0
-            self.temp_oil = tlm_data.speed / 2.0
-            self.temp_water = tlm_data.speed / 2.0
+            self.tacho = tlm_data.rpm / 256.0
+            self.temp_oil = tlm_data.analog01 / 2.0
+            self.temp_water = tlm_data.analog02 / 2.0
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
 
@@ -683,7 +683,7 @@ class Telemetry(GlossGame):#{{{
         self.sym_msk = random.randint(0, (2**32 - 1))
         #}}}
     def __debugupdate(self):#{{{
-        """ Отладочная обновлялка флагов """
+        """ Отладочная обновлялка информации на экране """
         self.last_success_time = time.time()
 
         self.speed = self.mousepos[1] / 768.0
