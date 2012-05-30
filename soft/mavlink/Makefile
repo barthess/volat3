@@ -4,7 +4,7 @@
 TOP_DIR = $(shell pwd)
 MAVGEN_DIR = ../../../mavlink
 # fixed files from mavlink bundle
-FIXED_PY = mavutil.py mavextra.py mavwp.py scanwin32.py
+FIXED_PY = mavutil.py mavextra.py
 
 all: mavlink_c mavlink_py
 
@@ -21,12 +21,12 @@ $(TOP_DIR)/C/mpiovd/mpiovd.h: $(TOP_DIR)/definitions/mpiovd.xml
 # python bindings
 $(TOP_DIR)/python/mavlink.py: $(TOP_DIR)/definitions/mpiovd.xml
 	cp $(TOP_DIR)/definitions/mpiovd.xml $(MAVGEN_DIR)/message_definitions/v1.0
-	$(MAVGEN_DIR)/pymavlink/generator/mavgen.py --lang=python --wire-protocol=1.0 -o python/python.py $(MAVGEN_DIR)/message_definitions/v1.0/mpiovd.xml
+	$(MAVGEN_DIR)/pymavlink/generator/mavgen.py --lang=python --wire-protocol=1.0 -o python/mavlink.py $(MAVGEN_DIR)/message_definitions/v1.0/mpiovd.xml
 	rm $(MAVGEN_DIR)/message_definitions/v1.0/mpiovd.xml
 
 # fixed files for python bingings
 $(FIXED_PY): $(TOP_DIR)/definitions/mpiovd.xml
-	cp $(MAVGEN_DIR)/pymavlink/*.py $(TOP_DIR)/python
+	cd $(MAVGEN_DIR)/pymavlink; cp $(FIXED_PY) $(TOP_DIR)/python
 
 clean:
 	rm -rf $(TOP_DIR)/python/*.pyc

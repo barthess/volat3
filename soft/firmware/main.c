@@ -338,6 +338,28 @@ static msg_t Thread1(void *arg) {
   return 0;
 }
 
+
+/**
+ * «полн€лка структуры
+ */
+static void fill_raw(mavlink_mpiovd_sensors_raw_t *raw){
+
+  if (raw->speed < 200)
+    raw->speed++;
+  else
+    raw->speed = 0;
+
+  raw->relay = rand();
+  raw->relay = ((raw->relay) << 32) + rand();
+
+  raw->engine_uptime = chTimeNow() / 2000;
+  raw->trip = chTimeNow() / 1000;
+  raw->rpm = raw->speed / 2;
+  raw->sec = chTimeNow() / 1000;
+  raw->analog01 = 10;
+}
+
+
 /*
  * Application entry point.
  */
@@ -400,6 +422,8 @@ int main(void) {
   while (TRUE) {
     chThdSleepMilliseconds(1000);
 
+    fill_raw(&raw);
+
     mavlink_msg_mpiovd_sensors_raw_encode(mavlink_system.sysid, mavlink_system.compid, &msg, &raw);
     len = mavlink_msg_to_send_buffer(buf, &msg);
     sdWrite(&SDU1, buf, len);
@@ -414,20 +438,6 @@ int main(void) {
     chThdSleepMilliseconds(666);
   }
   return 0;
-}
-
-
-/**
- * «полн€лка структуры
- */
-void fill_raw(mavlink_mpiovd_sensors_raw_t *raw){
-
-  if (raw->speed < 200)
-    raw->speed++;
-  else
-    raw->speed = 0;
-
-  if (raw->relay)
 }
 
 

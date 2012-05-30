@@ -16,6 +16,8 @@ import io
 from binascii import hexlify
 from localconfig import *
 
+from utils import *
+
 import globalflags
 flags = globalflags.flags
 
@@ -50,38 +52,43 @@ def linkin(q_tlm, q_log, e_pause, e_kill, config):
     #настройка верёвки для связи
     baudrate = config.getint('Link', 'baudrate')
     port     = config.get('Link', 'port')
-    ser = serial.Serial(port, baudrate, timeout = 0.01)
+    ser = serial.Serial(port, baudrate, timeout = 1)
+    # TODO: create mpiovd presence detector based on empty string returned on
+    # timeout
     sio = io.BufferedRWPair(ser, ser, 1024)
+    m = None
 
     # ждем, пока нас снимут с паузы
-    if flags["debug"]:
-        print "**** link input thread ready"
+    dbgprint("**** link input thread ready")
     e_pause.wait()
-    if flags["debug"]:
-        print "**** link input thread run"
+    dbgprint("**** link input thread run")
 
     while True:
         if e_kill.is_set():
-            print "**** Link input thread. Kill signal received. Exiting"
+            dbgprint("**** Link input thread. Kill signal received. Exiting")
             return
-        c = sio.read()
+        # c = sio.read()
+        c = ser.read()
         try:
             m = mav.parse_char(c)
+            # print hexlify(c)
         except mavlink.MAVError:
             pass
 
         if m != None:
-            if type(m) == mavlink.MAVLink_uvvu_sensors_raw_short_message:
+            # print hexlify(m)
+            if type(m) == mavlink.MAVLink_mpiovd_sensors_raw_message:
                 try:
                     q_tlm.put_nowait(m)
                 except Full:
-                    errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue full\n")
+                    errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
+                dbgprint("MAVLINK: raw sensors message decoded")
                 m = None
             elif type(m) == mavlink.MAVLink_heartbeat_message:
-                print "Heartbeat"
+                dbgprint("MAVLINK: Heartbeat message decoded")
                 m = None
             else:
-                print "I do not know what to do with this message."
+                dbgprint("I do not how to handle message of type " + type(m) + " .")
                 m = None
 
 

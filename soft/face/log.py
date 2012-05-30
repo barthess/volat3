@@ -9,6 +9,7 @@ import struct
 import os
 from binascii import hexlify
 
+from utils import *
 import globalflags
 flags = globalflags.flags
 
@@ -30,15 +31,14 @@ def record(q_log, e_pause, e_kill):
     # откроем на запись файл
     csvwriter = csv.writer(open("logs/" + clear_datetime + '.csv', 'wb'), delimiter=';')
 
-    if flags["debug"]:
-        print "**** logwriter ready"
+
+    dbgprint("**** logwriter ready")
     e_pause.wait()
-    if flags["debug"]:
-        print "**** logwriter run"
+    dbgprint("**** logwriter run")
 
     while True:
         if e_kill.is_set():
-            print "**** LogWriter. Kill signal received. Exiting"
+            dbgprint("**** LogWriter. Kill signal received. Exiting")
             return
 
         try:
@@ -53,7 +53,7 @@ def record(q_log, e_pause, e_kill):
 
 
 def play(filename, q_tlm, e_pause, e_kill, ):
-    """ смотрелка телеметрии
+    """ проигрывалка телеметрии
     Парсит файл лога и передает его в функцию рисования телеметрии.
     Так же отслеживает нажатие клавиш выхода из программы.
 
@@ -66,15 +66,13 @@ def play(filename, q_tlm, e_pause, e_kill, ):
     time_n = float(row[0])
     time_p = float(row[0])
     # ждем, пока нас снимут с паузы
-    if flags["debug"]:
-        print "**** play ready"
+    dbgprint("**** play ready")
     e_pause.wait()
-    if flags["debug"]:
-        print "**** play run"
+    dbgprint("**** play run")
 
     for row in logReader:
         if e_kill.is_set():
-            print "**** Play. Kill signal received. Exiting"
+            dbgprint("**** Play. Kill signal received. Exiting")
             return
 
         time_p = time_n
