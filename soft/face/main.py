@@ -26,6 +26,7 @@ import tuner
 
 # глобальные переменные между модулями
 import globalflags
+flags = globalflags.flags
 
 # sys.dont_write_bytecode = True # не компилировать исходники
 
@@ -87,7 +88,7 @@ if __name__ == '__main__':
 
     if args.input_file != None:
         p_logreader = Process(target=log.play,
-                                  args=(args.input_file.name, q_tlm, e_pause, e_kill, ))
+                                args=(args.input_file.name, q_tlm, e_pause, e_kill, ))
         p_logreader.start()
     else:
         pass
@@ -100,17 +101,18 @@ if __name__ == '__main__':
         #p_linkout.start()
 
         p_logwriter = Process(target=log.record,
-                              args=(q_log, e_pause, e_kill, ))
+                                args=(q_log, e_pause, e_kill, ))
         p_logwriter.start()
 
 
 
     time.sleep(4) # ждем, пока все процессы подхватятся
-    print "--- clear global pause"
+    if flags["debug"]:
+        print "**** clear global pause"
     e_pause.set() # снимаем с паузы порожденные процессы
 
     p_main.join() # тусим тут, пока главный процесс не выйдет
-    print "Telemetry joined"
+    print "**** Telemetry process successfully exited."
     e_kill.set()  # предлагаем всем остальным выйти
 
     time.sleep(1)
@@ -126,10 +128,13 @@ if __name__ == '__main__':
 
     try:
         if p_logwriter != None: p_logwriter.join()
-        print "killed"
     except:
         pass
 
 
+# самостоятельно с помощью exit() мы умереть почему-то не можем,
+# воспользуемся услугами киллера
 os.kill(os.getpid(), signal.SIGABRT)
+
+
 
