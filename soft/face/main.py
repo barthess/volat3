@@ -106,7 +106,7 @@ if __name__ == '__main__':
 
 
 
-    time.sleep(4) # ждем, пока все процессы подхватятся
+    time.sleep(1) # ждем, пока все процессы подхватятся
     if flags["debug"]:
         print "**** clear global pause"
     e_pause.set() # снимаем с паузы порожденные процессы

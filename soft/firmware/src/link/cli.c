@@ -191,6 +191,7 @@ void sigint (void){
 static WORKING_AREA(ShellThreadWA, 2048);
 static msg_t ShellThread(void *arg){
   chRegSetThreadName("Shell");
+  chThdSleepMilliseconds(1000);
 
   /* init static pointer for serial driver with received pointer */
   shell_sdp = (SerialUSBDriver *)arg;
@@ -235,8 +236,7 @@ static msg_t ShellThread(void *arg){
  *******************************************************************************
  */
 
-
-void CliConnect(void *sdp_cli){
+void CliConnect(SerialUSBDriver *sdp_cli){
   shell_tp = chThdCreateStatic(ShellThreadWA,
                             sizeof(ShellThreadWA),
                             LINK_THREADS_PRIO,

@@ -86,7 +86,13 @@ CSRC = $(PORTSRC) \
        src/stubs.c \
        src/sanity.c \
        src/i2c_local.c \
+       src/sensors/mavsender.c \
+       src/sensors/lis3.c \
+       src/sensors/tmp75.c \
+       src/sensors/sensors.c \
        src/exti_local.c \
+       src/parameters/param.c \
+       src/parameters/persistant.c \
        src/eeprom/24aa.c \
        src/eeprom/eeprom.c \
        src/link/usb_local.c \
@@ -137,6 +143,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src/sensors \
          src/eeprom \
          src/link \
+         src/parameters \
          $(MAVLINKDIR)/common \
          $(MAVLINKDIR)/mpiovd
 
@@ -148,7 +155,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
 # Compiler settings
 #
 
-MCU  = cortex-m3
+MCU  = cortex-m3 -lm
 
 #TRGT = arm-elf-
 TRGT = arm-none-eabi-
@@ -235,3 +242,9 @@ ifeq ($(USE_FWLIB),yes)
 endif
 
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/rules.mk
+
+# User difined rules here
+MAKE_ALL_RULE_HOOK: res_usage
+
+res_usage: $(BUILDDIR)/$(PROJECT).map $(BUILDDIR)/$(PROJECT).bin
+	./res_usage.sh	

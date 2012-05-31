@@ -8,8 +8,6 @@
 #include "param.h"
 #include "persistant.h"
 #include "main.h"
-#include "imu.h"
-#include "servo.h"
 #include "eeprom.h"
 #include "link.h"
 #include "utils.h"
@@ -59,154 +57,86 @@ static bool_t int_setval(float value,  GlobalParam_t *param){
     return PARAM_FAILED;
 }
 
-/**
- * Cheker for inversion coefficients used (for example) in gyros
- * to invert direction values.
- */
-bool_t polarity_setval(float value,  GlobalParam_t *param){
-  if ((value > -1.1) && (value < -0.9)){
-    param->value = -1;
-    return PARAM_SUCCESS;
-  }
-  else{
-    param->value = 1;
-    return PARAM_FAILED;
-  }
-}
-
-
 GlobalParam_t global_data[] = {
   /*  key             min         val         max         type                    checker_fucntion   */
   /*--------------------------------------------------------------------------------------------------*/
   {"SYS_ID",          1,          20,         255,        MAVLINK_TYPE_UINT32_T,  default_setval},
-  /* тип автопилота (см. MAV_TYPE enum)
+  /* тип "автопилота" (см. MAV_TYPE enum)
    * для возможности переключения между машиной и самолетом. Изменения
    * вступают в силу только после ребута. */
   {"SYS_mavtype",     0,          1,          16,         MAVLINK_TYPE_UINT32_T,  default_setval},
 
-  /**** всякие флаги для коммандной оболочки ****/
-  {"SH_enable",       0,          0,          1,          MAVLINK_TYPE_UINT32_T,  default_setval},
+  //Коэффициенты полиномов для пересчета показаний с датчиков
+  {"AN_ch01_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch01_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch01_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /* IMU - inertial measurement unit */
-  {"IMU_g1",          -1,         0.1,        1,          MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_g2",          -1,         0.2,        1,          MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_g3",          -1,         0.3,        1,          MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_send_ms",     SEND_MIN,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  default_setval},
+  {"AN_ch02_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch02_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch02_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /**** смещения нулей магнитометра ****/
-  {"MAG_xoffset",     -5000,      110,        5000,       MAVLINK_TYPE_INT32_T,   default_setval},
-  {"MAG_yoffset",     -5000,      -90,        5000,       MAVLINK_TYPE_INT32_T,   default_setval},
-  {"MAG_zoffset",     -5000,      351,        5000,       MAVLINK_TYPE_INT32_T,   default_setval},
-  /**** чувствительность магнитометра ****/
-  {"MAG_xsens",       0.001,      0.1,        1.0,       MAVLINK_TYPE_FLOAT,     default_setval},
-  {"MAG_ysens",       0.001,      0.1,        1.0,       MAVLINK_TYPE_FLOAT,     default_setval},
-  {"MAG_zsens",       0.001,      0.1,        1.0,       MAVLINK_TYPE_FLOAT,     default_setval},
-  /**** полярности осей. Направление осей приведено к осям автопилота ****/
-  {"MAG_xpol",        -1,         1,          1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
-  {"MAG_ypol",        -1,         1,          1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
-  {"MAG_zpol",        -1,         1,          1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
-  /* магнитное склонение */
-  {"MAG_inclinate",   -90,        7,          90,         MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch03_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch03_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch03_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /**** смещения нулей акселерометра ****/
-  {"ACC_xoffset",     -100,       2,          100,        MAVLINK_TYPE_INT32_T,   default_setval},
-  {"ACC_yoffset",     -100,       0,          100,        MAVLINK_TYPE_INT32_T,   default_setval},
-  {"ACC_zoffset",     -100,       -3,         100,        MAVLINK_TYPE_INT32_T,   default_setval},
-  /**** чувствительность акселерометра LSB/g, номинальные: 4096, 8192, 16384 ****/
-  {"ACC_xsens",       3000,       8192,       17000,      MAVLINK_TYPE_FLOAT,     default_setval},
-  {"ACC_ysens",       3000,       8192,       17000,      MAVLINK_TYPE_FLOAT,     default_setval},
-  {"ACC_zsens",       3000,       8192,       17000,      MAVLINK_TYPE_FLOAT,     default_setval},
-  /**** полярности осей. Направление осей приведено к осям автопилота ****/
-  {"ACC_xpol",        -1,         1,          1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
-  {"ACC_ypol",        -1,         1,          1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
-  {"ACC_zpol",        -1,         1,          1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
+  {"AN_ch04_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch04_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch04_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /**** чувствительности осей гироскопа (LSB/(deg/s)). Направление осей приведено к осям автопилота ****/
-  {"GYRO_xsens",      7.0,        14.375,     30.0,       MAVLINK_TYPE_FLOAT,     default_setval},
-  {"GYRO_ysens",      7.0,        14.375,     30.0,       MAVLINK_TYPE_FLOAT,     default_setval},
-  {"GYRO_zsens",      7.0,        14.375,     30.0,       MAVLINK_TYPE_FLOAT,     default_setval},
-  /**** полярности вращения осей. Направление осей приведено к осям автопилота ****/
-  {"GYRO_xpol",       -1,         -1,         1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
-  {"GYRO_ypol",       -1,         1,          1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
-  {"GYRO_zpol",       -1,         1,          1,          MAVLINK_TYPE_INT32_T,   polarity_setval},
+  {"AN_ch05_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch05_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch05_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /**** PMU - pressure measurement unit ****/
-  //Коэффициенты полинома для термокомпенсации нуля
-  {"PMU_c1",          -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"PMU_c2",          -2000000,   408,        2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"PMU_c3",          -2000000,   7587,       2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"PMU_c4",          -2000000,   60011,      2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"PMU_send_ms",     SEND_MIN,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  default_setval},
+  {"AN_ch06_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch06_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch06_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /**** ADC coefficients ****/
-  // смещение нуля датчика тока
-  {"ADC_I_offset",    0,          16,         4096,       MAVLINK_TYPE_UINT32_T,  default_setval},
-  // на столько надо поделить, чтобы получить амперы. Для машинки 1912, для самолета 37
-  {"ADC_I_gain",      0,          1912,       12240,      MAVLINK_TYPE_UINT32_T,  default_setval},
-  // secondary voltage. на столько надо умножить, чтобы получить nV
-  {"ADC_SV_gain",     0,          8052,       12240,      MAVLINK_TYPE_UINT32_T,  default_setval},
-  // main voltage. на столько надо умножить, чтобы получить nV
-  {"ADC_MV_gain",     0,          8050,       12240,      MAVLINK_TYPE_UINT32_T,  default_setval},
+  {"AN_ch07_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch07_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch07_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /**** Bttery parameters ****/
-  // емкость батареи в mAh
-  {"BAT_cap",         0,          2200,       11000,      MAVLINK_TYPE_UINT32_T,  default_setval},
-  // на столько процентов заряжена перед установкой в самолет
-  {"BAT_fill",        0,          98,         100,        MAVLINK_TYPE_UINT32_T,  default_setval},
+  {"AN_ch08_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch08_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch08_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /**** Servos coefficients ****/
-  {"SERVO_1_min",     SERVO_MIN,  1000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_1_max",     SERVO_MIN,  2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_1_neutra",  SERVO_MIN,  1500,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_2_min",     SERVO_MIN,  1000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_2_max",     SERVO_MIN,  2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_2_neutra",  SERVO_MIN,  1500,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_3_min",     SERVO_MIN,  1000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_3_max",     SERVO_MIN,  2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_3_neutra",  SERVO_MIN,  1500,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_4_min",     SERVO_MIN,  1000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_4_max",     SERVO_MIN,  2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_4_neutra",  SERVO_MIN,  1500,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_5_min",     SERVO_MIN,  1000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_5_max",     SERVO_MIN,  2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_5_neutra",  SERVO_MIN,  1500,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_6_min",     SERVO_MIN,  1000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_6_max",     SERVO_MIN,  2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_6_neutra",  SERVO_MIN,  1500,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_7_min",     SERVO_MIN,  1000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_7_max",     SERVO_MIN,  2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_7_neutra",  SERVO_MIN,  1500,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_8_min",     SERVO_MIN,  1000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_8_max",     SERVO_MIN,  2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_8_neutra",  SERVO_MIN,  1500,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  /* машинко-специфичные настройки */
-  {"SERVO_car_max",   1,          2000,       SERVO_MAX,  MAVLINK_TYPE_UINT32_T,  default_setval},
-  {"SERVO_car_dz",    1,          32,         64,         MAVLINK_TYPE_UINT32_T,  default_setval},
+  {"AN_ch09_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch09_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch09_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /* настройки инерциалки */
-  {"IMU_accweight",   0.0,        0.01,       0.1,        MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_magweight",   0.0,        0.01,       0.9,        MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_gpsweight",   0.0,        0.01,       0.1,        MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_reserved1",   0.0,        0.01,       0.1,        MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_reserved2",   0.0,        0.01,       0.1,        MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_reserved3",   0.0,        0.01,       0.1,        MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_reserved4",   0.0,        0.01,       0.1,        MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_reserved5",   0.0,        0.01,       0.1,        MAVLINK_TYPE_FLOAT,     default_setval},
-  {"IMU_reserved6",   0.0,        0.01,       0.1,        MAVLINK_TYPE_FLOAT,     default_setval},
+  {"AN_ch10_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch10_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch10_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /* sample count for zeroing */
-  {"GYRO_zeroconut",  256,        2048,       16384,      MAVLINK_TYPE_UINT32_T,  default_setval},
+  {"AN_ch11_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch11_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch11_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /* время между посылками данных определенного типа в mS
-   * 60001 - означает отключение посылок данного типа */
-  {"T_raw_imu",       SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  {"T_raw_press",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  {"T_scal_imu",      SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  {"T_scal_press",    SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  {"T_attitude",      SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  {"T_vfr_hud",       SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  {"T_gps_int",       SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  {"T_sys_status",    SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
+  {"AN_ch12_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch12_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch12_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+
+  {"AN_ch13_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch13_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch13_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+
+  {"AN_ch14_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch14_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch14_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+
+  {"AN_ch15_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch15_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch15_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+
+  {"AN_ch16_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch16_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch10_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+
+  /****** разные временнЫе интервалы в mS */
+  // пакеты с телеметрией
+  {"T_tlm",           SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
+  // интервал между сохранениями пробега и моточасов в eeprom
+  {"T_save_trip",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
+  // пакеты heartbeat
   {"T_heartbeat",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
   {"T_reserved1",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
   {"T_reserved2",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
@@ -286,7 +216,7 @@ static bool_t send_value(Mail *param_value_mail,
   else
     index = n;
 
-  if ((index >= 0) && (index <= ONBOARD_PARAM_COUNT)){
+  if ((index >= 0) && (index <= (int)ONBOARD_PARAM_COUNT)){
     /* fill all fields */
     param_value_struct->param_value = global_data[index].value;
     param_value_struct->param_count = ONBOARD_PARAM_COUNT;
@@ -401,7 +331,7 @@ static msg_t ParametersThread(void *arg){
 int32_t _key_index_search(char* key){
   int32_t i = 0;
 
-  for (i = 0; i < ONBOARD_PARAM_COUNT; i++){
+  for (i = 0; i < (int)ONBOARD_PARAM_COUNT; i++){
     if (strcmp(key, global_data[i].name) == 0)
       return i;
   }

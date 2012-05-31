@@ -6,6 +6,7 @@
 #include "usb_local.h"
 #include "uart_local.h"
 #include "message.h"
+#include "mavsender.h"
 #include "main.h"
 
 #include "link_sortin.h"
@@ -129,6 +130,7 @@ void MavlinkConnect(void *sdp_mav){
 void LinkInit(void){
   MavlinkConnect(UartInitLocal());
   CliConnect(UsbInitLocal());
+  MavSenderInit();
 }
 
 

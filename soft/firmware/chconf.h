@@ -32,8 +32,6 @@
 #ifndef _CHCONF_H_
 #define _CHCONF_H_
 
-#define PORT_IDLE_THREAD_STACK_SIZE     32
-
 /*===========================================================================*/
 /**
  * @name Kernel parameters and options
@@ -397,7 +395,7 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_ENABLE_TRACE) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_TRACE             TRUE
+#define CH_DBG_ENABLE_TRACE             FALSE
 #endif
 
 /**

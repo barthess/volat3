@@ -21,8 +21,8 @@
 
 
 
-int init_lis3(void);
-void request_acceleration_data(void);
+void init_lis3(void);
+int16_t* request_acceleration_data(void);
 
 
 #endif /* LIS3_H_ */
