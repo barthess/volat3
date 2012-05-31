@@ -59,7 +59,7 @@ static msg_t PollLis3Thread(void *arg){
     raw_data.yacc = accel_rx_data[2] + (accel_rx_data[3] << 8);
     raw_data.zacc = accel_rx_data[4] + (accel_rx_data[5] << 8);
 
-    chThdSleepMilliseconds(200);
+    chThdSleepMilliseconds(50);
   }
   return 0;
 }

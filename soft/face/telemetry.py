@@ -673,14 +673,14 @@ class Telemetry(GlossGame):#{{{
             # растусовка всей ботвы из пакета
             self.speed = tlm_data.speed / 256.0
             self.tacho = tlm_data.rpm / 256.0
-            self.temp_oil = tlm_data.analog01 / 2.0
-            self.temp_water = tlm_data.analog02 / 2.0
+            self.temp_oil = tlm_data.analog01
+            self.temp_water = tlm_data.analog02
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
 
-        self.autriggers_msk += 1
-        self.autriggers_msk &= 2**7 - 1
-        self.sym_msk = random.randint(0, (2**32 - 1))
+        # self.autriggers_msk += 1
+        # self.autriggers_msk &= 2**7 - 1
+        # self.sym_msk = random.randint(0, (2**32 - 1))
         #}}}
     def __debugupdate(self):#{{{
         """ Отладочная обновлялка информации на экране """

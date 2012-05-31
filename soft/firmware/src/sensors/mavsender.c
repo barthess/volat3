@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "ch.h"
 #include "hal.h"
 
@@ -58,12 +60,19 @@ static msg_t TLM_SenderThread(void *arg) {
   Mail scaled_mail = {NULL, MAVLINK_MSG_ID_MPIOVD_SENSORS_SCALED, NULL};
 
   while (TRUE) {
-    chThdSleepMilliseconds(200);
+    chThdSleepMilliseconds(50);
 
     if (raw_mail.payload == NULL){
       mpiovd_sensors_raw_struct.sec = TIME_BOOT_MS;
-      mpiovd_sensors_raw_struct.analog01 = ((uint16_t)raw_data.temp_tmp75) / 256;
-      mpiovd_sensors_raw_struct.engine_uptime = chTimeNow();
+      mpiovd_sensors_raw_struct.analog01 = (raw_data.temp_tmp75) / 128;
+      mpiovd_sensors_raw_struct.analog02 = (raw_data.temp_tmp75) / 100;
+      mpiovd_sensors_raw_struct.analog03 = abs(raw_data.xacc);
+      mpiovd_sensors_raw_struct.analog04 = abs(raw_data.yacc);
+      mpiovd_sensors_raw_struct.analog05 = abs(raw_data.zacc);
+
+      mpiovd_sensors_raw_struct.speed = abs(raw_data.xacc) / 256;
+      mpiovd_sensors_raw_struct.rpm = abs(raw_data.xacc) / 64;
+      mpiovd_sensors_raw_struct.engine_uptime = chTimeNow()/10000;
 
       raw_mail.payload = &mpiovd_sensors_raw_struct;
       chMBPost(&tolink_mb, (msg_t)&raw_mail, TIME_IMMEDIATE);

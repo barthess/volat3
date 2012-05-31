@@ -77,26 +77,24 @@ def linkin(q_tlm, q_log, e_pause, e_kill, config):
 
         if m != None:
             # print hexlify(m)
-            if type(m) == mavlink.MAVLink_mpiovd_sensors_scaled_message:
-                try:
-                    q_tlm.put_nowait(m)
-                except Full:
-                    errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
-                dbgprint("MAVLINK: scaled sensors message decoded")
-                m = None
+            # if type(m) == mavlink.MAVLink_mpiovd_sensors_scaled_message:
+            #     try:
+            #         q_tlm.put_nowait(m)
+            #     except Full:
+            #         errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
+            #     dbgprint(m)
+            #     m = None
 
             if type(m) == mavlink.MAVLink_mpiovd_sensors_raw_message:
-                # print m
                 try:
                     q_tlm.put_nowait(m)
                 except Full:
                     errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
                 dbgprint(m)
-                # dbgprint("MAVLINK: raw sensors message decoded")
                 m = None
 
             elif type(m) == mavlink.MAVLink_heartbeat_message:
-                dbgprint("MAVLINK: Heartbeat message decoded")
+                dbgprint(m)
                 m = None
 
             else:
