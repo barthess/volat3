@@ -678,6 +678,7 @@ class Telemetry(GlossGame):#{{{
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
 
+        # моргание значками в случайном порядке
         # self.autriggers_msk += 1
         # self.autriggers_msk &= 2**7 - 1
         # self.sym_msk = random.randint(0, (2**32 - 1))
