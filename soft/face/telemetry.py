@@ -674,6 +674,8 @@ class Telemetry(GlossGame):#{{{
             self.tacho = tlm_data.rpm / 256.0
             self.temp_oil = tlm_data.analog01
             self.temp_water = tlm_data.analog02
+
+            self.sym_msk = tlm_data.relay
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
 
