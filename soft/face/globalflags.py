@@ -1,6 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+# '''
+# This values moved here from *.cfg for ability of changing from elsewhere
+# '''
+
 from multiprocessing import Lock
 
 flags = {"lock" : Lock(), # для атомарного доступа к флагам

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# 
+#
 
 import struct
 import sys
@@ -11,8 +11,6 @@ import tkFileDialog, tkMessageBox
 from Queue import Empty # для отлова исключений
 from multiprocessing import Queue, Event
 from binascii import hexlify
-
-from localconfig import *
 
 
 class ComboScale(Frame):#{{{
@@ -134,10 +132,6 @@ class ServoEqualizer(Frame):#{{{
         self.equalizervals["s3"] = self.s3.servovals
         return self.equalizervals
 #}}}
-
-
-
-
 
 
 packedservovals = None # для хранения последних проверенных значений в виде бинарной строки

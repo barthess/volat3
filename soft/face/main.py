@@ -18,7 +18,6 @@ from gloss import *
 
 # самопальные модули
 from dsp import *
-from localconfig import *
 import telemetry
 import log
 import link
@@ -46,6 +45,7 @@ e_kill.clear()
 
 
 def main(q_tlm, config):
+    pygame.init()
     """ Запускает отрисовку телеметрии и пробрасывает в нее очередь сообщений. """
     tlm = telemetry.Telemetry("MOSK - Mobile Operational System Kamikaze")
     Gloss.screen_resolution = 1024,768

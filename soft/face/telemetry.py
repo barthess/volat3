@@ -9,7 +9,6 @@ from math import *
 from multiprocessing import Process, Queue, Lock, Event, freeze_support
 from Queue import Empty, Full
 
-from localconfig import *
 from dsp import *
 
 import globalflags

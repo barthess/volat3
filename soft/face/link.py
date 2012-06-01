@@ -14,7 +14,6 @@ from Queue import Empty, Full # для отлова исключений
 import serial
 import io
 from binascii import hexlify
-from localconfig import *
 
 from utils import *
 
