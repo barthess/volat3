@@ -6,6 +6,7 @@ import datetime
 import ConfigParser
 import sys
 import os
+import socket
 
 from struct import *
 from multiprocessing import Queue
@@ -45,10 +46,15 @@ def linkin(q_tlm, q_log, e_pause, e_kill, config):
     Принимает поток данных, выискивает пакеты, сортирует.
 
     """
-    # сделаем файл для записи ошибок
+    # UDP сокет для всех желающих
+    # SOCK_DGRAM is the socket type to use for UDP sockets
+    port_udp_agc = config.getint('Link', 'PORT_UDP_QGC')
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+    # файл для записи ошибок
     errlog = open('logs/link.log', 'a')
 
-    #настройка верёвки для связи
+    #настройка верёвки для связи по ком-порту
     baudrate = config.getint('Link', 'baudrate')
     port     = config.get('Link', 'port')
     ser = serial.Serial(port, baudrate, timeout = 1)
@@ -68,6 +74,9 @@ def linkin(q_tlm, q_log, e_pause, e_kill, config):
             return
         # c = sio.read()
         c = ser.read()
+        # send byte via udp
+        sock.sendto(c, ("localhost", port_udp_agc))
+
         try:
             m = mav.parse_char(c)
             # print hexlify(c)
