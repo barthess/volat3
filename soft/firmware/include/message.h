@@ -5,6 +5,9 @@
 #include <common.h>
 #include <mpiovd.h>
 
+#include "ch.h"
+#include "hal.h"
+
 /**
  * структура определяет формат сообщений типа "письмо" для обмена данными.
  */

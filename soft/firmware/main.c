@@ -9,6 +9,7 @@
 #include "eeprom.h"
 #include "i2c_local.h"
 #include "sensors.h"
+#include "autopilot.h"
 
 /* heap for (link threads) OR (shell thread)*/
 MemoryHeap LinkThdHeap;
@@ -39,6 +40,7 @@ int main(void) {
   SanityControlInit();
   I2CInitLocal();
   SensorsInit();
+  AutopilotInit();
 
   while (TRUE) {
     chThdSleepMilliseconds(666);

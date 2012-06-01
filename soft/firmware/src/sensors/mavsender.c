@@ -70,6 +70,11 @@ static msg_t TLM_SenderThread(void *arg) {
       mpiovd_sensors_raw_struct.analog04 = abs(raw_data.yacc);
       mpiovd_sensors_raw_struct.analog05 = abs(raw_data.zacc);
 
+      mpiovd_sensors_raw_struct.relay  = ((uint64_t)raw_data.xacc) << 48;
+      mpiovd_sensors_raw_struct.relay += ((uint64_t)raw_data.yacc) << 32;
+      mpiovd_sensors_raw_struct.relay += ((uint64_t)raw_data.zacc) << 16;
+      mpiovd_sensors_raw_struct.relay += ((uint64_t)raw_data.xacc);
+
       mpiovd_sensors_raw_struct.speed = abs(raw_data.xacc) / 256;
       mpiovd_sensors_raw_struct.rpm = abs(raw_data.xacc) / 64;
       mpiovd_sensors_raw_struct.engine_uptime = chTimeNow()/10000;
