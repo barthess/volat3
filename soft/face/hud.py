@@ -45,8 +45,8 @@ def main(q_tlm):
     pygame.init()
     tlm = telemetry.Telemetry("MOSK - Mobile Operational System Kamikaze")
     Gloss.screen_resolution = 1024,768
-    #Gloss.full_screen = True
-    #Gloss.enable_multisampling = False
+    # Gloss.full_screen = True
+    # Gloss.enable_multisampling = False
     Gloss.enable_multisampling = True
     #pygame.mouse.set_visible(False)
     pygame.mouse.set_visible(True)
@@ -61,6 +61,7 @@ if __name__ == '__main__':
     # read socket settings settings from config
     config = ConfigParser.SafeConfigParser()
     config.read('default.cfg')
+
     ADDR = "localhost", config.getint("Socket", "PORT_UDP_HUD")
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ADDR))
@@ -83,7 +84,7 @@ if __name__ == '__main__':
     dbgprint("**** clear global pause")
     e_pause.set() # снимаем с паузы порожденные процессы
 
-    p_main.join() # тусим тут, пока главный процесс не выйдет
+    p_main.join() # тусим тут, пока главный процесс не завершится
     print "**** Telemetry process successfully exited."
     e_kill.set()  # предлагаем всем остальным выйти
 

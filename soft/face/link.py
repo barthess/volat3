@@ -35,7 +35,7 @@ mav = mavlink.MAVLink(f)
 # файл для записи ошибок
 errlog = open('logs/link.log', 'a')
 
-def __receive_data(q_tlm, c):#{{{
+def __receive_data(q, c):#{{{
     """ Parses input bytes and push _all_ decoded messages in queue """
     m = None
 
@@ -46,31 +46,13 @@ def __receive_data(q_tlm, c):#{{{
         pass
 
     if m != None:
-        # print hexlify(m)
-        # if type(m) == mavlink.MAVLink_mpiovd_sensors_scaled_message:
-        #     try:
-        #         q_tlm.put_nowait(m)
-        #     except Full:
-        #         errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
-        #     dbgprint(m)
-        #     m = None
-
-        if type(m) == mavlink.MAVLink_mpiovd_sensors_raw_message:
-            try:
-                q_tlm.put_nowait(m)
-            except Full:
-                errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
-            dbgprint(m)
-            m = None
-
-        elif type(m) == mavlink.MAVLink_heartbeat_message:
-            dbgprint(m)
-            m = None
-
-        else:
-            m = None
+        try:
+            q.put_nowait(m)
+        except Full:
+            errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
+        dbgprint(m)
+        m = None
 #}}}
-
 def linkin(q, e_pause, e_kill, sock):#{{{
     """ Менеджер входящих сообщений. """
     # ждем, пока нас снимут с паузы

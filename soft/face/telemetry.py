@@ -14,6 +14,10 @@ from dsp import *
 import globalflags
 flags = globalflags.flags
 
+# allow import from the parent directory, where mavlink.py and its stuff are
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
+import mavlink
+
 #дополнительные именованные цвета
 Color.LIGHTGREY = Color(0.75, 0.75, 0.75, 1)
 Color.GREY = Color(0.5, 0.5, 0.5, 1)
@@ -666,7 +670,11 @@ class Telemetry(GlossGame):#{{{
         except Empty:
             pass
         else:
-            self.last_success_time = time.time()
+            # are we needed this data?
+            if type(tlm_data) == mavlink.MAVLink_mpiovd_sensors_raw_message:
+                self.last_success_time = time.time()
+            else:
+                tlm_data = None
 
         if tlm_data is not None:
             # растусовка всей ботвы из пакета
