@@ -33,6 +33,7 @@ baudrate = config.getint('Serial', 'baudrate')
 port     = config.get('Serial', 'port')
 ser      = serial.Serial(port, baudrate, timeout = 0.5)
 
+#TODO: write all bytes to file
 # infinitely read serial port and push data to sockets
 while True:
     c = ser.read(bufsize)

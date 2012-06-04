@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import sys
-import serial
 import os
 import signal
 import time
-import argparse
+import socket
 import ConfigParser
 from struct import pack
 from multiprocessing import Process, Queue, Lock, Event, freeze_support
@@ -18,6 +17,7 @@ from gloss import *
 
 # самопальные модули
 from dsp import *
+from utils import *
 import telemetry
 import log
 import link
@@ -30,11 +30,7 @@ flags = globalflags.flags
 # sys.dont_write_bytecode = True # не компилировать исходники
 
 # Очереди сообщений
-q_log  = Queue(1) # записывальщика лога
 q_tlm  = Queue(1) # для телеметрии
-q_in   = Queue(8) # для пакетов с увву
-q_out  = Queue(8) # для пакетов на увву
-q_cal  = Queue(1) # для калбировочных коэффициетов на увву
 
 # события для блокирования до тех пор, пока событие в состоянии clear
 e_pause = Event() # лок для постановки процесса на паузу
@@ -44,9 +40,9 @@ e_kill = Event() # предложение умереть добровольно
 e_kill.clear()
 
 
-def main(q_tlm, config):
-    pygame.init()
+def main(q_tlm):
     """ Запускает отрисовку телеметрии и пробрасывает в нее очередь сообщений. """
+    pygame.init()
     tlm = telemetry.Telemetry("MOSK - Mobile Operational System Kamikaze")
     Gloss.screen_resolution = 1024,768
     #Gloss.full_screen = True
@@ -62,53 +58,29 @@ def main(q_tlm, config):
 if __name__ == '__main__':
     freeze_support()
 
-    # command line parser
-    parser = argparse.ArgumentParser(
-            formatter_class=argparse.RawDescriptionHelpFormatter,
-            # Usage text
-            description=(''' This is stub for command prompt help. '''))
-    parser.add_argument('input_file',
-            metavar='filename',
-            nargs='?', # аргумент необязателен
-            type=file,
-            help='path to telemetry log file')
-    args = parser.parse_args()
+    # read socket settings settings from config
+    config = ConfigParser.SafeConfigParser()
+    config.read('default.cfg')
+    ADDR = "localhost", config.getint("Socket", "PORT_UDP_HUD")
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind((ADDR))
 
     # загрузим конфиг. Позднее мы его передадим каждому нуждающемуся процессу.
     config = ConfigParser.SafeConfigParser()
     config.read('default.cfg')
 
-    # главная программная вилка.
-    # Определяет, читаем мы телеметрию из лога, или из устройства
+    # clear events just to be safe
     e_pause.clear()
     e_kill.clear()
 
-    p_main = Process(target=main, args=(q_tlm, config))
+    p_main = Process(target=main, args=(q_tlm,))
     p_main.start()
 
-    if args.input_file != None:
-        p_logreader = Process(target=log.play,
-                                args=(args.input_file.name, q_tlm, e_pause, e_kill, ))
-        p_logreader.start()
-    else:
-        pass
-        p_linkin = Process(target=link.linkin,
-                             args=(q_tlm, q_log, e_pause, e_kill, config))
-        p_linkin.start()
-
-        #p_linkout = Process(target=link.linkout,
-        #                      args=(q_out, e_pause, e_kill))
-        #p_linkout.start()
-
-        p_logwriter = Process(target=log.record,
-                                args=(q_log, e_pause, e_kill, ))
-        p_logwriter.start()
-
-
+    p_linkin = Process(target=link.linkin, args=(q_tlm, e_pause, e_kill, sock))
+    p_linkin.start()
 
     time.sleep(1) # ждем, пока все процессы подхватятся
-    if flags["debug"]:
-        print "**** clear global pause"
+    dbgprint("**** clear global pause")
     e_pause.set() # снимаем с паузы порожденные процессы
 
     p_main.join() # тусим тут, пока главный процесс не выйдет
@@ -117,20 +89,9 @@ if __name__ == '__main__':
 
     time.sleep(1)
     try:
-        if p_protomanager != None: p_protomanager.join()
-    except:
-        pass
-
-    try:
         if p_link != None: p_link.join()
     except:
         pass
-
-    try:
-        if p_logwriter != None: p_logwriter.join()
-    except:
-        pass
-
 
 # самостоятельно с помощью exit() мы умереть почему-то не можем,
 # воспользуемся услугами киллера
