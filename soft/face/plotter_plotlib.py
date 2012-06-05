@@ -12,7 +12,6 @@ import sys
 import os
 import ConfigParser
 
-import fir
 from scipy.signal import lfilter
 
 # allow import from the parent directory, where mavlink.py and its stuff are
@@ -31,8 +30,6 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((ADDR))
 
 
-
-
 # fifo object for mavlink
 class fifo(object):
     def __init__(self):
@@ -47,53 +44,29 @@ f = fifo() # buffer for mavlink
 mav = mavlink.MAVLink(f)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 STEP = 1 # шаг по оси Х
-SCOPE_LEN = 1000 # количество точек на экране
+SCOPE_LEN = 100 # количество точек на экране
 
-fig = plt.figure()
-ax = fig.add_subplot(111)
-# origin, = ax.plot([], [], ',', lw=1, antialiased=False)
-origin, = ax.plot([], [], lw=1)
-filtered, = ax.plot([], [], lw=4, color='red')
-ax.set_xlim(0, SCOPE_LEN)
-ax.set_ylim(-5, 50)
+# import fir
+# taps = fir.get_taps()
+# lfilter(taps, 1.0, i[1])
+# print taps
 
-taps = fir.get_taps()
-print taps
-
-def animate(i):#{{{ функция анимирует
-    origin.set_data(i)
-    filtered.set_data(i[0], lfilter(taps, 1.0, i[1]))
-    xmin, xmax = ax.get_xlim()
-    # ax.set_xlim( (xmin + STEP, xmax + STEP) )
-    return origin, filtered
-#}}}
-
-
+mag = []
 
 def gen():
     i = 0
     X = []
-    mag = []
     m = None
+    global mag
 
     while True:
-        try: m = mav.parse_char(sock.recv(1024))
+        try: m = mav.parse_char(sock.recv(4096))
         except mavlink.MAVError: pass
 
         if m != None:
+            print "-----------------------------"
+            print m
             if type(m) == accepted_mav:
                 mag.append(m.speed)
                 if i >= SCOPE_LEN:
@@ -103,27 +76,5 @@ def gen():
                 i += STEP
                 m = None
 
-        print mag
-        yield X, mag
-
-
-
-
-
-# Init only required for blitting to give a clean slate.
-def init():
-    origin.set_data(0, 0)
-    filtered.set_data(0, 0)
-    # xmin, xmax = ax.get_xlim()
-    # ax.set_xlim( (xmin + STEP, xmax + STEP) )
-    return origin, filtered
-    # origin.set_ydata(np.ma.array(L, mask=True))
-
-# ani = animation.FuncAnimation(fig, animate, gen, interval=25, blit=False)
-ani = animation.FuncAnimation(fig, animate, gen, interval=5, init_func=init, blit=True)
-# ani = animation.FuncAnimation(fig, animate, gen, interval=25, blit=True)
-plt.show()
-
-
-
+        # print mag
 
