@@ -35,7 +35,7 @@ mav = mavlink.MAVLink(f)
 # файл для записи ошибок
 errlog = open('logs/link.log', 'a')
 
-def __receive_data(q, c):#{{{
+def __receive_data(q, c, accepted_mav):#{{{
     """ Parses input bytes and push _all_ decoded messages in queue """
     m = None
 
@@ -46,15 +46,19 @@ def __receive_data(q, c):#{{{
         pass
 
     if m != None:
-        try:
-            q.put_nowait(m)
-        except Full:
-            errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
-        dbgprint(m)
+        if type(m) in accepted_mav:
+            try:
+                q.put_nowait(m)
+            except Full:
+                errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
+            dbgprint(m)
         m = None
 #}}}
-def linkin(q, e_pause, e_kill, sock):#{{{
-    """ Менеджер входящих сообщений. """
+def linkin(q, e_pause, e_kill, sock, accepted_mav):#{{{
+    """ Менеджер входящих сообщений.
+    q -- очередь сообщений, в которую надо складывать успешно принятые пакеты
+    sock -- сетевой сокет, из которого сыпятся байты пакетов
+    accepted_mav -- кортеж типов пакетов, которые необходимо пропустить в очередь """
     # ждем, пока нас снимут с паузы
     dbgprint("**** link input thread ready")
     e_pause.wait()
@@ -66,34 +70,7 @@ def linkin(q, e_pause, e_kill, sock):#{{{
             return
         else:
             c = sock.recv(1024)
-            __receive_data(q, c)
+            __receive_data(q, c, accepted_mav)
 #}}}
 
-#def linkout(q_out, e_pause, e_kill):
-#    """
-#    менеджер сообщений
-#    Принимает поток данных, выискивает пакеты, сортирует
-#
-#    """
-#
-#    xbee_response = None # пришедший с модема пакет
-#    msg_up = None # строка, которую надо запихнуть в пакет для отправки
-#
-#    # ждем, пока нас снимут с паузы
-#    print "---- linkout ready"
-#    e_pause.wait()
-#    print "---- linkout run"
-#
-#    while True:
-#        if e_kill.is_set():
-#            print "=== Linkin. Kill signal received. Exiting"
-#            return
-#
-#        try: msg_out = q_out.get_nowait()
-#        except Empty: pass
-#
-#        if msg_out != None: # пихаем в провод
-#            c = sio.write()
-#            msg_out = None
-#
 

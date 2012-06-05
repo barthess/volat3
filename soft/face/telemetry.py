@@ -667,6 +667,7 @@ class Telemetry(GlossGame):#{{{
 
         try:
             tlm_data = self.q_tlm.get_nowait()
+            # TODO: add emergency message logic based on timeout here
         except Empty:
             pass
         else:

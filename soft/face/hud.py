@@ -27,10 +27,12 @@ import tuner
 import globalflags
 flags = globalflags.flags
 
-# sys.dont_write_bytecode = True # не компилировать исходники
+# allow import from the parent directory, where mavlink.py and its stuff are
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
+import mavlink
 
 # Очереди сообщений
-q_tlm  = Queue(1) # для телеметрии
+q_tlm  = Queue(8) # для телеметрии
 
 # события для блокирования до тех пор, пока событие в состоянии clear
 e_pause = Event() # лок для постановки процесса на паузу
@@ -66,9 +68,8 @@ if __name__ == '__main__':
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ADDR))
 
-    # загрузим конфиг. Позднее мы его передадим каждому нуждающемуся процессу.
-    config = ConfigParser.SafeConfigParser()
-    config.read('default.cfg')
+    # файл для записи ошибок
+    errlog = open(config.get("Log", "log_hud"), 'a')
 
     # clear events just to be safe
     e_pause.clear()
@@ -77,7 +78,9 @@ if __name__ == '__main__':
     p_main = Process(target=main, args=(q_tlm,))
     p_main.start()
 
-    p_linkin = Process(target=link.linkin, args=(q_tlm, e_pause, e_kill, sock))
+    # need only raw data for a moment
+    accepted_mav = (mavlink.MAVLink_mpiovd_sensors_raw_message,)
+    p_linkin = Process(target=link.linkin, args=(q_tlm, e_pause, e_kill, sock, accepted_mav))
     p_linkin.start()
 
     time.sleep(1) # ждем, пока все процессы подхватятся
