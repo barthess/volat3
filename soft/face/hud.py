@@ -91,15 +91,5 @@ if __name__ == '__main__':
     print "**** Telemetry process successfully exited."
     e_kill.set()  # предлагаем всем остальным выйти
 
-    time.sleep(1)
-    try:
-        if p_link != None: p_link.join()
-    except:
-        pass
-
-# самостоятельно с помощью exit() мы умереть почему-то не можем,
-# воспользуемся услугами киллера
-os.kill(os.getpid(), signal.SIGABRT)
-
-
+    p_linkin.join()
 
