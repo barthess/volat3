@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>542</width>
+    <width>367</width>
     <height>696</height>
    </rect>
   </property>
@@ -19,8 +19,14 @@
     <height>0</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Terminus</family>
+    <pointsize>8</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>-= SUPER ULTIMATE VOLAT TUNER =-</string>
+   <string>ULTIMATE VOLAT TUNER</string>
   </property>
   <property name="toolTip">
    <string comment="12223"/>
@@ -29,13 +35,19 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>10</y>
-     <width>541</width>
-     <height>601</height>
+     <y>5</y>
+     <width>366</width>
+     <height>441</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Terminus</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tabAnalog">
     <attribute name="title">
@@ -44,8 +56,8 @@
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>143</x>
-       <y>10</y>
+       <x>105</x>
+       <y>20</y>
        <width>21</width>
        <height>16</height>
       </rect>
@@ -57,8 +69,8 @@
     <widget class="QLabel" name="label_8">
      <property name="geometry">
       <rect>
-       <x>213</x>
-       <y>10</y>
+       <x>165</x>
+       <y>20</y>
        <width>21</width>
        <height>16</height>
       </rect>
@@ -70,8 +82,8 @@
     <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
-       <x>23</x>
-       <y>10</y>
+       <x>20</x>
+       <y>15</y>
        <width>21</width>
        <height>16</height>
       </rect>
@@ -83,8 +95,8 @@
     <widget class="QLabel" name="label_11">
      <property name="geometry">
       <rect>
-       <x>333</x>
-       <y>10</y>
+       <x>260</x>
+       <y>30</y>
        <width>31</width>
        <height>16</height>
       </rect>
@@ -96,8 +108,8 @@
     <widget class="QLabel" name="label_9">
      <property name="geometry">
       <rect>
-       <x>283</x>
-       <y>10</y>
+       <x>210</x>
+       <y>30</y>
        <width>21</width>
        <height>16</height>
       </rect>
@@ -109,8 +121,8 @@
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
-       <x>63</x>
-       <y>10</y>
+       <x>50</x>
+       <y>15</y>
        <width>21</width>
        <height>16</height>
       </rect>
@@ -122,8 +134,8 @@
     <widget class="QLabel" name="label_10">
      <property name="geometry">
       <rect>
-       <x>383</x>
-       <y>10</y>
+       <x>295</x>
+       <y>30</y>
        <width>31</width>
        <height>16</height>
       </rect>
@@ -132,3786 +144,235 @@
       <string>scal</string>
      </property>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QLabel" name="labelRawAn_1">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>57</y>
+       <width>26</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>41</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>4096</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>145</x>
+       <y>50</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_3">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>50</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelScaledAn_1">
+     <property name="geometry">
+      <rect>
+       <x>295</x>
+       <y>57</y>
+       <width>36</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>41</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>120.3</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelAn_1">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>30</y>
-       <width>441</width>
-       <height>531</height>
+       <y>50</y>
+       <width>46</width>
+       <height>16</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QLabel" name="labelAn_1">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_1">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_1">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_1">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_1">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_1">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_12">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_1">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_1">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="labelAn_2">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_2">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_2">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_19">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_2">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_2">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <item>
-         <widget class="QLabel" name="labelAn_3">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_3">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_3">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_20">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_3">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_3">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QLabel" name="labelAn_4">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_4">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_4">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_4">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_4">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_4">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_21">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_4">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_4">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QLabel" name="labelAn_5">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_5">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_5">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_5">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_5">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_5">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_22">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_5">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_5">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <item>
-         <widget class="QLabel" name="labelAn_7">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_7">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_7">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_7">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_7">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_7">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_24">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_7">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_7">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
-        <item>
-         <widget class="QLabel" name="labelAn_6">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_6">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_6">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_6">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_6">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_6">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_23">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_6">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_6">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_9">
-        <item>
-         <widget class="QLabel" name="labelAn_8">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_8">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_8">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_8">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_8">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_8">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_25">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_8">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_8">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_10">
-        <item>
-         <widget class="QLabel" name="labelAn_9">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_9">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_9">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_9">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_9">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_9">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_26">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_9">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_9">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_12">
-        <item>
-         <widget class="QLabel" name="labelAn_11">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_11">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_11">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_11">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_11">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_11">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_28">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_11">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_11">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_11">
-        <item>
-         <widget class="QLabel" name="labelAn_10">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_10">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_10">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_10">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_10">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_10">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_27">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_10">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_10">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_13">
-        <item>
-         <widget class="QLabel" name="labelAn_12">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_12">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_12">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_12">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_12">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_12">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_29">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_12">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_12">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_17">
-        <item>
-         <widget class="QLabel" name="labelAn_16">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_16">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_16">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_16">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_16">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_16">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_33">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_16">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_16">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_15">
-        <item>
-         <widget class="QLabel" name="labelAn_14">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_14">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_14">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_14">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_14">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_14">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_31">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_14">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_14">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_16">
-        <item>
-         <widget class="QLabel" name="labelAn_15">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_15">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_15">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_15">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_15">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_15">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_32">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_15">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_15">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_14">
-        <item>
-         <widget class="QLabel" name="labelAn_13">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>температура масла ГМП</string>
-          </property>
-          <property name="text">
-           <string>AN01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboFilterLen_13">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>24</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>длина фильтра</string>
-          </property>
-          <item>
-           <property name="text">
-            <string>4</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>8</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>16</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>32</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>64</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c1An_13">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c2An_13">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPlainTextEdit" name="c3An_13">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>67</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Terminus</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelRawAn_13">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4096</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_30">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="labelScaledAn_13">
-          <property name="maximumSize">
-           <size>
-            <width>41</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>120.3</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="buttonPlotAn_13">
-          <property name="maximumSize">
-           <size>
-            <width>25</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Plot graphics</string>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>температура масла ГМП</string>
+     </property>
+     <property name="text">
+      <string>AN01</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonPlotAn_1">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>52</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Plot graphics</string>
+     </property>
+     <property name="text">
+      <string>P</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>50</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboFilterLen_1">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>49</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>50</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>длина фильтра</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>16</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>32</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>64</string>
+      </property>
+     </item>
     </widget>
    </widget>
    <widget class="QWidget" name="tabRelay">
     <attribute name="title">
      <string>Relay</string>
     </attribute>
-    <widget class="QCheckBox" name="checkBoxRel_6">
+    <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>180</y>
-       <width>51</width>
-       <height>20</height>
+       <x>80</x>
+       <y>30</y>
+       <width>231</width>
+       <height>16</height>
       </rect>
      </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_31">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>120</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
+     <property name="font">
+      <font>
+       <family>Terminus</family>
+       <pointsize>16</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_4">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>140</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_35">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>300</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_9">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>320</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_59">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>200</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_63">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>200</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_30">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>340</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_47">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>280</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_51">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>300</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_58">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>360</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_10">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>260</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_7">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>200</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_3">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>120</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_13">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>360</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_11">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>340</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_45">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>340</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_32">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>80</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_39">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>380</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_62">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>220</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_43">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>240</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_16">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>240</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_5">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>220</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_41">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>160</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_57">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>320</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_1">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>80</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_61">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>340</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_38">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>180</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_23">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>220</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_21">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>180</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_22">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>360</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_50">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>260</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_36">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>280</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_52">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>140</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_20">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>100</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_33">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>80</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_46">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>240</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_55">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>100</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_64">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>120</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_54">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>80</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_24">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>280</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_56">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>140</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_19">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>320</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_48">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>260</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_29">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>140</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_37">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>320</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_17">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>240</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_27">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>200</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_42">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>360</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_25">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>260</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_44">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>220</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_34">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>180</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_28">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>380</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_53">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>100</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_40">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>120</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_60">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>160</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
+      <string>00110100100001011101</string>
      </property>
     </widget>
     <widget class="QCheckBox" name="checkBoxRel_12">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>380</y>
-       <width>51</width>
+       <x>60</x>
+       <y>70</y>
+       <width>236</width>
        <height>20</height>
       </rect>
      </property>
      <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_15">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>280</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_26">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>300</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_2">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>100</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_8">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>160</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_14">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>300</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_18">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>160</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBoxRel_49">
-     <property name="geometry">
-      <rect>
-       <x>260</x>
-       <y>380</y>
-       <width>51</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>REL1</string>
+      <string>Тепература масла ГМП</string>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_3">
+   <widget class="QWidget" name="tabRawTree">
     <attribute name="title">
      <string>Raw Tree</string>
     </attribute>
    </widget>
-   <widget class="QWidget" name="tab">
+   <widget class="QWidget" name="tabHelp">
     <attribute name="title">
      <string>Help</string>
     </attribute>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>40</y>
+       <width>141</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Here will be help.
+Next line.</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QPushButton" name="buttonRefersh">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>620</y>
-     <width>83</width>
-     <height>25</height>
+     <x>5</x>
+     <y>640</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -3921,26 +382,26 @@
     <string>Refresh</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="labelStatusBar">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>680</y>
-     <width>57</width>
-     <height>14</height>
+     <width>341</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>status line</string>
    </property>
   </widget>
   <widget class="QPushButton" name="buttonTransmit">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>620</y>
-     <width>83</width>
-     <height>25</height>
+     <x>75</x>
+     <y>640</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -3953,10 +414,10 @@
   <widget class="QPushButton" name="buttonReadRom">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>650</y>
-     <width>83</width>
-     <height>25</height>
+     <x>145</x>
+     <y>660</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -3969,10 +430,10 @@
   <widget class="QPushButton" name="buttonWriteRom">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>620</y>
-     <width>83</width>
-     <height>25</height>
+     <x>145</x>
+     <y>640</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -3985,10 +446,10 @@
   <widget class="QPushButton" name="buttonLoadFile">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>650</y>
-     <width>83</width>
-     <height>25</height>
+     <x>5</x>
+     <y>660</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -4001,10 +462,10 @@
   <widget class="QPushButton" name="buttonSaveFile">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>650</y>
-     <width>83</width>
-     <height>25</height>
+     <x>75</x>
+     <y>660</y>
+     <width>71</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="toolTip">
@@ -4017,15 +478,15 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>620</y>
-     <width>221</width>
-     <height>61</height>
+     <x>5</x>
+     <y>600</y>
+     <width>211</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>16</pointsize>
+     <pointsize>15</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -4034,6 +495,27 @@
     <string>Сделать пиздато</string>
    </property>
   </widget>
+  <zorder>tabWidget</zorder>
+  <zorder>buttonRefersh</zorder>
+  <zorder>labelStatusBar</zorder>
+  <zorder>buttonTransmit</zorder>
+  <zorder>buttonReadRom</zorder>
+  <zorder>buttonWriteRom</zorder>
+  <zorder>buttonLoadFile</zorder>
+  <zorder>buttonSaveFile</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>checkBoxRel_49</zorder>
+  <zorder>checkBoxRel_30</zorder>
+  <zorder>checkBoxRel_58</zorder>
+  <zorder>checkBoxRel_11</zorder>
+  <zorder>checkBoxRel_39</zorder>
+  <zorder>checkBoxRel_13</zorder>
+  <zorder>checkBoxRel_28</zorder>
+  <zorder>checkBoxRel_45</zorder>
+  <zorder>checkBoxRel_22</zorder>
+  <zorder>checkBoxRel_42</zorder>
+  <zorder>checkBoxRel_61</zorder>
  </widget>
  <resources/>
  <connections/>
