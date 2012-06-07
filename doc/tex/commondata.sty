@@ -29,10 +29,10 @@
 % этот параметр с помощью \renewcommand{}
 
 % температурные диапазоны, градусы
-\newcommand{\temperaturestoragemax}{\mbox{плюс~50}}%, не~более}
+\newcommand{\temperaturestoragemax}{\mbox{плюс~60}}%, не~более}
 \newcommand{\temperatureworkingmax}{\mbox{плюс~50}}%, не~более}
-\newcommand{\temperatureworkingmin}{\mbox{минус~30}}%, не~менее}
-\newcommand{\temperaturestoragemin}{\mbox{минус~40}}%, не~менее}
+\newcommand{\temperatureworkingmin}{\mbox{минус~40}}%, не~менее}
+\newcommand{\temperaturestoragemin}{\mbox{минус~60}}%, не~менее}
 
 % влажность, проценты
 \newcommand{\airhumidity}{98}%, не~более}
@@ -41,7 +41,7 @@
 
 % довление, кПа (мм рт. ст.)
 \newcommand{\pressureworkingmin}{52,0 (390)}
-\newcommand{\pressurestoragemin}{24,3 (182)}
+\newcommand{\pressurestoragemin}{12,0 (90)}
 
 % вибрация, м/с2 (g)
 \newcommand{\vibrationacceleration}{49 (5,0)}
@@ -63,21 +63,21 @@
 \newcommand{\MTBF}{1000}                % наработка на отказ, ч
 \newcommand{\averagelifetime}{20}       % среднее время службы, годы
 
-\newcommand{\minsupplyvoltage}{21,6}    % вольты
+\newcommand{\minsupplyvoltage}{20}      % вольты
 \newcommand{\nominalsupplyvoltage}{24}  % вольты
 \newcommand{\maxsupplyvoltage}{30}      % вольты
 
-\newcommand{\nominalsupplypower}{140}   % Вт
-\newcommand{\maxsupplypower}{300}       % Вт
+\newcommand{\nominalsupplypower}{200}   % Вт
+\newcommand{\maxsupplypower}{400}       % Вт
 
 \newcommand{\UPSworkingtime}{5}         % минут
 \newcommand{\continuousworkingtime}{48} % время непр. работы, часы
 
-\newcommand{\binsensorscount}{42}       % кол. дискр. датчиков
-\newcommand{\analogsensorscount}{8}     % кол. анал. датчиков
-\newcommand{\actuatorcount}{3}          % кол. исп. механизмов
-\newcommand{\maxbinsensorscount}{46}
-\newcommand{\maxanalogsensorscount}{11}
+\newcommand{\binsensorscount}{1?}       % кол. дискр. датчиков
+\newcommand{\analogsensorscount}{1?}    % кол. анал. датчиков
+\newcommand{\actuatorcount}{1?}         % кол. исп. механизмов
+\newcommand{\maxbinsensorscount}{64}
+\newcommand{\maxanalogsensorscount}{16}
 \newcommand{\maxactuatorcount}{8}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -208,10 +208,11 @@
 \newcommand{\nameUVVU}{Модуль приема информации от внешних датчиков}
 \newcommand{\ksauUVVU}[1][]{\mbox{КСАУ.467239.018%
   \decimalpostfix[#1]}}
-\newcommand{\massUVVU}{1,5}
-\newcommand{\dimensionUVVUL}{255}
-\newcommand{\dimensionUVVUB}{163}
-\newcommand{\dimensionUVVUH}{60}
+\newcommand{\massUVVU}{3,0}
+\newcommand{\nominalsupplypowerUVVU}{20}
+\newcommand{\dimensionUVVUL}{290}
+\newcommand{\dimensionUVVUB}{220}
+\newcommand{\dimensionUVVUH}{95}
 \newcommand{\dimensionsUVVU}
   {\dimensionUVVUL\texttimes\dimensionUVVUB\texttimes\dimensionUVVUH}
 
