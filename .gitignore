@@ -14,3 +14,4 @@ hard/mpiovd/gerber/
 soft/face/pyqtgraph/
 *.ropeproject*
 *.swp
+*.tmp

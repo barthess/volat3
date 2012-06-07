@@ -17,7 +17,7 @@ from PyQt4 import uic
 
 app = QtGui.QApplication(sys.argv)
 
-f = open("tuner_ui.py", "w")
+f = open("tuner_ui.py.tmp", "w")
 uic.compileUi("tuner.ui", f)
 tuner = uic.loadUi("tuner.ui")
 
