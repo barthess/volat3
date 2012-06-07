@@ -38,8 +38,7 @@ ADDR = "localhost", config.getint("Socket", "PORT_UDP_TUNER")
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((ADDR))
 
-accepted_mav = (mavlink.MAVLink_mpiovd_sensors_raw_message,)
-p_linkin = Process(target=link.linkin, args=(q_plot, e_pause, e_kill, sock, accepted_mav))
+p_linkin = Process(target=link.linkin, args=(q_plot, e_pause, e_kill, sock, ))
 p_linkin.start()
 e_pause.set()
 #}}}
@@ -63,17 +62,17 @@ curve_raw      = p.plot(pen='w')
 pen_filtered   = pg.mkPen('r', width=3)
 curve_filtered = p.plot(pen=pen_filtered)
 
-# data = np.random.normal(size=(10,1000))
 data = []
 i = 0
 def update():
     global curve_raw, curve_filtered, data, i
     while not q_plot.empty():
         m = q_plot.get_nowait()
-        i += 1
-        if i > SCOPE_LEN:
-            data.pop(0)
-        data.append(m.speed)
+        if type(m) is mavlink.MAVLink_mpiovd_sensors_raw_message:
+            i += 1
+            if i > SCOPE_LEN:
+                data.pop(0)
+            data.append(m.speed)
     curve_raw.setData(data)
     curve_filtered.setData(lfilter(taps, 1.0, data))
 

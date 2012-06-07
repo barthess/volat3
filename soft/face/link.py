@@ -35,7 +35,7 @@ mav = mavlink.MAVLink(f)
 # файл для записи ошибок
 errlog = open('logs/link.log', 'a')
 
-def __receive_data(q, c, accepted_mav):#{{{
+def __receive_data(q, c):#{{{
     """ Parses input bytes and push _all_ decoded messages in queue """
     m = None
 
@@ -46,19 +46,17 @@ def __receive_data(q, c, accepted_mav):#{{{
         pass
 
     if m != None:
-        if type(m) in accepted_mav:
-            try:
-                q.put_nowait(m)
-            except Full:
-                errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
-            dbgprint(m)
+        try:
+            q.put_nowait(m)
+        except Full:
+            errlog.write(str(datetime.datetime.now()) + " -- Telemetry queue is full\n")
+        dbgprint(m)
         m = None
 #}}}
-def linkin(q, e_pause, e_kill, sock, accepted_mav):#{{{
+def linkin(q, e_pause, e_kill, sock):#{{{
     """ Менеджер входящих сообщений.
     q -- очередь сообщений, в которую надо складывать успешно принятые пакеты
-    sock -- сетевой сокет, из которого сыпятся байты, теоретически содержащие пакеты
-    accepted_mav -- кортеж типов пакетов, которые необходимо пропустить в очередь """
+    sock -- сетевой сокет, из которого сыпятся байты, теоретически содержащие пакеты """
     # ждем, пока нас снимут с паузы
     dbgprint("**** link input thread ready")
     e_pause.wait()
@@ -70,7 +68,7 @@ def linkin(q, e_pause, e_kill, sock, accepted_mav):#{{{
             return
         else:
             c = sock.recv(1024)
-            __receive_data(q, c, accepted_mav)
+            __receive_data(q, c)
 #}}}
 
 

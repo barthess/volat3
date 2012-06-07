@@ -79,8 +79,7 @@ if __name__ == '__main__':
     p_main.start()
 
     # need only raw data for a moment
-    accepted_mav = (mavlink.MAVLink_mpiovd_sensors_raw_message,)
-    p_linkin = Process(target=link.linkin, args=(q_tlm, e_pause, e_kill, sock, accepted_mav))
+    p_linkin = Process(target=link.linkin, args=(q_tlm, e_pause, e_kill, sock, ))
     p_linkin.start()
 
     time.sleep(1) # ждем, пока все процессы подхватятся
@@ -88,7 +87,7 @@ if __name__ == '__main__':
     e_pause.set() # снимаем с паузы порожденные процессы
 
     p_main.join() # тусим тут, пока главный процесс не завершится
-    print "**** Telemetry process successfully exited."
+    dbgprint("**** Telemetry process successfully exited.")
     e_kill.set()  # предлагаем всем остальным выйти
 
     p_linkin.join()
