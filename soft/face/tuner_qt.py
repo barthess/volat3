@@ -3,6 +3,8 @@
 
 import struct
 import sys
+import os
+import ConfigParser
 import time
 import collections
 import user
@@ -12,6 +14,47 @@ from pyqtgraph.Qt import QtCore, QtGui
 import pyqtgraph.parametertree.parameterTypes as pTypes
 from pyqtgraph.parametertree import Parameter, ParameterTree, ParameterItem, registerParameterType
 from PyQt4 import uic
+
+from multiprocessing import Process, Queue, Lock, Event, freeze_support
+from Queue import Empty, Full
+import link
+
+
+# Очереди сообщений
+q_tuner  = Queue(4) # эту очередь будет "слушать" тюнер
+
+# настройка и запуск процесса связи {{{
+# события для блокирования до тех пор, пока событие в состоянии clear
+e_pause = Event() # лок для постановки процесса на паузу
+e_pause.clear()
+e_kill = Event() # предложение умереть добровольно
+e_kill.clear()
+
+# create link thread
+# allow import from the parent directory, where mavlink.py and its stuff are
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
+import mavlink
+
+# read socket settings settings from config
+config = ConfigParser.SafeConfigParser()
+config.read('default.cfg')
+
+ADDR = "localhost", config.getint("SocketOut", "PORT_UDP_TUNER")
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind((ADDR))
+
+p_linkin = Process(target=link.input, args=(q_tuner, e_pause, e_kill, sock, ))
+p_linkin.start()
+e_pause.set()
+#}}}
+
+
+
+
+
+
+
+
 
 app = QtGui.QApplication(sys.argv)
 
@@ -49,16 +92,10 @@ def refresh():#{{{
 #}}}
 
 
-
-
-
-
-
-
-
-
-
 tuner.buttonRefersh.clicked.connect(refresh)
 
 tuner.show()
+e_kill.set()
+p_linkin.join()
+
 sys.exit(app.exec_())

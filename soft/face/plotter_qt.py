@@ -38,7 +38,7 @@ ADDR = "localhost", config.getint("SocketOut", "PORT_UDP_TUNER")
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((ADDR))
 
-p_linkin = Process(target=link.linkin, args=(q_plot, e_pause, e_kill, sock, ))
+p_linkin = Process(target=link.input, args=(q_plot, e_pause, e_kill, sock, ))
 p_linkin.start()
 e_pause.set()
 #}}}

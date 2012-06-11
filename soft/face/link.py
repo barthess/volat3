@@ -53,7 +53,7 @@ def __receive_data(q, c):#{{{
         dbgprint(m)
         m = None
 #}}}
-def linkin(q, e_pause, e_kill, sock):#{{{
+def input(q, e_pause, e_kill, sock):#{{{
     """ Менеджер входящих сообщений.
     q -- очередь сообщений, в которую надо складывать успешно принятые пакеты
     sock -- сетевой сокет, из которого сыпятся байты, теоретически содержащие пакеты """
@@ -70,5 +70,4 @@ def linkin(q, e_pause, e_kill, sock):#{{{
             c = sock.recv(1024)
             __receive_data(q, c)
 #}}}
-
 

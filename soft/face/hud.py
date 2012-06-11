@@ -79,7 +79,7 @@ if __name__ == '__main__':
     p_main.start()
 
     # need only raw data for a moment
-    p_linkin = Process(target=link.linkin, args=(q_tlm, e_pause, e_kill, sock, ))
+    p_linkin = Process(target=link.input, args=(q_tlm, e_pause, e_kill, sock, ))
     p_linkin.start()
 
     time.sleep(1) # ждем, пока все процессы подхватятся
