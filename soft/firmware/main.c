@@ -27,7 +27,7 @@ int main(void) {
   halInit();
   chSysInit();
 
-  /* инициализация кучи под всякие нужные вещи */
+  /* инициализация кучи под всякие нужные и не очень вещи */
   chHeapInit(&LinkThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), LINK_THD_HEAP_SIZE);
 
   GlobalFlags = 0;
