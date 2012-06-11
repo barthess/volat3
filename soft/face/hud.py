@@ -64,7 +64,7 @@ if __name__ == '__main__':
     config = ConfigParser.SafeConfigParser()
     config.read('default.cfg')
 
-    ADDR = "localhost", config.getint("Socket", "PORT_UDP_HUD")
+    ADDR = "localhost", config.getint("SocketOut", "PORT_UDP_HUD")
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind((ADDR))
 

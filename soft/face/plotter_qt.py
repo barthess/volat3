@@ -34,7 +34,7 @@ import mavlink
 config = ConfigParser.SafeConfigParser()
 config.read('default.cfg')
 
-ADDR = "localhost", config.getint("Socket", "PORT_UDP_TUNER")
+ADDR = "localhost", config.getint("SocketOut", "PORT_UDP_TUNER")
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((ADDR))
 
@@ -56,7 +56,7 @@ app = QtGui.QApplication([])
 win = pg.GraphicsWindow(title="Basic plotting examples")
 # win.resize(1024,600)
 
-p = win.addPlot(title="Updating plot")
+p = win.addPlot(title="Updating p")
 
 curve_raw      = p.plot(pen='w')
 pen_filtered   = pg.mkPen('r', width=3)

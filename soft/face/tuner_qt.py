@@ -6,9 +6,7 @@ import sys
 import time
 import collections
 import user
-
-from Queue import Empty # для отлова исключений
-from multiprocessing import Queue, Event
+import socket
 
 from pyqtgraph.Qt import QtCore, QtGui
 import pyqtgraph.parametertree.parameterTypes as pTypes
@@ -37,8 +35,10 @@ t.setParameters(p, showTop=False)
 # t.resize(400, 500)
 
 
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 def refresh():#{{{
+    sock.sendto("test", ("localhost", 14555))
     print "refresh clicked"
     tuner.labelStatusBar.setText("loading values")
     params.append(g0)
