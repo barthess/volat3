@@ -15,12 +15,12 @@
  ******************************************************************************
  */
 
-/* всякие почтовые ящики */
-Mailbox tolink_mb;                /* сообщения для отправки через модем */
-Mailbox mavlink_param_set_mb;     /* сообщения с параметрами */
-Mailbox mavlink_command_long_mb;  /* сообщения с командами */
+/* РІСЃСЏРєРёРµ РїРѕС‡С‚РѕРІС‹Рµ СЏС‰РёРєРё */
+Mailbox tolink_mb;                /* СЃРѕРѕР±С‰РµРЅРёСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё С‡РµСЂРµР· РјРѕРґРµРј */
+Mailbox mavlink_param_set_mb;     /* СЃРѕРѕР±С‰РµРЅРёСЏ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё */
+Mailbox mavlink_command_long_mb;  /* СЃРѕРѕР±С‰РµРЅРёСЏ СЃ РєРѕРјР°РЅРґР°РјРё */
 
-/* переменные, касающиеся мавлинка */
+/* РїРµСЂРµРјРµРЅРЅС‹Рµ, РєР°СЃР°СЋС‰РёРµСЃСЏ РјР°РІР»РёРЅРєР° */
 mavlink_system_t              mavlink_system_struct;
 mavlink_command_long_t        mavlink_command_long_struct;
 mavlink_set_mode_t            mavlink_set_mode_struct;
@@ -30,7 +30,7 @@ mavlink_set_mode_t            mavlink_set_mode_struct;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-/* буфера для почтовых ящиков */
+/* Р±СѓС„РµСЂР° РґР»СЏ РїРѕС‡С‚РѕРІС‹С… СЏС‰РёРєРѕРІ */
 static msg_t tolink_mb_buf[10];
 static msg_t param_mb_buf[2];
 static msg_t mavlinkcmd_mb_buf[2];
@@ -56,14 +56,14 @@ static msg_t mavlinkcmd_mb_buf[2];
  */
 
 void MsgInit(void){
-  /* инициализация почтовых ящиков */
+  /* РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕС‡С‚РѕРІС‹С… СЏС‰РёРєРѕРІ */
   chMBInit(&tolink_mb,                tolink_mb_buf,          (sizeof(tolink_mb_buf)/sizeof(msg_t)));
   chMBInit(&mavlink_param_set_mb,     param_mb_buf,           (sizeof(param_mb_buf)/sizeof(msg_t)));
   chMBInit(&mavlink_command_long_mb,  mavlinkcmd_mb_buf,      (sizeof(mavlinkcmd_mb_buf)/sizeof(msg_t)));
 }
 
 void MavInit(void){
-  /* первоначальная настройка мавлинка */
+  /* РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅР°СЏ РЅР°СЃС‚СЂРѕР№РєР° РјР°РІР»РёРЅРєР° */
   mavlink_system_struct.sysid  = 20;                   ///< ID 20 for this airplane
   mavlink_system_struct.compid = MAV_COMP_ID_ALL;     ///< The component sending the message, it could be also a Linux process
   mavlink_system_struct.state  = MAV_STATE_BOOT;

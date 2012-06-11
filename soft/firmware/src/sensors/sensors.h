@@ -3,7 +3,7 @@
 
 
 /*
- * Обработанные данные.
+ * РћР±СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ.
  */
 typedef struct CompensatedData CompensatedData;
 struct CompensatedData{
@@ -13,13 +13,13 @@ struct CompensatedData{
 
 
 /*
- * Сырые данные прямо с сенсоров.
+ * РЎС‹СЂС‹Рµ РґР°РЅРЅС‹Рµ РїСЂСЏРјРѕ СЃ СЃРµРЅСЃРѕСЂРѕРІ.
  */
 typedef struct RawData RawData;
 struct RawData{
-  uint32_t odometer;          /* количество импульсов с одометра */
+  uint32_t odometer;          /* РєРѕР»РёС‡РµСЃС‚РІРѕ РёРјРїСѓР»СЊСЃРѕРІ СЃ РѕРґРѕРјРµС‚СЂР° */
   uint32_t groundspeed;       /* */
-  uint16_t engine_rpm;        /* Тахометр (rpm)*/
+  uint16_t engine_rpm;        /* РўР°С…РѕРјРµС‚СЂ (rpm)*/
 
   uint16_t analog01;
   uint16_t analog02;

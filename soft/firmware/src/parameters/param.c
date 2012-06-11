@@ -61,12 +61,12 @@ GlobalParam_t global_data[] = {
   /*  key             min         val         max         type                    checker_fucntion   */
   /*--------------------------------------------------------------------------------------------------*/
   {"SYS_ID",          1,          20,         255,        MAVLINK_TYPE_UINT32_T,  default_setval},
-  /* тип "автопилота" (см. MAV_TYPE enum)
-   * для возможности переключения между машиной и самолетом. Изменения
-   * вступают в силу только после ребута. */
+  /* С‚РёРї "Р°РІС‚РѕРїРёР»РѕС‚Р°" (СЃРј. MAV_TYPE enum)
+   * РґР»СЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїРµСЂРµРєР»СЋС‡РµРЅРёСЏ РјРµР¶РґСѓ РјР°С€РёРЅРѕР№ Рё СЃР°РјРѕР»РµС‚РѕРј. РР·РјРµРЅРµРЅРёСЏ
+   * РІСЃС‚СѓРїР°СЋС‚ РІ СЃРёР»Сѓ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ СЂРµР±СѓС‚Р°. */
   {"SYS_mavtype",     0,          1,          16,         MAVLINK_TYPE_UINT32_T,  default_setval},
 
-  //Коэффициенты полиномов для пересчета показаний с датчиков
+  //РљРѕСЌС„С„РёС†РёРµРЅС‚С‹ РїРѕР»РёРЅРѕРјРѕРІ РґР»СЏ РїРµСЂРµСЃС‡РµС‚Р° РїРѕРєР°Р·Р°РЅРёР№ СЃ РґР°С‚С‡РёРєРѕРІ
   {"AN_ch01_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch01_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch01_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
@@ -131,12 +131,12 @@ GlobalParam_t global_data[] = {
   {"AN_ch16_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch10_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
-  /****** разные временнЫе интервалы в mS */
-  // пакеты с телеметрией
+  /****** СЂР°Р·РЅС‹Рµ РІСЂРµРјРµРЅРЅР«Рµ РёРЅС‚РµСЂРІР°Р»С‹ РІ mS */
+  // РїР°РєРµС‚С‹ СЃ С‚РµР»РµРјРµС‚СЂРёРµР№
   {"T_tlm",           SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  // интервал между сохранениями пробега и моточасов в eeprom
+  // РёРЅС‚РµСЂРІР°Р» РјРµР¶РґСѓ СЃРѕС…СЂР°РЅРµРЅРёСЏРјРё РїСЂРѕР±РµРіР° Рё РјРѕС‚РѕС‡Р°СЃРѕРІ РІ eeprom
   {"T_save_trip",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
-  // пакеты heartbeat
+  // РїР°РєРµС‚С‹ heartbeat
   {"T_heartbeat",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
   {"T_reserved1",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
   {"T_reserved2",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
@@ -252,18 +252,18 @@ static void send_all_values(Mail *mail, mavlink_param_value_t *param_struct){
 }
 
 /**
- * Поток принимающий сообщения с параметрами и отправляющий параметры по запросу.
+ * РџРѕС‚РѕРє РїСЂРёРЅРёРјР°СЋС‰РёР№ СЃРѕРѕР±С‰РµРЅРёСЏ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё Рё РѕС‚РїСЂР°РІР»СЏСЋС‰РёР№ РїР°СЂР°РјРµС‚СЂС‹ РїРѕ Р·Р°РїСЂРѕСЃСѓ.
  */
 static WORKING_AREA(ParametersThreadWA, 512);
 static msg_t ParametersThread(void *arg){
   chRegSetThreadName("Parameters");
   (void)arg;
 
-  /* переменные для отправки установленных параметров */
+  /* РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ */
   mavlink_param_value_t param_value_struct;
   Mail param_value_mail = {NULL, MAVLINK_MSG_ID_PARAM_VALUE, &param_confirm_mb};
 
-  /* переменные для приема параметров */
+  /* РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РїСЂРёРµРјР° РїР°СЂР°РјРµС‚СЂРѕРІ */
   msg_t tmp = 0;
   Mail *input_mail = NULL;
   mavlink_param_set_t *set = NULL;
@@ -277,8 +277,8 @@ static msg_t ParametersThread(void *arg){
 
     switch (input_mail->invoice){
     /*
-     * согласно протоколу, при успешной установке параметра, мы должны
-     * вычитать и выслать в ответ этот параметр в качестве подтверждения
+     * СЃРѕРіР»Р°СЃРЅРѕ РїСЂРѕС‚РѕРєРѕР»Сѓ, РїСЂРё СѓСЃРїРµС€РЅРѕР№ СѓСЃС‚Р°РЅРѕРІРєРµ РїР°СЂР°РјРµС‚СЂР°, РјС‹ РґРѕР»Р¶РЅС‹
+     * РІС‹С‡РёС‚Р°С‚СЊ Рё РІС‹СЃР»Р°С‚СЊ РІ РѕС‚РІРµС‚ СЌС‚РѕС‚ РїР°СЂР°РјРµС‚СЂ РІ РєР°С‡РµСЃС‚РІРµ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ
      */
     case MAVLINK_MSG_ID_PARAM_SET:
       set = (mavlink_param_set_t *)(input_mail->payload);
@@ -290,7 +290,7 @@ static msg_t ParametersThread(void *arg){
       break;
 
     /*
-     * запрос всех параметров
+     * Р·Р°РїСЂРѕСЃ РІСЃРµС… РїР°СЂР°РјРµС‚СЂРѕРІ
      */
     case MAVLINK_MSG_ID_PARAM_REQUEST_LIST:
       list = (mavlink_param_request_list_t *)(input_mail->payload);
@@ -300,7 +300,7 @@ static msg_t ParametersThread(void *arg){
       break;
 
     /*
-     * запрос одного параметра
+     * Р·Р°РїСЂРѕСЃ РѕРґРЅРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°
      */
     case MAVLINK_MSG_ID_PARAM_REQUEST_READ:
       read = (mavlink_param_request_read_t *)(input_mail->payload);
@@ -339,10 +339,10 @@ int32_t _key_index_search(char* key){
 }
 
 /**
- * Возвращает указатель прямо на значение.
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ РїСЂСЏРјРѕ РЅР° Р·РЅР°С‡РµРЅРёРµ.
  *
- * Данный функционал вынесен в отдельную функцию на тот случай, если
- * приложению понадобится знать другие поля структуры
+ * Р”Р°РЅРЅС‹Р№ С„СѓРЅРєС†РёРѕРЅР°Р» РІС‹РЅРµСЃРµРЅ РІ РѕС‚РґРµР»СЊРЅСѓСЋ С„СѓРЅРєС†РёСЋ РЅР° С‚РѕС‚ СЃР»СѓС‡Р°Р№, РµСЃР»Рё
+ * РїСЂРёР»РѕР¶РµРЅРёСЋ РїРѕРЅР°РґРѕР±РёС‚СЃСЏ Р·РЅР°С‚СЊ РґСЂСѓРіРёРµ РїРѕР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹
  */
 float *ValueSearch(char *str){
   int32_t i = -1;

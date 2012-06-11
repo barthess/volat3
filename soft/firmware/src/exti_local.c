@@ -34,17 +34,17 @@
 
 static const EXTConfig extcfg = {
   {
-    {EXT_CH_MODE_DISABLED, NULL},// секундная метка с GPS
-    {EXT_CH_MODE_DISABLED, NULL},// оптрон тахометра
+    {EXT_CH_MODE_DISABLED, NULL},// СЃРµРєСѓРЅРґРЅР°СЏ РјРµС‚РєР° СЃ GPS
+    {EXT_CH_MODE_DISABLED, NULL},// РѕРїС‚СЂРѕРЅ С‚Р°С…РѕРјРµС‚СЂР°
     {EXT_CH_MODE_DISABLED, NULL},
-    {EXT_CH_MODE_DISABLED, NULL}, // микросдшка
+    {EXT_CH_MODE_DISABLED, NULL}, // РјРёРєСЂРѕСЃРґС€РєР°
     {EXT_CH_MODE_DISABLED, NULL},
     {EXT_CH_MODE_DISABLED, NULL},//5
-    {EXT_CH_MODE_DISABLED, NULL}, // датчик давления
+    {EXT_CH_MODE_DISABLED, NULL}, // РґР°С‚С‡РёРє РґР°РІР»РµРЅРёСЏ
     {EXT_CH_MODE_DISABLED, NULL}, // magnetometer
-    {EXT_CH_MODE_DISABLED, NULL}, // первое прерывание с акселерометра
+    {EXT_CH_MODE_DISABLED, NULL}, // РїРµСЂРІРѕРµ РїСЂРµСЂС‹РІР°РЅРёРµ СЃ Р°РєСЃРµР»РµСЂРѕРјРµС‚СЂР°
     {EXT_CH_MODE_DISABLED, NULL},
-    {EXT_CH_MODE_DISABLED, NULL}, // хероскоп
+    {EXT_CH_MODE_DISABLED, NULL}, // С…РµСЂРѕСЃРєРѕРї
     {EXT_CH_MODE_DISABLED, NULL},//11
     {EXT_CH_MODE_DISABLED, NULL},
     {EXT_CH_MODE_DISABLED, NULL},
@@ -65,13 +65,13 @@ EXT_MODE_GPIOE,// GPS_PPS
 EXT_MODE_GPIOE,// microSD detect
 0,
 0,//5
-EXT_MODE_GPIOE,// давленометр
-EXT_MODE_GPIOE,// магнитометр
+EXT_MODE_GPIOE,// РґР°РІР»РµРЅРѕРјРµС‚СЂ
+EXT_MODE_GPIOE,// РјР°РіРЅРёС‚РѕРјРµС‚СЂ
 EXT_MODE_GPIOE,// accelerometer int1
 0,
 EXT_MODE_GPIOE,// gyro
 0,
-EXT_MODE_GPIOE,//оптрон
+EXT_MODE_GPIOE,//РѕРїС‚СЂРѕРЅ
 0,
 0,//14
 EXT_MODE_GPIOE)// accelerometer int2

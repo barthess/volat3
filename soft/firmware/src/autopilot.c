@@ -77,7 +77,7 @@ void confirmation(enum MAV_RESULT result, enum MAV_CMD cmd){
 #define command_denied() (confirmation(MAV_RESULT_DENIED, mavlink_command_long_struct->command))
 
 
-/* прием и обработка комманд с земли*/
+/* РїСЂРёРµРј Рё РѕР±СЂР°Р±РѕС‚РєР° РєРѕРјРјР°РЅРґ СЃ Р·РµРјР»Рё*/
 void process_cmd(mavlink_command_long_t *mavlink_command_long_struct){
 
   /* all this flags defined in MAV_CMD enum */
@@ -89,7 +89,7 @@ void process_cmd(mavlink_command_long_t *mavlink_command_long_struct){
     break;
 
   /*
-   * (пере)запуск калибровки
+   * (РїРµСЂРµ)Р·Р°РїСѓСЃРє РєР°Р»РёР±СЂРѕРІРєРё
    */
   case MAV_CMD_PREFLIGHT_CALIBRATION:
     command_denied();
@@ -101,7 +101,7 @@ void process_cmd(mavlink_command_long_t *mavlink_command_long_struct){
     return;
     break;
 
-    /* Команды для загрузки/вычитки параметров из EEPROM */
+    /* РљРѕРјР°РЅРґС‹ РґР»СЏ Р·Р°РіСЂСѓР·РєРё/РІС‹С‡РёС‚РєРё РїР°СЂР°РјРµС‚СЂРѕРІ РёР· EEPROM */
     case MAV_CMD_PREFLIGHT_STORAGE:
       if (mavlink_system_struct.mode != MAV_MODE_PREFLIGHT)
         return;
@@ -126,7 +126,7 @@ void process_cmd(mavlink_command_long_t *mavlink_command_long_struct){
 
 
 /**
- * Поток, принимающий и обрабатывающий команды с земли.
+ * РџРѕС‚РѕРє, РїСЂРёРЅРёРјР°СЋС‰РёР№ Рё РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РёР№ РєРѕРјР°РЅРґС‹ СЃ Р·РµРјР»Рё.
  */
 static WORKING_AREA(CmdThreadWA, 512);
 static msg_t CmdThread(void* arg){

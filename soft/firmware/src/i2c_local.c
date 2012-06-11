@@ -40,12 +40,12 @@ void I2CInitLocal(void){
   i2cStart(&I2CD1, &i2cfg2);
 
   chThdSleepMilliseconds(1);
-  ParametersInit(); /* читает настройки из EEPROM по I2C*/
+  ParametersInit(); /* С‡РёС‚Р°РµС‚ РЅР°СЃС‚СЂРѕР№РєРё РёР· EEPROM РїРѕ I2C*/
   chThdSleepMilliseconds(10);
 }
 
 
-/* обертка запускатор транзакции */
+/* РѕР±РµСЂС‚РєР° Р·Р°РїСѓСЃРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё */
 msg_t i2c_transmit(i2caddr_t addr, const uint8_t *txbuf, size_t txbytes,
                    uint8_t *rxbuf, size_t rxbytes){
   msg_t status = RDY_OK;
@@ -54,7 +54,7 @@ msg_t i2c_transmit(i2caddr_t addr, const uint8_t *txbuf, size_t txbytes,
   status = i2cMasterTransmitTimeout(&I2CD1, addr, txbuf, txbytes, rxbuf, rxbytes, MS2ST(6));
   i2cReleaseBus(&I2CD1);
   if (status == RDY_TIMEOUT){
-    /* в случае таймаута необходимо перезапустить драйвер */
+    /* РІ СЃР»СѓС‡Р°Рµ С‚Р°Р№РјР°СѓС‚Р° РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РґСЂР°Р№РІРµСЂ */
     i2cStop(&I2CD1);
     chThdSleepMilliseconds(1);
     i2cStart(&I2CD1, &i2cfg2);
@@ -64,7 +64,7 @@ msg_t i2c_transmit(i2caddr_t addr, const uint8_t *txbuf, size_t txbytes,
   return status;
 }
 
-/* обертка запускатор транзакции */
+/* РѕР±РµСЂС‚РєР° Р·Р°РїСѓСЃРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё */
 msg_t i2c_receive(i2caddr_t addr, uint8_t *rxbuf, size_t rxbytes){
   msg_t status = RDY_OK;
 
@@ -73,7 +73,7 @@ msg_t i2c_receive(i2caddr_t addr, uint8_t *rxbuf, size_t rxbytes){
   i2cReleaseBus(&I2CD1);
   chDbgAssert(status == RDY_OK, "i2c_transmit(), #1", "error in driver");
   if (status == RDY_TIMEOUT){
-    /* в случае таймаута необходимо перезапустить драйвер */
+    /* РІ СЃР»СѓС‡Р°Рµ С‚Р°Р№РјР°СѓС‚Р° РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РґСЂР°Р№РІРµСЂ */
     i2cStop(&I2CD1);
     chThdSleepMilliseconds(1);
     i2cStart(&I2CD1, &i2cfg2);
