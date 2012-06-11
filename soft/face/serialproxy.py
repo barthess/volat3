@@ -4,7 +4,6 @@
 import ConfigParser
 import socket
 import time
-import datetime
 import serial
 from binascii import hexlify
 import threading
@@ -12,9 +11,6 @@ import threading
 from utils import *
 import globalflags
 flags = globalflags.flags
-
-#
-errlog = open('logs/proxy.log', 'a')
 
 # load settings from config file
 config = ConfigParser.SafeConfigParser()
@@ -24,7 +20,10 @@ config.read('default.cfg')
 bufsize  = config.getint('Serial', 'bufsize')
 baudrate = config.getint('Serial', 'baudrate')
 serport  = config.get('Serial', 'port')
-ser      = serial.Serial(serport, baudrate, timeout = 0.5)
+
+print "trying to open", serport, "at", baudrate, "speed..."
+ser = serial.Serial(serport, baudrate, timeout = 0.5)
+print "  success!"
 
 class SerialReader(threading.Thread):#{{{
     """ Infinitely read data from serial port and write it to all registered ports """
@@ -36,6 +35,7 @@ class SerialReader(threading.Thread):#{{{
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.portlist = []
         for port in config.items("SocketOut"):
+            print "  adding", port[1], "port to destination list"
             self.portlist.append(config.getint("SocketOut", port[0]))
 
     def stop(self):
@@ -60,6 +60,7 @@ class SerialWriter(threading.Thread):#{{{
         self.sock.settimeout(0.5)
         p = config.getint("SocketIn", "PORT_UDP_SERPROXY")
         self.sock.bind(("localhost", p))
+        print "  binding writer to", p, "port"
 
     def stop(self):
         self.__stop.set()
@@ -79,26 +80,27 @@ class SerialWriter(threading.Thread):#{{{
                 print cin
                 cin = ""
     #}}}
-
-def main():
+def main():#{{{
+    print "starting reader thread"
     reader = SerialReader(ser)
-    writer = SerialWriter(ser)
     reader.start()
+    print "starting writer thread"
+    writer = SerialWriter(ser)
     writer.start()
     while True:
         try:
             time.sleep(0.5)
         except KeyboardInterrupt:
-            print "Keyboard Interrupt caught"
+            print "\nKeyboard Interrupt caught"
             reader.stop()
             writer.stop()
             reader.join()
             writer.join()
+            print "closing serial port"
+            ser.close()
             print "SerialProxy: stopped"
             return
+#}}}
 
 main()
-
-
-
 
