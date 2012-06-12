@@ -66,8 +66,7 @@ def input(q, e_pause, e_kill, sock):#{{{
         if e_kill.is_set():
             dbgprint("**** Link input thread. Sigterm received. Exiting")
             return
-        else:
-            c = sock.recv(1024)
-            __receive_data(q, c)
+        c = sock.recv(1024)
+        __receive_data(q, c)
 #}}}
 
