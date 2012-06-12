@@ -92,7 +92,9 @@ static msg_t LinkInThread(void *sdp){
     // Try to get a new message
     c = sdGetTimeout((SerialDriver *)sdp, MS2ST(200));
     if (c != Q_TIMEOUT){
-      if (mavlink_parse_char(MAVLINK_COMM_0, (uint8_t)c, &msg, &status)) {
+      uint8_t s = 0;
+      s = mavlink_parse_char(MAVLINK_COMM_0, (uint8_t)c, &msg, &status);
+      if (s) {
         if (msg.sysid == GROUND_STATION_ID){ /* нас запрашивает наземная станция */
           sort_input_messages(&msg);
         }
