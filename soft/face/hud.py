@@ -5,9 +5,8 @@ import sys
 import os
 import signal
 import time
-import socket
 import ConfigParser
-from struct import pack
+
 from multiprocessing import Process, Queue, Lock, Event, freeze_support
 from Queue import Empty, Full
 
@@ -19,17 +18,11 @@ from gloss import *
 from dsp import *
 from utils import *
 import telemetry
-import log
 import link
-import tuner
 
 # глобальные переменные между модулями
 import globalflags
 flags = globalflags.flags
-
-# allow import from the parent directory, where mavlink.py and its stuff are
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
-import mavlink
 
 # Очереди сообщений
 q_tlm  = Queue(8) # для телеметрии
@@ -64,9 +57,7 @@ if __name__ == '__main__':
     config = ConfigParser.SafeConfigParser()
     config.read('default.cfg')
 
-    ADDR = "localhost", config.getint("SocketOut", "PORT_UDP_HUD")
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind((ADDR))
+    device = "udp:localhost:" + str(config.getint("SocketOut", "PORT_UDP_HUD"))
 
     # файл для записи ошибок
     errlog = open(config.get("Log", "log_hud"), 'a')
@@ -79,7 +70,7 @@ if __name__ == '__main__':
     p_main.start()
 
     # need only raw data for a moment
-    p_linkin = Process(target=link.input, args=(q_tlm, e_pause, e_kill, sock, ))
+    p_linkin = Process(target=link.input, args=(q_tlm, e_pause, e_kill, device, ))
     p_linkin.start()
 
     time.sleep(1) # ждем, пока все процессы подхватятся
