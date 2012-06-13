@@ -154,9 +154,12 @@ class RelCheckboxGrid(QtGui.QWidget):#{{{
 
     def getState(self):
         i = 0
-        while i < 32:
-            print self.grid[i].checkState()
+        state = 0
+        while i < len(self.grid):
+            if self.grid[i].checkState():
+                state += 1 << i
             i += 1
+        return state
 
 chRel_0_31 = RelCheckboxGrid(tuner.tabRelay_0_31)
 for i in range(0, 31):
@@ -167,8 +170,8 @@ for i in range(0, 31):
     chRel_32_63.addCheckbox(i, config.get("Rel32_63", "ch"+str(i+32)))
 
 chRel_0_31.setState(0xFFFF)
-chRel_32_63.setState(0xFFFF00)
-# grid_0_31.getState()
+chRel_32_63.setState(0xF)
+print chRel_32_63.getState()
 #}}}
 
 
