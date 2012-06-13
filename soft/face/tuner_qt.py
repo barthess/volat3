@@ -90,9 +90,6 @@ class QtMav(QtCore.QObject, threading.Thread): #{{{
 
 qt_mav = QtMav(outdevice, indevice)
 
-
-
-
 # create gui
 app = QtGui.QApplication(sys.argv)
 
@@ -106,6 +103,73 @@ parameter = Parameter(name='params', type='group', children=params)
 parameter_tree = ParameterTree(parent=tuner.tabRawTree)
 parameter_tree.setParameters(parameter, showTop=False)
 parameter_tree.resize(300, 500)
+
+
+
+
+
+class VolatCheckbox(QtGui.QCheckBox):
+    """ Subclass of standard Qt checkbox """
+
+    """ n -- number of channel """
+    mytoggled = QtCore.pyqtSignal(bool, int)
+
+    def __init__(self, n, parent):
+        """ n -- number of corresponding input channel """
+        super(QtGui.QCheckBox, self).__init__(parent=parent)
+        self.chnum = n
+        self.toggled.connect(self.myemit)
+
+    def myemit(self, state):
+        self.mytoggled.emit(state, self.chnum)
+
+def vtest(state, n):
+    print state, n
+
+volatch = VolatCheckbox(10, parent=tuner.tabHelp)
+volatch.mytoggled.connect(vtest)
+
+
+
+class RelCheckboxGrid(QtGui.QWidget):#{{{
+
+    def __init__(self, parent):
+        super(QtGui.QWidget, self).__init__(parent=parent)
+        self.state = 0 # bitmask of all checkboxes
+        self.grid = [] # array of checkbox objects
+
+    def addCheckbox(self, i, st):
+        step = 16
+        x0 = 5
+        y0 = 25
+        self.grid.append(QtGui.QCheckBox(parent=self,
+                        text=QtCore.QString.fromUtf8(st),
+                        geometry=QtCore.QRect(x0, y0 + i * step, 350, 20)))
+
+    def setState(self, state):
+        i = 0
+        while i < len(self.grid):
+            self.grid[i].setChecked((state >> i) & 1)
+            i += 1
+
+    def getState(self):
+        i = 0
+        while i < 32:
+            print self.grid[i].checkState()
+            i += 1
+
+chRel_0_31 = RelCheckboxGrid(tuner.tabRelay_0_31)
+for i in range(0, 31):
+    chRel_0_31.addCheckbox(i, config.get("Rel0_31", "ch"+str(i)))
+
+chRel_32_63 = RelCheckboxGrid(tuner.tabRelay_32_63)
+for i in range(0, 31):
+    chRel_32_63.addCheckbox(i, config.get("Rel32_63", "ch"+str(i+32)))
+
+chRel_0_31.setState(0xFFFF)
+chRel_32_63.setState(0xFFFF00)
+# grid_0_31.getState()
+#}}}
 
 
 def get_group_index(params, gname):#{{{
