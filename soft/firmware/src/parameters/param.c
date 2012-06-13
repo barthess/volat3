@@ -61,9 +61,7 @@ GlobalParam_t global_data[] = {
   /*  key             min         val         max         type                    checker_fucntion   */
   /*--------------------------------------------------------------------------------------------------*/
   {"SYS_ID",          1,          20,         255,        MAVLINK_TYPE_UINT32_T,  default_setval},
-  /* тип "автопилота" (см. MAV_TYPE enum)
-   * для возможности переключения между машиной и самолетом. Изменения
-   * вступают в силу только после ребута. */
+  /* 16 denotes ground rover */
   {"SYS_mavtype",     0,          1,          16,         MAVLINK_TYPE_UINT32_T,  default_setval},
 
   //Коэффициенты полиномов для пересчета показаний с датчиков
@@ -129,7 +127,7 @@ GlobalParam_t global_data[] = {
 
   {"AN_ch16_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch16_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch10_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch16_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
 
   /****** разные временнЫе интервалы в mS */
   // пакеты с телеметрией
@@ -145,8 +143,12 @@ GlobalParam_t global_data[] = {
   {"T_reserved5",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
   {"T_reserved6",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
 
+  /* inversion flags for relay sensors. 1 - denotes inversio */
+  {"REL_00-31_inv",   0,          100,        0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
+  {"REL_32-63_inv",   0,          100,        0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
+
   /* fake field with 14 symbols name */
-  {"fake_14_bytes_",  1,          1048,       1224,       MAVLINK_TYPE_UINT32_T,  default_setval},
+  {"fake_14_bytes_",  1,          1048,       1224,       MAVLINK_TYPE_FLOAT,     default_setval},
 };
 
 const uint32_t ONBOARD_PARAM_COUNT = (sizeof(global_data) / sizeof(GlobalParam_t));
@@ -221,7 +223,7 @@ static bool_t send_value(Mail *param_value_mail,
     param_value_struct->param_value = global_data[index].value;
     param_value_struct->param_count = ONBOARD_PARAM_COUNT;
     param_value_struct->param_index = index;
-    param_value_struct->param_type  = MAVLINK_TYPE_FLOAT;
+    param_value_struct->param_type  = global_data[index].param_type;
     for (j = 0; j < ONBOARD_PARAM_NAME_LENGTH; j++)
       param_value_struct->param_id[j] = global_data[index].name[j];
 

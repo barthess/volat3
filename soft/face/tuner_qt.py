@@ -81,7 +81,8 @@ class QtMav(QtCore.QObject, threading.Thread): #{{{
                 if type(m) == mavlink.MAVLink_param_value_message:
                     t = time.time()
                     self.param_value_received.emit(m)
-                    print m.param_count, "/", m.param_index
+                    # print m.param_count, "/", m.param_index, m.param_id, m.param_value
+                    # print m.param_id.split('_')[0]
                     if m.param_count == m.param_index + 1:
                         outmaster.close()
                         return LAST_VALUE
@@ -100,35 +101,109 @@ uic.compileUi("tuner.ui", f)
 tuner = uic.loadUi("tuner.ui")
 
 
-
-p0 = {'name': 'Param 1', 'type': 'int', 'value': 10}
-p1 = {'name': 'Param 2', 'type': 'float', 'value': 10}
-
-g0 = {'name': 'Group 0', 'type': 'group', 'children': [p0, p1]}
-g1 = {'name': 'Group 1', 'type': 'group', 'children': [p0, p1]}
-
 params = []
-p = Parameter(name='params', type='group', children=params)
-t = ParameterTree(parent=tuner.tabRawTree)
-t.setParameters(p, showTop=False)
-# print tuner.tabRawTree.width()
-# t.resize(400, 500)
+parameter = Parameter(name='params', type='group', children=params)
+parameter_tree = ParameterTree(parent=tuner.tabRawTree)
+parameter_tree.setParameters(parameter, showTop=False)
+parameter_tree.resize(300, 500)
 
 
+def get_group_index(params, gname):#{{{
+    """
+    recursive group refreshing/adding
+    params -- parameters structure
+    gname -- string representing name
+    return:
+        index in params structure
+        -1 if not found
+    """
+    i = 0
+    for g in params:
+        if g['name'] == gname:
+            return i
+        i += 1
+    return -1
+#}}}
+def get_param_index(children, pname):#{{{
+    """
+    recursive param refreshing/adding
+    children -- array of parameters
+    pname -- string representing name
+    return:
+        index in children
+        -1 if not found
+    """
+    i = 0
+    for g in children:
+        if g['name'] == pname:
+            return i
+        i += 1
+    return -1
+#}}}
+def get_param_type(m):#{{{
+    """
+    determine parameter type based on mavlink defines
+    """
+    MAVLINK_TYPE_CHAR     = 0
+    MAVLINK_TYPE_UINT8_T  = 1
+    MAVLINK_TYPE_INT8_T   = 2
+    MAVLINK_TYPE_UINT16_T = 3
+    MAVLINK_TYPE_INT16_T  = 4
+    MAVLINK_TYPE_UINT32_T = 5
+    MAVLINK_TYPE_INT32_T  = 6
+    MAVLINK_TYPE_FLOAT    = 9
 
-# def refresh():#{{{
-#     print "refresh clicked"
-#     tuner.labelStatusBar.setText("loading values")
-#     params.append(g0)
-#     params.append(g1)
-#     global p, t
-#     p = Parameter(name='params', type='group', children=params)
-#     t.setParameters(p, showTop=False)
-# #}}}
-# tuner.buttonRefersh.clicked.connect(refresh)
+    if m.param_type == MAVLINK_TYPE_FLOAT:
+        return "float"
+    else:
+        return "int"
+#}}}
+def refresh_table(m):#{{{
+    s = "got: " + str(m.param_count)+"/"+str(m.param_index + 1) + " " + m.param_id
+    tuner.labelStatusBar.setText(s)
+    # print m.param_index
+    gname = m.param_id.split('_')[0]
+    pname = m.param_id.split('\x00')[0]
+    ptype = get_param_type(m)
 
+    ptmp = {'name': pname, 'type': ptype, 'value': m.param_value}
 
+    gindex = get_group_index(params, gname)
+    if gindex == -1:
+        params.append({'name': gname, 'type': 'group', 'children': [ptmp]})
+    else:
+        pindex = get_param_index(params[gindex]['children'], pname)
+        if pindex == -1:
+            params[gindex]['children'].append(ptmp)
+        else:
+            params[gindex]['children'][pindex]['value'] = m.param_value
+
+    if m.param_count == m.param_index + 1:
+        global parameter, parameter_tree
+        parameter = Parameter(name='params', type='group', children=params)
+        parameter_tree.setParameters(parameter, showTop=False)
+#}}}
+
+def transmit():
+    print "transmit pressed"
+
+def write_rom():
+    print "write_rom"
+
+def read_rom():
+    print "read_rom"
+
+def load_file():
+    print "load_file"
+
+def save_file():
+    print "save_file"
+
+qt_mav.param_value_received.connect(refresh_table)
 tuner.buttonRefersh.clicked.connect(qt_mav.refresh)
+tuner.buttonTransmit.clicked.connect(transmit)
+tuner.buttonWriteRom.clicked.connect(write_rom)
+tuner.buttonReadRom.clicked.connect(read_rom)
 # tuner.buttonRefersh.pressed.connect(exit())
 
 tuner.show()

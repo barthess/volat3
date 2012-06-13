@@ -37,7 +37,7 @@
      <x>0</x>
      <y>5</y>
      <width>366</width>
-     <height>441</height>
+     <height>546</height>
     </rect>
    </property>
    <property name="font">
@@ -47,7 +47,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tabAnalog">
     <attribute name="title">
@@ -304,13 +304,13 @@
    </widget>
    <widget class="QWidget" name="tabRelay">
     <attribute name="title">
-     <string>Relay</string>
+     <string>Relay 0-31</string>
     </attribute>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>30</y>
+       <x>50</x>
+       <y>5</y>
        <width>231</width>
        <height>16</height>
       </rect>
@@ -327,12 +327,12 @@
       <string>00110100100001011101</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBoxRel_12">
+    <widget class="QCheckBox" name="checkBoxRel_0">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>70</y>
-       <width>236</width>
+       <x>5</x>
+       <y>25</y>
+       <width>350</width>
        <height>20</height>
       </rect>
      </property>
@@ -340,6 +340,414 @@
       <string>Тепература масла ГМП</string>
      </property>
     </widget>
+    <widget class="QCheckBox" name="checkBoxRel_1">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>40</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_2">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>55</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_3">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>70</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_4">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>130</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_5">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>100</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_6">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>85</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_7">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>115</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_8">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>145</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_9">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>250</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_10">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>235</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_11">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>190</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_12">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>160</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_13">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>205</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_14">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>220</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_15">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>175</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_16">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>265</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_17">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>445</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_18">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>370</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_19">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>355</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_20">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>310</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_21">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>430</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_22">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>280</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_23">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>415</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_24">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>385</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_25">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>325</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_26">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>490</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_27">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>475</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_28">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>400</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_29">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>340</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_30">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>460</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBoxRel_31">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>295</y>
+       <width>351</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Тепература масла ГМП</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Relay 32-63</string>
+    </attribute>
    </widget>
    <widget class="QWidget" name="tabRawTree">
     <attribute name="title">
@@ -495,27 +903,6 @@ Next line.</string>
     <string>Сделать пиздато</string>
    </property>
   </widget>
-  <zorder>tabWidget</zorder>
-  <zorder>buttonRefersh</zorder>
-  <zorder>labelStatusBar</zorder>
-  <zorder>buttonTransmit</zorder>
-  <zorder>buttonReadRom</zorder>
-  <zorder>buttonWriteRom</zorder>
-  <zorder>buttonLoadFile</zorder>
-  <zorder>buttonSaveFile</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>checkBoxRel_49</zorder>
-  <zorder>checkBoxRel_30</zorder>
-  <zorder>checkBoxRel_58</zorder>
-  <zorder>checkBoxRel_11</zorder>
-  <zorder>checkBoxRel_39</zorder>
-  <zorder>checkBoxRel_13</zorder>
-  <zorder>checkBoxRel_28</zorder>
-  <zorder>checkBoxRel_45</zorder>
-  <zorder>checkBoxRel_22</zorder>
-  <zorder>checkBoxRel_42</zorder>
-  <zorder>checkBoxRel_61</zorder>
  </widget>
  <resources/>
  <connections/>
