@@ -9,6 +9,7 @@ import time
 import collections
 import user
 import socket
+import math
 
 from pyqtgraph.Qt import QtCore, QtGui
 import pyqtgraph.parametertree.parameterTypes as pTypes
@@ -155,6 +156,8 @@ def get_param_type(m):#{{{
         return "int"
 #}}}
 def refresh_table(m):#{{{
+    global params
+    global parameter
     s = "got: " + str(m.param_count)+"/"+str(m.param_index + 1) + " " + m.param_id
     tuner.labelStatusBar.setText(s)
     # print m.param_index
@@ -174,7 +177,7 @@ def refresh_table(m):#{{{
         else:
             if ptype == "int":
                 params[gindex]['children'][pindex]['type'] = "int"
-                params[gindex]['children'][pindex]['value'] = int(math.round(m.param_value))
+                params[gindex]['children'][pindex]['value'] = int(round(m.param_value))
             else:
                 params[gindex]['children'][pindex]['value'] = m.param_value
                 params[gindex]['children'][pindex]['type'] = "float"
@@ -258,7 +261,14 @@ def load_file():
 
 def save_file():
     print "save_file"
+    print parameter.names['SYS']['SYS_ID']
     print params
+    print type(parameter.childs)
+
+def tree_val_changed(who, howmuch):
+    print who, howmuch
+
+# parameter.valueChanged.connect(tree_val_changed)
 
 qt_mav.param_value_received.connect(refresh_table)
 tuner.buttonRefersh.clicked.connect(qt_mav.refresh)
@@ -267,6 +277,15 @@ tuner.buttonWriteRom.clicked.connect(write_rom)
 tuner.buttonReadRom.clicked.connect(read_rom)
 tuner.buttonSaveFile.clicked.connect(save_file)
 # tuner.buttonRefersh.pressed.connect(exit())
+
+
+
+from pyqtgraph.widgets import TableWidget
+testdata = [{'x': 1, 'y': 4}, {'x': 2, 'y': 5}]
+# testdata = [[1,2,3], [4,5,6]]
+tab = TableWidget.TableWidget(tuner.tabHelp)
+tab.setData(testdata)
+tab.cellChanged.connect(tree_val_changed)
 
 tuner.show()
 
