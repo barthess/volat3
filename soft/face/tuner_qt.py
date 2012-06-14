@@ -104,77 +104,6 @@ parameter_tree = ParameterTree(parent=tuner.tabRawTree)
 parameter_tree.setParameters(parameter, showTop=False)
 parameter_tree.resize(300, 500)
 
-
-
-
-
-class VolatCheckbox(QtGui.QCheckBox):
-    """ Subclass of standard Qt checkbox """
-
-    """ n -- number of channel """
-    mytoggled = QtCore.pyqtSignal(bool, int)
-
-    def __init__(self, n, parent):
-        """ n -- number of corresponding input channel """
-        super(QtGui.QCheckBox, self).__init__(parent=parent)
-        self.chnum = n
-        self.toggled.connect(self.myemit)
-
-    def myemit(self, state):
-        self.mytoggled.emit(state, self.chnum)
-
-def vtest(state, n):
-    print state, n
-
-volatch = VolatCheckbox(10, parent=tuner.tabHelp)
-volatch.mytoggled.connect(vtest)
-
-
-
-class RelCheckboxGrid(QtGui.QWidget):#{{{
-
-    def __init__(self, parent):
-        super(QtGui.QWidget, self).__init__(parent=parent)
-        self.state = 0 # bitmask of all checkboxes
-        self.grid = [] # array of checkbox objects
-
-    def addCheckbox(self, i, st):
-        step = 16
-        x0 = 5
-        y0 = 25
-        self.grid.append(QtGui.QCheckBox(parent=self,
-                        text=QtCore.QString.fromUtf8(st),
-                        geometry=QtCore.QRect(x0, y0 + i * step, 350, 20)))
-
-    def setState(self, state):
-        i = 0
-        while i < len(self.grid):
-            self.grid[i].setChecked((state >> i) & 1)
-            i += 1
-
-    def getState(self):
-        i = 0
-        state = 0
-        while i < len(self.grid):
-            if self.grid[i].checkState():
-                state += 1 << i
-            i += 1
-        return state
-
-chRel_0_31 = RelCheckboxGrid(tuner.tabRelay_0_31)
-for i in range(0, 31):
-    chRel_0_31.addCheckbox(i, config.get("Rel0_31", "ch"+str(i)))
-
-chRel_32_63 = RelCheckboxGrid(tuner.tabRelay_32_63)
-for i in range(0, 31):
-    chRel_32_63.addCheckbox(i, config.get("Rel32_63", "ch"+str(i+32)))
-
-chRel_0_31.setState(0xFFFF)
-chRel_32_63.setState(0xF)
-print chRel_32_63.getState()
-#}}}
-
-
 def get_group_index(params, gname):#{{{
     """
     recursive group refreshing/adding
@@ -243,13 +172,77 @@ def refresh_table(m):#{{{
         if pindex == -1:
             params[gindex]['children'].append(ptmp)
         else:
-            params[gindex]['children'][pindex]['value'] = m.param_value
+            if ptype == "int":
+                params[gindex]['children'][pindex]['type'] = "int"
+                params[gindex]['children'][pindex]['value'] = int(math.round(m.param_value))
+            else:
+                params[gindex]['children'][pindex]['value'] = m.param_value
+                params[gindex]['children'][pindex]['type'] = "float"
 
     if m.param_count == m.param_index + 1:
         global parameter, parameter_tree
         parameter = Parameter(name='params', type='group', children=params)
         parameter_tree.setParameters(parameter, showTop=False)
 #}}}
+
+
+class RelCheckboxGrid(QtGui.QWidget):#{{{
+    """ """
+
+    changed = QtCore.pyqtSignal(int)
+
+    def __init__(self, parent):
+        # super(RelCheckboxGrid, self).__init__(parent=parent)
+        QtGui.QWidget.__init__(self, parent=parent)
+        self.grid = [] # array of checkbox objects
+
+    def addCheckbox(self, i, st):
+        step = 16
+        x0 = 5
+        y0 = 25
+        self.grid.append(QtGui.QCheckBox(parent=self,
+                        text=QtCore.QString.fromUtf8(st),
+                        geometry=QtCore.QRect(x0, y0 + i * step, 350, 20)))
+        self.grid[i].clicked.connect(self._emitState)
+
+    def setState(self, state):
+        i = 0
+        while i < len(self.grid):
+            self.grid[i].setChecked((state >> i) & 1)
+            i += 1
+
+    def getState(self):
+        i = 0
+        state = 0
+        while i < len(self.grid):
+            if self.grid[i].checkState():
+                state += 1 << i
+            i += 1
+        return state
+
+    def _emitState(self):
+        self.changed.emit(self.getState())
+#}}}
+
+def rel_0_31_changed(state):
+    print "grid1 changed"
+    print params[get_group_index(params, "REL")]['children'][0]
+
+def rel_32_63_changed(state):
+    print "grid2 changed", state
+
+
+chRel_0_31 = RelCheckboxGrid(tuner.tabRelay_0_31)
+chRel_32_63 = RelCheckboxGrid(tuner.tabRelay_32_63)
+
+chRel_0_31.changed.connect(rel_0_31_changed)
+chRel_32_63.changed.connect(rel_32_63_changed)
+
+for i in range(0, 31):
+    chRel_0_31.addCheckbox(i, config.get("Rel0_31", "ch"+str(i)))
+    chRel_32_63.addCheckbox(i, config.get("Rel32_63", "ch"+str(i+32)))
+
+
 
 def transmit():
     print "transmit pressed"
@@ -265,12 +258,14 @@ def load_file():
 
 def save_file():
     print "save_file"
+    print params
 
 qt_mav.param_value_received.connect(refresh_table)
 tuner.buttonRefersh.clicked.connect(qt_mav.refresh)
 tuner.buttonTransmit.clicked.connect(transmit)
 tuner.buttonWriteRom.clicked.connect(write_rom)
 tuner.buttonReadRom.clicked.connect(read_rom)
+tuner.buttonSaveFile.clicked.connect(save_file)
 # tuner.buttonRefersh.pressed.connect(exit())
 
 tuner.show()

@@ -144,8 +144,8 @@ GlobalParam_t global_data[] = {
   {"T_reserved6",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
 
   /* inversion flags for relay sensors. 1 - denotes inversio */
-  {"REL_00-31_inv",   0,          100,        0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
-  {"REL_32-63_inv",   0,          100,        0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
+  {"REL_0_31",        0,          100,        0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
+  {"REL_32_63",       0,          100,        0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
 
   /* fake field with 14 symbols name */
   {"fake_14_bytes_",  1,          1048,       1224,       MAVLINK_TYPE_FLOAT,     default_setval},
