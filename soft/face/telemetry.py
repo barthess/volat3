@@ -9,8 +9,6 @@ from math import *
 from multiprocessing import Process, Queue, Lock, Event, freeze_support
 from Queue import Empty, Full
 
-from dsp import *
-
 import globalflags
 flags = globalflags.flags
 

@@ -15,7 +15,6 @@ from pygame.locals import *
 from gloss import *
 
 # самопальные модули
-from dsp import *
 from utils import *
 import telemetry
 import link

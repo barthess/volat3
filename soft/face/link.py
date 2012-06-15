@@ -31,6 +31,8 @@ def input(q, e_pause, e_kill, device):#{{{
     master = mavutil.mavlink_connection(device)
     master.port.settimeout(1)
 
+    m = None
+
     while True:
         if e_kill.is_set():
             dbgprint("**** Link input thread. Sigterm received. Exiting")
