@@ -37,7 +37,7 @@
      <x>0</x>
      <y>5</y>
      <width>366</width>
-     <height>546</height>
+     <height>581</height>
     </rect>
    </property>
    <property name="font">
@@ -47,11 +47,11 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>4</number>
+    <number>0</number>
    </property>
-   <widget class="QWidget" name="tabAnalog">
+   <widget class="QWidget" name="tabAn">
     <attribute name="title">
-     <string>Analog</string>
+     <string>An</string>
     </attribute>
     <widget class="QLabel" name="label_7">
      <property name="geometry">
@@ -163,7 +163,7 @@
       <string>4096</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="lineEdit_c2">
      <property name="geometry">
       <rect>
        <x>145</x>
@@ -173,7 +173,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="lineEdit_c3">
      <property name="geometry">
       <rect>
        <x>200</x>
@@ -247,7 +247,7 @@
       <string>P</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="lineEdit_c1">
      <property name="geometry">
       <rect>
        <x>90</x>
@@ -302,9 +302,9 @@
      </item>
     </widget>
    </widget>
-   <widget class="QWidget" name="tabRelay_0_31">
+   <widget class="QWidget" name="tabRel_0_31">
     <attribute name="title">
-     <string>Relay 0_31</string>
+     <string>Rel 0_31</string>
     </attribute>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
@@ -328,14 +328,14 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="tabRelay_32_63">
+   <widget class="QWidget" name="tabRel_32_63">
     <attribute name="title">
-     <string>Relay 32_63</string>
+     <string>Rel 32_63</string>
     </attribute>
    </widget>
-   <widget class="QWidget" name="tabRawTree">
+   <widget class="QWidget" name="tabTime">
     <attribute name="title">
-     <string>Raw Tree</string>
+     <string>Time</string>
     </attribute>
    </widget>
    <widget class="QWidget" name="tabHelp">
@@ -354,32 +354,6 @@
      <property name="text">
       <string>Here will be help.
 Next line.</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBox">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>195</y>
-       <width>85</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>CheckBox</string>
-     </property>
-    </widget>
-    <widget class="QCheckBox" name="checkBox_2">
-     <property name="geometry">
-      <rect>
-       <x>65</x>
-       <y>240</y>
-       <width>85</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>CheckBox</string>
      </property>
     </widget>
    </widget>

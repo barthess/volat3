@@ -24,7 +24,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '..
 import mavlink
 import mavutil
 
-
 SUCCESS = 0
 FAILED = 1
 LAST_VALUE = 2
@@ -33,7 +32,6 @@ TIMEOUT = 3
 # read socket settings settings from config
 config = ConfigParser.SafeConfigParser()
 config.read('../default.cfg')
-
 
 # create device ID string
 # direction specified related to mpiovd
@@ -86,6 +84,8 @@ class QtMav(QtCore.QObject, threading.Thread): #{{{
                         return LAST_VALUE
 #}}}
 
+
+
 qt_mav = QtMav(outdevice, indevice)
 
 # create gui
@@ -98,7 +98,7 @@ tuner = uic.loadUi("tuner.ui")
 
 params = []
 parameter = Parameter(name='params', type='group', children=params)
-parameter_tree = ParameterTree(parent=tuner.tabRawTree)
+parameter_tree = ParameterTree(parent=tuner.tabTime)
 parameter_tree.setParameters(parameter, showTop=False)
 parameter_tree.resize(300, 500)
 
@@ -194,8 +194,8 @@ def rel_32_63_changed(state):
     print "grid2 changed", state
 
 
-chRel_0_31 = RelCheckboxGrid(tuner.tabRelay_0_31)
-chRel_32_63 = RelCheckboxGrid(tuner.tabRelay_32_63)
+chRel_0_31 = RelCheckboxGrid(tuner.tabRel_0_31)
+chRel_32_63 = RelCheckboxGrid(tuner.tabRel_32_63)
 
 chRel_0_31.changed.connect(rel_0_31_changed)
 chRel_32_63.changed.connect(rel_32_63_changed)
@@ -224,9 +224,6 @@ def save_file():
     print params
     print type(parameter.childs)
 
-def tree_val_changed(who, howmuch):
-    print who, howmuch
-
 # parameter.valueChanged.connect(tree_val_changed)
 
 qt_mav.param_value_received.connect(refresh_table)
@@ -239,12 +236,8 @@ tuner.buttonSaveFile.clicked.connect(save_file)
 
 
 
-from pyqtgraph.widgets import TableWidget
-testdata = [{'x': 1, 'y': 4}, {'x': 2, 'y': 5}]
-# testdata = [[1,2,3], [4,5,6]]
-tab = TableWidget.TableWidget(tuner.tabHelp)
-tab.setData(testdata)
-tab.cellChanged.connect(tree_val_changed)
+from tuneran import *
+an = VolatAnWidget(name="AN01", parent=tuner.tabHelp)
 
 tuner.show()
 
