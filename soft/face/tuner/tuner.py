@@ -17,15 +17,13 @@ from pyqtgraph.parametertree import Parameter, ParameterTree, ParameterItem, reg
 from PyQt4 import uic
 
 import threading
-from multiprocessing import Queue, Lock, Event
 from Queue import Empty, Full
-from tuner_qt_rel import *
+from tunerrel import *
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../mavlink/python'))
 import mavlink
 import mavutil
 
-import link
 
 SUCCESS = 0
 FAILED = 1
@@ -34,10 +32,8 @@ TIMEOUT = 3
 
 # read socket settings settings from config
 config = ConfigParser.SafeConfigParser()
-config.read('default.cfg')
+config.read('../default.cfg')
 
-# Очереди сообщений
-q_tuner  = Queue(8) # эту очередь будет "слушать" тюнер
 
 # create device ID string
 # direction specified related to mpiovd
