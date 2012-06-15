@@ -11,7 +11,7 @@ bureaucracy/
 *.eps
 hard/mpiovd/3d/
 hard/mpiovd/gerber/
-soft/face/pyqtgraph/
+soft/face/tuner/pyqtgraph/
 *.ropeproject*
 *.swp
 *.tmp
