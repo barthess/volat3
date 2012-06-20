@@ -237,7 +237,8 @@ tuner.buttonSaveFile.clicked.connect(save_file)
 
 
 from tuneran import *
-an = VolatAnWidget(name="AN01", parent=tuner.tabHelp)
+# an = VolatAnWidget(name="AN01", parent=tuner.tabHelp)
+an = VolatAnGrid(parent=tuner.tabHelp)
 
 tuner.show()
 

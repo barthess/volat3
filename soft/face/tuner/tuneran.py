@@ -25,6 +25,7 @@ class VolatAnWidget(QtGui.QWidget):#{{{
         L = 40
         self.comboFilterLen = QtGui.QComboBox(self)
         self.comboFilterLen.setGeometry(QtCore.QRect(x, 0, L, H))
+        self.comboFilterLen.addItem("0")
         self.comboFilterLen.addItem("4")
         self.comboFilterLen.addItem("8")
         self.comboFilterLen.addItem("16")
@@ -78,8 +79,19 @@ class VolatAnWidget(QtGui.QWidget):#{{{
 
 class VolatAnGrid(QtGui.QWidget):#{{{
 
-    def __init__(self):
+    def __init__(self, parent):
+        parent
         QtGui.QWidget.__init__(self, parent=parent)
+        self.grid = []
+        H = 20
+        x = 0
+        space = 3
+        i = 0
+        while i < 10:
+            an = VolatAnWidget(name="AN" + str(i + 1), parent=self)
+            an.setGeometry(QtCore.QRect(space, space*i + H*i, 400, H))
+            self.grid.append(an)
+            i += 1
 
 
 #}}}
