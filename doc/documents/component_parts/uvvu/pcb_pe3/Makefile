@@ -13,7 +13,7 @@ semiallbw: archivebw
 
 $(document).tex: pe3_table.tex 
 
-pe3_table.tex: $(TOP_DIR)/../hard/mpiovd/bom/main_ListByParts.htm
+pe3_table.tex: $(TOP_DIR)/../hard/mpiovd/bom/mpiovd_ListByParts.htm
 	-rm -f uvvu.tsv
 	$(HTM2TSV_CMD) $< > uvvu.tsv
 	$(PE3GEN_CMD) uvvu.tsv
