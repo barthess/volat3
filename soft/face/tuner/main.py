@@ -18,7 +18,7 @@ from PyQt4 import uic
 
 import threading
 from Queue import Empty, Full
-from tunerrel import *
+from discrete import *
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../mavlink/python'))
 import mavlink
@@ -236,7 +236,7 @@ tuner.buttonSaveFile.clicked.connect(save_file)
 
 
 
-from tuneran import *
+from analog import *
 # an = VolatAnWidget(name="AN01", parent=tuner.tabHelp)
 an = VolatAnGrid(parent=tuner.tabHelp)
 
