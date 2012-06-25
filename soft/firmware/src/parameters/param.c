@@ -64,70 +64,86 @@ GlobalParam_t global_data[] = {
   /* 16 denotes ground rover */
   {"SYS_mavtype",     0,          1,          16,         MAVLINK_TYPE_UINT32_T,  default_setval},
 
-  //Коэффициенты полиномов для пересчета показаний с датчиков
-  {"AN_ch01_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch01_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch01_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  //Коэффициенты полиномов для пересчета показаний с датчиков, и длины фильтров
+  {"AN_ch1_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch1_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch1_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch1_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
-  {"AN_ch02_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch02_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch02_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch2_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch2_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch2_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch2_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
-  {"AN_ch03_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch03_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch03_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch3_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch3_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch3_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch3_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
-  {"AN_ch04_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch04_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch04_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch4_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch4_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch4_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch4_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
-  {"AN_ch05_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch05_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch05_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch5_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch5_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch5_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch5_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
-  {"AN_ch06_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch06_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch06_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch6_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch6_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch6_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch6_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
-  {"AN_ch07_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch07_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch07_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch7_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch7_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch7_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch7_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
-  {"AN_ch08_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch08_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch08_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch8_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch8_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch8_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch8_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
-  {"AN_ch09_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch09_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
-  {"AN_ch09_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch9_c1",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch9_c2",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch9_c3",       -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch9_flen",            0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
   {"AN_ch10_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch10_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch10_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch10_flen",           0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
   {"AN_ch11_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch11_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch11_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch11_flen",           0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
   {"AN_ch12_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch12_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch12_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch12_flen",           0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
   {"AN_ch13_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch13_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch13_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch13_flen",           0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
   {"AN_ch14_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch14_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch14_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch14_flen",           0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
   {"AN_ch15_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch15_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch15_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch15_flen",           0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
   {"AN_ch16_c1",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch16_c2",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
   {"AN_ch16_c3",      -2000000,   -9,         2000000,    MAVLINK_TYPE_INT32_T,   default_setval},
+  {"AN_ch16_flen",           0,    4,         64,         MAVLINK_TYPE_INT32_T,   default_setval},
 
   /****** разные временнЫе интервалы в mS */
   // пакеты с телеметрией
@@ -143,7 +159,7 @@ GlobalParam_t global_data[] = {
   {"T_reserved5",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
   {"T_reserved6",     SEND_OFF,   100,        SEND_MAX,   MAVLINK_TYPE_UINT32_T,  int_setval},
 
-  /* inversion flags for relay sensors. 1 - denotes inversio */
+  /* inversion flags for relay sensors. 1 - denotes inversion */
   {"REL_0_31",        0,          100,        0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
   {"REL_32_63",       0,          100,        0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
 

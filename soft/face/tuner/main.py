@@ -18,6 +18,8 @@ from PyQt4 import uic
 
 import threading
 from Queue import Empty, Full
+
+from analog import *
 from discrete import *
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../../mavlink/python'))
@@ -226,20 +228,43 @@ def save_file():
 
 # parameter.valueChanged.connect(tree_val_changed)
 
+
+
+
+# an = VolatAnWidget(name="AN01", parent=tuner.tabHelp)
+an = VolatAnGrid(indevice, parent=tuner.tabHelp)
+
+qt_mav.param_value_received.connect(an.slotParamMsg)
 qt_mav.param_value_received.connect(refresh_table)
 tuner.buttonRefersh.clicked.connect(qt_mav.refresh)
 tuner.buttonTransmit.clicked.connect(transmit)
+tuner.buttonTransmit.clicked.connect(an.transmit)
 tuner.buttonWriteRom.clicked.connect(write_rom)
 tuner.buttonReadRom.clicked.connect(read_rom)
 tuner.buttonSaveFile.clicked.connect(save_file)
 # tuner.buttonRefersh.pressed.connect(exit())
 
-
-
-from analog import *
-# an = VolatAnWidget(name="AN01", parent=tuner.tabHelp)
-an = VolatAnGrid(parent=tuner.tabHelp)
+# an.insert([
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9],
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9],
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9],
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9],
+#     [7, 8, 9],
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]
+#     ])
 
 tuner.show()
 
 sys.exit(app.exec_())
+
+
