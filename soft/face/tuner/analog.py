@@ -96,11 +96,12 @@ class VolatAnGrid(QtGui.QWidget):#{{{
         self.grid = []
         H = 20
         x = 0
+        y = 20
         space = 3
         i = 0
         while i < 16:
             an = VolatAnWidget(name="AN" + str(i + 1), parent=self)
-            an.setGeometry(QtCore.QRect(space, space*i + H*i, 400, H))
+            an.setGeometry(QtCore.QRect(space, y + space*i + H*i, 400, H))
             self.grid.append(an)
             i += 1
 
@@ -131,12 +132,12 @@ class VolatAnGrid(QtGui.QWidget):#{{{
             param_id = "AN_ch" + str(i + 1) + "_c1"
             v = int(self.grid[i].lineedit_c1.text())
             inmaster.mav.param_set_send(20, 0, param_id, v, 6)
-            time.sleep(0.1)
+            time.sleep(0.05)
 
             param_id = "AN_ch" + str(i + 1) + "_c2"
             v = int(self.grid[i].lineedit_c2.text())
             inmaster.mav.param_set_send(20, 0, param_id, v, 6)
-            time.sleep(0.1)
+            time.sleep(0.05)
 
             param_id = "AN_ch" + str(i + 1) + "_c3"
             v = int(self.grid[i].lineedit_c3.text())
@@ -144,7 +145,7 @@ class VolatAnGrid(QtGui.QWidget):#{{{
             time.sleep(0.05)
 
             i += 1
-            print param_id, v
+            print "saved AN", i
 
         # param_id = "AN_ch" + str(i + 1) + "_c3"
         # v = int(self.grid[i].lineedit_c3.text())

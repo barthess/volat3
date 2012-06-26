@@ -212,6 +212,8 @@ def transmit():
     print "transmit pressed"
 
 def write_rom():
+    inmaster = mavutil.mavlink_connection(indevice, input=False)
+    inmaster.mav.command_long_send(20, 0, mavlink.MAV_CMD_PREFLIGHT_STORAGE, 0, 1, 0, 0, 0, 0, 0, 0)
     print "write_rom"
 
 def read_rom():
@@ -232,7 +234,7 @@ def save_file():
 
 
 # an = VolatAnWidget(name="AN01", parent=tuner.tabHelp)
-an = VolatAnGrid(indevice, parent=tuner.tabHelp)
+an = VolatAnGrid(indevice, parent=tuner.tabAn)
 
 qt_mav.param_value_received.connect(an.slotParamMsg)
 qt_mav.param_value_received.connect(refresh_table)
