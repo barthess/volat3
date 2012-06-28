@@ -133,6 +133,23 @@ static size_t write(void *ip, const uint8_t *bp, size_t n){
 }
 
 /**
+ * Put stub.
+ */
+static msg_t put(void *ip, uint8_t b){
+  (void)ip;
+  (void)b;
+  return 0;
+}
+
+/**
+ * Get stub.
+ */
+static msg_t get(void *ip){
+  (void)ip;
+  return 0;
+}
+
+/**
  * Read some bytes from current position in file. After successful
  * read operation the position pointer will be increased by the number
  * of read bytes.
@@ -191,6 +208,8 @@ static size_t read(void *ip, uint8_t *bp, size_t n){
 static const struct EepromFilelStreamVMT vmt = {
     write,
     read,
+    put,
+    get,
     close,
     geterror,
     getsize,

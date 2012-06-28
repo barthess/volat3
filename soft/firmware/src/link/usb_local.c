@@ -215,46 +215,55 @@ static const USBDescriptor *get_descriptor(USBDriver *usbp,
   return NULL;
 }
 
+static USBInEndpointState ep1instate;
+
 /**
  * @brief   EP1 initialization structure (IN only).
  */
 static const USBEndpointConfig ep1config = {
-  USB_EP_MODE_TYPE_BULK | USB_EP_MODE_PACKET,
-  NULL,
-  sduDataTransmitted,
-  NULL,
-  0x0040,
-  0x0000,
-  NULL,
-  NULL
+    USB_EP_MODE_TYPE_BULK,
+    NULL,
+    sduDataTransmitted,
+    NULL,
+    0x0040,
+    0x0000,
+    &ep1instate,
+    NULL,
+    NULL
 };
+
+static USBOutEndpointState ep2outstate;
 
 /**
  * @brief   EP2 initialization structure (IN only).
  */
 static const USBEndpointConfig ep2config = {
-  USB_EP_MODE_TYPE_INTR | USB_EP_MODE_PACKET,
-  NULL,
-  sduInterruptTransmitted,
-  NULL,
-  0x0010,
-  0x0000,
-  NULL,
-  NULL
+    USB_EP_MODE_TYPE_INTR,
+    NULL,
+    sduInterruptTransmitted,
+    NULL,
+    0x0010,
+    0x0000,
+    NULL,
+    &ep2outstate,
+    NULL
 };
+
+static USBOutEndpointState ep3outstate;
 
 /**
  * @brief   EP3 initialization structure (OUT only).
  */
 static const USBEndpointConfig ep3config = {
-  USB_EP_MODE_TYPE_BULK | USB_EP_MODE_PACKET,
-  NULL,
-  NULL,
-  sduDataReceived,
-  0x0000,
-  0x0040,
-  NULL,
-  NULL
+    USB_EP_MODE_TYPE_BULK,
+    NULL,
+    NULL,
+    sduDataReceived,
+    0x0000,
+    0x0040,
+    NULL,
+    &ep3outstate,
+    NULL
 };
 
 /*
