@@ -4,7 +4,7 @@
 #include "sensors.h"
 #include "message.h"
 
-#include "adc_pns.h"
+#include "adc_local.h"
 #include "exti_local.h"
 #include "tmp75.h"
 #include "lis3.h"
@@ -58,7 +58,7 @@ void SensorsInit(void){
 
   /* Запуск контроллера внешних прерываний. */
   ExtiInitLocal();
-//  ADCInit_pns();
+  ADCInitLocal();
 
   /* start I2C sensors */
 
