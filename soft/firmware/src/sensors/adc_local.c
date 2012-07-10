@@ -16,40 +16,18 @@
  * EXTERNS
  ******************************************************************************
  */
-extern RawData raw_data;
-extern CompensatedData comp_data;
-extern mavlink_sys_status_t mavlink_sys_status_struct;
-extern GlobalParam_t global_data[];
+//extern RawData raw_data;
+//extern CompensatedData comp_data;
+//extern mavlink_sys_status_t mavlink_sys_status_struct;
+//extern GlobalParam_t global_data[];
 
 /*
  ******************************************************************************
  * DEFINES
  ******************************************************************************
  */
-#define DEFAULT_CURRENT_COEFF     1912   // коэффициент пересчета из условных единиц в амперы для саломёта -- 37, для машинки -- 1912
-#define DEFAULT_CURRENT_OFFSET    16   // смещение нуля датчика тока в единицах АЦП
-#define DEFAULT_VOLTAGE_COEFF     1022 // коэффициент пересчета из условных единиц в децывольты
-
-#define ADC_NUM_CHANNELS          6
-#define ADC_BUF_DEPTH             1
-
-/* человекочитабельные названия каналов */
-#define ADC_CURRENT_SENS          ADC_CHANNEL_IN10
-#define ADC_MAIN_SUPPLY           ADC_CHANNEL_IN11
-#define ADC_6V_SUPPLY             ADC_CHANNEL_IN12
-#define ADC_AN33_0                ADC_CHANNEL_IN13
-#define ADC_AN33_1                ADC_CHANNEL_IN14
-#define ADC_AN33_2                ADC_CHANNEL_IN15
-
-// где лежат текущие значения АЦП
-#define ADC_CURRENT_SENS_OFFSET   (ADC_CHANNEL_IN10 - 10)
-#define ADC_MAIN_SUPPLY_OFFSET    (ADC_CHANNEL_IN11 - 10)
-#define ADC_6V_SUPPLY_OFFSET      (ADC_CHANNEL_IN12 - 10)
-#define ADC_AN33_0_OFFSET         (ADC_CHANNEL_IN13 - 10)
-#define ADC_AN33_1_OFFSET         (ADC_CHANNEL_IN14 - 10)
-#define ADC_AN33_2_OFFSET         (ADC_CHANNEL_IN15 - 10)
-
-#define PWR_CHECK_PERIOD          10 /* mS */
+#define ADC_NUM_CHANNELS          16
+#define ADC_BUF_DEPTH             8
 
 /*
  ******************************************************************************
@@ -83,20 +61,48 @@ static const ADCConversionGroup adccg = {
   ADC_NUM_CHANNELS,
   adccallback,
   adcerrorcallback,
-  0,                        /* CR1 */
-  ADC_CR2_SWSTART,          /* CR2 */
+  /* CR1 */
+  0,
+  /* CR2 */
+  ADC_CR2_SWSTART,
+  /* SMPR1 */
   ADC_SMPR1_SMP_AN10(ADC_SAMPLE_239P5) |
   ADC_SMPR1_SMP_AN11(ADC_SAMPLE_239P5) |
   ADC_SMPR1_SMP_AN12(ADC_SAMPLE_239P5) |
   ADC_SMPR1_SMP_AN13(ADC_SAMPLE_239P5) |
   ADC_SMPR1_SMP_AN14(ADC_SAMPLE_239P5) |
   ADC_SMPR1_SMP_AN15(ADC_SAMPLE_239P5),
-  0,                        /* SMPR2 */
-  ADC_SQR1_NUM_CH(ADC_NUM_CHANNELS),
-  0,
-  (ADC_SQR3_SQ6_N(ADC_AN33_2)         | ADC_SQR3_SQ5_N(ADC_AN33_1) |
-      ADC_SQR3_SQ4_N(ADC_AN33_0)      | ADC_SQR3_SQ3_N(ADC_6V_SUPPLY) |
-      ADC_SQR3_SQ2_N(ADC_MAIN_SUPPLY) | ADC_SQR3_SQ1_N(ADC_CURRENT_SENS))
+  /* SMPR2 */
+  ADC_SMPR2_SMP_AN0(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN1(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN2(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN3(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN4(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN5(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN6(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN7(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN8(ADC_SAMPLE_239P5)  |
+  ADC_SMPR2_SMP_AN9(ADC_SAMPLE_239P5),
+  /* SQR1 */
+  ADC_SQR1_NUM_CH(ADC_NUM_CHANNELS) |
+  ADC_SQR1_SQ16_N(ADC_CHANNEL_IN15) |
+  ADC_SQR1_SQ15_N(ADC_CHANNEL_IN14) |
+  ADC_SQR1_SQ14_N(ADC_CHANNEL_IN13) |
+  ADC_SQR1_SQ13_N(ADC_CHANNEL_IN12),
+  /* SQR2 */
+  ADC_SQR2_SQ12_N(ADC_CHANNEL_IN11) |
+  ADC_SQR2_SQ11_N(ADC_CHANNEL_IN10) |
+  ADC_SQR2_SQ10_N(ADC_CHANNEL_IN9)  |
+  ADC_SQR2_SQ9_N(ADC_CHANNEL_IN8)   |
+  ADC_SQR2_SQ8_N(ADC_CHANNEL_IN7)   |
+  ADC_SQR2_SQ7_N(ADC_CHANNEL_IN6),
+  /* SQR3 */
+  ADC_SQR3_SQ6_N(ADC_CHANNEL_IN5) |
+  ADC_SQR3_SQ5_N(ADC_CHANNEL_IN4) |
+  ADC_SQR3_SQ4_N(ADC_CHANNEL_IN3) |
+  ADC_SQR3_SQ3_N(ADC_CHANNEL_IN2) |
+  ADC_SQR3_SQ2_N(ADC_CHANNEL_IN1) |
+  ADC_SQR3_SQ1_N(ADC_CHANNEL_IN0)
 };
 
 /*

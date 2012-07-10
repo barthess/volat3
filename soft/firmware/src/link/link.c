@@ -77,7 +77,7 @@ static msg_t LinkOutThread(void *sdp){
 /**
  * Поток разбора входящих данных.
  */
-static WORKING_AREA(LinkInThreadWA, 1024);
+static WORKING_AREA(LinkInThreadWA, 2048);
 static msg_t LinkInThread(void *sdp){
   chRegSetThreadName("MAVLinkIn");
 

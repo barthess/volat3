@@ -39,7 +39,7 @@ Thread* logout_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarr
  ******************************************************************************
  */
 
-static ShellCmd_t chibiutils[] = {
+static const ShellCmd_t chibiutils[] = {
     {"ps",        &ps_cmd,        NULL},
     {"uname",     &uname_cmd,     NULL},
     {"help",      &help_cmd,      NULL},
@@ -188,7 +188,7 @@ void sigint (void){
 /**
  * Thread function
  */
-static WORKING_AREA(ShellThreadWA, 2048);
+static WORKING_AREA(ShellThreadWA, 1024);
 static msg_t ShellThread(void *arg){
   chRegSetThreadName("Shell");
   chThdSleepMilliseconds(1000);
