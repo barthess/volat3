@@ -10,6 +10,7 @@
 #include "i2c_local.h"
 #include "sensors.h"
 #include "autopilot.h"
+#include "dsp.h"
 
 /* heap for (link threads) OR (shell thread)*/
 MemoryHeap LinkThdHeap;
@@ -39,6 +40,7 @@ int main(void) {
   LinkInit();
   SanityControlInit();
   I2CInitLocal();
+  DspInit();
   SensorsInit();
   AutopilotInit();
 

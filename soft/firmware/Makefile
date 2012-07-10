@@ -104,6 +104,9 @@ CSRC = $(PORTSRC) \
        src/link/link_sortin.c \
        src/link/link_sortout.c \
        src/microrl/src/microrl.c \
+       src/dsp/dsp.c \
+       src/dsp/arm_fir_q31.c \
+       src/dsp/arm_fir_init_q31.c \
        
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
@@ -144,6 +147,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src/sensors \
          src/eeprom \
          src/link \
+         src/dsp \
          src/parameters \
          $(MAVLINKDIR)/common \
          $(MAVLINKDIR)/mpiovd
