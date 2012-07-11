@@ -42,10 +42,10 @@ static float *rel_0_31, *rel_32_63;
  */
 
 /* perform inversion of neede bits */
-uint64_t normalize(uint64_t in, uint32_t c1, uint32_t c2){
+uint64_t normalize(uint64_t raw, uint32_t c1, uint32_t c2){
   uint64_t coeffs = c2;
   coeffs = (coeffs << 32) | c1;
-  return in ^ coeffs;
+  return raw ^ coeffs;
 }
 
 /**
@@ -59,7 +59,9 @@ static msg_t DiscreteThread(void* arg){
   while (TRUE) {
     chThdSleepMilliseconds(100);
     raw_data.discrete = 0;
-    comp_data.discrete = normalize(raw_data.discrete, *(uint32_t *)rel_0_31, *(uint32_t *)rel_32_63);
+    comp_data.discrete = normalize(raw_data.discrete,
+                                   *(uint32_t *)rel_0_31,
+                                   *(uint32_t *)rel_32_63);
   }
 
   return 0;
