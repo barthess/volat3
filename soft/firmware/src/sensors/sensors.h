@@ -7,6 +7,7 @@
  */
 typedef struct CompensatedData CompensatedData;
 struct CompensatedData{
+  uint64_t discrete;
   float analog01;
   int16_t temp_onboard;
 };
@@ -17,6 +18,8 @@ struct CompensatedData{
  */
 typedef struct RawData RawData;
 struct RawData{
+  uint64_t discrete;
+
   uint32_t odometer;          /* количество импульсов с одометра */
   uint32_t groundspeed;       /* */
   uint16_t engine_rpm;        /* Тахометр (rpm)*/

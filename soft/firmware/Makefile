@@ -30,7 +30,7 @@ endif
 
 # Enable this if you want to see the full log while compiling.
 ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = yes
+  USE_VERBOSE_COMPILE = no
 endif
 
 #
@@ -92,6 +92,7 @@ CSRC = $(PORTSRC) \
        src/sensors/tmp75.c \
        src/sensors/sensors.c \
        src/sensors/adc_local.c \
+       src/sensors/discrete.c \
        src/exti_local.c \
        src/parameters/param.c \
        src/parameters/persistant.c \

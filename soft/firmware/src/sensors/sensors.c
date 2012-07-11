@@ -8,6 +8,7 @@
 #include "exti_local.h"
 #include "tmp75.h"
 #include "lis3.h"
+#include "discrete.h"
 
 /*
  ******************************************************************************
@@ -59,6 +60,7 @@ void SensorsInit(void){
   /* Запуск контроллера внешних прерываний. */
   ExtiInitLocal();
   ADCInitLocal();
+  DiscreteInitLocal();
 
   /* start I2C sensors */
 
