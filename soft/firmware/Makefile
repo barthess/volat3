@@ -107,8 +107,6 @@ CSRC = $(PORTSRC) \
        src/link/link_sortout.c \
        src/microrl/src/microrl.c \
        src/dsp/dsp.c \
-       src/dsp/arm_fir_q31.c \
-       src/dsp/arm_fir_init_q31.c \
        
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global

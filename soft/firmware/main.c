@@ -40,7 +40,6 @@ int main(void) {
   LinkInit();
   SanityControlInit();
   I2CInitLocal();
-  DspInit();
   SensorsInit();
   AutopilotInit();
 
