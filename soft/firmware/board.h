@@ -22,50 +22,43 @@
 #define _BOARD_H_
 
 /*
- * Setup for the Olimex STM32-103STK proto board.
+ * Setup for the MPIOVD board.
  */
 
 /*
  * Board identifier.
  */
-#define BOARD_OLIMEX_STM32_103STK
-#define BOARD_NAME              "Olimex STM32-103STK"
+#define BOARD_MPIOVD
+#define BOARD_NAME              "MPIOVD rev.1 board"
 
 /*
  * Board frequencies.
  */
-#define STM32_LSECLK            32768
-#define STM32_HSECLK            8000000
+#define STM32_LSECLK            0
+#define STM32_HSECLK            4000000
 
 /*
  * MCU type, supported types are defined in ./os/hal/platforms/hal_lld.h.
  */
-#define STM32F10X_MD
+#define STM32F10X_HD
 
 /*
  * IO pins assignments.
  */
-#define GPIOA_BUTTON_WAKEUP     0
-#define GPIOC_BUTTON_TAMPER     13
-#define GPIOC_JOY               5
-#define GPIOC_JOY_CENTER_BUT    6
 
-#define GPIOA_SPI1NSS           4
-#define GPIOB_SPI2NSS           12
+#define GPIOB_BOOT_1            2
 
-#define GPIOC_MMCWP             2
-#define GPIOC_MMCCP             1
+#define GPIOC_FREQUENCY         6
+#define GPIOC_USB_DISC
 
-#define GPIOC_USB_P             4
-#define GPIOC_LCD_RES           7
-#define GPIOC_NRF_CE            8
-#define GPIOC_NRF_IRQ           9
-#define GPIOC_LCD_E             10
+#define GPIOE_LED               0
+#define GPIOE_SPEEDOMETER       8
+#define GPIOE_USB_DISCOVERY     14
+#define GPIOE_USB_PRESENT       15
 
-#define GPIOC_USB_DISC          11
-#define GPIOC_LED               12
-
-#define GPIOB_ACCEL_IRQ         5
+#define GPIOD_CAN_RX            0
+#define GPIOD_CAN_TX            1
+#define GPIOD_TACHOMETER        12
 
 /*
  * I/O ports initial setup, this configuration is established soon after reset
@@ -94,70 +87,87 @@
 /*
  * Port A setup.
  * Everything input with pull-up except:
- * PA0  - Normal input      (BUTTON).
- * PA2  - Alternate output  (USART2 TX).
- * PA3  - Normal input      (USART2 RX).
+ * PA0..PA7 - analog input.
  */
-#define VAL_GPIOACRL            0x88884B84      /*  PA7...PA0 */
-#define VAL_GPIOACRH            0x88888888      /* PA15...PA8 */
+#define VAL_GPIOACRL            0x00000000      /*  PA7...PA0 */
+#define VAL_GPIOACRH            0x888884A8      /* PA15...PA8 */
 #define VAL_GPIOAODR            0xFFFFFFFF
 
 /*
  * Port B setup.
  * Everything input with pull-up except:
- * PB6,7   - Alternate open drain (I2C1).
- * PB10,11 - Alternate open drain (I2C2).
- * PB12    - Push Pull output  (MMC SPI2 NSS).
- * PB13    - Alternate output  (MMC SPI2 SCK).
- * PB14    - Normal input      (MMC SPI2 MISO).
- * PB15    - Alternate output  (MMC SPI2 MOSI).
+ * PB0,1 - Analog input.
+ * PB10,11 - I2C.
+ * PB12 - serial input NSS
+ * PB13 - serial clock
+ * PB14 - serial input MISO
+ * PB15 - serial input MOSI
  */
-#define VAL_GPIOBCRL            0xEE888888      /*  PB7...PB0 */
-#define VAL_GPIOBCRH            0xB4B3EE88      /* PB15...PB8 */
+#define VAL_GPIOBCRL            0xEE888800      /*  PB7...PB0 */
+#define VAL_GPIOBCRH            0xA4A2EE88      /* PB15...PB8 */
 #define VAL_GPIOBODR            0xFFFFFFFF
 
 /*
  * Port C setup.
  * Everything input with pull-up except:
- * PC4  - Normal input because there is an external resistor.
- * PC5  - Analog input (joystick).
- * PC6  - Normal input because there is an external resistor.
- * PC7  - Normal input because there is an external resistor.
- * PC10 - Push Pull output (CAN CNTRL).
- * PC11 - Push Pull output (USB DISC).
- * PC12 - Open Drain output (LED).
+ * PC0..PC5 - analog input
+ * PC6 - frequency meter
+ *
  */
-#define VAL_GPIOCCRL            0x44048888      /*  PC7...PC0 */
+#define VAL_GPIOCCRL            0x88400000      /*  PC7...PC0 */
 #define VAL_GPIOCCRH            0x88863388      /* PC15...PC8 */
 #define VAL_GPIOCODR            0xFFFFFFFF
 
 /*
  * Port D setup.
  * Everything input with pull-up except:
- * PD0  - Normal input (XTAL).
- * PD1  - Normal input (XTAL).
+ * PD0  - CAN RX.
+ * PD1  - CAN TX.
+ * PD12 - tachometer
  */
-#define VAL_GPIODCRL            0x88888844      /*  PD7...PD0 */
-#define VAL_GPIODCRH            0x88888888      /* PD15...PD8 */
+#define VAL_GPIODCRL            0x888888A4      /*  PD7...PD0 */
+#define VAL_GPIODCRH            0x88848888      /* PD15...PD8 */
 #define VAL_GPIODODR            0xFFFFFFFF
 
 /*
  * Port E setup.
  * Everything input with pull-up except:
+ * PE0 - LED
+ * PE2 - serial out ENABLE
+ * PE3 - serial out NSS
+ * PE4 - serial out SAMPLE
+ * PE5 - serial out Z_CHECK_TOGGLE
+ * PE9 - spedometer input
+ * PE14 - usb discovery
+ * PE15 - usb present
  */
-#define VAL_GPIOECRL            0x88888888      /*  PE7...PE0 */
-#define VAL_GPIOECRH            0x88888888      /* PE15...PE8 */
+#define VAL_GPIOECRL            0x88222286      /*  PE7...PE0 */
+#define VAL_GPIOECRH            0x42888848      /* PE15...PE8 */
 #define VAL_GPIOEODR            0xFFFFFFFF
+
+/*
+ * Port F setup. Stub
+ */
+#define VAL_GPIOFCRL            0x88888888      /*  PE7...PE0 */
+#define VAL_GPIOFCRH            0x88888888      /* PE15...PE8 */
+#define VAL_GPIOFODR            0xFFFFFFFF
+
+/*
+ * Port G setup. Stub
+ */
+#define VAL_GPIOGCRL            0x88888888      /*  PE7...PE0 */
+#define VAL_GPIOGCRH            0x88888888      /* PE15...PE8 */
+#define VAL_GPIOGODR            0xFFFFFFFF
 
 /*
  * USB bus activation macro, required by the USB driver.
  */
-#define usb_lld_connect_bus(usbp) palClearPad(GPIOC, GPIOC_USB_DISC)
+#define usb_lld_connect_bus(usbp) palClearPad(GPIOE, GPIOE_USB_DISCOVERY)
 
 /*
  * USB bus de-activation macro, required by the USB driver.
  */
-#define usb_lld_disconnect_bus(usbp) palSetPad(GPIOC, GPIOC_USB_DISC)
+#define usb_lld_disconnect_bus(usbp) palSetPad(GPIOE, GPIOE_USB_DISCOVERY)
 
 #if !defined(_FROM_ASM_)
 #ifdef __cplusplus

@@ -18,7 +18,7 @@ PROGRAM=`cat ch.map | grep "_end = ." | gawk '{print$1}'`
 cat ch.map | grep "__heap_end__ = (__ram_end__ - __stacks_total_size__)"
 
 FLASH_USED=`du -b ch.bin | gawk '{print$1}'`
-FLASH_MCU=131072
+FLASH_MCU=393216
 echo "------------------------------------------------------------------------------------------------------------"
 
 let "STACK = STACKS"

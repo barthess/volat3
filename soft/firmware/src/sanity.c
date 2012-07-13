@@ -57,7 +57,7 @@ static msg_t SanityControlThread(void *arg) {
   mavlink_heartbeat_struct.custom_mode = 0;
 
   while (TRUE) {
-    palSetPad(IOPORT3, GPIOC_LED);
+    palSetPad(GPIOE, GPIOE_LED);
     chThdSleepMilliseconds(950);
 
     if (heartbeat_mail.payload == NULL){
@@ -67,7 +67,7 @@ static msg_t SanityControlThread(void *arg) {
       heartbeat_mail.payload = &mavlink_heartbeat_struct;
       chMBPost(&tolink_mb, (msg_t)&heartbeat_mail, TIME_IMMEDIATE);
 
-      palClearPad(IOPORT3, GPIOC_LED); /* blink*/
+      palClearPad(GPIOE, GPIOE_LED); /* blink*/
       chThdSleepMilliseconds(50);
     }
   }

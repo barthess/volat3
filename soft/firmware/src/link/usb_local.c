@@ -337,7 +337,7 @@ SerialUSBDriver* UsbInitLocal(void){
   sduObjectInit(&SDU1);
   sduStart(&SDU1, &serusbcfg);
   usbConnectBus(serusbcfg.usbp);
-  palClearPad(GPIOC, GPIOC_USB_DISC);
+  palClearPad(GPIOE, GPIOE_USB_DISCOVERY);
   return &SDU1;
 }
 
