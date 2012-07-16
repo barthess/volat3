@@ -47,12 +47,13 @@
  */
 
 #define GPIOB_BOOT_1            2
+#define GPIOB_SR_IN_NSS         12
 
 #define GPIOC_FREQUENCY         6
 #define GPIOC_USB_DISC
 
 #define GPIOE_LED               0
-#define GPIOE_SER_OUT_NSS       3
+#define GPIOE_SR_OUT_NSS        3
 #define GPIOE_SPEEDOMETER       8
 #define GPIOE_USB_DISCOVERY     14
 #define GPIOE_USB_PRESENT       15

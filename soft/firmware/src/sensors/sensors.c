@@ -6,6 +6,7 @@
 
 #include "adc_local.h"
 #include "exti_local.h"
+#include "spi_local.h"
 #include "discrete.h"
 
 /*
@@ -58,6 +59,7 @@ void SensorsInit(void){
   /* Запуск контроллера внешних прерываний. */
   ExtiInitLocal();
   ADCInitLocal();
+  SpiInitLocal();
   DiscreteInitLocal();
 
   /* start I2C sensors */

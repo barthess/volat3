@@ -91,6 +91,7 @@ CSRC = $(PORTSRC) \
        src/sensors/sensors.c \
        src/sensors/adc_local.c \
        src/sensors/discrete.c \
+       src/sensors/spi_local.c \
        src/exti_local.c \
        src/parameters/param.c \
        src/parameters/persistant.c \
