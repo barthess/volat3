@@ -42,7 +42,7 @@ expected.
  * DEFINES
  ******************************************************************************
  */
-#define EEPOM_I2CD        I2CD1
+#define EEPOM_I2CD        I2CD2
 #define eeprom_i2caddr    0b1010000
 
 /*

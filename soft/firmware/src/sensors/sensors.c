@@ -6,8 +6,6 @@
 
 #include "adc_local.h"
 #include "exti_local.h"
-#include "tmp75.h"
-#include "lis3.h"
 #include "discrete.h"
 
 /*
@@ -63,8 +61,5 @@ void SensorsInit(void){
   DiscreteInitLocal();
 
   /* start I2C sensors */
-
-  init_lis3();
-  init_tmp75();
 }
 

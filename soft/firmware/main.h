@@ -3,7 +3,7 @@
 
 /******************************************************************
  * humanreadable names for different serial drivers */
-#define MAVSD   SD2
+#define MAVSD   SD1
 #define SHELLSD SDU1
 
 /* размер кучи под всякие нужды */

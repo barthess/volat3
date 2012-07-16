@@ -27,7 +27,7 @@
  ******************************************************************************
  */
 #define ADC_NUM_CHANNELS          16
-#define ADC_BUF_DEPTH             8
+#define ADC_BUF_DEPTH             1
 
 /*
  ******************************************************************************
@@ -64,7 +64,7 @@ static const ADCConversionGroup adccg = {
   /* CR1 */
   0,
   /* CR2 */
-  ADC_CR2_SWSTART,
+  0,
   /* SMPR1 */
   ADC_SMPR1_SMP_AN10(ADC_SAMPLE_239P5) |
   ADC_SMPR1_SMP_AN11(ADC_SAMPLE_239P5) |

@@ -52,6 +52,7 @@
 #define GPIOC_USB_DISC
 
 #define GPIOE_LED               0
+#define GPIOE_SER_OUT_NSS       3
 #define GPIOE_SPEEDOMETER       8
 #define GPIOE_USB_DISCOVERY     14
 #define GPIOE_USB_PRESENT       15
@@ -135,13 +136,13 @@
  * PE0 - LED
  * PE2 - serial out ENABLE
  * PE3 - serial out NSS
- * PE4 - serial out SAMPLE
- * PE5 - serial out Z_CHECK_TOGGLE
+ * PE4 - serial SAMPLE
+ * PE5 - serial Z_CHECK_TOGGLE
  * PE9 - spedometer input
  * PE14 - usb discovery
  * PE15 - usb present
  */
-#define VAL_GPIOECRL            0x88222286      /*  PE7...PE0 */
+#define VAL_GPIOECRL            0x88333386      /*  PE7...PE0 */
 #define VAL_GPIOECRH            0x42888848      /* PE15...PE8 */
 #define VAL_GPIOEODR            0xFFFFFFFF
 
