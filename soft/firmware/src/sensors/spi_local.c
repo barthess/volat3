@@ -41,8 +41,7 @@ static msg_t sr_in_thread(void *p) {
     spiAcquireBus(&SPID2);              /* Acquire ownership of the bus.    */
     spiStart(&SPID2, &in_spicfg);       /* Setup transfer parameters.       */
     spiSelect(&SPID2);                  /* Slave Select assertion.          */
-    spiExchange(&SPID2, 512,
-                txbuf, rxbuf);          /* Atomic transfer operations.      */
+    spiExchange(&SPID2, 512, txbuf, rxbuf); /* Atomic transfer operations.  */
     spiUnselect(&SPID2);                /* Slave Select de-assertion.       */
     spiReleaseBus(&SPID2);              /* Ownership release.               */
   }
@@ -61,8 +60,7 @@ static msg_t sr_out_thread(void *p) {
     spiAcquireBus(&SPID2);              /* Acquire ownership of the bus.    */
     spiStart(&SPID2, &out_spicfg);       /* Setup transfer parameters.       */
     spiSelect(&SPID2);                  /* Slave Select assertion.          */
-    spiExchange(&SPID2, 512,
-                txbuf, rxbuf);          /* Atomic transfer operations.      */
+    spiExchange(&SPID2, 512, txbuf, rxbuf);  /* Atomic transfer operations. */
     spiUnselect(&SPID2);                /* Slave Select de-assertion.       */
     spiReleaseBus(&SPID2);              /* Ownership release.               */
   }

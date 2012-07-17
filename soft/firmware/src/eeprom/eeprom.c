@@ -80,6 +80,23 @@ static size_t __clamp_size(void *ip, size_t n){
 }
 
 /**
+ * Put stub.
+ */
+static msg_t put(void *ip, uint8_t b){
+  (void)ip;
+  (void)b;
+  return 0;
+}
+
+/**
+ * Get stub.
+ */
+static msg_t get(void *ip){
+  (void)ip;
+  return 0;
+}
+
+/**
  * @brief     Write data to EEPROM.
  * @details   Only one EEPROM page can be written at once. So fucntion
  *            splits large data chunks in small EEPROM transactions if needed.
@@ -130,23 +147,6 @@ static size_t write(void *ip, const uint8_t *bp, size_t n){
     }
   }
   return written;
-}
-
-/**
- * Put stub.
- */
-static msg_t put(void *ip, uint8_t b){
-  (void)ip;
-  (void)b;
-  return 0;
-}
-
-/**
- * Get stub.
- */
-static msg_t get(void *ip){
-  (void)ip;
-  return 0;
 }
 
 /**
