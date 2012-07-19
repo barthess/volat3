@@ -54,6 +54,7 @@
 
 #define GPIOE_LED               0
 #define GPIOE_SR_OUT_NSS        3
+#define GPIOE_SR_SAMPLE         4
 #define GPIOE_Z_CHECK           5
 #define GPIOE_SPEEDOMETER       8
 #define GPIOE_USB_DISCOVERY     14
@@ -144,7 +145,7 @@
  * PE14 - usb discovery
  * PE15 - usb present
  */
-#define VAL_GPIOECRL            0x88333386      /*  PE7...PE0 */
+#define VAL_GPIOECRL            0x88222286      /*  PE7...PE0 */
 #define VAL_GPIOECRH            0x42888848      /* PE15...PE8 */
 #define VAL_GPIOEODR            0xFFFFFFFF
 

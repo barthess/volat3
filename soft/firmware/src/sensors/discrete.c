@@ -62,9 +62,9 @@ static msg_t DiscreteThread(void* arg){
     comp_data.discrete = normalize(raw_data.discrete,
                                    *(uint32_t *)rel_0_31,
                                    *(uint32_t *)rel_32_63);
-    z_check_on();
-    chThdSleepMilliseconds(100);
-    z_check_off();
+//    z_check_on();
+//    chThdSleepMilliseconds(100);
+//    z_check_off();
   }
 
   return 0;
@@ -78,6 +78,8 @@ static msg_t DiscreteThread(void* arg){
  */
 
 void DiscreteInitLocal(void){
+
+  z_check_on();
 
   rel_0_31  = ValueSearch("REL_0_31");
   rel_32_63 = ValueSearch("REL_32_63");

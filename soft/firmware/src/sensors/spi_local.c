@@ -2,6 +2,12 @@
 #include "hal.h"
 
 #include "spi_local.h"
+#include "discrete.h"
+
+
+static void in_spi_callback(SPIDriver *spip) {
+  spiUnselectI(spip);                /* Slave Select de-assertion.       */
+}
 
 /*
  *
@@ -17,7 +23,7 @@ static const SPIConfig out_spicfg = {
  *
  */
 static const SPIConfig in_spicfg = {
-  NULL,
+  in_spi_callback,
   GPIOB,
   GPIOB_SR_IN_NSS,
   SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
@@ -26,8 +32,8 @@ static const SPIConfig in_spicfg = {
 /*
  * SPI TX and RX buffers.
  */
-static uint8_t txbuf[512];
-static uint8_t rxbuf[512];
+static uint8_t txbuf[8];
+static uint8_t rxbuf[8];
 
 /*
  * SPI bus contender 1.
@@ -37,13 +43,28 @@ static msg_t sr_in_thread(void *p) {
 
   (void)p;
   chRegSetThreadName("SPI_IN");
+  uint32_t tmo;
   while (TRUE) {
+
+    // TODO: rewrite this code. With optimizations it produces inadequate results
+    sr_sample_on();
+    tmo = 256;
+    while (tmo)
+      tmo--;
+
+    sr_sample_off();
+    tmo = 256;
+    while (tmo)
+      tmo--;
+
     spiAcquireBus(&SPID2);              /* Acquire ownership of the bus.    */
     spiStart(&SPID2, &in_spicfg);       /* Setup transfer parameters.       */
     spiSelect(&SPID2);                  /* Slave Select assertion.          */
-    spiExchange(&SPID2, 512, txbuf, rxbuf); /* Atomic transfer operations.  */
-    spiUnselect(&SPID2);                /* Slave Select de-assertion.       */
+    spiStartReceive(&SPID2, 8, rxbuf);  /* Atomic transfer operations.      */
+//    spiUnselect(&SPID2);                /* Slave Select de-assertion.       */
     spiReleaseBus(&SPID2);              /* Ownership release.               */
+
+    chThdSleepMilliseconds(200);
   }
   return 0;
 }
@@ -57,12 +78,13 @@ static msg_t sr_out_thread(void *p) {
   (void)p;
   chRegSetThreadName("SPI_OUT");
   while (TRUE) {
-    spiAcquireBus(&SPID2);              /* Acquire ownership of the bus.    */
-    spiStart(&SPID2, &out_spicfg);       /* Setup transfer parameters.       */
-    spiSelect(&SPID2);                  /* Slave Select assertion.          */
-    spiExchange(&SPID2, 512, txbuf, rxbuf);  /* Atomic transfer operations. */
-    spiUnselect(&SPID2);                /* Slave Select de-assertion.       */
-    spiReleaseBus(&SPID2);              /* Ownership release.               */
+//    spiAcquireBus(&SPID2);              /* Acquire ownership of the bus.    */
+//    spiStart(&SPID2, &out_spicfg);       /* Setup transfer parameters.       */
+//    spiSelect(&SPID2);                  /* Slave Select assertion.          */
+//    spiExchange(&SPID2, 512, txbuf, rxbuf);  /* Atomic transfer operations. */
+//    spiUnselect(&SPID2);                /* Slave Select de-assertion.       */
+//    spiReleaseBus(&SPID2);              /* Ownership release.               */
+    chThdSleepMilliseconds(1000);
   }
   return 0;
 }
