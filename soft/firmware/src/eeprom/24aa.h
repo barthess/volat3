@@ -14,7 +14,7 @@ The work is provided "as is" without warranty of any kind, neither express nor i
 #define EEPROM_SIZE       65536
 
 /* ChibiOS I2C driver used to communicate with EEPROM */
-#define EEPROM_I2CD       I2CD2
+#define EEPROM_I2CD       I2CD1
 
 /* EEPROM address on bus */
 #define EEPROM_I2C_ADDR   0b1010000

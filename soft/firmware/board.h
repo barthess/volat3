@@ -54,6 +54,7 @@
 
 #define GPIOE_LED               0
 #define GPIOE_SR_OUT_NSS        3
+#define GPIOE_Z_CHECK           5
 #define GPIOE_SPEEDOMETER       8
 #define GPIOE_USB_DISCOVERY     14
 #define GPIOE_USB_PRESENT       15
