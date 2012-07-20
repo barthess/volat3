@@ -14,6 +14,7 @@
     v = vmax;                                                                 \
 }
 
+uint64_t pack8to64(uint8_t *buf);
 uint32_t pack8to32(uint8_t *buf);
 uint16_t pack8to16(uint8_t *buf);
 

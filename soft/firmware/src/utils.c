@@ -3,6 +3,12 @@
 
 
 /** упаковка байт в многобайтную переменную */
+uint16_t pack8to16(uint8_t *buf){
+  uint16_t result = 0;
+  result |= buf[0]<<8;
+  result |= buf[1];
+  return result;
+}
 uint32_t pack8to32(uint8_t *buf){
   uint32_t result = 0;
   result |= buf[0]<<24;
@@ -11,11 +17,15 @@ uint32_t pack8to32(uint8_t *buf){
   result |= buf[3];
   return result;
 }
-uint16_t pack8to16(uint8_t *buf){
-  uint16_t result = 0;
-  result |= buf[0]<<8;
-  result |= buf[1];
-  return result;
+uint64_t pack8to64(uint8_t *buf){
+  uint64_t result = 0;
+  uint32_t lsb = 0;
+
+  lsb = pack8to32(buf);
+  buf += 4;
+  result = pack8to32(buf);
+
+  return (result << 32) | lsb;
 }
 
 
