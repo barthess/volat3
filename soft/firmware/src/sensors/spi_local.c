@@ -43,10 +43,11 @@ static const SPIConfig out_spicfg = {
  *
  */
 static const SPIConfig in_spicfg = {
-  in_spi_callback,
+  //in_spi_callback,
+  NULL,
   GPIOB,
   GPIOB_SR_IN_NSS,
-  SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
+  SPI_CR1_CPOL | SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
 };
 
 /*
@@ -65,11 +66,7 @@ static uint8_t rxbuf_z_off[8];
  ******************************************************************************
  */
 
-/**
- * Helper function
- */
-void read_discrete(SPIDriver *spip, size_t n, uint8_t *rxbuf){
-
+void sample(void){
   uint32_t t1, tmo;
   const uint32_t tmo_uS = 5;
   tmo = 1 + (halGetCounterFrequency() * tmo_uS) / 1000000;
@@ -83,11 +80,20 @@ void read_discrete(SPIDriver *spip, size_t n, uint8_t *rxbuf){
   t1 = halGetCounterValue();
   while ((halGetCounterValue() - t1) < tmo)
     ;
+}
 
+
+/**
+ * Helper function
+ */
+void read_discrete(SPIDriver *spip, size_t n, uint8_t *rxbuf){
+
+  sample();
   spiAcquireBus(spip);              /* Acquire ownership of the bus.    */
   spiStart(spip, &in_spicfg);       /* Setup transfer parameters.       */
   spiSelect(spip);                  /* Slave Select assertion.          */
-  spiStartReceive(spip, n, rxbuf);  /* Atomic transfer operations.      */
+  spiReceive(spip, n, rxbuf);       /* Atomic transfer operations.      */
+  spiUnselect(spip);
   spiReleaseBus(spip);              /* Ownership release.               */
 }
 
@@ -103,14 +109,13 @@ static msg_t sr_in_thread(void *p) {
   chRegSetThreadName("SPI_IN");
   while (TRUE) {
 
-    z_check_on();
-    chThdSleepMilliseconds(1);
-    read_discrete(&SPID2, 8, rxbuf_z_on);
-    chThdSleepMilliseconds(1);
+//    z_check_on();
+//    chThdSleepMilliseconds(10);
+//    read_discrete(&SPID2, 8, rxbuf_z_on);
 
     z_check_off();
-    chThdSleepMilliseconds(1);
-    read_discrete(&SPID2, 8, rxbuf_z_off);
+    chThdSleepMilliseconds(10);
+    read_discrete(&SPID2, 1, rxbuf_z_off);
 
     rel_normalize(rxbuf_z_on, rxbuf_z_off, result);
 
