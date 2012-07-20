@@ -4,9 +4,30 @@
 #include "spi_local.h"
 #include "discrete.h"
 
-static void in_spi_callback(SPIDriver *spip) {
-  spiUnselectI(spip);                /* Slave Select de-assertion.       */
-}
+/*
+ ******************************************************************************
+ * DEFINES
+ ******************************************************************************
+ */
+
+/*
+ ******************************************************************************
+ * EXTERNS
+ ******************************************************************************
+ */
+
+/*
+ ******************************************************************************
+ * PROTOTYPES
+ ******************************************************************************
+ */
+static void in_spi_callback(SPIDriver *spip);
+
+/*
+ ******************************************************************************
+ * GLOBAL VARIABLES
+ ******************************************************************************
+ */
 
 /*
  *
@@ -35,24 +56,33 @@ static const SPIConfig in_spicfg = {
 static uint8_t rxbuf_z_on[8];
 static uint8_t rxbuf_z_off[8];
 
+
+/*
+ ******************************************************************************
+ ******************************************************************************
+ * LOCAL FUNCTIONS
+ ******************************************************************************
+ ******************************************************************************
+ */
+
 /**
  * Helper function
  */
 void read_discrete(SPIDriver *spip, size_t n, uint8_t *rxbuf){
-  uint32_t tmo;
 
-  // TODO: rewrite this code. With optimizations it produces inadequate results
-  tmo = halGetCounterValue();
-  tmo = halGetCounterFrequency();
+  uint32_t t1, tmo;
+  const uint32_t tmo_uS = 5;
+  tmo = 1 + (halGetCounterFrequency() * tmo_uS) / 1000000;
+
   sr_sample_on();
-  tmo = 256;
-  while (tmo)
-    tmo--;
+  t1 = halGetCounterValue();
+  while ((halGetCounterValue() - t1) < tmo)
+    ;
 
   sr_sample_off();
-  tmo = 256;
-  while (tmo)
-    tmo--;
+  t1 = halGetCounterValue();
+  while ((halGetCounterValue() - t1) < tmo)
+    ;
 
   spiAcquireBus(spip);              /* Acquire ownership of the bus.    */
   spiStart(spip, &in_spicfg);       /* Setup transfer parameters.       */
@@ -67,7 +97,7 @@ void read_discrete(SPIDriver *spip, size_t n, uint8_t *rxbuf){
 static WORKING_AREA(sr_in_thread_wa, 256);
 static msg_t sr_in_thread(void *p) {
 
-  uint64_t result64;
+  uint32_t result[2];
 
   (void)p;
   chRegSetThreadName("SPI_IN");
@@ -82,20 +112,12 @@ static msg_t sr_in_thread(void *p) {
     chThdSleepMilliseconds(1);
     read_discrete(&SPID2, 8, rxbuf_z_off);
 
-//    result64 = rel_normalize64(rxbuf_z_on, rxbuf_z_off, 0, -1, -1);
-
-    result64 = rel_normalize32(rxbuf_z_on, rxbuf_z_off, 0, -1, -1);
-    result64 = result64 << 32;
-    result64 |= rel_normalize32(&rxbuf_z_on[4], &rxbuf_z_off[4], 0, -1, -1);
+    rel_normalize(rxbuf_z_on, rxbuf_z_off, result);
 
     chThdSleepMilliseconds(200);
   }
   return 0;
 }
-
-
-
-
 
 /*
  * SPI bus contender 2.
@@ -117,37 +139,12 @@ static msg_t sr_out_thread(void *p) {
   return 0;
 }
 
-/*
- ******************************************************************************
- * DEFINES
- ******************************************************************************
+/**
+ * Callback implementation
  */
-
-/*
- ******************************************************************************
- * EXTERNS
- ******************************************************************************
- */
-
-/*
- ******************************************************************************
- * GLOBAL VARIABLES
- ******************************************************************************
- */
-
-/*
- ******************************************************************************
- * PROTOTYPES
- ******************************************************************************
- */
-
-/*
- ******************************************************************************
- ******************************************************************************
- * LOCAL FUNCTIONS
- ******************************************************************************
- ******************************************************************************
- */
+static void in_spi_callback(SPIDriver *spip) {
+  spiUnselectI(spip);                /* Slave Select de-assertion.       */
+}
 
 /*
  ******************************************************************************
