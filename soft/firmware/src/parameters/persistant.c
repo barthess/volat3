@@ -53,11 +53,7 @@ bool_t load_params_from_eeprom(void){
   int32_t  index = -1;
   uint32_t status = 0;
 
-  union{
-    float f32;
-    uint32_t u32;
-  }u;
-  u.f32 = 0;
+  floatint u;
   u.u32 = 0;
 
   chFileStreamSeek(&EepromFile, EEPROM_SETTINGS_START);
@@ -89,8 +85,6 @@ bool_t load_params_from_eeprom(void){
   return PARAM_SUCCESS;
 }
 
-
-
 /**
  * Сохранение значений параметров в EEPROM
  */
@@ -98,10 +92,8 @@ bool_t save_params_to_eeprom(void){
   uint32_t i, j;
   uint32_t status = 0;
 
-  union{
-    float f32;
-    uint32_t u32;
-  }u;
+  floatint u;
+  u.u32 = 0;
 
   chFileStreamSeek(&EepromFile, EEPROM_SETTINGS_START);
   if (chFileStreamGetPosition(&EepromFile) != EEPROM_SETTINGS_START)
