@@ -27,7 +27,11 @@ uint64_t pack8to64(uint8_t *buf){
 
   return (result << 32) | lsb;
 }
-
+uint64_t pack32to64(uint32_t *buf){
+  uint64_t result = 0;
+  result = buf[0];
+  return (result << 32) | buf[1];
+}
 
 /* Интеграл методом симпсона.
  * Шаг сетки принимается равным 1
@@ -60,3 +64,16 @@ int16_t complement2signed(uint8_t msb, uint8_t lsb){
   return (int16_t)word;
 }
 
+/**
+ * @brief   Crude polled delay. Suitable for delays shorter than OS time quantum.
+ *
+ * @param[in] uS    delay in uS.
+ */
+void polled_delay_us(uint32_t uS){
+  uint32_t t1, tmo;
+
+  tmo = 1 + (halGetCounterFrequency() * uS) / 1000000;
+  t1 = halGetCounterValue();
+  while ((halGetCounterValue() - t1) < tmo)
+    ;
+}

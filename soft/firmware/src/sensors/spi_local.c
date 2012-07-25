@@ -3,6 +3,8 @@
 
 #include "spi_local.h"
 #include "discrete.h"
+#include "utils.h"
+#include "sensors.h"
 
 /*
  ******************************************************************************
@@ -15,13 +17,13 @@
  * EXTERNS
  ******************************************************************************
  */
+extern RawData raw_data;
 
 /*
  ******************************************************************************
  * PROTOTYPES
  ******************************************************************************
  */
-static void in_spi_callback(SPIDriver *spip);
 
 /*
  ******************************************************************************
@@ -32,12 +34,12 @@ static void in_spi_callback(SPIDriver *spip);
 /*
  *
  */
-static const SPIConfig out_spicfg = {
-  NULL,
-  GPIOE,
-  GPIOE_SR_OUT_NSS,
-  SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
-};
+//static const SPIConfig out_spicfg = {
+//  NULL,
+//  GPIOE,
+//  GPIOE_SR_OUT_NSS,
+//  SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
+//};
 
 /*
  *
@@ -53,9 +55,10 @@ static const SPIConfig in_spicfg = {
 /*
  * SPI TX and RX buffers.
  */
-//static uint8_t txbuf[8];
-static uint8_t rxbuf_z_on[8];
-static uint8_t rxbuf_z_off[8];
+//static uint8_t txbuf_fake[8];
+
+static uint8_t rxbuf_z_on[9];
+static uint8_t rxbuf_z_off[9];
 
 
 /*
@@ -66,35 +69,51 @@ static uint8_t rxbuf_z_off[8];
  ******************************************************************************
  */
 
+/**
+ * Кратковременно дергает вниз PL на всех сдвиговых регистрах
+ */
 void sample(void){
-  uint32_t t1, tmo;
-  const uint32_t tmo_uS = 5;
-  tmo = 1 + (halGetCounterFrequency() * tmo_uS) / 1000000;
-
   sr_sample_on();
-  t1 = halGetCounterValue();
-  while ((halGetCounterValue() - t1) < tmo)
-    ;
-
+  polled_delay_us(5);
   sr_sample_off();
-  t1 = halGetCounterValue();
-  while ((halGetCounterValue() - t1) < tmo)
-    ;
+  polled_delay_us(5);
 }
 
+/**
+ * Похоже, что SPI в STM32 криво работает с CPOL=1,CPHA=0.
+ * Для того, чтобы получить правильные результаты нужно вычитать на один
+ * байт больше, потом крайний правый столбец битов поднять на 1 ряд:
+ *
+ * 11111110    11111111
+ * 11111111    11111111
+ * 11111111 => 11111111
+ * 11111111    11111111
+ * 00000001
+ */
+void stm32_spi_workaround(uint8_t *rxbuf, size_t n){
+
+  while (n){
+    *rxbuf &= ~1;
+    *rxbuf |= *(rxbuf + 1) & 1;
+    rxbuf++;
+    n--;
+  }
+}
 
 /**
  * Helper function
  */
-void read_discrete(SPIDriver *spip, size_t n, uint8_t *rxbuf){
+void read_spi(SPIDriver *spip, size_t n, void *rxbuf){
 
   sample();
+
   spiAcquireBus(spip);              /* Acquire ownership of the bus.    */
-  spiStart(spip, &in_spicfg);       /* Setup transfer parameters.       */
   spiSelect(spip);                  /* Slave Select assertion.          */
   spiReceive(spip, n, rxbuf);       /* Atomic transfer operations.      */
   spiUnselect(spip);
   spiReleaseBus(spip);              /* Ownership release.               */
+
+  stm32_spi_workaround(rxbuf, n);
 }
 
 /*
@@ -104,22 +123,27 @@ static WORKING_AREA(sr_in_thread_wa, 256);
 static msg_t sr_in_thread(void *p) {
 
   uint32_t result[2];
+  uint32_t z_on[2];
+  uint32_t z_off[2];
 
   (void)p;
   chRegSetThreadName("SPI_IN");
   while (TRUE) {
 
-//    z_check_on();
-//    chThdSleepMilliseconds(10);
-//    read_discrete(&SPID2, 8, rxbuf_z_on);
+    z_check_on();
+    chThdSleepMilliseconds(10);
+    read_spi(&SPID2, 9, rxbuf_z_on);
+    z_on[0] = pack8to32(rxbuf_z_on);
+    z_on[1] = pack8to32(rxbuf_z_on + 4);
 
     z_check_off();
     chThdSleepMilliseconds(10);
-    read_discrete(&SPID2, 1, rxbuf_z_off);
+    read_spi(&SPID2, 9, rxbuf_z_off);
+    z_off[0] = pack8to32(rxbuf_z_off);
+    z_off[1] = pack8to32(rxbuf_z_off + 4);
 
-    rel_normalize(rxbuf_z_on, rxbuf_z_off, result);
-
-    chThdSleepMilliseconds(200);
+    rel_normalize(z_on, z_off, result);
+    raw_data.discrete = pack32to64(result);
   }
   return 0;
 }
@@ -144,13 +168,6 @@ static msg_t sr_out_thread(void *p) {
   return 0;
 }
 
-/**
- * Callback implementation
- */
-static void in_spi_callback(SPIDriver *spip) {
-  spiUnselectI(spip);                /* Slave Select de-assertion.       */
-}
-
 /*
  ******************************************************************************
  * EXPORTED FUNCTIONS
@@ -158,6 +175,9 @@ static void in_spi_callback(SPIDriver *spip) {
  */
 
 void SpiInitLocal(void) {
+
+  spiStart(&SPID2, &in_spicfg);       /* Setup transfer parameters.       */
+
   chThdCreateStatic(sr_in_thread_wa, sizeof(sr_in_thread_wa),
                     NORMALPRIO, sr_in_thread, NULL);
   chThdCreateStatic(sr_out_thread_wa, sizeof(sr_out_thread_wa),

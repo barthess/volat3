@@ -2,6 +2,10 @@
 #define MAIN_H_
 
 /******************************************************************
+ * Ревизия платы для программной коррекции ошибок разводки */
+#define BOARD_REV   1
+
+/******************************************************************
  * humanreadable names for different serial drivers */
 #define MAVSD   SD1
 #define SHELLSD SDU1
