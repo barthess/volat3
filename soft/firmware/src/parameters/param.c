@@ -167,6 +167,9 @@ GlobalParam_t global_data[] = {
   {"REL_GND_0",       0,          0xFFFFFFFF, 0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
   {"REL_GND_32",      0,          0xFFFFFFFF, 0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
 
+  /* ревизия печатной платы для включения программных костылей */
+  {"BRD_revision",    0,          1,          0xFFFFFFFF, MAVLINK_TYPE_UINT32_T,  int_setval},
+
   /* fake field with 14 symbols name */
   {"fake_14_bytes_",  1,          1048,       1224,       MAVLINK_TYPE_FLOAT,     default_setval},
 };
