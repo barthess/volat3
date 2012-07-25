@@ -111,11 +111,6 @@ void process_cmd(mavlink_command_long_t *mavlink_command_long_struct){
       else if (mavlink_command_long_struct->param1 == 1)
         save_params_to_eeprom();
 
-      if (mavlink_command_long_struct->param2 == 0)
-        load_mission_from_eeprom();
-      else if (mavlink_command_long_struct->param2 == 1)
-        save_mission_to_eeprom();
-
       break;
 
   default:
