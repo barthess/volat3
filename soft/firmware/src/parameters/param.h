@@ -15,15 +15,13 @@
 typedef struct GlobalParam_t GlobalParam_t;
 
 /**
- *
- */
-typedef bool_t (*setval_t)(void *value, GlobalParam_t *param);
-
-/**
  * Combined data type for use in mavlink
  */
 typedef union{float f32; int32_t i32; uint32_t u32;} floatint;
 
+/**
+ * Global parameter
+ */
 struct GlobalParam_t
 {
   const char *name;
@@ -31,9 +29,6 @@ struct GlobalParam_t
   floatint value;
   const floatint max;
   const uint8_t param_type;
-  /* this function checks and sets value. If value out of range than it will
-   * be set to neares allowable value */
-  const setval_t setval;
 };
 
 
@@ -55,7 +50,7 @@ struct GlobalParam_t
 //  const uint8_t param_type;
 //};
 
-
+bool_t set_global_param(void *value,  GlobalParam_t *param);
 void ParametersInit(void);
 int32_t _key_index_search(char* key);
 void *ValueSearch(char *str);
