@@ -46,7 +46,7 @@ static uint8_t eeprombuf[PARAM_ID_SIZE + sizeof(global_data[0].value)];
 
 
 /**
- * Загрузка значений параметров из EEPROM
+ *
  */
 bool_t load_params_from_eeprom(void){
   uint32_t i = 0;
@@ -79,7 +79,7 @@ bool_t load_params_from_eeprom(void){
 }
 
 /**
- * Сохранение значений параметров в EEPROM
+ *
  */
 bool_t save_params_to_eeprom(void){
   uint32_t i, j;

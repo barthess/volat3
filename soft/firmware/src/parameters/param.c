@@ -220,11 +220,7 @@ static msg_t param_confirm_mb_buf[1];
 static bool_t set_parameter(mavlink_param_set_t *paramset){
 
   int32_t index = -1;
-  union{
-    float    f32;
-    uint32_t u32;
-    int32_t  i32;
-  }v;
+  floatint v;
 
   index = _key_index_search(paramset->param_id);
   v.f32 = paramset->param_value;
