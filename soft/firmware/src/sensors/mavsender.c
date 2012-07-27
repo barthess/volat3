@@ -29,7 +29,7 @@ extern RawData raw_data;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static float *T_tlm;
+static uint32_t *T_tlm;
 
 static mavlink_mpiovd_sensors_raw_t     mpiovd_sensors_raw_struct;
 static mavlink_mpiovd_sensors_scaled_t  mpiovd_sensors_scaled_struct;

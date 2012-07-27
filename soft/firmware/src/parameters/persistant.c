@@ -35,6 +35,7 @@ extern const uint32_t ONBOARD_PARAM_COUNT;
  ******************************************************************************
  */
 static uint8_t eeprombuf[PARAM_ID_SIZE + sizeof(global_data[0].value)];
+static uint8_t confirmbuf[sizeof(eeprombuf)];
 
 /*
  *******************************************************************************
@@ -91,7 +92,7 @@ bool_t save_params_to_eeprom(void){
     chDbgPanic("seek failed");
 
   for (i = 0; i < ONBOARD_PARAM_COUNT; i++){
-
+    palClearPad(GPIOE, GPIOE_LED);
     /* first copy parameter name in buffer */
     memcpy(eeprombuf, global_data[i].name, PARAM_ID_SIZE);
 
@@ -108,13 +109,13 @@ bool_t save_params_to_eeprom(void){
 
     /* check written data */
     chFileStreamSeek(&EepromFile, chFileStreamGetPosition(&EepromFile) - sizeof(eeprombuf));
-    uint8_t tmpbuf[sizeof(eeprombuf)];
-    status = chFileStreamRead(&EepromFile, tmpbuf, sizeof(tmpbuf));
+    status = chFileStreamRead(&EepromFile, confirmbuf, sizeof(confirmbuf));
     for (j = 0; j < (PARAM_ID_SIZE + sizeof(v)); j++){
-      if (tmpbuf[j] != eeprombuf[j])
+      if (confirmbuf[j] != eeprombuf[j])
         chDbgPanic("veryfication failed");
     }
   }
+  palSetPad(GPIOE, GPIOE_LED);
   return 0;
 }
 

@@ -76,8 +76,8 @@ class SerialWriter(threading.Thread):#{{{
             except socket.timeout: pass
             if len(cin) > 0:
                 self.ser.write(cin)
-                print hexlify(cin)
-                print cin
+                print "==>", hexlify(cin)
+                print "==>", cin
                 cin = ""
     #}}}
 def main():#{{{

@@ -25,9 +25,10 @@
  ******************************************************************************
  */
 /* указатели на коэффициенты */
-static float *rel_z_0,   *rel_z_32;
-static float *rel_vcc_0, *rel_vcc_32;
-static float *rel_gnd_0, *rel_gnd_32;
+static uint32_t *rel_z_0,   *rel_z_32;
+static uint32_t *rel_vcc_0, *rel_vcc_32;
+static uint32_t *rel_gnd_0, *rel_gnd_32;
+static uint32_t *brd_revision;
 
 /*
  ******************************************************************************
@@ -83,26 +84,23 @@ uint32_t _rel_normalize32(uint32_t z_on, uint32_t z_off,
  * Из-за ошибок в разводке платы необходимое перевенуть кажду тетраду результата.
  */
 uint32_t board_workaround(uint32_t v){
-
-//TODO: УБРАТЬ ХАРДКОДИНГ БЛЕАТЬ! ЗАПИХНУТЬ ВЕРСИЮ ПЛАТЫ В КОНФИГ.
-#if BOARD_REV == 1
-
-  const uint32_t m1 = 0b0001000100010001;
-  const uint32_t m2 = 0b0010001000100010;
-  const uint32_t m3 = 0b0100010001000100;
-  const uint32_t m4 = 0b1000100010001000;
-
   uint32_t result = 0;
 
-  result  = (v >> 4) & m1;
-  result |= (v >> 1) & m2;
-  result |= (v << 1) & m3;
-  result |= (v << 4) & m4;
+  if (*brd_revision == 1){
+    const uint32_t m1 = 0b0001000100010001;
+    const uint32_t m2 = 0b0010001000100010;
+    const uint32_t m3 = 0b0100010001000100;
+    const uint32_t m4 = 0b1000100010001000;
 
-  return result;
-#else
-  return v; // stub
-#endif
+    result  = (v >> 4) & m1;
+    result |= (v >> 1) & m2;
+    result |= (v << 1) & m3;
+    result |= (v << 4) & m4;
+
+    return result;
+  }
+  else
+    return v;
 }
 
 
@@ -135,6 +133,8 @@ void DiscreteInitLocal(void){
 
   rel_gnd_0   = ValueSearch("REL_GND_0");
   rel_gnd_32  = ValueSearch("REL_GND_32");
+
+  brd_revision= ValueSearch("BRD_revision");
 }
 
 

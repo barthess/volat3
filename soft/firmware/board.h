@@ -109,7 +109,7 @@
  */
 #define VAL_GPIOBCRL            0xEE888800      /*  PB7...PB0 */
 #define VAL_GPIOBCRH            0xA4A2EE88      /* PB15...PB8 */
-#define VAL_GPIOBODR            0xFFFFFFFF
+#define VAL_GPIOBODR            0x0
 
 /*
  * Port C setup.

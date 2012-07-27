@@ -126,18 +126,22 @@ static msg_t sr_in_thread(void *p) {
   uint32_t z_on[2];
   uint32_t z_off[2];
 
+  systime_t time = chTimeNow();
+
   (void)p;
   chRegSetThreadName("SPI_IN");
   while (TRUE) {
+    time += MS2ST(100);
+    chThdSleepUntil(time);
 
     z_check_on();
-    chThdSleepMilliseconds(10);
+    chThdSleepMilliseconds(4);
     read_spi(&SPID2, 9, rxbuf_z_on);
     z_on[0] = pack8to32(rxbuf_z_on);
     z_on[1] = pack8to32(rxbuf_z_on + 4);
 
     z_check_off();
-    chThdSleepMilliseconds(10);
+    chThdSleepMilliseconds(4);
     read_spi(&SPID2, 9, rxbuf_z_off);
     z_off[0] = pack8to32(rxbuf_z_off);
     z_off[1] = pack8to32(rxbuf_z_off + 4);

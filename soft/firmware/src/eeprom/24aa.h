@@ -8,10 +8,10 @@ The work is provided "as is" without warranty of any kind, neither express nor i
 #define _24AA_H_
 
 /* page size in bytes. Consult datasheet. */
-#define EEPROM_PAGE_SIZE  128
+#define EEPROM_PAGE_SIZE  32
 
 /* total amount of memory in bytes */
-#define EEPROM_SIZE       65536
+#define EEPROM_SIZE       32768
 
 /* ChibiOS I2C driver used to communicate with EEPROM */
 #define EEPROM_I2CD       I2CD1
@@ -20,7 +20,7 @@ The work is provided "as is" without warranty of any kind, neither express nor i
 #define EEPROM_I2C_ADDR   0b1010000
 
 /* time to write one page in mS. Consult datasheet! */
-#define EEPROM_WRITE_TIME 10
+#define EEPROM_WRITE_TIME 5
 
 /* temporal transmit buffer depth for eeprom driver */
 #define EEPROM_TX_DEPTH   (EEPROM_PAGE_SIZE + 2)
