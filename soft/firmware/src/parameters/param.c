@@ -84,7 +84,8 @@ GlobalParam_t global_data[] = {
   {"SYS_ID",          {.u32 = 1},          {.u32 = 20},           {.u32 = 255},        MAVLINK_TYPE_UINT32_T},
   /* 16 denotes ground rover */
   {"SYS_mavtype",     {.u32 = 0},          {.u32 = 1},            {.u32 = 16},         MAVLINK_TYPE_UINT32_T},
-
+  /* enable shell instead of telemetry */
+  {"SH_enable",       {.u32 = 0},          {.u32 = 0},            {.u32 = 1},          MAVLINK_TYPE_UINT32_T},
   //Коэффициенты полиномов для пересчета показаний с датчиков, и длины фильтров
   {"AN_ch1_c1",       {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch1_c2",       {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
@@ -189,7 +190,7 @@ GlobalParam_t global_data[] = {
   {"REL_GND_32",      {.u32 = 0},           {.u32 = 0xFFFFFFFF},  {.u32 = 0xFFFFFFFF},  MAVLINK_TYPE_UINT32_T},
   // 0 - normal mode, 1 - Z, 2 - VCC, 3 - GND
   {"REL_test",        {.u32 = 0},           {.u32 = 0},           {.u32 = 3},           MAVLINK_TYPE_UINT32_T},
-  {"REL_reserved1",   {.u32 = 0},           {.u32 = 0},           {.u32 = 3},           MAVLINK_TYPE_UINT32_T},
+  {"REL_stm32_fix",   {.u32 = 0},           {.u32 = 0},           {.u32 = 1},           MAVLINK_TYPE_UINT32_T},
   {"REL_reserved2",   {.u32 = 0},           {.u32 = 0},           {.u32 = 3},           MAVLINK_TYPE_UINT32_T},
   {"REL_reserved3",   {.u32 = 0},           {.u32 = 0},           {.u32 = 3},           MAVLINK_TYPE_UINT32_T},
 
@@ -231,25 +232,30 @@ static bool_t set_parameter(mavlink_param_set_t *paramset){
   v.f32 = paramset->param_value;
 
   if (index >= 0){
-    // Only write and emit changes if there is actually a difference
-    // AND only write if new value is NOT "not-a-number"
-    // AND is NOT infinity
-    if (paramset->param_type == MAVLINK_TYPE_FLOAT){
+    switch (paramset->param_type){
+    case MAVLINK_TYPE_FLOAT:
+      // Only write and emit changes if there is actually a difference
+      // AND only write if new value is NOT "not-a-number"
+      // AND is NOT infinity
       if (isnan(v.f32) || isinf(v.f32))
         return PARAM_FAILED;
       if (global_data[index].value.f32 == v.f32)
         return PARAM_FAILED;
-    }
-    else if (paramset->param_type == MAVLINK_TYPE_INT32_T){
+      break;
+
+    case MAVLINK_TYPE_INT32_T:
       if (global_data[index].value.i32 == v.i32)
         return PARAM_FAILED;
-    }
-    else if (paramset->param_type == MAVLINK_TYPE_UINT32_T){
+      break;
+
+    case MAVLINK_TYPE_UINT32_T:
       if (global_data[index].value.u32 == v.u32)
         return PARAM_FAILED;
-    }
-    else {
+      break;
+
+    default:
       chDbgPanic("Usupported variable type");
+      break;
     }
 
     /* If value fall out of min..max bound than just set nearest allowable value */

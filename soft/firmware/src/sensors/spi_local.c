@@ -5,6 +5,7 @@
 #include "discrete.h"
 #include "utils.h"
 #include "sensors.h"
+#include "param.h"
 
 /*
  ******************************************************************************
@@ -30,6 +31,7 @@ extern RawData raw_data;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
+static uint32_t *rel_stm32_fix;
 
 /*
  *
@@ -50,6 +52,7 @@ static const SPIConfig in_spicfg = {
   GPIOB,
   GPIOB_SR_IN_NSS,
   SPI_CR1_CPOL | SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
+  //SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
 };
 
 /*
@@ -88,7 +91,7 @@ void sample(void){
  * 11111111    11111111
  * 11111111 => 11111111
  * 11111111    11111111
- * 00000001
+ * 00000001    00000000
  */
 void stm32_spi_workaround(uint8_t *rxbuf, size_t n){
 
@@ -112,8 +115,10 @@ void read_spi(SPIDriver *spip, size_t n, void *rxbuf){
   spiReceive(spip, n, rxbuf);       /* Atomic transfer operations.      */
   spiUnselect(spip);
   spiReleaseBus(spip);              /* Ownership release.               */
+  //spiStop(&SPID2);
 
-  stm32_spi_workaround(rxbuf, n);
+  if (*rel_stm32_fix == 1)
+    stm32_spi_workaround(rxbuf, n);
 }
 
 /*
@@ -140,11 +145,16 @@ static msg_t sr_in_thread(void *p) {
     z_on[0] = pack8to32(rxbuf_z_on);
     z_on[1] = pack8to32(rxbuf_z_on + 4);
 
+//    z_on[0] = 0;
+//    z_on[1] = 0;
+
     z_check_off();
     chThdSleepMilliseconds(4);
     read_spi(&SPID2, 9, rxbuf_z_off);
     z_off[0] = pack8to32(rxbuf_z_off);
     z_off[1] = pack8to32(rxbuf_z_off + 4);
+//      z_off[0] = -1;
+//      z_off[1] = -1;
 
     rel_normalize(z_on, z_off, result);
     raw_data.discrete = pack32to64(result);
@@ -180,7 +190,9 @@ static msg_t sr_out_thread(void *p) {
 
 void SpiInitLocal(void) {
 
-  spiStart(&SPID2, &in_spicfg);       /* Setup transfer parameters.       */
+  rel_stm32_fix = ValueSearch("REL_stm32_fix");
+
+  spiStart(&SPID2, &in_spicfg);
 
   chThdCreateStatic(sr_in_thread_wa, sizeof(sr_in_thread_wa),
                     NORMALPRIO, sr_in_thread, NULL);
