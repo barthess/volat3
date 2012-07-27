@@ -16,7 +16,7 @@
  * EXTERNS
  ******************************************************************************
  */
-//extern RawData raw_data;
+extern RawData raw_data;
 //extern CompensatedData comp_data;
 //extern mavlink_sys_status_t mavlink_sys_status_struct;
 //extern GlobalParam_t global_data[];
@@ -27,7 +27,7 @@
  ******************************************************************************
  */
 #define ADC_NUM_CHANNELS          16
-#define ADC_BUF_DEPTH             1
+#define ADC_BUF_DEPTH             2
 
 /*
  ******************************************************************************
@@ -44,10 +44,19 @@ static adcsample_t samples[ADC_NUM_CHANNELS * ADC_BUF_DEPTH];
  */
 static void adccallback(ADCDriver *adcp, adcsample_t *samples, size_t n) {
   (void)adcp;
-  (void)samples;
   (void)n;
+
+  uint32_t i = 0;
+  while (i < ADC_NUM_CHANNELS){
+    raw_data.analog[i] = samples[i];
+    i++;
+  }
+  //palTogglePad(GPIOE, GPIOE_LED);
 }
 
+/*
+ *
+ */
 static void adcerrorcallback(ADCDriver *adcp, adcerror_t err) {
   (void)adcp;
   (void)err;

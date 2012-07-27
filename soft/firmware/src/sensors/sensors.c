@@ -56,7 +56,6 @@ void SensorsInit(void){
   /* инициализация семафоров */
   chBSemInit(&lis3_sem,  TRUE);
 
-  /* Запуск контроллера внешних прерываний. */
   ExtiInitLocal();
   ADCInitLocal();
   SpiInitLocal();

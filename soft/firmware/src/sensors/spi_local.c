@@ -139,8 +139,9 @@ static msg_t sr_in_thread(void *p) {
     time += MS2ST(100);
     chThdSleepUntil(time);
 
+    // включение происходит достаточно быстро в отличие от выключения
     z_check_on();
-    chThdSleepMilliseconds(4);
+    chThdSleepMilliseconds(1);
     read_spi(&SPID2, 9, rxbuf_z_on);
     z_on[0] = pack8to32(rxbuf_z_on);
     z_on[1] = pack8to32(rxbuf_z_on + 4);
@@ -149,7 +150,7 @@ static msg_t sr_in_thread(void *p) {
 //    z_on[1] = 0;
 
     z_check_off();
-    chThdSleepMilliseconds(4);
+    chThdSleepMilliseconds(10);
     read_spi(&SPID2, 9, rxbuf_z_off);
     z_off[0] = pack8to32(rxbuf_z_off);
     z_off[1] = pack8to32(rxbuf_z_off + 4);
