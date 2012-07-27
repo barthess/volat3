@@ -10,6 +10,7 @@
 #include "utils.h"
 #include "link.h"
 #include "param.h"
+#include "dsp.h"
 
 /*
  ******************************************************************************
@@ -35,12 +36,14 @@ void _adc_filter(adcsample_t *in, uint16_t *out);
  */
 #define ADC_NUM_CHANNELS          16
 #define ADC_BUF_DEPTH             2
+#define ADC_REST                  1024  /* "подставка" для альфа-бета фильра */
 
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
  ******************************************************************************
  */
+static alphabeta_instance_q31 adc_filter[ADC_NUM_CHANNELS];
 
 static ADCConfig adccfg; // для STM32 -- должна быть пустышка
 
@@ -128,7 +131,7 @@ static const ADCConversionGroup adccg = {
 void _adc_filter(adcsample_t *in, adcsample_t *out){
   uint32_t i = 0;
   while (i < ADC_NUM_CHANNELS){
-    out[i] = in[i];
+    out[i] = alphabeta_q31(&adc_filter[i], in[i] + ADC_REST, ) - ADC_REST;
     i++;
   }
 }
