@@ -23,6 +23,13 @@ extern RawData raw_data;
 
 /*
  ******************************************************************************
+ * PROTOTYPES
+ ******************************************************************************
+ */
+void _adc_filter(adcsample_t *in, uint16_t *out);
+
+/*
+ ******************************************************************************
  * DEFINES
  ******************************************************************************
  */
@@ -46,11 +53,7 @@ static void adccallback(ADCDriver *adcp, adcsample_t *samples, size_t n) {
   (void)adcp;
   (void)n;
 
-  uint32_t i = 0;
-  while (i < ADC_NUM_CHANNELS){
-    raw_data.analog[i] = samples[i];
-    i++;
-  }
+  _adc_filter(samples, raw_data.analog);
   //palTogglePad(GPIOE, GPIOE_LED);
 }
 
@@ -121,6 +124,14 @@ static const ADCConversionGroup adccg = {
  *******************************************************************************
  *******************************************************************************
  */
+
+void _adc_filter(adcsample_t *in, adcsample_t *out){
+  uint32_t i = 0;
+  while (i < ADC_NUM_CHANNELS){
+    out[i] = in[i];
+    i++;
+  }
+}
 
 /*
  *******************************************************************************
