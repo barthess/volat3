@@ -24,6 +24,8 @@ struct RawData{
   uint16_t engine_rpm;        /* Тахометр (rpm)*/
 
   uint16_t analog[16];
+//  uint16_t analog00;
+//  uint16_t analog01;
 //  uint16_t analog02;
 //  uint16_t analog03;
 //  uint16_t analog04;
@@ -38,7 +40,6 @@ struct RawData{
 //  uint16_t analog13;
 //  uint16_t analog14;
 //  uint16_t analog15;
-//  uint16_t analog16;
 };
 
 

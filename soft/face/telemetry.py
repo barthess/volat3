@@ -578,6 +578,9 @@ class Telemetry(GlossGame):#{{{
         self.tacho = 0.0
         self.temp_oil = 0.0
         self.temp_water = 0.0
+        self.main_voltage = 0.0
+        self.tank1_fill = 0.0
+        self.tank2_fill = 0.0
 
         # инициализация объектов
         self.speedometer = Speedometer(position = (380,10))
@@ -631,8 +634,8 @@ class Telemetry(GlossGame):#{{{
         self.autriggers.draw(self.autriggers_msk)
         self.tiers.draw(self.tiers_msk)
         self.pressblock.draw(self.speed * 1.2, self.speed * 0.3, self.speed + 0.5)
-        self.fuelblock.draw(self.speed + 0.3, self.speed)
-        self.battery.draw(self.speed * 40)
+        self.fuelblock.draw(self.tank1_fill, self.tank2_fill)
+        self.battery.draw(self.main_voltage)
         self.clock.draw()
         if flags["atm_mode"] is True:
             self.atm.draw()
@@ -679,8 +682,14 @@ class Telemetry(GlossGame):#{{{
             # растусовка всей ботвы из пакета
             self.speed = tlm_data.speed / 256.0
             self.tacho = tlm_data.rpm / 256.0
-            self.temp_oil = tlm_data.analog01
-            self.temp_water = tlm_data.analog02
+            self.main_voltage = tlm_data.analog00 / 1000.0
+            self.tank1_fill = tlm_data.analog01 / 1000.0
+            self.tank2_fill = tlm_data.analog02 / 1000.0
+
+            print self.tank1_fill, self.tank2_fill
+
+            self.temp_oil = tlm_data.analog03
+            self.temp_water = tlm_data.analog04
 
             self.sym_msk = tlm_data.relay
             # и в самом конце "сбрасываем флаг"

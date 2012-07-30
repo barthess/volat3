@@ -101,6 +101,9 @@ uint32_t _rel_normalize32(uint32_t z_on, uint32_t z_off,
     break;
 
   default:
+    vcc = 0xFFFFFFFF;
+    gnd = 0xFFFFFFFF;
+    z   = 0xFFFFFFFF;
     break;
   }
 
