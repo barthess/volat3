@@ -17,22 +17,22 @@
             <description>Raw data from sensors for debugging purpose</description>
             <field type="uint32_t"     name="sec">Timestamp (milliseconds since system boot)</field>
             <field type="uint64_t"     name="relay">Relay sensors data</field>
-            <field type="uint16_t"     name="analog00">Analog sensor data</field>
-            <field type="uint16_t"     name="analog01">Analog sensor data</field>
-            <field type="uint16_t"     name="analog02">Analog sensor data</field>
-            <field type="uint16_t"     name="analog03">Analog sensor data</field>
-            <field type="uint16_t"     name="analog04">Analog sensor data</field>
-            <field type="uint16_t"     name="analog05">Analog sensor data</field>
-            <field type="uint16_t"     name="analog06">Analog sensor data</field>
-            <field type="uint16_t"     name="analog07">Analog sensor data</field>
-            <field type="uint16_t"     name="analog08">Analog sensor data</field>
-            <field type="uint16_t"     name="analog09">Analog sensor data</field>
-            <field type="uint16_t"     name="analog10">Analog sensor data</field>
-            <field type="uint16_t"     name="analog11">Analog sensor data</field>
-            <field type="uint16_t"     name="analog12">Analog sensor data</field>
-            <field type="uint16_t"     name="analog13">Analog sensor data</field>
-            <field type="uint16_t"     name="analog14">Analog sensor data</field>
-            <field type="uint16_t"     name="analog15">Analog sensor data</field>
+            <field type="uint32_t"     name="analog00">Analog sensor data</field>
+            <field type="uint32_t"     name="analog01">Analog sensor data</field>
+            <field type="uint32_t"     name="analog02">Analog sensor data</field>
+            <field type="uint32_t"     name="analog03">Analog sensor data</field>
+            <field type="uint32_t"     name="analog04">Analog sensor data</field>
+            <field type="uint32_t"     name="analog05">Analog sensor data</field>
+            <field type="uint32_t"     name="analog06">Analog sensor data</field>
+            <field type="uint32_t"     name="analog07">Analog sensor data</field>
+            <field type="uint32_t"     name="analog08">Analog sensor data</field>
+            <field type="uint32_t"     name="analog09">Analog sensor data</field>
+            <field type="uint32_t"     name="analog10">Analog sensor data</field>
+            <field type="uint32_t"     name="analog11">Analog sensor data</field>
+            <field type="uint32_t"     name="analog12">Analog sensor data</field>
+            <field type="uint32_t"     name="analog13">Analog sensor data</field>
+            <field type="uint32_t"     name="analog14">Analog sensor data</field>
+            <field type="uint32_t"     name="analog15">Analog sensor data</field>
             <field type="uint16_t"     name="actuators">Actuators state</field>
             <field type="uint32_t"     name="trip">Vehicle mileage (meters)</field>
             <field type="uint32_t"     name="engine_uptime">Vehicle motor uptime (seconds)</field>

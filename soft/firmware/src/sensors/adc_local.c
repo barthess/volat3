@@ -36,7 +36,7 @@ static void _adc_filter(adcsample_t *in, uint16_t *out);
 #define ADC_REST                  1024  /* "подставка" для альфа-бета фильра */
 #define ADC_FILTER_LEN            4
 
-#define ADC_SUPPLY_VOLTAGE        (raw_data.analog[0])
+#define ADC_REFERENCE_VOLTAGE     (raw_data.analog[0])
 
 /*
  ******************************************************************************
@@ -145,8 +145,9 @@ static void _adc_filter(adcsample_t *in, adcsample_t *out){
 /**
  * Calculate real values from volt comepsated based on polinomial approximation.
  */
-static adcsample_t _normalize(adcsample_t in, int32_t c1, int32_t c2, int32_t c3){
-  return (adcsample_t)((c1*in*in + c2*in + c3) & 0xFFFF);
+static uint32_t _normalize(adcsample_t in, int32_t c1, int32_t c2, int32_t c3){
+  uint32_t v = in;
+  return c1*v*v + c2*v + c3;
 }
 
 /**
@@ -228,25 +229,50 @@ static void load_params(void){
 static adcsample_t _supply_compensate(adcsample_t in){
   uint32_t v = in;
   v = v << 14;
-  v = v / ADC_SUPPLY_VOLTAGE;
-  v = __USAT(v, 16);
+  v = v / ADC_REFERENCE_VOLTAGE;
+  v = __USAT(v, 15);
   return v;
 }
 
 /**
  * Return millivolts of board supply voltage.
- * 30000mV = 3196 ADC counts
+ * 24V = 2585
+ * Необходимо учесть падение на защитном диоде и не менее защитном транзисторе.
+ * Это падение напрямую зависит от суммы сопротивлений подключенных датчиков,
+ * от которых, в свою очередь, зависит сумма измеренных значений.
+ * Снимаем 2 точки и выводим уравнение прямой:
+ * 2563  -  1.66 V
+ * 41429 -  1.01 V
+ * y = -0.65x / 38866 + 1.703
  */
 static uint16_t get_board_voltage(adcsample_t in){
-  return ((30000UL * (uint32_t)in) / 3196) & 0xFFFF;
+  uint32_t voltdrop; /* uV */
+  const uint32_t ref_drop = 1011000; /* uV */
+  const uint32_t ref_voltage = 24 * 1000000; /* uV */
+  const uint32_t ref_adc = 2585;
+
+  uint32_t s = 0;
+  uint32_t i = ADC_NUM_CHANNELS;
+  while (i){
+    s += raw_data.analog[i-1];
+    i--;
+  }
+
+  voltdrop = 1703 - (s * 650) / 38866; // mV
+  voltdrop = voltdrop * 1000;          // uV
+
+  /* рассчитываем коэффициент перевода из условных единиц */
+  uint32_t k = (ref_voltage - ref_drop) / ref_adc;
+
+  return __USAT(((k * (uint32_t)in + voltdrop) / 1000), 15);
 }
 
 /**
  * Return ДУМП-100 value
  */
-static uint16_t get_dump100(adcsample_t in){
-  return in;
-}
+//static uint16_t get_dump100(adcsample_t in){
+//  return in;
+//}
 
 /*
  *******************************************************************************
@@ -264,24 +290,24 @@ void ADCInitLocal(void){
  *
  */
 void adc_process(adcsample_t *in, mavlink_mpiovd_sensors_raw_t *raw){
-  raw->analog00 = get_board_voltage(ADC_SUPPLY_VOLTAGE);
+  raw->analog00 = get_board_voltage(ADC_REFERENCE_VOLTAGE);
 
-  raw->analog01 = get_dump100(_supply_compensate(in[1]));
-  //raw->analog01 = _normalize(_supply_compensate(in[1]),  *c1[1],  *c2[1],  *c3[1]);
-//  raw->analog02 = _normalize(_supply_compensate(in[2]),  *c1[2],  *c2[2],  *c3[2]);
-//  raw->analog03 = _normalize(_supply_compensate(in[3]),  *c1[3],  *c2[3],  *c3[3]);
-//  raw->analog04 = _normalize(_supply_compensate(in[4]),  *c1[4],  *c2[4],  *c3[4]);
-//  raw->analog05 = _normalize(_supply_compensate(in[5]),  *c1[5],  *c2[5],  *c3[5]);
-//  raw->analog06 = _normalize(_supply_compensate(in[6]),  *c1[6],  *c2[6],  *c3[6]);
-//  raw->analog07 = _normalize(_supply_compensate(in[7]),  *c1[7],  *c2[7],  *c3[7]);
-//  raw->analog08 = _normalize(_supply_compensate(in[8]),  *c1[8],  *c2[8],  *c3[8]);
-//  raw->analog09 = _normalize(_supply_compensate(in[9]),  *c1[9],  *c2[8],  *c3[9]);
-//  raw->analog10 = _normalize(_supply_compensate(in[10]), *c1[10], *c2[10], *c3[10]);
-//  raw->analog11 = _normalize(_supply_compensate(in[11]), *c1[11], *c2[11], *c3[11]);
-//  raw->analog12 = _normalize(_supply_compensate(in[12]), *c1[12], *c2[12], *c3[12]);
-//  raw->analog13 = _normalize(_supply_compensate(in[13]), *c1[13], *c2[13], *c3[13]);
-//  raw->analog14 = _normalize(_supply_compensate(in[14]), *c1[14], *c2[14], *c3[14]);
-//  raw->analog15 = _normalize(_supply_compensate(in[15]), *c1[15], *c2[15], *c3[15]);
+//  raw->analog01 = get_dump100(_supply_compensate(in[1]));
+  raw->analog01 = _normalize(_supply_compensate(in[1]),  *c1[1],  *c2[1],  *c3[1]);
+  raw->analog02 = _normalize(_supply_compensate(in[2]),  *c1[2],  *c2[2],  *c3[2]);
+  raw->analog03 = _normalize(_supply_compensate(in[3]),  *c1[3],  *c2[3],  *c3[3]);
+  raw->analog04 = _normalize(_supply_compensate(in[4]),  *c1[4],  *c2[4],  *c3[4]);
+  raw->analog05 = _normalize(_supply_compensate(in[5]),  *c1[5],  *c2[5],  *c3[5]);
+  raw->analog06 = _normalize(_supply_compensate(in[6]),  *c1[6],  *c2[6],  *c3[6]);
+  raw->analog07 = _normalize(_supply_compensate(in[7]),  *c1[7],  *c2[7],  *c3[7]);
+  raw->analog08 = _normalize(_supply_compensate(in[8]),  *c1[8],  *c2[8],  *c3[8]);
+  raw->analog09 = _normalize(_supply_compensate(in[9]),  *c1[9],  *c2[8],  *c3[9]);
+  raw->analog10 = _normalize(_supply_compensate(in[10]), *c1[10], *c2[10], *c3[10]);
+  raw->analog11 = _normalize(_supply_compensate(in[11]), *c1[11], *c2[11], *c3[11]);
+  raw->analog12 = _normalize(_supply_compensate(in[12]), *c1[12], *c2[12], *c3[12]);
+  raw->analog13 = _normalize(_supply_compensate(in[13]), *c1[13], *c2[13], *c3[13]);
+  raw->analog14 = _normalize(_supply_compensate(in[14]), *c1[14], *c2[14], *c3[14]);
+  raw->analog15 = _normalize(_supply_compensate(in[15]), *c1[15], *c2[15], *c3[15]);
 }
 
 
