@@ -51,8 +51,8 @@ static const SPIConfig in_spicfg = {
   NULL,
   GPIOB,
   GPIOB_SR_IN_NSS,
-  //SPI_CR1_CPOL | SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
-  SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
+  SPI_CR1_CPOL | SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
+  //SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0
 };
 
 /*
@@ -136,7 +136,7 @@ static msg_t sr_in_thread(void *p) {
   (void)p;
   chRegSetThreadName("SPI_IN");
   while (TRUE) {
-    time += MS2ST(100);
+    time += MS2ST(50);
     chThdSleepUntil(time);
 
     // включение происходит достаточно быстро в отличие от выключения
@@ -154,8 +154,8 @@ static msg_t sr_in_thread(void *p) {
     read_spi(&SPID2, 9, rxbuf_z_off);
     z_off[0] = pack8to32(rxbuf_z_off);
     z_off[1] = pack8to32(rxbuf_z_off + 4);
-      z_off[0] = -1;
-      z_off[1] = -1;
+//      z_off[0] = -1;
+//      z_off[1] = -1;
 
     rel_normalize(z_on, z_off, result);
     raw_data.discrete = pack32to64(result);
@@ -173,7 +173,7 @@ static msg_t sr_out_thread(void *p) {
   chRegSetThreadName("SPI_OUT");
   while (TRUE) {
 //    spiAcquireBus(&SPID2);              /* Acquire ownership of the bus.    */
-//    spiStart(&SPID2, &out_spicfg);       /* Setup transfer parameters.       */
+//    spiStart(&SPID2, &out_spicfg);      /* Setup transfer parameters.       */
 //    spiSelect(&SPID2);                  /* Slave Select assertion.          */
 //    spiExchange(&SPID2, 512, txbuf, rxbuf);  /* Atomic transfer operations. */
 //    spiUnselect(&SPID2);                /* Slave Select de-assertion.       */

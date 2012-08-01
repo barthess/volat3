@@ -33,7 +33,7 @@ static void _adc_filter(adcsample_t *in, uint16_t *out);
  */
 #define ADC_NUM_CHANNELS          16
 #define ADC_BUF_DEPTH             2
-#define ADC_REST                  1024  /* "подставка" для альфа-бета фильра */
+#define ADC_REST                  4096  /* "подставка" для альфа-бета фильра */
 #define ADC_FILTER_LEN            4
 
 #define ADC_REFERENCE_VOLTAGE     (raw_data.analog[0])
@@ -241,25 +241,39 @@ static adcsample_t _supply_compensate(adcsample_t in){
  * Это падение напрямую зависит от суммы сопротивлений подключенных датчиков,
  * от которых, в свою очередь, зависит сумма измеренных значений.
  * Снимаем 2 точки и выводим уравнение прямой:
- * 2563  -  1.66 V
- * 41429 -  1.01 V
- * y = -0.65x / 38866 + 1.703
+ * 2563  -  1660 mV
+ * 41429 -  1010 mV
+ *
+ * y - y1    x - x1
+ * ------- = -------
+ * y2 - y1   x2 - x1
+ *
+ *     (x - x1) * (y2 - y1)
+ * y = -------------------  + y1
+ *            x2 - x1
  */
 static uint16_t get_board_voltage(adcsample_t in){
-  uint32_t voltdrop; /* uV */
-  const uint32_t ref_drop = 1011000; /* uV */
+  int32_t voltdrop; /* uV */
+  const uint32_t ref_drop = 1012000; /* uV */
   const uint32_t ref_voltage = 24 * 1000000; /* uV */
   const uint32_t ref_adc = 2585;
 
-  uint32_t s = 0;
+  /* voltage compensation coefficients */
+  const int32_t x1 = 2563;
+  const int32_t x2 = 41429;
+  const int32_t y1 = 1660;
+  const int32_t y2 = 1010;
+
+  int32_t s = 0;
   uint32_t i = ADC_NUM_CHANNELS;
   while (i){
     s += raw_data.analog[i-1];
     i--;
   }
 
-  voltdrop = 1703 - (s * 650) / 38866; // mV
-  voltdrop = voltdrop * 1000;          // uV
+  putinrange(s, x1, x2);
+  voltdrop = y1 + ((s - x1) * (y2 - y1)) / (x2 - x1); // mV
+  voltdrop *= 1000; // uV
 
   /* рассчитываем коэффициент перевода из условных единиц */
   uint32_t k = (ref_voltage - ref_drop) / ref_adc;
