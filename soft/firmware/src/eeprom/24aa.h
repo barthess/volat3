@@ -11,7 +11,7 @@ The work is provided "as is" without warranty of any kind, neither express nor i
 #define EEPROM_PAGE_SIZE  32
 
 /* total amount of memory in bytes */
-#define EEPROM_SIZE       32768
+#define EEPROM_SIZE       4096
 
 /* ChibiOS I2C driver used to communicate with EEPROM */
 #define EEPROM_I2CD       I2CD1

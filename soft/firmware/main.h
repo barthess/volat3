@@ -56,7 +56,7 @@
 /******************************************************************
 * data offsets in eeprom "file" */
 #define EEPROM_SETTINGS_START    0
-#define EEPROM_SETTINGS_SIZE     4096
+#define EEPROM_SETTINGS_SIZE     2048
 #define EEPROM_SETTINGS_FINISH   (EEPROM_SETTINGS_START + EEPROM_SETTINGS_SIZE)
 
 
