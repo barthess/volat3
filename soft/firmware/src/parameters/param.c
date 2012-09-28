@@ -86,85 +86,22 @@ GlobalParam_t global_data[] = {
   {"SYS_mavtype",     {.u32 = 0},          {.u32 = 1},            {.u32 = 16},         MAVLINK_TYPE_UINT32_T},
   /* enable shell instead of telemetry */
   {"SH_enable",       {.u32 = 0},          {.u32 = 0},            {.u32 = 1},          MAVLINK_TYPE_UINT32_T},
-  //Коэффициенты полиномов для пересчета показаний с датчиков, и длины фильтров
-  {"AN_ch00_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch00_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch00_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
+  // длины фильтров для каналов АЦП
   {"AN_ch00_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch01_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch01_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch01_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch01_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch02_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch02_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch02_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch02_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch03_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch03_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch03_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch03_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch04_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch04_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch04_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch04_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch05_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch05_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch05_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch05_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch06_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch06_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch06_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch06_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch07_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch07_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch07_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch07_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch08_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch08_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch08_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch08_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch09_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch09_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch09_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch09_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch10_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch10_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch10_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch10_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch11_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch11_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch11_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch11_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch12_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch12_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch12_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch12_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch13_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch13_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch13_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch13_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch14_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch14_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch14_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch14_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-
-  {"AN_ch15_c1",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch15_c2",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
-  {"AN_ch15_c3",      {.i32 = -2000000},   {.i32 = -9},           {.i32 = 2000000},    MAVLINK_TYPE_INT32_T},
   {"AN_ch15_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
 
   /****** разные временнЫе интервалы в mS */
