@@ -12,6 +12,12 @@
 #include "autopilot.h"
 #include "dsp.h"
 
+
+/****************************************************************************/
+//TODO: когда включен AUIPS7111 игнорировать данные с датчиков АЦП
+
+
+
 /* heap for (link threads) OR (shell thread)*/
 MemoryHeap LinkThdHeap;
 static uint8_t link_thd_buf[LINK_THD_HEAP_SIZE + sizeof(stkalign_t)];
