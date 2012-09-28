@@ -686,7 +686,7 @@ class Telemetry(GlossGame):#{{{
             self.tank1_fill = tlm_data.analog01 / 1000.0
             self.tank2_fill = tlm_data.analog02 / 1000.0
 
-            print self.tank1_fill, self.tank2_fill
+            print "tlm.an01 = ", tlm_data.analog01, "raw volatage = ", tlm_data.analog00
 
             self.temp_oil = tlm_data.analog03
             self.temp_water = tlm_data.analog04
