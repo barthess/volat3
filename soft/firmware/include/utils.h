@@ -24,5 +24,6 @@ int32_t Simpson38(int32_t a, int32_t b, int32_t c, int32_t d, int32_t t);
 
 int16_t complement2signed(uint8_t msb, uint8_t lsb);
 void polled_delay_us(uint32_t uS);
+uint32_t isqrt(uint32_t x);
 
 #endif /* UTILS_H_ */

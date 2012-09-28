@@ -52,7 +52,7 @@ static mavlink_mpiovd_sensors_scaled_t  mpiovd_sensors_scaled_struct;
 /**
  *
  */
-static WORKING_AREA(TLM_SenderThreadWA, 128);
+static WORKING_AREA(TLM_SenderThreadWA, 256);
 static msg_t TLM_SenderThread(void *arg) {
   chRegSetThreadName("TLM_Sender");
   (void)arg;

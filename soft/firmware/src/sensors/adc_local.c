@@ -34,18 +34,14 @@ static void _adc_filter(adcsample_t *in, uint16_t *out);
 #define ADC_NUM_CHANNELS          16
 #define ADC_BUF_DEPTH             2
 #define ADC_REST                  4096  /* "подставка" для альфа-бета фильра */
-#define ADC_FILTER_LEN            4
 
-#define ADC_REFERENCE_VOLTAGE     (raw_data.analog[0])
+#define adc_raw_voltage           (raw_data.analog[0]) // alias
 
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static int32_t *c1[ADC_NUM_CHANNELS];
-static int32_t *c2[ADC_NUM_CHANNELS];
-static int32_t *c3[ADC_NUM_CHANNELS];
 static uint32_t *flen[ADC_NUM_CHANNELS];
 
 static alphabeta_instance_q31 adc_filter[ADC_NUM_CHANNELS];
@@ -143,68 +139,34 @@ static void _adc_filter(adcsample_t *in, adcsample_t *out){
 }
 
 /**
- * Calculate real values from volt comepsated based on polinomial approximation.
+ * Compensate input supply value changes.
  */
-static uint32_t _normalize(adcsample_t in, int32_t c1, int32_t c2, int32_t c3){
-  uint32_t v = in;
-  return c1*v*v + c2*v + c3;
+#define ADC_TO_VOLTAGE  0.00079552716f  // коэффициент пересчета из условных единиц в напряжение непосредственно на входе АЦП
+#define R0  1000.0f                     // сопротивление R26
+#define R1  100000.0f                   // сопротивление R34
+#define R2  10000.0f                    // сопротивление R42
+
+static uint16_t _supply_compensate(adcsample_t in){
+  float U1; // напряжение на в точке соединения входного резистора R26 и сопротивления датчика
+  float U2; // напражение на входе АЦП
+  float Ud; // падение напряжения на диоде VD12
+  float R;  // измерянное сопротивление датчика
+  float V;  // напряжение, приходящее на резистор R26 (уже после защитных диодов)
+  float Vcoeff = 24.0f / 2693.0f; // коэффициент пересчета условных единиц АЦП в вольты
+
+  U2 = (float)in * ADC_TO_VOLTAGE;
+  Ud = 0.037 * logf(250*U2 + 1);  // формула аппроксимации характеристики диода VD12
+  U1 = (U2 * (R1 + R2) + Ud * R2) / R2;
+  V = (float)adc_raw_voltage * Vcoeff;
+  R = (U1 * R0) / (V - U1);
+
+  return roundf(R);
 }
 
 /**
  *
  */
 static void load_params(void){
-  c1[0]  = ValueSearch("AN_ch00_c1");
-  c1[1]  = ValueSearch("AN_ch01_c1");
-  c1[2]  = ValueSearch("AN_ch02_c1");
-  c1[3]  = ValueSearch("AN_ch03_c1");
-  c1[4]  = ValueSearch("AN_ch04_c1");
-  c1[5]  = ValueSearch("AN_ch05_c1");
-  c1[6]  = ValueSearch("AN_ch06_c1");
-  c1[7]  = ValueSearch("AN_ch07_c1");
-  c1[8]  = ValueSearch("AN_ch08_c1");
-  c1[9]  = ValueSearch("AN_ch09_c1");
-  c1[10] = ValueSearch("AN_ch10_c1");
-  c1[11] = ValueSearch("AN_ch11_c1");
-  c1[12] = ValueSearch("AN_ch12_c1");
-  c1[13] = ValueSearch("AN_ch13_c1");
-  c1[14] = ValueSearch("AN_ch14_c1");
-  c1[15] = ValueSearch("AN_ch15_c1");
-
-  c2[0]  = ValueSearch("AN_ch00_c2");
-  c2[1]  = ValueSearch("AN_ch01_c2");
-  c2[2]  = ValueSearch("AN_ch02_c2");
-  c2[3]  = ValueSearch("AN_ch03_c2");
-  c2[4]  = ValueSearch("AN_ch04_c2");
-  c2[5]  = ValueSearch("AN_ch05_c2");
-  c2[6]  = ValueSearch("AN_ch06_c2");
-  c2[7]  = ValueSearch("AN_ch07_c2");
-  c2[8]  = ValueSearch("AN_ch08_c2");
-  c2[9]  = ValueSearch("AN_ch09_c2");
-  c2[10] = ValueSearch("AN_ch10_c2");
-  c2[11] = ValueSearch("AN_ch11_c2");
-  c2[12] = ValueSearch("AN_ch12_c2");
-  c2[13] = ValueSearch("AN_ch13_c2");
-  c2[14] = ValueSearch("AN_ch14_c2");
-  c2[15] = ValueSearch("AN_ch15_c2");
-
-  c3[0]  = ValueSearch("AN_ch00_c3");
-  c3[1]  = ValueSearch("AN_ch01_c3");
-  c3[2]  = ValueSearch("AN_ch02_c3");
-  c3[3]  = ValueSearch("AN_ch03_c3");
-  c3[4]  = ValueSearch("AN_ch04_c3");
-  c3[5]  = ValueSearch("AN_ch05_c3");
-  c3[6]  = ValueSearch("AN_ch06_c3");
-  c3[7]  = ValueSearch("AN_ch07_c3");
-  c3[8]  = ValueSearch("AN_ch08_c3");
-  c3[9]  = ValueSearch("AN_ch09_c3");
-  c3[10] = ValueSearch("AN_ch10_c3");
-  c3[11] = ValueSearch("AN_ch11_c3");
-  c3[12] = ValueSearch("AN_ch12_c3");
-  c3[13] = ValueSearch("AN_ch13_c3");
-  c3[14] = ValueSearch("AN_ch14_c3");
-  c3[15] = ValueSearch("AN_ch15_c3");
-
   flen[0]  = ValueSearch("AN_ch00_flen");
   flen[1]  = ValueSearch("AN_ch01_flen");
   flen[2]  = ValueSearch("AN_ch02_flen");
@@ -221,17 +183,6 @@ static void load_params(void){
   flen[13] = ValueSearch("AN_ch13_flen");
   flen[14] = ValueSearch("AN_ch14_flen");
   flen[15] = ValueSearch("AN_ch15_flen");
-}
-
-/**
- * Compensate input supply value changes.
- */
-static adcsample_t _supply_compensate(adcsample_t in){
-  uint32_t v = in;
-  v = v << 14;
-  v = v / ADC_REFERENCE_VOLTAGE;
-  v = __USAT(v, 15);
-  return v;
 }
 
 /**
@@ -281,13 +232,6 @@ static uint16_t get_board_voltage(adcsample_t in){
   return __USAT(((k * (uint32_t)in + voltdrop) / 1000), 15);
 }
 
-/**
- * Return ДУМП-100 value
- */
-//static uint16_t get_dump100(adcsample_t in){
-//  return in;
-//}
-
 /*
  *******************************************************************************
  * EXPORTED FUNCTIONS
@@ -304,24 +248,26 @@ void ADCInitLocal(void){
  *
  */
 void adc_process(adcsample_t *in, mavlink_mpiovd_sensors_raw_t *raw){
-  raw->analog00 = get_board_voltage(ADC_REFERENCE_VOLTAGE);
 
-//  raw->analog01 = get_dump100(_supply_compensate(in[1]));
-  raw->analog01 = _normalize(_supply_compensate(in[1]),  *c1[1],  *c2[1],  *c3[1]);
-  raw->analog02 = _normalize(_supply_compensate(in[2]),  *c1[2],  *c2[2],  *c3[2]);
-  raw->analog03 = _normalize(_supply_compensate(in[3]),  *c1[3],  *c2[3],  *c3[3]);
-  raw->analog04 = _normalize(_supply_compensate(in[4]),  *c1[4],  *c2[4],  *c3[4]);
-  raw->analog05 = _normalize(_supply_compensate(in[5]),  *c1[5],  *c2[5],  *c3[5]);
-  raw->analog06 = _normalize(_supply_compensate(in[6]),  *c1[6],  *c2[6],  *c3[6]);
-  raw->analog07 = _normalize(_supply_compensate(in[7]),  *c1[7],  *c2[7],  *c3[7]);
-  raw->analog08 = _normalize(_supply_compensate(in[8]),  *c1[8],  *c2[8],  *c3[8]);
-  raw->analog09 = _normalize(_supply_compensate(in[9]),  *c1[9],  *c2[8],  *c3[9]);
-  raw->analog10 = _normalize(_supply_compensate(in[10]), *c1[10], *c2[10], *c3[10]);
-  raw->analog11 = _normalize(_supply_compensate(in[11]), *c1[11], *c2[11], *c3[11]);
-  raw->analog12 = _normalize(_supply_compensate(in[12]), *c1[12], *c2[12], *c3[12]);
-  raw->analog13 = _normalize(_supply_compensate(in[13]), *c1[13], *c2[13], *c3[13]);
-  raw->analog14 = _normalize(_supply_compensate(in[14]), *c1[14], *c2[14], *c3[14]);
-  raw->analog15 = _normalize(_supply_compensate(in[15]), *c1[15], *c2[15], *c3[15]);
+  //raw->analog00 = adc_raw_voltage;
+  //raw->analog01 = raw_data.analog[1];
+
+  raw->analog00 = get_board_voltage(adc_raw_voltage);
+  raw->analog01 = _supply_compensate(in[1]);
+  raw->analog02 = _supply_compensate(in[2]); 
+  raw->analog03 = _supply_compensate(in[3]); 
+  raw->analog04 = _supply_compensate(in[4]); 
+  raw->analog05 = _supply_compensate(in[5]); 
+  raw->analog06 = _supply_compensate(in[6]); 
+  raw->analog07 = _supply_compensate(in[7]); 
+  raw->analog08 = _supply_compensate(in[8]); 
+  raw->analog09 = _supply_compensate(in[9]); 
+  raw->analog10 = _supply_compensate(in[10]);
+  raw->analog11 = _supply_compensate(in[11]);
+  raw->analog12 = _supply_compensate(in[12]);
+  raw->analog13 = _supply_compensate(in[13]);
+  raw->analog14 = _supply_compensate(in[14]);
+  raw->analog15 = _supply_compensate(in[15]);
 }
 
 
