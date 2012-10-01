@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "sensors.h"
 #include "param.h"
+#include "main.h"
 
 /*
  ******************************************************************************
@@ -19,6 +20,7 @@
  ******************************************************************************
  */
 extern RawData raw_data;
+extern uint32_t GlobalFlags;
 
 /*
  ******************************************************************************
@@ -76,10 +78,12 @@ static uint8_t rxbuf_z_off[9];
  * Кратковременно дергает вниз PL на всех сдвиговых регистрах
  */
 void sample(void){
+  setGlobalFlag(SPI_SAMPLE_FLAG);
   sr_sample_on();
   polled_delay_us(5);
   sr_sample_off();
   polled_delay_us(5);
+  clearGlobalFlag(SPI_SAMPLE_FLAG);
 }
 
 /**

@@ -18,6 +18,7 @@
  ******************************************************************************
  */
 extern RawData raw_data;
+extern uint32_t GlobalFlags;
 
 /*
  ******************************************************************************
@@ -132,9 +133,11 @@ static const ADCConversionGroup adccg = {
  */
 static void _adc_filter(adcsample_t *in, adcsample_t *out){
   uint32_t i = 0;
-  while (i < ADC_NUM_CHANNELS){
-    out[i] = alphabeta_q31(&adc_filter[i], in[i] + ADC_REST, *flen[i]) - ADC_REST;
-    i++;
+  if (!(GlobalFlags & SPI_SAMPLE_FLAG)){
+    while (i < ADC_NUM_CHANNELS){
+      out[i] = alphabeta_q31(&adc_filter[i], in[i] + ADC_REST, *flen[i]) - ADC_REST;
+      i++;
+    }
   }
 }
 
@@ -162,6 +165,7 @@ static uint16_t _supply_compensate(adcsample_t in){
   V = (float)adc_raw_voltage * Vcoeff;
   R = (U1 * R0) / (V - U1);
   putinrange(R, 0, 1000.0f);
+
   return roundf(R);
 }
 

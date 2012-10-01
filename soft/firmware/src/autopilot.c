@@ -12,8 +12,6 @@
  * EXTERNS
  ******************************************************************************
  */
-extern uint32_t GlobalFlags;
-
 extern Mailbox mavlink_command_long_mb;
 extern Mailbox tolink_mb;
 
@@ -36,32 +34,7 @@ Mail command_ack_mail = {NULL, MAVLINK_MSG_ID_COMMAND_ACK, NULL};
  */
 
 void handle_calibration_cmd(mavlink_command_long_t *mavlink_command_long_struct){
-  /* Trigger calibration. This command will be only accepted if in pre-flight mode.
-  * | Gyro calibration: 0: no, 1: yes
-  * | Magnetometer calibration: 0: no, 1: yes
-  * | Ground pressure: 0: no, 1: yes
-  * | Radio calibration: 0: no, 1: yes
-  * | Empty| Empty| Empty|  */
-
-  /* Gyro */
-  if (mavlink_command_long_struct->param1 == 1){
-    setGlobalFlag(GYRO_CAL_FLAG);
-    mavlink_system_struct.state = MAV_STATE_CALIBRATING;
-  }
-  else{
-    clearGlobalFlag(GYRO_CAL_FLAG);
-    mavlink_system_struct.state = MAV_STATE_STANDBY;
-  }
-
-  /* Magnetometer */
-  if (mavlink_command_long_struct->param2 == 1){
-    setGlobalFlag(MAG_CAL_FLAG);
-    mavlink_system_struct.state = MAV_STATE_CALIBRATING;
-  }
-  else{
-    clearGlobalFlag(MAG_CAL_FLAG);
-    mavlink_system_struct.state = MAV_STATE_STANDBY;
-  }
+  (void)mavlink_command_long_struct;
 }
 
 
