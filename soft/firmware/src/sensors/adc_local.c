@@ -140,26 +140,28 @@ static void _adc_filter(adcsample_t *in, adcsample_t *out){
 
 /**
  * Compensate input supply value changes.
+ *
+ * @return    resistance of sensor connected to input.
  */
 #define ADC_TO_VOLTAGE  0.00079552716f  // коэффициент пересчета из условных единиц в напряжение непосредственно на входе АЦП
+#define Vcoeff  (24.0f / 2693.0f)       // коэффициент пересчета условных единиц АЦП в вольты
 #define R0  1000.0f                     // сопротивление R26
 #define R1  100000.0f                   // сопротивление R34
 #define R2  10000.0f                    // сопротивление R42
 
 static uint16_t _supply_compensate(adcsample_t in){
-  float U1; // напряжение на в точке соединения входного резистора R26 и сопротивления датчика
+  float U1; // напряжение в точке соединения входного резистора R26 и сопротивления датчика
   float U2; // напражение на входе АЦП
   float Ud; // падение напряжения на диоде VD12
   float R;  // измерянное сопротивление датчика
   float V;  // напряжение, приходящее на резистор R26 (уже после защитных диодов)
-  const float Vcoeff = 24.0f / 2693.0f; // коэффициент пересчета условных единиц АЦП в вольты
 
   U2 = (float)in * ADC_TO_VOLTAGE;
   Ud = 0.037 * logf(250*U2 + 1);  // формула аппроксимации характеристики диода VD12
   U1 = (U2 * (R1 + R2) + Ud * R2) / R2;
   V = (float)adc_raw_voltage * Vcoeff;
   R = (U1 * R0) / (V - U1);
-
+  putinrange(R, 0, 1000.0f);
   return roundf(R);
 }
 
@@ -253,6 +255,7 @@ void adc_process(adcsample_t *in, mavlink_mpiovd_sensors_raw_t *raw){
   //raw->analog01 = raw_data.analog[1];
 
   raw->analog00 = get_board_voltage(adc_raw_voltage);
+
   raw->analog01 = _supply_compensate(in[1]);
   raw->analog02 = _supply_compensate(in[2]); 
   raw->analog03 = _supply_compensate(in[3]); 
