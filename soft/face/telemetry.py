@@ -26,6 +26,10 @@ Color.YELLOW = Color(1, 1, 0.0, 1)
 # базовый путь к файлам ресурсов
 RESPATH = "resources/"
 
+# минимальное и максимальное значение тахометра для масштабирования значения
+RPM_MIN = 0.0
+RPM_MAX = 3000.0
+
 class Label():#{{{текстовая бирка с возможностью центрирования
     def __init__(self, font):
         #Заготовка бирки с числовым значением скорости
@@ -247,9 +251,7 @@ class Tachometer():#{{{тахометр, унаследованный от ба�
 
     def draw(self, val):
         self.dial.draw(val)
-        rpmmin = 0
-        rpmmax = 3000
-        rpm = str(int(round((rpmmax - rpmmin) * val)))
+        rpm = str(int(round((RPM_MAX - RPM_MIN) * val)))
         x = self.position[0] + int(self.dial.tex.width / 2.4)
         y = self.position[1] + int(self.dial.tex.height / 1.55)
         self.label.draw(rpm, centered = True, position = (x, y))
@@ -681,10 +683,10 @@ class Telemetry(GlossGame):#{{{
         if tlm_data is not None:
             # растусовка всей ботвы из пакета
             self.speed = tlm_data.speed / 256.0
-            self.tacho = tlm_data.rpm / 256.0
+            self.tacho = tlm_data.rpm / RPM_MAX
             self.main_voltage = tlm_data.analog00 / 1000.0
-            self.tank1_fill = tlm_data.analog01 / 1000.0
-            self.tank2_fill = tlm_data.analog02 / 1000.0
+            self.tank1_fill = tlm_data.analog01 / 100.0
+            self.tank2_fill = tlm_data.analog02 / 100.0
 
             print "tlm.an01 = ", tlm_data.analog01, "raw volatage = ", tlm_data.analog00
 

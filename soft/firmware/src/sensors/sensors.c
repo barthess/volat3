@@ -8,6 +8,7 @@
 #include "exti_local.h"
 #include "spi_local.h"
 #include "discrete.h"
+#include "freq.h"
 
 /*
  ******************************************************************************
@@ -54,7 +55,7 @@ void SensorsInit(void){
   ADCInitLocal();
   SpiInitLocal();
   DiscreteInitLocal();
-
+  FreqInit();
   /* start I2C sensors */
 }
 

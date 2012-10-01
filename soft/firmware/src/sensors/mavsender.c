@@ -10,6 +10,7 @@
 #include "sanity.h"
 #include "sensors.h"
 #include "adc_local.h"
+#include "freq.h"
 
 /*
  ******************************************************************************
@@ -69,7 +70,7 @@ static msg_t TLM_SenderThread(void *arg) {
       mpiovd_sensors_raw_struct.sec = TIME_BOOT_MS;
       mpiovd_sensors_raw_struct.relay  = raw_data.discrete;
       mpiovd_sensors_raw_struct.speed = raw_data.analog[15] / 50;
-      mpiovd_sensors_raw_struct.rpm = raw_data.analog[15] / 10;
+      mpiovd_sensors_raw_struct.rpm = get_engine_rpm();
       mpiovd_sensors_raw_struct.engine_uptime = chTimeNow() / 10000;
 
       raw_mail.payload = &mpiovd_sensors_raw_struct;
