@@ -132,7 +132,7 @@ GlobalParam_t global_data[] = {
   {"REL_reserved3",   {.u32 = 0},           {.u32 = 0},           {.u32 = 3},           MAVLINK_TYPE_UINT32_T},
 
   /* ревизия печатной платы для включения программных костылей */
-  {"BRD_revision",    {.u32 = 0},           {.u32 = 1},           {.u32 = 0xFFFFFFFF},  MAVLINK_TYPE_UINT32_T},
+  {"BRD_revision",    {.u32 = 0},           {.u32 = 1},           {.u32 = 0xFF},        MAVLINK_TYPE_UINT32_T},
 
   /* fake field with 14 symbols name */
   {"fake_14_bytes_",  {.f32 = 1.0},         {.f32 = 1.3},	        {.f32 = 1224.0},      MAVLINK_TYPE_FLOAT},
