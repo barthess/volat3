@@ -1,6 +1,10 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+/* mavlink includes */
+#include "mavlink.h"
+#include "common.h"
+
 /******************************************************************
  * Ревизия платы для программной коррекции ошибок разводки */
 #define BOARD_REV   1

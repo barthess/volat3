@@ -28,6 +28,8 @@ struct ShellCmd_t{
 };
 
 void cli_print(const char *str);
+void cli_println(const char *str);
+void cli_print_long(const char * str, int n, int nres);
 char get_char (void);
 
 void CliInit(void);

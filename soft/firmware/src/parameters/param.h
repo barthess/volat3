@@ -50,9 +50,20 @@ struct GlobalParam_t
 //  const uint8_t param_type;
 //};
 
+/**
+ *
+ */
+typedef enum {
+  PARAM_OK = 1,
+  PARAM_NOT_CHANGED = 2,  /* parameter allready contain this value */
+  PARAM_CLAMPED = 3,      /* value claped to limits */
+  PARAM_INCONSISTENT = 4, /* NaN or INF */
+  PARAM_WRONG_TYPE = 5,   /* unsuppoerted parameter type */
+} param_status_t;
+
 bool_t set_global_param(void *value,  GlobalParam_t *param);
 void ParametersInit(void);
-int32_t _key_index_search(char* key);
+int32_t _key_index_search(const char* key);
 void *ValueSearch(char *str);
 
 #endif /* PARAM_H_ */

@@ -11,6 +11,7 @@
 #include "message.h"
 #include "cli.h"
 #include "cli_cmd.h"
+#include "param_cli.h"
 
 /*
  ******************************************************************************
@@ -52,6 +53,7 @@ static const ShellCmd_t chibiutils[] = {
     {"selftest",  &selftest_cmd,  NULL},
     {"sensor",    &sensor_cmd,    NULL},
     {"logout",    &logout_cmd,    NULL},
+    {"param",     &param_clicmd,  NULL},
     //{"man",       &man_cmd,       NULL},
     //{"kill",    &kill_func,   NULL},
     {NULL,      NULL,         NULL}/* end marker */
@@ -100,12 +102,30 @@ void cli_print(const char *str){
 }
 
 /**
+ * Convenience function
+ */
+void cli_println(const char *str){
+  cli_print(str);
+  cli_print(ENDL);
+}
+
+/**
  * Read routine
  */
 char get_char (void){
   return sdGet(shell_sdp);
 }
 
+/**
+ * helper function
+ * Inserts new line symbol if passed string does not contain NULL termination.
+ * Must be used in combination with snprintf() function.
+ */
+void cli_print_long(const char * str, int n, int nres){
+  cli_print(str);
+  if (nres > n)
+    cli_print(ENDL);
+}
 
 //*****************************************************************************
 // execute callback for microrl library

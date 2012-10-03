@@ -95,6 +95,7 @@ CSRC = $(PORTSRC) \
        src/sensors/freq.c \
        src/exti_local.c \
        src/parameters/param.c \
+       src/parameters/param_cli.c \
        src/parameters/persistant.c \
        src/eeprom/24aa.c \
        src/eeprom/eeprom.c \

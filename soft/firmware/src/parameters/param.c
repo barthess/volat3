@@ -27,6 +27,8 @@ extern Mailbox mavlink_param_set_mb;
 extern Mailbox tolink_mb;
 extern mavlink_system_t mavlink_system_struct;
 
+int32_t OnboardParamCount = 0;
+
 /**
  * Float boundary checker.
  */
@@ -138,8 +140,6 @@ GlobalParam_t global_data[] = {
   {"fake_14_bytes_",  {.f32 = 1.0},         {.f32 = 1.3},	        {.f32 = 1224.0},      MAVLINK_TYPE_FLOAT},
 };
 
-const uint32_t ONBOARD_PARAM_COUNT = (sizeof(global_data) / sizeof(GlobalParam_t));
-
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
@@ -223,10 +223,10 @@ static bool_t send_value(Mail *param_value_mail,
   else
     index = n;
 
-  if ((index >= 0) && (index <= (int)ONBOARD_PARAM_COUNT)){
+  if ((index >= 0) && (index <= (int)OnboardParamCount)){
     /* fill all fields */
     param_value_struct->param_value = global_data[index].value.f32;
-    param_value_struct->param_count = ONBOARD_PARAM_COUNT;
+    param_value_struct->param_count = OnboardParamCount;
     param_value_struct->param_index = index;
     param_value_struct->param_type  = global_data[index].param_type;
     for (j = 0; j < ONBOARD_PARAM_NAME_LENGTH; j++)
@@ -252,8 +252,8 @@ static bool_t send_value(Mail *param_value_mail,
  * Send all values one by one.
  */
 static void send_all_values(Mail *mail, mavlink_param_value_t *param_struct){
-  uint32_t i = 0;
-  for (i = 0; i < ONBOARD_PARAM_COUNT; i++){
+  int32_t i = 0;
+  for (i = 0; i < OnboardParamCount; i++){
     send_value(mail, param_struct, NULL, i);
   }
 }
@@ -332,10 +332,10 @@ static msg_t ParametersThread(void *arg){
  * @return      Index in dictionary.
  * @retval -1   key not found.
  */
-int32_t _key_index_search(char* key){
+int32_t _key_index_search(const char* key){
   int32_t i = 0;
 
-  for (i = 0; i < (int)ONBOARD_PARAM_COUNT; i++){
+  for (i = 0; i < (int)OnboardParamCount; i++){
     if (strcmp(key, global_data[i].name) == 0)
       return i;
   }
@@ -391,11 +391,13 @@ bool_t set_global_param(void *value,  GlobalParam_t *param){
  */
 void ParametersInit(void){
 
+  OnboardParamCount = (sizeof(global_data) / sizeof(GlobalParam_t));
+
   chMBInit(&param_confirm_mb, param_confirm_mb_buf, (sizeof(param_confirm_mb_buf)/sizeof(msg_t)));
 
   /* check hardcoded values */
-  uint32_t i = 0;
-  for (i = 0; i < ONBOARD_PARAM_COUNT; i++){
+  int32_t i = 0;
+  for (i = 0; i < OnboardParamCount; i++){
     if (sizeof (*(global_data[i].name)) > ONBOARD_PARAM_NAME_LENGTH)
       chDbgPanic("name too long");
   }
@@ -403,7 +405,7 @@ void ParametersInit(void){
   /* check allowed size in EEPROM */
   uint32_t len = PARAM_ID_SIZE;
   len += sizeof(global_data[0].value);
-  if (ONBOARD_PARAM_COUNT * len > EEPROM_SETTINGS_SIZE)
+  if (OnboardParamCount * len > EEPROM_SETTINGS_SIZE)
     chDbgPanic("not enough space in EEPROM settings slice");
 
   /* read data from eeprom to memory mapped structure */
