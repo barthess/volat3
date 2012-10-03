@@ -53,7 +53,7 @@ static const ShellCmd_t chibiutils[] = {
     {"selftest",  &selftest_cmd,  NULL},
     {"sensor",    &sensor_cmd,    NULL},
     {"logout",    &logout_cmd,    NULL},
-    {"param",     &param_clicmd,  NULL},
+    {"param",     &param_cmd,  NULL},
     //{"man",       &man_cmd,       NULL},
     //{"kill",    &kill_func,   NULL},
     {NULL,      NULL,         NULL}/* end marker */
@@ -208,7 +208,7 @@ void sigint (void){
 /**
  * Thread function
  */
-static WORKING_AREA(ShellThreadWA, 1024);
+static WORKING_AREA(ShellThreadWA, 2048);
 static msg_t ShellThread(void *arg){
   chRegSetThreadName("Shell");
   chThdSleepMilliseconds(1000);
@@ -259,7 +259,7 @@ static msg_t ShellThread(void *arg){
 void CliConnect(SerialUSBDriver *sdp_cli){
   shell_tp = chThdCreateStatic(ShellThreadWA,
                             sizeof(ShellThreadWA),
-                            LINK_THREADS_PRIO,
+                            LINK_THREADS_PRIO - 2,
                             ShellThread,
                             sdp_cli);
 }

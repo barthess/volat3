@@ -137,7 +137,7 @@ GlobalParam_t global_data[] = {
   {"BRD_revision",    {.u32 = 0},           {.u32 = 1},           {.u32 = 0xFF},        MAVLINK_TYPE_UINT32_T},
 
   /* fake field with 14 symbols name */
-  {"fake_14_bytes_",  {.f32 = 1.0},         {.f32 = 1.3},	        {.f32 = 1224.0},      MAVLINK_TYPE_FLOAT},
+  {"fake_14_bytes_",  {.u32 = 1},           {.u32 = 3},	          {.u32 = 1224},        MAVLINK_TYPE_UINT32_T},
 };
 
 /*
@@ -335,7 +335,7 @@ static msg_t ParametersThread(void *arg){
 int32_t _key_index_search(const char* key){
   int32_t i = 0;
 
-  for (i = 0; i < (int)OnboardParamCount; i++){
+  for (i = 0; i < OnboardParamCount; i++){
     if (strcmp(key, global_data[i].name) == 0)
       return i;
   }
@@ -348,7 +348,7 @@ int32_t _key_index_search(const char* key){
  * Данный функционал вынесен в отдельную функцию на тот случай, если
  * приложению понадобится знать другие поля структуры
  */
-void *ValueSearch(char *str){
+void *ValueSearch(const char *str){
   int32_t i = -1;
 
   i = _key_index_search(str);

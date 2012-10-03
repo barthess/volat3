@@ -41,9 +41,9 @@ int main(void) {
 
   MsgInit();
   MavInit();
+  I2CInitLocal();
   LinkInit();
   SanityControlInit();
-  I2CInitLocal();
   SensorsInit();
   AutopilotInit();
 

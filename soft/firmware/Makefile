@@ -167,6 +167,8 @@ MCU  = cortex-m3 -lm
 TRGT = arm-none-eabi-
 CC   = ccache $(TRGT)gcc
 CPPC = ccache $(TRGT)g++
+#CC   = $(TRGT)gcc
+#CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
 # NOTE: You can use C++ even without C++ support if you are careful. C++
 #       runtime support makes code size explode.
@@ -251,6 +253,7 @@ include $(CHIBIOS)/os/ports/GCC/ARMCMx/rules.mk
 
 # User difined rules here
 MAKE_ALL_RULE_HOOK: res_usage
-
-res_usage: $(BUILDDIR)/$(PROJECT).map $(BUILDDIR)/$(PROJECT).bin
+	
+res_usage: $(BUILDDIR)/$(PROJECT).bin $(BUILDDIR)/$(PROJECT).elf \
+			$(BUILDDIR)/$(PROJECT).hex $(BUILDDIR)/$(PROJECT).dmp
 	./res_usage.sh	

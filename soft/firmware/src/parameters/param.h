@@ -64,6 +64,6 @@ typedef enum {
 bool_t set_global_param(void *value,  GlobalParam_t *param);
 void ParametersInit(void);
 int32_t _key_index_search(const char* key);
-void *ValueSearch(char *str);
+void *ValueSearch(const char *str);
 
 #endif /* PARAM_H_ */

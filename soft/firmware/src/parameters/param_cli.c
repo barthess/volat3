@@ -66,7 +66,7 @@ static void _param_cli_confirm(param_status_t status){
  */
 static void _param_cli_print(uint32_t i, bool_t need_help){
 
-  int n = 80;
+  const int n = 70;
   int nres = 0;
   char str[n];
 
@@ -75,10 +75,12 @@ static void _param_cli_print(uint32_t i, bool_t need_help){
 
   switch(global_data[i].param_type){
   case MAVLINK_TYPE_FLOAT:
-    nres = snprintf(str, n, " %-15f %-15f %-15f",
-        global_data[i].min.f32,
-        global_data[i].value.f32,
-        global_data[i].max.f32);
+    /* Float values unsupported. Need to realize manual printing */
+//    nres = snprintf(str, n, " %-15f %-15f %-15f",
+//        global_data[i].min.f32,
+//        global_data[i].value.f32,
+//        global_data[i].max.f32);
+    nres = snprintf(str, n, " %s", "Float values currently unsupported");
     break;
   case MAVLINK_TYPE_INT32_T:
     nres = snprintf(str, n, " %-15d %-15d %-15d",
@@ -169,7 +171,7 @@ static void _param_cli_help(void){
 /**
  * Working with parameters from CLI.
  */
-Thread* param_clicmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
+Thread* param_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
 
   (void)cmdarray;
   int32_t i = -1;
