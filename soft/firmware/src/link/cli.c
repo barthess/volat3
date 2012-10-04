@@ -25,6 +25,7 @@
  * EXTERNS
  ******************************************************************************
  */
+extern MemoryHeap ThdHeap;
 
 /*
  *******************************************************************************
@@ -208,7 +209,7 @@ void sigint (void){
 /**
  * Thread function
  */
-static WORKING_AREA(ShellThreadWA, 2048);
+static WORKING_AREA(ShellThreadWA, 1536);
 static msg_t ShellThread(void *arg){
   chRegSetThreadName("Shell");
   chThdSleepMilliseconds(1000);
@@ -256,12 +257,19 @@ static msg_t ShellThread(void *arg){
  *******************************************************************************
  */
 
-void CliConnect(SerialUSBDriver *sdp_cli){
-  shell_tp = chThdCreateStatic(ShellThreadWA,
-                            sizeof(ShellThreadWA),
-                            LINK_THREADS_PRIO - 2,
-                            ShellThread,
-                            sdp_cli);
+Thread* CliConnect(SerialUSBDriver *sdp_cli){
+
+  shell_tp = chThdCreateFromHeap(
+      &ThdHeap,
+      sizeof(ShellThreadWA),
+      LINK_THREADS_PRIO - 2,
+      ShellThread,
+      sdp_cli);
+
+  if (shell_tp == NULL)
+    chDbgPanic("Can not allocate memory");
+
+  return shell_tp;
 }
 
 

@@ -21,7 +21,7 @@
  * EXTERNS
  ******************************************************************************
  */
-extern MemoryHeap LinkThdHeap;
+extern MemoryHeap ThdHeap;
 
 /*
  ******************************************************************************
@@ -107,7 +107,7 @@ Thread* loop_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray
   (void)argc;
   (void)argv;
 
-  Thread *tp = chThdCreateFromHeap(&LinkThdHeap,
+  Thread *tp = chThdCreateFromHeap(&ThdHeap,
                                   sizeof(LoopCmdThreadWA),
                                   CMD_THREADS_PRIO - 1,
                                   LoopCmdThread,

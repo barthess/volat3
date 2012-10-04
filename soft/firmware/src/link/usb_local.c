@@ -330,18 +330,28 @@ static const SerialUSBConfig serusbcfg = {
  */
 
 /**
- *
+ * Activates USB
  */
 SerialUSBDriver* UsbInitLocal(void){
   /* Activates the USB driver and then the USB bus pull-up on D+. */
+  usbInit();
+  sduInit();
   sduObjectInit(&SDU1);
   sduStart(&SDU1, &serusbcfg);
+//  chThdSleepMilliseconds(5);
   usbConnectBus(serusbcfg.usbp);
+//  chThdSleepMilliseconds(1000);
   palClearPad(GPIOE, GPIOE_USB_DISCOVERY);
   return &SDU1;
 }
 
-
+/**
+ * Stop USB and free resources.
+ */
+void UsbStopLocal(void){
+  sduStop(&SDU1);
+  usbStop(&USBD1);
+}
 
 
 

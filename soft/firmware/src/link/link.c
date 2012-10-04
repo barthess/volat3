@@ -4,6 +4,7 @@
 #include "link.h"
 #include "cli.h"
 #include "usb_local.h"
+#include "can_usb.h"
 #include "uart_local.h"
 #include "message.h"
 #include "mavsender.h"
@@ -131,7 +132,7 @@ void MavlinkConnect(void *sdp_mav){
 
 void LinkInit(void){
   MavlinkConnect(UartInitLocal());
-  CliConnect(UsbInitLocal());
+  CanUsbMgrInit();
   MavSenderInit();
 }
 

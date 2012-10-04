@@ -102,6 +102,7 @@ CSRC = $(PORTSRC) \
        src/link/usb_local.c \
        src/link/uart_local.c \
        src/link/cli.c \
+       src/link/can_usb.c \
        src/link/cli_cmd.c \
        src/link/link.c \
        src/link/link_sortin.c \
@@ -165,10 +166,10 @@ MCU  = cortex-m3 -lm
 
 #TRGT = arm-elf-
 TRGT = arm-none-eabi-
-#CC   = ccache $(TRGT)gcc
-#CPPC = ccache $(TRGT)g++
-CC   = $(TRGT)gcc
-CPPC = $(TRGT)g++
+CC   = ccache $(TRGT)gcc
+CPPC = ccache $(TRGT)g++
+#CC   = $(TRGT)gcc
+#CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
 # NOTE: You can use C++ even without C++ support if you are careful. C++
 #       runtime support makes code size explode.

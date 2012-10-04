@@ -32,7 +32,6 @@ void cli_println(const char *str);
 void cli_print_long(const char * str, int n, int nres);
 char get_char (void);
 
-void CliInit(void);
-void CliConnect(SerialUSBDriver *sdp_cli);
+Thread* CliConnect(SerialUSBDriver *sdp_cli);
 
 #endif /* CLI_H_ */

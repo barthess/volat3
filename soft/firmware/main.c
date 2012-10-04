@@ -17,7 +17,7 @@
 
 
 /* heap for (link threads) OR (shell thread)*/
-MemoryHeap LinkThdHeap;
+MemoryHeap ThdHeap;
 static uint8_t link_thd_buf[LINK_THD_HEAP_SIZE + sizeof(stkalign_t)];
 
 /* примонтированный файл EEPROM */
@@ -33,7 +33,7 @@ int main(void) {
   chSysInit();
 
   /* инициализация кучи под всякие нужные и не очень вещи */
-  chHeapInit(&LinkThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), LINK_THD_HEAP_SIZE);
+  chHeapInit(&ThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), LINK_THD_HEAP_SIZE);
 
   GlobalFlags = 0;
 
