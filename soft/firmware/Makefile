@@ -58,7 +58,7 @@ endif
 PROJECT = ch
 
 # Imported source files and paths
-CHIBIOS = ../../../chibios
+CHIBIOS = ../../../chibios_dynclk
 include $(CHIBIOS)/os/hal/platforms/STM32F1xx/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
 include $(CHIBIOS)/os/ports/GCC/ARMCMx/STM32F1xx/port.mk
@@ -165,10 +165,10 @@ MCU  = cortex-m3 -lm
 
 #TRGT = arm-elf-
 TRGT = arm-none-eabi-
-CC   = ccache $(TRGT)gcc
-CPPC = ccache $(TRGT)g++
-#CC   = $(TRGT)gcc
-#CPPC = $(TRGT)g++
+#CC   = ccache $(TRGT)gcc
+#CPPC = ccache $(TRGT)g++
+CC   = $(TRGT)gcc
+CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
 # NOTE: You can use C++ even without C++ support if you are careful. C++
 #       runtime support makes code size explode.
