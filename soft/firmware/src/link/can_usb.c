@@ -4,6 +4,7 @@
 #include "main.h"
 #include "cli.h"
 #include "usb_local.h"
+#include "can_local.h"
 
 /*
  ******************************************************************************
@@ -48,7 +49,7 @@ static Thread* fork_usb_tread(void){
  *
  */
 static Thread* fork_can_tread(void){
-  return NULL;
+  return CanInitLocal();
 }
 
 /**

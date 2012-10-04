@@ -212,7 +212,6 @@ void sigint (void){
 static WORKING_AREA(ShellThreadWA, 1536);
 static msg_t ShellThread(void *arg){
   chRegSetThreadName("Shell");
-  chThdSleepMilliseconds(1000);
 
   /* init static pointer for serial driver with received pointer */
   shell_sdp = (SerialUSBDriver *)arg;

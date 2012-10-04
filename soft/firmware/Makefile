@@ -103,6 +103,7 @@ CSRC = $(PORTSRC) \
        src/link/uart_local.c \
        src/link/cli.c \
        src/link/can_usb.c \
+       src/link/can_local.c \
        src/link/cli_cmd.c \
        src/link/link.c \
        src/link/link_sortin.c \
