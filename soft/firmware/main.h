@@ -34,6 +34,11 @@
 #define setGlobalFlag(flag)   {chSysLock(); GlobalFlags |= (flag); chSysUnlock();}
 #define clearGlobalFlag(flag) {chSysLock(); GlobalFlags &= (~(flag)); chSysUnlock();}
 
+typedef struct GlobalFlags_new_t{
+  uint32_t a:1;
+  uint32_t b:1;
+}GlobalFlags_new_t;
+#define setGlobalFlag_new(flag)   {chSysLock(); flag = 1; chSysUnlock();}
 
 /******************************************************************
 * статусы возвращаемые разными подсистемами */

@@ -53,5 +53,6 @@ void __early_init(void) {
  * Board-specific initialization code.
  */
 void boardInit(void) {
-  AFIO->MAPR = AFIO_MAPR_TIM4_REMAP;
+  AFIO->MAPR |= AFIO_MAPR_TIM4_REMAP;
+  AFIO->MAPR |= AFIO_MAPR_CAN_REMAP_0 | AFIO_MAPR_CAN_REMAP_1;
 }

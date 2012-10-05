@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "ch.h"
 #include "hal.h"
 
@@ -11,6 +13,7 @@
  * DEFINES
  ******************************************************************************
  */
+#define USB_DEBOUNCE_RETRY 2
 
 /*
  ******************************************************************************
@@ -30,6 +33,8 @@ extern uint32_t GlobalFlags;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
+static GlobalFlags_new_t GlobalFlags_new;
+static int32_t usb_debounce_cnt = 0;
 
 /*
  ******************************************************************************
@@ -42,6 +47,7 @@ extern uint32_t GlobalFlags;
  *
  */
 static Thread* fork_usb_tread(void){
+  setGlobalFlag_new(GlobalFlags_new.a);
   return CliConnect(UsbInitLocal());
 }
 
@@ -71,15 +77,28 @@ static void term_can_tread(Thread* tp){
     chThdTerminate(tp);
     chThdWait(tp);
   }
+  CanStopLocal();
 }
-
-
 
 /**
  * Check presence of USB plug reading inputs
  */
 static bool_t is_usb_present(void){
-  return TRUE;
+  usb_debounce_cnt = 0;
+
+  do{
+    if (palReadPad(GPIOE, GPIOE_USB_PRESENT))
+      usb_debounce_cnt++;
+    else
+      usb_debounce_cnt--;
+    chThdSleepMilliseconds(10);
+  }while (abs(usb_debounce_cnt) < USB_DEBOUNCE_RETRY);
+
+  /* decide */
+  if (usb_debounce_cnt > 0)
+    return TRUE;
+  else
+    return FALSE;
 }
 
 /**
@@ -99,16 +118,30 @@ static msg_t UsbCanMgrThread(void *arg){
   while (TRUE) {
     chThdSleepMilliseconds(100);
 
-    if(is_usb_present() && (GlobalFlags & CAN_ACTIVE_FLAG)){
-      term_can_tread(curr_tp);
-      clearGlobalFlag(CAN_ACTIVE_FLAG);
-      curr_tp = fork_usb_tread();
+    if (curr_tp != NULL){
+      if(is_usb_present() && (GlobalFlags & CAN_ACTIVE_FLAG)){
+        term_can_tread(curr_tp);
+        clearGlobalFlag(CAN_ACTIVE_FLAG);
+        curr_tp = fork_usb_tread();
+      }
+      else if(!is_usb_present() && !(GlobalFlags & CAN_ACTIVE_FLAG)){
+        term_usb_tread(curr_tp);
+        curr_tp = NULL;
+        setGlobalFlag(CAN_ACTIVE_FLAG);
+        curr_tp = fork_can_tread();
+      }
     }
-    else if(!is_usb_present() && !(GlobalFlags & CAN_ACTIVE_FLAG)){
-      term_usb_tread(curr_tp);
-      curr_tp = NULL;
-      setGlobalFlag(CAN_ACTIVE_FLAG);
-      curr_tp = fork_can_tread();
+
+    /* initial thread fork */
+    else{
+      if(is_usb_present()){
+        clearGlobalFlag(CAN_ACTIVE_FLAG);
+        curr_tp = fork_usb_tread();
+      }
+      else {
+        setGlobalFlag(CAN_ACTIVE_FLAG);
+        curr_tp = fork_can_tread();
+      }
     }
   }
   return 0;

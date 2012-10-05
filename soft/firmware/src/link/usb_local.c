@@ -336,12 +336,13 @@ SerialUSBDriver* UsbInitLocal(void){
   /* Activates the USB driver and then the USB bus pull-up on D+. */
   usbInit();
   sduInit();
+//  usbDisconnectBus(serusbcfg.usbp);
+//  chThdSleepMilliseconds(1000);
   sduObjectInit(&SDU1);
   sduStart(&SDU1, &serusbcfg);
-  chThdSleepMilliseconds(5);
+//  chThdSleepMilliseconds(5);
   usbConnectBus(serusbcfg.usbp);
-  chThdSleepMilliseconds(1000);
-  palClearPad(GPIOE, GPIOE_USB_DISCOVERY);
+
   return &SDU1;
 }
 
@@ -349,8 +350,15 @@ SerialUSBDriver* UsbInitLocal(void){
  * Stop USB and free resources.
  */
 void UsbStopLocal(void){
-  sduStop(&SDU1);
-  usbStop(&USBD1);
+  usbDisconnectBus(serusbcfg.usbp);
+  chSysLock();
+  chIQResetI(&(SDU1.iqueue));
+  chOQResetI(&(SDU1.oqueue));
+  chSysUnlock();
+  chThdSleepMilliseconds(100);
+
+  usbInit(); // DIRTY HACK    to stop USB and avoid panic in sduStop()
+  sduStop(&SDU1); // it calls usbStop() itself
 }
 
 

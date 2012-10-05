@@ -69,10 +69,8 @@ static msg_t CanTxThread(void * arg) {
   while (!chThdShouldTerminate()) {
     canTransmit(&CAND1, &txmsg, MS2ST(100));
     chThdSleepMilliseconds(250);
-
-    if (chThdShouldTerminate())
-      chThdExit(0);
   }
+  chThdExit(0);
   return 0;
 }
 

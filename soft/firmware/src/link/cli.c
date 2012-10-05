@@ -97,7 +97,7 @@ int32_t cmd_search(const char* key, const ShellCmd_t *cmdarray){
 void cli_print(const char *str){
   int i = 0;
   while (str[i] != 0) {
-    sdPut(shell_sdp, str[i]);
+    sdPutTimeout(shell_sdp, str[i], MS2ST(100));
     i++;
   }
 }
@@ -215,10 +215,10 @@ static msg_t ShellThread(void *arg){
 
   /* init static pointer for serial driver with received pointer */
   shell_sdp = (SerialUSBDriver *)arg;
-
+  chThdSleepMilliseconds(1000);
   // create and init microrl object
   microrl_t microrl_shell;
-//  cli_print("@@*** Super cool device, version 1.2.3, for help type help... ***@@\r\n");
+  // cli_print("@@*** Super cool device, version 1.2.3, for help type help... ***@@\r\n");
   microrl_init(&microrl_shell, cli_print);
 
   // set callback for execute
