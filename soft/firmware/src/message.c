@@ -25,6 +25,9 @@ mavlink_system_t              mavlink_system_struct;
 mavlink_command_long_t        mavlink_command_long_struct;
 mavlink_set_mode_t            mavlink_set_mode_struct;
 
+mavlink_mpiovd_sensors_raw_t     mpiovd_sensors_raw_struct;
+mavlink_mpiovd_sensors_scaled_t  mpiovd_sensors_scaled_struct;
+
 /*
  ******************************************************************************
  * GLOBAL VARIABLES

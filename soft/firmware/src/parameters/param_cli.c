@@ -129,6 +129,7 @@ static void _param_print_all(void){
  */
 static param_status_t _param_cli_set(const char * val, uint32_t i){
   floatint v;
+  bool_t set_status = PARAM_FAILED;
   int sscanf_status;
 
   switch(global_data[i].param_type){
@@ -148,7 +149,12 @@ static param_status_t _param_cli_set(const char * val, uint32_t i){
   if (sscanf_status != 1)
     return PARAM_INCONSISTENT;
   else
-    return set_global_param(&v, &global_data[i]);
+    set_status = set_global_param(&v, &global_data[i]);
+
+  if (set_status == PARAM_SUCCESS)
+    return PARAM_OK;
+  else
+    return PARAM_CLAMPED;
 }
 
 /**

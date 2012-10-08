@@ -163,10 +163,16 @@ static uint16_t _supply_compensate(adcsample_t in){
   Ud = 0.037 * logf(250*U2 + 1);  // формула аппроксимации характеристики диода VD12
   U1 = (U2 * (R1 + R2) + Ud * R2) / R2;
   V = (float)adc_raw_voltage * Vcoeff;
-  R = (U1 * R0) / (V - U1);
-  putinrange(R, 0, 1000.0f);
-
-  return roundf(R);
+  /* хак:
+   * позволяющий с помощью fabsf избежать отрицательных величин,
+   * превращающих сопротивление в ноль после нормализации */
+  if ((V - U1) <= 0)
+    return 1000;
+  else{
+    R = (U1 * R0) / (V - U1);
+    putinrange(R, 0, 1000.0f);
+  }
+  return floorf(R);
 }
 
 /**

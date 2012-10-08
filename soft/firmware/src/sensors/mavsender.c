@@ -25,6 +25,8 @@
  */
 extern Mailbox tolink_mb;
 extern RawData raw_data;
+extern mavlink_mpiovd_sensors_raw_t     mpiovd_sensors_raw_struct;
+extern mavlink_mpiovd_sensors_scaled_t  mpiovd_sensors_scaled_struct;
 
 /*
  ******************************************************************************
@@ -32,9 +34,6 @@ extern RawData raw_data;
  ******************************************************************************
  */
 static uint32_t *T_tlm;
-
-static mavlink_mpiovd_sensors_raw_t     mpiovd_sensors_raw_struct;
-static mavlink_mpiovd_sensors_scaled_t  mpiovd_sensors_scaled_struct;
 
 /*
  ******************************************************************************

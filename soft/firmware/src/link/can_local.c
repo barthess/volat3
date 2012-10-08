@@ -2,6 +2,9 @@
 #include "hal.h"
 
 #include "main.h"
+#include "utils.h"
+#include "message.h"
+#include "sensors.h"
 
 /*
  ******************************************************************************
@@ -15,6 +18,8 @@
  ******************************************************************************
  */
 extern MemoryHeap ThdHeap;
+extern const RawData raw_data;
+extern const mavlink_mpiovd_sensors_raw_t     mpiovd_sensors_raw_struct;
 
 /*
  ******************************************************************************
@@ -34,8 +39,8 @@ extern MemoryHeap ThdHeap;
  */
 static const CANConfig cancfg = {
   CAN_MCR_ABOM | CAN_MCR_AWUM | CAN_MCR_TXFP,
-  CAN_BTR_LBKM | CAN_BTR_SJW(0) | CAN_BTR_TS2(1) |
-  CAN_BTR_TS1(8) | CAN_BTR_BRP(6),
+  //CAN_BTR_LBKM | CAN_BTR_SJW(1) | CAN_BTR_TS2(2) | CAN_BTR_TS1(11) | CAN_BTR_BRP(5),
+  CAN_BTR_SJW(1) | CAN_BTR_TS2(2) | CAN_BTR_TS1(11) | CAN_BTR_BRP(5),
   0,
   NULL
 };
@@ -58,15 +63,34 @@ static msg_t CanTxThread(void * arg) {
   chRegSetThreadName("CanTx");
 
   CANTxFrame txmsg;
+  uint32_t i;
 
   txmsg.IDE = CAN_IDE_EXT;
   txmsg.EID = 0x01234567;
   txmsg.RTR = CAN_RTR_DATA;
   txmsg.DLC = 8;
-  txmsg.data32[0] = 0x55AA55AA;
-  txmsg.data32[1] = 0x00FF00FF;
+  for (i=0; i<8; i++)
+    txmsg.data8[i] = 0;
+//  txmsg.data32[0] = 0x55AA55AA;
+//  txmsg.data32[1] = 0x00FF00FF;
 
   while (!chThdShouldTerminate()) {
+    i = mpiovd_sensors_raw_struct.analog01;
+    putinrange(i, 0, 255);
+    txmsg.data8[0] = i;
+    i = mpiovd_sensors_raw_struct.analog02;
+    putinrange(i, 0, 255);
+    txmsg.data8[1] = i;
+    i = mpiovd_sensors_raw_struct.analog03;
+    putinrange(i, 0, 255);
+    txmsg.data8[2] = i;
+    i = mpiovd_sensors_raw_struct.analog04;
+    putinrange(i, 0, 255);
+    txmsg.data8[3] = i;
+
+    /* (>> 1) to exclude "dead" bit from SPI*/
+    txmsg.data8[4] = (raw_data.discrete >> 1) & 0xFF;
+
     canTransmit(&CAND1, &txmsg, MS2ST(100));
     chThdSleepMilliseconds(250);
   }

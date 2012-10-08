@@ -133,7 +133,8 @@ GlobalParam_t global_data[] = {
   {"REL_reserved2",   {.u32 = 0},           {.u32 = 0},           {.u32 = 3},           MAVLINK_TYPE_UINT32_T},
   {"REL_reserved3",   {.u32 = 0},           {.u32 = 0},           {.u32 = 3},           MAVLINK_TYPE_UINT32_T},
 
-  /* ревизия печатной платы для включения программных костылей */
+  /* ревизия печатной платы для включения программных костылей
+   * 1 == перевернуть тетрады битов чтобы исправить неправильную разводку оптронов */
   {"BRD_revision",    {.u32 = 0},           {.u32 = 1},           {.u32 = 0xFF},        MAVLINK_TYPE_UINT32_T},
 
   /* fake field with 14 symbols name */
