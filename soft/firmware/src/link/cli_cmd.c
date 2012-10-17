@@ -170,7 +170,6 @@ Thread* sensor_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarr
 }
 
 
-
 /**
  * helper function
  */

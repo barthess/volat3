@@ -11,6 +11,7 @@
 #include "message.h"
 #include "cli.h"
 #include "cli_cmd.h"
+#include "sensors_cmd.h"
 #include "param_cli.h"
 
 /*
@@ -33,7 +34,6 @@ extern MemoryHeap ThdHeap;
  *******************************************************************************
  */
 int recursive_execute(int argc, const char * const * argv, const ShellCmd_t *cmdarray);
-Thread* logout_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray);
 
 /*
  ******************************************************************************
@@ -47,17 +47,10 @@ static const ShellCmd_t chibiutils[] = {
     {"help",      &help_cmd,      NULL},
     {"clear",     &clear_cmd,     NULL},
     {"list",      &list_cmd,      NULL},
-    {"loop",      &loop_cmd,      NULL},
-    {"echo",      &echo_cmd,      NULL},
-    {"reboot",    &reboot_cmd,    NULL},
-    {"sleep",     &sleep_cmd,     NULL},
     {"selftest",  &selftest_cmd,  NULL},
-    {"sensor",    &sensor_cmd,    NULL},
-    {"logout",    &logout_cmd,    NULL},
-    {"param",     &param_cmd,  NULL},
-    //{"man",       &man_cmd,       NULL},
-    //{"kill",    &kill_func,   NULL},
-    {NULL,      NULL,         NULL}/* end marker */
+    {"sensors",   &sensors_cmd,   NULL},
+    {"param",     &param_cmd,     NULL},
+    {NULL,        NULL,           NULL}/* end marker */
 };
 
 static SerialUSBDriver *shell_sdp;
@@ -66,7 +59,7 @@ static SerialUSBDriver *shell_sdp;
 static char *compl_world[_NUM_OF_CMD + 1];
 
 /* thread pointer to currently executing command */
-static Thread *current_cmd_tp = NULL;
+static Thread *CurrentCmd_tp = NULL;
 
 /* pointer to shell thread */
 static Thread *shell_tp = NULL;
@@ -149,9 +142,9 @@ int recursive_execute(int argc, const char * const * argv, const ShellCmd_t *cmd
   /* search token in cmd array */
   if (i != -1){
     if (argc > 1)
-      current_cmd_tp = cmdarray[i].func(argc - 1, &argv[1], cmdarray);
+      CurrentCmd_tp = cmdarray[i].func(argc - 1, &argv[1], cmdarray);
     else
-      current_cmd_tp = cmdarray[i].func(argc - 1, NULL, cmdarray);
+      CurrentCmd_tp = cmdarray[i].func(argc - 1, NULL, cmdarray);
   }
   return i;
 }
@@ -198,12 +191,12 @@ char ** complete(int argc, const char * const * argv)
  *
  */
 void sigint (void){
-  if (current_cmd_tp != NULL){
-    chThdTerminate(current_cmd_tp);
-    chThdWait(current_cmd_tp);
-    current_cmd_tp = NULL;
+  if (CurrentCmd_tp != NULL){
+    chThdTerminate(CurrentCmd_tp);
+    chThdWait(CurrentCmd_tp);
+    CurrentCmd_tp = NULL;
   }
-  cli_print("^C pressed\n\r");
+  cli_print("--> ^C pressed. Hit enter to return in console.");
 }
 
 /**
@@ -238,9 +231,9 @@ static msg_t ShellThread(void *arg){
 
     /* умираем по всем правилам, не забываем убить потомков */
     if (chThdShouldTerminate()){
-      if ((current_cmd_tp != NULL) && (current_cmd_tp->p_state != THD_STATE_FINAL)){
-        chThdTerminate(current_cmd_tp);
-        chThdWait(current_cmd_tp);
+      if ((CurrentCmd_tp != NULL) && (CurrentCmd_tp->p_state != THD_STATE_FINAL)){
+        chThdTerminate(CurrentCmd_tp);
+        chThdWait(CurrentCmd_tp);
       }
       chThdExit(0);
     }
