@@ -145,8 +145,8 @@ static msg_t sr_in_thread(void *p) {
     z_check_on();
     chThdSleepMilliseconds(1);
     read_spi(&SPID2, 9, rxbuf_z_on);
-    z_on[0] = pack8to32(rxbuf_z_on);
-    z_on[1] = pack8to32(rxbuf_z_on + 4);
+    z_off[0] = pack8to32(rxbuf_z_on);
+    z_off[1] = pack8to32(rxbuf_z_on + 4);
 
 //    z_on[0] = 0;
 //    z_on[1] = 0;
@@ -154,8 +154,8 @@ static msg_t sr_in_thread(void *p) {
     z_check_off();
     chThdSleepMilliseconds(10);
     read_spi(&SPID2, 9, rxbuf_z_off);
-    z_off[0] = pack8to32(rxbuf_z_off);
-    z_off[1] = pack8to32(rxbuf_z_off + 4);
+    z_on[0] = pack8to32(rxbuf_z_off);
+    z_on[1] = pack8to32(rxbuf_z_off + 4);
 //      z_off[0] = -1;
 //      z_off[1] = -1;
 

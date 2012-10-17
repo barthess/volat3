@@ -79,7 +79,7 @@ uint32_t _rel_normalize32(uint32_t z_on, uint32_t z_off,
       return -1;
     vcc = (z_on & z_off)    & (~vcc_mask);
     gnd = (~(z_on | z_off)) & (~gnd_mask);
-    z   = (z_on ^ z_off)    & (~z_mask);
+    z   = ~((z_on ^ z_off)  & (~z_mask));
     break;
 
   case 1:

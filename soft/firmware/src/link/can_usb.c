@@ -33,7 +33,6 @@ extern uint32_t GlobalFlags;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static GlobalFlags_new_t GlobalFlags_new;
 static int32_t usb_debounce_cnt = 0;
 
 /*
@@ -47,8 +46,7 @@ static int32_t usb_debounce_cnt = 0;
  *
  */
 static Thread* fork_usb_tread(void){
-  setGlobalFlag_new(GlobalFlags_new.a);
-  return CliConnect(UsbInitLocal());
+  return SpawnShellThreads((SerialDriver *)UsbInitLocal());
 }
 
 /**

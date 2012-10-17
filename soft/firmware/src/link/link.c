@@ -2,6 +2,7 @@
 #include "hal.h"
 
 #include "link.h"
+#include "linkmgr.h"
 #include "cli.h"
 #include "usb_local.h"
 #include "can_usb.h"
@@ -25,6 +26,8 @@
  ******************************************************************************
  */
 extern Mailbox tolink_mb;
+extern uint32_t GlobalFlags;
+extern MemoryHeap ThdHeap;
 
 /*
  ******************************************************************************
@@ -59,10 +62,7 @@ static msg_t LinkOutThread(void *sdp){
   Mail *mailp;
   msg_t tmp = 0;
 
-  while (TRUE) {
-    if (chThdShouldTerminate())
-      chThdExit(0);
-
+  while (!chThdShouldTerminate()) {
     if (chMBFetch(&tolink_mb, &tmp, MS2ST(200)) == RDY_OK){
       mailp = (Mail*)tmp;
       sort_output_mail(mailp, &mavlink_msgbuf);
@@ -71,6 +71,7 @@ static msg_t LinkOutThread(void *sdp){
     }
   }
 
+  chThdExit(0);
   return 0;
 }
 
@@ -86,10 +87,7 @@ static msg_t LinkInThread(void *sdp){
   mavlink_status_t status;
   msg_t c = 0;
 
-  while (TRUE) {
-    if (chThdShouldTerminate())
-      chThdExit(0);
-
+  while (!chThdShouldTerminate()) {
     // Try to get a new message
     c = sdGetTimeout((SerialDriver *)sdp, MS2ST(200));
     if (c != Q_TIMEOUT){
@@ -102,27 +100,46 @@ static msg_t LinkInThread(void *sdp){
       }
     }
   }
+
+  chThdExit(0);
   return 0;
 }
 
+/**
+ * Kills previously spawned threads
+ */
+void KillMavlinkThreads(void){
+  clearGlobalFlag(TLM_ACTIVE_FLAG);
+
+  chThdTerminate(linkout_tp);
+  chThdTerminate(linkin_tp);
+
+  chThdWait(linkout_tp);
+  chThdWait(linkin_tp);
+}
 
 /**
  * порождает потоки сортировки\парсинга сообщений
  */
-void MavlinkConnect(void *sdp_mav){
-  linkout_tp = chThdCreateStatic(LinkOutThreadWA,
+void SpawnMavlinkThreads(void *sdp){
+  linkout_tp = chThdCreateFromHeap(&ThdHeap,
                             sizeof(LinkOutThreadWA),
                             LINK_THREADS_PRIO,
                             LinkOutThread,
-                            sdp_mav);
-  linkin_tp = chThdCreateStatic(LinkInThreadWA,
+                            sdp);
+  if (linkout_tp == NULL)
+    chDbgPanic("Can not allocate memory");
+
+  linkin_tp = chThdCreateFromHeap(&ThdHeap,
                             sizeof(LinkInThreadWA),
                             LINK_THREADS_PRIO,
                             LinkInThread,
-                            sdp_mav);
+                            sdp);
+  if (linkin_tp == NULL)
+    chDbgPanic("Can not allocate memory");
+
+  setGlobalFlag(TLM_ACTIVE_FLAG);
 }
-
-
 
 /*
  *******************************************************************************
@@ -131,7 +148,8 @@ void MavlinkConnect(void *sdp_mav){
  */
 
 void LinkInit(void){
-  MavlinkConnect(UartInitLocal());
+  LinkMgrInit(UartInitLocal());
+
   CanUsbMgrInit();
   MavSenderInit();
 }

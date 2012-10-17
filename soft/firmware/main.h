@@ -30,15 +30,11 @@
  * глобальные битовые флаги */
 #define SPI_SAMPLE_FLAG        (1UL << 0)  /* если установлен в единицу, значит подано питание на дискретные входы */
 #define CAN_ACTIVE_FLAG        (1UL << 1)  /* если установлен в единицу, значит запущен CAN и запуск USB невозможен */
+#define TLM_ACTIVE_FLAG        (1UL << 2)  /* если установлен в единицу, значит запущен CAN и запуск USB невозможен */
+#define SHELL_ACTIVE_FLAG      (1UL << 3)  /* если установлен в единицу, значит запущен CAN и запуск USB невозможен */
 
 #define setGlobalFlag(flag)   {chSysLock(); GlobalFlags |= (flag); chSysUnlock();}
 #define clearGlobalFlag(flag) {chSysLock(); GlobalFlags &= (~(flag)); chSysUnlock();}
-
-typedef struct GlobalFlags_new_t{
-  uint32_t a:1;
-  uint32_t b:1;
-}GlobalFlags_new_t;
-#define setGlobalFlag_new(flag)   {chSysLock(); flag = 1; chSysUnlock();}
 
 /******************************************************************
 * статусы возвращаемые разными подсистемами */

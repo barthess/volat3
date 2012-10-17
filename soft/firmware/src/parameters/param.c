@@ -81,8 +81,8 @@ static bool_t _uint_setval(void *value,  GlobalParam_t *param){
  *
  */
 GlobalParam_t global_data[] = {
-  /*  key             min            val            max            type                   */
-  /*--------------------------------------------------------------------------------------*/
+  /*  key             min                  val                    max                  type                   */
+  /*----------------------------------------------------------------------------------------------------------*/
   {"SYS_ID",          {.u32 = 1},          {.u32 = 20},           {.u32 = 255},        MAVLINK_TYPE_UINT32_T},
   /* 16 denotes ground rover */
   {"SYS_mavtype",     {.u32 = 0},          {.u32 = 1},            {.u32 = 16},         MAVLINK_TYPE_UINT32_T},

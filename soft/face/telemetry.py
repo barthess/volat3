@@ -583,13 +583,16 @@ class Telemetry(GlossGame):#{{{
         self.main_voltage = 0.0
         self.tank1_fill = 0.0
         self.tank2_fill = 0.0
+        self.press_oil = 0.0
+        self.press_break1 = 0.0
+        self.press_break2 = 0.0
 
         # инициализация объектов
         self.speedometer = Speedometer(position = (380,10))
         self.tachometer = Tachometer(position = (145,45))
         self.thermoblock = ThermoBlock(position = (920,5))
 
-        self.sym_msk = 2**32 - 1
+        self.sym_msk = 0
         self.symgrid = SymbolGrid()
 
         self.autriggers_msk = 0
@@ -635,7 +638,7 @@ class Telemetry(GlossGame):#{{{
         self.thermoblock.draw(self.temp_oil, self.temp_water / 1.5)
         self.autriggers.draw(self.autriggers_msk)
         self.tiers.draw(self.tiers_msk)
-        self.pressblock.draw(self.speed * 1.2, self.speed * 0.3, self.speed + 0.5)
+        self.pressblock.draw(self.press_oil / 100.0, self.press_break1 / 100.0, self.press_break2 / 100.0)
         self.fuelblock.draw(self.tank1_fill, self.tank2_fill)
         self.battery.draw(self.main_voltage)
         self.clock.draw()
@@ -692,8 +695,13 @@ class Telemetry(GlossGame):#{{{
 
             self.temp_oil = tlm_data.analog03
             self.temp_water = tlm_data.analog04
+            self.press_oil = tlm_data.analog05
+            self.press_break1 = tlm_data.analog06
+            self.press_break2 = tlm_data.analog07
 
             self.sym_msk = tlm_data.relay
+            self.autriggers_msk = tlm_data.relay >> 32
+            self.tiers_msk = tlm_data.relay >> 32 + 6
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
 

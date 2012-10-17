@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -Os -ggdb -fno-strict-aliasing -fomit-frame-pointer -falign-functions=16 -std=gnu99
+  USE_OPT = -O0 -ggdb -fno-strict-aliasing -fomit-frame-pointer -falign-functions=16 -std=gnu99
 endif
 
 # C specific options here (added to USE_OPT).
@@ -107,6 +107,7 @@ CSRC = $(PORTSRC) \
        src/link/can_local.c \
        src/link/cli_cmd.c \
        src/link/link.c \
+       src/link/linkmgr.c \
        src/link/link_sortin.c \
        src/link/link_sortout.c \
        src/microrl/src/microrl.c \
@@ -168,10 +169,10 @@ MCU  = cortex-m3 -lm
 
 #TRGT = arm-elf-
 TRGT = arm-none-eabi-
-CC   = ccache $(TRGT)gcc
-CPPC = ccache $(TRGT)g++
-#CC   = $(TRGT)gcc
-#CPPC = $(TRGT)g++
+#CC   = ccache $(TRGT)gcc
+#CPPC = ccache $(TRGT)g++
+CC   = $(TRGT)gcc
+CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
 # NOTE: You can use C++ even without C++ support if you are careful. C++
 #       runtime support makes code size explode.

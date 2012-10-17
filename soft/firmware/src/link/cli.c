@@ -13,6 +13,7 @@
 #include "cli_cmd.h"
 #include "sensors_cmd.h"
 #include "param_cli.h"
+#include "param.h"
 
 /*
  ******************************************************************************
@@ -34,6 +35,7 @@ extern MemoryHeap ThdHeap;
  *******************************************************************************
  */
 int recursive_execute(int argc, const char * const * argv, const ShellCmd_t *cmdarray);
+static Thread* logout_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray);
 
 /*
  ******************************************************************************
@@ -47,13 +49,14 @@ static const ShellCmd_t chibiutils[] = {
     {"help",      &help_cmd,      NULL},
     {"clear",     &clear_cmd,     NULL},
     {"list",      &list_cmd,      NULL},
+    {"logout",    &logout_cmd,    NULL},
     {"selftest",  &selftest_cmd,  NULL},
     {"sensors",   &sensors_cmd,   NULL},
     {"param",     &param_cmd,     NULL},
     {NULL,        NULL,           NULL}/* end marker */
 };
 
-static SerialUSBDriver *shell_sdp;
+static SerialDriver *shell_sdp;
 
 // array for comletion
 static char *compl_world[_NUM_OF_CMD + 1];
@@ -69,6 +72,19 @@ static Thread *shell_tp = NULL;
  * LOCAL FUNCTIONS
  *******************************************************************************
  */
+
+/**
+ *
+ */
+static Thread* logout_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
+  (void)argc;
+  (void)argv;
+  (void)cmdarray;
+
+  *(uint32_t*)ValueSearch("SH_enable") = 0;
+
+  return NULL;
+}
 
 /**
  * Search value (pointer to function) by key (name string)
@@ -207,7 +223,7 @@ static msg_t ShellThread(void *arg){
   chRegSetThreadName("Shell");
 
   /* init static pointer for serial driver with received pointer */
-  shell_sdp = (SerialUSBDriver *)arg;
+  shell_sdp = (SerialDriver *)arg;
   chThdSleepMilliseconds(1000);
   // create and init microrl object
   microrl_t microrl_shell;
@@ -248,15 +264,26 @@ static msg_t ShellThread(void *arg){
  * EXPORTED FUNCTIONS
  *******************************************************************************
  */
+/**
+ *
+ */
+void KillShellThreads(void){
+  if (shell_tp != NULL){
+    chThdTerminate(shell_tp);
+    chThdWait(shell_tp);
+  }
+}
 
-Thread* CliConnect(SerialUSBDriver *sdp_cli){
+/**
+ *
+ */
+Thread* SpawnShellThreads(SerialDriver *sdp){
 
-  shell_tp = chThdCreateFromHeap(
-      &ThdHeap,
-      sizeof(ShellThreadWA),
-      LINK_THREADS_PRIO - 2,
-      ShellThread,
-      sdp_cli);
+  shell_tp = chThdCreateFromHeap(&ThdHeap,
+                                sizeof(ShellThreadWA),
+                                LINK_THREADS_PRIO - 2,
+                                ShellThread,
+                                sdp);
 
   if (shell_tp == NULL)
     chDbgPanic("Can not allocate memory");
