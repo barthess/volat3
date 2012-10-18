@@ -16,6 +16,8 @@ flags = globalflags.flags
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
 import mavlink
 
+import volatinterp
+
 #дополнительные именованные цвета
 Color.LIGHTGREY = Color(0.75, 0.75, 0.75, 1)
 Color.GREY = Color(0.5, 0.5, 0.5, 1)
@@ -29,6 +31,14 @@ RESPATH = "resources/"
 # минимальное и максимальное значение тахометра для масштабирования значения
 RPM_MIN = 0.0
 RPM_MAX = 3000.0
+
+# минимальные и максимальные значения с аналоговых датчиков
+AN_MIN = 0
+AN_MAX = 1000
+
+# пределы давления в кг/см^2
+PRESS_MAX = 10.0
+PRESS_MIN = 0.0
 
 class Label():#{{{текстовая бирка с возможностью центрирования
     def __init__(self, font):
@@ -309,16 +319,19 @@ class PressBlock():#{{{
         self.colornormal = Color(0, 0.5, 0, 1)
         self.coloralarm  = Color.RED
     def draw(self, poil, p1, p2):
-        """ Принимает значения давлений масла, тормозного контура 1 и 2"""
+        """ Принимает значения давлений масла, тормозного контура 1 и 2 в кг/см^2"""
+        poil = poil / PRESS_MAX
+        p1   = p1 / PRESS_MAX
+        p2   = p2 / PRESS_MAX
         if poil > 0.8:
             self.oil_sym.draw(self.coloralarm)
         else:
             self.oil_sym.draw(self.colornormal)
-        if p1 > 0.7:
+        if p1 > 0.8:
             self.contour1_sym.draw(self.coloralarm)
         else:
             self.contour1_sym.draw(self.colornormal)
-        if p2 > 0.9:
+        if p2 > 0.8:
             self.contour2_sym.draw(self.coloralarm)
         else:
             self.contour2_sym.draw(self.colornormal)
@@ -373,7 +386,7 @@ class Thermometer():#{{{ термометр в виде столбика с ша
         y = position[1] + self.tex_mask.height + clearance
         self.multicolorsym.position = (x, y)
     def draw(self, t):
-        """ Принимает температуру, которую надо отобразить """
+        """ Принимает температуру, которую надо отобразить (градусы цельсия)"""
         bluet = 50
         yellowt = 70
         greent = 90
@@ -618,8 +631,18 @@ class Telemetry(GlossGame):#{{{
         self.atm = ATM()
         self.warning = WarningWindow()
 
-        #self.tv = Sprite(Texture(RESPATH + "tv.png"), position = (400, 400))
-        #time.sleep(1)# имитация непосильной работы по загрузке ресурсов
+        # инициализация датчика ТМ100 (темометр)
+        tm100_x = [104, 115, 133, 151, 176, 201, 235, 266, 308, 354, 406, 556] # Ohm
+        tm100_y = [100,  95,  90,  85,  80,  75,  70,  65,  60,  55,  50,  40] # Celsius
+        self.TM100 = volatinterp.interp1d(tm100_x, tm100_y, AN_MIN, AN_MAX)
+
+        # инициализация датчика 18.3829 (давленометр)
+        mzkt18_x = [28, 38, 50, 63, 75, 87, 104, 119, 137, 155, 168] # Ohm
+        mzkt18_y = [10,  9,  8,  7,  6,  5,   4,   3,   2,   1,   0] # kg/cm^2
+        self.mzkt18 = volatinterp.interp1d(mzkt18_x, mzkt18_y, AN_MIN, AN_MAX)
+
+        # датчик безнина (ДУМП-02)
+        self.dump02 = volatinterp.linear(0, 0, 100, 1)
     #}}}
     def draw(self):#{{{
         """The draw() method of your game automatically gets called by Gloss
@@ -635,10 +658,10 @@ class Telemetry(GlossGame):#{{{
         self.tachometer.draw(self.tacho)
         self.trip.draw(31)
         self.speedometer.draw(self.speed)
-        self.thermoblock.draw(self.temp_oil, self.temp_water / 1.5)
+        self.thermoblock.draw(self.temp_oil, self.temp_water)
         self.autriggers.draw(self.autriggers_msk)
         self.tiers.draw(self.tiers_msk)
-        self.pressblock.draw(self.press_oil / 100.0, self.press_break1 / 100.0, self.press_break2 / 100.0)
+        self.pressblock.draw(self.press_oil, self.press_break1, self.press_break2)
         self.fuelblock.draw(self.tank1_fill, self.tank2_fill)
         self.battery.draw(self.main_voltage)
         self.clock.draw()
@@ -673,7 +696,7 @@ class Telemetry(GlossGame):#{{{
 
         try:
             tlm_data = self.q_tlm.get_nowait()
-            # TODO: add emergency message logic based on timeout here
+            # TODO: add emergency message logic. Based on timeout here
         except Empty:
             pass
         else:
@@ -688,20 +711,22 @@ class Telemetry(GlossGame):#{{{
             self.speed = tlm_data.speed / 256.0
             self.tacho = tlm_data.rpm / RPM_MAX
             self.main_voltage = tlm_data.analog00 / 1000.0
-            self.tank1_fill = tlm_data.analog01 / 100.0
-            self.tank2_fill = tlm_data.analog02 / 100.0
+            self.tank1_fill = self.dump02.get(tlm_data.analog01)
+            self.tank2_fill = self.dump02.get(tlm_data.analog02)
 
-            print "tlm.an01 = ", tlm_data.analog01, "raw volatage = ", tlm_data.analog00
+            #print "tlm.an01 = ", tlm_data.analog01, "raw volatage = ", tlm_data.analog00
+            # print tlm_data.analog03, tlm_data.analog04
 
-            self.temp_oil = tlm_data.analog03
-            self.temp_water = tlm_data.analog04
-            self.press_oil = tlm_data.analog05
-            self.press_break1 = tlm_data.analog06
-            self.press_break2 = tlm_data.analog07
+            self.temp_oil   = self.TM100.get(Gloss.clamp(tlm_data.analog03, AN_MIN, AN_MAX))
+            self.temp_water = self.TM100.get(Gloss.clamp(tlm_data.analog04, AN_MIN, AN_MAX))
+
+            self.press_oil    = self.mzkt18.get(Gloss.clamp(tlm_data.analog05, AN_MIN, AN_MAX))
+            self.press_break1 = self.mzkt18.get(Gloss.clamp(tlm_data.analog06, AN_MIN, AN_MAX))
+            self.press_break2 = self.mzkt18.get(Gloss.clamp(tlm_data.analog07, AN_MIN, AN_MAX))
 
             self.sym_msk = tlm_data.relay
-            self.autriggers_msk = tlm_data.relay >> 32
-            self.tiers_msk = tlm_data.relay >> 32 + 6
+            self.autriggers_msk = (tlm_data.relay >> 32)
+            self.tiers_msk = tlm_data.relay >> (32 + 6)
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
 
