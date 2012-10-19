@@ -348,6 +348,9 @@ class PressBlock():#{{{
         self.coloralarm  = Color.RED
 
     def draw_stat(self, poil, p1, p2):
+        self.oil_sym.draw(self.colornormal)
+        self.contour1_sym.draw(self.colornormal)
+        self.contour2_sym.draw(self.colornormal)
         self.pressmeter_oil.draw_stat(poil)
         self.pressmeter1.draw_stat(p1)
         self.pressmeter2.draw_stat(p2)
@@ -358,16 +361,10 @@ class PressBlock():#{{{
         p2   = p2 / PRESS_MAX
         if poil > 0.8:
             self.oil_sym.draw(self.coloralarm)
-        else:
-            self.oil_sym.draw(self.colornormal)
         if p1 > 0.8:
             self.contour1_sym.draw(self.coloralarm)
-        else:
-            self.contour1_sym.draw(self.colornormal)
         if p2 > 0.8:
             self.contour2_sym.draw(self.coloralarm)
-        else:
-            self.contour2_sym.draw(self.colornormal)
 
         self.pressmeter_oil.draw_dyn(poil)
         self.pressmeter1.draw_dyn(p1)
