@@ -397,6 +397,7 @@ class Gloss(object):
 	Point.ZERO = (0, 0)
 
 	picking = False
+	redraw_needed = False
 	enable_texturing = True
 	running_slowly = False
 

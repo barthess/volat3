@@ -221,16 +221,22 @@ class Dial():#{{{базовый метакласс для стрелочных �
         y = position[1] + self.tex.height / 2
         self.hand.position = (x, y)
 
+    def draw_dyn(self, val):
+        val = Gloss.clamp(val, 0.0, 1.0)
+        angle = self.startangle + (self.endangle - self.startangle) * val
+        self.hand.draw(angle) # стрелка
+
+    def draw_stat(self, val):
+        self.dial.draw() # главный пятак
+
     def draw(self, val):
         """
         Принимает:
             отображаемое значение (0.0 .. 1.0), что соответствует
             минимальному и максимальному углу
         """
-        val = Gloss.clamp(val, 0.0, 1.0)
-        self.dial.draw() # главный пятак
-        angle = self.startangle + (self.endangle - self.startangle) * val
-        self.hand.draw(angle) # стрелка
+        self.draw_stat(val)
+        self.draw_dyn(val)
     #}}}
 class Speedometer():#{{{спидометр, унаследованный от базового класса
     def __init__(self, position = (0,0)):
@@ -241,14 +247,21 @@ class Speedometer():#{{{спидометр, унаследованный от б
                          position = position)
         self.label = Label(hugefont)
 
-    def draw(self, val):
-        self.dial.draw(val)
+    def draw_stat(self, val):
+        self.dial.draw_stat(val)
+
+    def draw_dyn(self, val):
+        self.dial.draw_dyn(val)
         speedmin = 0
         speedmax = 120
         kmph = str(int(round((speedmax - speedmin) * val)))
         x = self.position[0] + self.dial.tex.width / 2
         y = self.position[1] + self.dial.tex.height / 2
         self.label.draw(kmph, centered = True, position = (x, y))
+
+    def draw(self, val):
+        self.draw_stat(val)
+        self.draw_dyn(val)
     #}}}
 class Tachometer():#{{{тахометр, унаследованный от базового класса
     def __init__(self, position = (0,0)):
@@ -259,12 +272,19 @@ class Tachometer():#{{{тахометр, унаследованный от ба�
                          position = position)
         self.label = Label(normalfont)
 
-    def draw(self, val):
-        self.dial.draw(val)
+    def draw_stat(self, val):
+        self.dial.draw_stat(val)
+
+    def draw_dyn(self, val):
+        self.dial.draw_dyn(val)
         rpm = str(int(round((RPM_MAX - RPM_MIN) * val)))
         x = self.position[0] + int(self.dial.tex.width / 2.4)
         y = self.position[1] + int(self.dial.tex.height / 1.55)
         self.label.draw(rpm, centered = True, position = (x, y))
+
+    def draw(self, val):
+        self.draw_stat(val)
+        self.draw_dyn(val)
     #}}}
 class Counter():#{{{
     def __init__(self, capacity = 6, position = (0,0)):
@@ -297,8 +317,16 @@ class Pressmeter():#{{{
         self.dial = Dial("pressmeter.png", self.hand,
                          startangle = 90, endangle = -90,
                          position = position)
+
+    def draw_stat(self, val):
+        self.dial.draw_stat(val)
+
+    def draw_dyn(self, val):
+        self.dial.draw_dyn(val)
+
     def draw(self, val):
-        self.dial.draw(val)
+        self.draw_stat(val)
+        self.draw_dyn(val)
     #}}}
 class PressBlock():#{{{
     def __init__(self, position = (0,0)):
@@ -318,8 +346,13 @@ class PressBlock():#{{{
 
         self.colornormal = Color(0, 0.5, 0, 1)
         self.coloralarm  = Color.RED
-    def draw(self, poil, p1, p2):
-        """ Принимает значения давлений масла, тормозного контура 1 и 2 в кг/см^2"""
+
+    def draw_stat(self, poil, p1, p2):
+        self.pressmeter_oil.draw_stat(poil)
+        self.pressmeter1.draw_stat(p1)
+        self.pressmeter2.draw_stat(p2)
+
+    def draw_dyn(self, poil, p1, p2):
         poil = poil / PRESS_MAX
         p1   = p1 / PRESS_MAX
         p2   = p2 / PRESS_MAX
@@ -336,9 +369,14 @@ class PressBlock():#{{{
         else:
             self.contour2_sym.draw(self.colornormal)
 
-        self.pressmeter_oil.draw(poil)
-        self.pressmeter1.draw(p1)
-        self.pressmeter2.draw(p2)
+        self.pressmeter_oil.draw_dyn(poil)
+        self.pressmeter1.draw_dyn(p1)
+        self.pressmeter2.draw_dyn(p2)
+
+    def draw(self, poil, p1, p2):
+        """ Принимает значения давлений масла, тормозного контура 1 и 2 в кг/см^2"""
+        self.draw_stat(poil, p1, p2)
+        self.draw_dyn(poil, p1, p2)
     #}}}
 class Clock():#{{{ Часы с календарем, кукушкой, цыганами и медведями
     def __init__(self, position = (0,0)):
@@ -556,7 +594,6 @@ class Telemetry(GlossGame):#{{{
         pass
     #}}}
     def load_content(self):#{{{
-        self.bgtexture = Texture(RESPATH + "loadscreen.png")
 
         self.mousepos = (0, 0)
         self.on_mouse_motion = self.handle_mouse_motion
@@ -645,6 +682,14 @@ class Telemetry(GlossGame):#{{{
 
         # датчик безнина (ДУМП-02)
         self.dump02 = volatinterp.linear(0, 0, 100, 1)
+
+        # сгенерим статичный задник
+        Gloss.clear(Color.BLACK)
+        self.speedometer.draw_stat(0)
+        self.tachometer.draw_stat(0)
+        self.pressblock.draw_stat(0, 0, 0)
+        Gloss.save_screenshot("/tmp/static_bg.png")
+        self.bgtexture = Texture("/tmp/static_bg.png")
     #}}}
     def draw(self):#{{{
         """The draw() method of your game automatically gets called by Gloss
@@ -653,18 +698,16 @@ class Telemetry(GlossGame):#{{{
         shouldn't put that code here. Instead, create an update() method
         inside your game's class
         """
-
-        Gloss.clear(Color.BLACK)
-        # Gloss.fill(self.bgtexture)
+        Gloss.fill(self.bgtexture)
         self.symgrid.draw(self.sym_msk)
         self.motohours.draw(self.engine_uptime)
-        self.tachometer.draw(self.tacho)
+        self.tachometer.draw_dyn(self.tacho)
         self.trip.draw(31)
-        self.speedometer.draw(self.speed)
+        self.speedometer.draw_dyn(self.speed)
         self.thermoblock.draw(self.temp_oil, self.temp_water)
         self.autriggers.draw(self.autriggers_msk)
         self.tiers.draw(self.tiers_msk)
-        self.pressblock.draw(self.press_oil, self.press_break1, self.press_break2)
+        self.pressblock.draw_dyn(self.press_oil, self.press_break1, self.press_break2)
         self.fuelblock.draw(self.tank1_fill, self.tank2_fill)
         self.battery.draw(self.main_voltage)
         self.clock.draw()
@@ -698,7 +741,7 @@ class Telemetry(GlossGame):#{{{
         tlm_data = None
 
         try:
-            tlm_data = self.q_tlm.get_nowait()
+            tlm_data = self.q_tlm.get(True, 1)
         except Empty:
             pass
         else:
@@ -712,6 +755,7 @@ class Telemetry(GlossGame):#{{{
             # растусовка всей ботвы из пакета
             self.speed = tlm_data.analog00 / 100000.0 #tlm_data.speed / 256.0
             self.tacho = tlm_data.rpm / RPM_MAX
+            # self.tacho = tlm_data.analog00 / 100000.0
             self.engine_uptime = tlm_data.engine_uptime
             self.main_voltage = tlm_data.analog00 / 1000.0
             self.tank1_fill = self.dump02.get(tlm_data.analog01)
