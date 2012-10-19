@@ -84,9 +84,9 @@ class Leg():#{{{аутриггеры и проколы шин
                 n += 1
             self.sygn_red.draw()
 
-    # def draw(self, flags):
-    #     self.draw_stat(flags)
-    #     self.draw_dyn(flags)
+    def draw(self, flags):
+        self.draw_stat(flags)
+        self.draw_dyn(flags)
     #}}}
 class SymbolGrid():#{{{все-все значки дискретных датчиков
     def __init__(self):
@@ -96,7 +96,7 @@ class SymbolGrid():#{{{все-все значки дискретных датч�
         self.spritelst = [] # список всех дискретных индикаторов
         self.n = 0 # вспомогательный счетчик для авторасстановки значков
 
-        def init_sprite(name):
+        def __init_sprite(name):
             """ Функция создающая спрайты и задающая координаты согласно сетке. """
             clearance = ((self.grid_step - symbol_size) / 2) + 1
             y = 768 - 2*self.grid_step + clearance
@@ -111,7 +111,7 @@ class SymbolGrid():#{{{все-все значки дискретных датч�
         n = 0
         while n < 24:
             n += 1
-            init_sprite(str(n/10) + str(n%10) + ".png")
+            __init_sprite(str(n/10) + str(n%10) + ".png")
 
         # индикатор фар
         lights = Sprite(Texture(RESPATH + "lights.png"), position = (540, 330))
@@ -141,14 +141,7 @@ class SymbolGrid():#{{{все-все значки дискретных датч�
         breakright = Sprite(tex, position = p)
         self.spritelst.append(breakright)
 
-    def draw(self, flags):
-        """ Принимает переменную с битовыми флагами """
-        shift = 0
-        for i in self.spritelst:
-            if ((flags >> shift) & 1) == 1:
-                i.draw()
-            shift += 1
-
+    def draw_stat(self, flags):
         #сетка для символики внизу экрана
         i = 1
         color = Color.DARKGREY
@@ -165,6 +158,19 @@ class SymbolGrid():#{{{все-все значки дискретных датч�
             f[1] = 768
             Gloss.draw_line(s, f, color, 2)
             i+=1
+
+    def draw_dyn(self, flags):
+        """ Принимает переменную с битовыми флагами """
+        shift = 0
+        for i in self.spritelst:
+            if ((flags >> shift) & 1) == 1:
+                i.draw()
+            shift += 1
+
+    def draw(self, flags):
+        """ Принимает переменную с битовыми флагами """
+        self.draw_stat(flags)
+        self.draw_dyn(flags)
     #}}}
 class Hand():#{{{стрелка для стрелочных приборов
     """
@@ -716,6 +722,7 @@ class Telemetry(GlossGame):#{{{
         self.fuelblock.draw_stat(0.5, 0.5)
         self.autriggers.draw_stat(0)
         self.tiers.draw_stat(0)
+        self.symgrid.draw_stat(0)
         Gloss.save_screenshot("/tmp/static_bg.png")
         self.bgtexture = Texture("/tmp/static_bg.png")
     #}}}
@@ -727,7 +734,6 @@ class Telemetry(GlossGame):#{{{
         inside your game's class
         """
         Gloss.fill(self.bgtexture)
-        self.symgrid.draw(self.sym_msk)
         self.motohours.draw(self.engine_uptime)
         self.tachometer.draw_dyn(self.tacho)
         self.trip.draw(31)
@@ -738,9 +744,12 @@ class Telemetry(GlossGame):#{{{
         self.pressblock.draw_dyn(self.press_oil, self.press_break1, self.press_break2)
         self.fuelblock.draw_dyn(self.tank1_fill, self.tank2_fill)
         self.battery.draw_dyn(self.main_voltage)
+        self.symgrid.draw_dyn(self.sym_msk)
         self.clock.draw()
+
         if flags["atm_mode"] is True:
             self.atm.draw()
+
         if (time.time() - self.last_success_time) > 2:
             self.warning.draw("UVVU not responding\n")
         #self.tv.draw()
