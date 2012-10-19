@@ -71,19 +71,22 @@ class Leg():#{{{аутриггеры и проколы шин
             tex = Texture(RESPATH + "leg" + str(n) + "_red.png")
             self.leg_red_lst.append(Sprite(tex, position = position))
 
-    def draw(self, flags):
+    def draw_stat(self, flags):
         self.bg.draw()
-        n = 0
-        failed = False
-        while n < 6:
-            if ((flags >> n) & 1) == 1:
-                failed = True
-                self.leg_red_lst[n].draw()
-            n += 1
-        if failed:
+        self.sygn_grey.draw()
+
+    def draw_dyn(self, flags):
+        if (flags & 0b111111) != 0:
+            n = 0
+            while n < 6:
+                if ((flags >> n) & 1) == 1:
+                    self.leg_red_lst[n].draw()
+                n += 1
             self.sygn_red.draw()
-        else:
-            self.sygn_grey.draw()
+
+    # def draw(self, flags):
+    #     self.draw_stat(flags)
+    #     self.draw_dyn(flags)
     #}}}
 class SymbolGrid():#{{{все-все значки дискретных датчиков
     def __init__(self):
@@ -711,6 +714,8 @@ class Telemetry(GlossGame):#{{{
         self.pressblock.draw_stat(0, 0, 0)
         self.battery.draw_stat(24)
         self.fuelblock.draw_stat(0.5, 0.5)
+        self.autriggers.draw_stat(0)
+        self.tiers.draw_stat(0)
         Gloss.save_screenshot("/tmp/static_bg.png")
         self.bgtexture = Texture("/tmp/static_bg.png")
     #}}}
@@ -728,8 +733,8 @@ class Telemetry(GlossGame):#{{{
         self.trip.draw(31)
         self.speedometer.draw_dyn(self.speed)
         self.thermoblock.draw(self.temp_oil, self.temp_water)
-        self.autriggers.draw(self.autriggers_msk)
-        self.tiers.draw(self.tiers_msk)
+        self.autriggers.draw_dyn(self.autriggers_msk)
+        self.tiers.draw_dyn(self.tiers_msk)
         self.pressblock.draw_dyn(self.press_oil, self.press_break1, self.press_break2)
         self.fuelblock.draw_dyn(self.tank1_fill, self.tank2_fill)
         self.battery.draw_dyn(self.main_voltage)
