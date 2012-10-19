@@ -479,52 +479,61 @@ class Tank():#{{{Индикатор соляры
         self.position = position
         self.fuelsym = MulticolorSymbol("fuel_sym_mask.png", position = position)
 
-        #нарисуем рамку, символизирующую бак
+        # координаты линий прямоугольной рамки, символизирующей бак
         self.width = 25
         self.height = 260
         p1 = (self.position[0] + self.width, self.position[1])
         p2 = (p1[0], p1[1] + self.height)
         p3 = (p2[0] - self.width, p2[1])
         self.lines = [self.position, p1, p2, p3]
-
+        # координаты линий разметки на баках
+        start = (self.position[0] + self.width, self.position[1] + int(self.height / 2))
+        finish = (start[0] - int(self.width / 1.5), start[1])
+        p1 = (start, finish)
+        start = start[0], self.position[1] + int(self.height * 0.25) + 0.5
+        finish = (start[0] - int(self.width / 2), start[1])
+        p2 = (start, finish)
+        start = start[0], self.position[1] + int(self.height * 0.75) + 0.5
+        finish = (start[0] - int(self.width / 2), start[1])
+        p3 = (start, finish)
+        self.gridlines = [p1, p2, p3]
         # прикинем координаты для значка
         x = self.position[0] - 5
         y = self.position[1] + self.height + 5
         self.fuelsym.position = (x, y)
+        # именованные цвета
+        self.normalcolor_sym  = Color.GREEN
+        self.alarmcolor_sym   = Color.RED
+        self.normalcolor_tank = Color(0, 1, 0, 0.5)
+        self.alarmcolor_tank  = Color(1, 0, 0, 0.5)
 
-    def draw(self, val):
-        redval = 0.25
-        if val < redval:
-            color = Color.RED
+    def draw_stat(self, val):
+        self.fuelsym.draw(self.normalcolor_sym)
+
+    def draw_dyn(self, val):
+        val = Gloss.clamp(val, 0, 1)
+        if val < 0.25:
+            color = self.alarmcolor_tank
+            self.fuelsym.draw(self.alarmcolor_sym)
         else:
-            color = Color.GREEN
-
-        self.fuelsym.draw(color)
+            color = self.normalcolor_tank
+        # tank
         position = (self.position[0] + self.width, self.position[1] + self.height)
         Gloss.draw_box(position,
                 width = self.width,
                 height = self.height * val,
                 color = color,
                 rotation = 180)
-
-        # прямоугольник для легкого затемнения цвета
-        Gloss.draw_box(position = self.position,
-                width = self.width,
-                height = self.height,
-                color = Color(0,0,0,0.5))
         # рамка
         Gloss.draw_lines(self.lines, Color.WHITE, width = 2, join = True)
-
         # разметка
-        start = (self.position[0] + self.width, self.position[1] + int(self.height / 2))
-        finish = (start[0] - int(self.width / 1.5), start[1])
-        Gloss.draw_line(start, finish, color = Color.WHITE, width = 2)
-        start = start[0], self.position[1] + int(self.height * 0.25) + 0.5
-        finish = (start[0] - int(self.width / 2), start[1])
-        Gloss.draw_line(start, finish, color = Color.WHITE, width = 1)
-        start = start[0], self.position[1] + int(self.height * 0.75) + 0.5
-        finish = (start[0] - int(self.width / 2), start[1])
-        Gloss.draw_line(start, finish, color = Color.WHITE, width = 1)
+        Gloss.draw_line(self.gridlines[0][0], self.gridlines[0][1], color = Color.WHITE, width = 2)
+        Gloss.draw_line(self.gridlines[1][0], self.gridlines[1][1], color = Color.WHITE, width = 1)
+        Gloss.draw_line(self.gridlines[2][0], self.gridlines[2][1], color = Color.WHITE, width = 1)
+
+    def draw(self, val):
+        self.draw_stat(val)
+        self.draw_dyn(val)
     #}}}
 class FuelBlock():#{{{Два индикатора в моноблоке
     def __init__(self, position = (0,0)):
@@ -532,13 +541,22 @@ class FuelBlock():#{{{Два индикатора в моноблоке
         self.clearance = 50
         self.tank1 = Tank(position = position)
         self.tank2 = Tank(position = (position[0] + self.clearance, position[1]))
-    def draw(self, val1, val2):
-        self.tank1.draw(Gloss.clamp(val1, 0, 1))
-        self.tank2.draw(Gloss.clamp(val2, 0, 1))
+
+    def draw_stat(self, val1, val2):
+        self.tank1.draw_stat(val1)
+        self.tank2.draw_stat(val2)
+
+    def draw_dyn(self, val1, val2):
+        self.tank1.draw(val1)
+        self.tank2.draw(val2)
         x = self.position[0] + self.tank1.width / 2 - 9
         y = self.position[1] + self.tank1.height + 20
         normalfont.draw(text = "1", position = (x, y), color = Color.BLACK)
         normalfont.draw(text = "2", position = (x + self.clearance, y), color = Color.BLACK)
+
+    def draw(self, val1, val2):
+        self.draw_stat(val1, val2)
+        self.draw_dyn(val1, val2)
     #}}}
 class Battery():#{{{батарейка с цикверками
     def __init__(self, position = (0,0)):
@@ -604,7 +622,7 @@ class Telemetry(GlossGame):#{{{
         self.on_mouse_down = self.handle_mouse_clicks
         # для обработки клавиш
         self.on_key_up = self.handle_key_presses
-        # переменная для слежения за присутствием увву
+        # переменная для слежения за отсутствием присутствия увву
         self.last_success_time = time.time()
 
         # всякие полезные шрифты
@@ -692,6 +710,7 @@ class Telemetry(GlossGame):#{{{
         self.tachometer.draw_stat(0)
         self.pressblock.draw_stat(0, 0, 0)
         self.battery.draw_stat(24)
+        self.fuelblock.draw_stat(0.5, 0.5)
         Gloss.save_screenshot("/tmp/static_bg.png")
         self.bgtexture = Texture("/tmp/static_bg.png")
     #}}}
@@ -712,7 +731,7 @@ class Telemetry(GlossGame):#{{{
         self.autriggers.draw(self.autriggers_msk)
         self.tiers.draw(self.tiers_msk)
         self.pressblock.draw_dyn(self.press_oil, self.press_break1, self.press_break2)
-        self.fuelblock.draw(self.tank1_fill, self.tank2_fill)
+        self.fuelblock.draw_dyn(self.tank1_fill, self.tank2_fill)
         self.battery.draw_dyn(self.main_voltage)
         self.clock.draw()
         if flags["atm_mode"] is True:
