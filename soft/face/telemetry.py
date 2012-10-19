@@ -364,7 +364,6 @@ class MulticolorSymbol():#{{{значок с возможностью задан
                        color = color, position = self.position)
         # накладываем маску
         self.symmask.draw(position = self.position)
-        pass
     #}}}
 class Thermometer():#{{{ термометр в виде столбика с шариком
     def __init__(self, multicolorsym, masktex, position = (0,0)):
