@@ -557,6 +557,8 @@ class Telemetry(GlossGame):#{{{
         pass
     #}}}
     def load_content(self):#{{{
+        self.bgtexture = Texture(RESPATH + "loadscreen.png")
+
         self.mousepos = (0, 0)
         self.on_mouse_motion = self.handle_mouse_motion
         # для обработки кликов
@@ -591,6 +593,7 @@ class Telemetry(GlossGame):#{{{
         # отображаемые значения. Обновляются функцией update
         self.speed = 0.0
         self.tacho = 0.0
+        self.engine_uptime = 0
         self.temp_oil = 0.0
         self.temp_water = 0.0
         self.main_voltage = 0.0
@@ -653,8 +656,9 @@ class Telemetry(GlossGame):#{{{
         """
 
         Gloss.clear(Color.BLACK)
+        # Gloss.fill(self.bgtexture)
         self.symgrid.draw(self.sym_msk)
-        self.motohours.draw(7)
+        self.motohours.draw(self.engine_uptime)
         self.tachometer.draw(self.tacho)
         self.trip.draw(31)
         self.speedometer.draw(self.speed)
@@ -696,7 +700,6 @@ class Telemetry(GlossGame):#{{{
 
         try:
             tlm_data = self.q_tlm.get_nowait()
-            # TODO: add emergency message logic. Based on timeout here
         except Empty:
             pass
         else:
@@ -708,8 +711,9 @@ class Telemetry(GlossGame):#{{{
 
         if tlm_data is not None:
             # растусовка всей ботвы из пакета
-            self.speed = tlm_data.speed / 256.0
+            self.speed = tlm_data.analog00 / 100000.0 #tlm_data.speed / 256.0
             self.tacho = tlm_data.rpm / RPM_MAX
+            self.engine_uptime = tlm_data.engine_uptime
             self.main_voltage = tlm_data.analog00 / 1000.0
             self.tank1_fill = self.dump02.get(tlm_data.analog01)
             self.tank2_fill = self.dump02.get(tlm_data.analog02)
@@ -727,6 +731,7 @@ class Telemetry(GlossGame):#{{{
             self.sym_msk = tlm_data.relay
             self.autriggers_msk = (tlm_data.relay >> 32)
             self.tiers_msk = tlm_data.relay >> (32 + 6)
+
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
 

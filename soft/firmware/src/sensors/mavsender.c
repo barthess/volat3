@@ -33,7 +33,7 @@ extern mavlink_mpiovd_sensors_scaled_t  mpiovd_sensors_scaled_struct;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static uint32_t *T_tlm;
+static const uint32_t *T_tlm;
 
 /*
  ******************************************************************************
@@ -61,22 +61,22 @@ static msg_t TLM_SenderThread(void *arg) {
   Mail scaled_mail = {NULL, MAVLINK_MSG_ID_MPIOVD_SENSORS_SCALED, NULL};
 
   while (TRUE) {
-    chThdSleepMilliseconds(50);
+    chThdSleepMilliseconds(*T_tlm);//50
 
-    if (raw_mail.payload == NULL){
+    if ((raw_mail.payload == NULL) && (*T_tlm != SEND_OFF)){
       adc_process(raw_data.analog, &mpiovd_sensors_raw_struct);
 
       mpiovd_sensors_raw_struct.sec = TIME_BOOT_MS;
       mpiovd_sensors_raw_struct.relay  = raw_data.discrete;
       mpiovd_sensors_raw_struct.speed = raw_data.analog[15] / 50;
       mpiovd_sensors_raw_struct.rpm = get_engine_rpm();
-      mpiovd_sensors_raw_struct.engine_uptime = chTimeNow() / 10000;
+      mpiovd_sensors_raw_struct.engine_uptime = chTimeNow() / 100000;
 
       raw_mail.payload = &mpiovd_sensors_raw_struct;
       chMBPost(&tolink_mb, (msg_t)&raw_mail, TIME_IMMEDIATE);
     }
 
-    if (scaled_mail.payload == NULL){
+    if ((scaled_mail.payload == NULL) && (*T_tlm != SEND_OFF)){
       mpiovd_sensors_scaled_struct.sec = TIME_BOOT_MS;
       scaled_mail.payload = &mpiovd_sensors_scaled_struct;
       chMBPost(&tolink_mb, (msg_t)&scaled_mail, TIME_IMMEDIATE);
