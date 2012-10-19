@@ -545,15 +545,21 @@ class Battery():#{{{батарейка с цикверками
         self.position = position
         self.sym = MulticolorSymbol("battery_sym_mask.png", position = position)
 
-    def draw(self, val):
+    def draw_stat(self, val):
+        color = Color.GREEN
+        self.sym.draw(color = color)
+
+    def draw_dyn(self, val):
         if val < 21:
             color = Color.RED
-        else:
-            color = Color.GREEN
-        self.sym.draw(color = color)
+            self.sym.draw(color = color)
         string = str(round(val, 1)) + " B"
         stringpos = self.position[0] + 9, self.position[1] + 32
         footnotefont.draw(string, position = stringpos)
+
+    def draw(self, val):
+        self.draw_stat(val)
+        self.draw_dyn(val)
     #}}}
 class ATM():#{{{ Меню а ля банкомат
     def __init__(self):
@@ -685,6 +691,7 @@ class Telemetry(GlossGame):#{{{
         self.speedometer.draw_stat(0)
         self.tachometer.draw_stat(0)
         self.pressblock.draw_stat(0, 0, 0)
+        self.battery.draw_stat(24)
         Gloss.save_screenshot("/tmp/static_bg.png")
         self.bgtexture = Texture("/tmp/static_bg.png")
     #}}}
@@ -706,7 +713,7 @@ class Telemetry(GlossGame):#{{{
         self.tiers.draw(self.tiers_msk)
         self.pressblock.draw_dyn(self.press_oil, self.press_break1, self.press_break2)
         self.fuelblock.draw(self.tank1_fill, self.tank2_fill)
-        self.battery.draw(self.main_voltage)
+        self.battery.draw_dyn(self.main_voltage)
         self.clock.draw()
         if flags["atm_mode"] is True:
             self.atm.draw()
