@@ -713,6 +713,8 @@ class Telemetry(GlossGame):#{{{
         # датчик безнина (ДУМП-02)
         self.dump02 = volatinterp.linear(0, 0, 100, 1)
 
+        self.particles = ParticleSystem(Texture(RESPATH + "01.png"),position = (320, 320), initialparticles = 0, lifespan = 30000, creationspeed = 10, growth = 4.0, wind = (50,0), minspeed = 5, maxspeed = 50)
+
         # сгенерим статичный задник
         Gloss.clear(Color.BLACK)
         self.speedometer.draw_stat(0)
@@ -725,6 +727,8 @@ class Telemetry(GlossGame):#{{{
         self.symgrid.draw_stat(0)
         Gloss.save_screenshot("/tmp/static_bg.png")
         self.bgtexture = Texture("/tmp/static_bg.png")
+
+
     #}}}
     def draw(self):#{{{
         """The draw() method of your game automatically gets called by Gloss
@@ -734,6 +738,7 @@ class Telemetry(GlossGame):#{{{
         inside your game's class
         """
         Gloss.fill(self.bgtexture)
+        self.particles.draw()
         self.motohours.draw(self.engine_uptime)
         self.tachometer.draw_dyn(self.tacho)
         self.trip.draw(31)
@@ -746,6 +751,7 @@ class Telemetry(GlossGame):#{{{
         self.battery.draw_dyn(self.main_voltage)
         self.symgrid.draw_dyn(self.sym_msk)
         self.clock.draw()
+
 
         if flags["atm_mode"] is True:
             self.atm.draw()
