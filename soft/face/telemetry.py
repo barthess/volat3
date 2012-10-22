@@ -713,7 +713,7 @@ class Telemetry(GlossGame):#{{{
         # датчик безнина (ДУМП-02)
         self.dump02 = volatinterp.linear(0, 0, 100, 1)
 
-        self.particles = ParticleSystem(Texture(RESPATH + "01.png"),position = (320, 320), initialparticles = 0, lifespan = 30000, creationspeed = 10, growth = 4.0, wind = (50,0), minspeed = 5, maxspeed = 50)
+        # self.particles = ParticleSystem(Texture(RESPATH + "01.png"),position = (320, 320), initialparticles = 0, lifespan = 30000, creationspeed = 10, growth = 4.0, wind = (50,0), minspeed = 5, maxspeed = 50)
 
         # сгенерим статичный задник
         Gloss.clear(Color.BLACK)
@@ -738,7 +738,7 @@ class Telemetry(GlossGame):#{{{
         inside your game's class
         """
         Gloss.fill(self.bgtexture)
-        self.particles.draw()
+        # self.particles.draw()
         self.motohours.draw(self.engine_uptime)
         self.tachometer.draw_dyn(self.tacho)
         self.trip.draw(31)
