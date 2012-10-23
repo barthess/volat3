@@ -38,11 +38,12 @@
 
 /******************************************************************
 * статусы возвращаемые разными подсистемами */
-#define PARAM_SUCCESS  CH_SUCCESS
-#define PARAM_FAILED   CH_FAILED
-#define LINK_SUCCESS   CH_SUCCESS
-#define LINK_FAILED    CH_FAILED
-
+#define PARAM_SUCCESS     CH_SUCCESS
+#define PARAM_FAILED      CH_FAILED
+#define LINK_SUCCESS      CH_SUCCESS
+#define LINK_FAILED       CH_FAILED
+#define STORAGE_SUCCESS   CH_SUCCESS
+#define STORAGE_FAILED    CH_FAILED
 
 /******************************************************************
 * константы для мавлинка */
@@ -56,18 +57,23 @@
 
 /******************************************************************
 * data offsets in eeprom "file" */
-#define EEPROM_SETTINGS_START    0
-#define EEPROM_SETTINGS_SIZE     1024
-#define EEPROM_SETTINGS_FINISH   (EEPROM_SETTINGS_START + EEPROM_SETTINGS_SIZE)
-
+#define EEPROM_SETTINGS_START     0
+#define EEPROM_SETTINGS_SIZE      1024
+#define EEPROM_SETTINGS_FINISH    (EEPROM_SETTINGS_START + EEPROM_SETTINGS_SIZE)
+/* save here trip */
+#define EEPROM_TRIP_START         EEPROM_SETTINGS_FINISH
+#define EEPROM_TRIP_SIZE          1024
+#define EEPROM_TRIP_FINISH        (EEPROM_TRIP_START + EEPROM_TRIP_SIZE)
+/* save here engine uptime */
+#define EEPROM_UPTIME_START       EEPROM_TRIP_FINISH
+#define EEPROM_UPTIME_SIZE        1024
+#define EEPROM_UPTIME_FINISH      (EEPROM_UPTIME_START + EEPROM_UPTIME_SIZE)
 
 /******************************************************************
 * дефайны для модема */
 #define BAUDRATE_MAV 115200
 
-/******************************************************************
-* включить стрессовое тестирование */
-#define ENABLE_IRQ_STORM    FALSE
+/******************************************************************/
 
 /* stop watchdog timer in debugging mode */
 /*unlock PR register*/

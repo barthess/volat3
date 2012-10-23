@@ -4,6 +4,7 @@
 #include "i2c_local.h"
 #include "main.h"
 #include "param.h"
+#include "storage.h"
 
 /*
  ******************************************************************************
@@ -37,10 +38,8 @@ static const I2CConfig i2cfg2 = {
 void I2CInitLocal(void){
 
   i2cStart(&I2CD1, &i2cfg2);
-
-  chThdSleepMilliseconds(1);
   ParametersInit(); /* читает настройки из EEPROM по I2C*/
-  chThdSleepMilliseconds(10);
+  StorageInit();    /* init uptime and trip storage*/
 }
 
 

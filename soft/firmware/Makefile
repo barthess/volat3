@@ -87,6 +87,7 @@ CSRC = $(PORTSRC) \
        src/stubs.c \
        src/sanity.c \
        src/i2c_local.c \
+       src/storage.c \
        src/sensors/mavsender.c \
        src/sensors/sensors.c \
        src/sensors/sensors_cmd.c \

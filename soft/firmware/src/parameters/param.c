@@ -110,7 +110,7 @@ GlobalParam_t global_data[] = {
   // пакеты с телеметрией
   {"T_tlm",           {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
   // интервал между сохранениями пробега и моточасов в eeprom
-  {"T_save_trip",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_save_trip",     {.u32 = 2000},         {.u32 = 10000},      {.u32 = 60000},       MAVLINK_TYPE_UINT32_T},
   // пакеты heartbeat
   {"T_heartbeat",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
   {"T_reserved1",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
