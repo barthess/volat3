@@ -20,9 +20,6 @@
 MemoryHeap ThdHeap;
 static uint8_t link_thd_buf[LINK_THD_HEAP_SIZE + sizeof(stkalign_t)];
 
-/* примонтированный файл EEPROM */
-EepromFileStream EepromFile;
-
 uint32_t GlobalFlags;
 
 /*
@@ -31,13 +28,12 @@ uint32_t GlobalFlags;
 int main(void) {
   halInit();
   chSysInit();
+  chThdSleepMilliseconds(200);
 
   /* инициализация кучи под всякие нужные и не очень вещи */
   chHeapInit(&ThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), LINK_THD_HEAP_SIZE);
 
   GlobalFlags = 0;
-
-  EepromOpen(&EepromFile);
 
   MsgInit();
   MavInit();

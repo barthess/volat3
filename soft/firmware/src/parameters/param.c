@@ -23,6 +23,9 @@
  * EXTERNS
  ******************************************************************************
  */
+
+EepromFileStream EepromSettingsFile;
+
 extern Mailbox mavlink_param_set_mb;
 extern Mailbox tolink_mb;
 extern mavlink_system_t mavlink_system_struct;
@@ -110,7 +113,7 @@ GlobalParam_t global_data[] = {
   // пакеты с телеметрией
   {"T_tlm",           {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
   // интервал между сохранениями пробега и моточасов в eeprom
-  {"T_save_trip",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_save_trip",     {.u32 = 2000},         {.u32 = 10000},      {.u32 = 60000},       MAVLINK_TYPE_UINT32_T},
   // пакеты heartbeat
   {"T_heartbeat",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
   {"T_reserved1",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
@@ -149,6 +152,19 @@ GlobalParam_t global_data[] = {
 static Mailbox param_confirm_mb;
 static msg_t param_confirm_mb_buf[1];
 
+static uint8_t eeprom_buf[EEPROM_TX_DEPTH];
+
+static const I2CEepromFileConfig eeprom_settings_cfg = {
+  &EEPROM_I2CD,
+  EEPROM_SETTINGS_START,
+  EEPROM_SETTINGS_END,
+  EEPROM_SIZE,
+  EEPROM_PAGE_SIZE,
+  EEPROM_I2C_ADDR,
+  MS2ST(EEPROM_WRITE_TIME_MS),
+  FALSE,
+  eeprom_buf,
+};
 
 /*
  *******************************************************************************
@@ -408,6 +424,9 @@ void ParametersInit(void){
   len += sizeof(global_data[0].value);
   if (OnboardParamCount * len > EEPROM_SETTINGS_SIZE)
     chDbgPanic("not enough space in EEPROM settings slice");
+
+  /**/
+  EepromFileOpen(&EepromSettingsFile, &eeprom_settings_cfg);
 
   /* read data from eeprom to memory mapped structure */
   load_params_from_eeprom();

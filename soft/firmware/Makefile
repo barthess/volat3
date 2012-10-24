@@ -87,6 +87,7 @@ CSRC = $(PORTSRC) \
        src/stubs.c \
        src/sanity.c \
        src/i2c_local.c \
+       src/storage.c \
        src/sensors/mavsender.c \
        src/sensors/sensors.c \
        src/sensors/sensors_cmd.c \
@@ -98,7 +99,6 @@ CSRC = $(PORTSRC) \
        src/parameters/param.c \
        src/parameters/param_cli.c \
        src/parameters/persistant.c \
-       src/eeprom/24aa.c \
        src/eeprom/eeprom.c \
        src/link/usb_local.c \
        src/link/uart_local.c \
@@ -169,10 +169,10 @@ MCU  = cortex-m3 -lm
 
 #TRGT = arm-elf-
 TRGT = arm-none-eabi-
-#CC   = ccache $(TRGT)gcc
-#CPPC = ccache $(TRGT)g++
-CC   = $(TRGT)gcc
-CPPC = $(TRGT)g++
+CC   = ccache $(TRGT)gcc
+CPPC = ccache $(TRGT)g++
+#CC   = $(TRGT)gcc
+#CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
 # NOTE: You can use C++ even without C++ support if you are careful. C++
 #       runtime support makes code size explode.
