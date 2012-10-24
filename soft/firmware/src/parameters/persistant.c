@@ -62,7 +62,7 @@ bool_t load_params_from_eeprom(void){
     /* reade field from EEPROM and check number of read bytes */
     status = chFileStreamRead(&EepromSettingsFile, eeprombuf, sizeof(eeprombuf));
     if (status < sizeof(eeprombuf))
-      return PARAM_FAILED;
+      chDbgPanic("read failed");
 
     /* search value by key and set it if found */
     index = _key_index_search((char *)eeprombuf);

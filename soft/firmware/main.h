@@ -15,7 +15,7 @@
 #define SHELLSD SDU1
 
 /* размер кучи под всякие нужды */
-#define LINK_THD_HEAP_SIZE    4096
+#define LINK_THD_HEAP_SIZE    8192
 
 /******************************************************************
  * приоритеты для потоков */
@@ -30,8 +30,9 @@
  * глобальные битовые флаги */
 #define SPI_SAMPLE_FLAG        (1UL << 0)  /* если установлен в единицу, значит подано питание на дискретные входы */
 #define CAN_ACTIVE_FLAG        (1UL << 1)  /* если установлен в единицу, значит запущен CAN и запуск USB невозможен */
-#define TLM_ACTIVE_FLAG        (1UL << 2)  /* если установлен в единицу, значит запущен CAN и запуск USB невозможен */
-#define SHELL_ACTIVE_FLAG      (1UL << 3)  /* если установлен в единицу, значит запущен CAN и запуск USB невозможен */
+#define TLM_ACTIVE_FLAG        (1UL << 2)
+#define SHELL_ACTIVE_FLAG      (1UL << 3)
+#define STORAGE_READY_FLAG     (1UL << 4)   /* система записи пробега и моточасов готова к работе */
 
 #define setGlobalFlag(flag)   {chSysLock(); GlobalFlags |= (flag); chSysUnlock();}
 #define clearGlobalFlag(flag) {chSysLock(); GlobalFlags &= (~(flag)); chSysUnlock();}

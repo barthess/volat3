@@ -42,8 +42,13 @@
  * EXTERNS
  ******************************************************************************
  */
+extern uint32_t GlobalFlags;
+
 EepromFileStream EepromTripFile;
 EepromFileStream EepromUptimeFile;
+
+uint32_t Trip;
+uint32_t Uptime;
 
 /*
  ******************************************************************************
@@ -56,8 +61,8 @@ EepromFileStream EepromUptimeFile;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static uint32_t Trip;
-static uint32_t Uptime;
+static uint32_t Trip_prev;
+static uint32_t Uptime_prev;
 
 static uint8_t eeprom_trip_buf[EEPROM_TX_DEPTH];
 static const I2CEepromFileConfig eeprom_trip_cfg = {
@@ -93,18 +98,15 @@ static const I2CEepromFileConfig eeprom_uptime_cfg = {
  ******************************************************************************
  */
 
-//TODO: lock eeprom file with mutex or sempahore
-
 /**
  * Пробежаться по буферу с целью обнаружения и исправления ошибок
  * после ВНЕЗАПНОЙ пропажи питания.
  * Исправить означает записать вместо испорченного значения предыдущее правильное,
  * чтобы последовательность монотонно возрастала.
  *
- * возвращает положение в кольцевом буфере, содержащее последнее корректное
- * значение
+ * устанавливает положение в кольцевом буфере, на последнее корректное значение
  */
-static uint16_t fsck(EepromFileStream *fp){
+static void fsck(EepromFileStream *fp){
   uint32_t v1, v2;
   uint32_t prev = 0;
   uint32_t size = chFileStreamGetSize(fp);
@@ -130,11 +132,61 @@ static uint16_t fsck(EepromFileStream *fp){
     tip += RECORD_SIZE;
   }
 
+  /* just to be safe */
+  chDbgCheck((tip % 4) == 0,"file pointer must be divided by 4 without remainder");
+
   /* correct tip */
   if (tip == 0)
-    return size - RECORD_SIZE;
+    chFileStreamSeek(fp, size - RECORD_SIZE);
   else
-    return tip  - RECORD_SIZE;
+    chFileStreamSeek(fp, tip  - RECORD_SIZE);
+}
+
+/**
+ *
+ */
+static void save(EepromFileStream *fp, uint32_t *curr, uint32_t *prev){
+  volatile uint32_t t;
+  uint32_t result;
+
+  if (*curr != *prev){ /* only if changed */
+    do
+      t = *curr;
+    while(t != *curr); /* case of changing when reading */
+
+    /* write twice */
+    result = EepromWriteWord(fp, t);
+    if (result < sizeof(t))
+      chDbgPanic("failed");
+
+    result = EepromWriteWord(fp, t);
+    if (result < sizeof(t))
+      chDbgPanic("failed");
+
+    *prev = t;
+  }
+}
+
+/**
+ * Поток для регулярного сохранения пробега и моточасов в EEPROM
+ */
+static WORKING_AREA(StorageThreadWA, 384);
+static msg_t StorageThread(void *arg) {
+  chRegSetThreadName("Storage");
+  (void)arg;
+
+  setGlobalFlag(STORAGE_READY_FLAG);
+
+  while (TRUE) {
+    chThdSleepMilliseconds(1000);
+    save(&EepromTripFile,   &Trip,   &Trip_prev);
+    save(&EepromUptimeFile, &Uptime, &Uptime_prev);
+
+    /* selftesting */
+    Trip++;
+    Uptime++;
+  }
+  return 0;
 }
 
 /*
@@ -144,21 +196,31 @@ static uint16_t fsck(EepromFileStream *fp){
  */
 
 void StorageInit(void){
-  uint32_t tip;
-
   /* trip */
   EepromFileOpen(&EepromTripFile, &eeprom_trip_cfg);
-  tip = fsck(&EepromTripFile);
-  chDbgCheck((tip % 4) == 0,"file pointer must be divided by 4 without remainder");
-  chFileStreamSeek(&EepromTripFile, tip);
+  fsck(&EepromTripFile);
   Trip = EepromReadWord(&EepromTripFile);
+  Trip_prev = Trip;
 
   /* uptime */
   EepromFileOpen(&EepromUptimeFile, &eeprom_uptime_cfg);
-  tip = fsck(&EepromUptimeFile);
-  chDbgCheck((tip % 4) == 0,"file pointer must be divided by 4 without remainder");
-  chFileStreamSeek(&EepromUptimeFile, tip);
+  fsck(&EepromUptimeFile);
   Uptime = EepromReadWord(&EepromUptimeFile);
+  Uptime_prev = Uptime;
+
+  /* fork thread */
+  chThdCreateStatic(StorageThreadWA,
+          sizeof(StorageThreadWA),
+          NORMALPRIO,
+          StorageThread,
+          NULL);
+}
+
+/**
+ *
+ */
+static void storage_cli_help(void){
+  cli_print("Help stub");
 }
 
 /**
@@ -169,5 +231,51 @@ Thread* storage_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdar
   (void)argc;
   (void)argv;
 
+  /* no arguments */
+  if (argc == 0)
+    storage_cli_help();
+
+
+
+  /* one argument */
+  else if (argc == 1){
+    if (strcmp(*argv, "help") == 0)
+      storage_cli_help();
+
+    else if (strcmp(*argv, "erase") == 0){
+      cli_println("Erase trip");
+      uint32_t i = 0;
+      while (i < 256){
+        EepromWriteWord(&EepromTripFile, 0);
+        i++;
+        cli_print(".");
+      }
+      cli_println("Done");
+      cli_println("Erase uptime");
+      i = 0;
+      while (i < 256){
+        EepromWriteWord(&EepromUptimeFile, 0);
+        i++;
+        cli_print(".");
+      }
+      cli_println("");
+    }
+    else{
+      storage_cli_help();
+    }
+  }
+
+
+
+  /* two arguments */
+  else if (argc == 2){
+    storage_cli_help();
+  }
+
+  else{
+    storage_cli_help();
+  }
+
+  /* stub */
   return NULL;
 }

@@ -26,8 +26,10 @@
 /* interface #2 */
 static const I2CConfig i2cfg2 = {
     OPMODE_I2C,
-    100000, //
-    STD_DUTY_CYCLE, //
+    400000,
+    FAST_DUTY_CYCLE_2,
+//    100000,
+//    STD_DUTY_CYCLE,
 };
 
 /*
@@ -39,5 +41,7 @@ void I2CInitLocal(void){
 
   i2cStart(&I2CD1, &i2cfg2);
   ParametersInit(); /* читает настройки из EEPROM по I2C*/
+  chThdSleepMilliseconds(1);
   StorageInit();    /* init uptime and trip storage*/
+  chThdSleepMilliseconds(1);
 }

@@ -12,6 +12,7 @@
 #include "cli.h"
 #include "cli_cmd.h"
 #include "sensors_cmd.h"
+#include "storage.h"
 #include "param_cli.h"
 #include "param.h"
 
@@ -52,6 +53,7 @@ static const ShellCmd_t chibiutils[] = {
     {"logout",    &logout_cmd,    NULL},
     {"selftest",  &selftest_cmd,  NULL},
     {"sensors",   &sensors_cmd,   NULL},
+    {"storage",   &storage_cmd,   NULL},
     {"param",     &param_cmd,     NULL},
     {NULL,        NULL,           NULL}/* end marker */
 };
