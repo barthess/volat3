@@ -42,7 +42,8 @@
  * EXTERNS
  ******************************************************************************
  */
-extern EepromFileStream EepromFile;
+EepromFileStream EepromTripFile;
+EepromFileStream EepromUptimeFile;
 
 /*
  ******************************************************************************
@@ -61,6 +62,32 @@ static uint32_t uptime;
 /* положения */
 static uint32_t trip_tip;
 static uint32_t uptime_tip;
+
+static uint8_t eeprom_trip_buf[EEPROM_TX_DEPTH];
+static const I2CEepromFileConfig eeprom_trip_cfg = {
+  &EEPROM_I2CD,
+  EEPROM_TRIP_START,
+  EEPROM_TRIP_END,
+  EEPROM_SIZE,
+  EEPROM_PAGE_SIZE,
+  EEPROM_I2C_ADDR,
+  MS2ST(EEPROM_WRITE_TIME_MS),
+  TRUE,
+  eeprom_trip_buf,
+};
+
+static uint8_t eeprom_uptime_buf[EEPROM_TX_DEPTH];
+static const I2CEepromFileConfig eeprom_uptime_cfg = {
+  &EEPROM_I2CD,
+  EEPROM_UPTIME_START,
+  EEPROM_UPTIME_END,
+  EEPROM_SIZE,
+  EEPROM_PAGE_SIZE,
+  EEPROM_I2C_ADDR,
+  MS2ST(EEPROM_WRITE_TIME_MS),
+  TRUE,
+  eeprom_uptime_buf,
+};
 
 /*
  ******************************************************************************
@@ -81,30 +108,30 @@ static uint32_t uptime_tip;
  * возвращает положение в кольцевом буфере, содержащее последнее корректное
  * значение
  */
-static uint16_t fsck(EepromFileStream *File_p, uint16_t offset, uint16_t size){
+static uint16_t fsck(EepromFileStream *File_p){
   uint32_t v1, v2;
   uint32_t prev = 0;
   uint32_t next = 0;
   uint16_t tip = 0;
 
-  chFileStreamSeek(File_p, offset);
+  chFileStreamSeek(File_p, 0);
 
-  while (tip < size){
-    v1 = EepromReadWord(File_p);
-    v2 = EepromReadWord(File_p);
-
-    if (v1 == v2){
-      prev = next;
-      next = v1;
-    }
-    else
-      break; // мы наткнулись битую ячейку, что автоматически указывает на начало буфера
-
-    if (next < prev)
-      break; // нашли точку перегиба
-
-    tip += RECORD_SIZE;
-  }
+//  while (tip < size){
+//    v1 = EepromReadWord(File_p);
+//    v2 = EepromReadWord(File_p);
+//
+//    if (v1 == v2){
+//      prev = next;
+//      next = v1;
+//    }
+//    else
+//      break; // мы наткнулись битую ячейку, что автоматически указывает на начало буфера
+//
+//    if (next < prev)
+//      break; // нашли точку перегиба
+//
+//    tip += RECORD_SIZE;
+//  }
 
   return tip;
 }
@@ -114,10 +141,10 @@ static uint16_t fsck(EepromFileStream *File_p, uint16_t offset, uint16_t size){
  */
 static bool_t get_trip(void){
 
-  trip_tip = fsck(&EepromFile, EEPROM_TRIP_START, EEPROM_TRIP_SIZE);
-  chFileStreamSeek(&EepromFile, trip_tip + EEPROM_TRIP_START);
+  trip_tip = fsck(&EepromTripFile);
+  chFileStreamSeek(&EepromTripFile, 0);
 
-  trip = EepromReadWord(&EepromFile);
+  trip = EepromReadWord(&EepromTripFile);
 
   return STORAGE_SUCCESS;
 }
@@ -147,6 +174,10 @@ static bool_t get_uptime(void){
 
 void StorageInit(void){
   bool_t status = STORAGE_FAILED;
+
+  /**/
+  EepromFileOpen(&EepromTripFile,   &eeprom_trip_cfg);
+  EepromFileOpen(&EepromUptimeFile, &eeprom_uptime_cfg);
 
   trip_tip = 0;
   uptime_tip = 0;

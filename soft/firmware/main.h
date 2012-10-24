@@ -55,19 +55,26 @@
 #endif
 
 
-/******************************************************************
-* data offsets in eeprom "file" */
+/******************************************************************/
+#define EEPROM_PAGE_SIZE          32/* page size in bytes. Consult datasheet. */
+#define EEPROM_SIZE               4096/* total amount of memory in bytes */
+#define EEPROM_I2CD               I2CD1/* ChibiOS I2C driver used to communicate with EEPROM */
+#define EEPROM_I2C_ADDR           0b1010000/* EEPROM address on bus */
+#define EEPROM_WRITE_TIME_MS      5/* time to write one page in mS. Consult datasheet! */
+#define EEPROM_TX_DEPTH           (EEPROM_PAGE_SIZE + 2)/* temporal transmit buffer depth for eeprom driver */
+
+/* data offsets in eeprom "file" */
 #define EEPROM_SETTINGS_START     0
 #define EEPROM_SETTINGS_SIZE      1024
-#define EEPROM_SETTINGS_FINISH    (EEPROM_SETTINGS_START + EEPROM_SETTINGS_SIZE)
+#define EEPROM_SETTINGS_END       (EEPROM_SETTINGS_START + EEPROM_SETTINGS_SIZE)
 /* save here trip */
-#define EEPROM_TRIP_START         EEPROM_SETTINGS_FINISH
+#define EEPROM_TRIP_START         EEPROM_SETTINGS_END
 #define EEPROM_TRIP_SIZE          1024
-#define EEPROM_TRIP_FINISH        (EEPROM_TRIP_START + EEPROM_TRIP_SIZE)
+#define EEPROM_TRIP_END           (EEPROM_TRIP_START + EEPROM_TRIP_SIZE)
 /* save here engine uptime */
-#define EEPROM_UPTIME_START       EEPROM_TRIP_FINISH
+#define EEPROM_UPTIME_START       EEPROM_TRIP_END
 #define EEPROM_UPTIME_SIZE        1024
-#define EEPROM_UPTIME_FINISH      (EEPROM_UPTIME_START + EEPROM_UPTIME_SIZE)
+#define EEPROM_UPTIME_END         (EEPROM_UPTIME_START + EEPROM_UPTIME_SIZE)
 
 /******************************************************************
 * дефайны для модема */
