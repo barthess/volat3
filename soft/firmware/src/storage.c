@@ -56,12 +56,8 @@ EepromFileStream EepromUptimeFile;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static uint32_t trip;
-static uint32_t uptime;
-
-/* положения */
-static uint32_t trip_tip;
-static uint32_t uptime_tip;
+static uint32_t Trip;
+static uint32_t Uptime;
 
 static uint8_t eeprom_trip_buf[EEPROM_TX_DEPTH];
 static const I2CEepromFileConfig eeprom_trip_cfg = {
@@ -108,62 +104,37 @@ static const I2CEepromFileConfig eeprom_uptime_cfg = {
  * возвращает положение в кольцевом буфере, содержащее последнее корректное
  * значение
  */
-static uint16_t fsck(EepromFileStream *File_p){
+static uint16_t fsck(EepromFileStream *fp){
   uint32_t v1, v2;
   uint32_t prev = 0;
+  uint32_t size = chFileStreamGetSize(fp);
   uint32_t next = 0;
-  uint16_t tip = 0;
+  uint16_t tip  = 0;
 
-  chFileStreamSeek(File_p, 0);
+  chFileStreamSeek(fp, 0);
 
-//  while (tip < size){
-//    v1 = EepromReadWord(File_p);
-//    v2 = EepromReadWord(File_p);
-//
-//    if (v1 == v2){
-//      prev = next;
-//      next = v1;
-//    }
-//    else
-//      break; // мы наткнулись битую ячейку, что автоматически указывает на начало буфера
-//
-//    if (next < prev)
-//      break; // нашли точку перегиба
-//
-//    tip += RECORD_SIZE;
-//  }
+  while (tip < size){
+    v1 = EepromReadWord(fp);
+    v2 = EepromReadWord(fp);
 
-  return tip;
-}
+    if (v1 == v2){
+      prev = next;
+      next = v1;
+    }
+    else
+      break; // мы наткнулись битую ячейку, что автоматически указывает на конец буфера
 
-/**
- *
- */
-static bool_t get_trip(void){
+    if (next < prev)
+      break; // нашли точку перегиба
 
-  trip_tip = fsck(&EepromTripFile);
-  chFileStreamSeek(&EepromTripFile, 0);
+    tip += RECORD_SIZE;
+  }
 
-  trip = EepromReadWord(&EepromTripFile);
-
-  return STORAGE_SUCCESS;
-}
-
-/**
- *
- */
-static bool_t save_trip(void){
-  (void)trip;
-
-  return STORAGE_SUCCESS;
-}
-
-/**
- *
- */
-static bool_t get_uptime(void){
-  (void)uptime;
-  return STORAGE_SUCCESS;
+  /* correct tip */
+  if (tip == 0)
+    return size - RECORD_SIZE;
+  else
+    return tip  - RECORD_SIZE;
 }
 
 /*
@@ -173,20 +144,21 @@ static bool_t get_uptime(void){
  */
 
 void StorageInit(void){
-  bool_t status = STORAGE_FAILED;
+  uint32_t tip;
 
-  /**/
-  EepromFileOpen(&EepromTripFile,   &eeprom_trip_cfg);
+  /* trip */
+  EepromFileOpen(&EepromTripFile, &eeprom_trip_cfg);
+  tip = fsck(&EepromTripFile);
+  chDbgCheck((tip % 4) == 0,"file pointer must be divided by 4 without remainder");
+  chFileStreamSeek(&EepromTripFile, tip);
+  Trip = EepromReadWord(&EepromTripFile);
+
+  /* uptime */
   EepromFileOpen(&EepromUptimeFile, &eeprom_uptime_cfg);
-
-  trip_tip = 0;
-  uptime_tip = 0;
-
-  status = get_trip();
-  chDbgCheck(status == STORAGE_SUCCESS, "");
-
-  status = get_uptime();
-  chDbgCheck(status == STORAGE_SUCCESS, "");
+  tip = fsck(&EepromUptimeFile);
+  chDbgCheck((tip % 4) == 0,"file pointer must be divided by 4 without remainder");
+  chFileStreamSeek(&EepromUptimeFile, tip);
+  Uptime = EepromReadWord(&EepromUptimeFile);
 }
 
 /**
