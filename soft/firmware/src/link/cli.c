@@ -40,6 +40,7 @@ extern MemoryHeap ThdHeap;
  *******************************************************************************
  */
 static Thread* logout_clicmd(int argc, const char * const * argv, SerialDriver *sdp);
+static Thread* help_clicmd(int argc, const char * const * argv, SerialDriver *sdp);
 
 /*
  ******************************************************************************
@@ -80,6 +81,27 @@ static Thread *shell_tp = NULL;
  * LOCAL FUNCTIONS
  *******************************************************************************
  */
+
+Thread* help_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
+  (void)argc;
+  (void)argv;
+
+  int32_t i = 0;
+
+  cli_println("Use TAB key for completion, UpArrow for previous command.");
+  cli_println("Available commands are:");
+  cli_println("-------------------------------------------------------------");
+
+  while(chibiutils[i].name != NULL){
+    cli_print(chibiutils[i].name);
+    cli_print(" - ");
+    cli_println(chibiutils[i].help);
+    i++;
+  }
+
+  return NULL;
+}
 
 Thread* list_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
   (void)sdp;

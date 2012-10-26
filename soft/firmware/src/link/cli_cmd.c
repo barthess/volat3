@@ -44,21 +44,6 @@ Thread* clear_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
   return NULL;
 }
 
-Thread* help_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
-  (void)sdp;
-  (void)argc;
-  (void)argv;
-
-  cli_print ("Use TAB key for completion\n\rCommand:\n\r");
-  cli_print ("\tversion {microrl | demo} - print version of microrl lib or version of this demo src\n\r");
-  cli_print ("\thelp  - this message\n\r");
-  cli_print ("\tclear - clear screen\n\r");
-  cli_print ("\tlist  - list all commands in tree\n\r");
-  cli_print ("\tloop  - command to test ^C fucntionallity\n\r");
-  cli_print ("\t        and for demonstation auto-completion, while inputed 'l+<TAB>'\n\r");
-  return NULL;
-}
-
 
 static WORKING_AREA(LoopCmdThreadWA, 128);
 static msg_t LoopCmdThread(void *arg){

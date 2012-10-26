@@ -179,8 +179,8 @@ static msg_t StorageThread(void *arg) {
 
   while (TRUE) {
     chThdSleepMilliseconds(1000);
-    save(&EepromTripFile,   &Trip,   &Trip_prev);
-    save(&EepromUptimeFile, &Uptime, &Uptime_prev);
+//    save(&EepromTripFile,   &Trip,   &Trip_prev);
+//    save(&EepromUptimeFile, &Uptime, &Uptime_prev);
 
     /* selftesting */
     Trip++;
