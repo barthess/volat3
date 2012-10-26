@@ -9,6 +9,18 @@
             <entry name="MODE_PINGPONG">Send data only on requests</entry>
             <entry name="MODE_CALIBRATION">Setting internal calibration coefficients</entry>
         </enum>
+		<enum name="MAV_CMD">
+               <entry value="220" name="MAV_CMD_BNAP_SEND_ALARM">
+                    <description>Send alarm signal to 911 service.</description>
+                    <param index="1">Retry count</param>
+                    <param index="2">param2</param>
+                    <param index="3">param3</param>
+                    <param index="4">param4</param>
+                    <param index="5">param5</param>
+                    <param index="6">param6</param>
+                    <param index="7">param7</param>
+				</entry>
+		</enum>
     </enums>
 
 
