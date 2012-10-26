@@ -100,6 +100,7 @@ CSRC = $(PORTSRC) \
        src/parameters/param_cli.c \
        src/parameters/persistant.c \
        src/eeprom/eeprom.c \
+       src/eeprom/eeprom_testsuit.c \
        src/link/usb_local.c \
        src/link/uart_local.c \
        src/link/cli.c \

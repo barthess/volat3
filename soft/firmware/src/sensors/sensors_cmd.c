@@ -87,8 +87,8 @@ static msg_t SensorsCmdThread(void *arg){
 /**
  *
  */
-Thread* sensors_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)cmdarray;
+Thread* sensors_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argc;
   (void)argv;
 

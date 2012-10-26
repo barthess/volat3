@@ -226,8 +226,8 @@ static void storage_cli_help(void){
 /**
  * shell util to manipulate with trip and uptime values
  */
-Thread* storage_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)cmdarray;
+Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argc;
   (void)argv;
 

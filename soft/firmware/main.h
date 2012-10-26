@@ -55,6 +55,8 @@
 #define TIME_BOOT_MS ((chTimeNow()) / ((CH_FREQUENCY) / 1000))
 #endif
 
+/* build test suit for EEPROM abstraction layer */
+#define USE_EEPROM_TEST_SUIT    TRUE
 
 /******************************************************************/
 #define EEPROM_PAGE_SIZE          32/* page size in bytes. Consult datasheet. */
