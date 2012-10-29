@@ -301,7 +301,8 @@ class Counter():#{{{
         Принимает:
             разрядность
         """
-        self.capacity_len = len(str(10**capacity - 1))
+        self.capacity_max = 10**capacity - 1
+        self.capacity_len = len(str(self.capacity_max))
         self.position = position
         self.font = smallfont
         self.halfwidth  = self.font.characters["0"].width / 2
@@ -310,6 +311,7 @@ class Counter():#{{{
         self.bgheight = self.font.characters["0"].height - 1
 
     def draw(self, val):
+        val = Gloss.clamp(val, 0, self.capacity_max)
         Gloss.draw_box(position = self.position,
                         width = self.bgwidth,
                         height = self.bgheight,
@@ -660,6 +662,7 @@ class Telemetry(GlossGame):#{{{
         self.speed = 0.0
         self.tacho = 0.0
         self.engine_uptime = 0
+        self.trip_value = 0
         self.temp_oil = 0.0
         self.temp_water = 0.0
         self.main_voltage = 0.0
@@ -741,7 +744,7 @@ class Telemetry(GlossGame):#{{{
         # self.particles.draw()
         self.motohours.draw(self.engine_uptime)
         self.tachometer.draw_dyn(self.tacho)
-        self.trip.draw(31)
+        self.trip.draw(self.trip_value)
         self.speedometer.draw_dyn(self.speed)
         self.thermoblock.draw(self.temp_oil, self.temp_water)
         self.autriggers.draw_dyn(self.autriggers_msk)
@@ -799,6 +802,7 @@ class Telemetry(GlossGame):#{{{
             self.speed = tlm_data.analog00 / 100000.0 #tlm_data.speed / 256.0
             self.tacho = tlm_data.rpm / RPM_MAX
             # self.tacho = tlm_data.analog00 / 100000.0
+            self.trip_value = tlm_data.trip
             self.engine_uptime = tlm_data.engine_uptime
             self.main_voltage = tlm_data.analog00 / 1000.0
             self.tank1_fill = self.dump02.get(tlm_data.analog01)
