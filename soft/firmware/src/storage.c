@@ -8,6 +8,7 @@
 #include "eeprom_conf.h"
 #include "storage.h"
 #include "chprintf.h"
+#include "sensors.h"
 
 /*
  * Суть такова:
@@ -30,9 +31,10 @@
  *    потребуется откатиться на последнее корректное значение.
  *
  * Консольная утилита для подкручивания километража:
- * 0) блокирует семафором доступ
+ * 0) оставляет поток записи
  * 1) требует пароль
  * 2) полность зануляет буффер и записывает в первую ячейку нужное значение
+ * 3) запускает поток записи
  */
 
 /*
@@ -40,13 +42,15 @@
  * DEFINES
  ******************************************************************************
  */
+#define SAVE_PERIOD       S2ST(5)
+
 #define RECORD_SIZE       (2 * (sizeof(uint32_t)))
 
-#define acquire_trip() chBSemWait(&Trip_sem)
-#define release_trip() chBSemSignal(&Trip_sem)
+#define acquire_trip()    chBSemWait(&Trip_sem)
+#define release_trip()    chBSemSignal(&Trip_sem)
 
-#define acquire_uptime() chBSemWait(&Uptime_sem)
-#define release_uptime() chBSemSignal(&Uptime_sem)
+#define acquire_uptime()  chBSemWait(&Uptime_sem)
+#define release_uptime()  chBSemSignal(&Uptime_sem)
 
 /* (re)start virtual timer for uptime counting */
 #define uptime_start_vt()                                                     \
@@ -60,6 +64,7 @@
  ******************************************************************************
  */
 extern uint32_t GlobalFlags;
+extern RawData raw_data;
 
 /*
  ******************************************************************************
@@ -128,7 +133,7 @@ static const I2CEepromFileConfig eeprom_uptime_cfg = {
 static void uptime_do_tick_cb(void *par){
   (void)par;
   chSysLockFromIsr();
-  if (GlobalFlags & ENGINE_UP_FLAG)
+  if (raw_data.engine_rpm != 0)
     Uptime++;
   uptime_start_vt();
   chSysUnlockFromIsr();
@@ -216,7 +221,7 @@ static msg_t StorageThread(void *arg) {
   setGlobalFlag(STORAGE_READY_FLAG);
 
   while (!chThdShouldTerminate()) {
-    chThdSleepMilliseconds(1000);
+    chThdSleep(SAVE_PERIOD);
     acquire_trip();
     save(&EepromTripFile,   &Trip,   &Trip_prev);
     release_trip();
@@ -226,8 +231,8 @@ static msg_t StorageThread(void *arg) {
     release_uptime();
 
     /* for selftesting */
-    Trip++;
-    Uptime++;
+//    Trip++;
+//    Uptime++;
   }
 
   chThdExit(0);
@@ -239,6 +244,7 @@ static msg_t StorageThread(void *arg) {
  */
 static void storage_cli_help(void){
   cli_println("Usage:");
+  cli_println("'storage dump' to dump saved values in console,");
   cli_println("'storage trip N PASSWD' to change vehicle trip,");
   cli_println("'storage uptime S PASSWD' to change engine uptime");
   cli_println("where:");
@@ -265,8 +271,9 @@ static bool_t storage_cli_set(EepromFileStream *fp, uint32_t val){
   uint32_t size = chFileStreamGetSize(fp);
   uint32_t result;
 
+  chFileStreamSeek(fp, 0);
   while (size){
-    EepromWriteByte(&EepromTripFile, 0);
+    EepromWriteByte(fp, 0);
     size--;
     /* progress bar */
     uint32_t d = 0b11;
@@ -319,25 +326,6 @@ static void __storage_start(void){
                                 NULL);
 }
 
-/*
- ******************************************************************************
- * EXPORTED FUNCTIONS
- ******************************************************************************
- */
-
-void StorageInit(void){
-
-  chSysLock();
-  uptime_start_vt();
-  chSysUnlock();
-
-  /**/
-  chBSemInit(&Trip_sem, FALSE);
-  chBSemInit(&Uptime_sem, FALSE);
-
-  __storage_start();
-}
-
 /**
  * Stop writing thread for maintaince.
  */
@@ -346,21 +334,6 @@ static void __storage_stop(void){
     chThdTerminate(Storage_tp);
     chThdWait(Storage_tp);
   }
-}
-
-/**
- *
- */
-void update_trip(uint32_t delta){
-  Trip += delta;
-}
-
-uint32_t get_uptime(void){
-  return Uptime;
-}
-
-uint32_t get_trip(void){
-  return Trip;
 }
 
 /**
@@ -383,6 +356,40 @@ static void storage_cli_dump(EepromFileStream *fp, SerialDriver *sdp){
   }
 }
 
+/*
+ ******************************************************************************
+ * EXPORTED FUNCTIONS
+ ******************************************************************************
+ */
+
+void StorageInit(void){
+
+  chSysLock();
+  uptime_start_vt();
+  chSysUnlock();
+
+  /**/
+  chBSemInit(&Trip_sem, FALSE);
+  chBSemInit(&Uptime_sem, FALSE);
+
+  __storage_start();
+}
+
+/**
+ *
+ */
+void update_trip(uint32_t delta){
+  Trip += delta;
+}
+
+uint32_t GetUptime(void){
+  return Uptime;
+}
+
+uint32_t GetTrip(void){
+  return Trip;
+}
+
 /**
  * shell util to manipulate with trip and uptime values
  */
@@ -400,6 +407,7 @@ Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
 
   else if (argc == 1){
     if (strcmp(argv[0], "dump") == 0){
+      cli_println("Stopping DB. Please wait...");
       __storage_stop();
 
       cli_println("Dump trip ----------------------------------");
@@ -437,25 +445,38 @@ Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
 
     /* apply value */
     if (strcmp(argv[0], "trip") == 0){
+      cli_println("Stopping DB. Please wait...");
+      __storage_stop();
       cli_println("Erasing trip");
       acquire_trip();
       storage_cli_set(&EepromTripFile, N);
       release_trip();
       cli_println("Done");
+      chFileStreamClose(&EepromTripFile);
+      chFileStreamClose(&EepromUptimeFile);
+      __storage_start();
     }
     else if(strcmp(argv[0], "uptime") == 0){
+      cli_println("Stopping DB. Please wait...");
+      __storage_stop();
       cli_println("Erase uptime");
       acquire_uptime();
       storage_cli_set(&EepromUptimeFile, N);
       release_uptime();
       cli_println("Done");
+      chFileStreamClose(&EepromTripFile);
+      chFileStreamClose(&EepromUptimeFile);
+      __storage_start();
     }
-    else
+    else{
+      cli_println("ERROR: incorrect comman");
       goto ERROR;
+    }
   }
 
   /* stub */
 ERROR:
+  cli_println("-----------------------------------------------------------");
   storage_cli_help();
   return NULL;
 }

@@ -11,6 +11,7 @@
 #include "sensors.h"
 #include "adc_local.h"
 #include "freq.h"
+#include "storage.h"
 
 /*
  ******************************************************************************
@@ -61,19 +62,17 @@ static msg_t TLM_SenderThread(void *arg) {
   while (TRUE) {
     chThdSleepMilliseconds(*T_tlm);//50
 
-    if ((raw_mail.payload == NULL) && (*T_tlm != SEND_OFF)){
-      adc_process(raw_data.analog, &mpiovd_sensors_raw_struct);
+    adc_process(raw_data.analog, &mpiovd_sensors_raw_struct);
 
-      mpiovd_sensors_raw_struct.msec = TIME_BOOT_MS;
-      mpiovd_sensors_raw_struct.relay  = raw_data.discrete;
-      mpiovd_sensors_raw_struct.speed = raw_data.analog[15] / 50;
-      mpiovd_sensors_raw_struct.rpm = get_engine_rpm();
-      mpiovd_sensors_raw_struct.engine_uptime = chTimeNow() / 100000;
+    mpiovd_sensors_raw_struct.msec          = TIME_BOOT_MS;
+    mpiovd_sensors_raw_struct.relay         = raw_data.discrete;
+    mpiovd_sensors_raw_struct.speed         = raw_data.analog[15] / 50;
+    mpiovd_sensors_raw_struct.rpm           = get_engine_rpm();
+    mpiovd_sensors_raw_struct.engine_uptime = GetUptime();
+    mpiovd_sensors_raw_struct.trip          = GetTrip();
 
-      raw_mail.payload = &mpiovd_sensors_raw_struct;
-      chMBPost(&tolink_mb, (msg_t)&raw_mail, TIME_IMMEDIATE);
-    }
-
+    raw_mail.payload = &mpiovd_sensors_raw_struct;
+    chMBPost(&tolink_mb, (msg_t)&raw_mail, TIME_IMMEDIATE);
   }
   return 0;
 }
