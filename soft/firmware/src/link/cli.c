@@ -16,9 +16,7 @@
 #include "param_cli.h"
 #include "param.h"
 
-#if USE_EEPROM_TEST_SUIT
-#include "eeprom_testsuit.h"
-#endif
+#include "eeprom_conf.h"
 
 /*
  ******************************************************************************

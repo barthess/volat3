@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "eeprom.h"
+#include "eeprom_conf.h"
 #include "storage.h"
 
 /*
@@ -73,7 +74,6 @@ static const I2CEepromFileConfig eeprom_trip_cfg = {
   EEPROM_PAGE_SIZE,
   EEPROM_I2C_ADDR,
   MS2ST(EEPROM_WRITE_TIME_MS),
-  TRUE,
   eeprom_trip_buf,
 };
 
@@ -86,7 +86,6 @@ static const I2CEepromFileConfig eeprom_uptime_cfg = {
   EEPROM_PAGE_SIZE,
   EEPROM_I2C_ADDR,
   MS2ST(EEPROM_WRITE_TIME_MS),
-  TRUE,
   eeprom_uptime_buf,
 };
 
