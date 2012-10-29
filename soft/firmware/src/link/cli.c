@@ -55,7 +55,7 @@ static const ShellCmd_t chibiutils[] = {
     {"logout",    &logout_clicmd,    "close shell threads and fork telemtry threads"},
     {"selftest",  &selftest_clicmd,  "exectute selftests"},
     {"sensors",   &sensors_clicmd,   "get human readable data from onboard sensors"},
-    {"storage",   &storage_clicmd,   NULL},
+    {"storage",   &storage_clicmd,   "manipulate vith trip and uptime values"},
     {"param",     &param_clicmd,     "manage onboard system paramters"},
     #if USE_EEPROM_TEST_SUIT
     {"eepromtest",&eepromtest_clicmd, "run EEPROM testsuit. Uses lots of RAM"},

@@ -28,14 +28,15 @@
 
 /******************************************************************
  * глобальные битовые флаги */
-#define SPI_SAMPLE_FLAG        (1UL << 0)  /* если установлен в единицу, значит подано питание на дискретные входы */
-#define CAN_ACTIVE_FLAG        (1UL << 1)  /* если установлен в единицу, значит запущен CAN и запуск USB невозможен */
-#define TLM_ACTIVE_FLAG        (1UL << 2)
-#define SHELL_ACTIVE_FLAG      (1UL << 3)
-#define STORAGE_READY_FLAG     (1UL << 4)   /* система записи пробега и моточасов готова к работе */
+#define SPI_SAMPLE_FLAG         (1UL << 0)  /* если установлен в единицу, значит подано питание на дискретные входы */
+#define CAN_ACTIVE_FLAG         (1UL << 1)  /* если установлен в единицу, значит запущен CAN и запуск USB невозможен */
+#define TLM_ACTIVE_FLAG         (1UL << 2)
+#define SHELL_ACTIVE_FLAG       (1UL << 3)
+#define STORAGE_READY_FLAG      (1UL << 4)  /* система записи пробега и моточасов готова к работе */
+#define ENGINE_UP_FLAG          (1UL << 5)  /* мотор заведен */
 
-#define setGlobalFlag(flag)   {chSysLock(); GlobalFlags |= (flag); chSysUnlock();}
-#define clearGlobalFlag(flag) {chSysLock(); GlobalFlags &= (~(flag)); chSysUnlock();}
+#define setGlobalFlag(flag)     {chSysLock(); GlobalFlags |= (flag); chSysUnlock();}
+#define clearGlobalFlag(flag)   {chSysLock(); GlobalFlags &= (~(flag)); chSysUnlock();}
 
 /******************************************************************
 * статусы возвращаемые разными подсистемами */
@@ -61,11 +62,11 @@
 #define EEPROM_SETTINGS_END       (EEPROM_SETTINGS_START + EEPROM_SETTINGS_SIZE)
 /* save here trip */
 #define EEPROM_TRIP_START         EEPROM_SETTINGS_END
-#define EEPROM_TRIP_SIZE          1024
+#define EEPROM_TRIP_SIZE          256
 #define EEPROM_TRIP_END           (EEPROM_TRIP_START + EEPROM_TRIP_SIZE)
 /* save here engine uptime */
 #define EEPROM_UPTIME_START       EEPROM_TRIP_END
-#define EEPROM_UPTIME_SIZE        1024
+#define EEPROM_UPTIME_SIZE        256
 #define EEPROM_UPTIME_END         (EEPROM_UPTIME_START + EEPROM_UPTIME_SIZE)
 
 /******************************************************************
