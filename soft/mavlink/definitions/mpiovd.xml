@@ -46,7 +46,7 @@
             <field type="uint16_t"     name="analog14">Analog sensor data</field>
             <field type="uint16_t"     name="analog15">Analog sensor data</field>
             <field type="uint16_t"     name="actuators">Actuators state</field>
-            <field type="uint32_t"     name="trip">Vehicle mileage (meters)</field>
+            <field type="uint32_t"     name="trip">Vehicle mileage. NOT a meters, pulses from speedometer.</field>
             <field type="uint32_t"     name="engine_uptime">Vehicle motor uptime (seconds)</field>
 			<field type="uint16_t"     name="speed">Vehicle speed (m/s)</field>
             <field type="uint16_t"     name="rpm">Vehicle engine (RPM)</field>
