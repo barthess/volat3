@@ -52,7 +52,6 @@
             <field type="uint16_t"     name="rpm">Vehicle engine (RPM)</field>
         </message>
 
-
     </messages>
 </mavlink>
 

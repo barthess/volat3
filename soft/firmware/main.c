@@ -28,7 +28,7 @@ uint32_t GlobalFlags;
 int main(void) {
   halInit();
   chSysInit();
-  chThdSleepMilliseconds(200);
+  chThdSleepMilliseconds(2);
 
   chHeapInit(&ThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), LINK_THD_HEAP_SIZE);
 

@@ -27,6 +27,7 @@
 extern Mailbox tolink_mb;
 extern RawData raw_data;
 extern mavlink_mpiovd_sensors_raw_t     mpiovd_sensors_raw_struct;
+extern mavlink_debug_vect_t            mpiovd_debug_vect_struct;
 
 /*
  ******************************************************************************
@@ -58,6 +59,7 @@ static msg_t TLM_SenderThread(void *arg) {
   (void)arg;
 
   Mail raw_mail    = {NULL, MAVLINK_MSG_ID_MPIOVD_SENSORS_RAW, NULL};
+  Mail dbg_mail    = {NULL, MAVLINK_MSG_ID_DEBUG_VECT, NULL};
 
   while (TRUE) {
     chThdSleepMilliseconds(*T_tlm);//50
@@ -73,6 +75,16 @@ static msg_t TLM_SenderThread(void *arg) {
 
     raw_mail.payload = &mpiovd_sensors_raw_struct;
     chMBPost(&tolink_mb, (msg_t)&raw_mail, TIME_IMMEDIATE);
+
+    mpiovd_debug_vect_struct.name[0] = 'd';
+    mpiovd_debug_vect_struct.name[1] = 'b';
+    mpiovd_debug_vect_struct.name[2] = 'g';
+    mpiovd_debug_vect_struct.x = 0.1;
+    mpiovd_debug_vect_struct.y = 0.1;
+    mpiovd_debug_vect_struct.z = 0.1;
+
+    dbg_mail.payload = &mpiovd_debug_vect_struct;
+    chMBPost(&tolink_mb, (msg_t)&dbg_mail, TIME_IMMEDIATE);
   }
   return 0;
 }
