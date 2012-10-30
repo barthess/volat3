@@ -4,6 +4,7 @@
 import pygame
 import datetime
 import time
+import ConfigParser
 from gloss import *
 from math import *
 from multiprocessing import Process, Queue, Lock, Event, freeze_support
@@ -39,6 +40,19 @@ AN_MAX = 1000
 # пределы давления в кг/см^2
 PRESS_MAX = 10.0
 PRESS_MIN = 0.0
+
+# read parameters
+config = ConfigParser.SafeConfigParser()
+config.read('default.cfg')
+
+main_voltage_idx	= config.getint('AnalogMap', 'main_voltage_idx')
+tank1_fill_idx		= config.getint('AnalogMap', 'tank1_fill_idx')
+tank2_fill_idx		= config.getint('AnalogMap', 'tank2_fill_idx')
+temp_oil_idx		= config.getint('AnalogMap', 'temp_oil_idx')
+temp_water_idx		= config.getint('AnalogMap', 'temp_water_idx')
+press_oil_idx		= config.getint('AnalogMap', 'press_oil_idx')
+press_break1_idx	= config.getint('AnalogMap', 'press_break1_idx')
+press_break2_idx	= config.getint('AnalogMap', 'press_break2_idx')
 
 class Label():#{{{текстовая бирка с возможностью центрирования
     def __init__(self, font):
@@ -616,6 +630,7 @@ class Telemetry(GlossGame):#{{{
     def init(self, q_tlm):#{{{
         #проброс глобальных переменных внутрь класса.
         self.q_tlm = q_tlm
+        #
         #}}}
     def preload_content(self):#{{{
         self.t = Texture("resources/loadscreen.png")
@@ -794,6 +809,10 @@ class Telemetry(GlossGame):#{{{
             # are we needed this data?
             if type(tlm_data) == mavlink.MAVLink_mpiovd_sensors_raw_message:
                 self.last_success_time = time.time()
+                analogarray = [tlm_data.analog00, tlm_data.analog01, tlm_data.analog02, tlm_data.analog03,
+                               tlm_data.analog04, tlm_data.analog05, tlm_data.analog06, tlm_data.analog07,
+                               tlm_data.analog08, tlm_data.analog09, tlm_data.analog10, tlm_data.analog11,
+                               tlm_data.analog12, tlm_data.analog13, tlm_data.analog14, tlm_data.analog15]
             else:
                 tlm_data = None
 
@@ -801,22 +820,17 @@ class Telemetry(GlossGame):#{{{
             # растусовка всей ботвы из пакета
             self.speed = tlm_data.analog00 / 100000.0 #tlm_data.speed / 256.0
             self.tacho = tlm_data.rpm / RPM_MAX
-            # self.tacho = tlm_data.analog00 / 100000.0
             self.trip_value = tlm_data.trip
             self.engine_uptime = tlm_data.engine_uptime
-            self.main_voltage = tlm_data.analog00 / 1000.0
-            self.tank1_fill = self.dump02.get(tlm_data.analog01)
-            self.tank2_fill = self.dump02.get(tlm_data.analog02)
-
-            #print "tlm.an01 = ", tlm_data.analog01, "raw volatage = ", tlm_data.analog00
-            # print tlm_data.analog03, tlm_data.analog04
-
-            self.temp_oil   = self.TM100.get(Gloss.clamp(tlm_data.analog03, AN_MIN, AN_MAX))
-            self.temp_water = self.TM100.get(Gloss.clamp(tlm_data.analog04, AN_MIN, AN_MAX))
-
-            self.press_oil    = self.mzkt18.get(Gloss.clamp(tlm_data.analog05, AN_MIN, AN_MAX))
-            self.press_break1 = self.mzkt18.get(Gloss.clamp(tlm_data.analog06, AN_MIN, AN_MAX))
-            self.press_break2 = self.mzkt18.get(Gloss.clamp(tlm_data.analog07, AN_MIN, AN_MAX))
+            # analog sensors
+            self.main_voltage   = analogarray[main_voltage_idx] / 1000.0
+            self.tank1_fill     = self.dump02.get(analogarray[tank1_fill_idx])
+            self.tank2_fill     = self.dump02.get(analogarray[tank2_fill_idx])
+            self.temp_oil       = self.TM100.get(Gloss.clamp(analogarray[temp_oil_idx], AN_MIN, AN_MAX))
+            self.temp_water     = self.TM100.get(Gloss.clamp(analogarray[temp_water_idx], AN_MIN, AN_MAX))
+            self.press_oil      = self.mzkt18.get(Gloss.clamp(analogarray[press_oil_idx], AN_MIN, AN_MAX))
+            self.press_break1   = self.mzkt18.get(Gloss.clamp(analogarray[press_break1_idx], AN_MIN, AN_MAX))
+            self.press_break2   = self.mzkt18.get(Gloss.clamp(analogarray[press_break2_idx], AN_MIN, AN_MAX))
 
             self.sym_msk = tlm_data.relay
             self.autriggers_msk = (tlm_data.relay >> 32)
