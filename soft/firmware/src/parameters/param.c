@@ -89,40 +89,40 @@ GlobalParam_t global_data[] = {
   /*----------------------------------------------------------------------------------------------------------*/
   {"SYS_ID",          {.u32 = 1},          {.u32 = 20},           {.u32 = 255},        MAVLINK_TYPE_UINT32_T},
   /* 16 denotes ground rover */
-  {"SYS_mavtype",     {.u32 = 0},          {.u32 = 1},            {.u32 = 16},         MAVLINK_TYPE_UINT32_T},
+  {"SYS_mavtype",     {.u32 = 0},          {.u32 = 10},           {.u32 = 16},         MAVLINK_TYPE_UINT32_T},
   /* enable shell instead of telemetry */
   {"SH_enable",       {.u32 = 0},          {.u32 = 0},            {.u32 = 1},          MAVLINK_TYPE_UINT32_T},
   // длины фильтров для каналов АЦП
-  {"AN_ch00_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch01_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch02_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch03_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch04_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch05_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch06_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch07_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch08_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch09_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch10_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch11_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch12_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch13_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch14_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
-  {"AN_ch15_flen",    {.u32 = 0},          {.u32 = 4},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch00_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch01_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch02_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch03_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch04_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch05_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch06_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch07_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch08_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch09_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch10_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch11_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch12_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch13_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch14_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
+  {"AN_ch15_flen",    {.u32 = 0},          {.u32 = 8},            {.u32 = 30},         MAVLINK_TYPE_UINT32_T},
 
   /****** разные временнЫе интервалы в mS */
   // пакеты с телеметрией
-  {"T_tlm",           {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_tlm",           {.u32 = SEND_OFF},    {.u32 = 33},          {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
   // интервал между сохранениями пробега и моточасов в eeprom
-  {"T_save_trip",     {.u32 = 2000},         {.u32 = 10000},      {.u32 = 60000},       MAVLINK_TYPE_UINT32_T},
+  {"T_save_trip",     {.u32 = 2000},        {.u32 = 10000},       {.u32 = 60000},       MAVLINK_TYPE_UINT32_T},
   // пакеты heartbeat
-  {"T_heartbeat",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
-  {"T_reserved1",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
-  {"T_reserved2",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
-  {"T_reserved3",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
-  {"T_reserved4",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
-  {"T_reserved5",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
-  {"T_reserved6",     {.u32 = SEND_OFF},     {.u32 = 100},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_heartbeat",     {.u32 = 100},         {.u32 = 1000},        {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_sys_status",    {.u32 = SEND_OFF},    {.u32 = 100},         {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_reserved2",     {.u32 = SEND_OFF},    {.u32 = 100},         {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_reserved3",     {.u32 = SEND_OFF},    {.u32 = 100},         {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_reserved4",     {.u32 = SEND_OFF},    {.u32 = 100},         {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_reserved5",     {.u32 = SEND_OFF},    {.u32 = 100},         {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
+  {"T_reserved6",     {.u32 = SEND_OFF},    {.u32 = 100},         {.u32 = SEND_MAX},    MAVLINK_TYPE_UINT32_T},
 
   /* masks for relay sensors */
   {"REL_Z_0",         {.u32 = 0},           {.u32 = 0},           {.u32 = 0xFFFFFFFF},  MAVLINK_TYPE_UINT32_T},
@@ -407,12 +407,14 @@ bool_t set_global_param(void *value,  GlobalParam_t *param){
  *
  */
 void ParametersInit(void){
+  uint8_t eeprombuf[PARAM_ID_SIZE + sizeof(global_data[0].value)];
+  uint32_t status;
 
   OnboardParamCount = (sizeof(global_data) / sizeof(GlobalParam_t));
 
   chMBInit(&param_confirm_mb, param_confirm_mb_buf, (sizeof(param_confirm_mb_buf)/sizeof(msg_t)));
 
-  /* check hardcoded values */
+  /* check hardcoded param names */
   int32_t i = 0;
   for (i = 0; i < OnboardParamCount; i++){
     if (sizeof (*(global_data[i].name)) > ONBOARD_PARAM_NAME_LENGTH)
@@ -425,12 +427,21 @@ void ParametersInit(void){
   if (OnboardParamCount * len > EEPROM_SETTINGS_SIZE)
     chDbgPanic("not enough space in EEPROM settings slice");
 
-  /**/
+  /* open file and check presence of settings in it */
   EepromFileOpen(&EepromSettingsFile, &eeprom_settings_cfg);
 
-  /* read data from eeprom to memory mapped structure */
-  load_params_from_eeprom();
+  /* check first param in EEPROM */
+  chFileStreamSeek(&EepromSettingsFile, 0);
+  status = chFileStreamRead(&EepromSettingsFile, eeprombuf, sizeof(eeprombuf));
+  if (status != sizeof(eeprombuf))
+    chDbgPanic("read failed");
 
+  if (strcmp((char *)eeprombuf, global_data[0].name) != 0)
+    save_params_to_eeprom();    /* store values as defaults */
+  else
+    load_params_from_eeprom();  /* load previously stored */
+
+  /**/
   chThdCreateStatic(ParametersThreadWA,
           sizeof(ParametersThreadWA),
           LINK_THREADS_PRIO + 1,

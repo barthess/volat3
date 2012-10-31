@@ -55,6 +55,17 @@ press_break1_idx	= config.getint('AnalogMap', 'press_break1_idx')
 press_break2_idx	= config.getint('AnalogMap', 'press_break2_idx')
 
 
+def discrete_dbg_print(discrete):
+    st = ""
+    i = 63
+    while i >= 0:
+        s = (discrete >> i) & 1
+        st += (str(s))
+        if (i % 8 == 0):
+            st += " "
+        i -= 1
+    print st
+
 class Label():#{{{текстовая бирка с возможностью центрирования
     def __init__(self, font):
         #Заготовка бирки с числовым значением скорости
@@ -878,6 +889,7 @@ class Telemetry(GlossGame):#{{{
             self.press_break2   = self.mzkt18.get(Gloss.clamp(analogarray[press_break2_idx], AN_MIN, AN_MAX))
             # discrete sensors
             self.discrete_msk   = tlm_data.relay
+            discrete_dbg_print(self.discrete_msk)
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
         #}}}

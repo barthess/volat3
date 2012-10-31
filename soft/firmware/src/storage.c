@@ -9,6 +9,7 @@
 #include "storage.h"
 #include "chprintf.h"
 #include "sensors.h"
+#include "param.h"
 
 /*
  * Суть такова:
@@ -42,8 +43,6 @@
  * DEFINES
  ******************************************************************************
  */
-#define SAVE_PERIOD       S2ST(5)
-
 #define RECORD_SIZE       (2 * (sizeof(uint32_t)))
 
 #define acquire_trip()    chBSemWait(&Trip_sem)
@@ -83,6 +82,9 @@ static uint32_t Uptime;           /* секунды */
 /* указатель на поток сохранялки, чтобы была возможность остановить
  * и перезапустить его */
 static Thread *Storage_tp;
+
+/* save period */
+static const uint32_t *save_period;
 
 /*
  ******************************************************************************
@@ -221,7 +223,9 @@ static msg_t StorageThread(void *arg) {
   setGlobalFlag(STORAGE_READY_FLAG);
 
   while (!chThdShouldTerminate()) {
-    chThdSleep(SAVE_PERIOD);
+
+    chThdSleep(MS2ST(*save_period));
+
     acquire_trip();
     save(&EepromTripFile,   &Trip,   &Trip_prev);
     release_trip();
@@ -229,10 +233,6 @@ static msg_t StorageThread(void *arg) {
     acquire_uptime();
     save(&EepromUptimeFile, &Uptime, &Uptime_prev);
     release_uptime();
-
-    /* for selftesting */
-//    Trip++;
-//    Uptime++;
   }
 
   chThdExit(0);
@@ -363,6 +363,8 @@ static void storage_cli_dump(EepromFileStream *fp, SerialDriver *sdp){
  */
 
 void StorageInit(void){
+
+  save_period = ValueSearch("T_save_trip");
 
   chSysLock();
   uptime_start_vt();

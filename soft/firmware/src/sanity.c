@@ -7,6 +7,7 @@
 #include "message.h"
 #include "main.h"
 #include "link.h"
+#include "param.h"
 
 /*
  ******************************************************************************
@@ -21,6 +22,7 @@ extern mavlink_system_t mavlink_system_struct;
  * DEFINES
  ******************************************************************************
  */
+#define BLINK_TIME    MS2ST(50)
 
 /*
  ******************************************************************************
@@ -33,6 +35,9 @@ static Thread *IdleThread_p = NULL;
 /* переменные для оценки загруженности процессора */
 static uint32_t last_sys_ticks = 0;
 static uint32_t last_idle_ticks = 0;
+
+/* save period */
+static const uint32_t *heartbeat_period;
 
 /*
  *******************************************************************************
@@ -58,7 +63,8 @@ static msg_t SanityControlThread(void *arg) {
 
   while (TRUE) {
     palSetPad(GPIOE, GPIOE_LED);
-    chThdSleepMilliseconds(950);
+
+    chThdSleep(MS2ST(*heartbeat_period) - BLINK_TIME);
 
     if (heartbeat_mail.payload == NULL){
       mavlink_heartbeat_struct.type           = mavlink_system_struct.type;
@@ -68,7 +74,7 @@ static msg_t SanityControlThread(void *arg) {
       chMBPost(&tolink_mb, (msg_t)&heartbeat_mail, TIME_IMMEDIATE);
 
       palClearPad(GPIOE, GPIOE_LED); /* blink*/
-      chThdSleepMilliseconds(50);
+      chThdSleep(BLINK_TIME);
     }
   }
   return 0;
@@ -101,6 +107,7 @@ systime_t GetTimeInterval(systime_t *last){
  *******************************************************************************
  */
 void SanityControlInit(void){
+  heartbeat_period = ValueSearch("T_heartbeat");
 
   IdleThread_p = chSysGetIdleThread();
 
