@@ -54,6 +54,7 @@ press_oil_idx		= config.getint('AnalogMap', 'press_oil_idx')
 press_break1_idx	= config.getint('AnalogMap', 'press_break1_idx')
 press_break2_idx	= config.getint('AnalogMap', 'press_break2_idx')
 
+
 class Label():#{{{текстовая бирка с возможностью центрирования
     def __init__(self, font):
         #Заготовка бирки с числовым значением скорости
@@ -71,6 +72,7 @@ class Label():#{{{текстовая бирка с возможностью це
             self.font.draw(text = text, position = position, color = color)
     #}}}
 class Leg():#{{{аутриггеры и проколы шин
+    """ Нумерация ног как в микросхеме - по кругу. """
     def __init__(self, bg, sygn_red, sygn_grey, position = (0,0)):
         self.tex_bg = Texture(RESPATH + bg)
         self.width = self.tex_bg.width
@@ -102,8 +104,59 @@ class Leg():#{{{аутриггеры и проколы шин
         self.draw_stat(flags)
         self.draw_dyn(flags)
     #}}}
+
+
+
+
+
+
+class MyTiers__():#{{{
+    def __init__(self, position = (0,0)):
+        self.tier_1_left_idx  = config.getint('DiscreteMap', 'tier_1_left_idx')
+        self.tier_2_left_idx  = config.getint('DiscreteMap', 'tier_2_left_idx')
+        self.tier_3_left_idx  = config.getint('DiscreteMap', 'tier_3_left_idx')
+        self.tier_1_right_idx = config.getint('DiscreteMap', 'tier_1_right_idx')
+        self.tier_2_right_idx = config.getint('DiscreteMap', 'tier_2_right_idx')
+        self.tier_3_right_idx = config.getint('DiscreteMap', 'tier_3_right_idx')
+        self.leg = Leg( "tiers_bg.png",
+                        "tiers_sygn_red.png",
+                        "tiers_sygn_grey.png",
+                        position = position)
+    def draw_stat(self, globalmask):
+        self.leg.draw_stat(0)
+    def draw_dyn(self, globalmask):
+        """ Принимает ВСЮ битовую маску из пакета телеметрии.
+        На ее основе создает маску, специфичную для подкласса.
+        Нумерация ног как в микросхемах - по кругу. """
+        mask  = 0
+        mask |= ((globalmask >> self.tier_1_left_idx)  & 1) << 0
+        mask |= ((globalmask >> self.tier_2_left_idx)  & 1) << 1
+        mask |= ((globalmask >> self.tier_3_left_idx)  & 1) << 2
+        mask |= ((globalmask >> self.tier_3_right_idx) & 1) << 3
+        mask |= ((globalmask >> self.tier_2_right_idx) & 1) << 4
+        mask |= ((globalmask >> self.tier_1_right_idx) & 1) << 5
+        self.leg.draw_dyn(mask)
+    def draw(self, globalmask):
+        draw_stat(globalmask)
+        draw_dyn(globalmask)
+    #}}}
+
+class MyLegs(Leg):#{{{
+    def __init__(self):
+        pass
+    def draw(self):
+        pass
+    #}}}
+
+
+
+
+
+
 class SymbolGrid():#{{{все-все значки дискретных датчиков
     def __init__(self):
+        d01_idx = config.getint('DiscreteMap', 'd01_idx')
+
         self.grid_step = 85 # шаг сетки для значков
         symbol_size = 70 # значки квадратные
 
@@ -678,6 +731,7 @@ class Telemetry(GlossGame):#{{{
         self.tacho = 0.0
         self.engine_uptime = 0
         self.trip_value = 0
+        self.discrete_msk = 0
         self.temp_oil = 0.0
         self.temp_water = 0.0
         self.main_voltage = 0.0
@@ -692,7 +746,6 @@ class Telemetry(GlossGame):#{{{
         self.tachometer = Tachometer(position = (145,45))
         self.thermoblock = ThermoBlock(position = (920,5))
 
-        self.sym_msk = 0
         self.symgrid = SymbolGrid()
 
         self.autriggers_msk = 0
@@ -701,11 +754,11 @@ class Telemetry(GlossGame):#{{{
                               "autriggers_sygn_grey.png",
                               position = (5, 768 - legh - 2*symgridh - 5))
 
-        self.tiers_msk = 0
-        self.tiers = Leg("tiers_bg.png",
-                         "tiers_sygn_red.png",
-                         "tiers_sygn_grey.png",
-                         position = (1024 - legw - 5, 768 - legh - 2*symgridh - 5))
+        self.tiers = MyTiers__(position = (1024 - legw - 5, 768 - legh - 2*symgridh - 5))
+        # self.tiers = Leg("tiers_bg.png",
+        #                  "tiers_sygn_red.png",
+        #                  "tiers_sygn_grey.png",
+        #                  position = (1024 - legw - 5, 768 - legh - 2*symgridh - 5))
 
         self.trip = Counter(capacity = 6, position = (750, 250))
         self.motohours = Counter(capacity = 4, position = (315, 120))
@@ -762,14 +815,15 @@ class Telemetry(GlossGame):#{{{
         self.trip.draw(self.trip_value)
         self.speedometer.draw_dyn(self.speed)
         self.thermoblock.draw(self.temp_oil, self.temp_water)
-        self.autriggers.draw_dyn(self.autriggers_msk)
-        self.tiers.draw_dyn(self.tiers_msk)
         self.pressblock.draw_dyn(self.press_oil, self.press_break1, self.press_break2)
         self.fuelblock.draw_dyn(self.tank1_fill, self.tank2_fill)
         self.battery.draw_dyn(self.main_voltage)
-        self.symgrid.draw_dyn(self.sym_msk)
-        self.clock.draw()
 
+        self.autriggers.draw_dyn(self.autriggers_msk)
+        self.tiers.draw_dyn(self.discrete_msk)
+        self.symgrid.draw_dyn(self.discrete_msk)
+
+        self.clock.draw()
 
         if flags["atm_mode"] is True:
             self.atm.draw()
@@ -832,9 +886,8 @@ class Telemetry(GlossGame):#{{{
             self.press_break1   = self.mzkt18.get(Gloss.clamp(analogarray[press_break1_idx], AN_MIN, AN_MAX))
             self.press_break2   = self.mzkt18.get(Gloss.clamp(analogarray[press_break2_idx], AN_MIN, AN_MAX))
 
-            self.sym_msk = tlm_data.relay
+            self.discrete_msk = tlm_data.relay
             self.autriggers_msk = (tlm_data.relay >> 32)
-            self.tiers_msk = tlm_data.relay >> (32 + 6)
 
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
