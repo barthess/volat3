@@ -16,6 +16,8 @@
 #include "param_cli.h"
 #include "param.h"
 
+#include "eeprom_conf.h"
+
 /*
  ******************************************************************************
  * DEFINES
@@ -35,8 +37,8 @@ extern MemoryHeap ThdHeap;
  * PROTOTYPES
  *******************************************************************************
  */
-int recursive_execute(int argc, const char * const * argv, const ShellCmd_t *cmdarray);
-static Thread* logout_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray);
+static Thread* logout_clicmd(int argc, const char * const * argv, SerialDriver *sdp);
+static Thread* help_clicmd(int argc, const char * const * argv, SerialDriver *sdp);
 
 /*
  ******************************************************************************
@@ -45,17 +47,20 @@ static Thread* logout_cmd(int argc, const char * const * argv, const ShellCmd_t 
  */
 
 static const ShellCmd_t chibiutils[] = {
-    {"ps",        &ps_cmd,        NULL},
-    {"uname",     &uname_cmd,     NULL},
-    {"help",      &help_cmd,      NULL},
-    {"clear",     &clear_cmd,     NULL},
-    {"list",      &list_cmd,      NULL},
-    {"logout",    &logout_cmd,    NULL},
-    {"selftest",  &selftest_cmd,  NULL},
-    {"sensors",   &sensors_cmd,   NULL},
-    {"storage",   &storage_cmd,   NULL},
-    {"param",     &param_cmd,     NULL},
-    {NULL,        NULL,           NULL}/* end marker */
+    {"ps",        &ps_clicmd,        "info about running threads"},
+    {"uname",     &uname_clicmd,     "'info' alias"},
+    {"help",      &help_clicmd,      "this message"},
+    {"clear",     &clear_clicmd,     "clear screen"},
+    {"list",      &list_clicmd,      NULL},
+    {"logout",    &logout_clicmd,    "close shell threads and fork telemtry threads"},
+    {"selftest",  &selftest_clicmd,  "exectute selftests"},
+    {"sensors",   &sensors_clicmd,   "get human readable data from onboard sensors"},
+    {"storage",   &storage_clicmd,   "manipulate vith trip and uptime values"},
+    {"param",     &param_clicmd,     "manage onboard system paramters"},
+    #if USE_EEPROM_TEST_SUIT
+    {"eepromtest",&eepromtest_clicmd, "run EEPROM testsuit. Uses lots of RAM"},
+    #endif
+    {NULL,        NULL,               NULL}/* end marker */
 };
 
 static SerialDriver *shell_sdp;
@@ -75,23 +80,59 @@ static Thread *shell_tp = NULL;
  *******************************************************************************
  */
 
+Thread* help_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
+  (void)argc;
+  (void)argv;
+
+  int32_t i = 0;
+
+  cli_println("Use TAB key for completion, UpArrow for previous command.");
+  cli_println("Available commands are:");
+  cli_println("-------------------------------------------------------------");
+
+  while(chibiutils[i].name != NULL){
+    cli_print(chibiutils[i].name);
+    cli_print(" - ");
+    cli_println(chibiutils[i].help);
+    i++;
+  }
+
+  return NULL;
+}
+
+Thread* list_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
+  (void)argc;
+  (void)argv;
+
+  int i = 0;
+
+  cli_print("available commands:\n\r");
+  while(chibiutils[i].name != NULL){
+    cli_print("\t");
+    cli_print(chibiutils[i].name);
+    cli_print("\n\r");
+    i++;
+  }
+  return NULL;
+}
+
 /**
  *
  */
-static Thread* logout_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
+static Thread* logout_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argc;
   (void)argv;
-  (void)cmdarray;
-
   *(uint32_t*)ValueSearch("SH_enable") = 0;
-
   return NULL;
 }
 
 /**
  * Search value (pointer to function) by key (name string)
  */
-int32_t cmd_search(const char* key, const ShellCmd_t *cmdarray){
+static int32_t cmd_search(const char* key, const ShellCmd_t *cmdarray){
   uint32_t i = 0;
 
   while (cmdarray[i].name != NULL){
@@ -100,6 +141,28 @@ int32_t cmd_search(const char* key, const ShellCmd_t *cmdarray){
     i++;
   }
   return -1;
+}
+
+//*****************************************************************************
+// execute callback for microrl library
+// do what you want here, but don't write to argv!!! read only!!
+static int execute (int argc, const char * const * argv){
+  int i = 0;
+
+  /* search first token */
+  i = cmd_search(argv[0], chibiutils);
+  if (i == -1){
+    cli_print ("command: '");
+    cli_print ((char*)argv[0]);
+    cli_print ("' Not found.\n\r");
+  }
+  else{
+    if (argc > 1)
+      CurrentCmd_tp = chibiutils[i].func(argc - 1, &argv[1], shell_sdp);
+    else
+      CurrentCmd_tp = chibiutils[i].func(0, NULL, shell_sdp);
+  }
+  return 0;
 }
 
 /**
@@ -138,36 +201,6 @@ void cli_print_long(const char * str, int n, int nres){
   if (nres > n)
     cli_print(ENDL);
 }
-
-//*****************************************************************************
-// execute callback for microrl library
-// do what you want here, but don't write to argv!!! read only!!
-int execute (int argc, const char * const * argv){
-  if (recursive_execute(argc, argv, chibiutils) == -1){
-    cli_print ("command: '");
-    cli_print ((char*)argv[0]);
-    cli_print ("' Not found.\n\r");
-  }
-  return 0;
-}
-
-int recursive_execute(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  int i = 0;
-
-  /* search first token */
-  i = cmd_search(argv[0], cmdarray);
-
-  /* search token in cmd array */
-  if (i != -1){
-    if (argc > 1)
-      CurrentCmd_tp = cmdarray[i].func(argc - 1, &argv[1], cmdarray);
-    else
-      CurrentCmd_tp = cmdarray[i].func(argc - 1, NULL, cmdarray);
-  }
-  return i;
-}
-
-
 
 #ifdef _USE_COMPLETE
 //*****************************************************************************

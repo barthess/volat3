@@ -4,7 +4,10 @@
 #include "cli.h"
 
 void StorageInit(void);
-Thread* storage_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray);
+Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp);
 
+void update_trip(uint32_t delta);
+uint32_t GetUptime(void);
+uint32_t GetTrip(void);
 
 #endif /* _STORAGE_H_ */

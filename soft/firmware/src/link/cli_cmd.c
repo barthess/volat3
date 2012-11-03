@@ -35,53 +35,12 @@ extern MemoryHeap ThdHeap;
  *******************************************************************************
  */
 
-Thread* clear_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)cmdarray;
+Thread* clear_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argc;
   (void)argv;
   cli_print("\033[2J");    // ESC seq for clear entire screen
   cli_print("\033[H");     // ESC seq for move cursor at left-top corner
-  return NULL;
-}
-
-Thread* list_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)argc;
-  (void)argv;
-  int i = 0;
-
-  cli_print("available commands:\n\r");
-  while(cmdarray[i].name != NULL){
-    cli_print("\t");
-    cli_print(cmdarray[i].name);
-    cli_print("\n\r");
-    i++;
-  }
-  return NULL;
-}
-
-Thread* echo_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)cmdarray;
-
-  int i = 0;
-
-  while (i < argc)
-    cli_print(argv[i++]);
-
-  cli_print("\n\r");
-  return NULL;
-}
-
-Thread* help_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)cmdarray;
-  (void)argc;
-  (void)argv;
-  cli_print ("Use TAB key for completion\n\rCommand:\n\r");
-  cli_print ("\tversion {microrl | demo} - print version of microrl lib or version of this demo src\n\r");
-  cli_print ("\thelp  - this message\n\r");
-  cli_print ("\tclear - clear screen\n\r");
-  cli_print ("\tlist  - list all commands in tree\n\r");
-  cli_print ("\tloop  - command to test ^C fucntionallity\n\r");
-  cli_print ("\t        and for demonstation auto-completion, while inputed 'l+<TAB>'\n\r");
   return NULL;
 }
 
@@ -102,8 +61,8 @@ static msg_t LoopCmdThread(void *arg){
   return 0;
 }
 
-Thread* loop_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)cmdarray;
+Thread* loop_cmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argc;
   (void)argv;
 
@@ -115,56 +74,29 @@ Thread* loop_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray
   return tp;
 }
 
-
-Thread* reboot_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
+Thread* logout_cmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argv;
   (void)argc;
-  (void)cmdarray;
-  cli_print("System going to reboot now...\r\n");
-  chThdSleepMilliseconds(100);
-  NVIC_SystemReset();
-  return NULL;
-}
-
-Thread* logout_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)argv;
-  (void)argc;
-  (void)cmdarray;
   cli_print("Logout command stub...\r\n");
   chThdSleepMilliseconds(100);
   NVIC_SystemReset();
   return NULL;
 }
 
-Thread* sleep_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
+Thread* selftest_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argv;
   (void)argc;
-  (void)cmdarray;
-
-  cli_print("System sleeping.\r\n");
-  cli_print("Press any key to wake it up.\r\n");
-  chThdSleepMilliseconds(100);
-
-  chSysLock();
-  PWR->CR |= (PWR_CR_PDDS | PWR_CR_LPDS | PWR_CR_CSBF | PWR_CR_CWUF);
-  SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
-  __WFI();
-  return NULL;
-}
-
-Thread* selftest_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)argv;
-  (void)argc;
-  (void)cmdarray;
 
   cli_print("GPS - OK\r\nModem - OK\r\nEEPROM - OK\r\nStorage - OK\r\nServos - OK\r\n");
   return NULL;
 }
 
-Thread* sensor_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
+Thread* sensor_cmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argv;
   (void)argc;
-  (void)cmdarray;
   cli_print("temperature is ... \n\r");
   return NULL;
 }
@@ -179,8 +111,8 @@ void long_cli_print(const char * str, int n, int nres){
     cli_print("\n\r");
 }
 
-Thread* uname_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)cmdarray;
+Thread* uname_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argc;
   (void)argv;
 
@@ -229,12 +161,8 @@ Thread* uname_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarra
   return NULL;
 }
 
-
-
-
-
-Thread* ps_cmd(int argc, const char * const * argv, const ShellCmd_t *cmdarray){
-  (void)cmdarray;
+Thread* ps_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)sdp;
   (void)argc;
   (void)argv;
   Thread *curr = NULL;

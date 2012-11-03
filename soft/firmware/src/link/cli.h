@@ -9,7 +9,7 @@ typedef struct ShellCmd_t ShellCmd_t;
 /**
  * Fucnction executing command job.
  */
-typedef Thread* (*cmdfunction_t)(int argc, const char * const * argv, const ShellCmd_t *cmdarray);
+typedef Thread* (*cmdfunction_t)(int argc, const char * const * argv, SerialDriver *sdp);
 
 
 struct ShellCmd_t{
@@ -22,9 +22,9 @@ struct ShellCmd_t{
    */
   const cmdfunction_t func;
   /**
-   * Pointer to structure with subcommands. May be NULL.
+   * Short command description for help message.
    */
-  const ShellCmd_t *subcmd;
+  char *help;
 };
 
 void cli_print(const char *str);

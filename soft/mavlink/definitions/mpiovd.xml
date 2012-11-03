@@ -9,6 +9,18 @@
             <entry name="MODE_PINGPONG">Send data only on requests</entry>
             <entry name="MODE_CALIBRATION">Setting internal calibration coefficients</entry>
         </enum>
+		<enum name="MAV_CMD">
+               <entry value="220" name="MAV_CMD_BNAP_SEND_ALARM">
+                    <description>Send alarm signal to 911 service.</description>
+                    <param index="1">Retry count</param>
+                    <param index="2">param2</param>
+                    <param index="3">param3</param>
+                    <param index="4">param4</param>
+                    <param index="5">param5</param>
+                    <param index="6">param6</param>
+                    <param index="7">param7</param>
+				</entry>
+		</enum>
     </enums>
 
 
@@ -34,12 +46,11 @@
             <field type="uint16_t"     name="analog14">Analog sensor data</field>
             <field type="uint16_t"     name="analog15">Analog sensor data</field>
             <field type="uint16_t"     name="actuators">Actuators state</field>
-            <field type="uint32_t"     name="trip">Vehicle mileage (meters)</field>
+            <field type="uint32_t"     name="trip">Vehicle mileage. NOT a meters, pulses from speedometer.</field>
             <field type="uint32_t"     name="engine_uptime">Vehicle motor uptime (seconds)</field>
 			<field type="uint16_t"     name="speed">Vehicle speed (m/s)</field>
             <field type="uint16_t"     name="rpm">Vehicle engine (RPM)</field>
         </message>
-
 
     </messages>
 </mavlink>

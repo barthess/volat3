@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O0 -ggdb -fno-strict-aliasing -fomit-frame-pointer -falign-functions=16 -std=gnu99
+  USE_OPT = -Os -ggdb -fno-strict-aliasing -fomit-frame-pointer -falign-functions=16 -std=gnu99
 endif
 
 # C specific options here (added to USE_OPT).
@@ -100,6 +100,7 @@ CSRC = $(PORTSRC) \
        src/parameters/param_cli.c \
        src/parameters/persistant.c \
        src/eeprom/eeprom.c \
+       src/eeprom/eeprom_testsuit.c \
        src/link/usb_local.c \
        src/link/uart_local.c \
        src/link/cli.c \

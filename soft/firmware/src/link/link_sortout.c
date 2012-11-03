@@ -32,7 +32,7 @@ case MAVLINK_MSG_ID_##UPPERCASE:                                              \
  * EXTERNS
  ******************************************************************************
  */
-extern mavlink_system_t mavlink_system_struct;
+extern mavlink_system_t                 mavlink_system_struct;
 
 /*
  ******************************************************************************
@@ -65,6 +65,7 @@ uint16_t sort_output_mail(Mail *mailp, mavlink_message_t *mavlink_msgbuf){
   switch(mailp->invoice){
     SENDCASE(heartbeat, HEARTBEAT,                          ALL)
     SENDCASE(mpiovd_sensors_raw, MPIOVD_SENSORS_RAW,        ALL)
+    SENDCASE(debug_vect, DEBUG_VECT,                        ALL)
     SENDCASE(param_value, PARAM_VALUE,                      ALL)
   default:
     break;

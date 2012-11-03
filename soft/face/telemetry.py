@@ -4,6 +4,7 @@
 import pygame
 import datetime
 import time
+import ConfigParser
 from gloss import *
 from math import *
 from multiprocessing import Process, Queue, Lock, Event, freeze_support
@@ -40,6 +41,31 @@ AN_MAX = 1000
 PRESS_MAX = 10.0
 PRESS_MIN = 0.0
 
+# read parameters
+config = ConfigParser.SafeConfigParser()
+config.read('default.cfg')
+
+main_voltage_idx	= config.getint('AnalogMap', 'main_voltage_idx')
+tank1_fill_idx		= config.getint('AnalogMap', 'tank1_fill_idx')
+tank2_fill_idx		= config.getint('AnalogMap', 'tank2_fill_idx')
+temp_oil_idx		= config.getint('AnalogMap', 'temp_oil_idx')
+temp_water_idx		= config.getint('AnalogMap', 'temp_water_idx')
+press_oil_idx		= config.getint('AnalogMap', 'press_oil_idx')
+press_break1_idx	= config.getint('AnalogMap', 'press_break1_idx')
+press_break2_idx	= config.getint('AnalogMap', 'press_break2_idx')
+
+
+def discrete_dbg_print(discrete):
+    st = ""
+    i = 63
+    while i >= 0:
+        s = (discrete >> i) & 1
+        st += (str(s))
+        if (i % 8 == 0):
+            st += " "
+        i -= 1
+    print st
+
 class Label():#{{{текстовая бирка с возможностью центрирования
     def __init__(self, font):
         #Заготовка бирки с числовым значением скорости
@@ -57,6 +83,7 @@ class Label():#{{{текстовая бирка с возможностью це
             self.font.draw(text = text, position = position, color = color)
     #}}}
 class Leg():#{{{аутриггеры и проколы шин
+    """ Нумерация ног как в микросхеме - по кругу. """
     def __init__(self, bg, sygn_red, sygn_grey, position = (0,0)):
         self.tex_bg = Texture(RESPATH + bg)
         self.width = self.tex_bg.width
@@ -88,8 +115,66 @@ class Leg():#{{{аутриггеры и проколы шин
         self.draw_stat(flags)
         self.draw_dyn(flags)
     #}}}
+class TiersBlock():#{{{
+    def __init__(self, position = (0,0)):
+        self.tier_1_left_idx  = config.getint('DiscreteMap', 'tier_1_left_idx')
+        self.tier_2_left_idx  = config.getint('DiscreteMap', 'tier_2_left_idx')
+        self.tier_3_left_idx  = config.getint('DiscreteMap', 'tier_3_left_idx')
+        self.tier_1_right_idx = config.getint('DiscreteMap', 'tier_1_right_idx')
+        self.tier_2_right_idx = config.getint('DiscreteMap', 'tier_2_right_idx')
+        self.tier_3_right_idx = config.getint('DiscreteMap', 'tier_3_right_idx')
+        self.leg = Leg( "tiers_bg.png",
+                        "tiers_sygn_red.png",
+                        "tiers_sygn_grey.png",
+                        position = position)
+    def draw_stat(self, globalmask):
+        self.leg.draw_stat(0)
+    def draw_dyn(self, globalmask):
+        """ Принимает ВСЮ битовую маску из пакета телеметрии.
+        На ее основе создает маску, специфичную для подкласса.
+        Нумерация ног как в микросхемах - по кругу. """
+        mask  = 0
+        mask |= ((globalmask >> self.tier_1_left_idx)  & 1) << 0
+        mask |= ((globalmask >> self.tier_2_left_idx)  & 1) << 1
+        mask |= ((globalmask >> self.tier_3_left_idx)  & 1) << 2
+        mask |= ((globalmask >> self.tier_3_right_idx) & 1) << 3
+        mask |= ((globalmask >> self.tier_2_right_idx) & 1) << 4
+        mask |= ((globalmask >> self.tier_1_right_idx) & 1) << 5
+        self.leg.draw_dyn(mask)
+    def draw(self, globalmask):
+        draw_stat(globalmask)
+        draw_dyn(globalmask)
+    #}}}
+class LegsBlock():#{{{
+    def __init__(self, position = (0,0)):
+        self.leg_1_left_idx  = config.getint('DiscreteMap', 'leg_1_left_idx')
+        self.leg_2_left_idx  = config.getint('DiscreteMap', 'leg_2_left_idx')
+        self.leg_1_right_idx = config.getint('DiscreteMap', 'leg_1_right_idx')
+        self.leg_2_right_idx = config.getint('DiscreteMap', 'leg_2_right_idx')
+        self.leg = Leg("autriggers_bg.png",
+                       "autriggers_sygn_red.png",
+                       "autriggers_sygn_grey.png",
+                        position = position)
+    def draw_stat(self, globalmask):
+        self.leg.draw_stat(0)
+    def draw_dyn(self, globalmask):
+        """ Принимает ВСЮ битовую маску из пакета телеметрии.
+        На ее основе создает маску, специфичную для подкласса.
+        Нумерация ног как в микросхемах - по кругу. """
+        mask  = 0
+        mask |= ((globalmask >> self.leg_1_left_idx)  & 1) << 0
+        mask |= ((globalmask >> self.leg_2_left_idx)  & 1) << 2
+        mask |= ((globalmask >> self.leg_2_right_idx) & 1) << 3
+        mask |= ((globalmask >> self.leg_1_right_idx) & 1) << 5
+        self.leg.draw_dyn(mask)
+    def draw(self, globalmask):
+        draw_stat(globalmask)
+        draw_dyn(globalmask)
+    #}}}
 class SymbolGrid():#{{{все-все значки дискретных датчиков
     def __init__(self):
+        d01_idx = config.getint('DiscreteMap', 'd01_idx')
+
         self.grid_step = 85 # шаг сетки для значков
         symbol_size = 70 # значки квадратные
 
@@ -301,7 +386,8 @@ class Counter():#{{{
         Принимает:
             разрядность
         """
-        self.capacity_len = len(str(10**capacity - 1))
+        self.capacity_max = 10**capacity - 1
+        self.capacity_len = len(str(self.capacity_max))
         self.position = position
         self.font = smallfont
         self.halfwidth  = self.font.characters["0"].width / 2
@@ -310,6 +396,7 @@ class Counter():#{{{
         self.bgheight = self.font.characters["0"].height - 1
 
     def draw(self, val):
+        val = Gloss.clamp(val, 0, self.capacity_max)
         Gloss.draw_box(position = self.position,
                         width = self.bgwidth,
                         height = self.bgheight,
@@ -614,6 +701,7 @@ class Telemetry(GlossGame):#{{{
     def init(self, q_tlm):#{{{
         #проброс глобальных переменных внутрь класса.
         self.q_tlm = q_tlm
+        #
         #}}}
     def preload_content(self):#{{{
         self.t = Texture("resources/loadscreen.png")
@@ -656,10 +744,12 @@ class Telemetry(GlossGame):#{{{
         pressh = 180
         pressw = 180
 
-        # отображаемые значения. Обновляются функцией update
+        # объявим отображаемые значения. Обновляются функцией update
         self.speed = 0.0
         self.tacho = 0.0
         self.engine_uptime = 0
+        self.trip_value = 0
+        self.discrete_msk = 0
         self.temp_oil = 0.0
         self.temp_water = 0.0
         self.main_voltage = 0.0
@@ -669,34 +759,19 @@ class Telemetry(GlossGame):#{{{
         self.press_break1 = 0.0
         self.press_break2 = 0.0
 
-        # инициализация объектов
+        # инициализация графических объектов
         self.speedometer = Speedometer(position = (380,10))
         self.tachometer = Tachometer(position = (145,45))
         self.thermoblock = ThermoBlock(position = (920,5))
-
-        self.sym_msk = 0
         self.symgrid = SymbolGrid()
-
-        self.autriggers_msk = 0
-        self.autriggers = Leg("autriggers_bg.png",
-                              "autriggers_sygn_red.png",
-                              "autriggers_sygn_grey.png",
-                              position = (5, 768 - legh - 2*symgridh - 5))
-
-        self.tiers_msk = 0
-        self.tiers = Leg("tiers_bg.png",
-                         "tiers_sygn_red.png",
-                         "tiers_sygn_grey.png",
-                         position = (1024 - legw - 5, 768 - legh - 2*symgridh - 5))
-
+        self.autriggers = LegsBlock(position = (5, 768 - legh - 2*symgridh - 5))
+        self.tiers = TiersBlock(position = (1024 - legw - 5, 768 - legh - 2*symgridh - 5))
         self.trip = Counter(capacity = 6, position = (750, 250))
         self.motohours = Counter(capacity = 4, position = (315, 120))
         self.fuelblock = FuelBlock(position = (10, 10))
-
         self.pressblock = PressBlock(position = (235, 768 - pressh - 2*symgridh - 5))
         self.battery = Battery(position = (180, 470))
         self.clock = Clock(position = (730, 480))
-
         self.atm = ATM()
         self.warning = WarningWindow()
 
@@ -727,8 +802,6 @@ class Telemetry(GlossGame):#{{{
         self.symgrid.draw_stat(0)
         Gloss.save_screenshot("/tmp/static_bg.png")
         self.bgtexture = Texture("/tmp/static_bg.png")
-
-
     #}}}
     def draw(self):#{{{
         """The draw() method of your game automatically gets called by Gloss
@@ -741,17 +814,18 @@ class Telemetry(GlossGame):#{{{
         # self.particles.draw()
         self.motohours.draw(self.engine_uptime)
         self.tachometer.draw_dyn(self.tacho)
-        self.trip.draw(31)
+        self.trip.draw(self.trip_value)
         self.speedometer.draw_dyn(self.speed)
         self.thermoblock.draw(self.temp_oil, self.temp_water)
-        self.autriggers.draw_dyn(self.autriggers_msk)
-        self.tiers.draw_dyn(self.tiers_msk)
         self.pressblock.draw_dyn(self.press_oil, self.press_break1, self.press_break2)
         self.fuelblock.draw_dyn(self.tank1_fill, self.tank2_fill)
         self.battery.draw_dyn(self.main_voltage)
-        self.symgrid.draw_dyn(self.sym_msk)
-        self.clock.draw()
 
+        self.autriggers.draw_dyn(self.discrete_msk)
+        self.tiers.draw_dyn(self.discrete_msk)
+        self.symgrid.draw_dyn(self.discrete_msk)
+
+        self.clock.draw()
 
         if flags["atm_mode"] is True:
             self.atm.draw()
@@ -791,6 +865,10 @@ class Telemetry(GlossGame):#{{{
             # are we needed this data?
             if type(tlm_data) == mavlink.MAVLink_mpiovd_sensors_raw_message:
                 self.last_success_time = time.time()
+                analogarray = [tlm_data.analog00, tlm_data.analog01, tlm_data.analog02, tlm_data.analog03,
+                               tlm_data.analog04, tlm_data.analog05, tlm_data.analog06, tlm_data.analog07,
+                               tlm_data.analog08, tlm_data.analog09, tlm_data.analog10, tlm_data.analog11,
+                               tlm_data.analog12, tlm_data.analog13, tlm_data.analog14, tlm_data.analog15]
             else:
                 tlm_data = None
 
@@ -798,33 +876,22 @@ class Telemetry(GlossGame):#{{{
             # растусовка всей ботвы из пакета
             self.speed = tlm_data.analog00 / 100000.0 #tlm_data.speed / 256.0
             self.tacho = tlm_data.rpm / RPM_MAX
-            # self.tacho = tlm_data.analog00 / 100000.0
+            self.trip_value = tlm_data.trip
             self.engine_uptime = tlm_data.engine_uptime
-            self.main_voltage = tlm_data.analog00 / 1000.0
-            self.tank1_fill = self.dump02.get(tlm_data.analog01)
-            self.tank2_fill = self.dump02.get(tlm_data.analog02)
-
-            #print "tlm.an01 = ", tlm_data.analog01, "raw volatage = ", tlm_data.analog00
-            # print tlm_data.analog03, tlm_data.analog04
-
-            self.temp_oil   = self.TM100.get(Gloss.clamp(tlm_data.analog03, AN_MIN, AN_MAX))
-            self.temp_water = self.TM100.get(Gloss.clamp(tlm_data.analog04, AN_MIN, AN_MAX))
-
-            self.press_oil    = self.mzkt18.get(Gloss.clamp(tlm_data.analog05, AN_MIN, AN_MAX))
-            self.press_break1 = self.mzkt18.get(Gloss.clamp(tlm_data.analog06, AN_MIN, AN_MAX))
-            self.press_break2 = self.mzkt18.get(Gloss.clamp(tlm_data.analog07, AN_MIN, AN_MAX))
-
-            self.sym_msk = tlm_data.relay
-            self.autriggers_msk = (tlm_data.relay >> 32)
-            self.tiers_msk = tlm_data.relay >> (32 + 6)
-
+            # analog sensors
+            self.main_voltage   = analogarray[main_voltage_idx] / 1000.0
+            self.tank1_fill     = self.dump02.get(analogarray[tank1_fill_idx])
+            self.tank2_fill     = self.dump02.get(analogarray[tank2_fill_idx])
+            self.temp_oil       = self.TM100.get(Gloss.clamp(analogarray[temp_oil_idx], AN_MIN, AN_MAX))
+            self.temp_water     = self.TM100.get(Gloss.clamp(analogarray[temp_water_idx], AN_MIN, AN_MAX))
+            self.press_oil      = self.mzkt18.get(Gloss.clamp(analogarray[press_oil_idx], AN_MIN, AN_MAX))
+            self.press_break1   = self.mzkt18.get(Gloss.clamp(analogarray[press_break1_idx], AN_MIN, AN_MAX))
+            self.press_break2   = self.mzkt18.get(Gloss.clamp(analogarray[press_break2_idx], AN_MIN, AN_MAX))
+            # discrete sensors
+            self.discrete_msk   = tlm_data.relay
+            discrete_dbg_print(self.discrete_msk)
             # и в самом конце "сбрасываем флаг"
             tlm_data = None
-
-        # моргание значками в случайном порядке
-        # self.autriggers_msk += 1
-        # self.autriggers_msk &= 2**7 - 1
-        # self.sym_msk = random.randint(0, (2**32 - 1))
         #}}}
     def __debugupdate(self):#{{{
         """ Отладочная обновлялка информации на экране """
