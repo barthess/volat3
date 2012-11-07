@@ -1,0 +1,6 @@
+[submodule "soft/microrl"]
+	path = soft/microrl
+	url = git@github.com:barthess/microrl.git
+[submodule "soft/eeprom"]
+	path = soft/eeprom
+	url = git@github.com:barthess/24aa.git

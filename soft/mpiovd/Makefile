@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -Os -ggdb -fno-strict-aliasing -fomit-frame-pointer -falign-functions=16 -std=gnu99
+  USE_OPT = -O0 -ggdb -fno-strict-aliasing -fomit-frame-pointer -falign-functions=16 -std=gnu99
 endif
 
 # C specific options here (added to USE_OPT).
@@ -30,7 +30,7 @@ endif
 
 # Enable this if you want to see the full log while compiling.
 ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = no
+  USE_VERBOSE_COMPILE = yes
 endif
 
 #
@@ -79,6 +79,9 @@ CSRC = $(PORTSRC) \
        $(BOARDSRC) \
        $(CHIBIOS)/os/various/shell.c \
        $(CHIBIOS)/os/various/chprintf.c \
+       ../eeprom/eeprom.c \
+       ../eeprom/eeprom_testsuit.c \
+       ../microrl/src/microrl.c \
        main.c \
        board.c \
        src/autopilot.c \
@@ -99,8 +102,6 @@ CSRC = $(PORTSRC) \
        src/parameters/param.c \
        src/parameters/param_cli.c \
        src/parameters/persistant.c \
-       src/eeprom/eeprom.c \
-       src/eeprom/eeprom_testsuit.c \
        src/link/usb_local.c \
        src/link/uart_local.c \
        src/link/cli.c \
@@ -111,7 +112,6 @@ CSRC = $(PORTSRC) \
        src/link/linkmgr.c \
        src/link/link_sortin.c \
        src/link/link_sortout.c \
-       src/microrl/src/microrl.c \
        src/dsp/dsp.c \
        
 
@@ -143,7 +143,9 @@ TCPPSRC =
 ASMSRC = $(PORTASM)
 
 # Dir with mavlink headers
-MAVLINKDIR = ../mavlink/C
+MAVLINCDIR = ../mavlink/C
+
+SUBMODULEINCDIR = ../eeprom ../microrl
 
 INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC) \
@@ -155,8 +157,9 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src/link \
          src/dsp \
          src/parameters \
-         $(MAVLINKDIR)/common \
-         $(MAVLINKDIR)/mpiovd
+         $(SUBMODULEINCDIR) \
+         $(MAVLINCDIR)/common \
+         $(MAVLINCDIR)/mpiovd \
 
 #
 # Project, sources and paths
