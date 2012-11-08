@@ -14,23 +14,23 @@
 typedef struct GlobalFlags_t{
   //0
   uint32_t allow_softreset:1; /* system performs soft reset instead of halting in panic */
-  uint32_t gyro_cal:1;
-  uint32_t accel_cal:1;
-  uint32_t mag_cal:1;
+  uint32_t stub_0:1;
+  uint32_t stub_03:1;
+  uint32_t stub_04:1;
   //4
-  uint32_t eeprom_failed:1;
-  uint32_t tlm_link_ready:1;
-  uint32_t modem_ready:1;
-  uint32_t logger_ready:1;
+  uint32_t logger_ready:1;      /* MMC card connected and logger thread started */
+  uint32_t link_cc_ready:1;     /* connection with control center via GSM up */
+  uint32_t link_dm_ready:1;     /* connection with dysplay module up */
+  uint32_t link_mpiovd_ready:1; /* */
   //8
-  uint32_t sighalt:1;
-  uint32_t mag_data_ready:1;
-  uint32_t mission_takeoff:1;
-  uint32_t mission_loiter:1;
+  uint32_t gps_ready:1;         /* GPS send first packet */
+  uint32_t gps_valid:1;         /* coordinates valid */
+  uint32_t parameters_got:1;    /* parameters successfully retrieved from EEPROM */
+  uint32_t i2c_ready:1;         /* i2c bus initialized */
   //12
-  uint32_t mission_abort:1;
-  uint32_t parameters_got:1;  /* parameters successfully retrieved from EEPROM */
-  uint32_t i2c_ready:1;       /* i2c bus initialized */
+  uint32_t stub2:1;
+  uint32_t stub0:1;
+  uint32_t stub1:1;
   uint32_t stub3:1;
   //16
   uint32_t stub4:1;
@@ -67,6 +67,7 @@ typedef struct GlobalFlags_t{
 #define LINK_THREADS_PRIO         (NORMALPRIO - 5)
 #define CMD_THREADS_PRIO          (LINK_THREADS_PRIO - 2)
 #define GPS_THREAD_PRIO           (NORMALPRIO - 2)
+#define MPIOVD_THREAD_PRIO        (NORMALPRIO - 2)
 
 /******************************************************************
 * статусы возвращаемые разными подсистемами */

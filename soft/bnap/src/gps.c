@@ -69,7 +69,7 @@ float LongitudeScale = 0;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static SerialConfig gps_ser_cfg = {
+static const SerialConfig gps_ser_cfg = {
     GPS_BAUDRATE,
     AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
                                AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
@@ -134,7 +134,7 @@ static msg_t gpsRxThread(void *arg){
   while(TRUE){
 
 EMPTY:
-    if (n >= 2 && GlobalFlags.tlm_link_ready){
+    if (n >= 2 && GlobalFlags.link_dm_ready){
       chBSemWaitTimeout(&gps_sem, MS2ST(1));
       mavlink_global_position_int_struct.time_boot_ms = TIME_BOOT_MS;
       gps_mail.payload = &mavlink_global_position_int_struct;
@@ -425,7 +425,6 @@ static bool_t gpsisdigit(char c){
  */
 void GPSInit(void){
   sdStart(&SDGPS, &gps_ser_cfg);
-  sdStart(&SDDM, NULL);
 
   /* зачистка входной очереди после всех манипуляций. На всякий случай */
   chSysLock();

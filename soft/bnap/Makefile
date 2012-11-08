@@ -64,6 +64,8 @@ CSRC = $(PORTSRC) \
        $(PLATFORMSRC) \
        main.c \
        board.c \
+       link/link.c \
+       link/link_mpiovd.c \
        src/gcc_stubs.c \
        src/gps.c \
        src/message.c \
@@ -107,12 +109,12 @@ TOOLCHAININCDIR = /opt/arm-none-eabi-gcc-4_6/lib/gcc/arm-none-eabi/4.6.2/include
 INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC) \
          $(CHIBIOS)/os/various \
-         $(TOOLCHAININCDIR) \
          $(MAVLINCDIR) \
          $(MAVLINCDIR)/common \
          $(MAVLINCDIR)/mpiovd \
          src \
-
+         link \
+         $(TOOLCHAININCDIR) \
 #
 # Project, sources and paths
 ##############################################################################

@@ -14,6 +14,7 @@
 #include "timekeeping.h"
 #include "sanity.h"
 #include "gps.h"
+#include "link.h"
 
 /*
  ******************************************************************************
@@ -60,6 +61,7 @@ int main(void) {
   MavInit();
   MsgInit();
   GPSInit();
+  LinkInit();
   TimekeepingInit();
   SanityControlInit();
 

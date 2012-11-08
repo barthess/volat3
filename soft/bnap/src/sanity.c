@@ -73,7 +73,7 @@ static msg_t SanityControlThread(void *arg) {
 
     /* fill data fields and send struct to message box */
     chBSemWaitTimeout(&sanity_sem, MS2ST(1));
-    if (GlobalFlags.tlm_link_ready){
+    if (GlobalFlags.link_cc_ready){
       mavlink_heartbeat_struct.type           = mavlink_system_struct.type;
       mavlink_heartbeat_struct.base_mode      = mavlink_system_struct.mode;
       mavlink_heartbeat_struct.system_status  = mavlink_system_struct.state;
