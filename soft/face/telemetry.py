@@ -55,7 +55,8 @@ press_break1_idx	= config.getint('AnalogMap', 'press_break1_idx')
 press_break2_idx	= config.getint('AnalogMap', 'press_break2_idx')
 
 
-def discrete_dbg_print(discrete):
+def discrete_dbg_print(discrete):#{{{
+    return
     st = ""
     i = 63
     while i >= 0:
@@ -65,6 +66,15 @@ def discrete_dbg_print(discrete):
             st += " "
         i -= 1
     print st
+#}}}
+def godconsole():#{{{
+    import os
+
+    os.system('killall serialproxy.py')
+    os.system('xterm')
+    os.system('./serialproxy.py &')
+#}}}
+
 
 class Label():#{{{текстовая бирка с возможностью центрирования
     def __init__(self, font):
@@ -695,6 +705,20 @@ class WarningWindow():#{{{
         largefont.draw(string)
         pass
     #}}}
+class Cheat():#{{{
+    def __init__(self, st, function):
+        self.cheat = st
+        self.buf = ""
+        self.f = function
+    def update(self, char):
+        self.buf += char
+        if self.buf == self.cheat:
+            self.buf = ""
+            self.f()
+            return
+        elif self.cheat[:len(self.buf)] != self.buf:
+            self.buf = ""
+#}}}
 
 
 class Telemetry(GlossGame):#{{{
@@ -719,8 +743,12 @@ class Telemetry(GlossGame):#{{{
         self.on_mouse_down = self.handle_mouse_clicks
         # для обработки клавиш
         self.on_key_up = self.handle_key_presses
+        # для постобработки выхода
+        self.on_quit = self.handle_quit
         # переменная для слежения за отсутствием присутствия увву
         self.last_success_time = time.time()
+        #
+        self.god = Cheat("iddqd", self.quit)
 
         # всякие полезные шрифты
         global tinyfont
@@ -845,6 +873,15 @@ class Telemetry(GlossGame):#{{{
     def handle_key_presses(self, event):#{{{
         if event.key is K_SPACE:
             self.flags["atm_mode"] = not self.flags["atm_mode"]
+        elif event.key is K_i:
+            self.god.update("i")
+        elif event.key is K_d:
+            self.god.update("d")
+        elif event.key is K_q:
+            self.god.update("q")
+        else:
+            self.god.update("")
+
     #}}}
     def handle_mouse_clicks(self, event):#{{{
         pygame.display.set_caption(str(event.pos[0]) + "x" + str(event.pos[1]))
@@ -852,6 +889,9 @@ class Telemetry(GlossGame):#{{{
     def handle_mouse_motion(self, event):#{{{
         if flags["mouse_capture"] is True:
             self.mousepos = event.pos
+        #}}}
+    def handle_quit(self):#{{{
+        print "Quit. By."
         #}}}
     def __normalupdate(self):#{{{
         """ Стандартная обновлялка инфы """
