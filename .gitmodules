@@ -1,6 +1,6 @@
-[submodule "soft/firmware/src/microrl"]
-	path = soft/firmware/src/microrl
+[submodule "soft/microrl"]
+	path = soft/microrl
 	url = git@github.com:barthess/microrl.git
-[submodule "soft/firmware/src/eeprom"]
-	path = soft/firmware/src/eeprom
+[submodule "soft/eeprom"]
+	path = soft/eeprom
 	url = git@github.com:barthess/24aa.git

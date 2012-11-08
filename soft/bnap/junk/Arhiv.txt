@@ -1,0 +1,481 @@
+  if(0 == memcmp("SET_IP ", pMsg->PointerStr() + 1, 7))
+  {
+  }
+  if(0 == memcmp("GET_IP ", pMsg->PointerStr() + 1, 7))
+  {
+  }
+  if(0 == memcmp("SET_PORT ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+  if(0 == memcmp("GET_PORT ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+  if(0 == memcmp("SET_PIN ", pMsg->PointerStr() + 1, 8))
+  {
+  }
+  if(0 == memcmp("GET_PIN ", pMsg->PointerStr() + 1, 8))
+  {
+  }
+  if(0 == memcmp("SET_TNUM ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+  if(0 == memcmp("GET_TNUM ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+  if(0 == memcmp("SET_NAME ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+  if(0 == memcmp("GET_NAME ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+  if(0 == memcmp("SET_PASS ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+  if(0 == memcmp("GET_PASS ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+   if(0 == memcmp("SET_TERM ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+
+  if(0 == memcmp("GET_TERM ", pMsg->PointerStr() + 1, 9))
+  {
+  }
+  if(0 == memcmp("SET_INT ", pMsg->PointerStr() + 1, 8))
+  {
+  }
+  if(0 == memcmp("GET_INT ", pMsg->PointerStr() + 1, 8))
+  {
+  }
+
+
+
+
+	//  1010 1010 Предыдущее состояние сохраняю в нечетных разрядах
+	// (State.stNewState.ucDigitalInputState << 1) & 0xAA;	 
+
+    if(State.ucDigitalInputState == ucState) continue;
+    State.ucDigitalInputState = ucState;
+
+    // Создаю сообщение
+    C_Msg * pMsg  = NewMsg(ID_MANAGEMENT, ID_INPUTSTATE, NOMAILBOX, FLAG_MSG_CMDWITHOUTRESPONSE, 1);
+    if(NULL == pMsg) return;    // Переполнен пул сообщений
+    // Отправляю сообщение модулю Management
+    *pMsg->PointerStr() = ucState;
+    if(OS_R_OK != os_mbx_send(Management.MailBox, pMsg, TIMEOUT_INPUTSTATE_SEND)){
+      ErrorHandler.ErrorToList(0);
+      pMsg->Release();
+    }
+
+
+
+
+ 
+
+/*
+
+  if(usDataLength > usMaxSize) 
+    Restart();                          // Ошибка. Недопустимая длина строки данных !!!!!!!!!
+  memcpy(strzResponse, pArgument, usDataLength);
+  strzResponse[usDataLength] = 0;         // Записываю завершающий 0
+
+  char strzResponse[MAXSIZEBLOCK_FROM_GSM];
+  char pCryptoData[CRYPTOBLOKSIZE];
+  // Резервирую место для команды, начального и конечного ограничителей и завершающиего 0
+  char strzOutput[1 + (sizeof(strzCMD) - 1) + 2*CRYPTOBLOKSIZE + 2]; 
+
+  // Формирую структуру пакета для данных размером 2*CRYPTOBLOKSIZE 
+  strzOutput[0] = ucStartDelimiter; 
+  memcpy(strzOutput + 1, strzCMD, strlen(strzCMD));
+  strzOutput[1 + strlen(strzCMD) + 2*CRYPTOBLOKSIZE] = ucEndDelimiter;
+  strzOutput[1 + strlen(strzCMD) + 2*CRYPTOBLOKSIZE + 1] = 0;
+
+  // Указатель на аргумент команды в строке отпраляемой модему
+  char * pHEXData = strzOutput + 1 + strlen(strzCMD);
+  while(BLOKSIZE < usSize){
+    // Шифрую блоками по BLOKSIZE байтов 
+    U16 usCount = Crypto(pData, pCryptoData, BLOKSIZE);
+    // Преобразую в HEX
+    CharToHex(pHEXData, pCryptoData, usCount);
+    // Отправляю блок модему
+    GSM.CMDHandler(strzOutput, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+    usSize = usSize - BLOKSIZE;
+    pData = pData + BLOKSIZE;
+  }
+  // Шифрую блоками по BLOKSIZE байтов 
+  U16 usCount = Crypto(pData, pCryptoData, usSize);
+  // Формирую структуру пакета для данных размером 2*usCount 
+  strzOutput[1 + strlen(strzCMD) + 2*usCount] = ucEndDelimiter;
+  strzOutput[1 + strlen(strzCMD) + 2*usCount + 1] = 0;
+  // Преобразую в HEX
+  CharToHex(pHEXData, pCryptoData, usCount);
+  // Отправляю блок модему
+  GSM.CMDHandler(strzOutput, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+*/
+
+
+
+
+//    os_mbx_wait(GSM.MailBox, (void **)&(pMsg), 0xFFFF); 
+//    if(OS_R_OK != os_mbx_send(GSM.usart->MailBox, pMsg, TIMEOUT_LINKPCTX_SEND)) {
+//      ErrorHandler.ErrorToList(0);
+//      pMsg->Release();   }
+
+
+
+
+//----------------------------------------------------------------------------
+// Обработка команд и подтверждений, поступающих от ДЦ
+// В одном сообщении содержится только один пакет от диспетчерского центра
+//----------------------------------------------------------------------------
+void C_DC::DC_Handler(char* pPacket)
+{
+  S_DefaultPacket *pDefaultPacket = (S_DefaultPacket *)pPacket;
+  switch(pDefaultPacket->ucType) // Идентификатор пакета 
+  {
+    // Сравнить GPS пароль
+    case TYPE_PACKET_AUTH_PASSWORD:
+        {
+          char pcGPSPassowrd[7];
+          // Запрашиваю пароль  
+          GSM.CMDHandler("mgGPSPass", pcGPSPassowrd, sizeof(pcGPSPassowrd) - 1, ID_DC);
+          // Сравниваю пароли
+          S_AuthPacket * pAuthPacket = (S_AuthPacket *)pPacket;
+          if(0 == strcmp(pAuthPacket->pcGPSPassowrd, pcGPSPassowrd)) {
+            // Пароль принят, формирую и посылаю пакет версиями ПО и номерами SIM-карты
+            S_VersionPacket stVersionPacket;
+            stVersionPacket.SetTerminalType("ТИНС-04");
+            stVersionPacket.SetOS_Version("");       // Версия операционной системы 
+            stVersionPacket.SetWDWL_Version("");     // Версия загрузчика
+            stVersionPacket.SetIMEI_Number("");      // IMEI
+            stVersionPacket.SetIMSI_Number("");      // IMSI
+            stVersionPacket.SetTerminalVersion("");  // Версия ПО терминала
+            // Отправляю сформированный пакет ДЦ
+            SendPacketToDC((char *)&stVersionPacket, sizeof(S_VersionPacket));
+          }
+          else {
+            // Пароль не принят, разрываю соединение
+          }
+        }
+        break; 
+                                     
+    // Принять  информацию о наличии обновления      
+    case TYPE_PACKET_IS_UPDATE:             
+        break; 
+
+    // Принять параметры определяющиме режим формирования путевой информации          
+    case TYPE_PACKET_SET_POLLING_CONFIG:
+        {              
+          S_ConfigPollingPacket *pConfigPollingPacket = (S_ConfigPollingPacket *)pPacket;
+          // Сохраняю принятые данные в структуре SystemParameters 
+          SystemParameters.usGPRSDataTimeout = pConfigPollingPacket->usGPRSDataTimeout;
+          SystemParameters.usGPRSDistanse = pConfigPollingPacket->usGPRSDistanse;
+          SystemParameters.usGPRSAzimut = pConfigPollingPacket->usGPRSAzimut;
+          // Сохраняю принятые данные в памяти модема 
+          char strzResponse[4];
+          GSM.CMDHandler("msGPSTOutmsGPSTOut", pConfigPollingPacket->usGPRSDataTimeout, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+          GSM.CMDHandler("msGPSDistanse", pConfigPollingPacket->usGPRSDistanse, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+          GSM.CMDHandler("msGPSAzimut", pConfigPollingPacket->usGPRSAzimut, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+          // Отправляю подтверждение ДЦ
+          const S_SetPollingConfirmPacket SetPollingConfirmPacket;
+          SendPacketToDC((char *)&SetPollingConfirmPacket, sizeof(S_SetPollingConfirmPacket));
+        }
+        break;
+               
+    // Принять параметры TCP/IP соединения        
+    case TYPE_PACKET_SET_IP_CONFIG:             
+        {              
+          S_ConfigIPPacket *pConfigIPPacket = (S_ConfigIPPacket *)pPacket;
+          // Сохраняю принятые данные в памяти модема 
+          char strzResponse[4];
+          GSM.CMDHandler("msIP", pConfigIPPacket->pcTcpServ, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+          GSM.CMDHandler("msPORT", pConfigIPPacket->usTcpPort, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+          // Отправляю подтверждение ДЦ
+          const S_SetIPConfirmPacket SetIPConfirmPacket;
+          SendPacketToDC((char *)&SetIPConfirmPacket, sizeof(S_SetIPConfirmPacket));
+        }
+        break;  
+             
+    // Принять параметры GPRS соединения        
+    case TYPE_PACKET_SET_GPRS_CONFIG:            
+        {              
+          S_ConfigGPRSPacket *pConfigGPRSPacket = (S_ConfigGPRSPacket *)pPacket;
+          // Сохраняю принятые данные в памяти модема 
+          char strzResponse[4];
+          GSM.CMDHandler("msApnServ",  pConfigGPRSPacket->pcApnServ, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+          GSM.CMDHandler("msApnUName", pConfigGPRSPacket->pcApnUn, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+          GSM.CMDHandler("msApnUPass", pConfigGPRSPacket->pcApnPw, strzResponse, sizeof(strzResponse) - 1, ID_DC);
+          // Отправляю подтверждение ДЦ
+          const S_SetGPRSConfirmPacket SetGPRSConfirmPacket;
+          SendPacketToDC((char *)&SetGPRSConfirmPacket, sizeof(S_SetGPRSConfirmPacket));
+        }
+        break;   
+
+    // Установить сигналы на выходе        
+    case TYPE_PACKET_SET_OUTPUT:            
+        {              
+          // Отправляю подтверждение ДЦ
+          const S_SetOutputConfirmPacket SetOutputConfirmPacket;
+          SendPacketToDC((char *)&SetOutputConfirmPacket, sizeof(S_SetOutputConfirmPacket));
+        }
+        break;   
+    case TYPE_PACKET_GET_CONFIG:             // Чтение параметров работы терминала
+        break;       
+    case TYPE_PACKET_FILE_BLOCK:             // Получить блок данных обновления
+        break;       
+    case TYPE_PACKET_FILE_SIZE:              // Полученить размера файла обновления
+        break; 
+    // Подтверждение пакета с путевой информацией     
+    case TYPE_PACKET_WAY_POINT_CONFIRM: 
+        break;
+    // Пустой пакет для поддержки соединения     
+    case TYPE_PACKET_NOOP:
+        {  
+          const S_NoopConfirmPacket  NoopConfirmPacket;
+          SendPacketToDC((char *)&NoopConfirmPacket, sizeof(S_NoopConfirmPacket));
+          // 
+        }
+        break;   
+    default:          
+        break;       
+  }
+}
+//----------------------------------------------------------------------------
+
+       U32 uiID1 = ID_;
+      U32 uiID2 = OBJ_.GetIDSource();
+      U32 *p = OBJ_.GetPtrMailboxSource();
+      U8 * pc = OBJ_.pInputBuf;
+      U32 uiC = OBJ_.usCountChar;
+      pc[1] = 0x32;
+      pc[2] = 0x33;
+      pc[3] = 0x34;
+      pc[4] = 0x35;
+      pc[5] = 0x36;
+      pc[6] = 0x37;
+      pc[7] = 0x38;
+      pc[8] = 0x39;
+
+
+ C_TCPBuf buf;
+  U16 usSize = buf.Size();
+  U16 usSizeFree = buf.SizeFree();
+  U16 usSizeMax = buf.SizeMax();
+  for(int i = 0; i < 250; ++i)
+    buf.Insert((U8 *)&i);
+
+  usSize = buf.Size();
+  usSizeFree = buf.SizeFree();
+  usSizeMax = buf.SizeMax();
+  for(int i = 0; i < 250; ++i) 
+    buf.Get((U8 *)&xx);
+  usSize = buf.Size();
+  usSizeFree = buf.SizeFree();
+  usSizeMax = buf.SizeMax();
+
+  U8 pc[200];
+  for(int i = 0; i < 200; ++i)
+    pc[i] = i;
+ 
+  buf.Insert(pc,200);
+  usSize = buf.Size();
+  usSizeFree = buf.SizeFree();
+  usSizeMax = buf.SizeMax();
+
+  for(int i = 0; i < 200; ++i)
+    pc[i] = 0;
+  buf.Read(pc, 0, 200);    
+  usSize = buf.Size();
+  usSizeFree = buf.SizeFree();
+  usSizeMax = buf.SizeMax();
+
+  buf.Get(pc,200);
+
+  usSize = buf.Size();
+  usSizeFree = buf.SizeFree();
+  usSizeMax = buf.SizeMax();
+
+  for(int i = 0; i < 200; ++i)
+    buf.Read((U8 *)&xx, i, 4);    
+
+
+
+  bool Read7(U8 * pucData, U16 usDataSize, U16 usSCLFrequency, U8 ucAddresSlave){return true;}
+  bool Read7(U8 * pucData, U16 usDataSize, U16 usSCLFrequency, U8 ucAddresSlave, U8 ucIntnalA0);
+  bool Read7(U8 * pucData, U16 usDataSize, U16 usSCLFrequency, U8 ucAddresSlave, U8 ucIntnalA0, U8 ucIntnalA1 ){return true;}
+  bool Read7(U8 * pucData, U16 usDataSize, U16 usSCLFrequency, U8 ucAddresSlave, U8 ucIntnalA0, U8 ucIntnalA1, U8 ucIntnalA2){return true;}
+  bool Write7(U8 * pucData, U16 usDataSize, U16 usSCLFrequency, U8 ucAddresSlave){return true;}
+  bool Write7(U8 * pucData, U16 usDataSize, U16 usSCLFrequency, U8 ucAddresSlave, U8 ucIntnalA0 ){return true;}
+  bool Write7(U8 * pucData, U16 usDataSize, U16 usSCLFrequency, U8 ucAddresSlave, U8 ucIntnalA0, U8 ucIntnalA1 ){return true;}
+  bool Write7(U8 * pucData, U16 usDataSize, U16 usSCLFrequency, U8 ucAddresSlave, U8 ucIntnalA0, U8 ucIntnalA1, U8 ucIntnalA2){return true;}
+
+30.09.2010
+// Циклический буфер для FLASH 
+// Данные хранятся во FLASH памяти SD карты, указатели хранятся в ОЗУ 
+// микросхемы DS1338. Для повышения надежности хранится две копии указателей. 
+// Каждая копия указателей снабжена контрольной суммой
+// Т это структура, которая начинается с 16-ти разрядного идентификатора. 
+// В качестве идентификатора используется смещение элемента относительно начала 
+// буфера. Значение 0xFFFF используется в качестве идентификатора свободного 
+// элемента. Таким образом максимальное число элементов (BUF_SIZE) 2^16 - 1.
+//----------------------------------------------------------------------------
+// Алгоритм хранения и отправки в диспетчерский центр путевой информации
+// - Путевая информация сохраняется в циклическом буфере который реализован в 
+//   памяти SD карты
+// - Если буфер заполнен, то новые данные записываются на место наиболее старых.
+// - Размер элемента данных не должен превышать 512 байтов
+// - Для циклического буфера на SD карте отводится непрерывная область в 2^16 - 1 
+//   секторов размером 512 байтов
+// - Каждый элемент данных хранится в отдельном физическом секторе SD карты 
+// - Каждому сектору присваивается идентификатор. Идентификатор равен
+//   относительному номеру сектора, если сетор используется для хранения данны.
+// - Идентификатор свободных сеторов имеет значение 2^16-1 (0xFFFF)
+// - Относительный номер сектора принимает значения в интервале 0т 0 до 2^16-2
+// _ При отправке пакета в диспетчерский центр в качестве идентификатора пакета 
+//   используется идентификатор элемента данных
+// - При приеме подтверждения элемент данных с идентификатором, который передан 
+//   в подтверждении, помечается как свободный.
+// - Сформированный блок путевой информации помещается в циклический буфер и 
+//   устанавливается флаг наличия в циклическом буфере нового блока
+//   Если в циклическом буфере имеются данные (размер буфера не равен 0), то они 
+//   отправляются в диспетчерский центр. Приоритет при отпраке имеет вновь созданный 
+//   элемент данных (устанавлен флаг наличия нового блока).
+//----------------------------------------------------------------------------
+
+
+=======================================================================
+/*
+  int ii;
+
+//=====================================
+  print_text("\rИсходное состояние\r");
+  for(ii = 0; ii < 100; ++ii){
+    xx = MMCBuffer.Read(&WayPointPacket, ii);
+    if(NO_ERROR != xx) goto L_Error;
+    char pc[40];
+    sprintf(pc, "\r%i  %i", ii, WayPointPacket.GetNumberPoint()); 
+    print_text(pc);
+    os_dly_wait(1);
+  }
+//=====================================
+
+
+
+  for(ii = 0; ii < 10; ++ii){
+    WayPointPacket.uiStatus = 'A';
+    xx = MMCBuffer.Insert(&WayPointPacket);
+    if(NO_ERROR != xx) goto L_Error;
+  }
+
+
+//=====================================
+  print_text("\rСостояние после инициализации\r");
+  for(int i = 0; i < 100; ++i){
+    xx = MMCBuffer.Read(&WayPointPacket, i);
+    if(NO_ERROR != xx) goto L_Error;
+    char pc[40];
+    sprintf(pc, "\r%i  %i", i, WayPointPacket.GetNumberPoint()); 
+    print_text(pc);
+  }
+//=====================================
+
+  for(int i = 0; i < 10; ++i){
+    WayPointPacket.uiStatus = 'A';
+    xx = MMCBuffer.Insert(&WayPointPacket);
+    if(NO_ERROR != xx) goto L_Error;
+  }
+
+//=====================================
+  print_text("\rДобавил 10 элементов\r");
+  for(int i = 0; i < 100; ++i){
+    xx = MMCBuffer.Read(&WayPointPacket, i);
+    if(NO_ERROR != xx) goto L_Error;
+    char pc[40];
+    sprintf(pc, "\r%i  %i", i, WayPointPacket.GetNumberPoint()); 
+    print_text(pc);
+  }
+//=====================================
+
+
+ U16 ucWP;
+ for(int i = 0; i < 12; ++i){
+   xx = PacketQueue.GetNumber(ucWP);
+   xx = 0xFFFF0000;
+ }
+
+ xx = MMCBuffer.Delete(0);
+ xx = MMCBuffer.Delete(1);
+
+ for(int i = 0; i < 12; ++i){
+   xx = PacketQueue.GetNumber(ucWP);
+   xx = 0xFFFF0000;
+ }
+
+  for(int i = 0; i < 20; ++i){
+    xx = MMCBuffer.Delete(i + 10);
+    if(NO_ERROR != xx) goto L_Error;
+ }
+//=====================================
+  print_text("\rУдалил 20 элементов начиная с 10-го\r");
+  for(int i = 0; i < 100; ++i){
+    xx = MMCBuffer.Read(&WayPointPacket, i);
+    if(NO_ERROR != xx) goto L_Error;
+    char pc[40];
+    sprintf(pc, "\r%i  %i", i, WayPointPacket.GetNumberPoint()); 
+    print_text(pc);
+  }
+//=====================================
+
+  for(int i = 0; i < 40; ++i){
+    WayPointPacket.uiStatus = 'B';
+    xx = MMCBuffer.Insert(&WayPointPacket);
+    if(NO_ERROR != xx) goto L_Error;
+  }
+
+//=====================================
+  print_text("\rДобавил 40 элементов\r");
+  for(int i = 0; i < 100; ++i){
+    xx = MMCBuffer.Read(&WayPointPacket, i);
+    if(NO_ERROR != xx) goto L_Error;
+    char pc[40];
+    sprintf(pc, "\r%i  %i", i, WayPointPacket.GetNumberPoint()); 
+    print_text(pc);
+  }
+//=====================================
+
+  for(int i = 0; i < 9; ++i){
+    xx = MMCBuffer.Delete(i);
+    if(NO_ERROR != xx) goto L_Error;
+ }
+//=====================================
+  print_text("\rУдалил 9 элементов начиная с 0-го\r");
+  for(int i = 0; i < 100; ++i){
+    xx = MMCBuffer.Read(&WayPointPacket, i);
+    if(NO_ERROR != xx) goto L_Error;
+    char pc[40];
+    sprintf(pc, "\r%i  %i", i, WayPointPacket.GetNumberPoint()); 
+    print_text(pc);
+  }
+//=====================================
+
+
+  for(int i = 0; i < 55; ++i){
+    WayPointPacket.uiStatus = 'A';
+    xx = MMCBuffer.Insert(&WayPointPacket);
+    if(NO_ERROR != xx) goto L_Error;
+  }
+
+//=====================================
+  print_text("\rДобавил 55 элементов\r");
+  for(int i = 0; i < 100; ++i){
+    xx = MMCBuffer.Read(&WayPointPacket, i);
+    if(NO_ERROR != xx) goto L_Error;
+    char pc[40];
+    sprintf(pc, "\r%i  %i", i, WayPointPacket.GetNumberPoint()); 
+    print_text(pc);
+  }
+//=====================================
+
+ xx = PacketQueue.GetNumber(ucWP);
+*/
+================================================================
