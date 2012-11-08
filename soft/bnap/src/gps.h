@@ -18,7 +18,8 @@
 
 #define GPS_BAUDRATE 9600
 
-#define gps_reset()  {palClearPad(GPIOE, GPIOE_GPS_PWR_EN);}
+//#define gps_reset_assert()
+//#define gps_reset_release()
 
 void GPSInit(void);
 

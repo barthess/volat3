@@ -309,16 +309,6 @@ static void parse_rmc(uint8_t *rmcbuf, mavlink_global_position_int_t *global_pos
   	raw_data.gps_speed_knots = 0;
   }
   global_pos_struct->hdg = HDG_UNKNOWN;
-
-
-
-  sdWrite(&SDDM, (uint8_t *)"Hello World!\r\n", 14);
-
-
-
-
-
-
 }
 
 /**

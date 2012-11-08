@@ -43,9 +43,9 @@
  * Human readable pseudonims for serial drivers
  */
 #define SDGPS                       SDDBG
-#define SDMPIOVD                    SD1
+#define SDMPIOVD                    SD3
 #define SDGSM                       SD2
-#define SDDM                        SD3 /* display module */
+#define SDDM                        SD1 /* display module */
 
 /*
  * I/O definitions.

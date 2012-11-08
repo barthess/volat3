@@ -30,7 +30,7 @@ endif
 
 # Enable this if you want to see the full log while compiling.
 ifeq ($(USE_VERBOSE_COMPILE),)
-  USE_VERBOSE_COMPILE = yes
+  USE_VERBOSE_COMPILE = no
 endif
 
 #
@@ -45,7 +45,7 @@ endif
 PROJECT = ch
 
 # Imported source files and paths
-CHIBIOS = ../../../chibios_git
+CHIBIOS = ../../../chibios
 include $(CHIBIOS)/os/hal/platforms/AT91SAM7/platform.mk
 include $(CHIBIOS)/os/hal/hal.mk
 include $(CHIBIOS)/os/ports/GCC/ARM/AT91SAM7/port.mk
@@ -100,10 +100,14 @@ ASMSRC = $(PORTASM)
 
 # Dir with mavlink headers
 MAVLINCDIR = ../mavlink/C
-
+TOOLCHAININCDIR = /opt/arm-none-eabi-gcc-4_6/lib/gcc/arm-none-eabi/4.6.2/include \
+				  /opt/arm-none-eabi-gcc-4_6/lib/gcc/arm-none-eabi/4.6.2/include-fixed \
+				  /opt/arm-none-eabi-gcc-4_6/arm-none-eabi/include
+				 
 INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(HALINC) $(PLATFORMINC) $(BOARDINC) \
          $(CHIBIOS)/os/various \
+         $(TOOLCHAININCDIR) \
          $(MAVLINCDIR) \
          $(MAVLINCDIR)/common \
          $(MAVLINCDIR)/mpiovd \
