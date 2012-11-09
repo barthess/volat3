@@ -1,6 +1,11 @@
 #ifndef MESSAGE_H_
 #define MESSAGE_H_
 
+
+#define EVENT_GPS_MSG_READY           (1UL << 2)
+#define EVENT_HERTBEAT_MSG_READY      (1UL << 0)
+
+
 /**
  * Structure for data exchange with confimation capability.
  */

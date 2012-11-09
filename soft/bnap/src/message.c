@@ -16,20 +16,33 @@
  * EXTERNS
  ******************************************************************************
  */
-Mailbox tolinkcc_mb; /* control center */
-Mailbox tolinkdm_mb; /* display module */
+/* control center */
+Mailbox tocc_mb;
+Mailbox fromcc_mb;
+
+/* display module */
+Mailbox todm_mb;
+Mailbox fromdm_mb;
+
+/* mpiovd */
+Mailbox tompiovd_mb;
+Mailbox frommpiovd_mb;
 
 /* variable for storing system state */
 mavlink_system_t                mavlink_system_struct;
 
 /* mavlink messages */
-mavlink_status_t                mavlink_status_struct;
 mavlink_sys_status_t            mavlink_sys_status_struct;
-mavlink_global_position_int_t   mavlink_global_position_int_struct;
 mavlink_heartbeat_t             mavlink_heartbeat_struct;
-mavlink_param_value_t           mavlink_param_value_struct;
 mavlink_gps_raw_int_t           mavlink_gps_raw_int_struct;
 mavlink_statustext_t            mavlink_statustext_struct;
+
+/**
+ * @brief   Event sources.
+ */
+EventSource BnapEvent;    /* new GPS data parsed and contains valid coordinates */
+
+EventSource HeartbeatEvent;
 
 /*
  ******************************************************************************
@@ -37,8 +50,8 @@ mavlink_statustext_t            mavlink_statustext_struct;
  ******************************************************************************
  */
 /* mailbox buffers */
-static msg_t tolinkcc_mb_buf[8];
-static msg_t tolinkdm_mb_buf[8];
+static msg_t tocc_mb_buf[4];
+static msg_t todm_mb_buf[4];
 
 /*
  ******************************************************************************
@@ -73,12 +86,16 @@ void ReleaseMail(Mail* mailp){
  *
  */
 void MsgInit(void){
-  chMBInit(&tolinkcc_mb,
-      tolinkcc_mb_buf,
-      (sizeof(tolinkcc_mb_buf)/sizeof(msg_t)));
-  chMBInit(&tolinkdm_mb,
-      tolinkdm_mb_buf,
-      (sizeof(tolinkdm_mb_buf)/sizeof(msg_t)));
+
+  chEvtInit(&BnapEvent);
+  chEvtInit(&HeartbeatEvent);
+
+  chMBInit(&tocc_mb,
+      tocc_mb_buf,
+      (sizeof(tocc_mb_buf)/sizeof(msg_t)));
+  chMBInit(&todm_mb,
+      todm_mb_buf,
+      (sizeof(todm_mb_buf)/sizeof(msg_t)));
 }
 
 /**

@@ -12,8 +12,7 @@
  * EXTERNS
  ******************************************************************************
  */
-extern GlobalFlags_t GlobalFlags;
-extern Mailbox tolinkdm_mb;
+extern EventSource HeartbeatEvent;
 
 extern mavlink_system_t       mavlink_system_struct;
 extern mavlink_heartbeat_t    mavlink_heartbeat_struct;
@@ -24,11 +23,7 @@ extern mavlink_sys_status_t   mavlink_sys_status_struct;
  * DEFINES
  ******************************************************************************
  */
-#define HEART_BEAT_PERIOD   MS2ST(1000)
-
-/* how much time led is ON during flash */
-#define BLUE_LED_ON_TIME    MS2ST(50)
-#define BLUE_LED_OFF_TIME   MS2ST(100)
+#define HEART_BEAT_PERIOD   MS2ST(2000)
 
 /*
  ******************************************************************************
@@ -41,8 +36,6 @@ static Thread *IdleThread_p = NULL;
 /* переменные для оценки загруженности процессора */
 static uint32_t last_sys_ticks = 0;
 static uint32_t last_idle_ticks = 0;
-
-static BinarySemaphore blink_sem;
 
 /*
  *******************************************************************************
@@ -60,9 +53,6 @@ static msg_t SanityControlThread(void *arg) {
   chRegSetThreadName("Sanity");
   (void)arg;
 
-  BinarySemaphore sanity_sem;     /* to sync with tlm sender */
-  chBSemInit(&sanity_sem, FALSE); /* semaphore is not taken */
-  Mail heartbeat_mail = {NULL, MAVLINK_MSG_ID_HEARTBEAT, &sanity_sem};
   mavlink_heartbeat_struct.autopilot = MAV_AUTOPILOT_GENERIC;
   mavlink_heartbeat_struct.custom_mode = 0;
 
@@ -71,17 +61,13 @@ static msg_t SanityControlThread(void *arg) {
   while (TRUE) {
     t += HEART_BEAT_PERIOD;
 
-    /* fill data fields and send struct to message box */
-    chBSemWaitTimeout(&sanity_sem, MS2ST(1));
-    if (GlobalFlags.link_cc_ready){
-      mavlink_heartbeat_struct.type           = mavlink_system_struct.type;
-      mavlink_heartbeat_struct.base_mode      = mavlink_system_struct.mode;
-      mavlink_heartbeat_struct.system_status  = mavlink_system_struct.state;
-      heartbeat_mail.payload = &mavlink_heartbeat_struct;
-      chMBPost(&tolinkdm_mb, (msg_t)&heartbeat_mail, TIME_IMMEDIATE);
-    }
-    chBSemSignal(&sanity_sem);
+    mavlink_heartbeat_struct.type           = mavlink_system_struct.type;
+    mavlink_heartbeat_struct.base_mode      = mavlink_system_struct.mode;
+    mavlink_heartbeat_struct.system_status  = mavlink_system_struct.state;
+
     mavlink_sys_status_struct.load = get_cpu_load();
+
+    chEvtBroadcastFlags(&HeartbeatEvent, EVENT_HERTBEAT_MSG_READY);
     chThdSleepUntil(t);
   }
   return 0;
@@ -96,7 +82,6 @@ static msg_t SanityControlThread(void *arg) {
  *
  */
 void SanityControlInit(void){
-  chBSemInit(&blink_sem,  TRUE);
   IdleThread_p = chSysGetIdleThread();
 
   /**/
