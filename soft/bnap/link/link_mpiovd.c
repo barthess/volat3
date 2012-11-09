@@ -6,8 +6,8 @@
 #include "message.h"
 #include "main.h"
 
-//#include "link_sortin.h"
-//#include "link_sortout.h"
+#include "link_sortin.h"
+#include "link_sortout.h"
 
 /*
  ******************************************************************************
@@ -51,12 +51,12 @@ static void __link_out_cycle(SerialDriver *sdp){
   msg_t tmp = 0;
 
   while (!chThdShouldTerminate()) {
-//    if (chMBFetch(&tolink_mb, &tmp, MS2ST(200)) == RDY_OK){
-//      mailp = (Mail*)tmp;
-//      sort_output_mail(mailp, &mavlink_msgbuf);
-//      len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_msgbuf);
-//      sdWrite(sdp, sendbuf, len);
-//    }
+    if (chMBFetch(&tolink_mb, &tmp, MS2ST(200)) == RDY_OK){
+      mailp = (Mail*)tmp;
+      sort_output_mail(mailp, &mavlink_msgbuf);
+      len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_msgbuf);
+      sdWrite(sdp, sendbuf, len);
+    }
   }
 }
 
