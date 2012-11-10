@@ -48,19 +48,18 @@ including, the "$" and "*".
  * DEFINES
  ******************************************************************************
  */
-#define HDG_UNKNOWN     65535
+#define COG_UNKNOWN     65535
+#define VEL_UNKNOWN     65535
 
 /*
  ******************************************************************************
  * EXTERNS
  ******************************************************************************
  */
-extern GlobalFlags_t GlobalFlags;
 extern RawData raw_data;
 extern CompensatedData comp_data;
-extern Mailbox tolinkdm_mb;
 extern mavlink_gps_raw_int_t mavlink_gps_raw_int_struct;
-extern EventSource BnapEvent;
+extern EventSource event_gps_raw_int;
 extern struct tm gps_timp;
 
 float LongitudeScale = 0;
@@ -89,8 +88,8 @@ static uint8_t rmcchecksum = 'G' ^ 'P' ^ 'R' ^ 'M' ^ 'C';
  * PROTOTYPES
  ******************************************************************************
  */
-static void parse_rmc(uint8_t *rmcbuf, mavlink_gps_raw_int_t *global_pos_struct);
-static void parse_gga(uint8_t *ggabuf, mavlink_gps_raw_int_t *global_pos_struct);
+static void parse_rmc(uint8_t *rmcbuf, mavlink_gps_raw_int_t *gps);
+static void parse_gga(uint8_t *ggabuf, mavlink_gps_raw_int_t *gps);
 static void get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd);
 static int32_t parse_decimal(uint8_t *p);
 static int32_t parse_degrees(uint8_t *p);
@@ -133,7 +132,7 @@ static msg_t gpsRxThread(void *arg){
 
 EMPTY:
     if (n >= 2){
-      chEvtBroadcastFlags(&BnapEvent, EVENT_GPS_MSG_READY);
+      chEvtBroadcastFlags(&event_gps_raw_int, EVMSK_GPS_RAW_INT);
       n = 0;
     }
 
@@ -178,7 +177,7 @@ $GPRMC,115436.000,A,5354.713670,N,02725.690517,E,0.20,210.43,010611,,,A*66
 $GPRMC,115436.000,,,,,,0.20,210.43,010611,,,A*66
 $GPRMC,115436.000,,,,,,,,,,,A*66
 */
-static void parse_gga(uint8_t *ggabuf, mavlink_gps_raw_int_t *global_pos_struct){
+static void parse_gga(uint8_t *ggabuf, mavlink_gps_raw_int_t *gps){
   // для широты и долготы выбран знаковый формат чтобы не таскать N, S, W, E
   int32_t  gps_latitude = 0;
   int32_t  gps_longitude = 0;
@@ -230,16 +229,15 @@ static void parse_gga(uint8_t *ggabuf, mavlink_gps_raw_int_t *global_pos_struct)
     i++;
 
 	if (fix > 0){  /* если есть достоверные координаты */
-    raw_data.gps_latitude  = gps_latitude;
-    raw_data.gps_longitude = gps_longitude;
-    raw_data.gps_altitude  = gps_altitude;
+    raw_data.gps_latitude   = gps_latitude;
+    raw_data.gps_longitude  = gps_longitude;
+    raw_data.gps_altitude   = gps_altitude;
     raw_data.gps_satellites = satellites_visible;
-
-//    global_pos_struct->lat = gps_latitude * 100;
-//    global_pos_struct->lon = gps_longitude * 100;
-//    global_pos_struct->alt = gps_altitude * 10;
-    (void)global_pos_struct;
     raw_data.gps_valid = TRUE;
+
+    gps->lat = gps_latitude   * 100;
+    gps->lon = gps_longitude  * 100;
+    gps->alt = gps_altitude   * 10;
 	}
 	else{
 	  raw_data.gps_valid = FALSE;
@@ -247,10 +245,16 @@ static void parse_gga(uint8_t *ggabuf, mavlink_gps_raw_int_t *global_pos_struct)
     raw_data.gps_longitude = 0;
     raw_data.gps_altitude = 0;
     raw_data.gps_satellites = 0;
+
+    gps->lat = 0;
+    gps->lon = 0;
+    gps->alt = 0;
 	}
+  gps->satellites_visible = satellites_visible;
+  gps->fix_type = fix;
 }
 
-static void parse_rmc(uint8_t *rmcbuf, mavlink_gps_raw_int_t *global_pos_struct){
+static void parse_rmc(uint8_t *rmcbuf, mavlink_gps_raw_int_t *gps){
   int32_t  gps_speed_knots = 0;
   int32_t  gps_course = 0;
 
@@ -293,17 +297,19 @@ static void parse_rmc(uint8_t *rmcbuf, mavlink_gps_raw_int_t *global_pos_struct)
   if (valid == 'A'){                              /* если координаты достоверны */
   	raw_data.gps_course      = gps_course;
   	raw_data.gps_speed_knots = gps_speed_knots;
+  	raw_data.gps_valid = TRUE;
   	comp_data.groundspeed_gps = (float)(gps_speed_knots * 51) / 100.0;
     get_time(&gps_timp, buft, bufd);
-    raw_data.gps_valid = TRUE;
+    gps->cog = gps_course;
+    gps->vel = gps_speed_knots * 51;
   }
   else{
     raw_data.gps_valid = FALSE;
   	raw_data.gps_course = 0;
   	raw_data.gps_speed_knots = 0;
+    gps->cog = 0;
+    gps->vel = 0;
   }
-  //global_pos_struct->hdg = HDG_UNKNOWN;
-  (void)global_pos_struct;
 }
 
 /**

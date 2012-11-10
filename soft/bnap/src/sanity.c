@@ -12,7 +12,7 @@
  * EXTERNS
  ******************************************************************************
  */
-extern EventSource HeartbeatEvent;
+extern EventSource event_heartbeat;
 
 extern mavlink_system_t       mavlink_system_struct;
 extern mavlink_heartbeat_t    mavlink_heartbeat_struct;
@@ -23,7 +23,7 @@ extern mavlink_sys_status_t   mavlink_sys_status_struct;
  * DEFINES
  ******************************************************************************
  */
-#define HEART_BEAT_PERIOD   MS2ST(2000)
+#define HEART_BEAT_PERIOD   MS2ST(1000)
 
 /*
  ******************************************************************************
@@ -67,7 +67,7 @@ static msg_t SanityControlThread(void *arg) {
 
     mavlink_sys_status_struct.load = get_cpu_load();
 
-    chEvtBroadcastFlags(&HeartbeatEvent, EVENT_HERTBEAT_MSG_READY);
+    chEvtBroadcastFlags(&event_heartbeat, EVMSK_HERTBEAT);
     chThdSleepUntil(t);
   }
   return 0;

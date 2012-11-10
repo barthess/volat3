@@ -1,9 +1,10 @@
 #ifndef MESSAGE_H_
 #define MESSAGE_H_
 
-
-#define EVENT_GPS_MSG_READY           (1UL << 2)
-#define EVENT_HERTBEAT_MSG_READY      (1UL << 0)
+/* event masks */
+#define EVMSK_HERTBEAT      (1UL << 0)
+#define EVMSK_GPS_RAW_INT   (1UL << 1)
+#define EVMSK_MPIOVD        (1UL << 2)
 
 
 /**

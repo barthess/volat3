@@ -9,6 +9,6 @@
 #include "message.h"
 #include "main.h"
 
-uint16_t sort_output_mail(Mail *mailp, mavlink_message_t *mavlink_msgbuf);
+void DmPackCycle(SerialDriver *sdp);
 
 #endif /* LINK_DM_PACKER_H_ */

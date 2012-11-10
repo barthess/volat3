@@ -40,9 +40,9 @@ mavlink_statustext_t            mavlink_statustext_struct;
 /**
  * @brief   Event sources.
  */
-EventSource BnapEvent;    /* new GPS data parsed and contains valid coordinates */
-
-EventSource HeartbeatEvent;
+EventSource event_gps_raw_int;
+EventSource event_heartbeat;
+EventSource MpiovdEvent;
 
 /*
  ******************************************************************************
@@ -87,8 +87,9 @@ void ReleaseMail(Mail* mailp){
  */
 void MsgInit(void){
 
-  chEvtInit(&BnapEvent);
-  chEvtInit(&HeartbeatEvent);
+  chEvtInit(&event_gps_raw_int);
+  chEvtInit(&event_heartbeat);
+  chEvtInit(&MpiovdEvent);
 
   chMBInit(&tocc_mb,
       tocc_mb_buf,
