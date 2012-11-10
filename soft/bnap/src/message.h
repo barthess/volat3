@@ -2,10 +2,8 @@
 #define MESSAGE_H_
 
 /* event masks */
-#define EVMSK_HERTBEAT      (1UL << 0)
+#define EVMSK_HEARTBEAT     (1UL << 0)
 #define EVMSK_GPS_RAW_INT   (1UL << 1)
-#define EVMSK_MPIOVD        (1UL << 2)
-
 
 /**
  * Structure for data exchange with confimation capability.
