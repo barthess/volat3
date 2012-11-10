@@ -2,8 +2,8 @@
 
 #       message name            mail struct for it      mailbox for it
 names = {
-        "Dm" : ["heartbeat", "gps_raw_int"],
-        "Cc" : ["heartbeat", "gps_raw_int"]
+        "Dm" : ["heartbeat", "gps_raw_int", "global_position_int"],
+        "Cc" : ["heartbeat", "gps_raw_int", "global_position_int"]
         }
 
 def head(f):
@@ -42,7 +42,7 @@ def gen(name, arr):
     f.write("\nvoid " + name + "PackCycle(SerialDriver *sdp){\n")
     for i in arr:
         f.write("  struct EventListener el_" + i + ";\n")
-        f.write("  chEvtRegisterMask(&event_" + i + ", &el_" + i + ", EVMSK_GPS_RAW_INT);\n\n")
+        f.write("  chEvtRegisterMask(&event_" + i + ", &el_" + i + ", EVMSK_" + str.upper(i) + ");\n\n")
     f.write("  eventmask_t evt = 0;\n")
     f.write("  mavlink_message_t mavlink_message_struct;\n")
     f.write("  uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];\n")
