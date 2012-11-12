@@ -11,10 +11,12 @@
 #include "main.h"
 #include "sensors.h"
 #include "message.h"
-#include "timekeeping.h"
+#include "i2c_local.h"
+#include "timekeeper.h"
 #include "sanity.h"
 #include "gps.h"
 #include "link.h"
+#include "ds1338.h"
 
 /*
  ******************************************************************************
@@ -58,13 +60,15 @@ int main(void) {
 
   chBSemInit(&rtc_sem, TRUE);
 
+  i2cLocalInit();
+  ds1338Init();
+
   MavInit();
   MsgInit();
   GPSInit();
   LinkInit();
-  TimekeepingInit();
+  TimekeeperInit();
   SanityControlInit();
-
 
   while (TRUE) {
     chThdSleepMilliseconds(666);

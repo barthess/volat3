@@ -3,7 +3,7 @@
 
 /* mavlink includes */
 //#include "mavlink.h"
-//#include "common.h"
+#include <stdint.h>
 
 /******************************************************************
  * Ревизия платы для программной коррекции ошибок разводки */
@@ -16,7 +16,7 @@ typedef struct GlobalFlags_t{
   uint32_t allow_softreset:1; /* system performs soft reset instead of halting in panic */
   uint32_t stub_0:1;
   uint32_t stub_03:1;
-  uint32_t stub_04:1;
+  uint32_t rtc_ready:1;
   //4
   uint32_t logger_ready:1;      /* MMC card connected and logger thread started */
   uint32_t link_cc_ready:1;     /* connection with control center via GSM up */

@@ -65,3 +65,9 @@
 #define AT91SAM7_SPI_USE_SPI1       FALSE
 #define AT91SAM7_SPI0_PRIORITY      (AT91C_AIC_PRIOR_HIGHEST - 1)
 #define AT91SAM7_SPI1_PRIORITY      (AT91C_AIC_PRIOR_HIGHEST - 1)
+
+/*
+ * I2C driver system settings.
+ */
+#define SAM7_I2C_USE_I2C1           TRUE
+#define SAM7_I2C1_PRIORITY          (AT91C_AIC_PRIOR_HIGHEST - 2)

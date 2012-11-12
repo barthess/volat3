@@ -65,8 +65,6 @@ extern EventSource event_gps_raw_int;
 extern EventSource event_global_position_int;
 extern struct tm gps_timp;
 
-float LongitudeScale = 0;
-
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
@@ -330,7 +328,7 @@ static void parse_rmc(uint8_t *rmcbuf){
   	raw_data.gps_course      = gps_course;
   	raw_data.gps_speed_knots = gps_speed_knots;
   	raw_data.gps_valid = TRUE;
-  	comp_data.groundspeed_gps = (float)(gps_speed_knots * 51) / 100.0;
+  	//comp_data.groundspeed_gps = (float)(gps_speed_knots * 51) / 100.0;
     get_time(&gps_timp, buft, bufd);
     mavlink_gps_raw_int_struct.cog = gps_course;
     mavlink_gps_raw_int_struct.vel = gps_speed_knots * 51;

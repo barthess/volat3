@@ -32,7 +32,7 @@ endif
 ifeq ($(USE_VERBOSE_COMPILE),)
   USE_VERBOSE_COMPILE = no
 endif
-
+ 
 #
 # Build global options
 ##############################################################################
@@ -68,11 +68,13 @@ CSRC = $(PORTSRC) \
        src/link/link_dm_packer.c \
        src/link/link_dm_unpacker.c \
        src/link/link_dm.c \
+       src/time/timekeeper.c \
+       src/time/ds1338.c \
        src/gcc_stubs.c \
        src/gps.c \
+       src/i2c_local.c \
        src/message.c \
        src/sanity.c \
-       src/timekeeping.c \
 
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
@@ -116,6 +118,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(MAVLINCDIR)/mpiovd \
          src \
          src/link \
+         src/time \
          $(TOOLCHAININCDIR) \
 #
 # Project, sources and paths
