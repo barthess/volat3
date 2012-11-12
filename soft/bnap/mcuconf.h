@@ -27,6 +27,12 @@
  */
 
 /*
+  !!! NOTE !!!
+AT91C_AIC_PRIOR_LOWEST               (0x0) // (AIC) Lowest priority level
+AT91C_AIC_PRIOR_HIGHEST              (0x7) // (AIC) Highest priority level
+*/
+
+/*
  * ADC driver system settings.
  */
 
@@ -53,18 +59,18 @@
 #define USE_SAM7_USART1             TRUE
 #define USE_SAM7_USART2             TRUE
 #define USE_SAM7_DBGU_UART          TRUE
-#define SAM7_USART0_PRIORITY        (AT91C_AIC_PRIOR_HIGHEST - 2)
-#define SAM7_USART1_PRIORITY        (AT91C_AIC_PRIOR_HIGHEST - 2)
-#define SAM7_USART2_PRIORITY        (AT91C_AIC_PRIOR_HIGHEST - 2)
-#define SAM7_DBGU_UART_PRIORITY     (AT91C_AIC_PRIOR_HIGHEST - 2)
+#define SAM7_USART0_PRIORITY        (AT91C_AIC_PRIOR_LOWEST + 1)
+#define SAM7_USART1_PRIORITY        (AT91C_AIC_PRIOR_LOWEST + 1)
+#define SAM7_USART2_PRIORITY        (AT91C_AIC_PRIOR_LOWEST + 1)
+#define SAM7_DBGU_UART_PRIORITY     (AT91C_AIC_PRIOR_LOWEST + 1)
 
 /*
  * SPI driver system settings.
  */
 #define AT91SAM7_SPI_USE_SPI0       TRUE
 #define AT91SAM7_SPI_USE_SPI1       FALSE
-#define AT91SAM7_SPI0_PRIORITY      (AT91C_AIC_PRIOR_HIGHEST - 1)
-#define AT91SAM7_SPI1_PRIORITY      (AT91C_AIC_PRIOR_HIGHEST - 1)
+#define AT91SAM7_SPI0_PRIORITY      (AT91C_AIC_PRIOR_HIGHEST - 3)
+#define AT91SAM7_SPI1_PRIORITY      (AT91C_AIC_PRIOR_HIGHEST - 3)
 
 /*
  * I2C driver system settings.

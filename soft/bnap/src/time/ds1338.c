@@ -61,22 +61,7 @@ static i2caddr_t ds1338addr = 0b1101000;
  *
  */
 void ds1338_get_time(void){
-  uint8_t i = 0;
 
-//    i++;
-//    txbuf[0] = 0x08;
-//    txbuf[1] = i;
-//    txbuf[2] = i;
-//    i2cMasterReceiveTimeout(&I2CD1, ds1338addr, rxbuf, 1, TIME_INFINITE);
-
-    i++;
-    txbuf[0] = DS1338_CONTROL;
-    txbuf[1] = 0xFF;
-    txbuf[2] = 0x55;
-//    i2cMasterTransmitTimeout(&I2CD1, ds1338addr, txbuf, 3, NULL, 0, TIME_INFINITE);
-
-//    if ((rxbuf[0] != i) || (rxbuf[1] != i))
-//      chDbgPanic("");
 }
 
 void ds1338Init(void) {

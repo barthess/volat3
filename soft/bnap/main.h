@@ -15,7 +15,7 @@ typedef struct GlobalFlags_t{
   //0
   uint32_t allow_softreset:1; /* system performs soft reset instead of halting in panic */
   uint32_t stub_0:1;
-  uint32_t stub_03:1;
+  uint32_t time_correct:1;      /* if 0 than time need adjusting by hands or using gps */
   uint32_t rtc_ready:1;
   //4
   uint32_t logger_ready:1;      /* MMC card connected and logger thread started */
