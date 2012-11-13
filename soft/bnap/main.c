@@ -61,14 +61,16 @@ int main(void) {
   chBSemInit(&rtc_sem, TRUE);
 
   i2cLocalInit();
-  ds1338Init();
 
   MavInit();
   MsgInit();
   GPSInit();
   LinkInit();
+
   TimekeeperInit();
   SanityControlInit();
+
+  ds1338Init();
 
   while (TRUE) {
     chThdSleepMilliseconds(666);

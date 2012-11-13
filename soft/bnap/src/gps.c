@@ -91,7 +91,7 @@ static uint8_t rmcchecksum = 'G' ^ 'P' ^ 'R' ^ 'M' ^ 'C';
  */
 static void parse_rmc(uint8_t *rmcbuf);
 static void parse_gga(uint8_t *ggabuf);
-static void get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd);
+static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd);
 static int32_t parse_decimal(uint8_t *p);
 static int32_t parse_degrees(uint8_t *p);
 static uint32_t gpsatol(const uint8_t *str);
@@ -329,7 +329,7 @@ static void parse_rmc(uint8_t *rmcbuf){
   	raw_data.gps_speed_knots = gps_speed_knots;
   	raw_data.gps_valid = TRUE;
   	//comp_data.groundspeed_gps = (float)(gps_speed_knots * 51) / 100.0;
-    get_time(&gps_timp, buft, bufd);
+    gps_get_time(&gps_timp, buft, bufd);
     mavlink_gps_raw_int_struct.cog = gps_course;
     mavlink_gps_raw_int_struct.vel = gps_speed_knots * 51;
   }
@@ -359,7 +359,7 @@ int tm_wday      days since Sunday [0-6]
 int tm_yday      days since January 1st [0-365]
 int tm_isdst     daylight savings indicator (1 = yes, 0 = no, -1 = unknown)
  */
-static void get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
+static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
   timp->tm_hour = 10 * (buft[0] - '0') + (buft[1] - '0');
   timp->tm_min  = 10 * (buft[2] - '0') + (buft[3] - '0');
   timp->tm_sec  = 10 * (buft[4] - '0') + (buft[5] - '0');
