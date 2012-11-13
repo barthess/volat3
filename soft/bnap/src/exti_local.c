@@ -88,7 +88,7 @@ static const EXTConfig extcfg_b = {
  */
 
 void ExtiLocalInit(void){
-//  extStart(&EXTDB, &extcfg_b);
+  extStart(&EXTDB, &extcfg_b);
 //  extChannelEnable(&EXTDB, 11);
 }
 

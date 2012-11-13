@@ -75,8 +75,6 @@ int main(void) {
 
   SanityControlInit();
 
-
-
   while (TRUE) {
     chThdSleepMilliseconds(666);
   }
