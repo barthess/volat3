@@ -1,6 +1,7 @@
 
 
-// TODO: add EXTI
+// TODO: EXTI
+// TODO: установка глобального флага "время кошерно"
 
 #include <time.h>
 
@@ -17,6 +18,7 @@
 #include "gps.h"
 #include "link.h"
 #include "ds1338.h"
+#include "exti_local.h"
 
 /*
  ******************************************************************************
@@ -29,7 +31,7 @@ RawData raw_data;
 CompensatedData comp_data;
 
 /* RTC-GPS sync */
-BinarySemaphore rtc_sem;
+BinarySemaphore pps_sem;
 
 /* store here time from GPS */
 struct tm gps_timp;
@@ -58,19 +60,22 @@ int main(void) {
   halInit();
   chSysInit();
 
-  chBSemInit(&rtc_sem, TRUE);
+  chBSemInit(&pps_sem, TRUE);
 
   i2cLocalInit();
 
   MavInit();
   MsgInit();
   GPSInit();
+  ExtiLocalInit();
   LinkInit();
 
+  ds1338Init();
   TimekeeperInit();
+
   SanityControlInit();
 
-  ds1338Init();
+
 
   while (TRUE) {
     chThdSleepMilliseconds(666);

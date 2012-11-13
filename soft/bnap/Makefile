@@ -76,6 +76,7 @@ CSRC = $(PORTSRC) \
        src/i2c_local.c \
        src/message.c \
        src/sanity.c \
+       src/exti_local.c \
 
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global

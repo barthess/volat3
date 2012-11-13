@@ -58,12 +58,15 @@ including, the "$" and "*".
  ******************************************************************************
  */
 extern RawData raw_data;
-extern CompensatedData comp_data;
+extern struct tm gps_timp;
+extern BinarySemaphore pps_sem;
+
 extern mavlink_gps_raw_int_t mavlink_gps_raw_int_struct;
 extern mavlink_global_position_int_t mavlink_global_position_int_struct;
+
 extern EventSource event_gps_raw_int;
 extern EventSource event_global_position_int;
-extern struct tm gps_timp;
+extern EventSource event_gps_time_got;
 
 /*
  ******************************************************************************
@@ -136,16 +139,13 @@ static void __init_mavlink_structs(void){
 /**
  *
  */
-static WORKING_AREA(gpsRxThreadWA, 512);
+static WORKING_AREA(gpsRxThreadWA, 256);
 static msg_t gpsRxThread(void *arg){
   chRegSetThreadName("gpsRx");
   (void)arg;
   uint32_t tmp = 0;
   uint32_t n = 0;
 
-  /* to sync with tlm sender */
-  BinarySemaphore gps_sem;
-  chBSemInit(&gps_sem, FALSE);
   __init_mavlink_structs();
 
   while(!(chThdShouldTerminate())){
@@ -328,7 +328,6 @@ static void parse_rmc(uint8_t *rmcbuf){
   	raw_data.gps_course      = gps_course;
   	raw_data.gps_speed_knots = gps_speed_knots;
   	raw_data.gps_valid = TRUE;
-  	//comp_data.groundspeed_gps = (float)(gps_speed_knots * 51) / 100.0;
     gps_get_time(&gps_timp, buft, bufd);
     mavlink_gps_raw_int_struct.cog = gps_course;
     mavlink_gps_raw_int_struct.vel = gps_speed_knots * 51;
@@ -360,6 +359,11 @@ int tm_yday      days since January 1st [0-365]
 int tm_isdst     daylight savings indicator (1 = yes, 0 = no, -1 = unknown)
  */
 static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
+
+  /* TODO: this semaphore must be signalled from EXTI driver */
+  chBSemSignal(&pps_sem);
+  chThdSleepMilliseconds(1);
+
   timp->tm_hour = 10 * (buft[0] - '0') + (buft[1] - '0');
   timp->tm_min  = 10 * (buft[2] - '0') + (buft[3] - '0');
   timp->tm_sec  = 10 * (buft[4] - '0') + (buft[5] - '0');
@@ -367,6 +371,8 @@ static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
   timp->tm_mday = 10 * (bufd[0] - '0') + (bufd[1] - '0');
   timp->tm_mon  = 10 * (bufd[2] - '0') + (bufd[3] - '0') - 1;
   timp->tm_year = 10 * (bufd[4] - '0') + (bufd[5] - '0') + 2000 - 1900;
+
+  chEvtBroadcastFlags(&event_gps_time_got, EVMSK_GPS_TIME_GOT);
 }
 
 /**

@@ -40,6 +40,8 @@ EventSource event_gps_raw_int;
 EventSource event_heartbeat;
 EventSource event_global_position_int;
 
+EventSource event_gps_time_got;
+
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
@@ -84,6 +86,7 @@ void ReleaseMail(Mail* mailp){
 void MsgInit(void){
 
   chEvtInit(&event_gps_raw_int);
+  chEvtInit(&event_gps_time_got);
   chEvtInit(&event_heartbeat);
   chEvtInit(&event_global_position_int);
 

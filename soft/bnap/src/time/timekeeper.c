@@ -1,5 +1,7 @@
 #include <time.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 #include "ch.h"
 #include "hal.h"
@@ -8,6 +10,7 @@
 #include "message.h"
 #include "sanity.h"
 #include "sensors.h"
+#include "ds1338.h"
 #include "timekeeper.h"
 
 #include "mavlink.h"
@@ -17,15 +20,23 @@
  * DEFINES
  ******************************************************************************
  */
+/* adjust RTC if time difference between RTC and GPS more than this threshold */
+#define MAX_TIME_DIFF         5 // sec
+
+/* wait of PSS interrupt timeout */
+#define PPS_TMO               MS2ST(2000)
+
+/* wait untile time be parsed by gps code. Must be less than second */
+#define GPS_TIME_TMO          MS2ST(900)
 
 /*
  ******************************************************************************
  * EXTERNS
  ******************************************************************************
  */
-extern RawData raw_data;
-extern BinarySemaphore rtc_sem;
+extern BinarySemaphore pps_sem;
 extern struct tm gps_timp;
+extern EventSource event_gps_time_got;
 
 /*
  ******************************************************************************
@@ -57,31 +68,34 @@ static uint32_t LastTimeBootMs = 0;
  *******************************************************************************
  */
 
-static uint64_t rtcGetTimeUnixUsec_bnap(void){
-  // TODO: use RTC over I2C here
-  return 0;
-}
-
-static WORKING_AREA(TimekeeperThreadWA, 512);
+/**
+ * Perform periodic corrections of time.
+ */
+static WORKING_AREA(TimekeeperThreadWA, 128);
 static msg_t TimekeeperThread(void *arg){
   chRegSetThreadName("Timekeeper");
   (void)arg;
 
-  int64_t  gps_time = 0;
-  int64_t  pns_time = 0;
+  struct EventListener el_gps_time_got;
+  chEvtRegisterMask(&event_gps_time_got, &el_gps_time_got, EVMSK_GPS_TIME_GOT);
+  eventmask_t evt = 0;
 
-  msg_t sem_status = RDY_RESET;
+  int64_t  gps_time = 0;
+  int64_t  bnap_time = 0;
 
   while (TRUE) {
-    sem_status = chBSemWaitTimeout(&rtc_sem, MS2ST(2000));
-    if (sem_status == RDY_OK && raw_data.gps_valid){
-      pns_time = pnsGetTimeUnixUsec();
+    chBSemWait(&pps_sem);
+    //TODO: save timestamp now to correct it later
+
+    evt = chEvtWaitOneTimeout(EVMSK_GPS_TIME_GOT, GPS_TIME_TMO);
+    if (evt == EVMSK_GPS_TIME_GOT){
+      bnap_time = fastGetTimeUnixUsec();
 
       gps_time = (int64_t)mktime(&gps_timp) * 1000000;
-      Correction += gps_time - pns_time;
+      Correction += gps_time - bnap_time;
 
-      /* now correct time in internal RTC (if needed) */
-      // TODO
+      /* now correct time in RTC cell */
+      ds1338_set_time(&gps_timp);
     }
   }
   return 0;
@@ -95,7 +109,7 @@ static msg_t TimekeeperThread(void *arg){
 
 void TimekeeperInit(void){
 
-  BootTimestamp = rtcGetTimeUnixUsec_bnap();
+  BootTimestamp = ds1338GetTimeUnixUsec();
   /* поскольку вычитывание метки можеть происходить не сразу же после запуска -
    * внесем коррективы */
   BootTimestamp -= (int64_t)TIME_BOOT_MS * 1000;
@@ -111,7 +125,7 @@ void TimekeeperInit(void){
  * Return current time using lightweight approximation to avoid calling
  * of heavy time conversion (from hardware RTC) functions.
  */
-uint64_t pnsGetTimeUnixUsec(void){
+uint64_t fastGetTimeUnixUsec(void){
 
   chSysLock();
   if (TIME_BOOT_MS < LastTimeBootMs)
