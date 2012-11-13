@@ -6,6 +6,7 @@
 #define EVMSK_GPS_RAW_INT           (1UL << 1)
 #define EVMSK_GLOBAL_POSITION_INT   (1UL << 2)
 #define EVMSK_GPS_TIME_GOT          (1UL << 3)
+#define EVMSK_SYSTEM_TIME           (1UL << 4)
 
 /**
  * Structure for data exchange with confimation capability.

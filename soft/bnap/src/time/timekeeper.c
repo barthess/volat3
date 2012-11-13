@@ -36,7 +36,11 @@
  */
 extern BinarySemaphore pps_sem;
 extern struct tm gps_timp;
+
 extern EventSource event_gps_time_got;
+extern EventSource event_system_time;
+
+extern mavlink_system_time_t mavlink_system_time_struct;
 
 /*
  ******************************************************************************
@@ -93,6 +97,10 @@ static msg_t TimekeeperThread(void *arg){
 
       gps_time = (int64_t)mktime(&gps_timp) * 1000000;
       Correction += gps_time - bnap_time;
+
+      mavlink_system_time_struct.time_boot_ms = TIME_BOOT_MS;
+      mavlink_system_time_struct.time_unix_usec = fastGetTimeUnixUsec();
+      chEvtBroadcastFlags(&event_system_time, EVMSK_SYSTEM_TIME);
 
       /* now correct time in RTC cell */
       ds1338_set_time(&gps_timp);
