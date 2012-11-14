@@ -24,7 +24,7 @@
     </enums>
 
     <messages>
-        <message id="150" name="MPIOVD_SENSORS_RAW">
+        <message id="150" name="MPIOVD_SENSORS">
             <description>Raw data from sensors for debugging purpose</description>
             <field type="uint32_t"     name="time_usec">Timestamp (microseconds since Unix epoch)</field>
             <field type="uint64_t"     name="relay">Relay sensors data</field>
@@ -48,7 +48,7 @@
             <field type="uint32_t"     name="trip">Vehicle mileage. NOT a meters, pulses from speedometer.</field>
             <field type="uint32_t"     name="engine_uptime">Vehicle motor uptime (seconds)</field>
 			<field type="uint16_t"     name="speed">Vehicle speed (m/s)</field>
-            <field type="uint16_t"     name="rpm">Vehicle engine (RPM)</field>
+            <field type="uint16_t"     name="rpm">Vehicle engine RPM</field>
         </message>
 
     </messages>

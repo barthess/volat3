@@ -13,12 +13,12 @@
  * global bool flags */
 typedef struct GlobalFlags_t{
   //0
-  uint32_t allow_softreset:1; /* system performs soft reset instead of halting in panic */
+  uint32_t allow_softreset:1;   /* system performs soft reset instead of halting in panic */
   uint32_t stub_0:1;
-  uint32_t time_correct:1;      /* if 0 than time need adjusting by hands or using gps */
-  uint32_t rtc_ready:1;
+  uint32_t time_good:1;         /* if 0 than time need adjusting by hands or using gps */
+  uint32_t stub_1:1;
   //4
-  uint32_t logger_ready:1;      /* MMC card connected and logger thread started */
+  uint32_t logger_ready:1;      /* logger found end of circular buffer and ready to receive data */
   uint32_t link_cc_ready:1;     /* connection with control center via GSM up */
   uint32_t link_dm_ready:1;     /* connection with dysplay module up */
   uint32_t link_mpiovd_ready:1; /* */
@@ -28,7 +28,7 @@ typedef struct GlobalFlags_t{
   uint32_t parameters_got:1;    /* parameters successfully retrieved from EEPROM */
   uint32_t i2c_ready:1;         /* i2c bus initialized */
   //12
-  uint32_t stub2:1;
+  uint32_t storage_connected:1; /* MMC card connected and initialized */
   uint32_t stub0:1;
   uint32_t stub1:1;
   uint32_t stub3:1;

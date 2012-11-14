@@ -34,6 +34,8 @@
  * EXTERNS
  ******************************************************************************
  */
+extern GlobalFlags_t GlobalFlags;
+
 extern BinarySemaphore pps_sem;
 extern struct tm gps_timp;
 
@@ -104,6 +106,7 @@ static msg_t TimekeeperThread(void *arg){
 
       /* now correct time in RTC cell */
       ds1338_set_time(&gps_timp);
+      setGlobalFlag(GlobalFlags.time_good);
     }
   }
   return 0;
@@ -133,7 +136,7 @@ void TimekeeperInit(void){
  * Return current time using lightweight approximation to avoid calling
  * of heavy time conversion (from hardware RTC) functions.
  */
-uint64_t fastGetTimeUnixUsec(void){
+int64_t fastGetTimeUnixUsec(void){
 
   chSysLock();
   if (TIME_BOOT_MS < LastTimeBootMs)

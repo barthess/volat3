@@ -90,7 +90,8 @@ bool_t mmc_lld_is_card_inserted(MMCDriver *mmcp) {
 bool_t mmc_lld_is_write_protected(MMCDriver *mmcp) {
 
   (void)mmcp;
-  return palReadPad(IOPORT1, PIOA_MMC_WP);
+  //return palReadPad(IOPORT1, PIOA_MMC_WP);
+  return FALSE; /* защита от записи нужна только лохам и слабакам */
 }
 #endif /* HAL_USE_MMC_SPI */
 

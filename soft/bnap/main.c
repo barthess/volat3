@@ -19,6 +19,7 @@
 #include "link.h"
 #include "ds1338.h"
 #include "exti_local.h"
+#include "storage.h"
 
 /*
  ******************************************************************************
@@ -72,6 +73,8 @@ int main(void) {
 
   ds1338Init();
   TimekeeperInit();
+
+  StorageInit();
 
   SanityControlInit();
 

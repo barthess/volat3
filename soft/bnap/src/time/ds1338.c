@@ -206,6 +206,7 @@ void ds1338Init(void) {
 
   /* oscillator stop flag */
   if (rxbuf[0] & 0b10000){
+    clearGlobalFlag(GlobalFlags.time_good);
     txbuf[0] = 0;
     txbuf[1] = 0;
     /* set CH=0 */
@@ -214,6 +215,9 @@ void ds1338Init(void) {
     txbuf[0] = DS1338_CONTROL;
     txbuf[1] = 0;
     i2cMasterTransmitTimeout(&I2CD1, ds1338addr, txbuf, 2, rxbuf, 0, TIME_INFINITE); /* set pointer */
+  }
+  else{
+    setGlobalFlag(GlobalFlags.time_good);
   }
   i2cReleaseBus(&I2CD1);
 

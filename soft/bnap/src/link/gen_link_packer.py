@@ -2,8 +2,8 @@
 
 #       message name            mail struct for it      mailbox for it
 names = {
-        "Dm" : ["heartbeat", "gps_raw_int", "global_position_int", "system_time"],
-        "Cc" : ["heartbeat", "gps_raw_int", "global_position_int", "system_time"]
+        "Dm" : ["heartbeat", "gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext"],
+        "Cc" : ["heartbeat", "gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext"]
         }
 
 def head(f):
@@ -11,6 +11,7 @@ def head(f):
 #include "ch.h"
 #include "hal.h"
 #include "mavlink.h"
+#include "mpiovd.h"
 #include "link.h"
 #include "message.h"
 #include "main.h"

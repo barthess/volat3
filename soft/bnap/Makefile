@@ -71,6 +71,10 @@ CSRC = $(PORTSRC) \
        src/time/timekeeper.c \
        src/time/ds1338.c \
        src/time/bnaprtclib.c \
+       src/storage/storage.c \
+       src/storage/crc32.c \
+       src/storage/logger.c \
+       src/storage/fsck.c \
        src/gcc_stubs.c \
        src/gps.c \
        src/i2c_local.c \
@@ -121,6 +125,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src \
          src/link \
          src/time \
+         src/storage \
          $(TOOLCHAININCDIR) \
 #
 # Project, sources and paths

@@ -1,6 +1,7 @@
 #include "ch.h"
 #include "hal.h"
 #include "mavlink.h"
+#include "mpiovd.h"
 
 #include "main.h"
 #include "message.h"
@@ -32,6 +33,7 @@ mavlink_global_position_int_t   mavlink_global_position_int_struct;
 mavlink_statustext_t            mavlink_statustext_struct;
 mavlink_command_long_t          mavlink_command_long_struct;
 mavlink_system_time_t           mavlink_system_time_struct;
+mavlink_mpiovd_sensors_t        mavlink_mpiovd_sensors_struct;
 
 /**
  * @brief   Event sources.
@@ -40,6 +42,10 @@ EventSource event_gps_raw_int;
 EventSource event_heartbeat;
 EventSource event_global_position_int;
 EventSource event_system_time;
+
+EventSource event_sys_status;
+EventSource event_statustext;
+EventSource event_mpiovd_sensors;
 
 EventSource event_gps_time_got;
 
