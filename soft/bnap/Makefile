@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O1 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions
+  USE_OPT = -O0 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions
 endif
 
 # C specific options here (added to USE_OPT).
@@ -81,6 +81,7 @@ CSRC = $(PORTSRC) \
        src/message.c \
        src/sanity.c \
        src/exti_local.c \
+       src/utils.c \
 
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global

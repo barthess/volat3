@@ -81,7 +81,7 @@ void __early_init(void) {
 bool_t mmc_lld_is_card_inserted(MMCDriver *mmcp) {
 
   (void)mmcp;
-  return !palReadPad(IOPORT1, PIOA_MMC_CP);
+  return palReadPad(IOPORT1, PIOA_MMC_CP);
 }
 
 /**

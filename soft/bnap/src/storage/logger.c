@@ -9,6 +9,7 @@
 #include "crc32.h"
 #include "timekeeper.h"
 #include "logger.h"
+#include "utils.h"
 
 /*
  ******************************************************************************
@@ -78,19 +79,18 @@ uint8_t* fill_record(void){
     timestamp = fastGetTimeUnixUsec();
   else
     return NULL;
-  memcpy(dest, &timestamp, RECORD_SIGNATURE_SIZE);
+  memcpy(dest, &timestamp, RECORD_TIMESTAMP_SIZE);
   dest += RECORD_TIMESTAMP_SIZE;
 
-  /* payload mpiovd sensors */
-  do{
-    memcpy(dest, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct));
-  }while (0 != memcmp(dest, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct)));
-  dest += sizeof(mavlink_mpiovd_sensors_struct);
+  /* payload */
+  chSysLock();
+  mavlink_mpiovd_sensors_struct.time_usec = timestamp;
+  mavlink_gps_raw_int_struct.time_usec = timestamp;
+  chSysUnlock();
 
-  /* payload GPS */
-  do{
-    memcpy(dest, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct));
-  }while (0 != memcmp(dest, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct)));
+  memcpyts(dest, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct), 4);
+  dest += sizeof(mavlink_mpiovd_sensors_struct);
+  memcpyts(dest, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct), 4);
   dest += sizeof(mavlink_gps_raw_int_struct);
 
   /* checksum */

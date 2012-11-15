@@ -47,8 +47,7 @@ static int64_t parse_block(MMCDriver *mmcp, uint32_t n){
   uint32_t sig = RECORD_SIGNATURE;
   int64_t timestamp = -1;
 
-  mmcStartSequentialRead(mmcp, n);
-  mmcSequentialRead(mmcp, mmcbuf);
+  mmcp->vmt->read(mmcp, n, mmcbuf, 1);
 
   /* */
   if (0 != memcmp(mmcbuf + RECORD_SIGNATURE_OFFSET, &sig, RECORD_SIGNATURE_SIZE))
@@ -61,7 +60,7 @@ static int64_t parse_block(MMCDriver *mmcp, uint32_t n){
   /* */
   memcpy(&timestamp, mmcbuf + RECORD_SIGNATURE_SIZE, RECORD_TIMESTAMP_SIZE);
   if (timestamp > fastGetTimeUnixUsec())
-    return -1;
+    return -1; /* timestamp in future */
   else
     return timestamp;
 }
@@ -109,7 +108,7 @@ static void _bin_search(MMCDriver *mmcp, uint32_t *p0, uint32_t *p1){
  */
 uint32_t fsck(MMCDriver *mmcp){
   uint32_t p0 = 0;
-  uint32_t p1 = mmcp->capacity;
+  uint32_t p1 = mmcp->capacity - 1;
   while (p1 > p0){
     _bin_search(mmcp, &p0, &p1);
   }

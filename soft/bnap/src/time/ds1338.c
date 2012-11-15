@@ -216,9 +216,6 @@ void ds1338Init(void) {
     txbuf[1] = 0;
     i2cMasterTransmitTimeout(&I2CD1, ds1338addr, txbuf, 2, rxbuf, 0, TIME_INFINITE); /* set pointer */
   }
-  else{
-    setGlobalFlag(GlobalFlags.time_good);
-  }
   i2cReleaseBus(&I2CD1);
 
   chThdCreateStatic(DS1138ThreadWA,

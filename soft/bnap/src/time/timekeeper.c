@@ -29,6 +29,10 @@
 /* wait untile time be parsed by gps code. Must be less than second */
 #define GPS_TIME_TMO          MS2ST(900)
 
+/* Timestamp of project compilation. Usec since Unix epoch.
+ * Used to one more check of time correctness. */
+#define BUILD_TIMESTAMP       ((int64_t)1352971162164000)
+
 /*
  ******************************************************************************
  * EXTERNS
@@ -121,6 +125,11 @@ static msg_t TimekeeperThread(void *arg){
 void TimekeeperInit(void){
 
   BootTimestamp = ds1338GetTimeUnixUsec();
+  if (BootTimestamp < BUILD_TIMESTAMP)
+    clearGlobalFlag(GlobalFlags.time_good);
+  else
+    setGlobalFlag(GlobalFlags.time_good);
+
   /* поскольку вычитывание метки можеть происходить не сразу же после запуска -
    * внесем коррективы */
   BootTimestamp -= (int64_t)TIME_BOOT_MS * 1000;

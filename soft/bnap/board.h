@@ -112,7 +112,7 @@
 /* Direction. */
 #define VAL_PIOA_OSR            0x00000000
 /* Pull-up. */
-#define VAL_PIOA_PUSR           0xFFFFFFFF
+#define VAL_PIOA_PUSR           (0xFFFFFFFF & (~(PIOA_MMC_CP_MASK | PIOA_MMC_WP_MASK)))
 
 #define VAL_PIOB_ODSR           0x00000000      /* Output data. */
 #define VAL_PIOB_OSR            0x00000000      /* Direction. */

@@ -11,6 +11,7 @@ def head(f):
 #include "ch.h"
 #include "hal.h"
 #include "mavlink.h"
+#include "utils.h"
 #include "mpiovd.h"
 #include "link.h"
 #include "message.h"
@@ -58,9 +59,7 @@ def gen(name, arr):
 
     for i in arr:
         f.write("    case EVMSK_" + str.upper(i) + ":\n")
-        f.write("      do{\n")
-        f.write("        memcpy(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i +"_struct));\n")
-        f.write("      }while (0 != memcmp(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i + "_struct)));\n")
+        f.write("      memcpyts(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i +"_struct), 4);\n")
         f.write("      mavlink_msg_" + i + "_encode(mavlink_system_struct.sysid, MAV_COMP_ID_ALL, &mavlink_message_struct, (mavlink_" + i + "_t *)sendbuf);\n")
         f.write("      break;\n\n")
     foot(f)

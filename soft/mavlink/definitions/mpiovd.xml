@@ -26,7 +26,7 @@
     <messages>
         <message id="150" name="MPIOVD_SENSORS">
             <description>Raw data from sensors for debugging purpose</description>
-            <field type="uint32_t"     name="time_usec">Timestamp (microseconds since Unix epoch)</field>
+            <field type="uint64_t"     name="time_usec">Timestamp (microseconds since Unix epoch)</field>
             <field type="uint64_t"     name="relay">Relay sensors data</field>
             <field type="uint16_t"     name="analog00">Analog sensor data</field>
             <field type="uint16_t"     name="analog01">Analog sensor data</field>
