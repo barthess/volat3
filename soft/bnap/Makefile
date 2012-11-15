@@ -81,7 +81,7 @@ CSRC = $(PORTSRC) \
        src/message.c \
        src/sanity.c \
        src/exti_local.c \
-       src/utils.c \
+       src/utils/memfunc.c \
 
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
@@ -126,6 +126,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src \
          src/link \
          src/time \
+         src/utils \
          src/storage \
          $(TOOLCHAININCDIR) \
 #
