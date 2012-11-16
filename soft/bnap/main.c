@@ -20,6 +20,7 @@
 #include "ds1338.h"
 #include "exti_local.h"
 #include "storage.h"
+#include "bnap_ui.h"
 
 /*
  ******************************************************************************
@@ -64,19 +65,16 @@ int main(void) {
   chBSemInit(&pps_sem, TRUE);
 
   i2cLocalInit();
-
   MavInit();
   MsgInit();
   GPSInit();
   ExtiLocalInit();
   LinkInit();
-
   ds1338Init();
   TimekeeperInit();
-
   StorageInit();
-
   SanityControlInit();
+  BnapUiInit();
 
   while (TRUE) {
     chThdSleepMilliseconds(666);

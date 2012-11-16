@@ -77,12 +77,13 @@ CSRC = $(PORTSRC) \
        src/storage/fsck.c \
        src/gcc_stubs.c \
        src/gps.c \
+       src/bnap_ui.c \
        src/i2c_local.c \
        src/message.c \
        src/sanity.c \
        src/exti_local.c \
        src/utils/memfunc.c \
-
+       src/utils/softdebounce.c \
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
