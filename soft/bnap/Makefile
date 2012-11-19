@@ -82,7 +82,7 @@ CSRC = $(PORTSRC) \
        src/sanity.c \
        src/exti_local.c \
        src/utils/memfunc.c \
-       src/gsm/modem.c \
+       src/gsm/wavecom.c \
        src/gsm/xmodem.c \
        src/gsm/cross.c \
 

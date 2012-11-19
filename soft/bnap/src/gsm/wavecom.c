@@ -2,7 +2,7 @@
 #include "hal.h"
 
 #include "main.h"
-#include "modem.h"
+#include "wavecom.h"
 
 /*
  ******************************************************************************

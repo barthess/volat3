@@ -1,5 +1,5 @@
-#ifndef MODEM_H_
-#define MODEM_H_
+#ifndef WAVECOM_H_
+#define WAVECOM_H_
 
 
 #define gsm_assert_poweron()  palSetPad(IOPORT1, PIOA_GSM_ON)
@@ -12,4 +12,4 @@
 void ModemInit(void);
 
 
-#endif /* MODEM_H_ */
+#endif /* WAVECOM_H_ */
