@@ -114,8 +114,8 @@
 /* Pull-up. */
 #define VAL_PIOA_PUSR           (0xFFFFFFFF & (~(PIOA_MMC_CP_MASK | PIOA_MMC_WP_MASK | PIOA_GSM_RESET_MASK)))
 
-#define VAL_PIOB_ODSR           0x00000000      /* Output data. */
-#define VAL_PIOB_OSR            0x00000000      /* Direction. */
+#define VAL_PIOB_ODSR           0x00000000     /* Output data. */
+#define VAL_PIOB_OSR            (0x00000000 | PIOB_GSM_RTS_MASK)      /* Direction. */
 #define VAL_PIOB_PUSR           0xFFFFFFFF      /* Pull-up. */
 
 

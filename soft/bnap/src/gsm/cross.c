@@ -47,6 +47,7 @@ static msg_t CrossFromModemThread(void *arg) {
   while (!chThdShouldTerminate()) {
     c = sdGet(&SDGSM);
     sdPut(&SDDM, c);
+//    sdPut(&SDDM, sdGet(&SDGSM));
   }
   return 0;
 }
@@ -59,15 +60,12 @@ static msg_t CrossToModemThread(void *arg) {
   chRegSetThreadName("CrossToModem");
   (void)arg;
   uint8_t c;
-//  palClearPad(IOPORT2, PIOB_GSM_RTS);
+  palClearPad(IOPORT2, PIOB_GSM_RTS);
 
   while (!chThdShouldTerminate()) {
     c = sdGet(&SDDM);
-//    palClearPad(IOPORT2, PIOB_GSM_RTS);
     sdPut(&SDGSM, c);
-//    chThdSleepMilliseconds(10);
-//    palSetPad(IOPORT2, PIOB_GSM_RTS);
-//    sdWrite(&SDGSM, (uint8_t *)"AT\r", 3);
+//    sdPut(&SDGSM, sdGet(&SDDM));
   }
   return 0;
 }
