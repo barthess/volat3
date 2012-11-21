@@ -1,10 +1,25 @@
-// TODO: debug message on modem init process
-// TODO: run cross if modem init failed
+// TODO: init functions for packers and unpackers loading parameters (timeouts)
+// TODO: different macro wrappers for serial writers (in case of UDP)
+// TODO: traffic shaper intergration
 
 // TODO: EXTI
 // TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
 // TODO: обработка битых блоков
 // TODO: более высокая точность парсинга координат gps.
+
+/*
+        *(.text)
+        *(.text.*)
+        *(.rodata)
+        *(.rodata.*)
+        *(.glue_7t)
+        *(.glue_7)
+        *(.gcc*)
+        *(.ctors)
+        *(.dtors)
+        *(.ARM.extab)
+        *(.ARM.extab.*) */
+
 
 #include <time.h>
 

@@ -51,7 +51,7 @@
  *
  * @return  status of operation
  */
-bool_t memcpyts(void *dest, const void *src, size_t len, uint32_t try){
+bool_t memcpy_ts(void *dest, const void *src, size_t len, uint32_t try){
   do{
     memcpy(dest, src, len);
   }while ((0 != memcmp(dest, src, len)) && ((try--) > 0));
