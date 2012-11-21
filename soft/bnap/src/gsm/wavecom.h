@@ -10,6 +10,7 @@
 
 
 void ModemInit(void);
+void UdpSdWrite(SerialDriver *sdp, const uint8_t *bp, size_t n);
 
 
 #endif /* WAVECOM_H_ */

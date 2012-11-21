@@ -14,6 +14,11 @@
  * DEFINES
  ******************************************************************************
  */
+/* special character for data flow control */
+#define ETX                 3  /* End of text */
+#define DLE                 16 /*  Data link escape */
+
+/*timeout definiton */
 #define POWERON_TRY         10
 #define POWERON_TMO         MS2ST(500)
 #define CPIN_TRY            10
@@ -27,9 +32,6 @@
 #define BEARER_TRY          10
 #define BEARER_TMO          MS2ST(1000)
 
-#define END_SIGN_OK         (('O' << 24) | ('K' << 16) | ('\r' << 8) | ('\n'))
-#define END_SIGN            (('\r' << 8) | ('\n'))
-
 #define SDMODEMTRACE        SDDM /* serial port for printing debug info during modem init */
 
 /*
@@ -37,6 +39,7 @@
  * EXTERNS
  ******************************************************************************
  */
+extern GlobalFlags_t GlobalFlags;
 
 /*
  ******************************************************************************
@@ -423,10 +426,13 @@ static msg_t ModemThread(void *sdp) {
     goto ERROR;
 
   chprintf((BaseSequentialStream *)&SDDM, "%s", "*** SUCCESS! Connection established.\r\n");
+  setGlobalFlag(GlobalFlags.modem_connected);
+  chThdExit(0);
+
   while (!chThdShouldTerminate()) {
-    chThdSleepMilliseconds(1000);
-    chprintf((BaseSequentialStream *)sdp, "%s - %U\r\n", "bnap test", chTimeNow());
-    sdPut((SerialDriver *)sdp, 0x03); /* end of data */
+//    chprintf((BaseSequentialStream *)sdp, "%s - %U\r\n", "bnap test", chTimeNow());
+//    sdPut((SerialDriver *)sdp, 0x03); /* end of packet */
+//    chThdSleepMilliseconds(10000);
   }
 
 ERROR:
@@ -435,7 +441,7 @@ ERROR:
   chprintf((BaseSequentialStream *)&SDDM, "%s", "*** Do it yourself manually\r\n");
   chprintf((BaseSequentialStream *)&SDDM, "%s", "*** Hint: to enable echo print 'ATE1'\r\n");
   ModemCrossInit();
-  return 0;
+  return RDY_RESET;
 }
 
 /*
@@ -453,4 +459,25 @@ void ModemInit(void){
           ModemThread,
           &SDGSM);
 }
+
+/**
+ * @brief   UDP write with timeout.
+ */
+void UdpSdWrite(SerialDriver *sdp, const uint8_t *bp, size_t n) {
+
+  uint32_t i = 0;
+  uint8_t b;
+
+  while (i < n){
+    b = bp[i];
+    if ((b == ETX) || (b == DLE))
+      sdPut(sdp, DLE);
+    sdPut(sdp, b);
+    i++;
+  }
+  sdPut(sdp, ETX); /* end of message */
+}
+
+
+
 
