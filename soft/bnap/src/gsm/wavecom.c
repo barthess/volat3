@@ -431,7 +431,7 @@ static msg_t ModemThread(void *sdp) {
 
   while (!chThdShouldTerminate()) {
 //    chprintf((BaseSequentialStream *)sdp, "%s - %U\r\n", "bnap test", chTimeNow());
-//    sdPut((SerialDriver *)sdp, 0x03); /* end of packet */
+//    sdPut((SerialDriver *)sdp, ETX); /* end of packet */
 //    chThdSleepMilliseconds(10000);
   }
 

@@ -67,8 +67,10 @@ typedef struct GlobalFlags_t{
 #define TIMEKEEPER_THREAD_PRIO    (I2C_THREADS_PRIO - 1)
 #define CMD_THREADS_PRIO          (LINK_THREADS_PRIO - 2)
 #define GPS_THREAD_PRIO           (NORMALPRIO - 2)
+
 #define MPIOVD_THREAD_PRIO        (NORMALPRIO - 2)
 #define DM_THREAD_PRIO            (NORMALPRIO - 2)
+#define CC_THREAD_PRIO            (NORMALPRIO - 2)
 
 /******************************************************************
 * статусы возвращаемые разными подсистемами */
