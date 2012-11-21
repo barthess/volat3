@@ -53,7 +53,8 @@ include $(CHIBIOS)/os/kernel/kernel.mk
 #include $(CHIBIOS)/test/test.mk
 
 # Define linker script file here
-LDSCRIPT= $(PORTLD)/AT91SAM7A3.ld
+#LDSCRIPT= $(PORTLD)/AT91SAM7A3.ld
+LDSCRIPT= AT91SAM7A3_bnap.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
