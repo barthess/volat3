@@ -7,6 +7,20 @@
 // TODO: обработка битых блоков
 // TODO: более высокая точность парсинга координат gps.
 
+/*
+        *(.text)
+        *(.text.*)
+        *(.rodata)
+        *(.rodata.*)
+        *(.glue_7t)
+        *(.glue_7)
+        *(.gcc*)
+        *(.ctors)
+        *(.dtors)
+        *(.ARM.extab)
+        *(.ARM.extab.*) */
+
+
 #include <time.h>
 
 #include "ch.h"
