@@ -1,325 +1,401 @@
-/*
-	Copyright 2001, 2002 Georges Menie (www.menie.org)
+/* =============================================================================
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU Lesser General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
+    Copyright (c) 2006 Pieter Conradie [www.piconomic.co.za]
+    All rights reserved.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU Lesser General Public License for more details.
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
 
-    You should have received a copy of the GNU Lesser General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*/
+    1. Redistributions of source code must retain the above copyright notice,
+       this list of conditions and the following disclaimer.
+    2. Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
 
-/* this code needs standard functions memcpy() and memset()
-   and input/output functions port_inbyte() and port_outbyte().
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+    ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
 
-   the prototypes of the input/output functions are:
-     int port_inbyte(unsigned short timeout); // msec timeout
-     void port_outbyte(int c);
+    Title:          XMODEM-CRC receive module
+    Author(s):      Pieter Conradie
+    Creation Date:  2007-03-31
+    Revision Info:  $Id$
 
+============================================================================= */
+#include <string.h>
+
+#include "ch.h"
+#include "hal.h"
+#include "main.h"
+
+#include "xmodem.h"
+
+
+/* _____LOCAL DEFINITIONS____________________________________________________ */
+/// @name XMODEM protocol definitions
+//@{
+#define XMODEM_DATA_SIZE         128
+#define XMODEM_TIMEOUT_MS        1000
+#define XMODEM_MAX_RETRIES       4
+#define XMODEM_MAX_RETRIES_START 1
+//@}
+
+/// @name XMODEM flow control characters
+//@{
+#define XMODEM_SOH               0x01 ///< Start of Header
+#define XMODEM_EOT               0x04 ///< End of Transmission
+#define XMODEM_ACK               0x06 ///< Acknowledge
+#define XMODEM_NAK               0x15 ///< Not Acknowledge
+#define XMODEM_C                 0x43 ///< ASCII C
+//@}
+
+// XMODEM packet structure definition
+typedef struct
+{
+    uint8_t  start;
+    uint8_t  packet_nr;
+    uint8_t  packet_nr_inv;
+    uint8_t  data[XMODEM_DATA_SIZE];
+    uint8_t  crc16_hi8;
+    uint8_t  crc16_lo8;
+} xmodem_packet_t;
+
+/* _____LOCAL VARIABLES______________________________________________________ */
+// Variable to keep track of current packet number
+static uint8_t xmodem_packet_nr;
+
+// Packet buffer
+static union
+{
+    xmodem_packet_t packet;
+    uint8_t            data[sizeof(xmodem_packet_t)];
+} xmodem_packet;
+
+/**
+ *
  */
-
-#include "crc16.h"
-
-#define SOH  0x01
-#define STX  0x02
-#define EOT  0x04
-#define ACK  0x06
-#define NAK  0x15
-#define CAN  0x18
-#define CTRLZ 0x1A
-
-#define DLY_1S 1000
-#define MAXRETRANS 25
-static int last_error = 0;
-/****************Portting Start *******************/
-#include "string.h"
-
-void port_outbyte(unsigned char trychar)
+static bool_t xmodem_wait_rx_char(uint8_t *data)
 {
-	unsigned char buf[2];
-	buf[0] = trychar;
-	lowLevel_write(buf,1);
+  msg_t c = RDY_RESET;
+  c = sdGetTimeout(&SDDM, MS2ST(XMODEM_TIMEOUT_MS));
+  if (c >= 0){
+    *data = c;
+    return TRUE;
+  }
+  else{
+    return FALSE;
+  }
 }
 
-unsigned char port_inbyte(unsigned int time_out)
+/**
+ *
+ */
+static uint16_t xmodem_calc_checksum(void)
 {
-	unsigned char ch;
-	int i;
-	last_error = 0;
+  uint8_t  i;
+  uint8_t  j;
+  uint8_t  data;
+  uint16_t crc = 0x0000;
 
-	if(lowLevel_read(&ch,1) == 1)
-		return ch;
+    // Repeat until all the data has been processed...
+    for(i=0; i<XMODEM_DATA_SIZE; i++)
+    {
+        data = xmodem_packet.packet.data[i];
 
-	last_error = 1;
-	return ch;
-}
-/****************Portting End*******************/
-static int check(int crc, const unsigned char *buf, int sz)
-{
-	if (crc) 
-	{
-		unsigned short crc = crc16_ccitt(buf, sz);
-		unsigned short tcrc = (buf[sz]<<8)+buf[sz+1];
-		if (crc == tcrc)
-			return 1;
-	}
-	else 
-	{
-		int i;
-		unsigned char cks = 0;
-		for (i = 0; i < sz; ++i) 
-		{
-			cks += buf[i];
-		}
-		if (cks == buf[sz])
-		return 1;
-	}
+        // XOR high byte of CRC with 8-bit data
+        crc = crc ^ (((uint16_t)data)<<8);
 
-	return 0;
-}
-
-static void flushinput(void)
-{
-	//while (port_inbyte(((DLY_1S)*3)>>1) >= 0)
-		;
+        // Repeat 8 times (for each bit)
+        for(j=8; j!=0; j--)
+        {
+            // Is highest bit set?
+            if((crc & (1<<15)) != 0)
+            {
+                // Shift left and XOR with 0x1021
+                crc = (crc << 1) ^ 0x1021;
+            }
+            else
+            {
+                // Shift left
+                crc = (crc << 1);
+            }
+        }
+    }
+        return crc;
 }
 
-int xmodemReceive(unsigned char *dest, int destsz)
-{
-	unsigned char xbuff[1030]; /* 1024 for XModem 1k + 3 head chars + 2 crc + nul */
-	unsigned char *p;
-	int bufsz, crc = 0;
-	unsigned char trychar = 'C';
-	unsigned char packetno = 1;
-	int i, c, len = 0;
-	int retry, retrans = MAXRETRANS;
-
-	for(;;) 
-	{
-		for( retry = 0; retry < 16; ++retry) 
-		{
-			if (trychar) 
-				port_outbyte(trychar);
-			c = port_inbyte((DLY_1S)<<1);
-			if (last_error == 0) 
-			{
-				switch (c) 
-				{
-					case SOH:
-						bufsz = 128;
-						goto start_recv;
-					case STX:
-						bufsz = 1024;
-						goto start_recv;
-					case EOT:
-						flushinput();
-						port_outbyte(ACK);
-						return len; /* normal end */
-					case CAN:
-						c = port_inbyte(DLY_1S);
-
-						if (c == CAN) 
-						{
-							flushinput();
-							port_outbyte(ACK);
-							return -1; /* canceled by remote */
-						}
-						break;
-					default:
-						break;
-				}
-			}
-		}
-		if (trychar == 'C') 
-		{ 
-			trychar = NAK; 
-			continue; 
-		}
-		flushinput();
-		port_outbyte(CAN);
-		port_outbyte(CAN);
-		port_outbyte(CAN);
-		return -2; /* sync error */
-
-	start_recv:
-		if (trychar == 'C') crc = 1;
-		trychar = 0;
-		p = xbuff;
-		*p++ = c;
-		for (i = 0;  i < (bufsz+(crc?1:0)+3); ++i) 
-		{
-			c = port_inbyte(DLY_1S);
-
-			if (last_error != 0) 
-				goto reject;
-			*p++ = c;
-		}
-
-		if (xbuff[1] == (unsigned char)(~xbuff[2]) && 
-			(xbuff[1] == packetno || xbuff[1] == (unsigned char)packetno-1) &&
-			check(crc, &xbuff[3], bufsz)) 
-		{
-			if (xbuff[1] == packetno)	
-			{
-				int count = destsz - len;
-				if (count > bufsz) 
-					count = bufsz;
-				if (count > 0) 
-				{
-					memcpy (&dest[len], &xbuff[3], count);
-					len += count;
-				}
-				++packetno;
-				retrans = MAXRETRANS+1;
-			}
-			if (--retrans <= 0) 
-			{
-				flushinput();
-				port_outbyte(CAN);
-				port_outbyte(CAN);
-				port_outbyte(CAN);
-				return -3; /* too many retry error */
-			}
-			port_outbyte(ACK);
-			continue;
-		}
-	reject:
-		flushinput();
-		port_outbyte(NAK);
-	}
+/**
+ *
+ */
+static bool_t xmodem_verify_checksum(uint16_t crc){
+    // Compare received CRC with calculated value
+    if(xmodem_packet.packet.crc16_hi8 != U16_HI8(crc))
+      return FALSE;
+    if(xmodem_packet.packet.crc16_lo8 != U16_LO8(crc))
+      return FALSE;
+    return TRUE;
 }
 
-int xmodemTransmit(unsigned char *src, int srcsz)
+/**
+    Blocking function with a timeout that tries to receive an XMODEM packet
+
+    @retval TRUE    Packet correctly received
+    @retval FALSE   Packet error
+ */
+static bool_t xmodem_rx_packet(void)
 {
-	unsigned char xbuff[1030]; /* 1024 for XModem 1k + 3 head chars + 2 crc + nul */
-	int bufsz, crc = -1;
-	unsigned char packetno = 1;
-	int i, c, len = 0;
-	int retry;
+  uint8_t  i = 0;
+  uint8_t  data;
 
-	for(;;) {
-		for( retry = 0; retry < 16; ++retry) 
-		{
-			c = port_inbyte((DLY_1S)<<1);
-			if (last_error == 0) 
-			{
-				switch (c) 
-				{
-					case 'C':
-						crc = 1;
-						goto start_trans;
-					case NAK:
-						crc = 0;
-						goto start_trans;
-					case CAN:
-						c = port_inbyte(DLY_1S);
-						if (c == CAN) 
-						{
-							port_outbyte(ACK);
-							flushinput();
-							return -1; /* canceled by remote */
-						}
-						break;
-					default:
-						break;
-				}
-			}
-		}
-		port_outbyte(CAN);
-		port_outbyte(CAN);
-		port_outbyte(CAN);
-		flushinput();
-		return -2; /* no sync */
+    // Repeat until whole packet has been received
+    for(i=0; i<sizeof(xmodem_packet.data); i++){
+        // See if character has been received
+        if(!xmodem_wait_rx_char(&data)){
+            return FALSE;// Timeout
+        }
+        // Store received data in buffer
+        xmodem_packet.data[i] = data;
 
-		for(;;) 
-		{
-		start_trans:
-			xbuff[0] = SOH; bufsz = 128;
-			xbuff[1] = packetno;
-			xbuff[2] = ~packetno;
-			c = srcsz - len;
-			if (c > bufsz) c = bufsz;
-			if (c >= 0) 
-			{
-				memset (&xbuff[3], 0, bufsz);
-				if (c == 0) 
-				{
-					xbuff[3] = CTRLZ;
-				}
-				else 
-				{
-					memcpy (&xbuff[3], &src[len], c);
-					if (c < bufsz) xbuff[3+c] = CTRLZ;
-				}
-				if (crc) 
-				{
-					unsigned short ccrc = crc16_ccitt(&xbuff[3], bufsz);
-					xbuff[bufsz+3] = (ccrc>>8) & 0xFF;
-					xbuff[bufsz+4] = ccrc & 0xFF;
-				}
-				else 
-				{
-					unsigned char ccks = 0;
-					for (i = 3; i < bufsz+3; ++i) 
-					{
-						ccks += xbuff[i];
-					}
-					xbuff[bufsz+3] = ccks;
-				}
-				for (retry = 0; retry < MAXRETRANS; ++retry) 
-				{
-					for (i = 0; i < bufsz+4+(crc?1:0); ++i) 
-					{
-						port_outbyte(xbuff[i]);
-					}
-					c = port_inbyte(DLY_1S);
-					if (last_error == 0 ) 
-					{
-						switch (c) 
-						{
-							case ACK:
-								++packetno;
-								len += bufsz;
-								goto start_trans;
-							case CAN:
-								c = port_inbyte(DLY_1S);
-								if ( c == CAN) 
-								{
-									port_outbyte(ACK);
-									flushinput();
-									return -1; /* canceled by remote */
-								}
-								break;
-							case NAK:
-							default:
-								break;
-						}
-					}
-				}
-				port_outbyte(CAN);
-				port_outbyte(CAN);
-				port_outbyte(CAN);
-				flushinput();
-				return -4; /* xmit error */
-			}
-			else 
-			{
-				for (retry = 0; retry < 10; ++retry) 
-				{
-					port_outbyte(EOT);
-					c = port_inbyte((DLY_1S)<<1);
-					if (c == ACK) break;
-				}
-				flushinput();
-				return (c == ACK)?len:-5;
-			}
-		}
-	}
+        // See if this is the first byte of a packet received (xmodem_packet.packet.start)
+        if(i == 0){
+            // See if End Of Transmission has been received
+            if(data == XMODEM_EOT){
+                return TRUE;
+            }
+        }
+    }
+    // See if whole packet was received
+    if(i != sizeof(xmodem_packet.data))
+      return FALSE;
+    // See if correct header was received
+    if(xmodem_packet.packet.start != XMODEM_SOH)
+      return FALSE;
+    // Check packet number checksum
+    if((xmodem_packet.packet.packet_nr + xmodem_packet.packet.packet_nr_inv) != 255)
+      return FALSE;
+
+    // Verify Checksum
+    return xmodem_verify_checksum(xmodem_calc_checksum());
 }
+
+/**
+ *
+ */
+static void xmodem_tx_packet(void)
+{
+  uint8_t  i;
+  uint16_t crc;
+
+    // Start Of Header
+    xmodem_packet.packet.start = XMODEM_SOH;
+    // Packet number
+    xmodem_packet.packet.packet_nr = xmodem_packet_nr;
+    // Inverse packet number
+    xmodem_packet.packet.packet_nr_inv = 255 - xmodem_packet_nr;
+    // Data already filled in...
+    // Checksum
+    crc = xmodem_calc_checksum();
+    xmodem_packet.packet.crc16_hi8 = U16_HI8(crc);
+    xmodem_packet.packet.crc16_hi8 = U16_LO8(crc);
+
+    // Send whole packet
+    for(i=0; i<sizeof(xmodem_packet.data); i++)
+    {
+        XMODEM_WRITE_U8(xmodem_packet.data[i]);
+    }
+}
+
+/* _____GLOBAL FUNCTIONS_____________________________________________________ */
+bool_t xmodem_receive_file(xmodem_on_rx_data_t on_rx_data)
+{
+  uint8_t retry            = XMODEM_MAX_RETRIES_START;
+    bool_t first_ack_sent = FALSE;
+
+    // Reset packet number
+    xmodem_packet_nr = 1;
+
+    // Repeat until transfer is finished or error count is exceeded
+    while(retry--)
+    {
+        if(!first_ack_sent)
+        {
+            // Send initial start character to start transfer (with CRC checking)
+            XMODEM_WRITE_U8(XMODEM_C);
+        }
+
+        // Try to receive a packet
+        if(!xmodem_rx_packet())
+        {
+            if(first_ack_sent)
+            {
+                XMODEM_WRITE_U8(XMODEM_NAK);
+            }
+            continue;
+        }
+        // End Of Transfer received?
+        if(xmodem_packet.packet.start == XMODEM_EOT)
+        {
+            // Acknowledge EOT
+            XMODEM_WRITE_U8(XMODEM_ACK);
+            break;
+        }
+        // Duplicate packet received?
+        if(xmodem_packet.packet.packet_nr == (xmodem_packet_nr - 1))
+        {
+            // Acknowledge packet
+            XMODEM_WRITE_U8(XMODEM_ACK);
+            continue;
+        }
+        // Expected packet received?
+        if(xmodem_packet.packet.packet_nr != xmodem_packet_nr)
+        {
+            // NAK packet
+            XMODEM_WRITE_U8(XMODEM_NAK);
+            continue;
+        }
+        // Pass received data on to handler
+        (*on_rx_data)(&xmodem_packet.packet.data[0], sizeof(xmodem_packet.packet.data));
+        // Acknowledge packet
+        XMODEM_WRITE_U8(XMODEM_ACK);
+        // Next packet
+        xmodem_packet_nr++;
+        // Reset retry count
+        retry = XMODEM_MAX_RETRIES;
+        // First ACK sent
+        first_ack_sent = TRUE;
+    }
+
+    // Too many errors?
+    if(retry == 0)
+    {
+        return FALSE;
+    }
+
+    // See if more EOTs are received...
+    while(retry--)
+    {
+        // Wait for a packet
+        if(!xmodem_rx_packet())
+        {
+            break;
+        }
+        // End Of Transfer received?
+        if(xmodem_packet.packet.start == XMODEM_EOT)
+        {
+            // Acknowledge EOT
+            XMODEM_WRITE_U8(XMODEM_ACK);
+        }
+    }
+
+    return TRUE;
+}
+
+bool_t xmodem_send_file(xmodem_on_tx_data_t on_tx_data)
+{
+  uint8_t retry;
+  uint8_t data;
+
+    // Reset packet number
+    xmodem_packet_nr = 1;
+
+    // Wait for initial start character to start transfer (with CRC checking)
+    XMODEM_TMR_START(15000);
+    if(!xmodem_wait_rx_char(&data))
+    {
+        return FALSE;
+    }
+    if(data != XMODEM_C)
+    {
+        return FALSE;
+    }
+
+    // Get next data block to send
+    while((*on_tx_data)(&xmodem_packet.packet.data[0], sizeof(xmodem_packet.packet.data)))
+    {
+        // Try sending error packet until error count is exceeded
+        for(retry = XMODEM_MAX_RETRIES; retry != 0; retry--)
+        {
+            // Send packet
+            xmodem_tx_packet();
+            // Wait for an ACK or NAK
+            XMODEM_TMR_START(XMODEM_TIMEOUT_MS);
+            if(!xmodem_wait_rx_char(&data))
+            {
+                continue;
+            }
+            // Received a NAK. Resend packet
+            if(data == XMODEM_NAK)
+            {
+                continue;
+            }
+            // Received an ACK. Packet has been correctly received
+            if(data == XMODEM_ACK)
+            {
+                break;
+            }
+        }
+        // See if retry count was exceeded
+        if(retry == 0)
+        {
+            return FALSE;
+        }
+
+        // Next packet index
+        xmodem_packet_nr++;
+    }
+
+    for(retry = XMODEM_MAX_RETRIES; retry != 0; retry--)
+    {
+        // Send "End Of Transfer"
+        XMODEM_WRITE_U8(XMODEM_EOT);
+        // Wait for response
+        XMODEM_TMR_START(XMODEM_TIMEOUT_MS);
+        if(!xmodem_wait_rx_char(&data))
+        {
+            continue;
+        }
+        if(data == XMODEM_ACK)
+        {
+            // File successfully transferred
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+
+
+
+/**
+ *
+ */
+static WORKING_AREA(CrossFromModemThreadWA, 2048);
+static msg_t CrossFromModemThread(void *arg) {
+  chRegSetThreadName("xmodem_rx");
+  (void)arg;
+  uint8_t c;
+
+  while (!chThdShouldTerminate()) {
+    c = sdGet(&SDGSM);
+    sdPut(&SDDM, c);
+  }
+  return 0;
+}
+
+
+void XmodemInit(void){
+  chThdCreateStatic(CrossFromModemThreadWA,
+          sizeof(CrossFromModemThreadWA),
+          NORMALPRIO,
+          CrossFromModemThread,
+          NULL);
+}
+

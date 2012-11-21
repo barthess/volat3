@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O2 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions
+  USE_OPT = -O0 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions
 endif
 
 # C specific options here (added to USE_OPT).
@@ -62,6 +62,8 @@ CSRC = $(PORTSRC) \
        $(TESTSRC) \
        $(HALSRC) \
        $(PLATFORMSRC) \
+       $(CHIBIOS)/os/various/chprintf.c \
+       $(CHIBIOS)/os/various/syscalls.c \
        main.c \
        board.c \
        src/link/link.c \
@@ -83,7 +85,7 @@ CSRC = $(PORTSRC) \
        src/exti_local.c \
        src/utils/memfunc.c \
        src/gsm/wavecom.c \
-       src/gsm/xmodem.c \
+       src/gsm/crc16.c \
        src/gsm/cross.c \
 
 

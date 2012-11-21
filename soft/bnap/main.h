@@ -5,9 +5,10 @@
 //#include "mavlink.h"
 #include <stdint.h>
 
-/******************************************************************
- * Ревизия платы для программной коррекции ошибок разводки */
-#define BOARD_REV   1
+/*******************************************************************/
+#define GSM_BAUDRATE        115200
+#define MPIOVD_BAUDRATE     115200
+#define DM_BAUDRATE         115200
 
 /******************************************************************
  * global bool flags */
@@ -16,7 +17,7 @@ typedef struct GlobalFlags_t{
   uint32_t allow_softreset:1;   /* system performs soft reset instead of halting in panic */
   uint32_t stub_0:1;
   uint32_t time_good:1;         /* if 0 than time need adjusting by hands or using gps */
-  uint32_t stub_1:1;
+  uint32_t modem_ready:1;       /* */
   //4
   uint32_t logger_ready:1;      /* logger found end of circular buffer and ready to receive data */
   uint32_t link_cc_ready:1;     /* connection with control center via GSM up */
@@ -77,6 +78,8 @@ typedef struct GlobalFlags_t{
 #define LINK_FAILED       CH_FAILED
 #define STORAGE_SUCCESS   CH_SUCCESS
 #define STORAGE_FAILED    CH_FAILED
+#define GSM_SUCCESS       CH_SUCCESS
+#define GSM_FAILED        CH_FAILED
 
 /******************************************************************
 * константы для мавлинка */

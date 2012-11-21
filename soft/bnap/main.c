@@ -1,5 +1,8 @@
+// TODO: debug message on modem init process
+// TODO: run cross if modem init failed
+
 // TODO: EXTI
-// TODO: при каждой записи в хранилище обновлять время последней доступной записи (?? и общее количество??)
+// TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
 // TODO: обработка битых блоков
 // TODO: более высокая точность парсинга координат gps.
 
@@ -20,7 +23,7 @@
 #include "ds1338.h"
 #include "exti_local.h"
 #include "storage.h"
-#include "modem.h"
+#include "wavecom.h"
 #include "cross.h"
 
 /*
@@ -50,6 +53,26 @@ GlobalFlags_t GlobalFlags = {0,0,0,0,0,0,0,0,
  * GLOBAL VARIABLES
  ******************************************************************************
  */
+/**/
+static const SerialConfig gsm_ser_cfg = {
+    GSM_BAUDRATE,
+    //9600,
+    AT91C_US_USMODE_HWHSH | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+//      AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+//                                AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+};
+static const SerialConfig dm_ser_cfg = {
+    DM_BAUDRATE,
+    //921600,
+    AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+};
+static const SerialConfig mpiovd_ser_cfg = {
+    MPIOVD_BAUDRATE,
+    AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+};
 
 /*
  *******************************************************************************
@@ -64,6 +87,9 @@ int main(void) {
   chSysInit();
 
   chBSemInit(&pps_sem, TRUE);
+
+  sdStart(&SDGSM, &gsm_ser_cfg);
+  sdStart(&SDDM, &dm_ser_cfg);
 
 //  i2cLocalInit();
 //
@@ -81,7 +107,7 @@ int main(void) {
 //  SanityControlInit();
 
   ModemInit();
-  ModemCrossInit();
+//  ModemCrossInit();
 
   while (TRUE) {
     chThdSleepMilliseconds(666);
