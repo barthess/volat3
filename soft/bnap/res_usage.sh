@@ -8,7 +8,7 @@ RAM_USED=`arm-none-eabi-size build/ch.elf | tail -1 | awk '{print $2+$3}'`
 echo "------------------------------------------------------------------------------------------------------------"
 
 let "FLASH_PERCENT	= (100 * FLASH_USED)/FLASH_SIZE"
-let "RAM_SIZE		= RAM_SIZE"
+let "RAM_SIZE		= RAM_SIZE" # to convert from hex to dec
 let "RAM_PERCENT	= (100 * RAM_USED)/RAM_SIZE"
 
 echo "SRAM:  used = $RAM_USED, mcu_ram = $RAM_SIZE, utilization = $RAM_PERCENT%"
