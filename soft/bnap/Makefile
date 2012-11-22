@@ -68,6 +68,9 @@ CSRC = $(PORTSRC) \
        main.c \
        board.c \
        src/link/link.c \
+       src/link/link_cc.c \
+       src/link/link_cc_packer.c \
+       src/link/link_cc_unpacker.c \
        src/link/link_dm_packer.c \
        src/link/link_dm_unpacker.c \
        src/link/link_dm.c \

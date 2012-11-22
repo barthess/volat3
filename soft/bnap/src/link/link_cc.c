@@ -5,7 +5,7 @@
 #include "message.h"
 #include "main.h"
 #include "link_cc_packer.h"
-//#include "link_cc_unpacker.h"
+#include "link_cc_unpacker.h"
 
 /*
  ******************************************************************************
