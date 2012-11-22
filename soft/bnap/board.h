@@ -91,7 +91,7 @@
 #define PIOA_GPS_TX_MASK            (1 << PIOA_GPS_TX)
 // GSM driving pins
 #define PIOA_GSM_ON                 24  // set 1 to power modem on
-#define PIOA_GSM_ON_MASK            (1 << PIOA_GSM_ON_MASK)
+#define PIOA_GSM_ON_MASK            (1 << PIOA_GSM_ON)
 #define PIOA_GSM_RESET              18
 #define PIOA_GSM_RESET_MASK         (1 << PIOA_GSM_RESET)
 
@@ -110,12 +110,12 @@
 /* Output data. */
 #define VAL_PIOA_ODSR           0x00000000
 /* Direction. */
-#define VAL_PIOA_OSR            0x00000000
+#define VAL_PIOA_OSR            (0x00000000 | PIOA_GSM_ON_MASK | PIOA_GSM_RESET_MASK)
 /* Pull-up. */
-#define VAL_PIOA_PUSR           (0xFFFFFFFF & (~(PIOA_MMC_CP_MASK | PIOA_MMC_WP_MASK)))
+#define VAL_PIOA_PUSR           (0xFFFFFFFF & (~(PIOA_MMC_CP_MASK | PIOA_MMC_WP_MASK | PIOA_GSM_RESET_MASK)))
 
-#define VAL_PIOB_ODSR           0x00000000      /* Output data. */
-#define VAL_PIOB_OSR            0x00000000      /* Direction. */
+#define VAL_PIOB_ODSR           0x00000000     /* Output data. */
+#define VAL_PIOB_OSR            (0x00000000 | PIOB_GSM_RTS_MASK)      /* Direction. */
 #define VAL_PIOB_PUSR           0xFFFFFFFF      /* Pull-up. */
 
 

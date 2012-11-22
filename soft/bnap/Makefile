@@ -53,7 +53,8 @@ include $(CHIBIOS)/os/kernel/kernel.mk
 #include $(CHIBIOS)/test/test.mk
 
 # Define linker script file here
-LDSCRIPT= $(PORTLD)/AT91SAM7A3.ld
+#LDSCRIPT= $(PORTLD)/AT91SAM7A3.ld
+LDSCRIPT= AT91SAM7A3_bnap.ld
 
 # C sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -62,9 +63,14 @@ CSRC = $(PORTSRC) \
        $(TESTSRC) \
        $(HALSRC) \
        $(PLATFORMSRC) \
+       $(CHIBIOS)/os/various/chprintf.c \
+       $(CHIBIOS)/os/various/syscalls.c \
        main.c \
        board.c \
        src/link/link.c \
+       src/link/link_cc.c \
+       src/link/link_cc_packer.c \
+       src/link/link_cc_unpacker.c \
        src/link/link_dm_packer.c \
        src/link/link_dm_unpacker.c \
        src/link/link_dm.c \
@@ -83,7 +89,10 @@ CSRC = $(PORTSRC) \
        src/sanity.c \
        src/exti_local.c \
        src/utils/memfunc.c \
-       src/utils/softdebounce.c \
+       src/gsm/wavecom.c \
+       src/gsm/crc16.c \
+       src/gsm/cross.c \
+
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
@@ -119,7 +128,7 @@ TOOLCHAININCDIR = /opt/arm-none-eabi-gcc-4_6/lib/gcc/arm-none-eabi/4.6.2/include
 				  /opt/arm-none-eabi-gcc-4_6/arm-none-eabi/include
 				 
 INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
-         $(HALINC) $(PLATFORMINC) $(BOARDINC) \
+         $(HALINC) $(PLATFORMINC) \
          $(CHIBIOS)/os/various \
          $(MAVLINCDIR) \
          $(MAVLINCDIR)/common \
@@ -129,6 +138,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src/time \
          src/utils \
          src/storage \
+         src/gsm \
          $(TOOLCHAININCDIR) \
 #
 # Project, sources and paths

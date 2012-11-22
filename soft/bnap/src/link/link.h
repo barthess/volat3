@@ -1,12 +1,9 @@
 #ifndef LINK_H_
 #define LINK_H_
 
-#define GSM_BAUDRATE        115200
-#define MPIOVD_BAUDRATE     115200
-#define DM_BAUDRATE         115200
-
 
 void LinkInit(void);
+bool_t traffic_limiter(systime_t *last, systime_t period);
 
 
 #endif /* LINK_H_ */

@@ -101,43 +101,43 @@ static void ds1338_bcd2tm(uint8_t *bcd, struct tm *timp){
 /**
  *
  */
-static void ds1338_bcd2str(uint8_t *bcd, uint8_t *str){
-  //"*** YY-MM-DD HH:MM:SS ***",
-  *(str++) = '\n';
-  *(str++) = '*';
-  *(str++) = '*';
-  *(str++) = '*';
-  *(str++) = ' ';
-
-  *(str++) = (bcd[6] >> 4) + '0';
-  *(str++) = (bcd[6] & 15) + '0';
-  *(str++) = '-';
-
-  *(str++) = (bcd[5] >> 4) + '0';
-  *(str++) = (bcd[5] & 15) + '0';
-  *(str++) = '-';
-
-  *(str++) = (bcd[4] >> 4) + '0';
-  *(str++) = (bcd[4] & 15) + '0';
-  *(str++) = ' ';
-
-  *(str++) = ((bcd[2] >> 4) & 3) + '0';
-  *(str++) = (bcd[2] & 15) + '0';
-  *(str++) = ':';
-
-  *(str++) = (bcd[1] >> 4) + '0';
-  *(str++) = (bcd[1] & 15) + '0';
-  *(str++) = ':';
-
-  *(str++) = (bcd[0] >> 4) + '0';
-  *(str++) = (bcd[0] & 15) + '0';
-
-  *(str++) = ' ';
-  *(str++) = '*';
-  *(str++) = '*';
-  *(str++) = '*';
-  *(str++) = '\n';
-}
+//static void ds1338_bcd2str(uint8_t *bcd, uint8_t *str){
+//  //"*** YY-MM-DD HH:MM:SS ***",
+//  *(str++) = '\n';
+//  *(str++) = '*';
+//  *(str++) = '*';
+//  *(str++) = '*';
+//  *(str++) = ' ';
+//
+//  *(str++) = (bcd[6] >> 4) + '0';
+//  *(str++) = (bcd[6] & 15) + '0';
+//  *(str++) = '-';
+//
+//  *(str++) = (bcd[5] >> 4) + '0';
+//  *(str++) = (bcd[5] & 15) + '0';
+//  *(str++) = '-';
+//
+//  *(str++) = (bcd[4] >> 4) + '0';
+//  *(str++) = (bcd[4] & 15) + '0';
+//  *(str++) = ' ';
+//
+//  *(str++) = ((bcd[2] >> 4) & 3) + '0';
+//  *(str++) = (bcd[2] & 15) + '0';
+//  *(str++) = ':';
+//
+//  *(str++) = (bcd[1] >> 4) + '0';
+//  *(str++) = (bcd[1] & 15) + '0';
+//  *(str++) = ':';
+//
+//  *(str++) = (bcd[0] >> 4) + '0';
+//  *(str++) = (bcd[0] & 15) + '0';
+//
+//  *(str++) = ' ';
+//  *(str++) = '*';
+//  *(str++) = '*';
+//  *(str++) = '*';
+//  *(str++) = '\n';
+//}
 
 /**
  * param[in]    bcd array to store time in DS1338
@@ -162,31 +162,31 @@ static void ds1338_get_time_bcd(uint8_t *bcd){
 }
 
 /**
- *
+ * Testing thread
  */
-static WORKING_AREA(DS1138ThreadWA, 256);
-static msg_t DS1138Thread(void *arg) {
-  chRegSetThreadName("DS1138");
-  (void)arg;
-
-  uint8_t bcd[DS1338_TIME_SIZE];
-  struct tm timp;
-
-  size_t n = sizeof("\n*** YY-MM-DD HH:MM:SS ***\n");
-  uint8_t str[n];
-
-  while (TRUE) {
-    chThdSleepMilliseconds(3000);
-
-    ds1338_get_time_bcd(bcd);
-    ds1338_bcd2tm(bcd, &timp);
-    ds1338_bcd2str(bcd, str);
-    sdWrite(&SDDM, str, n);
-
-    mktime(&timp);
-  }
-  return 0;
-}
+//static WORKING_AREA(DS1138ThreadWA, 256);
+//static msg_t DS1138Thread(void *arg) {
+//  chRegSetThreadName("DS1138");
+//  (void)arg;
+//
+//  uint8_t bcd[DS1338_TIME_SIZE];
+//  struct tm timp;
+//
+//  size_t n = sizeof("\n*** YY-MM-DD HH:MM:SS ***\n");
+//  uint8_t str[n];
+//
+//  while (TRUE) {
+//    chThdSleepMilliseconds(3000);
+//
+//    ds1338_get_time_bcd(bcd);
+//    ds1338_bcd2tm(bcd, &timp);
+//    ds1338_bcd2str(bcd, str);
+//    sdWrite(&SDDM, str, n);
+//
+//    mktime(&timp);
+//  }
+//  return 0;
+//}
 
 
 /*
@@ -218,11 +218,11 @@ void ds1338Init(void) {
   }
   i2cReleaseBus(&I2CD1);
 
-  chThdCreateStatic(DS1138ThreadWA,
-          sizeof(DS1138ThreadWA),
-          NORMALPRIO,
-          DS1138Thread,
-          NULL);
+//  chThdCreateStatic(DS1138ThreadWA,
+//          sizeof(DS1138ThreadWA),
+//          NORMALPRIO,
+//          DS1138Thread,
+//          NULL);
 }
 
 /**

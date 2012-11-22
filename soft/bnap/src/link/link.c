@@ -4,6 +4,7 @@
 
 #include "link.h"
 #include "link_dm.h"
+#include "link_cc.h"
 #include "message.h"
 #include "main.h"
 
@@ -25,21 +26,8 @@
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static const SerialConfig gsm_ser_cfg = {
-    GSM_BAUDRATE,
-    AT91C_US_USMODE_HWHSH | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
-                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
-};
-static const SerialConfig mpiovd_ser_cfg = {
-    MPIOVD_BAUDRATE,
-    AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
-                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
-};
-static const SerialConfig dm_ser_cfg = {
-    DM_BAUDRATE,
-    AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
-                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
-};
+
+
 
 /*
  *******************************************************************************
@@ -57,17 +45,30 @@ static const SerialConfig dm_ser_cfg = {
  */
 
 void LinkInit(void){
-//  sdStart(&SDGSM, &gsm_ser_cfg);
-//  link_cc_up(&SDGSM);
-
-  sdStart(&SDDM, &dm_ser_cfg);
-  link_dm_up(&SDDM);
-
-//  sdStart(&SDDM, &dm_ser_cfg);
 //  link_dm_up(&SDDM);
+  link_cc_up(&SDGSM);
 }
 
+/**
+ * @brief             Traffic shaper.
+ * @details           Limits sending frequency. Created to use in with driven
+ *                    senders that send packet only if sending allowed
+ *                    by period AND there is event about fresh data.
+ *
+ * @param[in] last    pointer to variable containing timestamp of last sent event
+ * @param[in] perid   period of sending. Zero value denotes switching off.
+ *
+ * return TRUE if sending of packet allowed.
+ */
+bool_t traffic_limiter(systime_t *last, systime_t period){
+  if (period == 0)
+    return FALSE;
 
-
-
+  if ((chTimeNow() - *last) >= period){
+    *last = chTimeNow();
+    return TRUE;
+  }
+  else
+    return FALSE;
+}
 

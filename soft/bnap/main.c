@@ -1,5 +1,9 @@
+// TODO: init functions for packers and unpackers loading parameters (timeouts)
+// TODO: different macro wrappers for serial writers (in case of UDP)
+// TODO: traffic shaper intergration
+
 // TODO: EXTI
-// TODO: при каждой записи в хранилище обновлять время последней доступной записи (?? и общее количество??)
+// TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
 // TODO: обработка битых блоков
 // TODO: более высокая точность парсинга координат gps.
 
@@ -20,7 +24,8 @@
 #include "ds1338.h"
 #include "exti_local.h"
 #include "storage.h"
-#include "bnap_ui.h"
+#include "wavecom.h"
+#include "cross.h"
 
 /*
  ******************************************************************************
@@ -49,6 +54,26 @@ GlobalFlags_t GlobalFlags = {0,0,0,0,0,0,0,0,
  * GLOBAL VARIABLES
  ******************************************************************************
  */
+/**/
+static const SerialConfig gsm_ser_cfg = {
+    GSM_BAUDRATE,
+    //9600,
+    AT91C_US_USMODE_HWHSH | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+//      AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+//                                AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+};
+static const SerialConfig dm_ser_cfg = {
+    DM_BAUDRATE,
+    //921600,
+    AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+};
+static const SerialConfig mpiovd_ser_cfg = {
+    MPIOVD_BAUDRATE,
+    AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+};
 
 /*
  *******************************************************************************
@@ -64,17 +89,23 @@ int main(void) {
 
   chBSemInit(&pps_sem, TRUE);
 
+  sdStart(&SDGSM, &gsm_ser_cfg);
+  sdStart(&SDDM, &dm_ser_cfg);
+  sdStart(&SDMPIOVD, &mpiovd_ser_cfg);
+
   i2cLocalInit();
+
   MavInit();
   MsgInit();
   GPSInit();
-  ExtiLocalInit();
+//  ExtiLocalInit();
   LinkInit();
+
   ds1338Init();
   TimekeeperInit();
-  StorageInit();
+//  StorageInit();
   SanityControlInit();
-  BnapUiInit();
+  ModemInit();
 
   while (TRUE) {
     chThdSleepMilliseconds(666);

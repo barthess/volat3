@@ -88,9 +88,9 @@ uint8_t* fill_record(void){
   mavlink_gps_raw_int_struct.time_usec = timestamp;
   chSysUnlock();
 
-  memcpyts(dest, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct), 4);
+  memcpy_ts(dest, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct), 4);
   dest += sizeof(mavlink_mpiovd_sensors_struct);
-  memcpyts(dest, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct), 4);
+  memcpy_ts(dest, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct), 4);
   dest += sizeof(mavlink_gps_raw_int_struct);
 
   /* checksum */

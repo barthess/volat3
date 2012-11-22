@@ -237,7 +237,7 @@ static void parse_gga(uint8_t *ggabuf){
   while(ggabuf[i] != ','){i++;}
     i++;
 
-  while(ggabuf[i] != ','){i++;}                 /* diltusion */
+  while(ggabuf[i] != ','){i++;}                 /* Horizontal Dilution of precision */
     i++;
 
   gps_altitude = parse_decimal(&ggabuf[i]);     /* altitude */

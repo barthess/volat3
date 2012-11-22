@@ -1,7 +1,8 @@
-#include <string.h>
-
 #include "ch.h"
 #include "hal.h"
+
+#include "main.h"
+#include "cross.h"
 
 /*
  ******************************************************************************
@@ -34,30 +35,72 @@
  ******************************************************************************
  ******************************************************************************
  */
+/**
+ *
+ */
+static WORKING_AREA(CrossFromModemThreadWA, 128);
+static msg_t CrossFromModemThread(void *arg) {
+  chRegSetThreadName("CrossFromModem");
+  (void)arg;
+  uint8_t c;
+
+  while (!chThdShouldTerminate()) {
+    c = sdGet(&SDGSM);
+    if (c == '\r'){
+      sdPut(&SDDM, '\\');
+      sdPut(&SDDM, 'r');
+    }
+    else if (c == '\n'){
+      sdPut(&SDDM, '\\');
+      sdPut(&SDDM, 'n');
+    }
+    else
+      sdPut(&SDDM, c);
+  }
+  return 0;
+}
+
+/**
+ *
+ */
+static WORKING_AREA(CrossToModemThreadWA, 128);
+static msg_t CrossToModemThread(void *arg) {
+  chRegSetThreadName("CrossToModem");
+  (void)arg;
+  uint8_t c;
+
+  palClearPad(IOPORT2, PIOB_GSM_RTS);
+
+  while (!chThdShouldTerminate()) {
+    c = sdGet(&SDDM);
+    sdPut(&SDGSM, c);
+    //sdAsynchronousWrite(&SDGSM, &c, 1);
+  }
+  return 0;
+}
 
 /*
  ******************************************************************************
  * EXPORTED FUNCTIONS
  ******************************************************************************
  */
-
 /**
- * @brief Thread safe variant of memcpy function.
  *
- * @param[in] dest  destination pointer
- * @param[in] src   source pointer
- * @param[in] len   size of transaction
- * @param[in] try   number of trys, minimum 1
- *
- * @return  status of operation
  */
-bool_t memcpy_ts(void *dest, const void *src, size_t len, uint32_t try){
-  do{
-    memcpy(dest, src, len);
-  }while ((0 != memcmp(dest, src, len)) && ((try--) > 0));
+void ModemCrossInit(void){
+//  chThdSleepMilliseconds(10000);
+//  uint8_t st[] = "AT+IPR=9600\r\n";
+//  sdWrite(&SDGSM, st, sizeof(st));
 
-  if (try > 0)
-    return CH_SUCCESS;
-  else
-    return CH_FAILED;
+  chThdCreateStatic(CrossFromModemThreadWA,
+          sizeof(CrossFromModemThreadWA),
+          NORMALPRIO,
+          CrossFromModemThread,
+          NULL);
+  chThdCreateStatic(CrossToModemThreadWA,
+          sizeof(CrossToModemThreadWA),
+          NORMALPRIO,
+          CrossToModemThread,
+          NULL);
 }
+

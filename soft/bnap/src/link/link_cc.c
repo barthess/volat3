@@ -4,8 +4,8 @@
 
 #include "message.h"
 #include "main.h"
-#include "link_dm_packer.h"
-#include "link_dm_unpacker.h"
+#include "link_cc_packer.h"
+#include "link_cc_unpacker.h"
 
 /*
  ******************************************************************************
@@ -18,6 +18,7 @@
  * EXTERNS
  ******************************************************************************
  */
+extern GlobalFlags_t GlobalFlags;
 
 /*
  ******************************************************************************
@@ -35,10 +36,17 @@
 /**
  * Поток разбора входящих данных.
  */
-static WORKING_AREA(DmUnpackerThreadWA, 2048);
-static msg_t DmUnpackerThread(void *sdp){
-  chRegSetThreadName("DmUnpacker");
-  DmUnpackCycle((SerialDriver *)sdp);
+static WORKING_AREA(CcUnpackerThreadWA, 2048);
+static msg_t CcUnpackerThread(void *sdp){
+  chRegSetThreadName("CcUnpacker");
+
+  while (GlobalFlags.modem_connected == 0)
+    chThdSleepMilliseconds(200);
+
+  CcUnpackCycle((SerialDriver *)sdp);
+//  while (TRUE)
+//    chThdSleepMilliseconds(200);
+
   chThdExit(0);
   return 0;
 }
@@ -46,10 +54,14 @@ static msg_t DmUnpackerThread(void *sdp){
 /**
  * Упаковка данных для модуля индюкации.
  */
-static WORKING_AREA(DmPackerThreadWA, 1536);
-static msg_t DmPackerThread(void *sdp){
-  chRegSetThreadName("DmPacker");
-  DmPackCycle((SerialDriver *)sdp);
+static WORKING_AREA(CcPackerThreadWA, 1536);
+static msg_t CcPackerThread(void *sdp){
+  chRegSetThreadName("CcPacker");
+
+  while (GlobalFlags.modem_connected == 0)
+    chThdSleepMilliseconds(200);
+
+  CcPackCycle((SerialDriver *)sdp);
   chThdExit(0);
   return 0;
 }
@@ -63,17 +75,17 @@ static msg_t DmPackerThread(void *sdp){
 /**
  * Fork link threads for mpiovd.
  */
-void link_dm_up(SerialDriver *sdp){
+void link_cc_up(SerialDriver *sdp){
 
-  chThdCreateStatic(DmUnpackerThreadWA,
-          sizeof(DmUnpackerThreadWA),
-          DM_THREAD_PRIO,
-          DmUnpackerThread,
+  chThdCreateStatic(CcUnpackerThreadWA,
+          sizeof(CcUnpackerThreadWA),
+          CC_THREAD_PRIO,
+          CcUnpackerThread,
           sdp);
 
-  chThdCreateStatic(DmPackerThreadWA,
-          sizeof(DmPackerThreadWA),
-          DM_THREAD_PRIO,
-          DmPackerThread,
+  chThdCreateStatic(CcPackerThreadWA,
+          sizeof(CcPackerThreadWA),
+          CC_THREAD_PRIO,
+          CcPackerThread,
           sdp);
 }
