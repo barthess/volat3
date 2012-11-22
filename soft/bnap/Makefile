@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O0 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions
+  USE_OPT = -Os -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions
 endif
 
 # C specific options here (added to USE_OPT).
@@ -232,6 +232,13 @@ ULIBS =
 
 include $(CHIBIOS)/os/ports/GCC/ARM/rules.mk
 
+######## resource usage show ################
+MAKE_ALL_RULE_HOOK: res_usage
+
+res_usage: $(BUILDDIR)/$(PROJECT).bin $(BUILDDIR)/$(PROJECT).elf \
+			$(BUILDDIR)/$(PROJECT).hex $(BUILDDIR)/$(PROJECT).dmp
+	./res_usage.sh	
+	
 src/link/link_cc_packer.c: gen_link_packer.py
 	python $<
 	
