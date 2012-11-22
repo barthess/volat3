@@ -91,24 +91,20 @@ int main(void) {
 
   sdStart(&SDGSM, &gsm_ser_cfg);
   sdStart(&SDDM, &dm_ser_cfg);
+  sdStart(&SDMPIOVD, &mpiovd_ser_cfg);
 
-//  i2cLocalInit();
-//
-//  MavInit();
-//  MsgInit();
-//  GPSInit();
+  i2cLocalInit();
+
+  MavInit();
+  MsgInit();
+  GPSInit();
 //  ExtiLocalInit();
   LinkInit();
-//
-//  ds1338Init();
-//  TimekeeperInit();
-//
+  ds1338Init();
+  TimekeeperInit();
 //  StorageInit();
-//
-//  SanityControlInit();
-
+  SanityControlInit();
   ModemInit();
-//  ModemCrossInit();
 
   while (TRUE) {
     chThdSleepMilliseconds(666);

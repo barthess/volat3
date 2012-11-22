@@ -21,15 +21,17 @@ extern mavlink_system_t mavlink_system_struct;
 
 """)
 
-def foot(f):
+def foot(f, name):
     f.write("""
     default:
-      return;
+      goto WAIT;
       break;
     }
     /* write in port after exiting from case */
     len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);
-    sdWrite(sdp, sendbuf, len);
+    """)
+    f.write(str.lower(name) + "_sdWrite(sdp, sendbuf, len);")
+    f.write("""
   }
 }""")
 
@@ -55,6 +57,7 @@ def gen(name, arr):
     f.write("  uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];\n")
     f.write("  uint16_t len = 0;\n")
     f.write("  while (!chThdShouldTerminate()) {\n")
+    f.write("WAIT:\n")
     st = ""
     for i in arr:
         st += "EVMSK_" + str.upper(i) + " | "
@@ -65,11 +68,11 @@ def gen(name, arr):
     for i in arr:
         f.write("    case EVMSK_" + str.upper(i) + ":\n")
         f.write("      if(FALSE == traffic_limiter(&" + i + "_lastsent, " + i + "_sendperiod))\n")
-        f.write("        return;\n")
+        f.write("        goto WAIT;\n")
         f.write("      memcpy_ts(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i +"_struct), 4);\n")
         f.write("      mavlink_msg_" + i + "_encode(mavlink_system_struct.sysid, MAV_COMP_ID_ALL, &mavlink_message_struct, (mavlink_" + i + "_t *)sendbuf);\n")
         f.write("      break;\n\n")
-    foot(f)
+    foot(f, name)
     f.close()
 
 

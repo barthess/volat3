@@ -69,9 +69,9 @@ static void _trace_print(char *st, bool_t direction){
   uint32_t i = 0;
 
   if(direction)
-    sdWrite(&SDMODEMTRACE, (uint8_t *)"<-  ", 4);
+    sdWrite(&SDMODEMTRACE, (uint8_t *)"<", 1);
   else
-    sdWrite(&SDMODEMTRACE, (uint8_t *)" -> ", 4);
+    sdWrite(&SDMODEMTRACE, (uint8_t *)" ", 1);
 
   while(i < len){
     uint8_t c = st[i];
@@ -111,19 +111,17 @@ static void _say_to_modem(SerialDriver *sdp, char *st){
 /**
  * Store AT answer from modem in buffer.
  * return size of got bytes.
- *
- * TODO: time overflow handler here!!!!!
  */
 static size_t _collect_answer(SerialDriver *sdp, uint8_t *buf, size_t lim, systime_t timeout){
 
-  systime_t deadline = chTimeNow() + timeout;
+  systime_t start = chTimeNow();
   const uint16_t sign = ('\r' << 8) | '\n';
   uint16_t w = 0;
   uint32_t i;
   msg_t c;
 
   /* wait starting \r\n */
-  while (chTimeNow() < deadline){
+  while ((chTimeNow() - start) < timeout){
     c = sdGetTimeout(sdp, MS2ST(1));
     if (c > 0){ /* no timeout */
       w = (w << 8) | (c & 0xFF);
@@ -134,7 +132,7 @@ static size_t _collect_answer(SerialDriver *sdp, uint8_t *buf, size_t lim, systi
 
   /* collect remaining part until \r\n */
   i = 0;
-  while((chTimeNow() < deadline) && (i < (lim - 1))){
+  while(((chTimeNow() - start) < timeout) && (i < (lim - 1))){
     c = sdGetTimeout(sdp, MS2ST(1));
     if (c > 0){ /* no timeout */
       buf[i] = c;
@@ -367,8 +365,7 @@ static bool_t _create_connection(SerialDriver *sdp){
   uint32_t try = BEARER_TRY;
 
   while(try--){
-    _say_to_modem(sdp, "AT+WIPCREATE=1,1,4001,\"178.154.80.12\",4000\r");
-    //_say_to_modem(sdp, "AT+WIPCREATE=1,1,4001,\"86.57.157.114\",4000\r");
+    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14551,\"77.67.201.231\",14550\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;
@@ -427,12 +424,12 @@ static msg_t ModemThread(void *sdp) {
 
   chprintf((BaseSequentialStream *)&SDDM, "%s", "*** SUCCESS! Connection established.\r\n");
   setGlobalFlag(GlobalFlags.modem_connected);
-  chThdExit(0);
+  //chThdExit(0);
 
   while (!chThdShouldTerminate()) {
 //    chprintf((BaseSequentialStream *)sdp, "%s - %U\r\n", "bnap test", chTimeNow());
 //    sdPut((SerialDriver *)sdp, ETX); /* end of packet */
-//    chThdSleepMilliseconds(10000);
+    chThdSleepMilliseconds(1000);
   }
 
 ERROR:

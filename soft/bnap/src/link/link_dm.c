@@ -46,7 +46,7 @@ static msg_t DmUnpackerThread(void *sdp){
 /**
  * Упаковка данных для модуля индюкации.
  */
-static WORKING_AREA(DmPackerThreadWA, 1024);
+static WORKING_AREA(DmPackerThreadWA, 1536);
 static msg_t DmPackerThread(void *sdp){
   chRegSetThreadName("DmPacker");
   DmPackCycle((SerialDriver *)sdp);

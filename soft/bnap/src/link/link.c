@@ -45,7 +45,7 @@
  */
 
 void LinkInit(void){
-  link_dm_up(&SDDM);
+//  link_dm_up(&SDDM);
   link_cc_up(&SDGSM);
 }
 

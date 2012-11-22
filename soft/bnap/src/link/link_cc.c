@@ -18,6 +18,7 @@
  * EXTERNS
  ******************************************************************************
  */
+extern GlobalFlags_t GlobalFlags;
 
 /*
  ******************************************************************************
@@ -38,7 +39,14 @@
 static WORKING_AREA(CcUnpackerThreadWA, 2048);
 static msg_t CcUnpackerThread(void *sdp){
   chRegSetThreadName("CcUnpacker");
+
+  while (GlobalFlags.modem_connected == 0)
+    chThdSleepMilliseconds(200);
+
   CcUnpackCycle((SerialDriver *)sdp);
+//  while (TRUE)
+//    chThdSleepMilliseconds(200);
+
   chThdExit(0);
   return 0;
 }
@@ -46,9 +54,13 @@ static msg_t CcUnpackerThread(void *sdp){
 /**
  * Упаковка данных для модуля индюкации.
  */
-static WORKING_AREA(CcPackerThreadWA, 1024);
+static WORKING_AREA(CcPackerThreadWA, 1536);
 static msg_t CcPackerThread(void *sdp){
   chRegSetThreadName("CcPacker");
+
+  while (GlobalFlags.modem_connected == 0)
+    chThdSleepMilliseconds(200);
+
   CcPackCycle((SerialDriver *)sdp);
   chThdExit(0);
   return 0;
