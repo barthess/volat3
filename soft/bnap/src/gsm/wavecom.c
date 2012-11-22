@@ -157,7 +157,6 @@ static bool_t _wait_poweron(SerialDriver *sdp){
   chThdSleepMilliseconds(1200);
   _say_to_modem(sdp, "+++");
   chThdSleepMilliseconds(1200);
-//  _say_to_modem(sdp, "AT+WIPCLOSE=1,1\r");
 //  chThdSleepMilliseconds(200);
 
   /* reset all setting to defaults */
@@ -285,6 +284,11 @@ static bool_t _start_wipcfg(SerialDriver *sdp){
 static bool_t _load_bearer(SerialDriver *sdp){
   uint32_t try = BEARER_TRY;
 
+  _say_to_modem(sdp, "AT+WIPCLOSE=1,1\r");
+  chThdSleep(BEARER_TMO);
+  _say_to_modem(sdp, "AT+WIPBR=0,6\r");
+  chThdSleep(BEARER_TMO);
+
   while(try--){
     _say_to_modem(sdp, "AT+WIPBR=1,6\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
@@ -353,6 +357,8 @@ static bool_t _start_bearer(SerialDriver *sdp){
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;
+    if (NULL != strstr((char *)gsmbuf, "+CME ERROR: 803"))
+      _load_bearer(sdp); /* try to reload bearer */
     chThdSleep(BEARER_TMO);
   }
   return GSM_FAILED;
@@ -365,7 +371,8 @@ static bool_t _create_connection(SerialDriver *sdp){
   uint32_t try = BEARER_TRY;
 
   while(try--){
-    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14551,\"77.67.201.231\",14550\r");
+    //_say_to_modem(sdp, "AT+WIPCREATE=1,1,14551,\"86.57.157.114\",14550\r");
+    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14551,\"5.100.221.130\",14550\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;
@@ -408,14 +415,19 @@ static msg_t ModemThread(void *sdp) {
     goto ERROR;
   if (GSM_FAILED == _start_wopen(sdp))
     goto ERROR;
+  chThdSleepMilliseconds(100);
   if (GSM_FAILED == _start_wipcfg(sdp))
     goto ERROR;
+  chThdSleepMilliseconds(1000);
   if (GSM_FAILED == _load_bearer(sdp))
     goto ERROR;
+  chThdSleepMilliseconds(100);
   if (GSM_FAILED == _set_apn(sdp))
     goto ERROR;
+  chThdSleepMilliseconds(100);
   if (GSM_FAILED == _start_bearer(sdp))
     goto ERROR;
+  chThdSleepMilliseconds(1000);
   if (GSM_FAILED == _create_connection(sdp))
     goto ERROR;
   chThdSleepMilliseconds(1000);

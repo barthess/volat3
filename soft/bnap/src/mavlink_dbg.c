@@ -1,8 +1,12 @@
-#include <stdlib.h>
+#include <stdio.h>
 
 #include "ch.h"
 #include "hal.h"
 
+#include "mavlink.h"
+
+#include "main.h"
+#include "message.h"
 
 /*
  ******************************************************************************
@@ -15,6 +19,8 @@
  * EXTERNS
  ******************************************************************************
  */
+extern mavlink_statustext_t mavlink_statustext_struct;
+extern EventSource event_statustext;
 
 /*
  ******************************************************************************
@@ -41,34 +47,22 @@
  * EXPORTED FUNCTIONS
  ******************************************************************************
  */
+
 /**
- * @brief   Software debouncer function.
+ * Send debug message.
  *
- * @param[in] need    needed state of pin.
- * @param[in] state   current state of pin. Use palReadPad() to get it
- * @param[in] try     how many trys to perform
- * @param[in] t       time between trys
+ * severity[in]   severity of message
+ * text[in]       text to send
  *
- * @return TRUE       if need value decided to acqured
- *         FALSE      otherwize
+ * return         message posting status
  */
-bool_t debounce(uint32_t need, uint32_t state, int32_t try, systime_t t){
-  int32_t n = 0;
+void mavlink_dbg_print(uint8_t severity, const char *text){
+  uint32_t n = sizeof(mavlink_statustext_struct.text);
 
-  while(abs(n) < try){
-    chThdSleep(t);
-    if (state != need)
-      n--;
-    else
-      n++;
-  }
+  mavlink_statustext_struct.severity = severity;
+  memset(mavlink_statustext_struct.text, 0, n);
+  memcpy(mavlink_statustext_struct.text, text, n);
 
-  if (n > 0)
-    return TRUE;
-  else
-    return FALSE;
+  chEvtBroadcastFlags(&event_statustext, EVMSK_STATUSTEXT);
 }
-
-
-
 

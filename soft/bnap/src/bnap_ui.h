@@ -1,6 +1,6 @@
 #ifndef BNAP_UI_H_
 #define BNAP_UI_H_
 
-void BnapUiInit(void);
+void UiInit(void);
 
 #endif /* BNAP_UI_H_ */

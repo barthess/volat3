@@ -87,8 +87,10 @@ CSRC = $(PORTSRC) \
        src/i2c_local.c \
        src/message.c \
        src/sanity.c \
+       src/mavlink_dbg.c \
        src/exti_local.c \
        src/utils/memfunc.c \
+       src/utils/softdebounce.c \
        src/gsm/wavecom.c \
        src/gsm/crc16.c \
        src/gsm/cross.c \

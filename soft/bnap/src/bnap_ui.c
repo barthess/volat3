@@ -1,9 +1,15 @@
 /*
  * Buttons and leds
  */
+#include <string.h>
 
 #include "ch.h"
 #include "hal.h"
+
+#include "mavlink.h"
+
+#include "main.h"
+#include "mavlink_dbg.h"
 
 /*
  ******************************************************************************
@@ -37,27 +43,29 @@
  ******************************************************************************
  */
 
-static WORKING_AREA(ButtonThreadWA, 128);
-static msg_t SanityControlThread(void *arg) {
-  chRegSetThreadName("Sanity");
+static WORKING_AREA(UiThreadWA, 128);
+static msg_t UiThread(void *arg) {
+  chRegSetThreadName("Ui");
   (void)arg;
+  uint32_t cur = 0;
+  uint32_t last = 0;
 
-  mavlink_heartbeat_struct.autopilot = MAV_AUTOPILOT_GENERIC;
-  mavlink_heartbeat_struct.custom_mode = 0;
+  while (!chThdShouldTerminate()) {
+    chThdSleepMilliseconds(100);
 
-  systime_t t = chTimeNow();
-
-  while (TRUE) {
-    t += HEART_BEAT_PERIOD;
-
-    mavlink_heartbeat_struct.type           = mavlink_system_struct.type;
-    mavlink_heartbeat_struct.base_mode      = mavlink_system_struct.mode;
-    mavlink_heartbeat_struct.system_status  = mavlink_system_struct.state;
-
-    mavlink_sys_status_struct.load = get_cpu_load();
-
-    chEvtBroadcastFlags(&event_heartbeat, EVMSK_HEARTBEAT);
-    chThdSleepUntil(t);
+    /* buttons */
+    last = cur;
+    cur = palReadPad(IOPORT2, 19);
+    if (cur != last){
+      if (cur == 0){
+        mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' pressed");
+        palSetPad(IOPORT2, 13);
+      }
+      else{
+        mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' released");
+        palClearPad(IOPORT2, 13);
+      }
+    }
   }
   return 0;
 }
@@ -68,6 +76,12 @@ static msg_t SanityControlThread(void *arg) {
  ******************************************************************************
  */
 
-void BnapUiInit(void){
-  return;
+void UiInit(void){
+  chThdCreateStatic(UiThreadWA,
+          sizeof(UiThreadWA),
+          NORMALPRIO - 5,
+          UiThread,
+          NULL);
 }
+
+

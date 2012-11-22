@@ -95,6 +95,7 @@ void MsgInit(void){
   chEvtInit(&event_gps_raw_int);
   chEvtInit(&event_system_time);
   chEvtInit(&event_gps_time_got);
+  chEvtInit(&event_statustext);
   chEvtInit(&event_heartbeat);
   chEvtInit(&event_global_position_int);
 

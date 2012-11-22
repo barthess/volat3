@@ -94,9 +94,13 @@
 #define PIOA_GSM_ON_MASK            (1 << PIOA_GSM_ON)
 #define PIOA_GSM_RESET              18
 #define PIOA_GSM_RESET_MASK         (1 << PIOA_GSM_RESET)
+#define PIOA_GPS_RESET              19
+#define PIOA_GPS_RESET_MASK         (1 << PIOA_GPS_RESET)
 
 /*** PORT B ***/
 // GSM - USART1 (continue)
+#define PIOB_LED_GSM                13
+#define PIOB_LED_GSM_MASK           (1 << PIOB_LED_GSM)
 #define PIOB_GSM_RTS                24
 #define PIOB_GSM_RTS_MASK           (1 << PIOB_GSM_RTS)
 #define PIOB_GSM_CTS                25
@@ -108,15 +112,20 @@
  * Initial I/O setup.
  */
 /* Output data. */
-#define VAL_PIOA_ODSR           0x00000000
+#define VAL_PIOA_ODSR           (0x00000000)
+//#define VAL_PIOA_ODSR           (0x00000000 | PIOA_GPS_RESET_MASK)
 /* Direction. */
 #define VAL_PIOA_OSR            (0x00000000 | PIOA_GSM_ON_MASK | PIOA_GSM_RESET_MASK)
+//#define VAL_PIOA_OSR            (0x00000000 | PIOA_GSM_ON_MASK | PIOA_GSM_RESET_MASK | PIOA_GPS_RESET_MASK)
 /* Pull-up. */
 #define VAL_PIOA_PUSR           (0xFFFFFFFF & (~(PIOA_MMC_CP_MASK | PIOA_MMC_WP_MASK | PIOA_GSM_RESET_MASK)))
 
-#define VAL_PIOB_ODSR           0x00000000     /* Output data. */
-#define VAL_PIOB_OSR            (0x00000000 | PIOB_GSM_RTS_MASK)      /* Direction. */
-#define VAL_PIOB_PUSR           0xFFFFFFFF      /* Pull-up. */
+/* Output data. */
+#define VAL_PIOB_ODSR           0x00000000
+/* Direction. */
+#define VAL_PIOB_OSR            (0x00000000 | PIOB_GSM_RTS_MASK | PIOB_LED_GSM_MASK)
+/* Pull-up. */
+#define VAL_PIOB_PUSR           0xFFFFFFFF
 
 
 #if !defined(_FROM_ASM_)

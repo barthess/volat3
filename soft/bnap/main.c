@@ -1,6 +1,5 @@
 // TODO: init functions for packers and unpackers loading parameters (timeouts)
-// TODO: different macro wrappers for serial writers (in case of UDP)
-// TODO: traffic shaper intergration
+// TODO: HDOP field for gps
 
 // TODO: EXTI
 // TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
@@ -25,7 +24,7 @@
 #include "exti_local.h"
 #include "storage.h"
 #include "wavecom.h"
-#include "cross.h"
+#include "bnap_ui.h"
 
 /*
  ******************************************************************************
@@ -103,12 +102,14 @@ int main(void) {
 
   ds1338Init();
   TimekeeperInit();
-//  StorageInit();
+  StorageInit();
   SanityControlInit();
   ModemInit();
+  UiInit();
 
   while (TRUE) {
     chThdSleepMilliseconds(666);
+    //palTogglePad(IOPORT1, PIOA_GPS_RESET); // pad testing
   }
   return 0;
 }
