@@ -109,7 +109,6 @@ int main(void) {
 
   while (TRUE) {
     chThdSleepMilliseconds(666);
-    //palTogglePad(IOPORT1, PIOA_GPS_RESET); // pad testing
   }
   return 0;
 }
