@@ -25,7 +25,9 @@
 #define release_settings_file() chBSemSignal(&SettingsFile_sem)
 
 #define PARAM_VALUE_SIZE        (sizeof(*((GlobalParam[0]).valuep)))
-#define PARAM_RECORD_SIZE       (PARAM_ID_SIZE + PARAM_VALUE_SIZE)
+
+/* DIRTY!! record size set to 32 bytes to align in page size to work with file abstraction level */
+#define PARAM_RECORD_SIZE       32/*(PARAM_ID_SIZE + PARAM_VALUE_SIZE)*/
 
 /*
  ******************************************************************************

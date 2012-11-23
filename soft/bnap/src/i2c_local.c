@@ -40,4 +40,17 @@ static const I2CConfig i2ccfg = {CWGR};
 void i2cLocalInit(void) {
   i2cStart(&I2CD1, &i2ccfg);
   setGlobalFlag(GlobalFlags.i2c_ready);
+//  uint8_t txbuf[6] = {0, 0, 0x55, 7, 8, 9};
+//  uint8_t rxbuf[4] = {0, 0, 0, 0};
+//
+//  while (TRUE){
+//    i2cMasterTransmitTimeout(&I2CD1, 0b1010000, txbuf, 2, rxbuf, 4, TIME_INFINITE);
+//    //i2cMasterTransmitTimeout(&I2CD1, 0b1010000, txbuf, 6, NULL, 0, TIME_INFINITE);
+//    chThdSleepMilliseconds(100);
+//  }
 }
+
+
+
+
+

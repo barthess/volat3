@@ -85,7 +85,7 @@ typedef struct GlobalFlags_t{
 
 /*******************************************************************
  * region for settings file */
-#define EEPROM_SETTINGS_START         8192
+#define EEPROM_SETTINGS_START         0
 #define EEPROM_SETTINGS_SIZE          4096
 #define EEPROM_SETTINGS_END           (EEPROM_SETTINGS_START + EEPROM_SETTINGS_SIZE)
 

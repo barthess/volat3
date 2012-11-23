@@ -95,7 +95,7 @@ static msg_t TimekeeperThread(void *arg){
 
   while (TRUE) {
     chBSemWait(&pps_sem);
-    //TODO: save timestamp now to correct it later
+    //TODO: save timestamp on pps just now to correct it later
 
     evt = chEvtWaitOneTimeout(EVMSK_GPS_TIME_GOT, GPS_TIME_TMO);
     if (evt == EVMSK_GPS_TIME_GOT){

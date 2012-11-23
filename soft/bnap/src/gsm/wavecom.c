@@ -157,11 +157,10 @@ static bool_t _wait_poweron(SerialDriver *sdp){
   chThdSleepMilliseconds(1200);
   _say_to_modem(sdp, "+++");
   chThdSleepMilliseconds(1200);
-//  chThdSleepMilliseconds(200);
 
   /* reset all setting to defaults */
   _say_to_modem(sdp, "AT+CFUN=1\r");
-  chThdSleepMilliseconds(3000);
+  chThdSleepMilliseconds(5000);
 
   while(try--){
     _say_to_modem(sdp, "AT\r");
@@ -216,6 +215,10 @@ static bool_t _wait_creg(SerialDriver *sdp){
   while(try--){
     _say_to_modem(sdp, "AT+CREG?\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), CREG_TMO);
+
+    /* very dirty hack. Some times modem did not want to set registerd flag
+     * but successfully connects to internet */
+    return GSM_SUCCESS;
 
     /* check results */
     scanfstat = siscanf((char *)gsmbuf, "+CREG: %d,%d", &mode, &stat);
@@ -371,8 +374,8 @@ static bool_t _create_connection(SerialDriver *sdp){
   uint32_t try = BEARER_TRY;
 
   while(try--){
-    //_say_to_modem(sdp, "AT+WIPCREATE=1,1,14551,\"86.57.157.114\",14550\r");
-    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14551,\"77.67.200.136\",14550\r");
+    //_say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"86.57.157.114\",14550\r");
+    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"178.154.44.189\",14550\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;
