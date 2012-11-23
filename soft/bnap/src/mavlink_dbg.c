@@ -20,7 +20,7 @@
  ******************************************************************************
  */
 extern mavlink_statustext_t mavlink_statustext_struct;
-extern EventSource event_statustext;
+extern EventSource event_mavlink_statustext;
 
 /*
  ******************************************************************************
@@ -63,6 +63,6 @@ void mavlink_dbg_print(uint8_t severity, const char *text){
   memset(mavlink_statustext_struct.text, 0, n);
   memcpy(mavlink_statustext_struct.text, text, n);
 
-  chEvtBroadcastFlags(&event_statustext, EVMSK_STATUSTEXT);
+  chEvtBroadcastFlags(&event_mavlink_statustext, EVMSK_MAVLINK_STATUSTEXT);
 }
 

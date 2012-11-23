@@ -39,7 +39,7 @@
  ******************************************************************************
  */
 extern GlobalFlags_t GlobalFlags;
-extern EventSource event_gps_raw_int;
+extern EventSource event_mavlink_gps_raw_int;
 
 /*
  ******************************************************************************
@@ -135,7 +135,7 @@ static msg_t SdThread(void *arg){
   chRegSetThreadName("MicroSD");
   (void)arg;
   struct EventListener el_gps_raw_int;
-  chEvtRegisterMask(&event_gps_raw_int, &el_gps_raw_int, EVMSK_GPS_RAW_INT);
+  chEvtRegisterMask(&event_mavlink_gps_raw_int, &el_gps_raw_int, EVMSK_MAVLINK_GPS_RAW_INT);
   eventmask_t evt = 0;
 
   /* wait until card not ready */
@@ -150,8 +150,7 @@ NOT_READY:
 
   /* main work cycle */
   while (!chThdShouldTerminate()){
-    evt = chEvtWaitOneTimeout(EVMSK_GPS_RAW_INT, WRITE_TMO);
-    //evt = chEvtWaitOneTimeout(EVMSK_GPS_RAW_INT, 10);
+    evt = chEvtWaitOneTimeout(EVMSK_MAVLINK_GPS_RAW_INT, WRITE_TMO);
     if (!mmcIsCardInserted(&MMCD1)){
       remove_handler();
       goto NOT_READY;

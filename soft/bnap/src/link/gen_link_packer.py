@@ -43,7 +43,7 @@ def gen(name, arr):
 
     for i in arr:
         f.write("extern mavlink_" + i + "_t mavlink_" + i + "_struct;\n")
-        f.write("extern EventSource event_" + i + ";\n\n")
+        f.write("extern EventSource event_mavlink_" + i + ";\n\n")
 
     for i in arr:
         f.write("static systime_t " + i + "_lastsent = 0;\n")
@@ -51,7 +51,7 @@ def gen(name, arr):
     f.write("\nvoid " + name + "PackCycle(SerialDriver *sdp){\n")
     for i in arr:
         f.write("  struct EventListener el_" + i + ";\n")
-        f.write("  chEvtRegisterMask(&event_" + i + ", &el_" + i + ", EVMSK_" + str.upper(i) + ");\n\n")
+        f.write("  chEvtRegisterMask(&event_mavlink_" + i + ", &el_" + i + ", EVMSK_MAVLINK_" + str.upper(i) + ");\n\n")
     f.write("  eventmask_t evt = 0;\n")
     f.write("  mavlink_message_t mavlink_message_struct;\n")
     f.write("  uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];\n")
@@ -60,13 +60,13 @@ def gen(name, arr):
     f.write("WAIT:\n")
     st = ""
     for i in arr:
-        st += "EVMSK_" + str.upper(i) + " | "
+        st += "EVMSK_MAVLINK_" + str.upper(i) + " | "
     st = st[0:-3]
     f.write("    evt = chEvtWaitOne(" + st + ");\n")
     f.write("    switch(evt){\n")
 
     for i in arr:
-        f.write("    case EVMSK_" + str.upper(i) + ":\n")
+        f.write("    case EVMSK_MAVLINK_" + str.upper(i) + ":\n")
         f.write("      if(FALSE == traffic_limiter(&" + i + "_lastsent, " + i + "_sendperiod))\n")
         f.write("        goto WAIT;\n")
         f.write("      memcpy_ts(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i +"_struct), 4);\n")

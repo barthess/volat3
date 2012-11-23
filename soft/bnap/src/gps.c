@@ -65,8 +65,8 @@ extern BinarySemaphore pps_sem;
 extern mavlink_gps_raw_int_t mavlink_gps_raw_int_struct;
 extern mavlink_global_position_int_t mavlink_global_position_int_struct;
 
-extern EventSource event_gps_raw_int;
-extern EventSource event_global_position_int;
+extern EventSource event_mavlink_gps_raw_int;
+extern EventSource event_mavlink_global_position_int;
 extern EventSource event_gps_time_got;
 
 /*
@@ -153,9 +153,9 @@ static msg_t gpsRxThread(void *arg){
 EMPTY:
     if (n >= 2){
       mavlink_gps_raw_int_struct.time_usec = 0;
-      chEvtBroadcastFlags(&event_gps_raw_int, EVMSK_GPS_RAW_INT);
+      chEvtBroadcastFlags(&event_mavlink_gps_raw_int, EVMSK_MAVLINK_GPS_RAW_INT);
       mavlink_global_position_int_struct.time_boot_ms = TIME_BOOT_MS;
-      chEvtBroadcastFlags(&event_global_position_int, EVMSK_GLOBAL_POSITION_INT);
+      chEvtBroadcastFlags(&event_mavlink_global_position_int, EVMSK_MAVLINK_GLOBAL_POSITION_INT);
       n = 0;
     }
 

@@ -83,6 +83,12 @@ typedef struct GlobalFlags_t{
 #define GSM_SUCCESS       CH_SUCCESS
 #define GSM_FAILED        CH_FAILED
 
+/*******************************************************************
+ * region for settings file */
+#define EEPROM_SETTINGS_START         8192
+#define EEPROM_SETTINGS_SIZE          4096
+#define EEPROM_SETTINGS_END           (EEPROM_SETTINGS_START + EEPROM_SETTINGS_SIZE)
+
 /******************************************************************
 * константы для мавлинка */
 #define GROUND_STATION_ID   255

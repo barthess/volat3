@@ -25,6 +25,7 @@
 #include "storage.h"
 #include "wavecom.h"
 #include "bnap_ui.h"
+#include "param.h"
 
 /*
  ******************************************************************************
@@ -93,7 +94,7 @@ int main(void) {
   sdStart(&SDMPIOVD, &mpiovd_ser_cfg);
 
   i2cLocalInit();
-
+  ParametersInit();
   MavInit();
   MsgInit();
   GPSInit();

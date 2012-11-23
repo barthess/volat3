@@ -12,7 +12,7 @@
  * EXTERNS
  ******************************************************************************
  */
-extern EventSource event_heartbeat;
+extern EventSource event_mavlink_heartbeat;
 
 extern mavlink_system_t       mavlink_system_struct;
 extern mavlink_heartbeat_t    mavlink_heartbeat_struct;
@@ -67,7 +67,7 @@ static msg_t SanityControlThread(void *arg) {
 
     mavlink_sys_status_struct.load = get_cpu_load();
 
-    chEvtBroadcastFlags(&event_heartbeat, EVMSK_HEARTBEAT);
+    chEvtBroadcastFlags(&event_mavlink_heartbeat, EVMSK_MAVLINK_HEARTBEAT);
     chThdSleepUntil(t);
   }
   return 0;
