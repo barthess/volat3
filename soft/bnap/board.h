@@ -115,7 +115,7 @@
 #define VAL_PIOA_ODSR           (0x00000000)
 //#define VAL_PIOA_ODSR           (0x00000000 | PIOA_GPS_RESET_MASK)
 /* Direction. */
-#define VAL_PIOA_OSR            (0x00000000 | PIOA_GSM_ON_MASK | PIOA_GSM_RESET_MASK)
+#define VAL_PIOA_OSR            (0x00000000 | PIOA_GSM_ON_MASK)
 //#define VAL_PIOA_OSR            (0x00000000 | PIOA_GSM_ON_MASK | PIOA_GSM_RESET_MASK | PIOA_GPS_RESET_MASK)
 /* Pull-up. */
 #define VAL_PIOA_PUSR           (0xFFFFFFFF & (~(PIOA_MMC_CP_MASK | PIOA_MMC_WP_MASK | PIOA_GSM_RESET_MASK)))
