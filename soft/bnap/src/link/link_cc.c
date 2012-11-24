@@ -36,12 +36,15 @@ extern GlobalFlags_t GlobalFlags;
 /**
  * Поток разбора входящих данных.
  */
-static WORKING_AREA(CcUnpackerThreadWA, 2048);
+static WORKING_AREA(CcUnpackerThreadWA, 1024);
 static msg_t CcUnpackerThread(void *sdp){
   chRegSetThreadName("CcUnpacker");
 
+  while(GlobalFlags.messaging_ready == 0)
+    chThdSleepMilliseconds(50);
+
   while (GlobalFlags.modem_connected == 0)
-    chThdSleepMilliseconds(200);
+    chThdSleepMilliseconds(50);
 
   CcUnpackCycle((SerialDriver *)sdp);
 //  while (TRUE)
@@ -58,8 +61,11 @@ static WORKING_AREA(CcPackerThreadWA, 1536);
 static msg_t CcPackerThread(void *sdp){
   chRegSetThreadName("CcPacker");
 
+  while(GlobalFlags.messaging_ready == 0)
+    chThdSleepMilliseconds(50);
+
   while (GlobalFlags.modem_connected == 0)
-    chThdSleepMilliseconds(200);
+    chThdSleepMilliseconds(50);
 
   CcPackCycle((SerialDriver *)sdp);
   chThdExit(0);

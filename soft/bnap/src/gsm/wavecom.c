@@ -154,12 +154,16 @@ static size_t _collect_answer(SerialDriver *sdp, uint8_t *buf, size_t lim, systi
 static bool_t _wait_poweron(SerialDriver *sdp){
   uint32_t try = POWERON_TRY;
 
-  chThdSleepMilliseconds(1200);
-  _say_to_modem(sdp, "+++");
-  chThdSleepMilliseconds(1200);
+  gsm_assert_reset();
+  chThdSleepMilliseconds(200);
+  gsm_release_reset();
+
+//  chThdSleepMilliseconds(1200);
+//  _say_to_modem(sdp, "+++");
+//  chThdSleepMilliseconds(1200);
 
   /* reset all setting to defaults */
-  _say_to_modem(sdp, "AT+CFUN=1\r");
+//  _say_to_modem(sdp, "AT+CFUN=1\r");
   chThdSleepMilliseconds(5000);
 
   while(try--){
@@ -183,7 +187,7 @@ static void _set_verbosity(SerialDriver *sdp){
   chThdSleepMilliseconds(50);
   /* do not print automatically information about registration on network */
   _say_to_modem(sdp, "AT+CGREG=0\r");
-  chThdSleepMilliseconds(50);
+  chThdSleepMilliseconds(200);
 }
 
 /**
@@ -375,7 +379,7 @@ static bool_t _create_connection(SerialDriver *sdp){
 
   while(try--){
     //_say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"86.57.157.114\",14550\r");
-    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"178.154.44.189\",14550\r");
+    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"77.67.231.150\",14550\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;

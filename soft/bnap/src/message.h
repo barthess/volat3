@@ -10,11 +10,12 @@
 #define EVMSK_MAVLINK_SYS_STATUS            (1UL << 5)
 #define EVMSK_MAVLINK_MPIOVD_SENSORS        (1UL << 6)
 #define EVMSK_MAVLINK_STATUSTEXT            (1UL << 7)
-
 #define EVMSK_MAVLINK_PARAM_VALUE           (1UL << 8)
 #define EVMSK_MAVLINK_PARAM_SET             (1UL << 9)
 #define EVMSK_MAVLINK_PARAM_REQUEST_LIST    (1UL << 10)
 #define EVMSK_MAVLINK_PARAM_REQUEST_READ    (1UL << 11)
+#define EVMSK_MAVLINK_COMMAND_LONG          (1UL << 12)
+#define EVMSK_MAVLINK_COMMAND_ACK           (1UL << 13)
 
 /**
  * Structure for data exchange with confimation capability.

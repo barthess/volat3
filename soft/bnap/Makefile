@@ -66,6 +66,7 @@ CSRC = $(PORTSRC) \
        $(CHIBIOS)/os/various/chprintf.c \
        $(CHIBIOS)/os/various/syscalls.c \
        ../eeprom/eeprom.c \
+       ../eeprom/eeprom_testsuit.c \
        main.c \
        board.c \
        src/link/link.c \
@@ -75,6 +76,7 @@ CSRC = $(PORTSRC) \
        src/link/link_dm_packer.c \
        src/link/link_dm_unpacker.c \
        src/link/link_dm.c \
+       src/link/mavcmd_local.c \
        src/time/timekeeper.c \
        src/time/ds1338.c \
        src/time/bnaprtclib.c \

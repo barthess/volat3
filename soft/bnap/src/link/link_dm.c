@@ -35,7 +35,7 @@
 /**
  * Поток разбора входящих данных.
  */
-static WORKING_AREA(DmUnpackerThreadWA, 2048);
+static WORKING_AREA(DmUnpackerThreadWA, 1024);
 static msg_t DmUnpackerThread(void *sdp){
   chRegSetThreadName("DmUnpacker");
   DmUnpackCycle((SerialDriver *)sdp);

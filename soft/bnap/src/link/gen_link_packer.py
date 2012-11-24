@@ -3,7 +3,7 @@
 #       message name            mail struct for it      mailbox for it
 names = {
         "Dm" : ["heartbeat", "gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext"],
-        "Cc" : ["heartbeat", "gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext"]
+        "Cc" : ["heartbeat", "gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext", "param_value"]
         }
 
 def head(f):

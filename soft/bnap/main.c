@@ -11,6 +11,7 @@
 #include "ch.h"
 #include "hal.h"
 #include "mavlink.h"
+#include "chprintf.h"
 
 #include "main.h"
 #include "sensors.h"
@@ -26,6 +27,8 @@
 #include "wavecom.h"
 #include "bnap_ui.h"
 #include "param.h"
+#include "mavcmd_local.h"
+#include "eeprom_testsuit.h"
 
 /*
  ******************************************************************************
@@ -86,6 +89,7 @@ static const SerialConfig mpiovd_ser_cfg = {
 int main(void) {
   halInit();
   chSysInit();
+  gsm_release_reset();
 
   chBSemInit(&pps_sem, TRUE);
 
@@ -93,23 +97,26 @@ int main(void) {
   sdStart(&SDDM, &dm_ser_cfg);
   sdStart(&SDMPIOVD, &mpiovd_ser_cfg);
 
-  i2cLocalInit();
-  ParametersInit();
-  MavInit();
-  MsgInit();
+  i2cLocalInit();//0xFFFB8000
+  //EepromTestThread(&SDDM);
+  MsgInit();        /* init event sources */
+  ParametersInit(); /* need events for proper functionality */
+  MavInit();        /* set device IDs previusly red from from EEPROM byt param init*/
   GPSInit();
-//  ExtiLocalInit();
   LinkInit();
-
   ds1338Init();
   TimekeeperInit();
   StorageInit();
   SanityControlInit();
   ModemInit();
+  MavCmdInitLocal();
   UiInit();
 
+//  ExtiLocalInit();
   while (TRUE) {
-    chThdSleepMilliseconds(666);
+    chThdSleepMilliseconds(1000);
+//    chprintf((BaseSequentialStream *)&SDDM, "%s", "this is DM port\r\n");
+//    chprintf((BaseSequentialStream *)&SDMPIOVD, "%s", "this is MPIOVD port\r\n");
   }
   return 0;
 }

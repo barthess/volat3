@@ -129,6 +129,9 @@ bool_t save_all_params_to_eeprom(void){
   chFileStreamSeek(&EepromSettingsFile, 0);
 
   for (i = 0; i < OnboardParamCount; i++){
+    memset(tmpbuf, 0, sizeof(tmpbuf));
+    memset(eeprombuf, 0, sizeof(eeprombuf));
+
     /* first copy parameter name in buffer */
     memcpy(eeprombuf, GlobalParam[i].name, PARAM_ID_SIZE);
 

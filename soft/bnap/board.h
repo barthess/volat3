@@ -43,9 +43,9 @@
  * Human readable pseudonims for serial drivers
  */
 #define SDGPS                       SDDBG
-#define SDMPIOVD                    SD3
+#define SDMPIOVD                    SD1
 #define SDGSM                       SD2
-#define SDDM                        SD1 /* display module */
+#define SDDM                        SD3 /* display module */
 
 /*
  * I/O definitions.
@@ -56,21 +56,21 @@
 #define PIOA_I2C_SDA_MASK           (1 << PIOA_I2C_SDA)
 #define PIOA_I2C_SCK                1
 #define PIOA_I2C_SCK_MASK           (1 << PIOA_I2C_SCK)
-/* MPIOVD - USART0 */
-#define PIOA_MPIOVD_RX              2
-#define PIOA_MPIOVD_RX_MASK         (1 << PIOA_MPIOVD_RX)
-#define PIOA_MPIOVD_TX              3
-#define PIOA_MPIOVD_TX_MASK         (1 << PIOA_MPIOVD_TX)
-// GSM - USART1
-#define PIOA_GSM_RX                 7
-#define PIOA_GSM_RX_MASK            (1 << PIOA_GSM_RX)
-#define PIOA_GSM_TX                 8
-#define PIOA_GSM_TX_MASK            (1 << PIOA_GSM_TX)
-/* display module - USART2 */
-#define PIOA_DM_RX                  9
-#define PIOA_DM_RX_MASK             (1 << PIOA_MO_RX)
-#define PIOA_DM_TX                  10
-#define PIOA_DM_TX_MASK             (1 << PIOA_MO_TX)
+
+#define PIOA_USART0_RX              2
+#define PIOA_USART0_RX_MASK         (1 << PIOA_USART0_RX)
+#define PIOA_USART0_TX              3
+#define PIOA_USART0_TX_MASK         (1 << PIOA_USART0_TX)
+
+#define PIOA_USART1_RX              7
+#define PIOA_USART1_RX_MASK         (1 << PIOA_USART1_RX)
+#define PIOA_USART1_TX              8
+#define PIOA_USART1_TX_MASK         (1 << PIOA_USART1_TX)
+
+#define PIOA_USART2_RX              9
+#define PIOA_USART2_RX_MASK         (1 << PIOA_USART2_RX)
+#define PIOA_USART2_TX              10
+#define PIOA_USART2_TX_MASK         (1 << PIOA_USART2_TX)
 // mmc-spi
 #define PIOA_SPI0_NSS               14
 #define PIOA_SPI0_NSS_MASK          (1 << PIOA_SPI0_NSS)
@@ -84,11 +84,12 @@
 #define PIOA_MMC_CP_MASK            (1 << PIOA_MMC_CP)
 #define PIOA_MMC_WP                 29 /* write protected */
 #define PIOA_MMC_WP_MASK            (1 << PIOA_MMC_WP)
-// GPS - UARTDBG
-#define PIOA_GPS_RX                 30
-#define PIOA_GPS_RX_MASK            (1 << PIOA_GPS_RX)
-#define PIOA_GPS_TX                 31
-#define PIOA_GPS_TX_MASK            (1 << PIOA_GPS_TX)
+
+#define PIOA_UARTDBG_RX             30
+#define PIOA_UARTDBG_RX_MASK        (1 << PIOA_UARTDBG_RX)
+#define PIOA_UARTDBG_TX             31
+#define PIOA_UARTDBG_TX_MASK        (1 << PIOA_UARTDBG_TX)
+
 // GSM driving pins
 #define PIOA_GSM_ON                 24  // set 1 to power modem on
 #define PIOA_GSM_ON_MASK            (1 << PIOA_GSM_ON)

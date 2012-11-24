@@ -10,6 +10,7 @@
 #define mpiovd_sensors_sendperiod         MS2ST(500)
 #define sys_status_sendperiod             MS2ST(990)
 #define statustext_sendperiod             MS2ST(1)
+#define param_value_sendperiod            MS2ST(1)
 
 #define cc_sdWrite(sdp, bp, n)  {UdpSdWrite((sdp), (bp), (n));}
 

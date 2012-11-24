@@ -15,7 +15,7 @@
 typedef struct GlobalFlags_t{
   //0
   uint32_t allow_softreset:1;   /* system performs soft reset instead of halting in panic */
-  uint32_t stub_0:1;
+  uint32_t messaging_ready:1;   /* message subsystem initialized */
   uint32_t time_good:1;         /* if 0 than time need adjusting by hands or using gps */
   uint32_t modem_connected:1;   /* */
   //4

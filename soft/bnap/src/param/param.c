@@ -20,8 +20,7 @@
  * DEFINES
  ******************************************************************************
  */
-#define PARAM_CONFIRM_TMO   MS2ST(1000)
-#define PARAM_POST_TMO      MS2ST(50)
+#define SEND_VALUE_PAUSE    MS2ST(200)
 
 /*
  ******************************************************************************
@@ -195,6 +194,7 @@ static bool_t send_value(char *key, uint32_t n){
 
     /* inform sending thread */
     chEvtBroadcastFlags(&event_mavlink_param_value, EVMSK_MAVLINK_PARAM_VALUE);
+    chThdSleep(SEND_VALUE_PAUSE);
   }
   else
     return PARAM_FAILED;
@@ -230,7 +230,8 @@ static void param_set_handler(void){
   param_status_t status;
   mavlink_param_set_t p; /* local copy for thread safety */
 
-  memcpy_ts(&p, &mavlink_param_set_struct, sizeof(p), 4);
+  if (CH_SUCCESS != memcpy_ts(&p, &mavlink_param_set_struct, sizeof(p), 4))
+    return;
 
   valuep = (floatint *)&(p.param_value);
   paramp = &GlobalParam[key_index_search(p.param_id)];
@@ -261,7 +262,9 @@ static void param_set_handler(void){
  */
 void param_request_read_handler(void){
   mavlink_param_request_read_t p; /* local copy */
-  memcpy_ts(&p, &mavlink_param_request_read_struct, sizeof(p), 4);
+
+  if (CH_SUCCESS != memcpy_ts(&p, &mavlink_param_request_read_struct, sizeof(p), 4))
+    return;
 
   if (p.param_index >= 0)
     send_value(NULL, p.param_index);
@@ -277,8 +280,10 @@ static msg_t ParametersThread(void *arg){
   chRegSetThreadName("Parameters");
   (void)arg;
 
-  eventmask_t evt = 0;
+  while(GlobalFlags.messaging_ready == 0)
+    chThdSleepMilliseconds(50);
 
+  eventmask_t evt = 0;
   struct EventListener el_param_set;
   struct EventListener el_param_request_list;
   struct EventListener el_param_request_read;
@@ -296,12 +301,12 @@ static msg_t ParametersThread(void *arg){
       break;
 
     /* request all */
-    case MAVLINK_MSG_ID_PARAM_REQUEST_LIST:
+    case EVMSK_MAVLINK_PARAM_REQUEST_LIST:
       send_all_values();
       break;
 
     /* request single */
-    case MAVLINK_MSG_ID_PARAM_REQUEST_READ:
+    case EVMSK_MAVLINK_PARAM_REQUEST_READ:
       param_request_read_handler();
       break;
     }

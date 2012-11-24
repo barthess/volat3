@@ -17,10 +17,7 @@
  * EXTERNS
  ******************************************************************************
  */
-/* control center */
-Mailbox tocc_mb;
-/* display module */
-Mailbox todm_mb;
+extern GlobalFlags_t GlobalFlags;
 
 /* variable for storing system state */
 mavlink_system_t                mavlink_system_struct;
@@ -34,15 +31,17 @@ mavlink_statustext_t            mavlink_statustext_struct;
 mavlink_command_long_t          mavlink_command_long_struct;
 mavlink_system_time_t           mavlink_system_time_struct;
 mavlink_mpiovd_sensors_t        mavlink_mpiovd_sensors_struct;
-
 mavlink_param_value_t           mavlink_param_value_struct;
 mavlink_param_set_t             mavlink_param_set_struct;
 mavlink_param_request_list_t    mavlink_param_request_list_struct;
 mavlink_param_request_read_t    mavlink_param_request_read_struct;
+mavlink_command_ack_t           mavlink_command_ack_struct;
 
 /**
  * @brief   Event sources.
  */
+EventSource event_gps_time_got;
+
 EventSource event_mavlink_gps_raw_int;
 EventSource event_mavlink_heartbeat;
 EventSource event_mavlink_global_position_int;
@@ -50,22 +49,18 @@ EventSource event_mavlink_system_time;
 EventSource event_mavlink_sys_status;
 EventSource event_mavlink_statustext;
 EventSource event_mavlink_mpiovd_sensors;
-
+EventSource event_mavlink_command_long;
 EventSource event_mavlink_param_value;
 EventSource event_mavlink_param_set;
 EventSource event_mavlink_param_request_list;
 EventSource event_mavlink_param_request_read;
-
-EventSource event_gps_time_got;
+EventSource event_mavlink_command_ack;
 
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-/* mailbox buffers */
-static msg_t tocc_mb_buf[4];
-static msg_t todm_mb_buf[4];
 
 /*
  ******************************************************************************
@@ -107,18 +102,14 @@ void MsgInit(void){
   chEvtInit(&event_mavlink_statustext);
   chEvtInit(&event_mavlink_heartbeat);
   chEvtInit(&event_mavlink_global_position_int);
-
+  chEvtInit(&event_mavlink_command_long);
   chEvtInit(&event_mavlink_param_value);
   chEvtInit(&event_mavlink_param_set);
   chEvtInit(&event_mavlink_param_request_list);
   chEvtInit(&event_mavlink_param_request_read);
+  chEvtInit(&event_mavlink_command_ack);
 
-  chMBInit(&tocc_mb,
-      tocc_mb_buf,
-      (sizeof(tocc_mb_buf)/sizeof(msg_t)));
-  chMBInit(&todm_mb,
-      todm_mb_buf,
-      (sizeof(todm_mb_buf)/sizeof(msg_t)));
+  setGlobalFlag(GlobalFlags.messaging_ready);
 }
 
 /**
