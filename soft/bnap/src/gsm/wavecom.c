@@ -153,7 +153,7 @@ static bool_t _wait_poweron(SerialDriver *sdp){
   uint32_t try = POWERON_TRY;
 
   gsm_assert_reset();
-  chThdSleepMilliseconds(200);
+  chThdSleepMilliseconds(500);
   gsm_release_reset();
 
 //  chThdSleepMilliseconds(1200);
