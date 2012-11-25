@@ -16,6 +16,7 @@
 #define EVMSK_MAVLINK_PARAM_REQUEST_READ    (1UL << 11)
 #define EVMSK_MAVLINK_COMMAND_LONG          (1UL << 12)
 #define EVMSK_MAVLINK_COMMAND_ACK           (1UL << 13)
+#define EVMSK_CC_HEARTBEAT                  (1UL << 14)
 
 /**
  * Structure for data exchange with confimation capability.

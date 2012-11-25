@@ -1,5 +1,6 @@
 // TODO: init functions for packers and unpackers loading parameters (timeouts)
 // TODO: HDOP field for gps
+// TODO: дополнительная проверка времени после поиска в массиве хранилища последней метки времени
 
 // TODO: EXTI
 // TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
@@ -60,7 +61,6 @@ GlobalFlags_t GlobalFlags = {0,0,0,0,0,0,0,0,
 /**/
 static const SerialConfig gsm_ser_cfg = {
     GSM_BAUDRATE,
-    //9600,
     AT91C_US_USMODE_HWHSH | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
                               AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
 //      AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
@@ -68,7 +68,6 @@ static const SerialConfig gsm_ser_cfg = {
 };
 static const SerialConfig dm_ser_cfg = {
     DM_BAUDRATE,
-    //921600,
     AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
                               AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
 };
@@ -89,7 +88,10 @@ static const SerialConfig mpiovd_ser_cfg = {
 int main(void) {
   halInit();
   chSysInit();
+
   gsm_release_reset();
+  gps_led_off();
+  gsm_led_off();
 
   chBSemInit(&pps_sem, TRUE);
 

@@ -379,7 +379,7 @@ static bool_t _create_connection(SerialDriver *sdp){
 
   while(try--){
     //_say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"86.57.157.114\",14550\r");
-    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"77.67.231.150\",14550\r");
+    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"77.67.254.73\",14550\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;
@@ -412,6 +412,13 @@ static bool_t _start_connection(SerialDriver *sdp){
 static WORKING_AREA(ModemThreadWA, 1024);
 static msg_t ModemThread(void *sdp) {
   chRegSetThreadName("Modem");
+
+
+  setGlobalFlag(GlobalFlags.modem_connected);
+  return 0;
+
+
+
 
   if (GSM_FAILED == _wait_poweron(sdp))
     goto ERROR;

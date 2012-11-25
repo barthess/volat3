@@ -46,6 +46,8 @@
 #define SDMPIOVD                    SD1
 #define SDGSM                       SD2
 #define SDDM                        SD3 /* display module */
+//#define SDGSM                       SD3
+//#define SDDM                        SD2 /* display module */
 
 /*
  * I/O definitions.

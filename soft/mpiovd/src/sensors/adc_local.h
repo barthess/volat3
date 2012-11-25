@@ -9,7 +9,7 @@
 #define ADC_LOCAL_H_
 
 void ADCInitLocal(void);
-void adc_process(adcsample_t *in, mavlink_mpiovd_sensors_raw_t *raw);
+void adc_process(adcsample_t *in, mavlink_mpiovd_sensors_t *raw);
 
 #endif /* ADC_LOCAL_H_ */
 

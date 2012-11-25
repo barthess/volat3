@@ -5,10 +5,11 @@
 
 #include "ch.h"
 #include "hal.h"
-
 #include "mavlink.h"
 
 #include "main.h"
+#include "bnap_ui.h"
+#include "message.h"
 #include "mavlink_dbg.h"
 
 /*
@@ -22,6 +23,7 @@
  * EXTERNS
  ******************************************************************************
  */
+extern EventSource event_cc_heartbeat;
 
 /*
  ******************************************************************************
@@ -43,7 +45,7 @@
  ******************************************************************************
  */
 
-static WORKING_AREA(UiThreadWA, 128);
+static WORKING_AREA(UiThreadWA, 64);
 static msg_t UiThread(void *arg) {
   chRegSetThreadName("Ui");
   (void)arg;
@@ -57,19 +59,34 @@ static msg_t UiThread(void *arg) {
     last = cur;
     cur = palReadPad(IOPORT2, 19);
     if (cur != last){
-      if (cur == 0){
+      if (cur == 0)
         mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' pressed");
-        palSetPad(IOPORT2, 13);
-      }
-      else{
+      else
         mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' released");
-        palClearPad(IOPORT2, 13);
-      }
     }
   }
   return 0;
 }
 
+/**
+ *
+ */
+static WORKING_AREA(GsmLedThreadWA, 64);
+static msg_t GsmLedThread(void *arg) {
+  chRegSetThreadName("GsmLed");
+  (void)arg;
+
+  struct EventListener el_cc_heartbeat;
+  chEvtRegisterMask(&event_cc_heartbeat, &el_cc_heartbeat, EVMSK_CC_HEARTBEAT);
+
+  while (!chThdShouldTerminate()) {
+    chEvtWaitOne(EVMSK_CC_HEARTBEAT);
+    gsm_led_on();
+    chThdSleepMilliseconds(100);
+    gsm_led_off();
+  }
+  return 0;
+}
 /*
  ******************************************************************************
  * EXPORTED FUNCTIONS
@@ -81,6 +98,11 @@ void UiInit(void){
           sizeof(UiThreadWA),
           NORMALPRIO - 5,
           UiThread,
+          NULL);
+  chThdCreateStatic(GsmLedThreadWA,
+          sizeof(GsmLedThreadWA),
+          NORMALPRIO - 5,
+          GsmLedThread,
           NULL);
 }
 

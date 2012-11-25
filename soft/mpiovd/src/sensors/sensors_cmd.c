@@ -26,7 +26,7 @@
  */
 extern MemoryHeap ThdHeap;
 extern const RawData raw_data;
-extern const mavlink_mpiovd_sensors_raw_t     mpiovd_sensors_raw_struct;
+extern const mavlink_mpiovd_sensors_t     mpiovd_sensors_struct;
 
 /*
  ******************************************************************************
@@ -56,16 +56,16 @@ static msg_t SensorsCmdThread(void *arg){
   char str[n];
 
   while(!chThdShouldTerminate()){
-    i = mpiovd_sensors_raw_struct.analog01;
+    i = mpiovd_sensors_struct.analog01;
     putinrange(i, 0, 255);
     data[0] = i;
-    i = mpiovd_sensors_raw_struct.analog02;
+    i = mpiovd_sensors_struct.analog02;
     putinrange(i, 0, 255);
     data[1] = i;
-    i = mpiovd_sensors_raw_struct.analog03;
+    i = mpiovd_sensors_struct.analog03;
     putinrange(i, 0, 255);
     data[2] = i;
-    i = mpiovd_sensors_raw_struct.analog04;
+    i = mpiovd_sensors_struct.analog04;
     putinrange(i, 0, 255);
     data[3] = i;
     /* (>> 1) to exclude "dead" bit from SPI*/

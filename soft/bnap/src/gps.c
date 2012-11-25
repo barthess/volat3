@@ -9,7 +9,7 @@
 #include "sensors.h"
 #include "gps.h"
 #include "message.h"
-
+#include "bnap_ui.h"
 
 /**
  * Широта  — это угол между отвесной линией в данной точке и плоскостью экватора,
@@ -154,6 +154,7 @@ EMPTY:
     if (n >= 2){
       mavlink_gps_raw_int_struct.time_usec = 0;
       chEvtBroadcastFlags(&event_mavlink_gps_raw_int, EVMSK_MAVLINK_GPS_RAW_INT);
+      chThdSleepMilliseconds(20);
       mavlink_global_position_int_struct.time_boot_ms = TIME_BOOT_MS;
       chEvtBroadcastFlags(&event_mavlink_global_position_int, EVMSK_MAVLINK_GLOBAL_POSITION_INT);
       n = 0;
@@ -374,6 +375,9 @@ static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
   timp->tm_year = 10 * (bufd[4] - '0') + (bufd[5] - '0') + 2000 - 1900;
 
   chEvtBroadcastFlags(&event_gps_time_got, EVMSK_GPS_TIME_GOT);
+  gps_led_on();
+  chThdSleepMilliseconds(50);
+  gps_led_off();
 }
 
 /**

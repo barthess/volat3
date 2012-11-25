@@ -26,7 +26,7 @@
  */
 extern Mailbox tolink_mb;
 extern RawData raw_data;
-extern mavlink_mpiovd_sensors_raw_t     mpiovd_sensors_raw_struct;
+extern mavlink_mpiovd_sensors_t      mpiovd_sensors_struct;
 
 /*
  ******************************************************************************
@@ -57,21 +57,21 @@ static msg_t TLM_SenderThread(void *arg) {
   chRegSetThreadName("TLM_Sender");
   (void)arg;
 
-  Mail raw_mail    = {NULL, MAVLINK_MSG_ID_MPIOVD_SENSORS_RAW, NULL};
+  Mail raw_mail    = {NULL, MAVLINK_MSG_ID_MPIOVD_SENSORS, NULL};
 
   while (TRUE) {
     chThdSleepMilliseconds(*T_tlm);//50
 
-    adc_process(raw_data.analog, &mpiovd_sensors_raw_struct);
+    adc_process(raw_data.analog, &mpiovd_sensors_struct);
 
-    mpiovd_sensors_raw_struct.msec          = TIME_BOOT_MS;
-    mpiovd_sensors_raw_struct.relay         = raw_data.discrete;
-    mpiovd_sensors_raw_struct.speed         = raw_data.analog[15] / 50;
-    mpiovd_sensors_raw_struct.rpm           = get_engine_rpm();
-    mpiovd_sensors_raw_struct.engine_uptime = GetUptime();
-    mpiovd_sensors_raw_struct.trip          = GetTrip();
+    mpiovd_sensors_struct.time_usec     = 0;
+    mpiovd_sensors_struct.relay         = raw_data.discrete;
+    mpiovd_sensors_struct.speed         = raw_data.analog[15] / 50;
+    mpiovd_sensors_struct.rpm           = get_engine_rpm();
+    mpiovd_sensors_struct.engine_uptime = GetUptime();
+    mpiovd_sensors_struct.trip          = GetTrip();
 
-    raw_mail.payload = &mpiovd_sensors_raw_struct;
+    raw_mail.payload = &mpiovd_sensors_struct;
     chMBPost(&tolink_mb, (msg_t)&raw_mail, TIME_IMMEDIATE);
   }
   return 0;

@@ -41,6 +41,7 @@ mavlink_command_ack_t           mavlink_command_ack_struct;
  * @brief   Event sources.
  */
 EventSource event_gps_time_got;
+EventSource event_cc_heartbeat;
 
 EventSource event_mavlink_gps_raw_int;
 EventSource event_mavlink_heartbeat;
@@ -108,6 +109,7 @@ void MsgInit(void){
   chEvtInit(&event_mavlink_param_request_list);
   chEvtInit(&event_mavlink_param_request_read);
   chEvtInit(&event_mavlink_command_ack);
+  chEvtInit(&event_cc_heartbeat);
 
   setGlobalFlag(GlobalFlags.messaging_ready);
 }

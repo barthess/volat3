@@ -24,12 +24,15 @@ extern EventSource event_mavlink_command_long;
 extern EventSource event_mavlink_param_set;
 extern EventSource event_mavlink_param_request_list;
 extern EventSource event_mavlink_param_request_read;
+extern EventSource event_cc_heartbeat;
 
 /*
  *******************************************************************************
  * EXPORTED FUNCTIONS
  *******************************************************************************
  */
+
+uint8_t buf[256];
 
 /**
  *
@@ -38,6 +41,7 @@ void CcUnpackCycle(SerialDriver *sdp){
   mavlink_message_t msg;
   mavlink_status_t status;
   msg_t c = 0;
+  uint8_t n = 0;
 
   while(GlobalFlags.messaging_ready == 0)
     chThdSleepMilliseconds(50);
@@ -46,6 +50,7 @@ void CcUnpackCycle(SerialDriver *sdp){
     // Try to get a new message
     c = sdGetTimeout((SerialDriver *)sdp, MS2ST(200));
     if (c != Q_TIMEOUT){
+      buf[n++] = c;
       uint8_t s = 0;
       s = mavlink_parse_char(MAVLINK_COMM_0, (uint8_t)c, &msg, &status);
       if (s) {
@@ -73,6 +78,10 @@ void CcUnpackCycle(SerialDriver *sdp){
             mavlink_msg_param_request_read_decode(&msg, &mavlink_param_request_read_struct);
             if (mavlink_param_request_read_struct.target_system == mavlink_system_struct.sysid)
               chEvtBroadcastFlags(&event_mavlink_param_request_read, EVMSK_MAVLINK_PARAM_REQUEST_READ);
+            break;
+
+          case MAVLINK_MSG_ID_HEARTBEAT:
+            chEvtBroadcastFlags(&event_cc_heartbeat, EVMSK_CC_HEARTBEAT);
             break;
 
           default:

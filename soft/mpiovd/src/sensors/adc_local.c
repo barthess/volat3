@@ -259,7 +259,7 @@ void ADCInitLocal(void){
 /**
  *
  */
-void adc_process(adcsample_t *in, mavlink_mpiovd_sensors_raw_t *raw){
+void adc_process(adcsample_t *in, mavlink_mpiovd_sensors_t *raw){
 
   //raw->analog00 = adc_raw_voltage;
   //raw->analog01 = raw_data.analog[1];
