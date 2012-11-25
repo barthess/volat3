@@ -8,15 +8,13 @@
 #include "main.h"
 #include "wavecom.h"
 #include "cross.h"
+#include "link_cc.h"
 
 /*
  ******************************************************************************
  * DEFINES
  ******************************************************************************
  */
-/* special character for data flow control */
-#define ETX                 3  /* End of text */
-#define DLE                 16 /*  Data link escape */
 
 /*timeout definiton */
 #define POWERON_TRY         10
@@ -412,13 +410,6 @@ static bool_t _start_connection(SerialDriver *sdp){
 static WORKING_AREA(ModemThreadWA, 1024);
 static msg_t ModemThread(void *sdp) {
   chRegSetThreadName("Modem");
-
-
-  setGlobalFlag(GlobalFlags.modem_connected);
-  return 0;
-
-
-
 
   if (GSM_FAILED == _wait_poweron(sdp))
     goto ERROR;

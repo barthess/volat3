@@ -71,7 +71,7 @@ static msg_t UiThread(void *arg) {
 /**
  *
  */
-static WORKING_AREA(GsmLedThreadWA, 64);
+static WORKING_AREA(GsmLedThreadWA, 48);
 static msg_t GsmLedThread(void *arg) {
   chRegSetThreadName("GsmLed");
   (void)arg;
@@ -82,7 +82,7 @@ static msg_t GsmLedThread(void *arg) {
   while (!chThdShouldTerminate()) {
     chEvtWaitOne(EVMSK_CC_HEARTBEAT);
     gsm_led_on();
-    chThdSleepMilliseconds(100);
+    chThdSleepMilliseconds(200);
     gsm_led_off();
   }
   return 0;

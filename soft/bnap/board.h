@@ -102,8 +102,11 @@
 
 /*** PORT B ***/
 // GSM - USART1 (continue)
-#define PIOB_LED_GSM                13
+#define PIOB_LED_GSM                3
 #define PIOB_LED_GSM_MASK           (1 << PIOB_LED_GSM)
+#define PIOB_LED_GPS                13
+#define PIOB_LED_GPS_MASK           (1 << PIOB_LED_GPS)
+
 #define PIOB_GSM_RTS                24
 #define PIOB_GSM_RTS_MASK           (1 << PIOB_GSM_RTS)
 #define PIOB_GSM_CTS                25
@@ -126,7 +129,7 @@
 /* Output data. */
 #define VAL_PIOB_ODSR           0x00000000
 /* Direction. */
-#define VAL_PIOB_OSR            (0x00000000 | PIOB_GSM_RTS_MASK | PIOB_LED_GSM_MASK)
+#define VAL_PIOB_OSR            (0x00000000 | PIOB_GSM_RTS_MASK | PIOB_LED_GSM_MASK | PIOB_LED_GPS_MASK)
 /* Pull-up. */
 #define VAL_PIOB_PUSR           0xFFFFFFFF
 
