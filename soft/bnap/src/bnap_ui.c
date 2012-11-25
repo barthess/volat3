@@ -45,7 +45,7 @@ extern EventSource event_cc_heartbeat;
  ******************************************************************************
  */
 
-static WORKING_AREA(UiThreadWA, 64);
+static WORKING_AREA(UiThreadWA, 48);
 static msg_t UiThread(void *arg) {
   chRegSetThreadName("Ui");
   (void)arg;

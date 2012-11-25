@@ -407,7 +407,7 @@ static bool_t _start_connection(SerialDriver *sdp){
 /**
  *
  */
-static WORKING_AREA(ModemThreadWA, 1024);
+static WORKING_AREA(ModemThreadWA, 768);
 static msg_t ModemThread(void *sdp) {
   chRegSetThreadName("Modem");
 
