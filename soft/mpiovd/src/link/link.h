@@ -1,9 +1,7 @@
-#include <mavlink.h>
-#include <common.h>
-
-
 #ifndef LINK_H_
 #define LINK_H_
+
+#include "mavlink.h"
 
 void LinkInit(void);
 void KillMavlinkThreads(void);

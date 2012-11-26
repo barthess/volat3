@@ -1,7 +1,6 @@
 #include "ch.h"
 #include "hal.h"
 #include "mavlink.h"
-#include "mpiovd.h"
 
 #include "main.h"
 #include "message.h"
@@ -31,6 +30,7 @@ mavlink_statustext_t            mavlink_statustext_struct;
 mavlink_command_long_t          mavlink_command_long_struct;
 mavlink_system_time_t           mavlink_system_time_struct;
 mavlink_mpiovd_sensors_t        mavlink_mpiovd_sensors_struct;
+mavlink_mpiovd_sensors_dbg_t    mavlink_mpiovd_sensors_dbg_struct;
 mavlink_param_value_t           mavlink_param_value_struct;
 mavlink_param_set_t             mavlink_param_set_struct;
 mavlink_param_request_list_t    mavlink_param_request_list_struct;
@@ -52,6 +52,7 @@ EventSource event_mavlink_system_time;
 EventSource event_mavlink_sys_status;
 EventSource event_mavlink_statustext;
 EventSource event_mavlink_mpiovd_sensors;
+EventSource event_mavlink_mpiovd_sensors_dbg;
 EventSource event_mavlink_command_long;
 EventSource event_mavlink_param_value;
 EventSource event_mavlink_param_set;
@@ -111,6 +112,7 @@ void MsgInit(void){
   chEvtInit(&event_mavlink_sys_status);
   chEvtInit(&event_mavlink_statustext);
   chEvtInit(&event_mavlink_mpiovd_sensors);
+  chEvtInit(&event_mavlink_mpiovd_sensors_dbg);
   chEvtInit(&event_mavlink_command_long);
   chEvtInit(&event_mavlink_param_value);
   chEvtInit(&event_mavlink_param_set);

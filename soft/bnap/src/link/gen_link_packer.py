@@ -12,7 +12,6 @@ def head(f):
 #include "hal.h"
 #include "mavlink.h"
 #include "utils.h"
-#include "mpiovd.h"
 #include "link.h"
 #include "message.h"
 #include "main.h"

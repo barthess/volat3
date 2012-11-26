@@ -1,9 +1,7 @@
 #ifndef MESSAGE_H_
 #define MESSAGE_H_
 
-#include <mavlink.h>
-#include <common.h>
-#include <mpiovd.h>
+#include "mavlink.h"
 
 #include "ch.h"
 #include "hal.h"

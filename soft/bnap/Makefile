@@ -142,7 +142,6 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(HALINC) $(PLATFORMINC) \
          $(CHIBIOS)/os/various \
          $(MAVLINCDIR) \
-         $(MAVLINCDIR)/common \
          $(MAVLINCDIR)/mpiovd \
          $(SUBMODULEINCDIR) \
          src \

@@ -64,7 +64,8 @@ uint16_t sort_output_mail(Mail *mailp, mavlink_message_t *mavlink_msgbuf){
   uint16_t len;
   switch(mailp->invoice){
     SENDCASE(heartbeat, HEARTBEAT,                          ALL)
-    SENDCASE(mpiovd_sensors, MPIOVD_SENSORS,        		ALL)
+    SENDCASE(mpiovd_sensors, MPIOVD_SENSORS,                ALL)
+    SENDCASE(mpiovd_sensors_dbg, MPIOVD_SENSORS_DBG,        ALL)
     SENDCASE(debug_vect, DEBUG_VECT,                        ALL)
     SENDCASE(param_value, PARAM_VALUE,                      ALL)
   default:

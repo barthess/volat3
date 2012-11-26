@@ -2,7 +2,6 @@
 #include "hal.h"
 
 #include "mavlink.h"
-#include "mpiovd.h" /* MAV_CMD enum here */
 
 #include "link.h"
 #include "message.h"

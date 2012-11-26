@@ -158,7 +158,6 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src/dsp \
          src/parameters \
          $(SUBMODULEINCDIR) \
-         $(MAVLINCDIR)/common \
          $(MAVLINCDIR)/mpiovd \
 
 #

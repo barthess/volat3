@@ -3,7 +3,6 @@
 #include "ch.h"
 #include "hal.h"
 #include "mavlink.h"
-#include "mpiovd.h"
 
 #include "main.h"
 #include "crc32.h"

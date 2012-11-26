@@ -1,5 +1,4 @@
 #include "mavlink.h"
-#include "common.h"
 
 #include "main.h"
 #include "autopilot.h"
