@@ -206,6 +206,7 @@ static void parse_gga(uint8_t *ggabuf){
   int32_t  gps_latitude = 0;
   int32_t  gps_longitude = 0;
   int32_t  gps_altitude = 0;
+  int32_t  hdop = 0;
 
   uint8_t i = 1; /* начинается с 1, потому что нулевым символом является рудиментарная запятая */
   uint8_t fix = 0, satellites_visible = 0;
@@ -239,6 +240,7 @@ static void parse_gga(uint8_t *ggabuf){
   while(ggabuf[i] != ','){i++;}
     i++;
 
+  hdop = parse_decimal(&ggabuf[i]);
   while(ggabuf[i] != ','){i++;}                 /* Horizontal Dilution of precision */
     i++;
 
@@ -262,6 +264,7 @@ static void parse_gga(uint8_t *ggabuf){
     mavlink_gps_raw_int_struct.lat = gps_latitude   * 100;
     mavlink_gps_raw_int_struct.lon = gps_longitude  * 100;
     mavlink_gps_raw_int_struct.alt = gps_altitude   * 10;
+    mavlink_gps_raw_int_struct.eph = hdop;
 
     mavlink_global_position_int_struct.lat = mavlink_gps_raw_int_struct.lat;
     mavlink_global_position_int_struct.lon = mavlink_gps_raw_int_struct.lon;

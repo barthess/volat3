@@ -42,6 +42,8 @@ mavlink_command_ack_t           mavlink_command_ack_struct;
  */
 EventSource event_gps_time_got;
 EventSource event_cc_heartbeat;
+EventSource event_mpiovd_heartbeat;
+EventSource event_dm_heartbeat;
 
 EventSource event_mavlink_gps_raw_int;
 EventSource event_mavlink_heartbeat;
@@ -97,19 +99,24 @@ void ReleaseMail(Mail* mailp){
  */
 void MsgInit(void){
 
-  chEvtInit(&event_mavlink_gps_raw_int);
-  chEvtInit(&event_mavlink_system_time);
   chEvtInit(&event_gps_time_got);
-  chEvtInit(&event_mavlink_statustext);
+  chEvtInit(&event_cc_heartbeat);
+  chEvtInit(&event_mpiovd_heartbeat);
+  chEvtInit(&event_dm_heartbeat);
+
+  chEvtInit(&event_mavlink_gps_raw_int);
   chEvtInit(&event_mavlink_heartbeat);
   chEvtInit(&event_mavlink_global_position_int);
+  chEvtInit(&event_mavlink_system_time);
+  chEvtInit(&event_mavlink_sys_status);
+  chEvtInit(&event_mavlink_statustext);
+  chEvtInit(&event_mavlink_mpiovd_sensors);
   chEvtInit(&event_mavlink_command_long);
   chEvtInit(&event_mavlink_param_value);
   chEvtInit(&event_mavlink_param_set);
   chEvtInit(&event_mavlink_param_request_list);
   chEvtInit(&event_mavlink_param_request_read);
   chEvtInit(&event_mavlink_command_ack);
-  chEvtInit(&event_cc_heartbeat);
 
   setGlobalFlag(GlobalFlags.messaging_ready);
 }

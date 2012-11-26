@@ -45,7 +45,7 @@ extern EventSource event_cc_heartbeat;
  ******************************************************************************
  */
 
-static WORKING_AREA(UiThreadWA, 48);
+static WORKING_AREA(UiThreadWA, 64);
 static msg_t UiThread(void *arg) {
   chRegSetThreadName("Ui");
   (void)arg;
@@ -71,7 +71,7 @@ static msg_t UiThread(void *arg) {
 /**
  *
  */
-static WORKING_AREA(GsmLedThreadWA, 48);
+static WORKING_AREA(GsmLedThreadWA, 64);
 static msg_t GsmLedThread(void *arg) {
   chRegSetThreadName("GsmLed");
   (void)arg;

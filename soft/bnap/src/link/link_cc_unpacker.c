@@ -51,6 +51,7 @@ void CcUnpackCycle(SerialDriver *sdp){
     c = sdGet((SerialDriver *)sdp);
     prev_c = c;
     if (prev_c == DLE){
+      prev_c = 0; /* set it to any just not DLE nor ETX */
       c = sdGet((SerialDriver *)sdp);
     }
 

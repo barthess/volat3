@@ -4,8 +4,7 @@
 
 #include "message.h"
 #include "main.h"
-#include "link_cc_packer.h"
-#include "link_cc_unpacker.h"
+#include "link_mpiovd_unpacker.h"
 
 /*
  ******************************************************************************
@@ -36,36 +35,15 @@ extern GlobalFlags_t GlobalFlags;
 /**
  * Поток разбора входящих данных.
  */
-static WORKING_AREA(CcUnpackerThreadWA, 1024);
-static msg_t CcUnpackerThread(void *sdp){
-  chRegSetThreadName("CcUnpacker");
+static WORKING_AREA(MpiovdUnpackerThreadWA, 1024);
+static msg_t MpiovdUnpackerThread(void *sdp){
+  chRegSetThreadName("MpiovdUnpacker");
 
   while(GlobalFlags.messaging_ready == 0)
     chThdSleepMilliseconds(50);
 
-  while (GlobalFlags.modem_connected == 0)
-    chThdSleepMilliseconds(50);
+  MpiovdUnpackCycle((SerialDriver *)sdp);
 
-  CcUnpackCycle((SerialDriver *)sdp);
-
-  chThdExit(0);
-  return 0;
-}
-
-/**
- * Упаковка данных для модуля индюкации.
- */
-static WORKING_AREA(CcPackerThreadWA, 1536);
-static msg_t CcPackerThread(void *sdp){
-  chRegSetThreadName("CcPacker");
-
-  while(GlobalFlags.messaging_ready == 0)
-    chThdSleepMilliseconds(50);
-
-  while (GlobalFlags.modem_connected == 0)
-    chThdSleepMilliseconds(50);
-
-  CcPackCycle((SerialDriver *)sdp);
   chThdExit(0);
   return 0;
 }
@@ -79,18 +57,12 @@ static msg_t CcPackerThread(void *sdp){
 /**
  * Fork link threads for mpiovd.
  */
-void link_cc_up(SerialDriver *sdp){
+void link_mpiovd_up(SerialDriver *sdp){
 
-  chThdCreateStatic(CcUnpackerThreadWA,
-          sizeof(CcUnpackerThreadWA),
-          CC_THREAD_PRIO,
-          CcUnpackerThread,
-          sdp);
-
-  chThdCreateStatic(CcPackerThreadWA,
-          sizeof(CcPackerThreadWA),
-          CC_THREAD_PRIO,
-          CcPackerThread,
+  chThdCreateStatic(MpiovdUnpackerThreadWA,
+          sizeof(MpiovdUnpackerThreadWA),
+          MPIOVD_THREAD_PRIO,
+          MpiovdUnpackerThread,
           sdp);
 }
 

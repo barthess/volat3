@@ -42,6 +42,10 @@ def gen(name, arr):
     f.write("#include \"link_" + str.lower(name) + "_packer.h\"\n\n")
 
     for i in arr:
+        f.write("extern const uint32_t *" + str.lower(name) + "_" + i + "_sendperiod;\n")
+    f.write("\n")
+
+    for i in arr:
         f.write("extern mavlink_" + i + "_t mavlink_" + i + "_struct;\n")
         f.write("extern EventSource event_mavlink_" + i + ";\n\n")
 
@@ -67,7 +71,7 @@ def gen(name, arr):
 
     for i in arr:
         f.write("    case EVMSK_MAVLINK_" + str.upper(i) + ":\n")
-        f.write("      if(FALSE == traffic_limiter(&" + i + "_lastsent, " + i + "_sendperiod))\n")
+        f.write("      if(FALSE == traffic_limiter(&" + i + "_lastsent, " + str.lower(name) + "_" + i + "_sendperiod))\n")
         f.write("        goto WAIT;\n")
         f.write("      memcpy_ts(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i +"_struct), 4);\n")
         f.write("      mavlink_msg_" + i + "_encode(mavlink_system_struct.sysid, MAV_COMP_ID_ALL, &mavlink_message_struct, (mavlink_" + i + "_t *)sendbuf);\n")

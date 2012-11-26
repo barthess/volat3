@@ -76,6 +76,8 @@ CSRC = $(PORTSRC) \
        src/link/link_dm_packer.c \
        src/link/link_dm_unpacker.c \
        src/link/link_dm.c \
+       src/link/link_mpiovd_unpacker.c \
+       src/link/link_mpiovd.c \
        src/link/mavcmd_local.c \
        src/time/timekeeper.c \
        src/time/ds1338.c \

@@ -23,7 +23,6 @@ param = [
 ("T_text",          SEND_MIN,   1,      SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_gps_int",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_gps_raw",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
-("T_param_value",   SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_reserved1",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_reserved2",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_reserved3",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
