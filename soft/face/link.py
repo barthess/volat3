@@ -42,6 +42,7 @@ def input(q, e_pause, e_kill, device):#{{{
         except socket.timeout: pass
 
         if m is not None:
+            print type(m)
             try: q.put_nowait(m)
             except Full: pass
 #}}}

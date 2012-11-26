@@ -15,7 +15,7 @@ flags = globalflags.flags
 
 # allow import from the parent directory, where mavlink.py and its stuff are
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
-import mavlink
+import mavlinkv10 as mavlink
 
 import volatinterp
 
@@ -903,7 +903,7 @@ class Telemetry(GlossGame):#{{{
             pass
         else:
             # are we needed this data?
-            if type(tlm_data) == mavlink.MAVLink_mpiovd_sensors_raw_message:
+            if type(tlm_data) == mavlink.MAVLink_mpiovd_sensors_message:
                 self.last_success_time = time.time()
                 analogarray = [tlm_data.analog00, tlm_data.analog01, tlm_data.analog02, tlm_data.analog03,
                                tlm_data.analog04, tlm_data.analog05, tlm_data.analog06, tlm_data.analog07,

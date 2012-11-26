@@ -21,7 +21,7 @@ $(TOP_DIR)/C/mpiovd/mpiovd.h: $(TOP_DIR)/definitions/mpiovd.xml
 # python bindings
 $(TOP_DIR)/python/mavlink.py: $(TOP_DIR)/definitions/mpiovd.xml
 	cp $(TOP_DIR)/definitions/mpiovd.xml $(MAVGEN_DIR)/message_definitions/v1.0
-	$(MAVGEN_DIR)/pymavlink/generator/mavgen.py --lang=python --wire-protocol=1.0 -o python/mavlink.py $(MAVGEN_DIR)/message_definitions/v1.0/mpiovd.xml
+	$(MAVGEN_DIR)/pymavlink/generator/mavgen.py --lang=python --wire-protocol=1.0 -o python/mavlinkv10.py $(MAVGEN_DIR)/message_definitions/v1.0/mpiovd.xml
 	rm $(MAVGEN_DIR)/message_definitions/v1.0/mpiovd.xml
 
 # fixed files for python bingings

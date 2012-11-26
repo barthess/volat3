@@ -39,7 +39,7 @@ def main(q_tlm):
     pygame.init()
     tlm = telemetry.Telemetry("MOSK - Mobile Operational System Kamikaze")
     Gloss.screen_resolution = 1024,768
-    Gloss.full_screen = True
+    Gloss.full_screen = False
     # Gloss.enable_multisampling = False
     Gloss.enable_multisampling = True
     #pygame.mouse.set_visible(False)
