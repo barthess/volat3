@@ -1,8 +1,9 @@
 // TODO: shell for tuning network settings and parameters
 // TODO: sys_status with CPU loading
+// TODO: rewrite GPS code
+
 // TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом (битовыми полями)
 // TODO: дополнительная проверка времени после поиска в массиве хранилища последней метки времени (они должны быть адекватны друг другу)
-// TODO: set different IDs for all devices on MAV bus
 
 // TODO: EXTI
 // TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
@@ -99,7 +100,9 @@ int main(void) {
 
   sdStart(&SDGSM, &gsm_ser_cfg);
   sdStart(&SDDM, &dm_ser_cfg);
+  setGlobalFlag(GlobalFlags.dm_port_ready);
   sdStart(&SDMPIOVD, &mpiovd_ser_cfg);
+  setGlobalFlag(GlobalFlags.mpiovd_port_ready);
 
   i2cLocalInit();//0xFFFB8000
   //EepromTestThread(&SDDM);

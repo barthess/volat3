@@ -22,23 +22,28 @@
  * EXTERNS
  ******************************************************************************
  */
-const uint32_t *cc_heartbeat_sendperiod;
-const uint32_t *cc_gps_raw_int_sendperiod;
-const uint32_t *cc_global_position_int_sendperiod;
-const uint32_t *cc_system_time_sendperiod;
-const uint32_t *cc_mpiovd_sensors_sendperiod;
-const uint32_t *cc_sys_status_sendperiod;
-const uint32_t *cc_statustext_sendperiod;
-const uint32_t *cc_param_value_sendperiod;
+const uint32_t *to_cc_gps_raw_int_sendperiod;
+const uint32_t *to_cc_global_position_int_sendperiod;
+const uint32_t *to_cc_system_time_sendperiod;
+const uint32_t *to_cc_mpiovd_sensors_sendperiod;
+const uint32_t *to_cc_sys_status_sendperiod;
+const uint32_t *to_cc_statustext_sendperiod;
+const uint32_t *to_cc_param_value_sendperiod;
+const uint32_t *to_cc_heartbeat_mpiovd_sendperiod;
+const uint32_t *to_cc_heartbeat_dm_sendperiod;
+const uint32_t *to_cc_heartbeat_bnap_sendperiod;
 
-const uint32_t *dm_heartbeat_sendperiod;
-const uint32_t *dm_gps_raw_int_sendperiod;
-const uint32_t *dm_global_position_int_sendperiod;
-const uint32_t *dm_system_time_sendperiod;
-const uint32_t *dm_mpiovd_sensors_sendperiod;
-const uint32_t *dm_sys_status_sendperiod;
-const uint32_t *dm_statustext_sendperiod;
-const uint32_t *dm_param_value_sendperiod;
+const uint32_t *to_dm_heartbeat_sendperiod;
+const uint32_t *to_dm_gps_raw_int_sendperiod;
+const uint32_t *to_dm_global_position_int_sendperiod;
+const uint32_t *to_dm_system_time_sendperiod;
+const uint32_t *to_dm_mpiovd_sensors_sendperiod;
+const uint32_t *to_dm_sys_status_sendperiod;
+const uint32_t *to_dm_statustext_sendperiod;
+const uint32_t *to_dm_param_value_sendperiod;
+const uint32_t *to_dm_heartbeat_mpiovd_sendperiod;
+const uint32_t *to_dm_heartbeat_cc_sendperiod;
+const uint32_t *to_dm_heartbeat_bnap_sendperiod;
 
 /*
  ******************************************************************************
@@ -65,23 +70,29 @@ const uint32_t *dm_param_value_sendperiod;
  */
 void LinkInit(void){
 
-  cc_heartbeat_sendperiod           = ValueSearch("T_heartbeat");
-  cc_gps_raw_int_sendperiod         = ValueSearch("T_gps_raw");
-  cc_global_position_int_sendperiod = ValueSearch("T_gps_int");
-  cc_system_time_sendperiod         = ValueSearch("T_sys_time");
-  cc_mpiovd_sensors_sendperiod      = ValueSearch("T_mpiovd_data");
-  cc_sys_status_sendperiod          = ValueSearch("T_sys_status");
-  cc_statustext_sendperiod          = ValueSearch("T_text");
-  cc_param_value_sendperiod         = NULL;
+  to_cc_heartbeat_mpiovd_sendperiod    = ValueSearch("T_heartbeat");
+  to_cc_heartbeat_dm_sendperiod        = ValueSearch("T_heartbeat");
+  to_cc_heartbeat_bnap_sendperiod      = ValueSearch("T_heartbeat");
 
-  dm_heartbeat_sendperiod           = NULL;
-  dm_gps_raw_int_sendperiod         = NULL;
-  dm_global_position_int_sendperiod = NULL;
-  dm_system_time_sendperiod         = NULL;
-  dm_mpiovd_sensors_sendperiod      = NULL;
-  dm_sys_status_sendperiod          = NULL;
-  dm_statustext_sendperiod          = NULL;
-  dm_param_value_sendperiod         = NULL;
+  to_cc_gps_raw_int_sendperiod         = ValueSearch("T_gps_raw");
+  to_cc_global_position_int_sendperiod = ValueSearch("T_gps_int");
+  to_cc_system_time_sendperiod         = ValueSearch("T_sys_time");
+  to_cc_mpiovd_sensors_sendperiod      = ValueSearch("T_mpiovd_data");
+  to_cc_sys_status_sendperiod          = ValueSearch("T_sys_status");
+  to_cc_statustext_sendperiod          = ValueSearch("T_text");
+  to_cc_param_value_sendperiod         = NULL;
+
+  to_dm_heartbeat_mpiovd_sendperiod    = NULL;
+  to_dm_heartbeat_cc_sendperiod        = NULL;
+  to_dm_heartbeat_bnap_sendperiod      = NULL;
+
+  to_dm_gps_raw_int_sendperiod         = NULL;
+  to_dm_global_position_int_sendperiod = NULL;
+  to_dm_system_time_sendperiod         = NULL;
+  to_dm_mpiovd_sensors_sendperiod      = NULL;
+  to_dm_sys_status_sendperiod          = NULL;
+  to_dm_statustext_sendperiod          = NULL;
+  to_dm_param_value_sendperiod         = NULL;
 
   link_dm_up(&SDDM);
   link_mpiovd_up(&SDMPIOVD);

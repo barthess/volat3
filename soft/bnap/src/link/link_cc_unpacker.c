@@ -20,12 +20,13 @@ extern mavlink_command_long_t          mavlink_command_long_struct;
 extern mavlink_param_set_t             mavlink_param_set_struct;
 extern mavlink_param_request_list_t    mavlink_param_request_list_struct;
 extern mavlink_param_request_read_t    mavlink_param_request_read_struct;
+extern mavlink_heartbeat_t             mavlink_heartbeat_cc_struct;
 
 extern EventSource event_mavlink_command_long;
 extern EventSource event_mavlink_param_set;
 extern EventSource event_mavlink_param_request_list;
 extern EventSource event_mavlink_param_request_read;
-extern EventSource event_cc_heartbeat;
+extern EventSource event_mavlink_heartbeat_cc;
 
 /*
  *******************************************************************************
@@ -83,7 +84,8 @@ void CcUnpackCycle(SerialDriver *sdp){
           break;
 
         case MAVLINK_MSG_ID_HEARTBEAT:
-          chEvtBroadcastFlags(&event_cc_heartbeat, EVMSK_CC_HEARTBEAT);
+          mavlink_msg_heartbeat_decode(&msg, &mavlink_heartbeat_cc_struct);
+          chEvtBroadcastFlags(&event_mavlink_heartbeat_cc, EVMSK_MAVLINK_HEARTBEAT_CC);
           break;
 
         default:

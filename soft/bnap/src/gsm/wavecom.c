@@ -377,7 +377,7 @@ static bool_t _create_connection(SerialDriver *sdp){
 
   while(try--){
     //_say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"86.57.157.114\",14550\r");
-    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"77.67.213.96\",14550\r");
+    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"77.67.246.92\",14550\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;

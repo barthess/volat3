@@ -21,8 +21,8 @@ typedef struct GlobalFlags_t{
   //4
   uint32_t logger_ready:1;      /* logger found end of circular buffer and ready to receive data */
   uint32_t link_cc_ready:1;     /* connection with control center via GSM up */
-  uint32_t link_dm_ready:1;     /* connection with dysplay module up */
-  uint32_t link_mpiovd_ready:1; /* */
+  uint32_t dm_port_ready:1;     /* connection with dysplay module up */
+  uint32_t mpiovd_port_ready:1; /* */
   //8
   uint32_t gps_ready:1;         /* GPS send first packet */
   uint32_t gps_valid:1;         /* coordinates valid */

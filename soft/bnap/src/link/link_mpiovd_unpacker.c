@@ -15,12 +15,11 @@
  */
 extern GlobalFlags_t GlobalFlags;
 
-extern mavlink_mpiovd_sensors_t        mavlink_mpiovd_sensors_struct;
-extern mavlink_mpiovd_sensors_dbg_t    mavlink_mpiovd_sensors_dbg_struct;
+extern mavlink_mpiovd_sensors_t       mavlink_mpiovd_sensors_struct;
+extern mavlink_heartbeat_mpiovd_t     mavlink_heartbeat_mpiovd_struct;
 
 extern EventSource event_mavlink_mpiovd_sensors;
-extern EventSource event_mavlink_mpiovd_sensors_dbg;
-extern EventSource event_mpiovd_heartbeat;
+extern EventSource event_mavlink_heartbeat_mpiovd;
 
 /*
  *******************************************************************************
@@ -51,7 +50,8 @@ void MpiovdUnpackCycle(SerialDriver *sdp){
           break;
 
         case MAVLINK_MSG_ID_HEARTBEAT:
-          chEvtBroadcastFlags(&event_mpiovd_heartbeat, EVMSK_MPIOVD_HEARTBEAT);
+          mavlink_msg_heartbeat_decode(&msg, &mavlink_heartbeat_mpiovd_struct);
+          chEvtBroadcastFlags(&event_mavlink_heartbeat_mpiovd, EVMSK_MAVLINK_HEARTBEAT_MPIOVD);
           break;
 
         default:

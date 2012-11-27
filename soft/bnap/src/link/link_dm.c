@@ -18,6 +18,7 @@
  * EXTERNS
  ******************************************************************************
  */
+extern GlobalFlags_t GlobalFlags;
 
 /*
  ******************************************************************************
@@ -60,4 +61,14 @@ void link_dm_up(SerialDriver *sdp){
           DM_THREAD_PRIO,
           DmPackerThread,
           sdp);
+}
+
+/**
+ *
+ */
+bool_t dm_port_ready(void){
+  if (GlobalFlags.dm_port_ready)
+    return TRUE;
+  else
+    return FALSE;
 }

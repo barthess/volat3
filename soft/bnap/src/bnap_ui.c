@@ -23,7 +23,7 @@
  * EXTERNS
  ******************************************************************************
  */
-extern EventSource event_cc_heartbeat;
+extern EventSource event_mavlink_heartbeat_cc;
 
 /*
  ******************************************************************************
@@ -77,10 +77,10 @@ static msg_t GsmLedThread(void *arg) {
   (void)arg;
 
   struct EventListener el_cc_heartbeat;
-  chEvtRegisterMask(&event_cc_heartbeat, &el_cc_heartbeat, EVMSK_CC_HEARTBEAT);
+  chEvtRegisterMask(&event_mavlink_heartbeat_cc, &el_cc_heartbeat, EVMSK_MAVLINK_HEARTBEAT_CC);
 
   while (!chThdShouldTerminate()) {
-    chEvtWaitOne(EVMSK_CC_HEARTBEAT);
+    chEvtWaitOne(EVMSK_MAVLINK_HEARTBEAT_CC);
     gsm_led_on();
     chThdSleepMilliseconds(200);
     gsm_led_off();

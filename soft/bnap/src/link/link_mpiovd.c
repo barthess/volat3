@@ -43,7 +43,6 @@ static msg_t MpiovdUnpackerThread(void *sdp){
     chThdSleepMilliseconds(50);
 
   MpiovdUnpackCycle((SerialDriver *)sdp);
-
   chThdExit(0);
   return 0;
 }
@@ -66,3 +65,12 @@ void link_mpiovd_up(SerialDriver *sdp){
           sdp);
 }
 
+/**
+ *
+ */
+bool_t mpiovd_port_ready(void){
+  if (GlobalFlags.mpiovd_port_ready)
+    return TRUE;
+  else
+    return FALSE;
+}

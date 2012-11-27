@@ -43,11 +43,7 @@ static msg_t CcUnpackerThread(void *sdp){
   while(GlobalFlags.messaging_ready == 0)
     chThdSleepMilliseconds(50);
 
-  while (GlobalFlags.modem_connected == 0)
-    chThdSleepMilliseconds(50);
-
   CcUnpackCycle((SerialDriver *)sdp);
-
   chThdExit(0);
   return 0;
 }
@@ -60,9 +56,6 @@ static msg_t CcPackerThread(void *sdp){
   chRegSetThreadName("CcPacker");
 
   while(GlobalFlags.messaging_ready == 0)
-    chThdSleepMilliseconds(50);
-
-  while (GlobalFlags.modem_connected == 0)
     chThdSleepMilliseconds(50);
 
   CcPackCycle((SerialDriver *)sdp);
@@ -94,3 +87,12 @@ void link_cc_up(SerialDriver *sdp){
           sdp);
 }
 
+/**
+ *
+ */
+bool_t cc_port_ready(void){
+  if (GlobalFlags.modem_connected)
+    return TRUE;
+  else
+    return FALSE;
+}

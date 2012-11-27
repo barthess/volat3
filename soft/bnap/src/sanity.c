@@ -12,10 +12,10 @@
  * EXTERNS
  ******************************************************************************
  */
-extern EventSource event_mavlink_heartbeat;
+extern EventSource event_mavlink_heartbeat_bnap;
 
 extern mavlink_system_t       mavlink_system_struct;
-extern mavlink_heartbeat_t    mavlink_heartbeat_struct;
+extern mavlink_heartbeat_t    mavlink_heartbeat_bnap_struct;
 extern mavlink_sys_status_t   mavlink_sys_status_struct;
 
 /*
@@ -53,21 +53,21 @@ static msg_t SanityControlThread(void *arg) {
   chRegSetThreadName("Sanity");
   (void)arg;
 
-  mavlink_heartbeat_struct.autopilot = MAV_AUTOPILOT_GENERIC;
-  mavlink_heartbeat_struct.custom_mode = 0;
+  mavlink_heartbeat_bnap_struct.autopilot = MAV_AUTOPILOT_GENERIC;
+  mavlink_heartbeat_bnap_struct.custom_mode = 0;
 
   systime_t t = chTimeNow();
 
   while (TRUE) {
     t += HEART_BEAT_PERIOD;
 
-    mavlink_heartbeat_struct.type           = mavlink_system_struct.type;
-    mavlink_heartbeat_struct.base_mode      = mavlink_system_struct.mode;
-    mavlink_heartbeat_struct.system_status  = mavlink_system_struct.state;
+    mavlink_heartbeat_bnap_struct.type           = mavlink_system_struct.type;
+    mavlink_heartbeat_bnap_struct.base_mode      = mavlink_system_struct.mode;
+    mavlink_heartbeat_bnap_struct.system_status  = mavlink_system_struct.state;
 
     mavlink_sys_status_struct.load = get_cpu_load();
 
-    chEvtBroadcastFlags(&event_mavlink_heartbeat, EVMSK_MAVLINK_HEARTBEAT);
+    chEvtBroadcastFlags(&event_mavlink_heartbeat_bnap, EVMSK_MAVLINK_HEARTBEAT_MPIOVD);
     chThdSleepUntil(t);
   }
   return 0;

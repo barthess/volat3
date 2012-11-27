@@ -37,18 +37,22 @@ mavlink_param_request_read_t    mavlink_param_request_read_struct;
 mavlink_command_ack_t           mavlink_command_ack_struct;
 
 /* heartbeats from all components of network */
-mavlink_heartbeat_t             mavlink_heartbeat_struct;
+mavlink_heartbeat_t             mavlink_heartbeat_bnap_struct;
+mavlink_heartbeat_t             mavlink_heartbeat_mpiovd_struct;
+mavlink_heartbeat_t             mavlink_heartbeat_dm_struct;
+mavlink_heartbeat_t             mavlink_heartbeat_cc_struct;
 
 /**
  * @brief   Event sources.
  */
 EventSource event_gps_time_got;
-EventSource event_cc_heartbeat;
-EventSource event_mpiovd_heartbeat;
-EventSource event_dm_heartbeat;
+
+EventSource event_mavlink_heartbeat_cc;
+EventSource event_mavlink_heartbeat_mpiovd;
+EventSource event_mavlink_heartbeat_dm;
+EventSource event_mavlink_heartbeat_bnap;
 
 EventSource event_mavlink_gps_raw_int;
-EventSource event_mavlink_heartbeat;
 EventSource event_mavlink_global_position_int;
 EventSource event_mavlink_system_time;
 EventSource event_mavlink_sys_status;
@@ -100,14 +104,14 @@ void ReleaseMail(Mail* mailp){
  *
  */
 void MsgInit(void){
-
   chEvtInit(&event_gps_time_got);
-  chEvtInit(&event_cc_heartbeat);
-  chEvtInit(&event_mpiovd_heartbeat);
-  chEvtInit(&event_dm_heartbeat);
+
+  chEvtInit(&event_mavlink_heartbeat_cc);
+  chEvtInit(&event_mavlink_heartbeat_mpiovd);
+  chEvtInit(&event_mavlink_heartbeat_dm);
+  chEvtInit(&event_mavlink_heartbeat_bnap);
 
   chEvtInit(&event_mavlink_gps_raw_int);
-  chEvtInit(&event_mavlink_heartbeat);
   chEvtInit(&event_mavlink_global_position_int);
   chEvtInit(&event_mavlink_system_time);
   chEvtInit(&event_mavlink_sys_status);
@@ -129,7 +133,7 @@ void MsgInit(void){
 void MavInit(void){
   /* initial mavlink values */
   mavlink_system_struct.sysid  = *(uint8_t *)ValueSearch("SYS_ID");
-  mavlink_system_struct.compid = MAV_COMP_ID_BNAP;
+  mavlink_system_struct.compid = MAV_COMP_ID_SYSTEM_CONTROL;//MAV_COMP_ID_BNAP;
   mavlink_system_struct.state  = MAV_STATE_ACTIVE;
   mavlink_system_struct.mode   = MAV_MODE_PREFLIGHT;
   mavlink_system_struct.type   = MAV_TYPE_GROUND_ROVER;
