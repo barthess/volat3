@@ -1,9 +1,7 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-/* mavlink includes */
-//#include "mavlink.h"
-#include <stdint.h>
+typedef unsigned char uint8_t;  /* for eclipse indexer */
 
 /*******************************************************************/
 #define GSM_BAUDRATE        115200
