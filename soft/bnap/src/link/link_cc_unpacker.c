@@ -12,8 +12,6 @@
  * EXTERNS
  ******************************************************************************
  */
-extern GlobalFlags_t GlobalFlags;
-
 extern mavlink_system_t                mavlink_system_struct;
 
 extern mavlink_command_long_t          mavlink_command_long_struct;
@@ -44,16 +42,23 @@ void CcUnpackCycle(SerialDriver *sdp){
   msg_t c = 0;
   msg_t prev_c = 0;
 
-  while(GlobalFlags.messaging_ready == 0)
-    chThdSleepMilliseconds(50);
-
   while (!chThdShouldTerminate()) {
-    /* Try to get an escaped with DLE symbols message */
-    c = sdGet((SerialDriver *)sdp);
-    prev_c = c;
-    if (prev_c == DLE){
-      prev_c = 0; /* set it to any just not DLE nor ETX */
-      c = sdGet((SerialDriver *)sdp);
+    if (!cc_port_ready()){
+      chThdSleepMilliseconds(50);
+      continue;
+    }
+    else{
+      /* Try to get an escaped with DLE symbols message */
+      c = sdGetTimeout((SerialDriver *)sdp, MS2ST(50));
+      if (c == Q_TIMEOUT)
+        continue;
+      prev_c = c;
+      if (prev_c == DLE){
+        prev_c = 0; /* set it to any just not DLE nor ETX */
+        c = sdGetTimeout((SerialDriver *)sdp, MS2ST(50));
+        if (c == Q_TIMEOUT)
+          continue;
+      }
     }
 
     if (mavlink_parse_char(MAVLINK_COMM_0, (uint8_t)c, &msg, &status)) {

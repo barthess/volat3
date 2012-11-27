@@ -39,7 +39,10 @@ void MpiovdUnpackCycle(SerialDriver *sdp){
     chThdSleepMilliseconds(50);
 
   while (!chThdShouldTerminate()) {
-    c = sdGet((SerialDriver *)sdp);
+    c = sdGetTimeout((SerialDriver *)sdp, MS2ST(50));
+    if (c == Q_TIMEOUT)
+      continue;
+
     if (mavlink_parse_char(MAVLINK_COMM_1, (uint8_t)c, &msg, &status)) {
       if (msg.compid == MAV_COMP_ID_MPIOVD){
         switch(msg.msgid){

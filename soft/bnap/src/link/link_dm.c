@@ -33,6 +33,20 @@ extern GlobalFlags_t GlobalFlags;
  *******************************************************************************
  *******************************************************************************
  */
+/**
+ * Поток разбора входящих данных.
+ */
+static WORKING_AREA(DmUnpackerThreadWA, 1024);
+static msg_t DmUnpackerThread(void *sdp){
+  chRegSetThreadName("DmUnpacker");
+
+  while(GlobalFlags.messaging_ready == 0)
+    chThdSleepMilliseconds(50);
+
+  DmUnpackCycle((SerialDriver *)sdp);
+  chThdExit(0);
+  return 0;
+}
 
 /**
  * Упаковка данных для модуля индюкации.
@@ -40,6 +54,10 @@ extern GlobalFlags_t GlobalFlags;
 static WORKING_AREA(DmPackerThreadWA, 1536);
 static msg_t DmPackerThread(void *sdp){
   chRegSetThreadName("DmPacker");
+
+  while(GlobalFlags.messaging_ready == 0)
+    chThdSleepMilliseconds(50);
+
   DmPackCycle((SerialDriver *)sdp);
   chThdExit(0);
   return 0;
@@ -60,6 +78,12 @@ void link_dm_up(SerialDriver *sdp){
           sizeof(DmPackerThreadWA),
           DM_THREAD_PRIO,
           DmPackerThread,
+          sdp);
+
+  chThdCreateStatic(DmUnpackerThreadWA,
+          sizeof(DmUnpackerThreadWA),
+          DM_THREAD_PRIO,
+          DmUnpackerThread,
           sdp);
 }
 

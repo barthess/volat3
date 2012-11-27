@@ -210,21 +210,17 @@ static bool_t _wait_sim(SerialDriver *sdp){
 /**
  * Wait registration on operator network
  */
-static bool_t _wait_creg(SerialDriver *sdp){
+static bool_t _wait_cgreg(SerialDriver *sdp){
   uint32_t try = CREG_TRY;
   int stat, mode;
   int scanfstat;
 
   while(try--){
-    _say_to_modem(sdp, "AT+CREG?\r");
+    _say_to_modem(sdp, "AT+CGREG?\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), CREG_TMO);
 
-    /* very dirty hack. Some times modem did not want to set registerd flag
-     * but successfully connects to internet */
-    return GSM_SUCCESS;
-
     /* check results */
-    scanfstat = siscanf((char *)gsmbuf, "+CREG: %d,%d", &mode, &stat);
+    scanfstat = siscanf((char *)gsmbuf, "+CGREG: %d,%d", &mode, &stat);
     if (scanfstat == 2){
       if ((stat == 1) || (stat == 5))
         return GSM_SUCCESS;
@@ -378,7 +374,7 @@ static bool_t _create_connection(SerialDriver *sdp){
 
   while(try--){
     //_say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"86.57.157.114\",14550\r");
-    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"77.67.246.92\",14550\r");
+    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"77.67.253.196\",14550\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;
@@ -417,7 +413,7 @@ static msg_t ModemThread(void *sdp) {
   _set_verbosity(sdp);
   if(GSM_FAILED == _wait_sim(sdp))
     goto ERROR;
-  if (GSM_FAILED == _wait_creg(sdp))
+  if (GSM_FAILED == _wait_cgreg(sdp))
     goto ERROR;
   if (GSM_FAILED == _start_wopen(sdp))
     goto ERROR;

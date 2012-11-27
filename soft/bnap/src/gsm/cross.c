@@ -47,15 +47,15 @@ static msg_t CrossFromModemThread(void *arg) {
 
   while (!chThdShouldTerminate()) {
     c = sdGet(&SDGSM);
-    if (c == '\r'){
-      sdPut(&SDDM, '\\');
-      sdPut(&SDDM, 'r');
-    }
-    else if (c == '\n'){
-      sdPut(&SDDM, '\\');
-      sdPut(&SDDM, 'n');
-    }
-    else
+//    if (c == '\r'){
+//      sdPut(&SDDM, '\\');
+//      sdPut(&SDDM, 'r');
+//    }
+//    else if (c == '\n'){
+//      sdPut(&SDDM, '\\');
+//      sdPut(&SDDM, 'n');
+//    }
+//    else
       sdPut(&SDDM, c);
   }
   return 0;
