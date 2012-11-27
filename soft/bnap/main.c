@@ -1,3 +1,5 @@
+// TODO: shell for tuning network settings and parameters
+// TODO: sys_status with CPU loading
 // TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом (битовыми полями)
 // TODO: дополнительная проверка времени после поиска в массиве хранилища последней метки времени (они должны быть адекватны друг другу)
 // TODO: set different IDs for all devices on MAV bus

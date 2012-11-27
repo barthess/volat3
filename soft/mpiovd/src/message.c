@@ -26,7 +26,6 @@ mavlink_command_long_t        mavlink_command_long_struct;
 mavlink_set_mode_t            mavlink_set_mode_struct;
 
 mavlink_mpiovd_sensors_t      mpiovd_sensors_struct;
-mavlink_mpiovd_sensors_dbg_t  mpiovd_sensors_dbg_struct;
 mavlink_debug_vect_t          mpiovd_debug_vect_struct;
 
 /*
@@ -69,7 +68,7 @@ void MsgInit(void){
 void MavInit(void){
   /* первоначальная настройка мавлинка */
   mavlink_system_struct.sysid  = 21;                   ///< ID 20 for this airplane
-  mavlink_system_struct.compid = MAV_COMP_ID_ALL;     ///< The component sending the message, it could be also a Linux process
+  mavlink_system_struct.compid = MAV_COMP_ID_MPIOVD;     ///< The component sending the message, it could be also a Linux process
   mavlink_system_struct.state  = MAV_STATE_BOOT;
   mavlink_system_struct.mode   = MAV_MODE_PREFLIGHT;
 }

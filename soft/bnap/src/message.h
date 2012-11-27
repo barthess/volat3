@@ -19,7 +19,6 @@
 #define EVMSK_CC_HEARTBEAT                  (1UL << 14)
 #define EVMSK_DM_HEARTBEAT                  (1UL << 15)
 #define EVMSK_MPIOVD_HEARTBEAT              (1UL << 16)
-#define EVMSK_MAVLINK_MPIOVD_SENSORS_DBG    (1UL << 17)
 
 /**
  * Structure for data exchange with confimation capability.

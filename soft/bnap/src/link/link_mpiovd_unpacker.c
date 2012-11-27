@@ -28,8 +28,6 @@ extern EventSource event_mpiovd_heartbeat;
  *******************************************************************************
  */
 
-#define MPIOVD_ID 21
-
 /**
  *
  */
@@ -44,16 +42,12 @@ void MpiovdUnpackCycle(SerialDriver *sdp){
   while (!chThdShouldTerminate()) {
     c = sdGet((SerialDriver *)sdp);
     if (mavlink_parse_char(MAVLINK_COMM_1, (uint8_t)c, &msg, &status)) {
-      if (msg.sysid == MPIOVD_ID){
+      if (msg.compid == MAV_COMP_ID_MPIOVD){
         switch(msg.msgid){
+
         case MAVLINK_MSG_ID_MPIOVD_SENSORS:
           mavlink_msg_mpiovd_sensors_decode(&msg, &mavlink_mpiovd_sensors_struct);
           chEvtBroadcastFlags(&event_mavlink_mpiovd_sensors, EVMSK_MAVLINK_MPIOVD_SENSORS);
-          break;
-
-        case MAVLINK_MSG_ID_MPIOVD_SENSORS_DBG:
-          mavlink_msg_mpiovd_sensors_dbg_decode(&msg, &mavlink_mpiovd_sensors_dbg_struct);
-          chEvtBroadcastFlags(&event_mavlink_mpiovd_sensors_dbg, EVMSK_MAVLINK_MPIOVD_SENSORS_DBG);
           break;
 
         case MAVLINK_MSG_ID_HEARTBEAT:
