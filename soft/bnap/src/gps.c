@@ -254,12 +254,11 @@ static void parse_gga(uint8_t *ggabuf){
   while(ggabuf[i] != ','){i++;}                 /* geoidal separation */
     i++;
 
-	if (fix > 0){  /* если есть достоверные координаты */
+	if (GlobalFlags.gps_valid == 1){  /* если есть достоверные координаты */
     raw_data.gps_latitude   = gps_latitude;
     raw_data.gps_longitude  = gps_longitude;
     raw_data.gps_altitude   = gps_altitude;
     raw_data.gps_satellites = satellites_visible;
-    setGlobalFlag(GlobalFlags.gps_valid);
 
     mavlink_gps_raw_int_struct.lat = gps_latitude   * 100;
     mavlink_gps_raw_int_struct.lon = gps_longitude  * 100;
@@ -271,7 +270,6 @@ static void parse_gga(uint8_t *ggabuf){
     mavlink_global_position_int_struct.alt = mavlink_gps_raw_int_struct.alt;
 	}
 	else{
-	  clearGlobalFlag(GlobalFlags.gps_valid);
     raw_data.gps_latitude = 0;
     raw_data.gps_longitude = 0;
     raw_data.gps_altitude = 0;
