@@ -150,11 +150,9 @@ static msg_t gpsRxThread(void *arg){
   __init_mavlink_structs();
 
   while(!(chThdShouldTerminate())){
-EMPTY:
     if (n >= 2){
       mavlink_gps_raw_int_struct.time_usec = 0;
       chEvtBroadcastFlags(&event_mavlink_gps_raw_int, EVMSK_MAVLINK_GPS_RAW_INT);
-      chThdSleepMilliseconds(20);
       mavlink_global_position_int_struct.time_boot_ms = TIME_BOOT_MS;
       chEvtBroadcastFlags(&event_mavlink_global_position_int, EVMSK_MAVLINK_GLOBAL_POSITION_INT);
       n = 0;
@@ -167,7 +165,7 @@ EMPTY:
 		tmp = sdGet(&SDGPS) << 8;
 		tmp = tmp + sdGet(&SDGPS);
 		if (tmp != GP_TALKER)
-			goto EMPTY;
+			continue;
 
 		// определим тип сообщения
 		tmp = sdGet(&SDGPS) << 16;
@@ -178,17 +176,17 @@ EMPTY:
 	      parse_gga(ggabuf);
 	      n++;
 	    }
-	    goto EMPTY;
+	    continue;
 		}
 		if (tmp == RMC_SENTENCE){
 	    if (get_gps_sentence(rmcbuf, rmcchecksum) == 0){
 	      parse_rmc(rmcbuf);
 	      n++;
 	    }
-	    goto EMPTY;
+	    continue;
 		}
 		else
-			goto EMPTY;
+			continue;
   }
   return 0;
 }

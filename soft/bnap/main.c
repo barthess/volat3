@@ -1,4 +1,5 @@
 // TODO: shell for tuning network settings and parameters
+
 // TODO: rewrite GPS code
 // TODO: более высокая точность парсинга координат gps.
 
