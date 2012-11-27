@@ -37,16 +37,12 @@ void MpiovdUnpackCycle(SerialDriver *sdp){
   mavlink_message_t msg;
   mavlink_status_t status;
   msg_t c = 0;
-  uint8_t n = 0;
 
   while(GlobalFlags.messaging_ready == 0)
     chThdSleepMilliseconds(50);
 
-  memset(buf, 0, sizeof(buf));
-
   while (!chThdShouldTerminate()) {
     c = sdGet((SerialDriver *)sdp);
-
     if (mavlink_parse_char(MAVLINK_COMM_1, (uint8_t)c, &msg, &status)) {
       if (msg.sysid == MPIOVD_ID){
         switch(msg.msgid){
