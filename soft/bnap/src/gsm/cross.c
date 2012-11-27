@@ -1,5 +1,6 @@
 #include "ch.h"
 #include "hal.h"
+#include "chprintf.h"
 
 #include "main.h"
 #include "cross.h"
@@ -74,7 +75,6 @@ static msg_t CrossToModemThread(void *arg) {
   while (!chThdShouldTerminate()) {
     c = sdGet(&SDDM);
     sdPut(&SDGSM, c);
-    //sdAsynchronousWrite(&SDGSM, &c, 1);
   }
   return 0;
 }
@@ -91,6 +91,9 @@ void ModemCrossInit(void){
 //  chThdSleepMilliseconds(10000);
 //  uint8_t st[] = "AT+IPR=9600\r\n";
 //  sdWrite(&SDGSM, st, sizeof(st));
+
+  chprintf((BaseSequentialStream *)&SDDM, "%s", "*** Manual modem settings");
+  chThdSleepMilliseconds(200);
 
   chThdCreateStatic(CrossFromModemThreadWA,
           sizeof(CrossFromModemThreadWA),

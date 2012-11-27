@@ -120,7 +120,7 @@ static size_t _collect_answer(SerialDriver *sdp, uint8_t *buf, size_t lim, systi
 
   /* wait starting \r\n */
   while ((chTimeNow() - start) < timeout){
-    c = sdGetTimeout(sdp, MS2ST(1));
+    c = sdGetTimeout(sdp, MS2ST(2));
     if (c > 0){ /* no timeout */
       w = (w << 8) | (c & 0xFF);
     }
@@ -153,16 +153,17 @@ static bool_t _wait_poweron(SerialDriver *sdp){
   uint32_t try = POWERON_TRY;
 
   gsm_assert_reset();
-  chThdSleepMilliseconds(500);
+  chThdSleepMilliseconds(100);
   gsm_release_reset();
+  sdGet(sdp); /* wait first letter from modem */
 
 //  chThdSleepMilliseconds(1200);
 //  _say_to_modem(sdp, "+++");
 //  chThdSleepMilliseconds(1200);
 
   /* reset all setting to defaults */
-//  _say_to_modem(sdp, "AT+CFUN=1\r");
-  chThdSleepMilliseconds(5000);
+  _say_to_modem(sdp, "AT+CFUN=1\r");
+  sdGet(sdp);
 
   while(try--){
     _say_to_modem(sdp, "AT\r");

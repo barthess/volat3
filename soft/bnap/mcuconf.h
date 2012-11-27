@@ -27,7 +27,7 @@
  */
 
 /*
-  !!! NOTE !!!
+Note:
 AT91C_AIC_PRIOR_LOWEST               (0x0) // (AIC) Lowest priority level
 AT91C_AIC_PRIOR_HIGHEST              (0x7) // (AIC) Highest priority level
 */

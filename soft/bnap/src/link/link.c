@@ -94,8 +94,8 @@ void LinkInit(void){
   to_dm_statustext_sendperiod          = NULL;
   to_dm_param_value_sendperiod         = NULL;
 
-  link_dm_up(&SDDM);
-  link_mpiovd_up(&SDMPIOVD);
+//  link_dm_up(&SDDM);
+//  link_mpiovd_up(&SDMPIOVD);
   link_cc_up(&SDGSM);
 }
 
