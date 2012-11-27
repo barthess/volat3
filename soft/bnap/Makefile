@@ -101,6 +101,8 @@ CSRC = $(PORTSRC) \
        src/gsm/cross.c \
        src/param/param.c \
        src/param/param_persistant.c \
+       src/cli/cli.c \
+       src/cli/cli_cmd.c \
 
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
@@ -151,6 +153,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src/storage \
          src/gsm \
          src/param \
+         src/cli \
          $(TOOLCHAININCDIR) \
 #
 # Project, sources and paths
