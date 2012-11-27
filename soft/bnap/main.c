@@ -1,6 +1,8 @@
+// TODO: parameters and commands from display module
+
 // TODO: shell for tuning network settings and parameters
-// TODO: sys_status with CPU loading
 // TODO: rewrite GPS code
+// TODO: более высокая точность парсинга координат gps.
 
 // TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом (битовыми полями)
 // TODO: дополнительная проверка времени после поиска в массиве хранилища последней метки времени (они должны быть адекватны друг другу)
@@ -8,7 +10,6 @@
 // TODO: EXTI
 // TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
 // TODO: обработка битых блоков
-// TODO: более высокая точность парсинга координат gps.
 
 #include <time.h>
 

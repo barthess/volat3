@@ -13,6 +13,7 @@
  ******************************************************************************
  */
 extern EventSource event_mavlink_heartbeat_bnap;
+extern EventSource event_mavlink_sys_status;
 
 extern mavlink_system_t       mavlink_system_struct;
 extern mavlink_heartbeat_t    mavlink_heartbeat_bnap_struct;
@@ -23,7 +24,8 @@ extern mavlink_sys_status_t   mavlink_sys_status_struct;
  * DEFINES
  ******************************************************************************
  */
-#define HEART_BEAT_PERIOD   MS2ST(1000)
+#define HEARTBEAT_PERIOD    MS2ST(1000)
+#define SYS_STATUS_PERIOD   MS2ST(100)
 
 /*
  ******************************************************************************
@@ -46,11 +48,11 @@ static uint32_t last_idle_ticks = 0;
  */
 
 /**
- * посылает heartbeat пакеты и моргает светодиодиком
+ *
  */
-static WORKING_AREA(SanityControlThreadWA, 128);
-static msg_t SanityControlThread(void *arg) {
-  chRegSetThreadName("Sanity");
+static WORKING_AREA(HeartbeatThreadWA, 32);
+static msg_t HeartbeatThread(void *arg) {
+  chRegSetThreadName("Heartbeat");
   (void)arg;
 
   mavlink_heartbeat_bnap_struct.autopilot = MAV_AUTOPILOT_GENERIC;
@@ -59,15 +61,33 @@ static msg_t SanityControlThread(void *arg) {
   systime_t t = chTimeNow();
 
   while (TRUE) {
-    t += HEART_BEAT_PERIOD;
+    t += HEARTBEAT_PERIOD;
 
     mavlink_heartbeat_bnap_struct.type           = mavlink_system_struct.type;
     mavlink_heartbeat_bnap_struct.base_mode      = mavlink_system_struct.mode;
     mavlink_heartbeat_bnap_struct.system_status  = mavlink_system_struct.state;
 
-    mavlink_sys_status_struct.load = get_cpu_load();
-
     chEvtBroadcastFlags(&event_mavlink_heartbeat_bnap, EVMSK_MAVLINK_HEARTBEAT_MPIOVD);
+    chThdSleepUntil(t);
+  }
+  return 0;
+}
+
+/**
+ *
+ */
+static WORKING_AREA(SysStatusThreadWA, 32);
+static msg_t SysStatusThread(void *arg) {
+  chRegSetThreadName("SysStatus");
+  (void)arg;
+
+  systime_t t = chTimeNow();
+
+  while (TRUE) {
+    t += SYS_STATUS_PERIOD;
+
+    mavlink_sys_status_struct.load = get_cpu_load();
+    chEvtBroadcastFlags(&event_mavlink_sys_status, EVMSK_MAVLINK_SYS_STATUS);
     chThdSleepUntil(t);
   }
   return 0;
@@ -85,10 +105,15 @@ void SanityControlInit(void){
   IdleThread_p = chSysGetIdleThread();
 
   /**/
-  chThdCreateStatic(SanityControlThreadWA,
-          sizeof(SanityControlThreadWA),
+  chThdCreateStatic(HeartbeatThreadWA,
+          sizeof(HeartbeatThreadWA),
           NORMALPRIO,
-          SanityControlThread,
+          HeartbeatThread,
+          NULL);
+  chThdCreateStatic(SysStatusThreadWA,
+          sizeof(SysStatusThreadWA),
+          NORMALPRIO,
+          SysStatusThread,
           NULL);
 }
 
