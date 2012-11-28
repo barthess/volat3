@@ -167,49 +167,36 @@ Thread* selftest_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
  *
  */
 Thread* uname_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
-  (void)sdp;
   (void)argc;
   (void)argv;
 
-  int n = 80;
-  int nres = 0;
-  char str[n];
-
-  nres = snprintf(str, n, "Kernel:       %s\r\n", CH_KERNEL_VERSION);
-  cli_print_long(str, n, nres);
+  chprintf((BaseSequentialStream *)sdp, "Kernel:       %s\r\n", CH_KERNEL_VERSION);
 
 #ifdef CH_COMPILER_NAME
-  nres = snprintf(str, n, "Compiler:     %s\r\n", CH_COMPILER_NAME);
-  cli_print_long(str, n, nres);
+  chprintf((BaseSequentialStream *)sdp, "Compiler:     %s\r\n", CH_COMPILER_NAME);
 #endif
 
-  nres = snprintf(str, n, "Architecture: %s\r\n", CH_ARCHITECTURE_NAME);
-  cli_print_long(str, n, nres);
+  chprintf((BaseSequentialStream *)sdp, "Architecture: %s\r\n", CH_ARCHITECTURE_NAME);
 
 #ifdef CH_CORE_VARIANT_NAME
-  nres = snprintf(str, n, "Core Variant: %s\r\n", CH_CORE_VARIANT_NAME);
-  cli_print_long(str, n, nres);
+  chprintf((BaseSequentialStream *)sdp, "Core Variant: %s\r\n", CH_CORE_VARIANT_NAME);
 #endif
 
 #ifdef CH_PORT_INFO
-  nres = snprintf(str, n, "Port Info:    %s\r\n", CH_PORT_INFO);
-  cli_print_long(str, n, nres);
+  chprintf((BaseSequentialStream *)sdp, "Port Info:    %s\r\n", CH_PORT_INFO);
 #endif
 
 #ifdef PLATFORM_NAME
-  nres = snprintf(str, n, "Platform:     %s\r\n", PLATFORM_NAME);
-  cli_print_long(str, n, nres);
+  chprintf((BaseSequentialStream *)sdp, "Platform:     %s\r\n", PLATFORM_NAME);
 #endif
 
 #ifdef BOARD_NAME
-  nres = snprintf(str, n, "Board:        %s\r\n", BOARD_NAME);
-  cli_print_long(str, n, nres);
+  chprintf((BaseSequentialStream *)sdp, "Board:        %s\r\n", BOARD_NAME);
 #endif
 
 #ifdef __DATE__
 #ifdef __TIME__
-  nres = snprintf(str, n, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
-  cli_print_long(str, n, nres);
+  chprintf((BaseSequentialStream *)sdp, "Build time:   %s%s%s\r\n", __DATE__, " - ", __TIME__);
 #endif
 #endif
 
