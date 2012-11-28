@@ -1,4 +1,4 @@
-// TODO: lock parameter struct using mutex or semaphore to avoid corruption
+// TODO: protect parameter struct using mutex or semaphore to avoid corruption
 // TODO: passing PIN to modem during initialization.
 
 // TODO: rewrite GPS code

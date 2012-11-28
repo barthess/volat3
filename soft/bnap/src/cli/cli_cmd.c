@@ -4,6 +4,8 @@
 
 #include "ch.h"
 #include "hal.h"
+#include "chprintf.h"
+
 #include "mavlink.h"
 
 #include "main.h"
@@ -30,6 +32,7 @@ extern MemoryHeap ThdHeap;
  ******************************************************************************
  */
 static Thread *loop_clicmd_tp;
+static Thread *selftest_clicmd_tp;
 
 /*
  *******************************************************************************
@@ -94,13 +97,70 @@ Thread* loop_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
 /**
  *
  */
+extern EventSource event_mavlink_heartbeat_mpiovd;
+extern EventSource event_mavlink_heartbeat_cc;
+extern EventSource event_mavlink_heartbeat_bnap;
+static WORKING_AREA(SelftestCmdThreadWA, 256);
+static msg_t SelftestCmdThread(void *arg){
+  chRegSetThreadName("SelftestCmd");
+
+  eventmask_t evt = 0;
+  struct EventListener el_heartbeat_mpiovd;
+  struct EventListener el_heartbeat_cc;
+  struct EventListener el_heartbeat_bnap;
+  chEvtRegisterMask(&event_mavlink_heartbeat_mpiovd, &el_heartbeat_mpiovd, EVMSK_MAVLINK_HEARTBEAT_MPIOVD);
+  chEvtRegisterMask(&event_mavlink_heartbeat_cc, &el_heartbeat_cc, EVMSK_MAVLINK_HEARTBEAT_CC);
+  chEvtRegisterMask(&event_mavlink_heartbeat_bnap, &el_heartbeat_bnap, EVMSK_MAVLINK_HEARTBEAT_BNAP);
+
+
+  cli_print("Press ^C to stop it.\n\r");
+
+  while (!chThdShouldTerminate()){
+    evt = chEvtWaitOneTimeout(EVMSK_MAVLINK_HEARTBEAT_MPIOVD |
+                              EVMSK_MAVLINK_HEARTBEAT_CC |
+                              EVMSK_MAVLINK_HEARTBEAT_BNAP, MS2ST(50));
+    switch(evt){
+    case EVMSK_MAVLINK_HEARTBEAT_MPIOVD:
+      chprintf(arg, "%U - MPIOVD", chTimeNow());
+      break;
+
+    case EVMSK_MAVLINK_HEARTBEAT_CC:
+      chprintf(arg, "%U - CC", chTimeNow());
+      break;
+
+    case EVMSK_MAVLINK_HEARTBEAT_BNAP:
+      chprintf(arg, "%U - BNAP", chTimeNow());
+      break;
+
+    default:
+      break;
+    }
+  }
+
+  chEvtUnregister(&event_mavlink_heartbeat_mpiovd, &el_heartbeat_mpiovd);
+  chEvtUnregister(&event_mavlink_heartbeat_cc, &el_heartbeat_cc);
+  chEvtUnregister(&event_mavlink_heartbeat_bnap, &el_heartbeat_bnap);
+  chThdExit(0);
+  return 0;
+}
+
+/**
+ *
+ */
 Thread* selftest_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
-  (void)sdp;
   (void)argv;
   (void)argc;
 
-  cli_print("GPS - OK\r\nModem - OK\r\nEEPROM - OK\r\nStorage - OK\r\nServos - OK\r\n");
-  return NULL;
+  selftest_clicmd_tp = chThdCreateFromHeap(&ThdHeap,
+                                  sizeof(SelftestCmdThreadWA),
+                                  CMD_THREADS_PRIO,
+                                  SelftestCmdThread,
+                                  sdp);
+
+  if (selftest_clicmd_tp == NULL)
+    chDbgPanic("can not allocate memory");
+
+  return selftest_clicmd_tp;
 }
 
 /**
