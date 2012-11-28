@@ -77,13 +77,19 @@ static const I2CEepromFileConfig modem_settings_file_cfg = {
  *
  */
 static void _modem_print_help(void){
-  cli_println("Run without parameters to get current settings.");
-//  cli_println("'param save' to save parameters to EEPROM.");
-//  cli_println("'param help' to get this message.");
-//  cli_println("'param PARAM_name' to get value of parameter.");
-//  cli_println("'param PARAM_name N' to set value of parameter to N.");
-}
+  cli_println("Available subcommands:");
+  cli_println("  'pin XXXX' set PIN code");
+  cli_println("  'apn XXXX' set APN");
+  cli_println("  'user XXXX' set user name");
+  cli_println("  'pass XXXX' set password corresponding to user");
+  cli_println("  'server XXXX' set server address (URI of IP");
+  cli_println("  'port XXXX' set remote destination port number on server");
+  cli_println("  'listen XXXX' set local port to listen server respose");
 
+  cli_println("  'print' pritns currently stored in EEPROM settings");
+  cli_println("  'erase' erase current settings from EEPROM");
+  chThdSleepMilliseconds(100);
+}
 
 /**
  *
