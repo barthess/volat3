@@ -5,10 +5,14 @@
 #include "hal.h"
 #include "chprintf.h"
 
+#include "mavlink.h"
+
 #include "main.h"
 #include "wavecom.h"
 #include "cross.h"
 #include "link_cc.h"
+#include "mavlink_dbg.h"
+#include "settings_modem.h"
 
 /*
  ******************************************************************************
@@ -38,6 +42,7 @@
  ******************************************************************************
  */
 extern GlobalFlags_t GlobalFlags;
+extern EepromFileStream ModemSettingsFile;
 
 /*
  ******************************************************************************
@@ -52,6 +57,7 @@ extern GlobalFlags_t GlobalFlags;
  */
 /* buffer for collectin answers from */
 static uint8_t gsmbuf[128];
+static uint8_t eeprombuf[EEPROM_MODEM_MAX_FIELD_LEN];
 
 /*
  ******************************************************************************
@@ -62,33 +68,14 @@ static uint8_t gsmbuf[128];
  */
 
 static void _trace_print(char *st, bool_t direction){
-#if defined(SDMODEMTRACE)
+  (void)direction;
   size_t len = strlen(st);
-  uint32_t i = 0;
+  (void)len;
 
-  if(direction)
-    sdWrite(&SDMODEMTRACE, (uint8_t *)"<", 1);
-  else
-    sdWrite(&SDMODEMTRACE, (uint8_t *)" ", 1);
-
-  while(i < len){
-    uint8_t c = st[i];
-    if (c == '\r'){
-      sdPut(&SDMODEMTRACE, '\\');
-      sdPut(&SDMODEMTRACE, 'r');
-    }
-    else if (c == '\n'){
-      sdPut(&SDMODEMTRACE, '\\');
-      sdPut(&SDMODEMTRACE, 'n');
-    }
-    else{
-      sdPut(&SDMODEMTRACE, c);
-    }
-    i++;
-  }
-  sdWrite(&SDMODEMTRACE, (uint8_t *)"\r\n", 2);
+#if defined(SDMODEMTRACE)
+  mavlink_dbg_print(MAV_SEVERITY_DEBUG, st);
+  chThdSleepMilliseconds(5);
 #else
-  (void)sdp;
   (void)st;
 #endif
 }
@@ -310,9 +297,12 @@ static bool_t _set_apn(SerialDriver *sdp){
   uint32_t try;
 
   /* apn name */
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_APN_SIZE, EEPROM_MODEM_APN_OFFSET);
   try = BEARER_TRY;
   while(try--){
-    _say_to_modem(sdp, "AT+WIPBR=2,6,11,\"m2m30.velcom.by\"\r");
+    _say_to_modem(sdp, "AT+WIPBR=2,6,11,\"");
+    _say_to_modem(sdp, (char *)eeprombuf);
+    _say_to_modem(sdp, "\"\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       break;
@@ -322,9 +312,12 @@ static bool_t _set_apn(SerialDriver *sdp){
     return GSM_FAILED;
 
   /* user */
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_USER_SIZE, EEPROM_MODEM_USER_OFFSET);
   try = BEARER_TRY;
   while(try--){
-    _say_to_modem(sdp, "AT+WIPBR=2,6,0,\"m2m30\"\r");
+    _say_to_modem(sdp, "AT+WIPBR=2,6,0,\"");
+    _say_to_modem(sdp, (char *)eeprombuf);
+    _say_to_modem(sdp, "\"\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       break;
@@ -334,9 +327,12 @@ static bool_t _set_apn(SerialDriver *sdp){
     return GSM_FAILED;
 
   /* password */
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PASS_SIZE, EEPROM_MODEM_PASS_OFFSET);
   try = BEARER_TRY;
   while(try--){
-    _say_to_modem(sdp, "AT+WIPBR=2,6,1,\"m2m30\"\r");
+    _say_to_modem(sdp, "AT+WIPBR=2,6,1,\"");
+    _say_to_modem(sdp, (char *)eeprombuf);
+    _say_to_modem(sdp, "\"\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       break;
@@ -374,7 +370,18 @@ static bool_t _create_connection(SerialDriver *sdp){
 
   while(try--){
     //_say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"86.57.157.114\",14550\r");
-    _say_to_modem(sdp, "AT+WIPCREATE=1,1,14555,\"77.67.253.196\",14550\r");
+
+    _say_to_modem(sdp, "AT+WIPCREATE=1,1,");
+    read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
+    _say_to_modem(sdp, (char *)eeprombuf);
+    _say_to_modem(sdp, ",\"");
+    read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_SERVER_SIZE, EEPROM_MODEM_SERVER_OFFSET);
+    _say_to_modem(sdp, (char *)eeprombuf);
+    _say_to_modem(sdp, "\",");
+    read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PORT_SIZE, EEPROM_MODEM_PORT_OFFSET);
+    _say_to_modem(sdp, (char *)eeprombuf);
+    _say_to_modem(sdp, "\r");
+
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), BEARER_TMO);
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;
@@ -408,6 +415,31 @@ static WORKING_AREA(ModemThreadWA, 768);
 static msg_t ModemThread(void *sdp) {
   chRegSetThreadName("Modem");
 
+  /* check settings */
+  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: initializing");
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PIN_SIZE, EEPROM_MODEM_PIN_OFFSET);
+  if (0 == strlen((const char *)eeprombuf))
+    goto SETTINGS_BAD;
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_APN_SIZE, EEPROM_MODEM_APN_OFFSET);
+  if (0 == strlen((const char *)eeprombuf))
+    goto SETTINGS_BAD;
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_USER_SIZE, EEPROM_MODEM_USER_OFFSET);
+  if (0 == strlen((const char *)eeprombuf))
+    goto SETTINGS_BAD;
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PASS_SIZE, EEPROM_MODEM_PASS_OFFSET);
+  if (0 == strlen((const char *)eeprombuf))
+    goto SETTINGS_BAD;
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_SERVER_SIZE, EEPROM_MODEM_SERVER_OFFSET);
+  if (0 == strlen((const char *)eeprombuf))
+    goto SETTINGS_BAD;
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PORT_SIZE, EEPROM_MODEM_PORT_OFFSET);
+  if (0 == strlen((const char *)eeprombuf))
+    goto SETTINGS_BAD;
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
+  if (0 == strlen((const char *)eeprombuf))
+    goto SETTINGS_BAD;
+
+  /* try to start modem */
   if (GSM_FAILED == _wait_poweron(sdp))
     goto ERROR;
   _set_verbosity(sdp);
@@ -436,7 +468,7 @@ static msg_t ModemThread(void *sdp) {
   if (GSM_FAILED == _start_connection(sdp))
     goto ERROR;
 
-  chprintf((BaseSequentialStream *)&SDDM, "%s", "*** SUCCESS! Connection established.\r\n");
+  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "*** SUCCESS! Connection established.\r\n");
   setGlobalFlag(GlobalFlags.modem_connected);
   //chThdExit(0);
 
@@ -452,6 +484,10 @@ ERROR:
   chprintf((BaseSequentialStream *)&SDDM, "%s", "*** Do it yourself manually\r\n");
   chprintf((BaseSequentialStream *)&SDDM, "%s", "*** Hint: to enable echo print 'ATE1'\r\n");
   ModemCrossInit();
+  return RDY_RESET;
+
+SETTINGS_BAD:
+  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: settings stored in EEPROM invalid");
   return RDY_RESET;
 }
 
@@ -472,7 +508,7 @@ void ModemInit(void){
 }
 
 /**
- * @brief   UDP write with timeout.
+ * @brief   UDP writing routine using escape symbols.
  */
 void UdpSdWrite(SerialDriver *sdp, const uint8_t *bp, size_t n) {
 

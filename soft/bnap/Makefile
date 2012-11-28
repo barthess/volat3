@@ -102,6 +102,7 @@ CSRC = $(PORTSRC) \
        src/gsm/crc16.c \
        src/gsm/cross.c \
        src/gsm/cli_modem.c \
+       src/gsm/settings_modem.c \
        src/param/param.c \
        src/param/param_persistant.c \
        src/param/param_cli.c \

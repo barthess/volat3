@@ -12,60 +12,27 @@
 #include "cli_cmd.h"
 #include "eeprom.h"
 #include "eeprom_conf.h"
+#include "settings_modem.h"
 
 /*
  ******************************************************************************
  * DEFINES
  ******************************************************************************
  */
-#define EEPROM_MODEM_MAX_FIELD_LEN    64
-
-#define EEPROM_MODEM_PIN_OFFSET       0
-#define EEPROM_MODEM_PIN_SIZE         sizeof("1234")
-
-#define EEPROM_MODEM_APN_OFFSET       (EEPROM_MODEM_PIN_OFFSET + EEPROM_MODEM_PIN_SIZE)
-#define EEPROM_MODEM_APN_SIZE         EEPROM_MODEM_MAX_FIELD_LEN
-
-#define EEPROM_MODEM_USER_OFFSET      (EEPROM_MODEM_APN_OFFSET + EEPROM_MODEM_APN_SIZE)
-#define EEPROM_MODEM_USER_SIZE        16
-
-#define EEPROM_MODEM_PASS_OFFSET      (EEPROM_MODEM_USER_OFFSET + EEPROM_MODEM_USER_SIZE)
-#define EEPROM_MODEM_PASS_SIZE        16
-
-#define EEPROM_MODEM_SERVER_OFFSET    (EEPROM_MODEM_PASS_SIZE + EEPROM_MODEM_PASS_OFFSET)
-#define EEPROM_MODEM_SERVER_SIZE      EEPROM_MODEM_MAX_FIELD_LEN
-
-#define EEPROM_MODEM_PORT_OFFSET      (EEPROM_MODEM_SERVER_OFFSET + EEPROM_MODEM_SERVER_SIZE)
-#define EEPROM_MODEM_PORT_SIZE        sizeof("65536")
-
-#define EEPROM_MODEM_LISTEN_OFFSET    (EEPROM_MODEM_PORT_OFFSET + EEPROM_MODEM_PORT_SIZE)
-#define EEPROM_MODEM_LISTEN_SIZE      sizeof("65536")
 
 /*
  ******************************************************************************
  * EXTERNS
  ******************************************************************************
  */
+extern EepromFileStream ModemSettingsFile;
 
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static uint8_t eeprom_buf[EEPROM_MODEM_MAX_FIELD_LEN];
-
-static EepromFileStream ModemSettingsFile;
-
-static const I2CEepromFileConfig modem_settings_file_cfg = {
-  &EEPROM_I2CD,
-  EEPROM_MODEM_SETTINGS_START,
-  EEPROM_MODEM_SETTINGS_END,
-  EEPROM_SIZE,
-  EEPROM_PAGE_SIZE,
-  EEPROM_I2C_ADDR,
-  MS2ST(EEPROM_WRITE_TIME_MS),
-  eeprom_buf,
-};
+static uint8_t eeprombuf[EEPROM_MODEM_MAX_FIELD_LEN];
 
 /*
  ******************************************************************************
@@ -76,7 +43,7 @@ static const I2CEepromFileConfig modem_settings_file_cfg = {
 /**
  *
  */
-static void _modem_print_help(void){
+static void cli_modem_print_help(void){
   cli_println("Available subcommands:");
   cli_println("  'pin XXXX' set PIN code");
   cli_println("  'apn XXXX' set APN");
@@ -94,7 +61,7 @@ static void _modem_print_help(void){
 /**
  *
  */
-static bool_t _write_and_check(const char * val, EepromFileStream *f, size_t offset, size_t len){
+static bool_t __write_and_check(const char * val, EepromFileStream *f, size_t offset, size_t len){
   uint32_t status = 0;
 
   chFileStreamSeek(f, offset);
@@ -106,13 +73,13 @@ static bool_t _write_and_check(const char * val, EepromFileStream *f, size_t off
 
   /* check written data */
   chFileStreamSeek(f, offset);
-  memset(eeprom_buf, 0, sizeof(eeprom_buf));
-  status = chFileStreamRead(f, eeprom_buf, len);
+  memset(eeprombuf, 0, sizeof(eeprombuf));
+  status = chFileStreamRead(f, eeprombuf, len);
   if (status != len){
     cli_println("ERROR: performing eeprom read failed");
     return CH_FAILED;
   }
-  if (0 != strcmp(val, (char *)eeprom_buf)){
+  if (0 != strcmp(val, (char *)eeprombuf)){
     cli_println("ERROR: checking written data failed");
     return CH_FAILED;
   }
@@ -122,7 +89,7 @@ static bool_t _write_and_check(const char * val, EepromFileStream *f, size_t off
 /**
  *
  */
-static bool_t _set(const char * val, EepromFileStream *f, size_t size, size_t offset){
+static bool_t __set(const char * val, EepromFileStream *f, size_t size, size_t offset){
   size_t len = strlen(val);
 
   if ((offset == EEPROM_MODEM_PIN_OFFSET) && (len != 4)){
@@ -134,33 +101,33 @@ static bool_t _set(const char * val, EepromFileStream *f, size_t size, size_t of
     return CH_FAILED;
   }
   else
-    return _write_and_check(val, f, offset, len);
+    return __write_and_check(val, f, offset, len);
 }
 
 /**
  *
  */
-static bool_t _cli_modem_set(const char * const * argv, EepromFileStream *f){
+static bool_t modem_cli_set_param(const char * const * argv, EepromFileStream *f){
   if (0 == strcmp(argv[0], "pin"))
-    return _set(argv[1], f, EEPROM_MODEM_PIN_SIZE, EEPROM_MODEM_PIN_OFFSET);
+    return __set(argv[1], f, EEPROM_MODEM_PIN_SIZE, EEPROM_MODEM_PIN_OFFSET);
 
   else if (0 == strcmp(argv[0], "apn"))
-    return _set(argv[1], f, EEPROM_MODEM_APN_SIZE, EEPROM_MODEM_APN_OFFSET);
+    return __set(argv[1], f, EEPROM_MODEM_APN_SIZE, EEPROM_MODEM_APN_OFFSET);
 
   else if (0 == strcmp(argv[0], "user"))
-    return _set(argv[1], f, EEPROM_MODEM_USER_SIZE, EEPROM_MODEM_USER_OFFSET);
+    return __set(argv[1], f, EEPROM_MODEM_USER_SIZE, EEPROM_MODEM_USER_OFFSET);
 
   else if (0 == strcmp(argv[0], "pass"))
-    return _set(argv[1], f, EEPROM_MODEM_PASS_SIZE, EEPROM_MODEM_PASS_OFFSET);
+    return __set(argv[1], f, EEPROM_MODEM_PASS_SIZE, EEPROM_MODEM_PASS_OFFSET);
 
   else if (0 == strcmp(argv[0], "server"))
-    return _set(argv[1], f, EEPROM_MODEM_SERVER_SIZE, EEPROM_MODEM_SERVER_OFFSET);
+    return __set(argv[1], f, EEPROM_MODEM_SERVER_SIZE, EEPROM_MODEM_SERVER_OFFSET);
 
   else if (0 == strcmp(argv[0], "port"))
-    return _set(argv[1], f, EEPROM_MODEM_PORT_SIZE, EEPROM_MODEM_PORT_OFFSET);
+    return __set(argv[1], f, EEPROM_MODEM_PORT_SIZE, EEPROM_MODEM_PORT_OFFSET);
 
   else if (0 == strcmp(argv[0], "listen"))
-    return _set(argv[1], f, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
+    return __set(argv[1], f, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
 
   return CH_FAILED;
 }
@@ -168,7 +135,7 @@ static bool_t _cli_modem_set(const char * const * argv, EepromFileStream *f){
 /**
  *
  */
-static bool_t _do_erase(EepromFileStream *f){
+static bool_t modem_cli_do_erase(EepromFileStream *f){
   uint32_t n = 0;
   uint8_t b[1] = {0};
   size_t len = chFileStreamGetSize(f);
@@ -186,27 +153,11 @@ static bool_t _do_erase(EepromFileStream *f){
 /**
  *
  */
-static bool_t _read_setting(uint8_t *buf, EepromFileStream *f,  size_t maxsize, size_t offset){
-  size_t len;
-
-  chFileStreamSeek(f, offset);
-  len = chFileStreamRead(f, buf, maxsize);
-  if (len == 0){
-    cli_print("ERROR: failed to read data from EEPROM");
-    return CH_FAILED;
-  }
-  else
-    return CH_SUCCESS;
-}
-
-/**
- *
- */
-static bool_t __printer(const char * str, EepromFileStream *f, size_t size, size_t offset){
+static bool_t __print(const char * str, EepromFileStream *f, size_t size, size_t offset){
   cli_print(str);
-  memset(eeprom_buf, 0, sizeof(eeprom_buf));
-  if (CH_SUCCESS == _read_setting(eeprom_buf, f, size, offset))
-    cli_println((const char *)eeprom_buf);
+  memset(eeprombuf, 0, sizeof(eeprombuf));
+  if (CH_SUCCESS == read_modem_param(eeprombuf, f, size, offset))
+    cli_println((const char *)eeprombuf);
   else
     cli_println("ERROR: read failed!");
   chThdSleepMilliseconds(50);
@@ -216,27 +167,27 @@ static bool_t __printer(const char * str, EepromFileStream *f, size_t size, size
 /**
  *
  */
-static bool_t _modem_print_all(EepromFileStream *f){
-  __printer("pin:    ", f, EEPROM_MODEM_PIN_SIZE,     EEPROM_MODEM_PIN_OFFSET);
-  __printer("apn:    ", f, EEPROM_MODEM_APN_SIZE,     EEPROM_MODEM_APN_OFFSET);
-  __printer("user:   ", f, EEPROM_MODEM_USER_SIZE,    EEPROM_MODEM_USER_OFFSET);
-  __printer("pass:   ", f, EEPROM_MODEM_PASS_SIZE,    EEPROM_MODEM_PASS_OFFSET);
-  __printer("server: ", f, EEPROM_MODEM_SERVER_SIZE,  EEPROM_MODEM_SERVER_OFFSET);
-  __printer("port:   ", f, EEPROM_MODEM_PORT_SIZE,    EEPROM_MODEM_PORT_OFFSET);
-  __printer("listen: ", f, EEPROM_MODEM_LISTEN_SIZE,  EEPROM_MODEM_LISTEN_OFFSET);
+static bool_t cli_modem_print_all(EepromFileStream *f){
+  __print("pin:    ", f, EEPROM_MODEM_PIN_SIZE,     EEPROM_MODEM_PIN_OFFSET);
+  __print("apn:    ", f, EEPROM_MODEM_APN_SIZE,     EEPROM_MODEM_APN_OFFSET);
+  __print("user:   ", f, EEPROM_MODEM_USER_SIZE,    EEPROM_MODEM_USER_OFFSET);
+  __print("pass:   ", f, EEPROM_MODEM_PASS_SIZE,    EEPROM_MODEM_PASS_OFFSET);
+  __print("server: ", f, EEPROM_MODEM_SERVER_SIZE,  EEPROM_MODEM_SERVER_OFFSET);
+  __print("port:   ", f, EEPROM_MODEM_PORT_SIZE,    EEPROM_MODEM_PORT_OFFSET);
+  __print("listen: ", f, EEPROM_MODEM_LISTEN_SIZE,  EEPROM_MODEM_LISTEN_OFFSET);
   return CH_SUCCESS;
 }
 
 /**
  *
  */
-static bool_t _modem_do(const char * const * argv, EepromFileStream *f){
+static bool_t cli_modem_do(const char * const * argv, EepromFileStream *f){
 
   if (0 == strcmp(argv[0], "erase"))
-    return _do_erase(f);
+    return modem_cli_do_erase(f);
 
   else if (0 == strcmp(argv[0], "print"))
-    return _modem_print_all(f);
+    return cli_modem_print_all(f);
 
   else if (0 == strcmp(argv[0], "cross"))
     return CH_FAILED;
@@ -264,29 +215,26 @@ Thread* modem_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
   (void)sdp;
   bool_t status = CH_SUCCESS;
 
-  EepromFileOpen(&ModemSettingsFile, &modem_settings_file_cfg);
-
   /* no arguments */
   if (argc == 0)
-    _modem_print_help();
+    cli_modem_print_help();
 
   /* one argument */
   else if (argc == 1)
-    status = _modem_do(argv, &ModemSettingsFile);
+    status = cli_modem_do(argv, &ModemSettingsFile);
 
   /* two arguments */
   else if (argc == 2)
-    status = _cli_modem_set(argv, &ModemSettingsFile);
+    status = modem_cli_set_param(argv, &ModemSettingsFile);
 
   /*  */
   else
     status = CH_FAILED;
 
   chThdSleepMilliseconds(200);
-  chFileStreamClose(&ModemSettingsFile);
   if (status != CH_SUCCESS){
     cli_println("ERROR: can not understand what do you want");
-    _modem_print_help();
+    cli_modem_print_help();
   }
   return NULL;
 }

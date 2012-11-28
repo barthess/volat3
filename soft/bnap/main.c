@@ -1,6 +1,5 @@
-// TODO: lock parameter struct with mutex or semaphore to avoid corruption
-// TODO: shell for tuning network settings and parameters
-// TODO: modem dialog using mavlink messages
+// TODO: lock parameter struct using mutex or semaphore to avoid corruption
+// TODO: passing PIN to modem during initialization.
 
 // TODO: rewrite GPS code
 // TODO: более высокая точность парсинга координат gps.
@@ -36,6 +35,7 @@
 #include "cross.h"
 #include "mavcmd_local.h"
 #include "eeprom_testsuit.h"
+#include "settings_modem.h"
 
 /*
  ******************************************************************************
@@ -124,6 +124,7 @@ int main(void) {
   TimekeeperInit();
   StorageInit();
   SanityControlInit();
+  ModemSettingsInit();
   ModemInit();
 //  ModemCrossInit();
   MavCmdInitLocal();
