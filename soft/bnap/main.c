@@ -1,15 +1,23 @@
-// TODO: protect parameter struct using mutex or semaphore to avoid corruption
-// TODO: passing PIN to modem during initialization.
-
-// TODO: rewrite GPS code
-// TODO: более высокая точность парсинга координат gps.
-
-// TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом (битовыми полями)
+/* обязательно */
 // TODO: дополнительная проверка времени после поиска в массиве хранилища последней метки времени (они должны быть адекватны друг другу)
+// TODO: кнопка "оптавить корректирующую поправку" и минипрога для демонстрации
+// TODO: passing PIN to modem during initialization.
+// TODO: приложение "чятик" на стороне сервера для отправки текстовых сообщений
+// TODO: пакет для запроса накопленных данных и прога для его демонстрации.
+// TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом (битовыми полями)
 
-// TODO: EXTI
+/* хорошо бы, при наличии времени */
+// TODO: узнать, кто еще читает-пишет в порты и мешает нормальному функционированию cross.
+// TODO: прошивалку модема через cross.
+// TODO: protect parameter struct using mutex or semaphore to avoid corruption during multithreaded access
 // TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
-// TODO: обработка битых блоков
+
+/* не в этой жизни */
+// TODO: проброс параметров от остальных компонентов системы на ДЦ
+// TODO: rewrite GPS code using nmeap
+// TODO: более высокая точность парсинга координат gps.
+// TODO: EXTI (see todos in TimekeeperThread and gps_get_time())
+// TODO: обработка битых блоков хранилища
 
 #include <time.h>
 
