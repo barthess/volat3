@@ -12,7 +12,6 @@ ONBOARD_PARAM_NAME_LENGTH = 15
 #    key            min         default max         type checker    help
 param = [
 ("SYS_ID",          1,          20,     255,        "u", "NULL",    "System ID.\\n This value MUST BE FIRST in param structure. Value 0 reserved for ground station."),
-("SYS_mavtype",     0,          10,     16,         "u", "NULL",    "Autopilot type (0 - generic, 1 - fixed wing, 10 - ground rover).\\nOther types you can found in enum MAV_TYPE \\nNOTE! You MUST REBOOT device after changing it."),
 ("SH_enable",       0,          0,      1,          "u", "NULL",    "Set to 1 to switch off telemetry sending and enabling shell."),
 
 #/* intervals between sending different data (mS) */
@@ -20,20 +19,11 @@ param = [
 ("T_mpiovd_data",   SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_sys_status",    SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Interval of sending this data in milliseconds.\\nSet it to 0 for disabling"),
 ("T_sys_time",      SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Timeout help here"),
-("T_text",          SEND_MIN,   1,      SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_gps_int",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_gps_raw",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
-("T_reserved1",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
-("T_reserved2",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
-("T_reserved3",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
-("T_reserved5",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
-("T_reserved6",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
-("T_reserved7",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 
 #/**** Variables for debugging purposes ****/
 ("DBG_reserved0",   0,          0,      10000,      "u", "NULL",    "NULL"),
-("DBG_reserved1",   0,          0,      10000,      "u", "NULL",    "NULL"),
-("DBG_reserved2",   0,          0,      10000,      "u", "NULL",    "NULL"),
 
 #/**** fake field with 14 symbols name ****/
 ("param_end_mark",  0,          0,      1224,       "u", "NULL",    "Fake parameter with maximum allowable name length"),

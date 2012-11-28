@@ -30,9 +30,9 @@ extern mavlink_system_t mavlink_system_struct;
 """)
 
 
-def foot(f, name):
+def foot(f, name, arr):
     f.write("""
-    default:
+    default: // probably timeout
       continue;
       break;
     }
@@ -40,10 +40,12 @@ def foot(f, name):
     """)
     f.write("if (" + str.lower(name) + "_port_ready()){\n")
     f.write("      len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);\n")
-    f.write("      " + str.lower(name) + "_sdWrite(sdp, sendbuf, len);\n    }")
-    f.write("""
-  }
-}""")
+    f.write("      " + str.lower(name) + "_sdWrite(sdp, sendbuf, len);\n    }\n")
+    f.write("  }\n")
+
+    for i in arr:
+        f.write("  chEvtUnregister(&event_mavlink_" + i + ", &el_" + i + ");\n")
+    f.write("}")
 
 
 def gen(name, arr):
@@ -79,7 +81,7 @@ def gen(name, arr):
         st += "EVMSK_MAVLINK_" + str.upper(i)
         st += " | "
     st = st[0:-3]
-    f.write("    evt = chEvtWaitOne(" + st + ");\n")
+    f.write("    evt = chEvtWaitOneTimeout(" + st + ", MS2ST(50));\n")
 
     f.write("    switch(evt){\n")
     for i in arr:
@@ -89,7 +91,7 @@ def gen(name, arr):
         f.write("      memcpy_ts(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i +"_struct), 4);\n")
         f.write("      mavlink_msg_" + i + "_encode(mavlink_system_struct.sysid, MAV_COMP_ID_ALL, &mavlink_message_struct, (mavlink_" + i + "_t *)sendbuf);\n")
         f.write("      break;\n\n")
-    foot(f, name)
+    foot(f, name, arr)
     f.close()
 
 

@@ -4,7 +4,7 @@
 #include "mavlink.h"
 
 #include "link.h"
-#include "link_dm.h"
+#include "dmcli_switcher.h"
 #include "link_cc.h"
 #include "link_mpiovd.h"
 #include "message.h"
@@ -79,7 +79,7 @@ void LinkInit(void){
   to_cc_system_time_sendperiod         = ValueSearch("T_sys_time");
   to_cc_mpiovd_sensors_sendperiod      = ValueSearch("T_mpiovd_data");
   to_cc_sys_status_sendperiod          = ValueSearch("T_sys_status");
-  to_cc_statustext_sendperiod          = ValueSearch("T_text");
+  to_cc_statustext_sendperiod          = NULL;
   to_cc_param_value_sendperiod         = NULL;
 
   to_dm_heartbeat_mpiovd_sendperiod    = NULL;
@@ -94,7 +94,7 @@ void LinkInit(void){
   to_dm_statustext_sendperiod          = NULL;
   to_dm_param_value_sendperiod         = NULL;
 
-  link_dm_up(&SDDM);
+  DmCliSwitcherInit(&SDDM);
   link_mpiovd_up(&SDMPIOVD);
   link_cc_up(&SDGSM);
 }

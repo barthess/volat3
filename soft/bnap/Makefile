@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O0 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions
+  USE_OPT = -O0 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions -std=gnu99
 endif
 
 # C specific options here (added to USE_OPT).
@@ -67,6 +67,7 @@ CSRC = $(PORTSRC) \
        $(CHIBIOS)/os/various/syscalls.c \
        ../eeprom/eeprom.c \
        ../eeprom/eeprom_testsuit.c \
+       ../microrl/src/microrl.c \
        main.c \
        board.c \
        src/link/link.c \
@@ -79,6 +80,7 @@ CSRC = $(PORTSRC) \
        src/link/link_mpiovd_unpacker.c \
        src/link/link_mpiovd.c \
        src/link/mavcmd_local.c \
+       src/link/dmcli_switcher.c \
        src/time/timekeeper.c \
        src/time/ds1338.c \
        src/time/bnaprtclib.c \
@@ -101,6 +103,7 @@ CSRC = $(PORTSRC) \
        src/gsm/cross.c \
        src/param/param.c \
        src/param/param_persistant.c \
+       src/param/param_cli.c \
        src/cli/cli.c \
        src/cli/cli_cmd.c \
 
@@ -138,7 +141,7 @@ TOOLCHAININCDIR = /opt/arm-none-eabi-gcc-4_6/lib/gcc/arm-none-eabi/4.6.2/include
 				  /opt/arm-none-eabi-gcc-4_6/lib/gcc/arm-none-eabi/4.6.2/include-fixed \
 				  /opt/arm-none-eabi-gcc-4_6/arm-none-eabi/include
 
-SUBMODULEINCDIR = ../eeprom ../microrl
+SUBMODULEINCDIR = ../eeprom ../microrl/src
 
 INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          $(HALINC) $(PLATFORMINC) \

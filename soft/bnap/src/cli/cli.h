@@ -37,8 +37,7 @@ void cli_println(const char *str);
 char get_char (void);
 void cli_print_long(const char * str, int n, int nres);
 
-void CliInit(void);
-void SpawnShellThreads(SerialDriver *sdp);
-void KillShellThreads(void);
+void spawn_shell_threads(SerialDriver *arg);
+void kill_shell_threads(void);
 
 #endif /* CLI_H_ */

@@ -155,10 +155,3 @@ Thread* uname_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
 
   return NULL;
 }
-
-
-
-
-
-
-

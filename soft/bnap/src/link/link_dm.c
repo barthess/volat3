@@ -19,12 +19,15 @@
  ******************************************************************************
  */
 extern GlobalFlags_t GlobalFlags;
+extern MemoryHeap ThdHeap;
 
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
  ******************************************************************************
  */
+static Thread *unpacker_tp;
+static Thread *packer_tp;
 
 /*
  *******************************************************************************
@@ -72,19 +75,34 @@ static msg_t DmPackerThread(void *sdp){
 /**
  * Fork link threads for mpiovd.
  */
-void link_dm_up(SerialDriver *sdp){
+void spawn_dm_threads(SerialDriver *sdp){
 
-  chThdCreateStatic(DmPackerThreadWA,
+  packer_tp = chThdCreateFromHeap(&ThdHeap,
           sizeof(DmPackerThreadWA),
           DM_THREAD_PRIO,
           DmPackerThread,
           sdp);
+  if (packer_tp == NULL)
+    chDbgPanic("Can not allocate memory");
 
-  chThdCreateStatic(DmUnpackerThreadWA,
+  unpacker_tp = chThdCreateFromHeap(&ThdHeap,
           sizeof(DmUnpackerThreadWA),
           DM_THREAD_PRIO,
           DmUnpackerThread,
           sdp);
+  if (unpacker_tp == NULL)
+    chDbgPanic("Can not allocate memory");
+}
+
+/**
+ *
+ */
+void kill_dm_threads(void){
+  chThdTerminate(packer_tp);
+  chThdTerminate(unpacker_tp);
+
+  chThdWait(packer_tp);
+  chThdWait(unpacker_tp);
 }
 
 /**

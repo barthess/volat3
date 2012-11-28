@@ -99,47 +99,6 @@ static void ds1338_bcd2tm(uint8_t *bcd, struct tm *timp){
 }
 
 /**
- *
- */
-//static void ds1338_bcd2str(uint8_t *bcd, uint8_t *str){
-//  //"*** YY-MM-DD HH:MM:SS ***",
-//  *(str++) = '\n';
-//  *(str++) = '*';
-//  *(str++) = '*';
-//  *(str++) = '*';
-//  *(str++) = ' ';
-//
-//  *(str++) = (bcd[6] >> 4) + '0';
-//  *(str++) = (bcd[6] & 15) + '0';
-//  *(str++) = '-';
-//
-//  *(str++) = (bcd[5] >> 4) + '0';
-//  *(str++) = (bcd[5] & 15) + '0';
-//  *(str++) = '-';
-//
-//  *(str++) = (bcd[4] >> 4) + '0';
-//  *(str++) = (bcd[4] & 15) + '0';
-//  *(str++) = ' ';
-//
-//  *(str++) = ((bcd[2] >> 4) & 3) + '0';
-//  *(str++) = (bcd[2] & 15) + '0';
-//  *(str++) = ':';
-//
-//  *(str++) = (bcd[1] >> 4) + '0';
-//  *(str++) = (bcd[1] & 15) + '0';
-//  *(str++) = ':';
-//
-//  *(str++) = (bcd[0] >> 4) + '0';
-//  *(str++) = (bcd[0] & 15) + '0';
-//
-//  *(str++) = ' ';
-//  *(str++) = '*';
-//  *(str++) = '*';
-//  *(str++) = '*';
-//  *(str++) = '\n';
-//}
-
-/**
  * param[in]    bcd array to store time in DS1338
  */
 static void ds1338_set_time_bcd(uint8_t *bcd){
@@ -153,41 +112,13 @@ static void ds1338_set_time_bcd(uint8_t *bcd){
 /**
  * param[out]   bcd array to store time from DS1338
  */
-static void ds1338_get_time_bcd(uint8_t *bcd){
+static void ds1338_get_time_bcd(uint8_t *bcdbuf){
   txbuf[0] = 0;
   i2cAcquireBus(&I2CD1);
   i2cMasterTransmitTimeout(&I2CD1, ds1338addr, txbuf, 1, NULL, 0, TIME_INFINITE);
-  i2cMasterReceiveTimeout(&I2CD1, ds1338addr, bcd, DS1338_TIME_SIZE, TIME_INFINITE);
+  i2cMasterReceiveTimeout(&I2CD1, ds1338addr, bcdbuf, DS1338_TIME_SIZE, TIME_INFINITE);
   i2cReleaseBus(&I2CD1);
 }
-
-/**
- * Testing thread
- */
-//static WORKING_AREA(DS1138ThreadWA, 256);
-//static msg_t DS1138Thread(void *arg) {
-//  chRegSetThreadName("DS1138");
-//  (void)arg;
-//
-//  uint8_t bcd[DS1338_TIME_SIZE];
-//  struct tm timp;
-//
-//  size_t n = sizeof("\n*** YY-MM-DD HH:MM:SS ***\n");
-//  uint8_t str[n];
-//
-//  while (TRUE) {
-//    chThdSleepMilliseconds(3000);
-//
-//    ds1338_get_time_bcd(bcd);
-//    ds1338_bcd2tm(bcd, &timp);
-//    ds1338_bcd2str(bcd, str);
-//    sdWrite(&SDDM, str, n);
-//
-//    mktime(&timp);
-//  }
-//  return 0;
-//}
-
 
 /*
  *******************************************************************************
@@ -217,12 +148,28 @@ void ds1338Init(void) {
     i2cMasterTransmitTimeout(&I2CD1, ds1338addr, txbuf, 2, rxbuf, 0, TIME_INFINITE); /* set pointer */
   }
   i2cReleaseBus(&I2CD1);
+}
 
-//  chThdCreateStatic(DS1138ThreadWA,
-//          sizeof(DS1138ThreadWA),
-//          NORMALPRIO,
-//          DS1138Thread,
-//          NULL);
+/**
+ *
+ */
+void ds1338GetTimeTm(struct tm *timp){
+  uint8_t bcdbuf[DS1338_TIME_SIZE];
+
+  ds1338_get_time_bcd(bcdbuf);
+  ds1338_bcd2tm(bcdbuf, timp);
+}
+
+/**
+ *
+ */
+time_t ds1338GetTimeUnixSec(void){
+  struct tm timp;
+  uint8_t bcdbuf[DS1338_TIME_SIZE];
+
+  ds1338_get_time_bcd(bcdbuf);
+  ds1338_bcd2tm(bcdbuf, &timp);
+  return mktime(&timp);
 }
 
 /**
@@ -230,12 +177,7 @@ void ds1338Init(void) {
  */
 int64_t ds1338GetTimeUnixUsec(void){
   int64_t t;
-  struct tm timp;
-  uint8_t bcd[DS1338_TIME_SIZE];
-
-  ds1338_get_time_bcd(bcd);
-  ds1338_bcd2tm(bcd, &timp);
-  t = mktime(&timp);
+  t = ds1338GetTimeUnixSec();
   t *= 1000000;
   return t;
 }

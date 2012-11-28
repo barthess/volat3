@@ -5,6 +5,7 @@
 
 #include "ch.h"
 #include "hal.h"
+#include "chprintf.h"
 
 #include "main.h"
 #include "message.h"
@@ -12,6 +13,7 @@
 #include "sensors.h"
 #include "ds1338.h"
 #include "timekeeper.h"
+#include "cli.h"
 
 #include "mavlink.h"
 
@@ -180,3 +182,24 @@ systime_t GetTimeInterval(systime_t *last){
   return t;
 }
 
+/**
+ * Command to handle RTC.
+ */
+Thread* date_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)argc;
+  (void)argv;
+
+  struct tm timp;
+  size_t n = 32;
+  char str[n];
+
+  ds1338GetTimeTm(&timp);
+  cli_print("Current UTC time is: ");
+  strftime(str, n, "%F %H:%M:%S", &timp);
+  cli_println(str);
+
+  chprintf((BaseSequentialStream *)sdp, "%d", ds1338GetTimeUnixSec());
+  cli_println(" seconds since Unix epoch");
+
+  return NULL; /* stub */
+}

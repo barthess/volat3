@@ -1,4 +1,6 @@
+// TODO: lock parameter struct with mutex or semaphore to avoid corruption
 // TODO: shell for tuning network settings and parameters
+// TODO: modem dialog using mavlink messages
 
 // TODO: rewrite GPS code
 // TODO: более высокая точность парсинга координат gps.
@@ -57,6 +59,10 @@ GlobalFlags_t GlobalFlags = {0,0,0,0,0,0,0,0,
                              0,0,0,0,0,0,0,0,
                              0,0,0,0,0,0,0,0};
 
+/* heap for some threads */
+MemoryHeap ThdHeap;
+static uint8_t link_thd_buf[THREAD_HEAP_SIZE + sizeof(stkalign_t)];
+
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
@@ -93,6 +99,8 @@ int main(void) {
   halInit();
   chSysInit();
 
+  chHeapInit(&ThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), THREAD_HEAP_SIZE);
+
   gsm_release_reset();
   gps_led_off();
   gsm_led_off();
@@ -124,8 +132,6 @@ int main(void) {
 //  ExtiLocalInit();
   while (TRUE) {
     chThdSleepMilliseconds(1000);
-//    chprintf((BaseSequentialStream *)&SDDM, "%s", "this is DM port\r\n");
-//    chprintf((BaseSequentialStream *)&SDMPIOVD, "%s", "this is MPIOVD port\r\n");
   }
   return 0;
 }

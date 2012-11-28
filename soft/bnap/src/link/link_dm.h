@@ -1,7 +1,8 @@
 #ifndef LINK_DM_H_
 #define LINK_DM_H_
 
-void link_dm_up(SerialDriver *sdp);
+void spawn_dm_threads(SerialDriver *sdp);
+void kill_dm_threads(void);
 bool_t dm_port_ready(void);
 
 #endif /* LINK_DM_H_ */

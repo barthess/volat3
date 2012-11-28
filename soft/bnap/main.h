@@ -8,6 +8,9 @@ typedef unsigned char uint8_t;  /* for eclipse indexer */
 #define MPIOVD_BAUDRATE     115200
 #define DM_BAUDRATE         115200
 
+/*******************************************************************/
+#define THREAD_HEAP_SIZE    4096
+
 /******************************************************************
  * global bool flags */
 typedef struct GlobalFlags_t{

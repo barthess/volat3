@@ -2,13 +2,19 @@
 
 #include "ch.h"
 #include "hal.h"
+#include "chprintf.h"
+
 #include "eeprom.h"
 #include "eeprom_conf.h"
-#include "param.h"
-#include "main.h"
-#include "utils.h"
+#include "microrl.h"
 
 #include "mavlink.h"
+
+#include "param.h"
+#include "param_persistant.h"
+#include "main.h"
+#include "utils.h"
+#include "cli.h"
 
 /*
  ******************************************************************************

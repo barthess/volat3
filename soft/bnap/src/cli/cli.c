@@ -12,6 +12,8 @@
 #include "cli.h"
 #include "cli_cmd.h"
 #include "param.h"
+#include "param_cli.h"
+#include "timekeeper.h"
 
 #if USE_EEPROM_TEST_SUIT
 #include "eeprom_testsuit.h"
@@ -304,7 +306,7 @@ void cli_print_long(const char * str, int n, int nres){
 /**
  *
  */
-void KillShellThreads(void){
+void kill_shell_threads(void){
   chThdTerminate(shell_tp);
   chThdWait(shell_tp);
 }
@@ -312,7 +314,7 @@ void KillShellThreads(void){
 /**
  *
  */
-void SpawnShellThreads(SerialDriver *arg){
+void spawn_shell_threads(SerialDriver *arg){
 
   shell_tp = chThdCreateFromHeap(&ThdHeap,
                             sizeof(ShellThreadWA),
