@@ -11,6 +11,7 @@
 #include "message.h"
 #include "cli.h"
 #include "cli_cmd.h"
+#include "cli_modem.h"
 #include "param.h"
 #include "param_cli.h"
 #include "timekeeper.h"
@@ -54,6 +55,7 @@ static const ShellCmd_t chibiutils[] = {
     {"info",      &uname_clicmd,      "system information"},
     {"logout",    &logout_cmd,        "close shell threads and fork telemtry threads"},
     {"loop",      &loop_clicmd,       "command to test ^C fucntionallity"},
+    {"modem",     &modem_clicmd,      "tune GSM modem parameters stored in BNAP eeprom"},
     {"param",     &param_clicmd,      "manage onboard system paramters"},
     {"selftest",  &selftest_clicmd,   "exectute selftests (stub)"},
     {"uname",     &uname_clicmd,      "'info' alias"},
