@@ -49,6 +49,7 @@ static Thread* help_clicmd(int argc, const char * const * argv, SerialDriver *sd
  */
 
 static const ShellCmd_t chibiutils[] = {
+    {"agps",      &agps_clicmd,       "Assisted GPS. Show received messages in console"},
     {"clear",     &clear_clicmd,      "clear screen"},
     {"date",      &date_clicmd,       "print and set current date"},
     {"help",      &help_clicmd,       "this message"},
@@ -159,11 +160,12 @@ static char ** complete(int argc, const char * const * argv)
  */
 static void sigint (void){
   if (current_cmd_tp != NULL){
+    cli_println("");
     cli_print("^C pressed. Exiting...");
     chThdTerminate(current_cmd_tp);
     chThdWait(current_cmd_tp);
     current_cmd_tp = NULL;
-    cli_print("--> Done. Press 'Enter' to return to shell");
+    cli_print("Terminated. Press 'Enter' to return to shell");
   }
 }
 

@@ -161,7 +161,7 @@ static bool_t __print(const char * str, EepromFileStream *f, size_t size, size_t
     cli_println((const char *)eeprombuf);
   else
     cli_println("ERROR: read failed!");
-  chThdSleepMilliseconds(50);
+  chThdSleepMilliseconds(25);
   return CH_SUCCESS;
 }
 

@@ -33,6 +33,7 @@ extern MemoryHeap ThdHeap;
  */
 static Thread *loop_clicmd_tp;
 static Thread *selftest_clicmd_tp;
+static Thread *agps_clicmd_tp;
 
 /*
  *******************************************************************************
@@ -164,6 +165,57 @@ Thread* selftest_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
     chDbgPanic("can not allocate memory");
 
   return selftest_clicmd_tp;
+}
+
+/**
+ *
+ */
+extern EventSource event_mavlink_mpiovd_agps;
+static WORKING_AREA(AgpsCmdThreadWA, 256);
+static msg_t AgpsCmdThread(void *arg){
+  chRegSetThreadName("AgpsCmd");
+
+  eventmask_t evt = 0;
+  struct EventListener el_mpiovd_agps;
+  chEvtRegisterMask(&event_mavlink_mpiovd_agps, &el_mpiovd_agps, EVMSK_MAVLINK_MPIOVD_AGPS);
+
+  cli_print("Press ^C to stop it.\n\r");
+
+  while (!chThdShouldTerminate()){
+    evt = chEvtWaitOneTimeout(EVMSK_MAVLINK_MPIOVD_AGPS, MS2ST(50));
+    switch(evt){
+    case EVMSK_MAVLINK_MPIOVD_AGPS:
+      chprintf(arg, "AGPS message received");
+      cli_println("");
+      break;
+
+    default:
+      break;
+    }
+  }
+
+  chEvtUnregister(&event_mavlink_mpiovd_agps, &el_mpiovd_agps);
+  chThdExit(0);
+  return 0;
+}
+
+/**
+ *
+ */
+Thread* agps_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
+  (void)argv;
+  (void)argc;
+
+  agps_clicmd_tp = chThdCreateFromHeap(&ThdHeap,
+                                  sizeof(AgpsCmdThreadWA),
+                                  CMD_THREADS_PRIO,
+                                  AgpsCmdThread,
+                                  sdp);
+
+  if (agps_clicmd_tp == NULL)
+    chDbgPanic("can not allocate memory");
+
+  return agps_clicmd_tp;
 }
 
 /**

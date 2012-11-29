@@ -14,12 +14,15 @@
  */
 extern mavlink_system_t                mavlink_system_struct;
 
+extern mavlink_mpiovd_agps_t           mavlink_mpiovd_agps_struct;
+
 extern mavlink_command_long_t          mavlink_command_long_struct;
 extern mavlink_param_set_t             mavlink_param_set_struct;
 extern mavlink_param_request_list_t    mavlink_param_request_list_struct;
 extern mavlink_param_request_read_t    mavlink_param_request_read_struct;
 extern mavlink_heartbeat_t             mavlink_heartbeat_cc_struct;
 
+extern EventSource event_mavlink_mpiovd_agps;
 extern EventSource event_mavlink_command_long;
 extern EventSource event_mavlink_param_set;
 extern EventSource event_mavlink_param_request_list;
@@ -86,6 +89,12 @@ void CcUnpackCycle(SerialDriver *sdp){
           mavlink_msg_param_request_read_decode(&msg, &mavlink_param_request_read_struct);
           if (mavlink_param_request_read_struct.target_system == mavlink_system_struct.sysid)
             chEvtBroadcastFlags(&event_mavlink_param_request_read, EVMSK_MAVLINK_PARAM_REQUEST_READ);
+          break;
+
+        case MAVLINK_MSG_ID_MPIOVD_AGPS:
+          mavlink_msg_mpiovd_agps_decode(&msg, &mavlink_mpiovd_agps_struct);
+          if (mavlink_mpiovd_agps_struct.target_system == mavlink_system_struct.sysid)
+            chEvtBroadcastFlags(&event_mavlink_mpiovd_agps, EVMSK_MAVLINK_MPIOVD_AGPS);
           break;
 
         case MAVLINK_MSG_ID_HEARTBEAT:

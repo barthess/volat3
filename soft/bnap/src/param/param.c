@@ -57,7 +57,7 @@ extern mavlink_param_request_read_t   mavlink_param_request_read_struct;
  ******************************************************************************
  */
 
-static uint8_t eeprom_buf[EEPROM_TX_DEPTH];
+static uint8_t __buf[EEPROM_TX_DEPTH];
 
 static const I2CEepromFileConfig eeprom_settings_cfg = {
   &EEPROM_I2CD,
@@ -67,7 +67,7 @@ static const I2CEepromFileConfig eeprom_settings_cfg = {
   EEPROM_PAGE_SIZE,
   EEPROM_I2C_ADDR,
   MS2ST(EEPROM_WRITE_TIME_MS),
-  eeprom_buf,
+  __buf,
 };
 
 /*

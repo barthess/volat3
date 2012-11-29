@@ -77,11 +77,21 @@
         </message>
         <message id="153" name="MPIOVD_ALARM_BITFIELD">
             <description>Contain bit fields denoting different alarm situations</description>
+			<field type="uint8_t"      name="target_system">System ID</field>
+			<field type="uint8_t"	   name="target_component">Component ID</field>
             <field type="uint32_t"     name="alarm">Bit field container</field>
         </message>
         <message id="154" name="MPIOVD_ALARM_BITFIELD_ACK">
             <description>Acknowlege package for alarm</description>
+			<field type="uint8_t"      name="target_system">System ID</field>
+			<field type="uint8_t"	   name="target_component">Component ID</field>
             <field type="uint32_t"     name="alarm">Bit field container</field>
+        </message>
+        <message id="155" name="MPIOVD_AGPS">
+            <description>Assisted GPS message</description>
+			<field type="uint8_t"      name="target_system">System ID</field>
+			<field type="uint8_t"	   name="target_component">Component ID</field>
+            <field type="char[250]"	   name="message">Message with correction data.</field>
         </message>
     </messages>
 </mavlink>
