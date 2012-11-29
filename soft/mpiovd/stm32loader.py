@@ -277,7 +277,7 @@ class CommandInterface:
     def writeMemory(self, addr, data):
         lng = len(data)
         if usepbar:
-            widgets = ['Writing: ', Percentage(),' ', ETA(), ' ', Bar()]
+            widgets = ['Writing: ', Percentage(),', ', ETA(), ' ', Bar()]
             pbar = ProgressBar(widgets=widgets, maxval=lng, term_width=79).start()
 
         offs = 0
