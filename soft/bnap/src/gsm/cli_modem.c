@@ -61,8 +61,9 @@ static void cli_modem_print_help(void){
 /**
  *
  */
-static bool_t __write_and_check(const char * val, EepromFileStream *f, size_t offset, size_t len){
+static bool_t __write_and_check(const char * val, EepromFileStream *f, size_t offset){
   uint32_t status = 0;
+  size_t len = strlen(val) + 1; /* 1 NULL char */
 
   chFileStreamSeek(f, offset);
   status = chFileStreamWrite(f, (uint8_t *)val, len);
@@ -101,7 +102,7 @@ static bool_t __set(const char * val, EepromFileStream *f, size_t size, size_t o
     return CH_FAILED;
   }
   else
-    return __write_and_check(val, f, offset, len);
+    return __write_and_check(val, f, offset);
 }
 
 /**
