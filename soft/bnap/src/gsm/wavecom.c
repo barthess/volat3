@@ -477,15 +477,12 @@ static msg_t ModemThread(void *sdp) {
   }
 
 ERROR:
-  chThdSleepMilliseconds(100);
-  chprintf((BaseSequentialStream *)&SDDM, "%s", "*** FAILED! Automatic init timed out\r\n");
-  chprintf((BaseSequentialStream *)&SDDM, "%s", "*** Do it yourself manually\r\n");
-  chprintf((BaseSequentialStream *)&SDDM, "%s", "*** Hint: to enable echo print 'ATE1'\r\n");
-  ModemCrossInit();
+  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "*** ERROR! Can not connect.");
   return RDY_RESET;
 
 SETTINGS_BAD:
   mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: settings stored in EEPROM invalid");
+  chThdSleepMilliseconds(5);
   mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: start shell and fix them manually");
   return RDY_RESET;
 }
