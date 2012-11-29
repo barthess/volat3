@@ -2,6 +2,7 @@
 #include "hal.h"
 
 #include "message.h"
+#include "param.h"
 
 /*
  ******************************************************************************
@@ -67,7 +68,7 @@ void MsgInit(void){
 
 void MavInit(void){
   /* первоначальная настройка мавлинка */
-  mavlink_system_struct.sysid  = 21;                   ///< ID 20 for this airplane
+  mavlink_system_struct.sysid  = *(uint8_t *)ValueSearch("SYS_ID");  ///< ID 20 for this airplane
   mavlink_system_struct.compid = MAV_COMP_ID_MPIOVD;     ///< The component sending the message, it could be also a Linux process
   mavlink_system_struct.state  = MAV_STATE_BOOT;
   mavlink_system_struct.mode   = MAV_MODE_PREFLIGHT;

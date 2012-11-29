@@ -35,8 +35,8 @@ int main(void) {
   GlobalFlags = 0;
 
   MsgInit();
-  MavInit();
   I2CInitLocal();
+  MavInit();
   LinkInit();
   SanityControlInit();
   SensorsInit();

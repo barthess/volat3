@@ -469,13 +469,11 @@ static msg_t ModemThread(void *sdp) {
     goto ERROR;
 
   mavlink_dbg_print(MAV_SEVERITY_DEBUG, "*** SUCCESS! Connection established.\r\n");
+  chThdSleepMilliseconds(10);
   setGlobalFlag(GlobalFlags.modem_connected);
-  //chThdExit(0);
 
   while (!chThdShouldTerminate()) {
-//    chprintf((BaseSequentialStream *)sdp, "%s - %U\r\n", "bnap test", chTimeNow());
-//    sdPut((SerialDriver *)sdp, ETX); /* end of packet */
-    chThdSleepMilliseconds(1000);
+    chThdSleepMilliseconds(100);
   }
 
 ERROR:
@@ -488,6 +486,7 @@ ERROR:
 
 SETTINGS_BAD:
   mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: settings stored in EEPROM invalid");
+  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: start shell and fix them manually");
   return RDY_RESET;
 }
 

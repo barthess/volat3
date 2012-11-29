@@ -15,6 +15,18 @@ for n in names:
             names[n].append("heartbeat_" + str.lower(h))
 
 
+def getcompid(st):
+    """ get name string and return string with ID """
+    if st == "mpiovd_sensors" or st == "heartbeat_mpiovd":
+        return "MAV_COMP_ID_MPIOVD"
+    elif st == "heartbeat_cc":
+        return "MAV_COMP_ID_CC"
+    elif st == "heartbeat_dm":
+        return "MAV_COMP_ID_DM"
+    else:
+        return "MAV_COMP_ID_BNAP"
+
+
 def head(f):
     f.write("""
 #include "ch.h"
@@ -89,7 +101,8 @@ def gen(name, arr):
         f.write("      if(FALSE == traffic_limiter(&" + i + "_lastsent, to_" + str.lower(name) + "_" + i + "_sendperiod))\n")
         f.write("        continue;\n")
         f.write("      memcpy_ts(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i +"_struct), 4);\n")
-        f.write("      mavlink_msg_" + i + "_encode(mavlink_system_struct.sysid, MAV_COMP_ID_ALL, &mavlink_message_struct, (mavlink_" + i + "_t *)sendbuf);\n")
+        print i, getcompid(i)
+        f.write("      mavlink_msg_" + i + "_encode(mavlink_system_struct.sysid, " + getcompid(i) + ", &mavlink_message_struct, (mavlink_" + i + "_t *)sendbuf);\n")
         f.write("      break;\n\n")
     foot(f, name, arr)
     f.close()

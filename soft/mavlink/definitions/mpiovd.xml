@@ -5,9 +5,10 @@
     <enums>
         <enum name="MAV_COMPONENT">
             <description>Custom components</description>
-            <entry name="MAV_COMP_ID_DISPLAY_MODULE" value="50">Display module</entry>
+            <entry name="MAV_COMP_ID_DM" value="50">Display module</entry>
             <entry name="MAV_COMP_ID_MPIOVD" value="51">Mpiovd</entry>
             <entry name="MAV_COMP_ID_BNAP" value="52">Bnap</entry>
+            <entry name="MAV_COMP_ID_CC" value="53">Bnap</entry>
         </enum>
         <enum name="MPIOVD_CUSTOM_MODE">
             <description>Available MPIOVD modes</description>

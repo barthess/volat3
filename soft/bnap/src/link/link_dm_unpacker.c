@@ -57,40 +57,38 @@ void DmUnpackCycle(SerialDriver *sdp){
     }
 
     if (mavlink_parse_char(MAVLINK_COMM_0, (uint8_t)c, &msg, &status)) {
-      if (msg.sysid == GROUND_STATION_ID){ /* нас запрашивает наземная станция */
-        switch(msg.msgid){
-        case MAVLINK_MSG_ID_COMMAND_LONG:
-          mavlink_msg_command_long_decode(&msg, &mavlink_command_long_struct);
-          if (mavlink_command_long_struct.target_system == mavlink_system_struct.sysid)
-            chEvtBroadcastFlags(&event_mavlink_command_long, EVMSK_MAVLINK_COMMAND_LONG);
-          break;
+      switch(msg.msgid){
+      case MAVLINK_MSG_ID_COMMAND_LONG:
+        mavlink_msg_command_long_decode(&msg, &mavlink_command_long_struct);
+        if (mavlink_command_long_struct.target_system == mavlink_system_struct.sysid)
+          chEvtBroadcastFlags(&event_mavlink_command_long, EVMSK_MAVLINK_COMMAND_LONG);
+        break;
 
-        case MAVLINK_MSG_ID_PARAM_SET:
-          mavlink_msg_param_set_decode(&msg, &mavlink_param_set_struct);
-          if (mavlink_param_set_struct.target_system == mavlink_system_struct.sysid)
-            chEvtBroadcastFlags(&event_mavlink_param_set, EVMSK_MAVLINK_PARAM_SET);
-          break;
+      case MAVLINK_MSG_ID_PARAM_SET:
+        mavlink_msg_param_set_decode(&msg, &mavlink_param_set_struct);
+        if (mavlink_param_set_struct.target_system == mavlink_system_struct.sysid)
+          chEvtBroadcastFlags(&event_mavlink_param_set, EVMSK_MAVLINK_PARAM_SET);
+        break;
 
-        case MAVLINK_MSG_ID_PARAM_REQUEST_LIST:
-          mavlink_msg_param_request_list_decode(&msg, &mavlink_param_request_list_struct);
-          if (mavlink_param_request_list_struct.target_system == mavlink_system_struct.sysid)
-            chEvtBroadcastFlags(&event_mavlink_param_request_list, EVMSK_MAVLINK_PARAM_REQUEST_LIST);
-          break;
+      case MAVLINK_MSG_ID_PARAM_REQUEST_LIST:
+        mavlink_msg_param_request_list_decode(&msg, &mavlink_param_request_list_struct);
+        if (mavlink_param_request_list_struct.target_system == mavlink_system_struct.sysid)
+          chEvtBroadcastFlags(&event_mavlink_param_request_list, EVMSK_MAVLINK_PARAM_REQUEST_LIST);
+        break;
 
-        case MAVLINK_MSG_ID_PARAM_REQUEST_READ:
-          mavlink_msg_param_request_read_decode(&msg, &mavlink_param_request_read_struct);
-          if (mavlink_param_request_read_struct.target_system == mavlink_system_struct.sysid)
-            chEvtBroadcastFlags(&event_mavlink_param_request_read, EVMSK_MAVLINK_PARAM_REQUEST_READ);
-          break;
+      case MAVLINK_MSG_ID_PARAM_REQUEST_READ:
+        mavlink_msg_param_request_read_decode(&msg, &mavlink_param_request_read_struct);
+        if (mavlink_param_request_read_struct.target_system == mavlink_system_struct.sysid)
+          chEvtBroadcastFlags(&event_mavlink_param_request_read, EVMSK_MAVLINK_PARAM_REQUEST_READ);
+        break;
 
-        case MAVLINK_MSG_ID_HEARTBEAT:
-          mavlink_msg_heartbeat_decode(&msg, &mavlink_heartbeat_dm_struct);
-          chEvtBroadcastFlags(&event_mavlink_heartbeat_dm, EVMSK_MAVLINK_HEARTBEAT_DM);
-          break;
+      case MAVLINK_MSG_ID_HEARTBEAT:
+        mavlink_msg_heartbeat_decode(&msg, &mavlink_heartbeat_dm_struct);
+        chEvtBroadcastFlags(&event_mavlink_heartbeat_dm, EVMSK_MAVLINK_HEARTBEAT_DM);
+        break;
 
-        default:
-          break;
-        }
+      default:
+        break;
       }
     }
   }

@@ -11,6 +11,7 @@
 // TODO: прошивалку модема через cross.
 // TODO: protect parameter struct using mutex or semaphore to avoid corruption during multithreaded access
 // TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
+// TODO: дополонительные команды для модемного апплета (reboot, dial, etc.)
 
 /* не в этой жизни */
 // TODO: проброс параметров от остальных компонентов системы на ДЦ

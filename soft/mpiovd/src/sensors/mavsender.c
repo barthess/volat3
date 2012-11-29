@@ -59,7 +59,6 @@ static msg_t TLM_SenderThread(void *arg) {
   (void)arg;
 
   Mail raw_mail    = {NULL, MAVLINK_MSG_ID_MPIOVD_SENSORS, NULL};
-  Mail dbg_mail    = {NULL, MAVLINK_MSG_ID_MPIOVD_SENSORS_DBG, NULL};
 
   while (TRUE) {
     chThdSleepMilliseconds(*T_tlm);

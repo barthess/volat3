@@ -122,14 +122,17 @@ static msg_t SelftestCmdThread(void *arg){
     switch(evt){
     case EVMSK_MAVLINK_HEARTBEAT_MPIOVD:
       chprintf(arg, "%U - MPIOVD", chTimeNow());
+      cli_println("");
       break;
 
     case EVMSK_MAVLINK_HEARTBEAT_CC:
       chprintf(arg, "%U - CC", chTimeNow());
+      cli_println("");
       break;
 
     case EVMSK_MAVLINK_HEARTBEAT_BNAP:
       chprintf(arg, "%U - BNAP", chTimeNow());
+      cli_println("");
       break;
 
     default:
