@@ -35,7 +35,7 @@ extern GlobalFlags_t GlobalFlags;
 /**
  * Поток разбора входящих данных.
  */
-static WORKING_AREA(MpiovdUnpackerThreadWA, 1024);
+static WORKING_AREA(MpiovdUnpackerThreadWA, 512);
 static msg_t MpiovdUnpackerThread(void *sdp){
   chRegSetThreadName("MpiovdUnpacker");
 

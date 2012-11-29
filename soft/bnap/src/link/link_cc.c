@@ -36,7 +36,7 @@ extern GlobalFlags_t GlobalFlags;
 /**
  * Поток разбора входящих данных.
  */
-static WORKING_AREA(CcUnpackerThreadWA, 1024);
+static WORKING_AREA(CcUnpackerThreadWA, 512);
 static msg_t CcUnpackerThread(void *sdp){
   chRegSetThreadName("CcUnpacker");
 

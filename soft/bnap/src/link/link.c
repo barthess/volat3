@@ -70,9 +70,9 @@ const uint32_t *to_dm_heartbeat_bnap_sendperiod;
  */
 void LinkInit(void){
 
-  to_cc_heartbeat_mpiovd_sendperiod    = ValueSearch("T_heartbeat");
-  to_cc_heartbeat_dm_sendperiod        = ValueSearch("T_heartbeat");
-  to_cc_heartbeat_bnap_sendperiod      = ValueSearch("T_heartbeat");
+  to_cc_heartbeat_mpiovd_sendperiod    = ValueSearch("T_hb_mpiovd");
+  to_cc_heartbeat_dm_sendperiod        = ValueSearch("T_hb_dm");
+  to_cc_heartbeat_bnap_sendperiod      = ValueSearch("T_hb_bnap");
 
   to_cc_gps_raw_int_sendperiod         = ValueSearch("T_gps_raw");
   to_cc_global_position_int_sendperiod = ValueSearch("T_gps_int");

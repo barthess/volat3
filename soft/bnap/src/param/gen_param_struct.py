@@ -15,7 +15,9 @@ param = [
 ("SH_enable",       0,          0,      1,          "u", "NULL",    "Set to 1 to switch off telemetry sending and enabling shell."),
 
 #/* intervals between sending different data (mS) */
-("T_heartbeat",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
+("T_hb_bnap",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat BNAP"),
+("T_hb_dm",         SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat display module"),
+("T_hb_mpiovd",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat MPIOVD"),
 ("T_mpiovd_data",   SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_sys_status",    SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Interval of sending this data in milliseconds.\\nSet it to 0 for disabling"),
 ("T_sys_time",      SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Timeout help here"),

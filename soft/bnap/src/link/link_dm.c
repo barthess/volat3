@@ -39,7 +39,7 @@ static Thread *packer_tp;
 /**
  * Поток разбора входящих данных.
  */
-static WORKING_AREA(DmUnpackerThreadWA, 1024);
+static WORKING_AREA(DmUnpackerThreadWA, 512);
 static msg_t DmUnpackerThread(void *sdp){
   chRegSetThreadName("DmUnpacker");
 
