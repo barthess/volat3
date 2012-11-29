@@ -36,7 +36,7 @@ mavlink_param_request_read_t    mavlink_param_request_read_struct;
 mavlink_command_ack_t           mavlink_command_ack_struct;
 
 mavlink_mpiovd_sensors_t        mavlink_mpiovd_sensors_struct;
-mavlink_mpiovd_agps_t           mavlink_mpiovd_agps_struct;
+mavlink_oblique_agps_t          mavlink_oblique_agps_struct;
 
 /* heartbeats from all components of network */
 mavlink_heartbeat_t             mavlink_heartbeat_bnap_struct;
@@ -54,7 +54,7 @@ EventSource event_mavlink_heartbeat_mpiovd;
 EventSource event_mavlink_heartbeat_dm;
 EventSource event_mavlink_heartbeat_bnap;
 
-EventSource event_mavlink_mpiovd_agps;
+EventSource event_mavlink_oblique_agps;
 EventSource event_mavlink_mpiovd_sensors;
 
 EventSource event_mavlink_gps_raw_int;
@@ -116,7 +116,7 @@ void MsgInit(void){
   chEvtInit(&event_mavlink_heartbeat_bnap);
 
   chEvtInit(&event_mavlink_mpiovd_sensors);
-  chEvtInit(&event_mavlink_mpiovd_agps);
+  chEvtInit(&event_mavlink_oblique_agps);
 
   chEvtInit(&event_mavlink_gps_raw_int);
   chEvtInit(&event_mavlink_global_position_int);

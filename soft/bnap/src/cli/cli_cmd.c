@@ -170,21 +170,21 @@ Thread* selftest_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
 /**
  *
  */
-extern EventSource event_mavlink_mpiovd_agps;
+extern EventSource event_mavlink_oblique_agps;
 static WORKING_AREA(AgpsCmdThreadWA, 256);
 static msg_t AgpsCmdThread(void *arg){
   chRegSetThreadName("AgpsCmd");
 
   eventmask_t evt = 0;
-  struct EventListener el_mpiovd_agps;
-  chEvtRegisterMask(&event_mavlink_mpiovd_agps, &el_mpiovd_agps, EVMSK_MAVLINK_MPIOVD_AGPS);
+  struct EventListener el_oblique_agps;
+  chEvtRegisterMask(&event_mavlink_oblique_agps, &el_oblique_agps, EVMSK_MAVLINK_OBLIQUE_AGPS);
 
   cli_print("Press ^C to stop it.\n\r");
 
   while (!chThdShouldTerminate()){
-    evt = chEvtWaitOneTimeout(EVMSK_MAVLINK_MPIOVD_AGPS, MS2ST(50));
+    evt = chEvtWaitOneTimeout(EVMSK_MAVLINK_OBLIQUE_AGPS, MS2ST(50));
     switch(evt){
-    case EVMSK_MAVLINK_MPIOVD_AGPS:
+    case EVMSK_MAVLINK_OBLIQUE_AGPS:
       chprintf(arg, "AGPS message received");
       cli_println("");
       break;
@@ -194,7 +194,7 @@ static msg_t AgpsCmdThread(void *arg){
     }
   }
 
-  chEvtUnregister(&event_mavlink_mpiovd_agps, &el_mpiovd_agps);
+  chEvtUnregister(&event_mavlink_oblique_agps, &el_oblique_agps);
   chThdExit(0);
   return 0;
 }

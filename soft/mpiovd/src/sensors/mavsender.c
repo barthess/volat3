@@ -27,7 +27,6 @@
 extern Mailbox tolink_mb;
 extern RawData raw_data;
 extern mavlink_mpiovd_sensors_t      mpiovd_sensors_struct;
-extern mavlink_mpiovd_sensors_dbg_t  mpiovd_sensors_dbg_struct;
 
 /*
  ******************************************************************************

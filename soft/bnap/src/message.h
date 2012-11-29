@@ -33,7 +33,7 @@ typedef mavlink_heartbeat_t     mavlink_heartbeat_bnap_t;
 #define EVMSK_MAVLINK_HEARTBEAT_CC          (1UL << 14)
 #define EVMSK_MAVLINK_HEARTBEAT_DM          (1UL << 15)
 #define EVMSK_MAVLINK_HEARTBEAT_MPIOVD      (1UL << 16)
-#define EVMSK_MAVLINK_MPIOVD_AGPS           (1UL << 17)
+#define EVMSK_MAVLINK_OBLIQUE_AGPS          (1UL << 17)
 
 /**
  * Structure for data exchange with confimation capability.

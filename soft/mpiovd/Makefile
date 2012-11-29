@@ -158,7 +158,7 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
          src/dsp \
          src/parameters \
          $(SUBMODULEINCDIR) \
-         $(MAVLINCDIR)/mpiovd \
+         $(MAVLINCDIR)/oblique \
 
 #
 # Project, sources and paths

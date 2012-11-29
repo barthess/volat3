@@ -10,12 +10,6 @@
             <entry name="MAV_COMP_ID_BNAP" value="52">Bnap</entry>
             <entry name="MAV_COMP_ID_CC" value="53">Bnap</entry>
         </enum>
-        <enum name="MPIOVD_CUSTOM_MODE">
-            <description>Available MPIOVD modes</description>
-            <entry name="MODE_AUTOSEND">Automatically send informational packets</entry>
-            <entry name="MODE_PINGPONG">Send data only on requests</entry>
-            <entry name="MODE_CALIBRATION">Setting internal calibration coefficients</entry>
-        </enum>
 		<enum name="MAV_CMD">
             <entry value="220" name="MAV_CMD_BNAP_TEST_CMD">
                  <description>Send alarm signal to 911 service.</description>
@@ -62,32 +56,19 @@
             <field type="uint8_t"      name="severity">Severity of status. Relies on the definitions within RFC-5424. See enum MAV_SEVERITY.</field>
             <field type="char[254]"	   name="text">Status text message, without null termination character.</field>
         </message>
-        <message id="152" name="MPIOVD_SENSORS_DBG">
-            <description>Raw data from sensors for debugging purpose</description>
-            <field type="uint64_t"     name="time_usec">Timestamp (microseconds since Unix epoch)</field>
-            <field type="uint64_t"     name="relay">Relay sensors data</field>
-            <field type="uint16_t"     name="analog00">Analog sensor data</field>
-            <field type="uint16_t"     name="analog01">Analog sensor data</field>
-            <field type="uint16_t"     name="analog02">Analog sensor data</field>
-            <field type="uint16_t"     name="analog03">Analog sensor data</field>
-            <field type="uint16_t"     name="analog04">Analog sensor data</field>
-            <field type="uint16_t"     name="analog05">Analog sensor data</field>
-            <field type="uint16_t"     name="analog06">Analog sensor data</field>
-            <field type="uint16_t"     name="analog07">Analog sensor data</field>
-        </message>
-        <message id="153" name="MPIOVD_ALARM_BITFIELD">
+        <message id="152" name="OBLIQUE_ALARM_BITFIELD">
             <description>Contain bit fields denoting different alarm situations</description>
 			<field type="uint8_t"      name="target_system">System ID</field>
 			<field type="uint8_t"	   name="target_component">Component ID</field>
             <field type="uint32_t"     name="alarm">Bit field container</field>
         </message>
-        <message id="154" name="MPIOVD_ALARM_BITFIELD_ACK">
+        <message id="153" name="OBLIQUE_ALARM_BITFIELD_ACK">
             <description>Acknowlege package for alarm</description>
 			<field type="uint8_t"      name="target_system">System ID</field>
 			<field type="uint8_t"	   name="target_component">Component ID</field>
             <field type="uint32_t"     name="alarm">Bit field container</field>
         </message>
-        <message id="155" name="MPIOVD_AGPS">
+        <message id="154" name="OBLIQUE_AGPS">
             <description>Assisted GPS message</description>
 			<field type="uint8_t"      name="target_system">System ID</field>
 			<field type="uint8_t"	   name="target_component">Component ID</field>
