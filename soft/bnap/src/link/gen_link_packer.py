@@ -101,7 +101,6 @@ def gen(name, arr):
         f.write("      if(FALSE == traffic_limiter(&" + i + "_lastsent, to_" + str.lower(name) + "_" + i + "_sendperiod))\n")
         f.write("        continue;\n")
         f.write("      memcpy_ts(sendbuf, &mavlink_" + i + "_struct, sizeof(mavlink_" + i +"_struct), 4);\n")
-        print i, getcompid(i)
         f.write("      mavlink_msg_" + i + "_encode(mavlink_system_struct.sysid, " + getcompid(i) + ", &mavlink_message_struct, (mavlink_" + i + "_t *)sendbuf);\n")
         f.write("      break;\n\n")
     foot(f, name, arr)

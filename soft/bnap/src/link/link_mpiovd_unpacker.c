@@ -7,6 +7,7 @@
 #include "link_cc.h"
 #include "message.h"
 #include "main.h"
+#include "timekeeper.h"
 
 /*
  ******************************************************************************
@@ -49,6 +50,8 @@ void MpiovdUnpackCycle(SerialDriver *sdp){
 
         case MAVLINK_MSG_ID_MPIOVD_SENSORS:
           mavlink_msg_mpiovd_sensors_decode(&msg, &mavlink_mpiovd_sensors_struct);
+          /* mpiovd has no RTC, so we must set it here */
+          mavlink_mpiovd_sensors_struct.time_usec = fastGetTimeUnixUsec();
           chEvtBroadcastFlags(&event_mavlink_mpiovd_sensors, EVMSK_MAVLINK_MPIOVD_SENSORS);
           break;
 

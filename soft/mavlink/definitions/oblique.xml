@@ -79,5 +79,21 @@
 			<field type="uint8_t"      name="rssi">RSSI field from command response</field>
 			<field type="uint8_t"	   name="ber">BER field from command response</field>
         </message>
+		<message id="156" name="OBLIQUE_STORAGE_REQUEST_COUNT">
+			<description>Request count of records in nonvolatile storage</description>
+			<field type="uint8_t"      name="target_system">System ID</field>
+			<field type="uint8_t"	   name="target_component">Component ID</field>
+        </message>
+		<message id="157" name="OBLIQUE_STORAGE_COUNT">
+			<description>Count of records in nonvolatile storage</description>
+			<field type="uint32_t"     name="count">System ID</field>
+        </message>
+		<message id="158" name="OBLIQUE_STORAGE_REQUEST">
+			<description>Request to send range of records from first to last. If you want single record than set first==last. Incorrect values must be ignored.</description>
+			<field type="uint8_t"      name="target_system">System ID</field>
+			<field type="uint8_t"	   name="target_component">Component ID</field>
+			<field type="uint32_t"     name="first">System ID</field>
+			<field type="uint32_t"	   name="last">Component ID</field>
+        </message>
     </messages>
 </mavlink>
