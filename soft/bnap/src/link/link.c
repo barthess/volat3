@@ -44,6 +44,7 @@ const uint32_t *to_dm_param_value_sendperiod;
 const uint32_t *to_dm_heartbeat_mpiovd_sendperiod;
 const uint32_t *to_dm_heartbeat_cc_sendperiod;
 const uint32_t *to_dm_heartbeat_bnap_sendperiod;
+const uint32_t *to_dm_oblique_rssi_sendperiod;
 
 /*
  ******************************************************************************
@@ -93,6 +94,7 @@ void LinkInit(void){
   to_dm_sys_status_sendperiod          = NULL;
   to_dm_statustext_sendperiod          = NULL;
   to_dm_param_value_sendperiod         = NULL;
+  to_dm_oblique_rssi_sendperiod        = NULL;
 
   DmCliSwitcherInit(&SDDM);
   link_mpiovd_up(&SDMPIOVD);

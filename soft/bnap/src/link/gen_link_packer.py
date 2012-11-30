@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 names = {
-        "Dm" : ["gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext", "param_value"],
+        "Dm" : ["gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext", "param_value", "oblique_rssi"],
         "Cc" : ["gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext", "param_value"]
         }
 

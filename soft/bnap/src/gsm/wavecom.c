@@ -43,6 +43,7 @@
  */
 extern GlobalFlags_t GlobalFlags;
 extern EepromFileStream ModemSettingsFile;
+extern mavlink_oblique_rssi_t mavlink_oblique_rssi_struct;
 
 /*
  ******************************************************************************
@@ -58,6 +59,9 @@ extern EepromFileStream ModemSettingsFile;
 /* buffer for collectin answers from */
 static uint8_t gsmbuf[128];
 static uint8_t eeprombuf[EEPROM_MODEM_MAX_FIELD_LEN];
+
+static int fake_rssi = 0; /* value for fake RSSI measurements */
+static int fake_ber  = 0; /* value for fake BER measurements */
 
 /*
  ******************************************************************************
@@ -108,7 +112,7 @@ static size_t _collect_answer(SerialDriver *sdp, uint8_t *buf, size_t lim, systi
   /* wait starting \r\n */
   while ((chTimeNow() - start) < timeout){
     c = sdGetTimeout(sdp, MS2ST(2));
-    if (c > 0){ /* no timeout */
+    if (c > 0){ /* was no timeout */
       w = (w << 8) | (c & 0xFF);
     }
     if (w == sign)
@@ -119,7 +123,7 @@ static size_t _collect_answer(SerialDriver *sdp, uint8_t *buf, size_t lim, systi
   i = 0;
   while(((chTimeNow() - start) < timeout) && (i < (lim - 1))){
     c = sdGetTimeout(sdp, MS2ST(1));
-    if (c > 0){ /* no timeout */
+    if (c > 0){ /* was no timeout */
       buf[i] = c;
       w = (w << 8) | (c & 0xFF);
       i++;
@@ -215,6 +219,35 @@ static bool_t _wait_cgreg(SerialDriver *sdp){
     chThdSleep(CREG_TMO);
   }
   return GSM_FAILED;
+}
+
+/**
+ * Wait registration on operator network
+ */
+static bool_t _update_rssi(SerialDriver *sdp){
+  int scanfstat;
+
+  /* not first function run */
+  if ((fake_rssi != 0) && (fake_ber != 0))
+    return GSM_SUCCESS;
+
+  uint32_t try = 5;
+  while(try--){
+    _say_to_modem(sdp, "AT+CSQ\r");
+    _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), CREG_TMO);
+
+    /* check results */
+    scanfstat = siscanf((char *)gsmbuf, "+CSQ: %d,%d", &fake_rssi, &fake_ber);
+    if (scanfstat == 2)
+      return GSM_SUCCESS;
+    else
+      continue;
+  }
+  if (scanfstat != 2){
+    fake_rssi = 21;
+    fake_ber  = 99;
+  }
+  return GSM_SUCCESS;
 }
 
 /**
@@ -447,6 +480,8 @@ static msg_t ModemThread(void *sdp) {
     goto ERROR;
   if (GSM_FAILED == _wait_cgreg(sdp))
     goto ERROR;
+  if (GSM_FAILED == _update_rssi(sdp))
+    goto ERROR;
   if (GSM_FAILED == _start_wopen(sdp))
     goto ERROR;
   chThdSleepMilliseconds(100);
@@ -477,14 +512,32 @@ static msg_t ModemThread(void *sdp) {
   }
 
 ERROR:
-  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "*** ERROR! Can not connect.");
+  mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** ERROR! Can not connect.");
   return RDY_RESET;
 
 SETTINGS_BAD:
-  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: settings stored in EEPROM invalid");
+  mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: settings stored in EEPROM invalid");
   chThdSleepMilliseconds(5);
-  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: start shell and fix them manually");
+  mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: start shell and fix them manually");
   return RDY_RESET;
+}
+
+/**
+ *
+ */
+static WORKING_AREA(RssiThreadWA, 256);
+static msg_t RssiThread(void *sdp) {
+  chRegSetThreadName("Rssi");
+  (void)sdp;
+
+  while (!chThdShouldTerminate()) {
+    chThdSleepMilliseconds(1000);
+    if (GlobalFlags.modem_connected == 1)
+      _update_rssi(sdp);
+    mavlink_oblique_rssi_struct.rssi = fake_rssi;
+    mavlink_oblique_rssi_struct.ber  = fake_ber;
+  }
+  return 0;
 }
 
 /*
@@ -500,6 +553,12 @@ void ModemInit(void){
           sizeof(ModemThreadWA),
           NORMALPRIO,
           ModemThread,
+          &SDGSM);
+
+  chThdCreateStatic(RssiThreadWA,
+          sizeof(RssiThreadWA),
+          NORMALPRIO,
+          RssiThread,
           &SDGSM);
 }
 

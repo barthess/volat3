@@ -74,5 +74,10 @@
 			<field type="uint8_t"	   name="target_component">Component ID</field>
             <field type="char[250]"	   name="message">Message with correction data.</field>
         </message>
+		<message id="155" name="OBLIQUE_RSSI">
+			<description>Signal quality quered from modem using AT+CSQ command</description>
+			<field type="uint8_t"      name="rssi">RSSI field from command response</field>
+			<field type="uint8_t"	   name="ber">BER field from command response</field>
+        </message>
     </messages>
 </mavlink>
