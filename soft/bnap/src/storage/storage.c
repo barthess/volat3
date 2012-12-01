@@ -87,6 +87,7 @@ static bool_t _fill_buf(void *mmcbuf){
   uint32_t len;
 
   void *dest = mmcbuf;
+  void *time_p = NULL;
 
   /* clear buffer */
   memset(dest, 0, RECORD_SIZE);
@@ -107,12 +108,15 @@ static bool_t _fill_buf(void *mmcbuf){
   dest += RECORD_PAYLOAD_OFFSET;
 
   /* payload */
-  memcpy_ts(dest, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct), 4);
-  ((mavlink_mpiovd_sensors_t *)dest)->time_usec = timestamp;
+  memcpy_ts(dest, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct), 4);
+  //((mavlink_gps_raw_int_t *)dest)->time_usec = timestamp;
+  time_p = &(((mavlink_gps_raw_int_t *)dest)->time_usec);
+  memcpy(time_p, &timestamp, sizeof(timestamp));
   dest += _store_mpiovd_sensors(dest);
 
-  memcpy_ts(dest, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct), 4);
-  ((mavlink_gps_raw_int_t *)dest)->time_usec = timestamp;
+  memcpy_ts(dest, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct), 4);
+  time_p = &(((mavlink_mpiovd_sensors_t *)dest)->time_usec);
+  memcpy(time_p, &timestamp, sizeof(timestamp));
   dest += _store_mpiovd_sensors(dest);
 
   /* data size */
@@ -226,7 +230,7 @@ uint32_t _rec2block(BnapStorage *bsp, uint32_t recnum){
 void bnapStorageObjectInit(BnapStorage *bsp, MMCDriver *mmcp, void *mmcbuf){
   bsp->mmcp = mmcp;
   mmcObjectInit(bsp->mmcp);
-  chSemInit(&bsp->semaphore, FALSE);
+  chSemInit(&bsp->semaphore, 1);
   bsp->buf = mmcbuf;
 }
 
@@ -293,15 +297,24 @@ bool_t bnapStorageGetRecord(BnapStorage *bsp, uint32_t rec){
  * Search number of first block suitable for writing.
  */
 void bnapStorageMount(BnapStorage *bsp){
+  int64_t t0;
+  int64_t t1;
   uint32_t p0 = 0;
   uint32_t p1 = bsp->mmcp->capacity - 1;
-  while (p1 > p0){
+  while (p1 > p0 + 1)
     _search_knee(bsp->mmcp, &p0, &p1, bsp->buf);
-  }
-  bsp->tip = p0;
 
-  if (-1 == _check_block(bsp->mmcp, p0, bsp->buf))
-    bsp->used = p0; /* only blocks before tip used */
+  /* check founded 2 points separately */
+  t0 = _check_block(bsp->mmcp, p0, bsp->buf);
+  t1 = _check_block(bsp->mmcp, p1, bsp->buf);
+
+  if (t0 > t1)
+    bsp->tip = p1;
+  else
+    bsp->tip = p0;
+
+  if (t1 == -1)
+    bsp->used = bsp->tip; /* only blocks before tip used */
   else
     bsp->used = bsp->mmcp->capacity; /* whole card used */
 }

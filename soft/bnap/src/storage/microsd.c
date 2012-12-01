@@ -21,8 +21,11 @@
 #include "main.h"
 #include "message.h"
 #include "storage.h"
+
 #include "link_cc.h"
+#include "link_cc_packer.h"
 #include "link_dm.h"
+#include "link_dm_packer.h"
 
 /*
  ******************************************************************************
@@ -171,19 +174,24 @@ NOT_READY:
 /**
  *
  */
-static void _oblique_storage_request_handler_cc(void){
-  uint32_t first = mavlink_oblique_storage_request_cc_struct.first;
-  uint32_t last  = mavlink_oblique_storage_request_cc_struct.last;
+static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
+  uint32_t curr = mavlink_oblique_storage_request_cc_struct.first;
+  uint32_t last = mavlink_oblique_storage_request_cc_struct.last;
+  uint32_t len  = 0;
 
-  if ((first > last) || (last > Storage.used))
+  if ((curr > last) || (last > Storage.used))
     return;
 
   acquire_cc_out(); /* нагло занимаем канал передачи */
-  while (first < last){
+  while (curr < last){
     bnapStoragaAcquire(&Storage);
-    bnapStorageGetRecord(&Storage, first);
+    bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
+
+    len = *(uint32_t *)(Storage.buf + RECORD_PAYLOAD_SIZE_OFFSET);
+    cc_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET, len);
+
     bnapStoragaRelease(&Storage);
-    first++;
+    curr++;
   }
   release_cc_out();
 }
@@ -191,19 +199,24 @@ static void _oblique_storage_request_handler_cc(void){
 /**
  *
  */
-static void _oblique_storage_request_handler_dm(void){
-  uint32_t first = mavlink_oblique_storage_request_dm_struct.first;
-  uint32_t last  = mavlink_oblique_storage_request_dm_struct.last;
+static void _oblique_storage_request_handler_dm(SerialDriver *sdp){
+  uint32_t curr = mavlink_oblique_storage_request_dm_struct.first;
+  uint32_t last = mavlink_oblique_storage_request_dm_struct.last;
+  uint32_t len  = 0;
 
-  if ((first > last) || (last > Storage.used))
+  if ((curr > last) || (last > Storage.used))
     return;
 
   acquire_dm_out(); /* нагло занимаем канал передачи */
-  while (first < last){
+  while (curr < last){
     bnapStoragaAcquire(&Storage);
-    bnapStorageGetRecord(&Storage, first);
+    bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
+
+    len = *(uint32_t *)(Storage.buf + RECORD_PAYLOAD_SIZE_OFFSET);
+    dm_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET, len);
+
     bnapStoragaRelease(&Storage);
-    first++;
+    curr++;
   }
   release_dm_out();
 }
@@ -212,9 +225,8 @@ static void _oblique_storage_request_handler_dm(void){
  *
  */
 static WORKING_AREA(MmcReaderCcThreadWA, 1536);
-static msg_t MmcReaderCcThread(void *arg){
+static msg_t MmcReaderCcThread(void *sdp){
   chRegSetThreadName("MmcReaderCc");
-  (void)arg;
 
   struct EventListener el_storage_request_count_cc;
   struct EventListener el_storage_request_cc;
@@ -229,12 +241,12 @@ static msg_t MmcReaderCcThread(void *arg){
   eventmask_t evt = 0;
 
   while (!chThdShouldTerminate()){
-    evt = chEvtWaitOneTimeout(EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_COUNT_DM | EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_DM, MS2ST(50));
+    evt = chEvtWaitOneTimeout(EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_COUNT_CC | EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_CC, MS2ST(50));
     if (!mmcIsCardInserted(&MMCD1))
       continue;
     else{
       switch (evt){
-      case(EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_COUNT_CC || EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_COUNT_DM):
+      case(EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_COUNT_CC):
         bnapStoragaAcquire(&Storage);
         mavlink_oblique_storage_count_struct.count = Storage.used;
         bnapStoragaRelease(&Storage);
@@ -242,7 +254,7 @@ static msg_t MmcReaderCcThread(void *arg){
         break;
 
       case(EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_CC):
-        _oblique_storage_request_handler_cc();
+        _oblique_storage_request_handler_cc(sdp);
         break;
 
       default:
@@ -262,9 +274,8 @@ static msg_t MmcReaderCcThread(void *arg){
  *
  */
 static WORKING_AREA(MmcReaderDmThreadWA, 1536);
-static msg_t MmcReaderDmThread(void *arg){
+static msg_t MmcReaderDmThread(void *sdp){
   chRegSetThreadName("MmcReaderDm");
-  (void)arg;
 
   struct EventListener el_storage_request_count_dm;
   struct EventListener el_storage_request_dm;
@@ -292,7 +303,7 @@ static msg_t MmcReaderDmThread(void *arg){
         break;
 
       case(EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_DM):
-        _oblique_storage_request_handler_dm();
+        _oblique_storage_request_handler_dm(sdp);
         break;
 
       default:
@@ -335,11 +346,11 @@ void MicrosdInit(void){
           sizeof(MmcReaderCcThreadWA),
           MMC_THREAD_PRIO,
           MmcReaderCcThread,
-          NULL);
+          &SDGSM);
 
   chThdCreateStatic(MmcReaderDmThreadWA,
           sizeof(MmcReaderDmThreadWA),
           MMC_THREAD_PRIO,
           MmcReaderDmThread,
-          NULL);
+          &SDDM);
 }
