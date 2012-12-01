@@ -32,6 +32,7 @@ const uint32_t *to_cc_param_value_sendperiod;
 const uint32_t *to_cc_heartbeat_mpiovd_sendperiod;
 const uint32_t *to_cc_heartbeat_dm_sendperiod;
 const uint32_t *to_cc_heartbeat_bnap_sendperiod;
+const uint32_t *to_cc_oblique_storage_count_sendperiod;
 
 const uint32_t *to_dm_heartbeat_sendperiod;
 const uint32_t *to_dm_gps_raw_int_sendperiod;
@@ -45,6 +46,7 @@ const uint32_t *to_dm_heartbeat_mpiovd_sendperiod;
 const uint32_t *to_dm_heartbeat_cc_sendperiod;
 const uint32_t *to_dm_heartbeat_bnap_sendperiod;
 const uint32_t *to_dm_oblique_rssi_sendperiod;
+const uint32_t *to_dm_oblique_storage_count_sendperiod;
 
 /*
  ******************************************************************************
@@ -82,6 +84,7 @@ void LinkInit(void){
   to_cc_sys_status_sendperiod          = ValueSearch("T_sys_status");
   to_cc_statustext_sendperiod          = NULL;
   to_cc_param_value_sendperiod         = NULL;
+  to_cc_oblique_storage_count_sendperiod = NULL;
 
   to_dm_heartbeat_mpiovd_sendperiod    = NULL;
   to_dm_heartbeat_cc_sendperiod        = NULL;
@@ -95,6 +98,7 @@ void LinkInit(void){
   to_dm_statustext_sendperiod          = NULL;
   to_dm_param_value_sendperiod         = NULL;
   to_dm_oblique_rssi_sendperiod        = NULL;
+  to_dm_oblique_storage_count_sendperiod = NULL;
 
   DmCliSwitcherInit(&SDDM);
   link_mpiovd_up(&SDMPIOVD);

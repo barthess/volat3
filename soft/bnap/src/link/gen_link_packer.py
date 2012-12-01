@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 names = {
-        "Dm" : ["gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext", "param_value", "oblique_rssi"],
-        "Cc" : ["gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext", "param_value"]
+        "Dm" : ["gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext", "param_value", "oblique_storage_count", "oblique_rssi"],
+        "Cc" : ["gps_raw_int", "global_position_int", "system_time", "mpiovd_sensors", "sys_status", "statustext", "param_value", "oblique_storage_count"]
         }
 
 # components emitting heartbeats
@@ -52,7 +52,10 @@ def foot(f, name, arr):
     """)
     f.write("if (" + str.lower(name) + "_port_ready()){\n")
     f.write("      len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);\n")
-    f.write("      " + str.lower(name) + "_sdWrite(sdp, sendbuf, len);\n    }\n")
+    f.write("      acquire_" + str.lower(name) + "_out();\n")
+    f.write("      " + str.lower(name) + "_sdWrite(sdp, sendbuf, len);\n")
+    f.write("      release_" + str.lower(name) + "_out();\n")
+    f.write("    }\n")
     f.write("  }\n")
 
     for i in arr:

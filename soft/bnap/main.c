@@ -1,9 +1,9 @@
 /* обязательно */
-// TODO: при каждой записи в хранилище обновлять время последней доступной записи (in RAM) (?? и общее количество??)
 // TODO: пакет для запроса накопленных данных и прога для его демонстрации.
 // TODO: function to acquire modem output channel.
 
 /* хорошо бы, при наличии времени */
+// TODO: возможность прервать выдачу накопленных данных
 // TODO: посылать паеты алярмы от кнопки до тех по, пока она нажата. Сделать на этой ботве тестилку пропускной способности модема
 // TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом в виде битовых полей. На текущий момент его заменяет текстовое сообщение при нажатии на кнопку Алярма.
 // TODO: переподключение при обрыве связи
@@ -61,6 +61,10 @@ CompensatedData comp_data;
 /* RTC-GPS sync */
 BinarySemaphore pps_sem;
 
+/* Semaphores for mutual access to GSM and DM output */
+BinarySemaphore cc_out_sem;
+BinarySemaphore dm_out_sem;
+
 /* store here time from GPS */
 struct tm gps_timp;
 
@@ -117,6 +121,8 @@ int main(void) {
   gsm_led_off();
 
   chBSemInit(&pps_sem, TRUE);
+  chBSemInit(&cc_out_sem, FALSE);
+  chBSemInit(&dm_out_sem, FALSE);
 
   sdStart(&SDGSM, &gsm_ser_cfg);
   sdStart(&SDDM, &dm_ser_cfg);

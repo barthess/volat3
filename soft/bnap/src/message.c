@@ -39,9 +39,13 @@ mavlink_mpiovd_sensors_t        mavlink_mpiovd_sensors_struct;
 mavlink_oblique_agps_t          mavlink_oblique_agps_struct;
 mavlink_oblique_rssi_t          mavlink_oblique_rssi_struct;
 mavlink_oblique_rssi_t          mavlink_oblique_rssi_struct;
-mavlink_oblique_storage_count_t mavlink_oblique_storage_count_struct;
-mavlink_oblique_storage_request_count_t mavlink_oblique_storage_request_count_struct;
-mavlink_oblique_storage_request_t mavlink_oblique_storage_request_struct;
+
+/* storage request handlers */
+mavlink_oblique_storage_count_t           mavlink_oblique_storage_count_struct;
+mavlink_oblique_storage_request_count_t   mavlink_oblique_storage_request_count_cc_struct;
+mavlink_oblique_storage_request_t         mavlink_oblique_storage_request_cc_struct;
+mavlink_oblique_storage_request_count_t   mavlink_oblique_storage_request_count_dm_struct;
+mavlink_oblique_storage_request_t         mavlink_oblique_storage_request_dm_struct;
 
 /* heartbeats from all components of network */
 mavlink_heartbeat_t             mavlink_heartbeat_bnap_struct;
@@ -62,9 +66,12 @@ EventSource event_mavlink_heartbeat_bnap;
 EventSource event_mavlink_oblique_rssi;
 EventSource event_mavlink_oblique_agps;
 EventSource event_mavlink_mpiovd_sensors;
+
 EventSource event_mavlink_oblique_storage_count;
-EventSource event_mavlink_oblique_storage_request_count;
-EventSource event_mavlink_oblique_storage_request;
+EventSource event_mavlink_oblique_storage_request_count_cc;
+EventSource event_mavlink_oblique_storage_request_cc;
+EventSource event_mavlink_oblique_storage_request_count_dm;
+EventSource event_mavlink_oblique_storage_request_dm;
 
 EventSource event_mavlink_gps_raw_int;
 EventSource event_mavlink_global_position_int;
@@ -127,9 +134,12 @@ void MsgInit(void){
   chEvtInit(&event_mavlink_mpiovd_sensors);
   chEvtInit(&event_mavlink_oblique_agps);
   chEvtInit(&event_mavlink_oblique_rssi);
+
   chEvtInit(&event_mavlink_oblique_storage_count);
-  chEvtInit(&event_mavlink_oblique_storage_request_count);
-  chEvtInit(&event_mavlink_oblique_storage_request);
+  chEvtInit(&event_mavlink_oblique_storage_request_count_cc);
+  chEvtInit(&event_mavlink_oblique_storage_request_cc);
+  chEvtInit(&event_mavlink_oblique_storage_request_count_dm);
+  chEvtInit(&event_mavlink_oblique_storage_request_dm);
 
   chEvtInit(&event_mavlink_gps_raw_int);
   chEvtInit(&event_mavlink_global_position_int);

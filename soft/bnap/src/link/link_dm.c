@@ -20,6 +20,7 @@
  */
 extern GlobalFlags_t GlobalFlags;
 extern MemoryHeap ThdHeap;
+extern BinarySemaphore dm_out_sem;
 
 /*
  ******************************************************************************
@@ -113,4 +114,12 @@ bool_t dm_port_ready(void){
     return TRUE;
   else
     return FALSE;
+}
+
+void acquire_dm_out(void){
+  chBSemWait(&dm_out_sem);
+}
+
+void release_dm_out(void){
+  chBSemSignal(&dm_out_sem);
 }

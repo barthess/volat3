@@ -62,6 +62,9 @@ typedef struct GlobalFlags_t{
 #define setGlobalFlag(flag)     do{chSysLock(); setGlobalFlagI(flag);   chSysUnlock();}while(0)
 #define clearGlobalFlag(flag)   do{chSysLock(); clearGlobalFlagI(flag); chSysUnlock();}while(0)
 
+/***************************************************************************
+ *  */
+
 /******************************************************************
  * приоритеты для потоков */
 #define I2C_THREADS_PRIO          (NORMALPRIO + 5)

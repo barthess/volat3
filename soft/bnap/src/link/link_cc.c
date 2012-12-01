@@ -19,6 +19,7 @@
  ******************************************************************************
  */
 extern GlobalFlags_t GlobalFlags;
+extern BinarySemaphore cc_out_sem;
 
 /*
  ******************************************************************************
@@ -95,4 +96,12 @@ bool_t cc_port_ready(void){
     return TRUE;
   else
     return FALSE;
+}
+
+void acquire_cc_out(void){
+  chBSemWait(&cc_out_sem);
+}
+
+void release_cc_out(void){
+  chBSemSignal(&cc_out_sem);
 }
