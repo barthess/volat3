@@ -49,6 +49,7 @@ extern EventSource event_gps_time_got;
 extern EventSource event_mavlink_system_time;
 
 extern mavlink_system_time_t mavlink_system_time_struct;
+extern mavlink_gps_raw_int_t mavlink_gps_raw_int_struct;
 
 /*
  ******************************************************************************
@@ -104,6 +105,7 @@ static msg_t TimekeeperThread(void *arg){
       bnap_time = fastGetTimeUnixUsec();
 
       gps_time = (int64_t)mktime(&gps_timp) * 1000000;
+      mavlink_gps_raw_int_struct.time_usec = gps_time;
       Correction += gps_time - bnap_time;
 
       mavlink_system_time_struct.time_boot_ms = TIME_BOOT_MS;

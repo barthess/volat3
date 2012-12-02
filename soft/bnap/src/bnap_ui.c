@@ -59,8 +59,12 @@ static msg_t UiThread(void *arg) {
     last = cur;
     cur = palReadPad(IOPORT2, 19);
     if (cur != last){
-      if (cur == 0)
-        mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' pressed");
+      if (cur == 0){
+        while (palReadPad(IOPORT2, 19) == 0){
+          mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' pressed");
+          chThdSleepMilliseconds(4);
+        }
+      }
       else
         mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' released");
     }

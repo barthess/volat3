@@ -10,6 +10,8 @@
 #include "timekeeper.h"
 #include "crc32.h"
 #include "utils.h"
+#include "link_cc_packer.h"
+#include "link_dm_packer.h"
 
 /*
  ******************************************************************************
@@ -46,12 +48,13 @@ extern GlobalFlags_t              GlobalFlags;
 /**
  *
  */
-uint32_t _store_gps_raw_int(void *out){
+static uint32_t _store_gps_raw_int(void *out, int64_t timestamp){
   mavlink_message_t mavlink_message_struct;
   uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];
   uint16_t len = 0;
 
   memcpy_ts(sendbuf, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct), 4);
+  ((mavlink_gps_raw_int_t *)sendbuf)->time_usec = timestamp;
   mavlink_msg_gps_raw_int_encode(mavlink_system_struct.sysid, MAV_COMP_ID_BNAP, &mavlink_message_struct, (mavlink_gps_raw_int_t *)sendbuf);
 
   len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);
@@ -62,12 +65,13 @@ uint32_t _store_gps_raw_int(void *out){
 /**
  *
  */
-uint32_t _store_mpiovd_sensors(void *out){
+static uint32_t _store_mpiovd_sensors(void *out, int64_t timestamp){
   mavlink_message_t mavlink_message_struct;
   uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];
   uint16_t len = 0;
 
   memcpy_ts(sendbuf, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct), 4);
+  ((mavlink_mpiovd_sensors_t *)sendbuf)->time_usec = timestamp;
   mavlink_msg_mpiovd_sensors_encode(mavlink_system_struct.sysid, MAV_COMP_ID_MPIOVD, &mavlink_message_struct, (mavlink_mpiovd_sensors_t *)sendbuf);
 
   len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);
@@ -87,14 +91,13 @@ static bool_t _fill_buf(void *mmcbuf){
   uint32_t len;
 
   void *dest = mmcbuf;
-  void *time_p = NULL;
 
   /* clear buffer */
   memset(dest, 0, RECORD_SIZE);
 
   /* signature */
+  dest = mmcbuf + RECORD_SIGNATURE_OFFSET;
   memcpy(dest, &sig, RECORD_SIGNATURE_SIZE);
-  dest += RECORD_SIGNATURE_SIZE;
 
   /* timestamp */
   if (GlobalFlags.time_good == 1)
@@ -102,25 +105,19 @@ static bool_t _fill_buf(void *mmcbuf){
   else
     return CH_FAILED;
 
+  dest = mmcbuf + RECORD_TIMESTAMP_OFFSET;
   memcpy(dest, &timestamp, RECORD_TIMESTAMP_SIZE);
   /* должно получиться свободное место для сохранения размера данных,
    * оно будет заполнено позже */
-  dest += RECORD_PAYLOAD_OFFSET;
+  dest = mmcbuf + RECORD_PAYLOAD_OFFSET;
 
   /* payload */
-  memcpy_ts(dest, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct), 4);
-  //((mavlink_gps_raw_int_t *)dest)->time_usec = timestamp;
-  time_p = &(((mavlink_gps_raw_int_t *)dest)->time_usec);
-  memcpy(time_p, &timestamp, sizeof(timestamp));
-  dest += _store_mpiovd_sensors(dest);
-
-  memcpy_ts(dest, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct), 4);
-  time_p = &(((mavlink_mpiovd_sensors_t *)dest)->time_usec);
-  memcpy(time_p, &timestamp, sizeof(timestamp));
-  dest += _store_mpiovd_sensors(dest);
+  len = 0;
+  len += _store_mpiovd_sensors(dest + len, timestamp);
+  len += _store_gps_raw_int(dest + len, timestamp);
 
   /* data size */
-  len = mmcbuf - RECORD_PAYLOAD_OFFSET - dest;
+  //len = dest - mmcbuf - RECORD_PAYLOAD_OFFSET;
   memcpy(mmcbuf + RECORD_PAYLOAD_SIZE_OFFSET, &len, RECORD_PAYLOAD_SIZE_SIZE);
 
   /* checksum */
@@ -214,7 +211,7 @@ static void _search_knee(MMCDriver *mmcp, uint32_t *p0, uint32_t *p1, void *mmcb
   */
 uint32_t _rec2block(BnapStorage *bsp, uint32_t recnum){
   chDbgCheck(bsp->used != 0, "handle empty storage separately");
-  chDbgCheck(recnum > bsp->used, "handle overflow externally");
+  chDbgCheck(recnum < bsp->used, "handle overflow externally");
 
   if (bsp->used < bsp->mmcp->capacity)
     return recnum;

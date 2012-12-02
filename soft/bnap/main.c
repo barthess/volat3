@@ -2,6 +2,7 @@
 // TODO: пакет для запроса накопленных данных и прога для его демонстрации.
 
 /* хорошо бы, при наличии времени */
+// TODO: консольная команда для очистки хранилища
 // TODO: возможность прервать выдачу накопленных данных
 // TODO: посылать паеты алярмы от кнопки до тех по, пока она нажата. Сделать на этой ботве тестилку пропускной способности модема
 // TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом в виде битовых полей. На текущий момент его заменяет текстовое сообщение при нажатии на кнопку Алярма.
@@ -85,10 +86,10 @@ static uint8_t link_thd_buf[THREAD_HEAP_SIZE + sizeof(stkalign_t)];
 /**/
 static const SerialConfig gsm_ser_cfg = {
     GSM_BAUDRATE,
-//    AT91C_US_USMODE_HWHSH | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
-//                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
-      AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
-                                AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+    AT91C_US_USMODE_HWHSH | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+                              AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
+//      AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
+//                                AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
 };
 static const SerialConfig dm_ser_cfg = {
     DM_BAUDRATE,

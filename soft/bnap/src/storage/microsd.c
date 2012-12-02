@@ -40,6 +40,7 @@
 
 /* logger writing interval. Set slightly longer than GPS period. */
 #define WRITE_TMO                       MS2ST(1100)
+//#define WRITE_TMO                       MS2ST(1)
 
 /*
  ******************************************************************************
@@ -179,20 +180,26 @@ static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
   uint32_t last = mavlink_oblique_storage_request_cc_struct.last;
   uint32_t len  = 0;
 
-  if ((curr > last) || (last > Storage.used))
+  if (curr > last)
     return;
+  if (last >= Storage.used)
+    last = Storage.used - 1;
 
   acquire_cc_out(); /* нагло занимаем канал передачи */
+  chThdSleepMilliseconds(500); // ждем, пока буферизированные данные уйдут
   while (curr < last){
     bnapStoragaAcquire(&Storage);
     bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
-
     len = *(uint32_t *)(Storage.buf + RECORD_PAYLOAD_SIZE_OFFSET);
-    cc_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET, len);
-
+//    cc_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET, len);
+    cc_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET, 70);
+    cc_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET + 70, 38);
     bnapStoragaRelease(&Storage);
+
+    chThdSleepMilliseconds(200);
     curr++;
   }
+  //chThdSleepMilliseconds(10000);
   release_cc_out();
 }
 
@@ -224,7 +231,7 @@ static void _oblique_storage_request_handler_dm(SerialDriver *sdp){
 /**
  *
  */
-static WORKING_AREA(MmcReaderCcThreadWA, 1536);
+static WORKING_AREA(MmcReaderCcThreadWA, 256);
 static msg_t MmcReaderCcThread(void *sdp){
   chRegSetThreadName("MmcReaderCc");
 
@@ -273,7 +280,7 @@ static msg_t MmcReaderCcThread(void *sdp){
 /**
  *
  */
-static WORKING_AREA(MmcReaderDmThreadWA, 1536);
+static WORKING_AREA(MmcReaderDmThreadWA, 256);
 static msg_t MmcReaderDmThread(void *sdp){
   chRegSetThreadName("MmcReaderDm");
 

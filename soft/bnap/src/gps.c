@@ -151,7 +151,6 @@ static msg_t gpsRxThread(void *arg){
 
   while(!(chThdShouldTerminate())){
     if (n >= 2){
-      mavlink_gps_raw_int_struct.time_usec = 0;
       chEvtBroadcastFlags(&event_mavlink_gps_raw_int, EVMSK_MAVLINK_GPS_RAW_INT);
       mavlink_global_position_int_struct.time_boot_ms = TIME_BOOT_MS;
       chEvtBroadcastFlags(&event_mavlink_global_position_int, EVMSK_MAVLINK_GLOBAL_POSITION_INT);
