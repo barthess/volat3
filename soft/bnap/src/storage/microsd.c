@@ -42,6 +42,8 @@
 #define WRITE_TMO                       MS2ST(1100)
 //#define WRITE_TMO                       MS2ST(1)
 
+#define STORAGE_CC_SEND_DELAY           MS2ST(100)
+
 /*
  ******************************************************************************
  * EXTERNS
@@ -178,7 +180,8 @@ NOT_READY:
 static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
   uint32_t curr = mavlink_oblique_storage_request_cc_struct.first;
   uint32_t last = mavlink_oblique_storage_request_cc_struct.last;
-  uint32_t len  = 0;
+  uint16_t len;
+  void *data;
 
   if (curr > last)
     return;
@@ -190,16 +193,20 @@ static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
   while (curr < last){
     bnapStoragaAcquire(&Storage);
     bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
-    len = *(uint32_t *)(Storage.buf + RECORD_PAYLOAD_SIZE_OFFSET);
-//    cc_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET, len);
-    cc_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET, 70);
-    cc_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET + 70, 38);
-    bnapStoragaRelease(&Storage);
 
-    chThdSleepMilliseconds(200);
+    data = Storage.buf + RECORD_PAYLOAD_OFFSET + sizeof(len);
+    len = *(uint16_t *)(Storage.buf + RECORD_PAYLOAD_OFFSET);
+    while (len != 0){
+      cc_sdWrite(sdp, data, len);
+      data += len;
+      len = *(uint16_t *)data;
+      data += sizeof(len);
+    }
+
+    chThdSleepMilliseconds(STORAGE_CC_SEND_DELAY);
+    bnapStoragaRelease(&Storage);
     curr++;
   }
-  //chThdSleepMilliseconds(10000);
   release_cc_out();
 }
 
@@ -209,18 +216,27 @@ static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
 static void _oblique_storage_request_handler_dm(SerialDriver *sdp){
   uint32_t curr = mavlink_oblique_storage_request_dm_struct.first;
   uint32_t last = mavlink_oblique_storage_request_dm_struct.last;
-  uint32_t len  = 0;
+  uint16_t len  = 0;
+  void *data;
 
-  if ((curr > last) || (last > Storage.used))
+  if (curr > last)
     return;
+  if (last >= Storage.used)
+    last = Storage.used - 1;
 
   acquire_dm_out(); /* нагло занимаем канал передачи */
   while (curr < last){
     bnapStoragaAcquire(&Storage);
     bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
 
-    len = *(uint32_t *)(Storage.buf + RECORD_PAYLOAD_SIZE_OFFSET);
-    dm_sdWrite(sdp, Storage.buf + RECORD_PAYLOAD_OFFSET, len);
+    data = Storage.buf + RECORD_PAYLOAD_OFFSET + sizeof(len);
+    len = *(uint16_t *)(Storage.buf + RECORD_PAYLOAD_OFFSET);
+    while (len != 0){
+      dm_sdWrite(sdp, data, len);
+      data += len;
+      len = *(uint16_t *)data;
+      data += sizeof(len);
+    }
 
     bnapStoragaRelease(&Storage);
     curr++;

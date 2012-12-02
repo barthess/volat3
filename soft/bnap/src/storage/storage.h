@@ -6,8 +6,9 @@
  Блок содержит:
  - сигнатуру
  - метку времени (микросекунды с начала эпохи) для быстрого поиска в массиве
- - размер данных
- - данные подготовленные непосредственно к отправке (кодированный мавлинк)
+ - цепочка размер-данные. Размер uin16_t, данные подготовленные
+ непосредственно к отправке (кодированный мавлинк). Нулевой размер означает
+ что данных больше нет.
  - свободное пространство
  - контрольную сумму (crc32)
  */
@@ -20,10 +21,7 @@
 #define RECORD_TIMESTAMP_SIZE       sizeof(int64_t)
 #define RECORD_TIMESTAMP_OFFSET     (RECORD_SIGNATURE_OFFSET + RECORD_SIGNATURE_SIZE)
 
-#define RECORD_PAYLOAD_SIZE_SIZE    sizeof(uint32_t)
-#define RECORD_PAYLOAD_SIZE_OFFSET  (RECORD_TIMESTAMP_OFFSET + RECORD_TIMESTAMP_SIZE)
-
-#define RECORD_PAYLOAD_OFFSET       (RECORD_PAYLOAD_SIZE_OFFSET + RECORD_PAYLOAD_SIZE_SIZE)
+#define RECORD_PAYLOAD_OFFSET       (RECORD_TIMESTAMP_OFFSET + RECORD_TIMESTAMP_SIZE)
 
 #define RECORD_CRC_SIZE             sizeof(uint32_t)
 #define RECORD_CRC_OFFSET           (RECORD_SIZE - RECORD_CRC_SIZE)

@@ -48,7 +48,7 @@ extern GlobalFlags_t              GlobalFlags;
 /**
  *
  */
-static uint32_t _store_gps_raw_int(void *out, int64_t timestamp){
+static uint16_t _store_gps_raw_int(void *out, int64_t timestamp){
   mavlink_message_t mavlink_message_struct;
   uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];
   uint16_t len = 0;
@@ -58,14 +58,16 @@ static uint32_t _store_gps_raw_int(void *out, int64_t timestamp){
   mavlink_msg_gps_raw_int_encode(mavlink_system_struct.sysid, MAV_COMP_ID_BNAP, &mavlink_message_struct, (mavlink_gps_raw_int_t *)sendbuf);
 
   len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);
+  memcpy(out, &len, sizeof(len));
+  out += sizeof(len);
   memcpy(out, sendbuf, len);
-  return len;
+  return len + sizeof(len);
 }
 
 /**
  *
  */
-static uint32_t _store_mpiovd_sensors(void *out, int64_t timestamp){
+static uint16_t _store_mpiovd_sensors(void *out, int64_t timestamp){
   mavlink_message_t mavlink_message_struct;
   uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];
   uint16_t len = 0;
@@ -75,8 +77,10 @@ static uint32_t _store_mpiovd_sensors(void *out, int64_t timestamp){
   mavlink_msg_mpiovd_sensors_encode(mavlink_system_struct.sysid, MAV_COMP_ID_MPIOVD, &mavlink_message_struct, (mavlink_mpiovd_sensors_t *)sendbuf);
 
   len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);
+  memcpy(out, &len, sizeof(len));
+  out += sizeof(len);
   memcpy(out, sendbuf, len);
-  return len;
+  return len + sizeof(len);
 }
 
 /**
@@ -88,7 +92,6 @@ static bool_t _fill_buf(void *mmcbuf){
   int64_t timestamp;
   uint32_t sig = RECORD_SIGNATURE;
   uint32_t crc;
-  uint32_t len;
 
   void *dest = mmcbuf;
 
@@ -107,18 +110,12 @@ static bool_t _fill_buf(void *mmcbuf){
 
   dest = mmcbuf + RECORD_TIMESTAMP_OFFSET;
   memcpy(dest, &timestamp, RECORD_TIMESTAMP_SIZE);
-  /* должно получиться свободное место для сохранения размера данных,
-   * оно будет заполнено позже */
+  /* не забываем про свободное место для сохранения размера данных */
   dest = mmcbuf + RECORD_PAYLOAD_OFFSET;
 
   /* payload */
-  len = 0;
-  len += _store_mpiovd_sensors(dest + len, timestamp);
-  len += _store_gps_raw_int(dest + len, timestamp);
-
-  /* data size */
-  //len = dest - mmcbuf - RECORD_PAYLOAD_OFFSET;
-  memcpy(mmcbuf + RECORD_PAYLOAD_SIZE_OFFSET, &len, RECORD_PAYLOAD_SIZE_SIZE);
+  dest += _store_mpiovd_sensors(dest, timestamp);
+  dest += _store_gps_raw_int(dest, timestamp);
 
   /* checksum */
   crc = crc32(0, mmcbuf, RECORD_SIZE - RECORD_CRC_SIZE);
