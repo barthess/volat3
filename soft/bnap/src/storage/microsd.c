@@ -188,10 +188,9 @@ static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
   if (last >= Storage.used)
     last = Storage.used - 1;
 
-  acquire_cc_out(); /* нагло занимаем канал передачи */
-  chThdSleepMilliseconds(500); // ждем, пока буферизированные данные уйдут
   while (curr < last){
     bnapStoragaAcquire(&Storage);
+    acquire_cc_out(); /* нагло занимаем канал передачи */
     bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
 
     data = Storage.buf + RECORD_PAYLOAD_OFFSET + sizeof(len);
@@ -202,12 +201,12 @@ static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
       len = *(uint16_t *)data;
       data += sizeof(len);
     }
-
-    chThdSleepMilliseconds(STORAGE_CC_SEND_DELAY);
+    release_cc_out();
     bnapStoragaRelease(&Storage);
     curr++;
+
+    chThdSleepMilliseconds(STORAGE_CC_SEND_DELAY);
   }
-  release_cc_out();
 }
 
 /**
