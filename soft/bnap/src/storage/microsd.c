@@ -42,7 +42,7 @@
 #define WRITE_TMO                       MS2ST(1100)
 //#define WRITE_TMO                       MS2ST(1)
 
-#define STORAGE_CC_SEND_DELAY           MS2ST(100)
+#define STORAGE_CC_SEND_DELAY           MS2ST(150)
 
 /*
  ******************************************************************************
