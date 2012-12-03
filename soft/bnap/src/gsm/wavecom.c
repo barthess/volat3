@@ -473,34 +473,34 @@ static bool_t check_settings(void){
  *
  */
 bool_t _init_modem(SerialDriver *sdp){
-  if (GSM_FAILED == _wait_poweron(sdp))
+  if ((GSM_FAILED == _wait_poweron(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   _set_verbosity(sdp);
-  if(GSM_FAILED == _wait_sim(sdp))
+  if((GSM_FAILED == _wait_sim(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
-  if (GSM_FAILED == _wait_cgreg(sdp))
+  if ((GSM_FAILED == _wait_cgreg(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
-  if (GSM_FAILED == _update_rssi(sdp))
+  if ((GSM_FAILED == _update_rssi(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
-  if (GSM_FAILED == _start_wopen(sdp))
-    return GSM_FAILED;
-  chThdSleepMilliseconds(100);
-  if (GSM_FAILED == _start_wipcfg(sdp))
-    return GSM_FAILED;
-  chThdSleepMilliseconds(1000);
-  if (GSM_FAILED == _load_bearer(sdp))
+  if ((GSM_FAILED == _start_wopen(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(100);
-  if (GSM_FAILED == _set_apn(sdp))
+  if ((GSM_FAILED == _start_wipcfg(sdp)) || chThdShouldTerminate())
+    return GSM_FAILED;
+  chThdSleepMilliseconds(1000);
+  if ((GSM_FAILED == _load_bearer(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(100);
-  if (GSM_FAILED == _start_bearer(sdp))
+  if ((GSM_FAILED == _set_apn(sdp)) || chThdShouldTerminate())
+    return GSM_FAILED;
+  chThdSleepMilliseconds(100);
+  if ((GSM_FAILED == _start_bearer(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(1000);
-  if (GSM_FAILED == _create_connection(sdp))
+  if ((GSM_FAILED == _create_connection(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(1000);
-  if (GSM_FAILED == _start_connection(sdp))
+  if ((GSM_FAILED == _start_connection(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   return GSM_SUCCESS;
 }
@@ -511,9 +511,11 @@ bool_t _init_modem(SerialDriver *sdp){
 static WORKING_AREA(ModemThreadWA, 768);
 static msg_t ModemThread(void *sdp) {
   chRegSetThreadName("Modem");
+  uint32_t n;
 
   mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: initializing");
 
+  /* check correctness of settings stored in EEPROM */
   if (GSM_FAILED == check_settings()){
     mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: settings stored in EEPROM invalid");
     chThdSleepMilliseconds(5);
@@ -523,9 +525,20 @@ static msg_t ModemThread(void *sdp) {
 
   /* try to start modem */
   while (GSM_FAILED == _init_modem(sdp)){
+    if (chThdShouldTerminate())
+      return RDY_OK;
+
     mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** ERROR! Can not connect.");
     mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** Retry after 60 seconds.");
-    chThdSleepSeconds(60);
+
+    n = 60;
+    while (n--){
+      chThdSleepSeconds(1);
+      if (chThdShouldTerminate())
+        return RDY_OK;
+    }
+
+    /* try to stop connection */
     acquire_cc_out();
     chThdSleepMilliseconds(1500);
     chprintf((BaseSequentialStream *)sdp, "%s", "+++");
@@ -537,7 +550,7 @@ static msg_t ModemThread(void *sdp) {
   setGlobalFlag(GlobalFlags.modem_connected);
 
   while (!chThdShouldTerminate())
-    chThdSleepMilliseconds(100);
+    chThdSleepMilliseconds(1000);
 
   return RDY_OK;
 }
