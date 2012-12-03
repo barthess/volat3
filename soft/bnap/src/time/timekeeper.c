@@ -1,3 +1,18 @@
+/*
+Поскольку точное время жизненно важно для хранилища, то обращаться с ним
+следует следующим образом:
+
+- возьмем начальное время из RTC
+- проведем базовую проверку сравнив в временем компиляции и установим
+  time_good если проверка пройдена.
+- ждем, пока появится время GPS,
+- проведем коррекцию. Если время RTC в прошлом - то просто добавим разницу
+  к текущему значению, в противном случае сбросим флаг time_good, затормозим
+  счетчик до минимума и будем ждать, пока время GPS не догонит системное.
+  Если разница больше чем STORAGE_VOID_LIMIT - обнулим хранилище и настроим время одним рывком.
+
+*/
+
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,18 +37,23 @@
  * DEFINES
  ******************************************************************************
  */
-/* adjust RTC if time difference between RTC and GPS more than this threshold */
-#define MAX_TIME_DIFF         5 // sec
 
 /* wait of PSS interrupt timeout */
 #define PPS_TMO               MS2ST(2000)
 
-/* wait untile time be parsed by gps code. Must be less than second */
+/* wait until time be parsed by gps code. Must be less than second */
 #define GPS_TIME_TMO          MS2ST(900)
 
 /* Timestamp of project compilation. Usec since Unix epoch.
  * Used to one more check of time correctness. */
 #define BUILD_TIMESTAMP       ((int64_t)1352971162164000)
+
+/* string to (re)start virtual timer updating system time */
+#define start_timekeeper_vt() {chVTSetI(&timekeeper_vt, 1, &timekeeper_vt_cb, NULL);}
+
+/* if RTC time is in future more than this value (uS) than kill all
+ * data in storage and start from clear state */
+#define STORAGE_VOID_LIMIT    (30 * 60 * 1000000)
 
 /*
  ******************************************************************************
@@ -57,21 +77,16 @@ extern mavlink_gps_raw_int_t mavlink_gps_raw_int_struct;
  ******************************************************************************
  */
 
-/* Boot timestamp (microseconds since UNIX epoch). Inits in boot time. Latter
+/* Boot timestamp (microseconds since UNIX epoch). Inits at boot time. Later
  * uses to calculate current time using TIME_BOOT_MS. Periodically synced with
  * GPS to correct systick drift */
-static int64_t BootTimestamp = 0;
+static int64_t SysTimeUsec = 0;
 
-/* Можно вносить поправку прямо в метку времени, но точное время запуска
- * может понадобиться позднее, поэтому заведем отдельную переменную */
-static int64_t Correction = 0;
+/**/
+static VirtualTimer timekeeper_vt;
 
-/* количество переполнений системного таймера. Фактически для программного
- * расширения разрядности счетчика на 32 бита */
-static uint32_t WrapCount = 0;
-
-/* последнее значение счетчика для отлова момента переполнения */
-static uint32_t LastTimeBootMs = 0;
+/* microseconds between systicks */
+static const uint32_t TimeIncrement = 1000000 / CH_FREQUENCY;
 
 /*
  *******************************************************************************
@@ -80,6 +95,27 @@ static uint32_t LastTimeBootMs = 0;
  *******************************************************************************
  *******************************************************************************
  */
+/*
+ * Update system time every tick
+ */
+static void timekeeper_vt_cb(void *par){
+  (void)par;
+  chSysLockFromIsr();
+  SysTimeUsec += TimeIncrement;
+  start_timekeeper_vt();
+  chSysUnlockFromIsr();
+}
+
+static void timeshift(int32_t shift){
+  chSysLock();
+  SysTimeUsec += shift;
+  chSysUnlock();
+}
+
+static void timestep(int32_t step){
+  chSysLock();
+  chSysUnlock();
+}
 
 /**
  * Perform periodic corrections of time.
@@ -88,13 +124,11 @@ static WORKING_AREA(TimekeeperThreadWA, 192);
 static msg_t TimekeeperThread(void *arg){
   chRegSetThreadName("Timekeeper");
   (void)arg;
+  int64_t  gps_time = 0;
 
   struct EventListener el_gps_time_got;
   chEvtRegisterMask(&event_gps_time_got, &el_gps_time_got, EVMSK_GPS_TIME_GOT);
   eventmask_t evt = 0;
-
-  int64_t  gps_time = 0;
-  int64_t  bnap_time = 0;
 
   while (TRUE) {
     chBSemWait(&pps_sem);
@@ -102,12 +136,14 @@ static msg_t TimekeeperThread(void *arg){
 
     evt = chEvtWaitOneTimeout(EVMSK_GPS_TIME_GOT, GPS_TIME_TMO);
     if (evt == EVMSK_GPS_TIME_GOT){
-      bnap_time = fastGetTimeUnixUsec();
-
       gps_time = (int64_t)mktime(&gps_timp) * 1000000;
-      mavlink_gps_raw_int_struct.time_usec = gps_time;
-      Correction += gps_time - bnap_time;
 
+      if ((SysTimeUsec - gps_time) > STORAGE_VOID_LIMIT) {
+        setGlobalFlag(GlobalFlags.time_good);
+        Correction += gps_time - bnap_time;
+      }
+
+      mavlink_gps_raw_int_struct.time_usec = gps_time;
       mavlink_system_time_struct.time_boot_ms = TIME_BOOT_MS;
       mavlink_system_time_struct.time_unix_usec = fastGetTimeUnixUsec();
       chEvtBroadcastFlags(&event_mavlink_system_time, EVMSK_MAVLINK_SYSTEM_TIME);
@@ -128,16 +164,18 @@ static msg_t TimekeeperThread(void *arg){
 
 void TimekeeperInit(void){
 
-  BootTimestamp = ds1338GetTimeUnixUsec();
+  SysTimeUsec = ds1338GetTimeUnixUsec();
   if (BootTimestamp < BUILD_TIMESTAMP)
     clearGlobalFlag(GlobalFlags.time_good);
   else
     setGlobalFlag(GlobalFlags.time_good);
 
-  /* поскольку вычитывание метки можеть происходить не сразу же после запуска -
-   * внесем коррективы */
-  BootTimestamp -= (int64_t)TIME_BOOT_MS * 1000;
+  /* virtual timer for ticker */
+  chSysLock();
+  start_timekeeper_vt();
+  chSysUnlock();
 
+  /**/
   chThdCreateStatic(TimekeeperThreadWA,
           sizeof(TimekeeperThreadWA),
           TIMEKEEPER_THREAD_PRIO,
@@ -150,17 +188,7 @@ void TimekeeperInit(void){
  * of heavy time conversion (from hardware RTC) functions.
  */
 int64_t fastGetTimeUnixUsec(void){
-
-  chSysLock();
-  if (TIME_BOOT_MS < LastTimeBootMs)
-    WrapCount++;
-
-  LastTimeBootMs = TIME_BOOT_MS;
-  chSysUnlock();
-  return BootTimestamp
-         + (int64_t)(TIME_BOOT_MS) * 1000
-         + Correction
-         + 0x100000000ull * WrapCount;
+  return SysTimeUsec;
 }
 
 /**
