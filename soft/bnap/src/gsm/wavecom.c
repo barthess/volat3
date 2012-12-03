@@ -444,88 +444,108 @@ static bool_t _start_connection(SerialDriver *sdp){
 /**
  *
  */
-static WORKING_AREA(ModemThreadWA, 768);
-static msg_t ModemThread(void *sdp) {
-  chRegSetThreadName("Modem");
-
-  /* check settings */
-  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: initializing");
+static bool_t check_settings(void){
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PIN_SIZE, EEPROM_MODEM_PIN_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
-    goto SETTINGS_BAD;
+    return GSM_FAILED;
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_APN_SIZE, EEPROM_MODEM_APN_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
-    goto SETTINGS_BAD;
+    return GSM_FAILED;
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_USER_SIZE, EEPROM_MODEM_USER_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
-    goto SETTINGS_BAD;
+    return GSM_FAILED;
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PASS_SIZE, EEPROM_MODEM_PASS_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
-    goto SETTINGS_BAD;
+    return GSM_FAILED;
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_SERVER_SIZE, EEPROM_MODEM_SERVER_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
-    goto SETTINGS_BAD;
+    return GSM_FAILED;
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PORT_SIZE, EEPROM_MODEM_PORT_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
-    goto SETTINGS_BAD;
+    return GSM_FAILED;
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
-    goto SETTINGS_BAD;
-
-  /* try to start modem */
-  if (GSM_FAILED == _wait_poweron(sdp))
-    goto ERROR;
-  _set_verbosity(sdp);
-  if(GSM_FAILED == _wait_sim(sdp))
-    goto ERROR;
-  if (GSM_FAILED == _wait_cgreg(sdp))
-    goto ERROR;
-  if (GSM_FAILED == _update_rssi(sdp))
-    goto ERROR;
-  if (GSM_FAILED == _start_wopen(sdp))
-    goto ERROR;
-  chThdSleepMilliseconds(100);
-  if (GSM_FAILED == _start_wipcfg(sdp))
-    goto ERROR;
-  chThdSleepMilliseconds(1000);
-  if (GSM_FAILED == _load_bearer(sdp))
-    goto ERROR;
-  chThdSleepMilliseconds(100);
-  if (GSM_FAILED == _set_apn(sdp))
-    goto ERROR;
-  chThdSleepMilliseconds(100);
-  if (GSM_FAILED == _start_bearer(sdp))
-    goto ERROR;
-  chThdSleepMilliseconds(1000);
-  if (GSM_FAILED == _create_connection(sdp))
-    goto ERROR;
-  chThdSleepMilliseconds(1000);
-  if (GSM_FAILED == _start_connection(sdp))
-    goto ERROR;
-
-  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "*** SUCCESS! Connection established.\r\n");
-  chThdSleepMilliseconds(10);
-  setGlobalFlag(GlobalFlags.modem_connected);
-
-  while (!chThdShouldTerminate()) {
-    chThdSleepMilliseconds(100);
-  }
-
-ERROR:
-  mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** ERROR! Can not connect.");
-  return RDY_RESET;
-
-SETTINGS_BAD:
-  mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: settings stored in EEPROM invalid");
-  chThdSleepMilliseconds(5);
-  mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: start shell and fix them manually");
-  return RDY_RESET;
+    return GSM_FAILED;
+  return GSM_SUCCESS;
 }
 
 /**
  *
  */
-static WORKING_AREA(RssiThreadWA, 256);
+bool_t _init_modem(SerialDriver *sdp){
+  if (GSM_FAILED == _wait_poweron(sdp))
+    return GSM_FAILED;
+  _set_verbosity(sdp);
+  if(GSM_FAILED == _wait_sim(sdp))
+    return GSM_FAILED;
+  if (GSM_FAILED == _wait_cgreg(sdp))
+    return GSM_FAILED;
+  if (GSM_FAILED == _update_rssi(sdp))
+    return GSM_FAILED;
+  if (GSM_FAILED == _start_wopen(sdp))
+    return GSM_FAILED;
+  chThdSleepMilliseconds(100);
+  if (GSM_FAILED == _start_wipcfg(sdp))
+    return GSM_FAILED;
+  chThdSleepMilliseconds(1000);
+  if (GSM_FAILED == _load_bearer(sdp))
+    return GSM_FAILED;
+  chThdSleepMilliseconds(100);
+  if (GSM_FAILED == _set_apn(sdp))
+    return GSM_FAILED;
+  chThdSleepMilliseconds(100);
+  if (GSM_FAILED == _start_bearer(sdp))
+    return GSM_FAILED;
+  chThdSleepMilliseconds(1000);
+  if (GSM_FAILED == _create_connection(sdp))
+    return GSM_FAILED;
+  chThdSleepMilliseconds(1000);
+  if (GSM_FAILED == _start_connection(sdp))
+    return GSM_FAILED;
+  return GSM_SUCCESS;
+}
+
+/**
+ *
+ */
+static WORKING_AREA(ModemThreadWA, 768);
+static msg_t ModemThread(void *sdp) {
+  chRegSetThreadName("Modem");
+
+  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: initializing");
+
+  if (GSM_FAILED == check_settings()){
+    mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: settings stored in EEPROM invalid");
+    chThdSleepMilliseconds(5);
+    mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: start shell and fix them manually");
+    return RDY_RESET;
+  }
+
+  /* try to start modem */
+  while (GSM_FAILED == _init_modem(sdp)){
+    mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** ERROR! Can not connect.");
+    mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** Retry after 60 seconds.");
+    chThdSleepSeconds(60);
+    acquire_cc_out();
+    chThdSleepMilliseconds(1500);
+    chprintf((BaseSequentialStream *)sdp, "%s", "+++");
+    chThdSleepMilliseconds(1500);
+    release_cc_out();
+  }
+
+  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "*** SUCCESS! Connection established.\r\n");
+  setGlobalFlag(GlobalFlags.modem_connected);
+
+  while (!chThdShouldTerminate())
+    chThdSleepMilliseconds(100);
+
+  return RDY_OK;
+}
+
+/**
+ *
+ */
+static WORKING_AREA(RssiThreadWA, 128);
 static msg_t RssiThread(void *sdp) {
   chRegSetThreadName("Rssi");
   (void)sdp;

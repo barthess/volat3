@@ -42,7 +42,7 @@
 #define WRITE_TMO                       MS2ST(1100)
 //#define WRITE_TMO                       MS2ST(1)
 
-#define STORAGE_CC_SEND_DELAY           MS2ST(150)
+#define STORAGE_CC_SEND_DELAY           MS2ST(100)
 
 /*
  ******************************************************************************
@@ -190,22 +190,21 @@ static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
 
   while (curr < last){
     bnapStoragaAcquire(&Storage);
-    acquire_cc_out(); /* нагло занимаем канал передачи */
     bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
 
     data = Storage.buf + RECORD_PAYLOAD_OFFSET + sizeof(len);
     len = *(uint16_t *)(Storage.buf + RECORD_PAYLOAD_OFFSET);
     while (len != 0){
+      acquire_cc_out();
       cc_sdWrite(sdp, data, len);
+      release_cc_out();
+      chThdSleepMilliseconds(STORAGE_CC_SEND_DELAY);
       data += len;
       len = *(uint16_t *)data;
       data += sizeof(len);
     }
-    release_cc_out();
     bnapStoragaRelease(&Storage);
     curr++;
-
-    chThdSleepMilliseconds(STORAGE_CC_SEND_DELAY);
   }
 }
 
