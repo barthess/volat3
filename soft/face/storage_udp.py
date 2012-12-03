@@ -1,13 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-""" Assisted GPS sender """
+""" Acquire data from BNAP non volatile memory to CSV """
 
 import sys
 import os
 import time
 import socket
 import argparse
+import csv
 
 from utils import *
 import globalflags
@@ -61,17 +62,37 @@ def getcount():#{{{
     print "No answer"
     #}}}
 
-def getdata(s, f):
+def getdatafields(m):
+    f = []
+    _f = list(m.__dict__)
+    for i in _f:
+        if i[0] != "_":
+            f.append(i)
+    return f
+
+def store(d, names, csv):
+    lst = []
+    for i in names:
+        lst.append(d[i])
+    csv.writerow(lst)
+
+def getdata(s, f, csvgri, csvms):
+    grinames = getdatafields(mavlink.MAVLink_gps_raw_int_message(0,0,0,0,0,0,0,0,0,0))
+    msnames  = getdatafields(mavlink.MAVLink_mpiovd_sensors_message(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,))
+    csvgri.writerow(grinames)
+    csvms.writerow(msnames)
+
     mav.oblique_storage_request_send(20, 0, s, f)
     while s < f:
         try:
             m = master.recv_msg()
-            # print type(m)
             if type(m) == mavlink.MAVLink_gps_raw_int_message:
                 print "gps_raw_int   ", m.time_usec / 1000
+                store(m.__dict__, grinames, csvgri)
                 s += 0.5
             elif type(m) == mavlink.MAVLink_mpiovd_sensors_message:
                 print "mpiovd_sensors", m.time_usec / 1000
+                store(m.__dict__, msnames, csvms)
                 s += 0.5
         except socket.timeout:
             pass
@@ -87,6 +108,8 @@ print "Got it!"
 if (args.start is None) or (args.finish is None):
     print "available message count is", getcount()
 else:
-    getdata(args.start, args.finish)
+    csvwriter_ms = csv.writer(open('_mpiovd_sensors.csv', 'wb'), delimiter=';')
+    csvwriter_gri = csv.writer(open('_gps_raw_int.csv', 'wb'), delimiter=';')
+    getdata(args.start, args.finish, csvwriter_gri, csvwriter_ms)
 
 
