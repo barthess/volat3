@@ -1,18 +1,3 @@
-/*
-Поскольку точное время жизненно важно для хранилища, то обращаться с ним
-следует следующим образом:
-
-- возьмем начальное время из RTC
-- проведем базовую проверку сравнив в временем компиляции и установим
-  time_good если проверка пройдена.
-- ждем, пока появится время GPS,
-- проведем коррекцию. Если время RTC в прошлом - то просто добавим разницу
-  к текущему значению, в противном случае сбросим флаг time_good, затормозим
-  счетчик до минимума и будем ждать, пока время GPS не догонит системное.
-  Если разница больше чем STORAGE_VOID_LIMIT - обнулим хранилище и настроим время одним рывком.
-
-*/
-
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,6 +14,7 @@
 #include "ds1338.h"
 #include "timekeeper.h"
 #include "cli.h"
+#include "storage.h"
 
 #include "mavlink.h"
 
@@ -50,10 +36,6 @@
 
 /* string to (re)start virtual timer updating system time */
 #define start_timekeeper_vt() {chVTSetI(&timekeeper_vt, 1, &timekeeper_vt_cb, NULL);}
-
-/* if RTC time is in future more than this value (uS) than kill all
- * data in storage and start from clear state */
-#define STORAGE_VOID_LIMIT    (30 * 60 * 1000000)
 
 /*
  ******************************************************************************
@@ -81,6 +63,7 @@ extern mavlink_gps_raw_int_t mavlink_gps_raw_int_struct;
  * uses to calculate current time using TIME_BOOT_MS. Periodically synced with
  * GPS to correct systick drift */
 static int64_t SysTimeUsec = 0;
+static int64_t SysTimeShift = 0;
 
 /**/
 static VirtualTimer timekeeper_vt;
@@ -102,19 +85,10 @@ static void timekeeper_vt_cb(void *par){
   (void)par;
   chSysLockFromIsr();
   SysTimeUsec += TimeIncrement;
+  SysTimeUsec += SysTimeShift;
+  SysTimeShift = 0;
   start_timekeeper_vt();
   chSysUnlockFromIsr();
-}
-
-static void timeshift(int32_t shift){
-  chSysLock();
-  SysTimeUsec += shift;
-  chSysUnlock();
-}
-
-static void timestep(int32_t step){
-  chSysLock();
-  chSysUnlock();
 }
 
 /**
@@ -138,19 +112,26 @@ static msg_t TimekeeperThread(void *arg){
     if (evt == EVMSK_GPS_TIME_GOT){
       gps_time = (int64_t)mktime(&gps_timp) * 1000000;
 
-      if ((SysTimeUsec - gps_time) > STORAGE_VOID_LIMIT) {
-        setGlobalFlag(GlobalFlags.time_good);
-        Correction += gps_time - bnap_time;
-      }
+      chSysLock();
+      SysTimeShift = gps_time - SysTimeUsec;
+      chSysUnlock();
 
+      if (GlobalFlags.time_good != 1)
+        setGlobalFlag(GlobalFlags.time_good);
+      if (GlobalFlags.time_proved != 1)
+        setGlobalFlag(GlobalFlags.time_proved);
+
+      /**/
       mavlink_gps_raw_int_struct.time_usec = gps_time;
       mavlink_system_time_struct.time_boot_ms = TIME_BOOT_MS;
-      mavlink_system_time_struct.time_unix_usec = fastGetTimeUnixUsec();
+      if (GlobalFlags.time_proved == 1)
+        mavlink_system_time_struct.time_unix_usec = SysTimeUsec;
+      else
+        mavlink_system_time_struct.time_unix_usec = 0;
       chEvtBroadcastFlags(&event_mavlink_system_time, EVMSK_MAVLINK_SYSTEM_TIME);
 
       /* now correct time in RTC cell */
       ds1338_set_time(&gps_timp);
-      setGlobalFlag(GlobalFlags.time_good);
     }
   }
   return 0;
@@ -165,7 +146,7 @@ static msg_t TimekeeperThread(void *arg){
 void TimekeeperInit(void){
 
   SysTimeUsec = ds1338GetTimeUnixUsec();
-  if (BootTimestamp < BUILD_TIMESTAMP)
+  if (SysTimeUsec < BUILD_TIMESTAMP)
     clearGlobalFlag(GlobalFlags.time_good);
   else
     setGlobalFlag(GlobalFlags.time_good);

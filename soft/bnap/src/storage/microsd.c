@@ -49,6 +49,7 @@
  * EXTERNS
  ******************************************************************************
  */
+
 extern GlobalFlags_t GlobalFlags;
 extern EventSource event_mavlink_gps_raw_int;
 
@@ -95,8 +96,7 @@ static const SPIConfig ls_spicfg = {
 /* MMC/SD over SPI driver configuration.*/
 static const MMCConfig mmccfg = {&SPID1, &ls_spicfg, &hs_spicfg};
 
-/**/
-static BnapStorage Storage;
+static BnapStorage_t Storage;
 
 /*
  *******************************************************************************
@@ -165,12 +165,13 @@ NOT_READY:
       goto NOT_READY;
     }
     else{
-      (void)evt;
       bnapStoragaAcquire(&Storage);
       bnapStorageDoRecord(&Storage);
       bnapStoragaRelease(&Storage);
     }
   }
+
+  (void)evt;
   return 0;
 }
 

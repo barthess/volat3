@@ -17,7 +17,7 @@ typedef struct GlobalFlags_t{
   //0
   uint32_t allow_softreset:1;   /* system performs soft reset instead of halting in panic */
   uint32_t messaging_ready:1;   /* message subsystem initialized */
-  uint32_t time_good:1;         /* if 0 than time need adjusting by hands or using gps */
+  uint32_t stub1:1;
   uint32_t modem_connected:1;   /* */
   //4
   uint32_t logger_ready:1;      /* logger found end of circular buffer and ready to receive data */
@@ -31,8 +31,8 @@ typedef struct GlobalFlags_t{
   uint32_t i2c_ready:1;         /* i2c bus initialized */
   //12
   uint32_t storage_connected:1; /* MMC card connected and initialized */
-  uint32_t stub0:1;
-  uint32_t stub1:1;
+  uint32_t time_proved:1;       /* time is GPS proved */
+  uint32_t time_good:1;         /* time was successfully read from RTC and looks good (it may be not precise) */
   uint32_t stub3:1;
   //16
   uint32_t stub4:1;

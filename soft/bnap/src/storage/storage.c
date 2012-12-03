@@ -1,6 +1,3 @@
-/*
- Уровень абстракции над микросдшкой.
- */
 #include "ch.h"
 #include "hal.h"
 
@@ -18,6 +15,10 @@
  * DEFINES
  ******************************************************************************
  */
+
+/* if RTC time is in future more than this value (uS) than kill all
+ * data in storage and start from clear state */
+#define STORAGE_VOID_LIMIT_US    (30 * 60 * 1000000)
 
 /*
  ******************************************************************************
@@ -90,9 +91,8 @@ static uint16_t _store_mpiovd_sensors(void *out){
  * Fill buffer with data.
  * return operation status
  */
-static bool_t _fill_buf(void *mmcbuf){
+static void _fill_buf(void *mmcbuf, int64_t *timestamp){
 
-  int64_t timestamp;
   uint32_t sig = RECORD_SIGNATURE;
   uint32_t crc;
 
@@ -106,13 +106,8 @@ static bool_t _fill_buf(void *mmcbuf){
   memcpy(dest, &sig, RECORD_SIGNATURE_SIZE);
 
   /* timestamp */
-  if (GlobalFlags.time_good == 1)
-    timestamp = fastGetTimeUnixUsec();
-  else
-    return CH_FAILED;
-
   dest = mmcbuf + RECORD_TIMESTAMP_OFFSET;
-  memcpy(dest, &timestamp, RECORD_TIMESTAMP_SIZE);
+  memcpy(dest, timestamp, RECORD_TIMESTAMP_SIZE);
   /* не забываем про свободное место для сохранения размера данных */
   dest = mmcbuf + RECORD_PAYLOAD_OFFSET;
 
@@ -123,9 +118,6 @@ static bool_t _fill_buf(void *mmcbuf){
   /* checksum */
   crc = crc32(0, mmcbuf, RECORD_SIZE - RECORD_CRC_SIZE);
   memcpy(mmcbuf + RECORD_CRC_OFFSET, &crc, RECORD_CRC_SIZE);
-
-  /**/
-  return CH_SUCCESS;
 }
 
 /**
@@ -187,8 +179,6 @@ static void _search_knee(MMCDriver *mmcp, uint32_t *p0, uint32_t *p1, void *mmcb
   int64_t  t;   /* time of mid point */
   uint32_t p;   /* mid block number */
 
-  chDbgCheck(GlobalFlags.time_good == 1, "This function can not work without correct system time");
-
   t0 = _check_block(mmcp, *p0, mmcbuf);
   p  = *p0 + ((*p1 - *p0) / 2);
   t  = _check_block(mmcp, p, mmcbuf);
@@ -209,7 +199,7 @@ static void _search_knee(MMCDriver *mmcp, uint32_t *p0, uint32_t *p1, void *mmcb
  *
  * @param[in] recnum  number of record (the oldest one has #0)
   */
-uint32_t _rec2block(BnapStorage *bsp, uint32_t recnum){
+uint32_t _rec2block(BnapStorage_t *bsp, uint32_t recnum){
   chDbgCheck(bsp->used != 0, "handle empty storage separately");
   chDbgCheck(recnum < bsp->used, "handle overflow externally");
 
@@ -224,46 +214,68 @@ uint32_t _rec2block(BnapStorage *bsp, uint32_t recnum){
  * EXPORTED FUNCTIONS
  *******************************************************************************
  */
-void bnapStorageObjectInit(BnapStorage *bsp, MMCDriver *mmcp, void *mmcbuf){
+void bnapStorageObjectInit(BnapStorage_t *bsp, MMCDriver *mmcp, void *mmcbuf){
   bsp->mmcp = mmcp;
   mmcObjectInit(bsp->mmcp);
   chSemInit(&bsp->semaphore, 1);
   bsp->buf = mmcbuf;
 }
 
-void bnapStorageStart(BnapStorage *bsp, const MMCConfig *config){
+void bnapStorageStart(BnapStorage_t *bsp, const MMCConfig *config){
   mmcStart(bsp->mmcp, config);
 }
 
-bool_t bnapStorageConnect(BnapStorage *bsp){
+bool_t bnapStorageConnect(BnapStorage_t *bsp){
   return mmcConnect(bsp->mmcp);
 }
 
-bool_t bnapStorageDisconnect(BnapStorage *bsp){
+bool_t bnapStorageDisconnect(BnapStorage_t *bsp){
   return mmcDisconnect(bsp->mmcp);
 }
 
-void bnapStorageStop(BnapStorage *bsp){
+void bnapStorageStop(BnapStorage_t *bsp){
   mmcStop(bsp->mmcp);
 }
 
-void bnapStoragaAcquire(BnapStorage *bsp){
+void bnapStoragaAcquire(BnapStorage_t *bsp){
   chSemWait(&bsp->semaphore);
 }
 
-void bnapStoragaRelease(BnapStorage *bsp){
+void bnapStoragaRelease(BnapStorage_t *bsp){
   chSemSignal(&bsp->semaphore);
 }
 
-/**
- *
- */
-bool_t bnapStorageDoRecord(BnapStorage *bsp){
+/*
+Поскольку точное время жизненно важно для хранилища, то обращаться с ним
+следует следующим образом:
+
+- проведем базовую проверку сравнив в временем компиляции и установим
+  time_good если проверка пройдена.
+- ждем, пока появится время GPS,
+- проведем коррекцию. Если время RTC в прошлом - то просто добавим разницу
+  к текущему значению, в противном случае сбросим флаг time_good, затормозим
+  счетчик до минимума и будем ждать, пока время GPS не догонит системное.
+  Если разница больше чем STORAGE_VOID_LIMIT_US - обнулим хранилище.
+*/
+bool_t bnapStorageDoRecord(BnapStorage_t *bsp){
   bool_t status;
+  int64_t timestamp = -1;
 
-  status = _fill_buf(bsp->buf);
-  chDbgCheck(status == CH_SUCCESS, "filling buffer failed");
+  /* there is no sense to do something without normal time */
+  if (GlobalFlags.time_good != 1)
+    return CH_FAILED;
 
+  if (GlobalFlags.time_proved == 1){
+    timestamp = fastGetTimeUnixUsec();
+    if (bsp->mtime > timestamp){
+      if (bsp->mtime > (timestamp + STORAGE_VOID_LIMIT_US)){
+        bnapStorageVoid(bsp); /* time too far in future */
+      }
+      return CH_FAILED; /* wait until mtime be older than current system time */
+    }
+  }
+
+  _fill_buf(bsp->buf, &timestamp);
   status = bsp->mmcp->vmt->write(bsp->mmcp, bsp->tip, bsp->buf, 1);
   chDbgCheck(status == CH_SUCCESS, "write failed");
 
@@ -275,13 +287,14 @@ bool_t bnapStorageDoRecord(BnapStorage *bsp){
   if (bsp->used >= bsp->mmcp->capacity)
     bsp->used = bsp->mmcp->capacity; /* clamp value */
 
-  return status;
+  bsp->mtime = timestamp;
+  return CH_SUCCESS;
 }
 
 /**
  *
  */
-bool_t bnapStorageGetRecord(BnapStorage *bsp, uint32_t rec){
+bool_t bnapStorageGetRecord(BnapStorage_t *bsp, uint32_t rec){
   bool_t status;
 
   status = bsp->mmcp->vmt->read(bsp->mmcp, _rec2block(bsp, rec), bsp->buf, 1);
@@ -293,7 +306,7 @@ bool_t bnapStorageGetRecord(BnapStorage *bsp, uint32_t rec){
 /**
  * Search number of first block suitable for writing.
  */
-void bnapStorageMount(BnapStorage *bsp){
+void bnapStorageMount(BnapStorage_t *bsp){
   int64_t t0;
   int64_t t1;
   uint32_t p0 = 0;
@@ -305,10 +318,14 @@ void bnapStorageMount(BnapStorage *bsp){
   t0 = _check_block(bsp->mmcp, p0, bsp->buf);
   t1 = _check_block(bsp->mmcp, p1, bsp->buf);
 
-  if (t0 > t1)
+  if (t0 > t1){
     bsp->tip = p1;
-  else
+    bsp->mtime = t0;
+  }
+  else{
     bsp->tip = p0;
+    bsp->mtime = t1;
+  }
 
   if (t1 == -1)
     bsp->used = bsp->tip; /* only blocks before tip used */
@@ -316,3 +333,10 @@ void bnapStorageMount(BnapStorage *bsp){
     bsp->used = bsp->mmcp->capacity; /* whole card used */
 }
 
+/**
+ *
+ */
+void bnapStorageVoid(BnapStorage_t *bsp){
+  (void)bsp;
+  chDbgPanic("write me!");
+}
