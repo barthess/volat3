@@ -84,7 +84,7 @@ static uint32_t LastTimeBootMs = 0;
 /**
  * Perform periodic corrections of time.
  */
-static WORKING_AREA(TimekeeperThreadWA, 128);
+static WORKING_AREA(TimekeeperThreadWA, 192);
 static msg_t TimekeeperThread(void *arg){
   chRegSetThreadName("Timekeeper");
   (void)arg;

@@ -50,7 +50,7 @@ static uint32_t last_idle_ticks = 0;
 /**
  *
  */
-static WORKING_AREA(HeartbeatThreadWA, 32);
+static WORKING_AREA(HeartbeatThreadWA, 48);
 static msg_t HeartbeatThread(void *arg) {
   chRegSetThreadName("Heartbeat");
   (void)arg;
@@ -76,7 +76,7 @@ static msg_t HeartbeatThread(void *arg) {
 /**
  *
  */
-static WORKING_AREA(SysStatusThreadWA, 32);
+static WORKING_AREA(SysStatusThreadWA, 48);
 static msg_t SysStatusThread(void *arg) {
   chRegSetThreadName("SysStatus");
   (void)arg;

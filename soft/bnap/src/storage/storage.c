@@ -48,13 +48,13 @@ extern GlobalFlags_t              GlobalFlags;
 /**
  *
  */
-static uint16_t _store_gps_raw_int(void *out, int64_t timestamp){
+static uint16_t _store_gps_raw_int(void *out){
   mavlink_message_t mavlink_message_struct;
   uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];
   uint16_t len = 0;
 
   memcpy_ts(sendbuf, &mavlink_gps_raw_int_struct, sizeof(mavlink_gps_raw_int_struct), 4);
-  ((mavlink_gps_raw_int_t *)sendbuf)->time_usec = timestamp;
+//  ((mavlink_gps_raw_int_t *)sendbuf)->time_usec = timestamp;
   mavlink_msg_gps_raw_int_encode(mavlink_system_struct.sysid, MAV_COMP_ID_BNAP, &mavlink_message_struct, (mavlink_gps_raw_int_t *)sendbuf);
 
   len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);
@@ -67,13 +67,13 @@ static uint16_t _store_gps_raw_int(void *out, int64_t timestamp){
 /**
  *
  */
-static uint16_t _store_mpiovd_sensors(void *out, int64_t timestamp){
+static uint16_t _store_mpiovd_sensors(void *out){
   mavlink_message_t mavlink_message_struct;
   uint8_t sendbuf[MAVLINK_MAX_PACKET_LEN];
   uint16_t len = 0;
 
   memcpy_ts(sendbuf, &mavlink_mpiovd_sensors_struct, sizeof(mavlink_mpiovd_sensors_struct), 4);
-  ((mavlink_mpiovd_sensors_t *)sendbuf)->time_usec = timestamp;
+//  ((mavlink_mpiovd_sensors_t *)sendbuf)->time_usec = timestamp;
   mavlink_msg_mpiovd_sensors_encode(mavlink_system_struct.sysid, MAV_COMP_ID_MPIOVD, &mavlink_message_struct, (mavlink_mpiovd_sensors_t *)sendbuf);
 
   len = mavlink_msg_to_send_buffer(sendbuf, &mavlink_message_struct);
@@ -114,8 +114,8 @@ static bool_t _fill_buf(void *mmcbuf){
   dest = mmcbuf + RECORD_PAYLOAD_OFFSET;
 
   /* payload */
-  dest += _store_mpiovd_sensors(dest, timestamp);
-  dest += _store_gps_raw_int(dest, timestamp);
+  dest += _store_mpiovd_sensors(dest);
+  dest += _store_gps_raw_int(dest);
 
   /* checksum */
   crc = crc32(0, mmcbuf, RECORD_SIZE - RECORD_CRC_SIZE);
