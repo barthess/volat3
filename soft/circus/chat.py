@@ -8,10 +8,6 @@ import os
 import time
 import socket
 
-from utils import *
-import globalflags
-flags = globalflags.flags
-
 # allow import from the parent directory, where mavlink.py and its stuff are
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
 import mavlinkv10 as mavlink
@@ -34,6 +30,5 @@ while m is None:
 
 print "Got it!"
 while True:
-    mav.mpiovd_agps_send(20, 0, "")
-    print "Assistant sent"
-    time.sleep(2)
+    data = sys.stdin.readline()
+    mav.statustext_send(0, data)

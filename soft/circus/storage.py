@@ -10,10 +10,6 @@ import socket
 import argparse
 import csv
 
-from utils import *
-import globalflags
-flags = globalflags.flags
-
 # allow import from the parent directory, where mavlink.py and its stuff are
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), '../mavlink/python'))
 import mavlinkv10 as mavlink
@@ -96,6 +92,7 @@ def getdata(s, f, csvgri, csvms):
                 s += 0.5
         except socket.timeout:
             pass
+    print "-----------------------------------------"
     print "done"
 
 
