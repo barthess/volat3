@@ -34,18 +34,22 @@ extern BinarySemaphore pps_sem;
 /**
  *
  */
-static void gps_pps_cb(EXTDriver *extp, expchannel_t channel){
+static void pps_cb(EXTDriver *extp, expchannel_t channel){
   (void)extp;
   (void)channel;
-  chBSemSignalI(&pps_sem);
+  //chBSemSignalI(&pps_sem);
+  if (palReadPad(IOPORT2, PIOB_PPS) == 1)
+    gps_led_on();
+  else
+    gps_led_off();
 }
 
-static void btn1_cb(EXTDriver *extp, expchannel_t channel){
-  (void)extp;
-  (void)channel;
-  if (palReadPad(IOPORT2, 19) == 0)
-    gps_led_toggle();
-}
+//static void btn1_cb(EXTDriver *extp, expchannel_t channel){
+//  (void)extp;
+//  (void)channel;
+//  if (palReadPad(IOPORT2, PIOB_BTN1) == 0)
+//    gps_led_toggle();
+//}
 
 /**
  *
@@ -63,7 +67,7 @@ static const EXTConfig extcfg_b = {
         {0, NULL},
         {0, NULL},
         {0, NULL},
-        {0, NULL},
+        {1, pps_cb},
         {0, NULL},
         {0, NULL},
         {0, NULL},
@@ -71,7 +75,7 @@ static const EXTConfig extcfg_b = {
         {0, NULL},
         {0, NULL},
         {0, NULL},
-        {1, btn1_cb},
+        {0, NULL},//{1, btn1_cb},
         {0, NULL},
         {0, NULL},
         {0, NULL},
@@ -97,7 +101,7 @@ static const EXTConfig extcfg_b = {
 
 void ExtiLocalInit(void){
   extStart(&EXTDB, &extcfg_b);
-  extChannelEnable(&EXTDB, 19);
+  extChannelEnable(&EXTDB, PIOB_PPS);
 }
 
 /**

@@ -57,10 +57,10 @@ static msg_t UiThread(void *arg) {
 
     /* buttons */
     last = cur;
-    cur = palReadPad(IOPORT2, 19);
+    cur = palReadPad(IOPORT2, PIOB_BTN1);
     if (cur != last){
       if (cur == 0){
-        while (palReadPad(IOPORT2, 19) == 0){
+        while (palReadPad(IOPORT2, PIOB_BTN1) == 0){
           mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' pressed");
           chThdSleepMilliseconds(4);
         }

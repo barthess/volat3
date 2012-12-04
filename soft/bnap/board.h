@@ -102,10 +102,15 @@
 
 /*** PORT B ***/
 // GSM - USART1 (continue)
+#define PIOB_PPS                    11
+#define PIOB_PPS_MASK               (1 << PIOB_PPS)
 #define PIOB_LED_GSM                3
 #define PIOB_LED_GSM_MASK           (1 << PIOB_LED_GSM)
 #define PIOB_LED_GPS                13
 #define PIOB_LED_GPS_MASK           (1 << PIOB_LED_GPS)
+
+#define PIOB_BTN1                   19
+#define PIOB_BTN1_MASK              (1 << PIOB_BTN1)
 
 #define PIOB_GSM_RTS                24
 #define PIOB_GSM_RTS_MASK           (1 << PIOB_GSM_RTS)

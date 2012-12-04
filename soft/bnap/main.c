@@ -1,5 +1,6 @@
 /* обязательно */
 // TODO: настройка периода моргания сигнальных светодиодов
+// TODO: ui. GPS thread listening events from EXTI
 // TODO: rename first mpiovd analog output to Voltage. Add volatage to current sys_status
 // TODO: hack way to set time from CLI
 // TODO: надо обрабатывать убегание времени RTC вперед, потому что при коррекции временем, захваченным со спутников полчится точка перегиба в хранилище
@@ -114,45 +115,42 @@ int main(void) {
   halInit();
   chSysInit();
 
-//  chHeapInit(&ThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), THREAD_HEAP_SIZE);
-//
-//  gsm_release_reset();
-//  gps_led_off();
-//  gsm_led_off();
-//
-//  chBSemInit(&pps_sem, TRUE);
-//  chBSemInit(&cc_out_sem, FALSE);
-//  chBSemInit(&dm_out_sem, FALSE);
-//
-//  sdStart(&SDGSM, &gsm_ser_cfg);
-//  sdStart(&SDDM, &dm_ser_cfg);
-//  setGlobalFlag(GlobalFlags.dm_port_ready);
-//  sdStart(&SDMPIOVD, &mpiovd_ser_cfg);
-//  setGlobalFlag(GlobalFlags.mpiovd_port_ready);
+  chHeapInit(&ThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), THREAD_HEAP_SIZE);
 
-//  i2cLocalInit();//0xFFFB8000
-//  //EepromTestThread(&SDDM);
-//  MsgInit();        /* init event sources */
-//  ParametersInit(); /* need events for proper functionality */
-//  MavInit();        /* set device IDs previusly red from from EEPROM byt param init*/
-//  GPSInit();
-//  LinkInit();
-//  ds1338Init();
-//  TimekeeperInit();
-//  MicrosdInit();
-//  SanityControlInit();
-//  ModemSettingsInit();
-//  ModemInit();
-////  ModemCrossInit();
-//  MavCmdInitLocal();
-//  UiInit();
+  gsm_release_reset();
+  gps_led_off();
+  gsm_led_off();
+
+  chBSemInit(&pps_sem, TRUE);
+  chBSemInit(&cc_out_sem, FALSE);
+  chBSemInit(&dm_out_sem, FALSE);
+
+  sdStart(&SDGSM, &gsm_ser_cfg);
+  sdStart(&SDDM, &dm_ser_cfg);
+  setGlobalFlag(GlobalFlags.dm_port_ready);
+  sdStart(&SDMPIOVD, &mpiovd_ser_cfg);
+  setGlobalFlag(GlobalFlags.mpiovd_port_ready);
+
+  i2cLocalInit();//0xFFFB8000
+  //EepromTestThread(&SDDM);
+  MsgInit();        /* init event sources */
+  ParametersInit(); /* need events for proper functionality */
+  MavInit();        /* set device IDs previusly red from from EEPROM byt param init*/
+  GPSInit();
+  LinkInit();
+  ds1338Init();
+  TimekeeperInit();
+  MicrosdInit();
+  SanityControlInit();
+  ModemSettingsInit();
+  ModemInit();
+//  ModemCrossInit();
+  MavCmdInitLocal();
+  UiInit();
 
   ExtiLocalInit();
   while (TRUE) {
     chThdSleepMilliseconds(1000);
-    gsm_led_on();
-    chThdSleepMilliseconds(200);
-    gsm_led_off();
   }
   return 0;
 }

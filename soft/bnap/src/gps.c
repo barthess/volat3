@@ -373,9 +373,9 @@ static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
   timp->tm_year = 10 * (bufd[4] - '0') + (bufd[5] - '0') + 2000 - 1900;
 
   chEvtBroadcastFlags(&event_gps_time_got, EVMSK_GPS_TIME_GOT);
-  gps_led_on();
-  chThdSleepMilliseconds(50);
-  gps_led_off();
+//  gps_led_on();
+//  chThdSleepMilliseconds(50);
+//  gps_led_off();
 }
 
 /**
