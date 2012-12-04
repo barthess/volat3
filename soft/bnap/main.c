@@ -149,6 +149,8 @@ int main(void) {
   UiInit();
 
   ExtiLocalInit();
+  ExtiEnablePps();
+
   while (TRUE) {
     chThdSleepMilliseconds(1000);
   }

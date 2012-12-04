@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "bnap_ui.h"
+#include "timekeeper.h"
 
 /*
  ******************************************************************************
@@ -15,7 +16,6 @@
  * EXTERNS
  ******************************************************************************
  */
-extern BinarySemaphore pps_sem;
 
 /*
  ******************************************************************************
@@ -30,19 +30,6 @@ extern BinarySemaphore pps_sem;
  *******************************************************************************
  *******************************************************************************
  */
-
-/**
- *
- */
-static void pps_cb(EXTDriver *extp, expchannel_t channel){
-  (void)extp;
-  (void)channel;
-  //chBSemSignalI(&pps_sem);
-  if (palReadPad(IOPORT2, PIOB_PPS) == 1)
-    gps_led_on();
-  else
-    gps_led_off();
-}
 
 //static void btn1_cb(EXTDriver *extp, expchannel_t channel){
 //  (void)extp;
@@ -67,7 +54,7 @@ static const EXTConfig extcfg_b = {
         {0, NULL},
         {0, NULL},
         {0, NULL},
-        {1, pps_cb},
+        {1, exti_pps_cb},
         {0, NULL},
         {0, NULL},
         {0, NULL},
@@ -90,7 +77,7 @@ static const EXTConfig extcfg_b = {
         {0, NULL},//31
     },
     SAM7_EXT_MODE_RISING_EDGE,
-    SAM7_EXT_PRIOR_HIGHEST - 2
+    SAM7_EXT_PRIOR_HIGHEST
 };
 
 /*
@@ -101,12 +88,11 @@ static const EXTConfig extcfg_b = {
 
 void ExtiLocalInit(void){
   extStart(&EXTDB, &extcfg_b);
-  extChannelEnable(&EXTDB, PIOB_PPS);
 }
 
 /**
  * Enables interrupts from PPS from GPS receiver
  */
-//void ExtiEnablePps(void){
-//  extChannelEnable(&EXTDA, 0);
-//}
+void ExtiEnablePps(void){
+  extChannelEnable(&EXTDB, PIOB_PPS);
+}

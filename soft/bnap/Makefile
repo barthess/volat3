@@ -5,7 +5,7 @@
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O0 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -fno-exceptions -std=gnu99
+  USE_OPT = -O0 -ggdb -fomit-frame-pointer -mabi=apcs-gnu -std=gnu99
 endif
 
 # C specific options here (added to USE_OPT).
@@ -189,7 +189,8 @@ BIN  = $(CP) -O binary
 AOPT =
 
 # THUMB-specific options here
-TOPT = -mthumb -DTHUMB
+#TOPT = -mthumb -DTHUMB
+#TOPT = -marm
 
 # Define C warning options here
 CWARN = -Wall -Wextra -Wstrict-prototypes

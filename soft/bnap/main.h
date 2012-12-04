@@ -77,6 +77,7 @@ typedef struct GlobalFlags_t{
 #define MPIOVD_THREAD_PRIO        (NORMALPRIO - 5)
 #define DM_THREAD_PRIO            (NORMALPRIO - 2)
 #define CC_THREAD_PRIO            (NORMALPRIO + 0)
+#define UITREAD_PRIO              (NORMALPRIO - 5)
 
 /******************************************************************
 * статусы возвращаемые разными подсистемами */

@@ -60,7 +60,6 @@ including, the "$" and "*".
 extern GlobalFlags_t GlobalFlags;
 extern RawData raw_data;
 extern struct tm gps_timp;
-extern BinarySemaphore pps_sem;
 
 extern mavlink_gps_raw_int_t mavlink_gps_raw_int_struct;
 extern mavlink_global_position_int_t mavlink_global_position_int_struct;
@@ -359,11 +358,6 @@ int tm_yday      days since January 1st [0-365]
 int tm_isdst     daylight savings indicator (1 = yes, 0 = no, -1 = unknown)
  */
 static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
-
-  /* TODO: this semaphore must be signalled from EXTI driver */
-  chBSemSignal(&pps_sem);
-  chThdSleepMilliseconds(1);
-
   timp->tm_hour = 10 * (buft[0] - '0') + (buft[1] - '0');
   timp->tm_min  = 10 * (buft[2] - '0') + (buft[3] - '0');
   timp->tm_sec  = 10 * (buft[4] - '0') + (buft[5] - '0');
@@ -373,9 +367,6 @@ static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
   timp->tm_year = 10 * (bufd[4] - '0') + (bufd[5] - '0') + 2000 - 1900;
 
   chEvtBroadcastFlags(&event_gps_time_got, EVMSK_GPS_TIME_GOT);
-//  gps_led_on();
-//  chThdSleepMilliseconds(50);
-//  gps_led_off();
 }
 
 /**

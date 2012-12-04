@@ -24,6 +24,7 @@
  ******************************************************************************
  */
 extern EventSource event_mavlink_heartbeat_cc;
+extern EventSource event_gps_time_got;
 
 /*
  ******************************************************************************
@@ -75,7 +76,7 @@ static msg_t UiThread(void *arg) {
 /**
  *
  */
-static WORKING_AREA(GsmLedThreadWA, 64);
+static WORKING_AREA(GsmLedThreadWA, 56);
 static msg_t GsmLedThread(void *arg) {
   chRegSetThreadName("GsmLed");
   (void)arg;
@@ -86,11 +87,32 @@ static msg_t GsmLedThread(void *arg) {
   while (!chThdShouldTerminate()) {
     chEvtWaitOne(EVMSK_MAVLINK_HEARTBEAT_CC);
     gsm_led_on();
-    chThdSleepMilliseconds(200);
+    chThdSleepMilliseconds(500);
     gsm_led_off();
   }
   return 0;
 }
+
+/**
+ *
+ */
+static WORKING_AREA(GpsLedThreadWA, 56);
+static msg_t GpsLedThread(void *arg) {
+  chRegSetThreadName("GpsLed");
+  (void)arg;
+
+  struct EventListener el_gps_time_got;
+  chEvtRegisterMask(&event_gps_time_got, &el_gps_time_got, EVMSK_GPS_TIME_GOT);
+
+  while (!chThdShouldTerminate()) {
+    chEvtWaitOne(EVMSK_GPS_TIME_GOT);
+    gsm_led_on();
+    chThdSleepMilliseconds(50);
+    gsm_led_off();
+  }
+  return 0;
+}
+
 /*
  ******************************************************************************
  * EXPORTED FUNCTIONS
@@ -100,13 +122,18 @@ static msg_t GsmLedThread(void *arg) {
 void UiInit(void){
   chThdCreateStatic(UiThreadWA,
           sizeof(UiThreadWA),
-          NORMALPRIO - 5,
+          UITREAD_PRIO,
           UiThread,
           NULL);
   chThdCreateStatic(GsmLedThreadWA,
           sizeof(GsmLedThreadWA),
-          NORMALPRIO - 5,
+          UITREAD_PRIO,
           GsmLedThread,
+          NULL);
+  chThdCreateStatic(GpsLedThreadWA,
+          sizeof(GpsLedThreadWA),
+          UITREAD_PRIO,
+          GpsLedThread,
           NULL);
 }
 
