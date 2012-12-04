@@ -1,7 +1,9 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-typedef unsigned char uint8_t;  /* for eclipse indexer */
+typedef unsigned char uint8_t;    /* eclipse indexer workaround */
+typedef unsigned short uint16_t;  /* eclipse indexer workaround */
+typedef unsigned long uint32_t;  /* eclipse indexer workaround */
 
 /*******************************************************************/
 #define GSM_BAUDRATE        115200
