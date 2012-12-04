@@ -1,5 +1,5 @@
 /* обязательно */
-// TODO: rename first mpiovd analog output to Voltage.
+// TODO: rename first mpiovd analog output to Voltage. Add volatage to current sys_status
 // TODO: hack way to set time from CLI
 // TODO: надо обрабатывать убегание времени RTC вперед, потому что при коррекции временем, захваченным со спутников полчится точка перегиба в хранилище
 // TODO: passing PIN to modem during initialization.
