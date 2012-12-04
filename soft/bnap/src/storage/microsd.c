@@ -50,6 +50,7 @@
  ******************************************************************************
  */
 
+extern MMCDriver MMCD1;
 extern BnapStorage_t Storage;
 
 extern GlobalFlags_t GlobalFlags;
@@ -73,11 +74,6 @@ extern mavlink_oblique_storage_request_t  mavlink_oblique_storage_request_dm_str
 
 /* working buffer */
 static uint8_t mmcbuf[STORAGE_BUFF_SIZE];
-
-/**
- * MMC driver instance.
- */
-static MMCDriver MMCD1;
 
 /* Maximum speed SPI configuration (__MHz, NCPHA=1, CPOL=0).*/
 static const SPIConfig hs_spicfg = {

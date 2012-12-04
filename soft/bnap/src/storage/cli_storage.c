@@ -20,6 +20,7 @@
  * EXTERNS
  ******************************************************************************
  */
+extern MMCDriver MMCD1;
 extern BnapStorage_t Storage;
 extern MemoryHeap ThdHeap;
 
@@ -115,14 +116,19 @@ Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
 
   /* one argument */
   else if (argc == 1){
-    if (0 == strcmp("void", argv[0]))
+    if (!mmcIsCardInserted(&MMCD1)){
+      cli_println("ERROR: card not inserted");
+      chThdSleepMilliseconds(100);
+      return NULL;
+    }
+    if (0 == strcmp("void", argv[0])){
       storage_cli_void(&Storage, sdp);
+      return NULL;
+    }
     else if (0 == strcmp("wipe", argv[0]))
       return storage_cli_wipe(&Storage, sdp);
-    else if (0 == strcmp("stat", argv[0]))
+    else if (0 == strcmp("stat", argv[0])){
       storage_cli_stat(&Storage, sdp);
-    else{
-      cli_storage_print_help();
       return NULL;
     }
   }
@@ -130,14 +136,3 @@ Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
   cli_storage_print_help();
   return NULL;
 }
-
-
-
-
-
-
-
-
-
-
-

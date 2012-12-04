@@ -1,4 +1,5 @@
 /* обязательно */
+// TODO: test flashing via cross and decide is it need HW flow control
 // TODO: hack way to set time from CLI
 // TODO: надо обрабатывать убегание времени RTC вперед, потому что при коррекции временем, захваченным со спутников полчится точка перегиба в хранилище
 
@@ -81,6 +82,7 @@ MemoryHeap ThdHeap;
 static uint8_t link_thd_buf[THREAD_HEAP_SIZE + sizeof(stkalign_t)];
 
 /* bnap non volatile storage handler object */
+MMCDriver MMCD1;
 BnapStorage_t Storage;
 
 /*
@@ -148,7 +150,6 @@ int main(void) {
   SanityControlInit();
   ModemSettingsInit();
   ModemInit();
-  ModemCrossInit();
   MavCmdInitLocal();
   UiInit();
 
