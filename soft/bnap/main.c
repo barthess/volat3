@@ -1,6 +1,7 @@
 /* обязательно */
 // TODO: hack way to set time from CLI
 // TODO: надо обрабатывать убегание времени RTC вперед, потому что при коррекции временем, захваченным со спутников полчится точка перегиба в хранилище
+
 // TODO: настройка периода моргания сигнальных светодиодов
 // TODO: rename first mpiovd analog output to Voltage. Add volatage to current sys_status
 // TODO: passing PIN to modem during initialization.
@@ -47,6 +48,7 @@
 #include "eeprom_testsuit.h"
 #include "settings_modem.h"
 #include "microsd.h"
+#include "storage.h"
 
 /*
  ******************************************************************************
@@ -77,6 +79,9 @@ GlobalFlags_t GlobalFlags = {0,0,0,0,0,0,0,0,
 /* heap for some threads */
 MemoryHeap ThdHeap;
 static uint8_t link_thd_buf[THREAD_HEAP_SIZE + sizeof(stkalign_t)];
+
+/* bnap non volatile storage handler object */
+BnapStorage_t Storage;
 
 /*
  ******************************************************************************

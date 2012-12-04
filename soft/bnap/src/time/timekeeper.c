@@ -204,6 +204,24 @@ systime_t GetTimeInterval(systime_t *last){
 }
 
 /**
+ *
+ */
+void exti_pps_cb(EXTDriver *extp, expchannel_t channel){
+  (void)extp;
+  (void)channel;
+
+  if (palReadPad(IOPORT2, PIOB_PPS) == 1){
+    PpsTimeStamp = SysTimeUsec;
+    //gps_led_on();
+    chBSemSignalI(&pps_sem);
+  }
+  else{
+    //gps_led_off();
+    ;
+  }
+}
+
+/**
  * Command to handle RTC.
  */
 Thread* date_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
@@ -225,20 +243,3 @@ Thread* date_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
   return NULL; /* stub */
 }
 
-/**
- *
- */
-void exti_pps_cb(EXTDriver *extp, expchannel_t channel){
-  (void)extp;
-  (void)channel;
-
-  if (palReadPad(IOPORT2, PIOB_PPS) == 1){
-    PpsTimeStamp = SysTimeUsec;
-    //gps_led_on();
-    chBSemSignalI(&pps_sem);
-  }
-  else{
-    //gps_led_off();
-    ;
-  }
-}

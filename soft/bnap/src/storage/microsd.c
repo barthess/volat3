@@ -50,6 +50,8 @@
  ******************************************************************************
  */
 
+extern BnapStorage_t Storage;
+
 extern GlobalFlags_t GlobalFlags;
 extern EventSource event_mavlink_gps_raw_int;
 
@@ -96,8 +98,6 @@ static const SPIConfig ls_spicfg = {
 /* MMC/SD over SPI driver configuration.*/
 static const MMCConfig mmccfg = {&SPID1, &ls_spicfg, &hs_spicfg};
 
-static BnapStorage_t Storage;
-
 /*
  *******************************************************************************
  *******************************************************************************
@@ -116,9 +116,9 @@ static void _insert_handler(void) {
   /* On insertion SDC initialization and FS mount. */
   if (CH_SUCCESS == bnapStorageConnect(&Storage)){
     setGlobalFlag(GlobalFlags.storage_connected);
-    bnapStoragaAcquire(&Storage);
+    bnapStorageAcquire(&Storage);
     bnapStorageMount(&Storage);
-    bnapStoragaRelease(&Storage);
+    bnapStorageRelease(&Storage);
     setGlobalFlag(GlobalFlags.logger_ready);
   }
 }
@@ -165,9 +165,9 @@ NOT_READY:
       goto NOT_READY;
     }
     else{
-      bnapStoragaAcquire(&Storage);
+      bnapStorageAcquire(&Storage);
       bnapStorageDoRecord(&Storage);
-      bnapStoragaRelease(&Storage);
+      bnapStorageRelease(&Storage);
     }
   }
 
@@ -190,7 +190,7 @@ static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
     last = Storage.used - 1;
 
   while (curr < last){
-    bnapStoragaAcquire(&Storage);
+    bnapStorageAcquire(&Storage);
     bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
 
     data = Storage.buf + RECORD_PAYLOAD_OFFSET + sizeof(len);
@@ -204,7 +204,7 @@ static void _oblique_storage_request_handler_cc(SerialDriver *sdp){
       len = *(uint16_t *)data;
       data += sizeof(len);
     }
-    bnapStoragaRelease(&Storage);
+    bnapStorageRelease(&Storage);
     curr++;
   }
 }
@@ -225,7 +225,7 @@ static void _oblique_storage_request_handler_dm(SerialDriver *sdp){
 
   acquire_dm_out(); /* нагло занимаем канал передачи */
   while (curr < last){
-    bnapStoragaAcquire(&Storage);
+    bnapStorageAcquire(&Storage);
     bnapStorageGetRecord(&Storage, curr); /* сохраняем блок в буфере Storage */
 
     data = Storage.buf + RECORD_PAYLOAD_OFFSET + sizeof(len);
@@ -237,7 +237,7 @@ static void _oblique_storage_request_handler_dm(SerialDriver *sdp){
       data += sizeof(len);
     }
 
-    bnapStoragaRelease(&Storage);
+    bnapStorageRelease(&Storage);
     curr++;
   }
   release_dm_out();
@@ -269,9 +269,9 @@ static msg_t MmcReaderCcThread(void *sdp){
     else{
       switch (evt){
       case(EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_COUNT_CC):
-        bnapStoragaAcquire(&Storage);
+        bnapStorageAcquire(&Storage);
         mavlink_oblique_storage_count_struct.count = Storage.used;
-        bnapStoragaRelease(&Storage);
+        bnapStorageRelease(&Storage);
         chEvtBroadcastFlags(&event_mavlink_oblique_storage_count, EVMSK_MAVLINK_OBLIQUE_STORAGE_COUNT);
         break;
 
@@ -318,9 +318,9 @@ static msg_t MmcReaderDmThread(void *sdp){
     else{
       switch (evt){
       case(EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_COUNT_DM):
-        bnapStoragaAcquire(&Storage);
+        bnapStorageAcquire(&Storage);
         mavlink_oblique_storage_count_struct.count = Storage.used;
-        bnapStoragaRelease(&Storage);
+        bnapStorageRelease(&Storage);
         chEvtBroadcastFlags(&event_mavlink_oblique_storage_count, EVMSK_MAVLINK_OBLIQUE_STORAGE_COUNT);
         break;
 

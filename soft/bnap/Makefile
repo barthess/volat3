@@ -87,6 +87,7 @@ CSRC = $(PORTSRC) \
        src/storage/storage.c \
        src/storage/crc32.c \
        src/storage/microsd.c \
+       src/storage/cli_storage.c \
        src/gcc_stubs.c \
        src/gps.c \
        src/bnap_ui.c \

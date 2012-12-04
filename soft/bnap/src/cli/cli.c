@@ -12,6 +12,7 @@
 #include "cli.h"
 #include "cli_cmd.h"
 #include "cli_modem.h"
+#include "cli_storage.h"
 #include "param.h"
 #include "param_cli.h"
 #include "timekeeper.h"
@@ -59,6 +60,7 @@ static const ShellCmd_t chibiutils[] = {
     {"modem",     &modem_clicmd,      "tune GSM modem parameters stored in BNAP eeprom"},
     {"param",     &param_clicmd,      "manage onboard system paramters"},
     {"selftest",  &selftest_clicmd,   "exectute selftests (stub)"},
+    {"storage",   &storage_clicmd,    "works with non volatile storage"},
     {"uname",     &uname_clicmd,      "'info' alias"},
     #if USE_EEPROM_TEST_SUIT
     {"eepromtest",&eepromtest_clicmd, "run EEPROM testsuit. Uses lots of RAM"},

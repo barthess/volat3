@@ -68,8 +68,9 @@ void bnapStorageStart(BnapStorage_t *bsp, const MMCConfig *config);
 bool_t bnapStorageConnect(BnapStorage_t *bsp);
 bool_t bnapStorageDisconnect(BnapStorage_t *bsp);
 void bnapStorageStop(BnapStorage_t *bsp);
-void bnapStoragaAcquire(BnapStorage_t *bsp);
-void bnapStoragaRelease(BnapStorage_t *bsp);
+void bnapStorageAcquire(BnapStorage_t *bsp);
+void bnapStorageRelease(BnapStorage_t *bsp);
 void bnapStorageVoid(BnapStorage_t *bsp);
+void bnapStorageWipe(BnapStorage_t *bsp, SerialDriver *sdp);
 
 #endif /* STORAGE_H_ */

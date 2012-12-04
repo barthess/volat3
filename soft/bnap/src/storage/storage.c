@@ -1,5 +1,6 @@
 #include "ch.h"
 #include "hal.h"
+#include "chprintf.h"
 
 #include "main.h"
 #include "message.h"
@@ -237,11 +238,11 @@ void bnapStorageStop(BnapStorage_t *bsp){
   mmcStop(bsp->mmcp);
 }
 
-void bnapStoragaAcquire(BnapStorage_t *bsp){
+void bnapStorageAcquire(BnapStorage_t *bsp){
   chSemWait(&bsp->semaphore);
 }
 
-void bnapStoragaRelease(BnapStorage_t *bsp){
+void bnapStorageRelease(BnapStorage_t *bsp){
   chSemSignal(&bsp->semaphore);
 }
 
@@ -334,9 +335,46 @@ void bnapStorageMount(BnapStorage_t *bsp){
 }
 
 /**
- *
+ * Null some first block of device. It is fast but not very safe.
+ * As a safety solution use bnapStorageWipe().
  */
 void bnapStorageVoid(BnapStorage_t *bsp){
-  (void)bsp;
-  chDbgPanic("write me!");
+  uint32_t n = 0;
+
+  bnapStorageAcquire(bsp);
+  memset(bsp->buf, 0, STORAGE_BUFF_SIZE);
+  while (n < 32){
+    bsp->mmcp->vmt->write(bsp->mmcp, n, bsp->buf, 1);
+    n++;
+  }
+  bsp->tip = 0;
+  bnapStorageRelease(bsp);
 }
+
+/**
+ * Wipe all data in storage using data in MCU flash as pattern to speedup
+ * process
+ * @param[in] bsp   pointer to storage device
+ * @param[in] sdp   pointer to serial driver used for CLI output. Set to
+ *                  NULL if unused
+ */
+void bnapStorageWipe(BnapStorage_t *bsp, SerialDriver *sdp){
+  const uint32_t flash_size = 262144;
+  const uint32_t blockatonce = flash_size / 512;
+  void *data = (void *)0x100000;
+  uint32_t n = 0;
+
+  chDbgCheck(bsp != NULL, "");
+
+  bnapStorageAcquire(bsp);
+  while ((n < bsp->mmcp->capacity) && (!chThdShouldTerminate())){
+    bsp->mmcp->vmt->write(bsp->mmcp, n, data, blockatonce);
+    n += blockatonce;
+    if (sdp != NULL)
+      chprintf((BaseSequentialStream *)sdp, "%U/%U\r\n", n, bsp->mmcp->capacity);
+  }
+  bsp->tip = 0;
+  bnapStorageRelease(bsp);
+}
+
+
