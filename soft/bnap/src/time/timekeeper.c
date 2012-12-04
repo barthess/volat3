@@ -25,7 +25,7 @@
  ******************************************************************************
  */
 
-#define INTERRUPT_LATENCY_US  19  // 18.8uS for -O0, CH_DBG_ENABLE_CHECKS TRUE
+//#define INTERRUPT_LATENCY_US  19  // 18.8uS for -O0, CH_DBG_ENABLE_CHECKS TRUE
 //#define INTERRUPT_LATENCY_US  16  // 16.0uS for -O0, CH_DBG_ENABLE_CHECKS FALSE
 //#define INTERRUPT_LATENCY_US  11  // 11.2uS for -O1, CH_DBG_ENABLE_CHECKS TRUE
 //#define INTERRUPT_LATENCY_US  9   // 8.8uS  for -O1, CH_DBG_ENABLE_CHECKS FALSE
@@ -84,6 +84,7 @@ static VirtualTimer timekeeper_vt;
  *******************************************************************************
  *******************************************************************************
  */
+
 /*
  * Update system time every tick
  */
@@ -120,13 +121,15 @@ static msg_t TimekeeperThread(void *arg){
       gps_time *= mktime(&gps_timp);
 
       chSysLock();
-      SysTimeShift = gps_time - PpsTimeStamp - INTERRUPT_LATENCY_US;
+      SysTimeShift = gps_time - PpsTimeStamp;
       chSysUnlock();
 
-      if (GlobalFlags.time_good != 1)
+      if (GlobalFlags.time_good != 1){
         setGlobalFlag(GlobalFlags.time_good);
-      if (GlobalFlags.time_proved != 1)
+      }
+      if (GlobalFlags.time_proved != 1){
         setGlobalFlag(GlobalFlags.time_proved);
+      }
 
       /**/
       mavlink_gps_raw_int_struct.time_usec = gps_time;

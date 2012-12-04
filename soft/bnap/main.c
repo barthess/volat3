@@ -1,9 +1,8 @@
 /* обязательно */
-// TODO: настройка периода моргания сигнальных светодиодов
-// TODO: ui. GPS thread listening events from EXTI
-// TODO: rename first mpiovd analog output to Voltage. Add volatage to current sys_status
 // TODO: hack way to set time from CLI
 // TODO: надо обрабатывать убегание времени RTC вперед, потому что при коррекции временем, захваченным со спутников полчится точка перегиба в хранилище
+// TODO: настройка периода моргания сигнальных светодиодов
+// TODO: rename first mpiovd analog output to Voltage. Add volatage to current sys_status
 // TODO: passing PIN to modem during initialization.
 
 /* хорошо бы, при наличии времени */
@@ -144,7 +143,7 @@ int main(void) {
   SanityControlInit();
   ModemSettingsInit();
   ModemInit();
-//  ModemCrossInit();
+  ModemCrossInit();
   MavCmdInitLocal();
   UiInit();
 

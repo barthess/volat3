@@ -30,7 +30,7 @@ extern mavlink_system_t           mavlink_system_struct;
 extern mavlink_gps_raw_int_t      mavlink_gps_raw_int_struct;
 extern mavlink_mpiovd_sensors_t   mavlink_mpiovd_sensors_struct;
 
-extern GlobalFlags_t              GlobalFlags;
+extern const GlobalFlags_t        GlobalFlags;
 
 /*
  ******************************************************************************
