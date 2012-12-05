@@ -22,9 +22,8 @@
 #include "message.h"
 #include "storage.h"
 
-#include "link_cc.h"
+#include "link.h"
 #include "link_cc_packer.h"
-#include "link_dm.h"
 #include "link_dm_packer.h"
 
 /*
@@ -49,6 +48,7 @@
  * EXTERNS
  ******************************************************************************
  */
+extern Thread *microsd_writer_tp;
 
 extern MMCDriver MMCD1;
 extern BnapStorage_t Storage;
@@ -167,6 +167,8 @@ NOT_READY:
     }
   }
 
+  chEvtUnregister(&event_mavlink_gps_raw_int, &el_gps_raw_int);
+  chThdExit(0);
   (void)evt;
   return 0;
 }
@@ -354,21 +356,24 @@ void MicrosdInit(void){
   palSetPadMode(IOPORT1, PIOA_SPI0_NSS, PAL_MODE_OUTPUT_PUSHPULL);
   palSetPad(IOPORT1, PIOA_SPI0_NSS);
 
-  chThdCreateStatic(MmcWriterThreadWA,
-          sizeof(MmcWriterThreadWA),
-          MMC_THREAD_PRIO,
-          MmcWriterThread,
-          NULL);
+  microsd_writer_tp = chThdCreateStatic(
+      MmcWriterThreadWA,
+      sizeof(MmcWriterThreadWA),
+      MMC_THREAD_PRIO,
+      MmcWriterThread,
+      NULL);
+  if (microsd_writer_tp == NULL)
+    chDbgPanic("Can not allocate memory");
 
   chThdCreateStatic(MmcReaderCcThreadWA,
-          sizeof(MmcReaderCcThreadWA),
-          MMC_THREAD_PRIO,
-          MmcReaderCcThread,
-          &SDGSM);
+      sizeof(MmcReaderCcThreadWA),
+      MMC_THREAD_PRIO,
+      MmcReaderCcThread,
+      &SDGSM);
 
   chThdCreateStatic(MmcReaderDmThreadWA,
-          sizeof(MmcReaderDmThreadWA),
-          MMC_THREAD_PRIO,
-          MmcReaderDmThread,
-          &SDDM);
+      sizeof(MmcReaderDmThreadWA),
+      MMC_THREAD_PRIO,
+      MmcReaderDmThread,
+      &SDDM);
 }

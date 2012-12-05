@@ -1,9 +1,9 @@
 /* обязательно */
-// TODO: test flashing via cross and decide is it need HW flow control
+// TODO: all access to serial ports must be mutual
 // TODO: hack way to set time from CLI
 // TODO: надо обрабатывать убегание времени RTC вперед, потому что при коррекции временем, захваченным со спутников полчится точка перегиба в хранилище
 
-// TODO: настройка периода моргания сигнальных светодиодов
+// TODO: настройка периода моргания сигнальных светодиодов через параметры
 // TODO: rename first mpiovd analog output to Voltage. Add volatage to current sys_status
 // TODO: passing PIN to modem during initialization.
 
@@ -57,6 +57,16 @@
  ******************************************************************************
  */
 
+/* threads' handlers */
+Thread *link_cc_unpacker_tp     = NULL;
+Thread *link_cc_packer_tp       = NULL;
+Thread *link_dm_unpacker_tp     = NULL;
+Thread *link_dm_packer_tp       = NULL;
+Thread *link_mpiovd_unpacker_tp = NULL;
+Thread *modem_tp                = NULL;
+Thread *microsd_writer_tp       = NULL;
+Thread *gps_tp                  = NULL;
+
 RawData raw_data;
 
 CompensatedData comp_data;
@@ -66,7 +76,9 @@ BinarySemaphore pps_sem;
 
 /* Semaphores for mutual access to GSM and DM output */
 BinarySemaphore cc_out_sem;
+BinarySemaphore cc_in_sem;
 BinarySemaphore dm_out_sem;
+BinarySemaphore dm_in_sem;
 
 /* store here time from GPS */
 struct tm gps_timp;
@@ -81,7 +93,7 @@ GlobalFlags_t GlobalFlags = {0,0,0,0,0,0,0,0,
 MemoryHeap ThdHeap;
 static uint8_t link_thd_buf[THREAD_HEAP_SIZE + sizeof(stkalign_t)];
 
-/* bnap non volatile storage handler object */
+/* bnap non volatile storage objects */
 MMCDriver MMCD1;
 BnapStorage_t Storage;
 
@@ -129,7 +141,9 @@ int main(void) {
 
   chBSemInit(&pps_sem, TRUE);
   chBSemInit(&cc_out_sem, FALSE);
+  chBSemInit(&cc_in_sem, FALSE);
   chBSemInit(&dm_out_sem, FALSE);
+  chBSemInit(&dm_in_sem, FALSE);
 
   sdStart(&SDGSM, &gsm_ser_cfg);
   sdStart(&SDDM, &dm_ser_cfg);

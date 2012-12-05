@@ -19,7 +19,8 @@
  ******************************************************************************
  */
 extern GlobalFlags_t GlobalFlags;
-extern BinarySemaphore cc_out_sem;
+extern Thread *link_cc_unpacker_tp;
+extern Thread *link_cc_packer_tp;
 
 /*
  ******************************************************************************
@@ -75,17 +76,23 @@ static msg_t CcPackerThread(void *sdp){
  */
 void link_cc_up(SerialDriver *sdp){
 
-  chThdCreateStatic(CcUnpackerThreadWA,
-          sizeof(CcUnpackerThreadWA),
-          CC_THREAD_PRIO,
-          CcUnpackerThread,
-          sdp);
+  link_cc_packer_tp =  chThdCreateStatic(
+      CcPackerThreadWA,
+      sizeof(CcPackerThreadWA),
+      CC_THREAD_PRIO,
+      CcPackerThread,
+      sdp);
+  if (link_cc_packer_tp == NULL)
+    chDbgPanic("Can not allocate memory");
 
-  chThdCreateStatic(CcPackerThreadWA,
-          sizeof(CcPackerThreadWA),
-          CC_THREAD_PRIO,
-          CcPackerThread,
-          sdp);
+  link_cc_unpacker_tp = chThdCreateStatic(
+      CcUnpackerThreadWA,
+      sizeof(CcUnpackerThreadWA),
+      CC_THREAD_PRIO,
+      CcUnpackerThread,
+      sdp);
+  if (link_cc_unpacker_tp == NULL)
+      chDbgPanic("Can not allocate memory");
 }
 
 /**
@@ -98,10 +105,3 @@ bool_t cc_port_ready(void){
     return FALSE;
 }
 
-void acquire_cc_out(void){
-  chBSemWait(&cc_out_sem);
-}
-
-void release_cc_out(void){
-  chBSemSignal(&cc_out_sem);
-}

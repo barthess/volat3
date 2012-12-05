@@ -18,6 +18,7 @@
  ******************************************************************************
  */
 extern GlobalFlags_t GlobalFlags;
+extern Thread *link_mpiovd_unpacker_tp;
 
 /*
  ******************************************************************************
@@ -58,11 +59,14 @@ static msg_t MpiovdUnpackerThread(void *sdp){
  */
 void link_mpiovd_up(SerialDriver *sdp){
 
-  chThdCreateStatic(MpiovdUnpackerThreadWA,
-          sizeof(MpiovdUnpackerThreadWA),
-          MPIOVD_THREAD_PRIO,
-          MpiovdUnpackerThread,
-          sdp);
+  link_mpiovd_unpacker_tp = chThdCreateStatic(
+      MpiovdUnpackerThreadWA,
+      sizeof(MpiovdUnpackerThreadWA),
+      MPIOVD_THREAD_PRIO,
+      MpiovdUnpackerThread,
+      sdp);
+  if (link_mpiovd_unpacker_tp == NULL)
+      chDbgPanic("Can not allocate memory");
 }
 
 /**

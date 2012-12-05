@@ -20,15 +20,14 @@
  */
 extern GlobalFlags_t GlobalFlags;
 extern MemoryHeap ThdHeap;
-extern BinarySemaphore dm_out_sem;
+extern Thread *link_dm_unpacker_tp;
+extern Thread *link_dm_packer_tp;
 
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
  ******************************************************************************
  */
-static Thread *unpacker_tp;
-static Thread *packer_tp;
 
 /*
  *******************************************************************************
@@ -78,20 +77,22 @@ static msg_t DmPackerThread(void *sdp){
  */
 void spawn_dm_threads(SerialDriver *sdp){
 
-  packer_tp = chThdCreateFromHeap(&ThdHeap,
-          sizeof(DmPackerThreadWA),
-          DM_THREAD_PRIO,
-          DmPackerThread,
-          sdp);
-  if (packer_tp == NULL)
+  link_dm_packer_tp = chThdCreateFromHeap(
+      &ThdHeap,
+      sizeof(DmPackerThreadWA),
+      DM_THREAD_PRIO,
+      DmPackerThread,
+      sdp);
+  if (link_dm_packer_tp == NULL)
     chDbgPanic("Can not allocate memory");
 
-  unpacker_tp = chThdCreateFromHeap(&ThdHeap,
-          sizeof(DmUnpackerThreadWA),
-          DM_THREAD_PRIO,
-          DmUnpackerThread,
-          sdp);
-  if (unpacker_tp == NULL)
+  link_dm_unpacker_tp = chThdCreateFromHeap(
+      &ThdHeap,
+      sizeof(DmUnpackerThreadWA),
+      DM_THREAD_PRIO,
+      DmUnpackerThread,
+      sdp);
+  if (link_dm_unpacker_tp == NULL)
     chDbgPanic("Can not allocate memory");
 }
 
@@ -99,11 +100,11 @@ void spawn_dm_threads(SerialDriver *sdp){
  *
  */
 void kill_dm_threads(void){
-  chThdTerminate(packer_tp);
-  chThdTerminate(unpacker_tp);
+  chThdTerminate(link_dm_packer_tp);
+  chThdTerminate(link_dm_unpacker_tp);
 
-  chThdWait(packer_tp);
-  chThdWait(unpacker_tp);
+  chThdWait(link_dm_packer_tp);
+  chThdWait(link_dm_unpacker_tp);
 }
 
 /**
@@ -116,10 +117,4 @@ bool_t dm_port_ready(void){
     return FALSE;
 }
 
-void acquire_dm_out(void){
-  chBSemWait(&dm_out_sem);
-}
 
-void release_dm_out(void){
-  chBSemSignal(&dm_out_sem);
-}

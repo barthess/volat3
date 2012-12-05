@@ -11,6 +11,7 @@
 #include "wavecom.h"
 #include "cross.h"
 #include "link_cc.h"
+#include "link.h"
 #include "mavlink_dbg.h"
 #include "settings_modem.h"
 
@@ -44,6 +45,7 @@
 extern GlobalFlags_t GlobalFlags;
 extern EepromFileStream ModemSettingsFile;
 extern mavlink_oblique_rssi_t mavlink_oblique_rssi_struct;
+extern Thread *modem_tp;
 
 /*
  ******************************************************************************
@@ -550,7 +552,7 @@ static msg_t ModemThread(void *sdp) {
   setGlobalFlag(GlobalFlags.modem_connected);
 
   while (!chThdShouldTerminate())
-    chThdSleepMilliseconds(1000);
+    chThdSleepMilliseconds(100);
 
   return RDY_OK;
 }
@@ -582,11 +584,14 @@ static msg_t RssiThread(void *sdp) {
  * Note! All modem initialization will be done in background thread.
  */
 void ModemInit(void){
-  chThdCreateStatic(ModemThreadWA,
-          sizeof(ModemThreadWA),
-          NORMALPRIO,
-          ModemThread,
-          &SDGSM);
+  modem_tp = chThdCreateStatic(
+      ModemThreadWA,
+      sizeof(ModemThreadWA),
+      NORMALPRIO,
+      ModemThread,
+      &SDGSM);
+  if (modem_tp == NULL)
+    chDbgPanic("Can not allocate memory");
 
   chThdCreateStatic(RssiThreadWA,
           sizeof(RssiThreadWA),

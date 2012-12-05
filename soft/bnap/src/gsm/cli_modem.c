@@ -4,6 +4,7 @@
 
 #include "ch.h"
 #include "hal.h"
+#include "chprintf.h"
 #include "mavlink.h"
 
 #include "main.h"
@@ -13,6 +14,8 @@
 #include "eeprom.h"
 #include "eeprom_conf.h"
 #include "settings_modem.h"
+#include "cross.h"
+#include "link.h"
 
 /*
  ******************************************************************************
@@ -26,6 +29,15 @@
  ******************************************************************************
  */
 extern EepromFileStream ModemSettingsFile;
+
+extern Thread *link_cc_unpacker_tp;
+extern Thread *link_cc_packer_tp;
+//extern Thread *link_dm_unpacker_tp;
+//extern Thread *link_dm_packer_tp;
+extern Thread *link_mpiovd_unpacker_tp;
+extern Thread *microsd_writer_tp;
+extern Thread *modem_tp;
+extern Thread *gps_tp;
 
 /*
  ******************************************************************************
@@ -108,7 +120,9 @@ static bool_t __set(const char * val, EepromFileStream *f, size_t size, size_t o
 /**
  *
  */
-static bool_t modem_cli_set_param(const char * const * argv, EepromFileStream *f){
+static bool_t modem_cli_set_param(const char * const * argv, EepromFileStream *f, SerialDriver *sdp){
+  (void)sdp;
+
   if (0 == strcmp(argv[0], "pin"))
     return __set(argv[1], f, EEPROM_MODEM_PIN_SIZE, EEPROM_MODEM_PIN_OFFSET);
 
@@ -182,7 +196,70 @@ static bool_t cli_modem_print_all(EepromFileStream *f){
 /**
  *
  */
-static bool_t cli_modem_do(const char * const * argv, EepromFileStream *f){
+void _cli_modem_terminate_thd(Thread *tp, SerialDriver *sdp){
+  if (tp != NULL){
+    chprintf((BaseSequentialStream *)sdp, "Trying to terminate %s... ", tp->p_name);
+    if (tp->p_state != THD_STATE_FINAL){
+      chThdSleepMilliseconds(50);
+      chThdTerminate(tp);
+      chThdWait(tp);
+      cli_println("done.");
+    }
+    else{
+      cli_println("nothing to do.");
+    }
+    chThdSleepMilliseconds(50);
+  }
+}
+
+/**
+ *
+ */
+static bool_t cli_modem_start_cross(SerialDriver *sdp){
+
+  cli_println("WARNING!");
+  cli_println("There is no software way to disable cross and return to shell.");
+  cli_println("You must hard reboot device after the work done.");
+  cli_println("Notes:");
+  cli_println("  to stop ongoing internet connection (if any) use '+++' combo");
+  cli_println("  to enable echo print 'ATE1'");
+  cli_println("");
+  chThdSleepMilliseconds(50);
+
+  /* stop all threads using needed ports */
+  _cli_modem_terminate_thd(modem_tp, sdp);
+  _cli_modem_terminate_thd(link_cc_packer_tp, sdp);
+  _cli_modem_terminate_thd(link_cc_unpacker_tp, sdp);
+  /* NOTE! After starting shell the DM threads allready killed and joined to Shell thread */
+  //  _cli_modem_terminate_thd(link_dm_packer_tp, sdp);
+  //  _cli_modem_terminate_thd(link_dm_unpacker_tp, sdp);
+
+  /* stop other heavy weight threads */
+  _cli_modem_terminate_thd(link_mpiovd_unpacker_tp, sdp);
+  _cli_modem_terminate_thd(microsd_writer_tp, sdp);
+  _cli_modem_terminate_thd(gps_tp, sdp);
+
+  /* gain mutual exclusion on ports */
+  cli_print("acquiring mutual access to serial drivers... ");
+  acquire_cc_out();
+  acquire_cc_in();
+  acquire_dm_out();
+  acquire_dm_in();
+  cli_println("done");
+
+  /* fire up cross */
+  ModemCrossInit();
+
+  /* program will never return to shell now */
+  chThdExit(0);
+
+  return CH_SUCCESS;
+}
+
+/**
+ *
+ */
+static bool_t cli_modem_do(const char * const * argv, EepromFileStream *f, SerialDriver *sdp){
 
   if (0 == strcmp(argv[0], "erase"))
     return modem_cli_do_erase(f);
@@ -191,7 +268,7 @@ static bool_t cli_modem_do(const char * const * argv, EepromFileStream *f){
     return cli_modem_print_all(f);
 
   else if (0 == strcmp(argv[0], "cross"))
-    return CH_FAILED;
+    return cli_modem_start_cross(sdp);
 
   else if (0 == strcmp(argv[0], "down"))
     return CH_FAILED;
@@ -222,11 +299,11 @@ Thread* modem_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
 
   /* one argument */
   else if (argc == 1)
-    status = cli_modem_do(argv, &ModemSettingsFile);
+    status = cli_modem_do(argv, &ModemSettingsFile, sdp);
 
   /* two arguments */
   else if (argc == 2)
-    status = modem_cli_set_param(argv, &ModemSettingsFile);
+    status = modem_cli_set_param(argv, &ModemSettingsFile, sdp);
 
   /*  */
   else

@@ -48,6 +48,11 @@ const uint32_t *to_dm_heartbeat_bnap_sendperiod;
 const uint32_t *to_dm_oblique_rssi_sendperiod;
 const uint32_t *to_dm_oblique_storage_count_sendperiod;
 
+extern BinarySemaphore cc_out_sem;
+extern BinarySemaphore cc_in_sem;
+extern BinarySemaphore dm_out_sem;
+extern BinarySemaphore dm_in_sem;
+
 /*
  ******************************************************************************
  * GLOBAL VARIABLES
@@ -135,4 +140,29 @@ bool_t traffic_limiter(systime_t *last, const systime_t *period){
 
 
 
+void acquire_cc_out(void){
+  chBSemWait(&cc_out_sem);
+}
+void release_cc_out(void){
+  chBSemSignal(&cc_out_sem);
+}
+void acquire_cc_in(void){
+  chBSemWait(&cc_in_sem);
+}
+void release_cc_in(void){
+  chBSemSignal(&cc_in_sem);
+}
+
+void acquire_dm_out(void){
+  chBSemWait(&dm_out_sem);
+}
+void release_dm_out(void){
+  chBSemSignal(&dm_out_sem);
+}
+void acquire_dm_in(void){
+  chBSemWait(&dm_in_sem);
+}
+void release_dm_in(void){
+  chBSemSignal(&dm_in_sem);
+}
 

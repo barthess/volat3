@@ -57,6 +57,7 @@ including, the "$" and "*".
  * EXTERNS
  ******************************************************************************
  */
+extern Thread *gps_tp;
 extern GlobalFlags_t GlobalFlags;
 extern RawData raw_data;
 extern struct tm gps_timp;
@@ -99,7 +100,7 @@ static int32_t parse_decimal(uint8_t *p);
 static int32_t parse_degrees(uint8_t *p);
 static uint32_t gpsatol(const uint8_t *str);
 static bool_t gpsisdigit(char c);
-static uint8_t get_gps_sentence(uint8_t *buf, uint8_t checksum);
+static uint8_t get_gps_sentence(uint8_t *buf, uint8_t checksum, SerialDriver *sdp);
 static uint8_t from_hex(uint8_t a);
 
 /*
@@ -142,7 +143,7 @@ static void __init_mavlink_structs(void){
 static WORKING_AREA(gpsRxThreadWA, 256);
 static msg_t gpsRxThread(void *arg){
   chRegSetThreadName("gpsRx");
-  (void)arg;
+  SerialDriver *sdp = arg;
   uint32_t tmp = 0;
   uint32_t n = 0;
 
@@ -157,27 +158,27 @@ static msg_t gpsRxThread(void *arg){
     }
 
 		tmp = 0;
-		while(sdGet(&SDGPS) != '$')
+		while(sdGet(sdp) != '$')
 			; // читаем из буфера до тех пор, пока не найдем знак бакса
 
-		tmp = sdGet(&SDGPS) << 8;
-		tmp = tmp + sdGet(&SDGPS);
+		tmp = sdGet(sdp) << 8;
+		tmp = tmp + sdGet(sdp);
 		if (tmp != GP_TALKER)
 			continue;
 
 		// определим тип сообщения
-		tmp = sdGet(&SDGPS) << 16;
-		tmp = tmp + (sdGet(&SDGPS) << 8);
-		tmp = tmp + sdGet(&SDGPS);
+		tmp = sdGet(sdp) << 16;
+		tmp = tmp + (sdGet(sdp) << 8);
+		tmp = tmp + sdGet(sdp);
 		if (tmp == GGA_SENTENCE){
-	    if (get_gps_sentence(ggabuf, ggachecksum) == 0){
+	    if (get_gps_sentence(ggabuf, ggachecksum, sdp) == 0){
 	      parse_gga(ggabuf);
 	      n++;
 	    }
 	    continue;
 		}
 		if (tmp == RMC_SENTENCE){
-	    if (get_gps_sentence(rmcbuf, rmcchecksum) == 0){
+	    if (get_gps_sentence(rmcbuf, rmcchecksum, sdp) == 0){
 	      parse_rmc(rmcbuf);
 	      n++;
 	    }
@@ -186,6 +187,8 @@ static msg_t gpsRxThread(void *arg){
 		else
 			continue;
   }
+
+  chThdExit(0);
   return 0;
 }
 
@@ -372,21 +375,21 @@ static void gps_get_time(struct tm *timp, uint8_t *buft, uint8_t *bufd){
 /**
  *
  */
-static uint8_t get_gps_sentence(uint8_t *buf, uint8_t checksum){
+static uint8_t get_gps_sentence(uint8_t *buf, uint8_t checksum, SerialDriver *sdp){
   uint8_t byte = 0, i = 0;
 
   while TRUE{
     i++;
     if (i >= GPS_MSG_LEN)   /* если данных больше, чем поместится в буфер длинной len */
       return 1;
-    byte = sdGet(&SDGPS);
+    byte = sdGet(sdp);
     if (byte == '*')        /* как только натыкаемся на * - выходим из цикла */
       break;
     checksum ^= byte;
     *buf++ = byte;
   }
-  checksum ^= from_hex(sdGet(&SDGPS)) * 16; /* читаем 2 байта контрольной суммы */
-  checksum ^= from_hex(sdGet(&SDGPS));
+  checksum ^= from_hex(sdGet(sdp)) * 16; /* читаем 2 байта контрольной суммы */
+  checksum ^= from_hex(sdGet(sdp));
 
   if(checksum == 0)    /* сошлась */
     return 0;
@@ -462,11 +465,12 @@ void GPSInit(void){
   chIQResetI( &(SDGPS.iqueue));
   chSysUnlock();
 
-  chThdCreateStatic(gpsRxThreadWA,
-          sizeof(gpsRxThreadWA),
-          GPS_THREAD_PRIO,
-          gpsRxThread,
-          NULL);
+  gps_tp = chThdCreateStatic(
+      gpsRxThreadWA,
+      sizeof(gpsRxThreadWA),
+      GPS_THREAD_PRIO,
+      gpsRxThread,
+      &SDGPS);
 
   /* clear time structure */
   gps_timp.tm_isdst = -1;
