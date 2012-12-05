@@ -217,6 +217,15 @@ void _cli_modem_terminate_thd(Thread *tp, SerialDriver *sdp){
  */
 static bool_t cli_modem_start_cross(SerialDriver *sdp){
 
+#if !defined(NEED_MODEM_CROSS)
+  cli_println("ERROR!");
+  cli_println("You can not use crossing because firmware compiled with debugging enabled.");
+  cli_println("This cause not enough perfomance to exchange data without loss.");
+  cli_println("Define 'NEED_MODEM_CROSS' in 'chconf.h' and rebuild firmware.");
+  chThdSleepMilliseconds(50);
+  return CH_FAILED;
+#endif
+
   cli_println("WARNING!");
   cli_println("There is no software way to disable cross and return to shell.");
   cli_println("You must hard reboot device after the work done.");
