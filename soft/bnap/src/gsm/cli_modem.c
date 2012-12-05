@@ -227,8 +227,8 @@ static bool_t cli_modem_start_cross(SerialDriver *sdp){
 #endif
 
   cli_println("WARNING!");
-  cli_println("There is no software way to disable cross and return to shell.");
-  cli_println("You must hard reboot device after the work done.");
+  cli_println("  There is no software way to disable cross and return to shell.");
+  cli_println("  You must hard reboot device after the work done.");
   cli_println("Notes:");
   cli_println("  to stop ongoing internet connection (if any) use '+++' combo");
   cli_println("  to enable echo print 'ATE1'");
