@@ -122,12 +122,17 @@ Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
       return NULL;
     }
     if (0 == strcmp("void", argv[0])){
-      storage_cli_void(&Storage, sdp);
+      cli_println("FIXME: something wrong with mutual exclusion");
+      //storage_cli_void(&Storage, sdp);
       return NULL;
     }
-    else if (0 == strcmp("wipe", argv[0]))
-      return storage_cli_wipe(&Storage, sdp);
+    else if (0 == strcmp("wipe", argv[0])){
+      cli_println("FIXME: something wrong with mutual exclusion");
+      return NULL;
+      //return storage_cli_wipe(&Storage, sdp);
+    }
     else if (0 == strcmp("stat", argv[0])){
+      cli_println("FIXME: something wrong with mutual exclusion");
       storage_cli_stat(&Storage, sdp);
       return NULL;
     }
