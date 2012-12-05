@@ -352,6 +352,8 @@
  * @{
  */
 /*===========================================================================*/
+/* disable all debug checks to allow normal cross connection at 115200 */
+//#define NEED_MODEM_CROSS
 
 /**
  * @brief   Debug option, system state check.
@@ -361,7 +363,11 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_SYSTEM_STATE_CHECK) || defined(__DOXYGEN__)
-#define CH_DBG_SYSTEM_STATE_CHECK       TRUE
+  #if defined(NEED_MODEM_CROSS)
+    #define CH_DBG_SYSTEM_STATE_CHECK       FALSE
+  #else
+    #define CH_DBG_SYSTEM_STATE_CHECK       TRUE
+  #endif
 #endif
 
 /**
@@ -372,7 +378,11 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_ENABLE_CHECKS) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_CHECKS            TRUE
+  #if defined(NEED_MODEM_CROSS)
+    #define CH_DBG_ENABLE_CHECKS            FALSE
+  #else
+    #define CH_DBG_ENABLE_CHECKS            TRUE
+  #endif
 #endif
 
 /**
@@ -384,7 +394,11 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_ENABLE_ASSERTS) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_ASSERTS           TRUE
+  #if defined(NEED_MODEM_CROSS)
+    #define CH_DBG_ENABLE_ASSERTS           FALSE
+  #else
+    #define CH_DBG_ENABLE_ASSERTS           TRUE
+  #endif
 #endif
 
 /**
@@ -409,7 +423,11 @@
  *          @p panic_msg variable set to @p NULL.
  */
 #if !defined(CH_DBG_ENABLE_STACK_CHECK) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_STACK_CHECK       TRUE
+  #if defined(NEED_MODEM_CROSS)
+    #define CH_DBG_ENABLE_STACK_CHECK       FALSE
+  #else
+    #define CH_DBG_ENABLE_STACK_CHECK       TRUE
+  #endif
 #endif
 
 /**
