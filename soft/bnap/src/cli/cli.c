@@ -5,6 +5,7 @@
 
 #include "ch.h"
 #include "hal.h"
+#include "chprintf.h"
 #include "mavlink.h"
 
 #include "main.h"

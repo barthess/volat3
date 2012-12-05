@@ -23,7 +23,6 @@
  */
 extern MMCDriver MMCD1;
 extern BnapStorage_t Storage;
-extern MemoryHeap ThdHeap;
 
 extern Thread *microsd_writer_tp;
 extern Thread *microsd_reader_cc_tp;
@@ -46,40 +45,9 @@ extern Thread *microsd_reader_dm_tp;
  */
 static void cli_storage_print_help(void){
   cli_println("Available subcommands:");
-  cli_println("  'void' fast erase (not safe)");
-  cli_println("  'wipe' safe full erase (slow)");
+  cli_println("  'wipe' full erase");
   cli_println("  'stat' print some statistics about storage");
   chThdSleepMilliseconds(100);
-}
-
-/**
- * Wiping thread
- */
-static WORKING_AREA(WipeCmdThreadWA, 1024);
-static msg_t WipeCmdThread(void *arg){
-  chRegSetThreadName("Wipe");
-
-  bnapStorageAcquire(&Storage );
-  bnapStorageWipe(&Storage ,arg);
-  bnapStorageRelease(&Storage );
-
-  chThdExit(0);
-  return 0;
-}
-
-/**
- *
- */
-static Thread *storage_cli_wipe(BnapStorage_t *bsp, SerialDriver *sdp){
-  (void)bsp;
-  Thread *tp = chThdCreateFromHeap(&ThdHeap,
-                                    sizeof(WipeCmdThreadWA),
-                                    CMD_THREADS_PRIO,
-                                    WipeCmdThread,
-                                    sdp);
-  if (tp == NULL)
-    chDbgPanic("can not allocate memory");
-  return tp;
 }
 
 /**
@@ -96,9 +64,7 @@ static void storage_cli_stat(BnapStorage_t *bsp, SerialDriver *sdp){
 /**
  *
  */
-static void storage_cli_void(BnapStorage_t *bsp, SerialDriver *sdp){
-  (void)sdp;
-  (void)bsp;
+static void storage_cli_wipe(BnapStorage_t *bsp, SerialDriver *sdp){
 
   cli_terminate_thread(microsd_writer_tp,     sdp);
   cli_terminate_thread(microsd_reader_cc_tp,  sdp);
@@ -108,7 +74,7 @@ static void storage_cli_void(BnapStorage_t *bsp, SerialDriver *sdp){
   bnapStorageAcquire(bsp);
   cli_println("done.");
 
-  bnapStorageVoid(bsp);
+  bnapStorageWipe(bsp);
 
   cli_print("Start back storage threads... ");
   bnapStorageRelease(bsp);
@@ -138,14 +104,9 @@ Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
       chThdSleepMilliseconds(100);
       return NULL;
     }
-    if (0 == strcmp("void", argv[0])){
-      storage_cli_void(&Storage, sdp);
+    if (0 == strcmp("wipe", argv[0])){
+      storage_cli_wipe(&Storage, sdp);
       return NULL;
-    }
-    else if (0 == strcmp("wipe", argv[0])){
-//      cli_println("FIXME: something wrong with mutual exclusion");
-//      return NULL;
-      return storage_cli_wipe(&Storage, sdp);
     }
     else if (0 == strcmp("stat", argv[0])){
       cli_println("FIXME: something wrong with mutual exclusion");

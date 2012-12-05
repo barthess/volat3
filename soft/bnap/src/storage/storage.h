@@ -70,7 +70,6 @@ bool_t bnapStorageDisconnect(BnapStorage_t *bsp);
 void bnapStorageStop(BnapStorage_t *bsp);
 void bnapStorageAcquire(BnapStorage_t *bsp);
 void bnapStorageRelease(BnapStorage_t *bsp);
-void bnapStorageVoid(BnapStorage_t *bsp);
-void bnapStorageWipe(BnapStorage_t *bsp, SerialDriver *sdp);
+void bnapStorageWipe(BnapStorage_t *bsp);
 
 #endif /* STORAGE_H_ */
