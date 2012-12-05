@@ -264,7 +264,7 @@ void adc_process(adcsample_t *in, mavlink_mpiovd_sensors_t *raw){
   //raw->analog00 = adc_raw_voltage;
   //raw->analog01 = raw_data.analog[1];
 
-  raw->analog00 = get_board_voltage(adc_raw_voltage);
+  raw->voltage_battery = get_board_voltage(adc_raw_voltage);
 
   raw->analog01 = _supply_compensate(in[1]);
   raw->analog02 = _supply_compensate(in[2]); 

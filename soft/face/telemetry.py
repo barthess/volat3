@@ -905,7 +905,7 @@ class Telemetry(GlossGame):#{{{
             # are we needed this data?
             if type(tlm_data) == mavlink.MAVLink_mpiovd_sensors_message:
                 self.last_success_time = time.time()
-                analogarray = [tlm_data.analog00, tlm_data.analog01, tlm_data.analog02, tlm_data.analog03,
+                analogarray = [tlm_data.voltage_battery, tlm_data.analog01, tlm_data.analog02, tlm_data.analog03,
                                tlm_data.analog04, tlm_data.analog05, tlm_data.analog06, tlm_data.analog07,
                                tlm_data.analog08, tlm_data.analog09, tlm_data.analog10, tlm_data.analog11,
                                tlm_data.analog12, tlm_data.analog13, tlm_data.analog14, tlm_data.analog15]

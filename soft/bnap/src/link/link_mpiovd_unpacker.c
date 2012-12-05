@@ -18,6 +18,7 @@ extern GlobalFlags_t GlobalFlags;
 
 extern mavlink_mpiovd_sensors_t       mavlink_mpiovd_sensors_struct;
 extern mavlink_heartbeat_mpiovd_t     mavlink_heartbeat_mpiovd_struct;
+extern mavlink_sys_status_t           mavlink_sys_status_struct;
 
 extern EventSource event_mavlink_mpiovd_sensors;
 extern EventSource event_mavlink_heartbeat_mpiovd;
@@ -52,6 +53,7 @@ void MpiovdUnpackCycle(SerialDriver *sdp){
           mavlink_msg_mpiovd_sensors_decode(&msg, &mavlink_mpiovd_sensors_struct);
           /* mpiovd has no RTC, so we must set it here */
           mavlink_mpiovd_sensors_struct.time_usec = fastGetTimeUnixUsec();
+          mavlink_sys_status_struct.voltage_battery = mavlink_mpiovd_sensors_struct.voltage_battery;
           chEvtBroadcastFlags(&event_mavlink_mpiovd_sensors, EVMSK_MAVLINK_MPIOVD_SENSORS);
           break;
 

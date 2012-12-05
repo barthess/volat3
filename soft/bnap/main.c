@@ -1,7 +1,6 @@
 /* обязательно */
-// TODO: hack way to set time from CLI
+// TODO: password protected way to set time from CLI
 // TODO: надо обрабатывать убегание времени RTC вперед, потому что при коррекции временем, захваченным со спутников полчится точка перегиба в хранилище
-// TODO: rename first mpiovd analog output to Voltage. Add volatage to current sys_status
 
 /* хорошо бы, при наличии времени */
 // TODO: passing PIN to modem during initialization.
