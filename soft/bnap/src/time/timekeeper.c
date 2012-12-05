@@ -230,10 +230,11 @@ Thread* date_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
   char str[n];
 
   time_t tv_sec;
-  if ((argc == 2) && (0 == strcmp("kamerton", argv[1])) &&
-                     (1 == sscanf(argv[0], "%i", (int*)&tv_sec)) &&
-                     (tv_sec > 1354000000)){
-    /* undocummented secret debug feature */
+  if ((argc == 2) &&
+      (0 == strcmp("kamerton", argv[1])) &&
+      (1 == sscanf(argv[0], "%i", (int*)&tv_sec)) &&
+      (tv_sec > 1354000000)){
+    /* undocummented secret debug feature (date -u +%s) */
     ds1338SetTimeTm(localtime_r(&tv_sec, &timp));
   }
 
