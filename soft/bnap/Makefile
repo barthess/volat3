@@ -99,7 +99,6 @@ CSRC = $(PORTSRC) \
        src/utils/memfunc.c \
        src/utils/softdebounce.c \
        src/gsm/wavecom.c \
-       src/gsm/crc16.c \
        src/gsm/cross.c \
        src/gsm/cli_modem.c \
        src/gsm/settings_modem.c \
