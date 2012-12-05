@@ -11,6 +11,7 @@
 #include "bnap_ui.h"
 #include "message.h"
 #include "mavlink_dbg.h"
+#include "param.h"
 
 /*
  ******************************************************************************
@@ -24,7 +25,7 @@
  ******************************************************************************
  */
 extern EventSource event_mavlink_heartbeat_cc;
-extern EventSource event_gps_time_got;
+extern EventSource event_mavlink_gps_raw_int;
 
 /*
  ******************************************************************************
@@ -37,6 +38,8 @@ extern EventSource event_gps_time_got;
  * GLOBAL VARIABLES
  ******************************************************************************
  */
+static const uint32_t *blink_gps = NULL;
+static const uint32_t *blink_gsm = NULL;
 
 /*
  ******************************************************************************
@@ -86,9 +89,11 @@ static msg_t GsmLedThread(void *arg) {
 
   while (!chThdShouldTerminate()) {
     chEvtWaitOne(EVMSK_MAVLINK_HEARTBEAT_CC);
-    gsm_led_on();
-    chThdSleepMilliseconds(500);
-    gsm_led_off();
+    if (*blink_gsm != 0){
+      gsm_led_on();
+      chThdSleepMilliseconds(*blink_gsm);
+      gsm_led_off();
+    }
   }
   return 0;
 }
@@ -101,15 +106,19 @@ static msg_t GpsLedThread(void *arg) {
   chRegSetThreadName("GpsLed");
   (void)arg;
 
-  struct EventListener el_gps_time_got;
-  chEvtRegisterMask(&event_gps_time_got, &el_gps_time_got, EVMSK_GPS_TIME_GOT);
+  struct EventListener el_gps_raw_int;
+  chEvtRegisterMask(&event_mavlink_gps_raw_int, &el_gps_raw_int, EVMSK_MAVLINK_GPS_RAW_INT);
 
   while (!chThdShouldTerminate()) {
-    chEvtWaitOne(EVMSK_GPS_TIME_GOT);
-    gsm_led_on();
-    chThdSleepMilliseconds(50);
-    gsm_led_off();
+    chEvtWaitOne(EVMSK_MAVLINK_GPS_RAW_INT);
+    if (*blink_gps != 0){
+      gps_led_on();
+      chThdSleepMilliseconds(*blink_gps);
+      gps_led_off();
+    }
   }
+
+  chEvtUnregister(&event_mavlink_gps_raw_int, &el_gps_raw_int);
   return 0;
 }
 
@@ -120,6 +129,9 @@ static msg_t GpsLedThread(void *arg) {
  */
 
 void UiInit(void){
+  blink_gps = ValueSearch("Tblink_gps");
+  blink_gsm = ValueSearch("Tblink_gsm");
+
   chThdCreateStatic(UiThreadWA,
           sizeof(UiThreadWA),
           UITREAD_PRIO,

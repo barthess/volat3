@@ -11,7 +11,7 @@
  */
 #define CLDIV 16
 #define CHDIV 9
-#define CKDIV 3
+#define CKDIV 6 //3
 #define CWGR  ((CKDIV << 16) | (CHDIV << 8) | (CLDIV << 0))
 
 /*

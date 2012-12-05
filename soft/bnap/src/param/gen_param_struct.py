@@ -23,6 +23,8 @@ param = [
 ("T_sys_time",      SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Timeout help here"),
 ("T_gps_int",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
 ("T_gps_raw",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
+("Tblink_gps",      1,          100,    60000,      "u", "NULL",    "Blink time"),
+("Tblink_gsm",      1,          100,    60000,      "u", "NULL",    "Blink time"),
 
 #/**** Variables for debugging purposes ****/
 ("DBG_reserved0",   0,          0,      10000,      "u", "NULL",    "NULL"),

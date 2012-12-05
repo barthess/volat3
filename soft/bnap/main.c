@@ -1,15 +1,12 @@
 /* обязательно */
-// TODO: all access to serial ports must be mutual
 // TODO: hack way to set time from CLI
 // TODO: надо обрабатывать убегание времени RTC вперед, потому что при коррекции временем, захваченным со спутников полчится точка перегиба в хранилище
-
-// TODO: настройка периода моргания сигнальных светодиодов через параметры
 // TODO: rename first mpiovd analog output to Voltage. Add volatage to current sys_status
-// TODO: passing PIN to modem during initialization.
 
 /* хорошо бы, при наличии времени */
+// TODO: passing PIN to modem during initialization.
 // TODO: консольный апплет для работы с хранилищем (очистка, формат, статистика)
-// TODO: дополонительные команды для модемного апплета (reset, cross, dial, etc.)
+// TODO: дополонительные команды для модемного апплета (reset, dial, etc.)
 // TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом в виде битовых полей. На текущий момент его заменяет текстовое сообщение при нажатии на кнопку Алярма.
 // TODO: узнать, кто еще читает-пишет в порты и мешает нормальному функционированию cross.
 // TODO: прошивалку модема через cross.
@@ -105,6 +102,7 @@ BnapStorage_t Storage;
 /**/
 static const SerialConfig gsm_ser_cfg = {
     GSM_BAUDRATE,
+    //9600,
     AT91C_US_USMODE_HWHSH | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
                               AT91C_US_PAR_NONE | AT91C_US_NBSTOP_1_BIT
 //      AT91C_US_USMODE_NORMAL | AT91C_US_CLKS_CLOCK | AT91C_US_CHRL_8_BITS |
