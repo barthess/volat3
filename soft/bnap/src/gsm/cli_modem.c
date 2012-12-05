@@ -64,9 +64,10 @@ static void cli_modem_print_help(void){
   cli_println("  'server XXXX' set server address (URI of IP");
   cli_println("  'port XXXX' set remote destination port number on server");
   cli_println("  'listen XXXX' set local port to listen server respose");
-
+  cli_println("");
   cli_println("  'print' pritns currently stored in EEPROM settings");
   cli_println("  'erase' erase current settings from EEPROM");
+  cli_println("  'cross' start crossed connection between modem uart and dysplay manager uart");
   chThdSleepMilliseconds(100);
 }
 
@@ -196,25 +197,6 @@ static bool_t cli_modem_print_all(EepromFileStream *f){
 /**
  *
  */
-void _cli_modem_terminate_thd(Thread *tp, SerialDriver *sdp){
-  if (tp != NULL){
-    chprintf((BaseSequentialStream *)sdp, "Trying to terminate %s... ", tp->p_name);
-    if (tp->p_state != THD_STATE_FINAL){
-      chThdSleepMilliseconds(50);
-      chThdTerminate(tp);
-      chThdWait(tp);
-      cli_println("done.");
-    }
-    else{
-      cli_println("nothing to do.");
-    }
-    chThdSleepMilliseconds(50);
-  }
-}
-
-/**
- *
- */
 static bool_t cli_modem_start_cross(SerialDriver *sdp){
 
 #if !defined(NEED_MODEM_CROSS)
@@ -236,17 +218,17 @@ static bool_t cli_modem_start_cross(SerialDriver *sdp){
   chThdSleepMilliseconds(50);
 
   /* stop all threads using needed ports */
-  _cli_modem_terminate_thd(modem_tp, sdp);
-  _cli_modem_terminate_thd(link_cc_packer_tp, sdp);
-  _cli_modem_terminate_thd(link_cc_unpacker_tp, sdp);
+  cli_terminate_thread(modem_tp, sdp);
+  cli_terminate_thread(link_cc_packer_tp, sdp);
+  cli_terminate_thread(link_cc_unpacker_tp, sdp);
   /* NOTE! After starting shell the DM threads allready killed and joined to Shell thread */
   //  _cli_modem_terminate_thd(link_dm_packer_tp, sdp);
   //  _cli_modem_terminate_thd(link_dm_unpacker_tp, sdp);
 
   /* stop other heavy weight threads */
-  _cli_modem_terminate_thd(link_mpiovd_unpacker_tp, sdp);
-  _cli_modem_terminate_thd(microsd_writer_tp, sdp);
-  _cli_modem_terminate_thd(gps_tp, sdp);
+  cli_terminate_thread(link_mpiovd_unpacker_tp, sdp);
+  cli_terminate_thread(microsd_writer_tp, sdp);
+  cli_terminate_thread(gps_tp, sdp);
 
   /* gain mutual exclusion on ports */
   cli_print("acquiring mutual access to serial drivers... ");

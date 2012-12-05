@@ -8,6 +8,7 @@
 #include "main.h"
 #include "storage.h"
 #include "cli.h"
+#include "microsd.h"
 
 /*
  ******************************************************************************
@@ -23,6 +24,10 @@
 extern MMCDriver MMCD1;
 extern BnapStorage_t Storage;
 extern MemoryHeap ThdHeap;
+
+extern Thread *microsd_writer_tp;
+extern Thread *microsd_reader_cc_tp;
+extern Thread *microsd_reader_dm_tp;
 
 /*
  ******************************************************************************
@@ -94,9 +99,21 @@ static void storage_cli_stat(BnapStorage_t *bsp, SerialDriver *sdp){
 static void storage_cli_void(BnapStorage_t *bsp, SerialDriver *sdp){
   (void)sdp;
   (void)bsp;
+
+  cli_terminate_thread(microsd_writer_tp,     sdp);
+  cli_terminate_thread(microsd_reader_cc_tp,  sdp);
+  cli_terminate_thread(microsd_reader_dm_tp,  sdp);
+
+  cli_print("Acquiring mutual access to storage... ");
   bnapStorageAcquire(bsp);
+  cli_println("done.");
+
   bnapStorageVoid(bsp);
+
+  cli_print("Start back storage threads... ");
   bnapStorageRelease(bsp);
+  MicrosdInit();
+  cli_println("done.");
 }
 
 /*
@@ -122,14 +139,13 @@ Thread* storage_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
       return NULL;
     }
     if (0 == strcmp("void", argv[0])){
-      cli_println("FIXME: something wrong with mutual exclusion");
-      //storage_cli_void(&Storage, sdp);
+      storage_cli_void(&Storage, sdp);
       return NULL;
     }
     else if (0 == strcmp("wipe", argv[0])){
-      cli_println("FIXME: something wrong with mutual exclusion");
-      return NULL;
-      //return storage_cli_wipe(&Storage, sdp);
+//      cli_println("FIXME: something wrong with mutual exclusion");
+//      return NULL;
+      return storage_cli_wipe(&Storage, sdp);
     }
     else if (0 == strcmp("stat", argv[0])){
       cli_println("FIXME: something wrong with mutual exclusion");

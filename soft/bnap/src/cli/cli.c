@@ -331,7 +331,24 @@ void spawn_shell_threads(SerialDriver *arg){
     chDbgPanic("Can not allocate memory");
 }
 
-
+/**
+ * Fancy CLI thread terminator.
+ */
+void cli_terminate_thread(Thread *tp, SerialDriver *sdp){
+  if (tp != NULL){
+    chprintf((BaseSequentialStream *)sdp, "Trying to terminate %s... ", tp->p_name);
+    if (tp->p_state != THD_STATE_FINAL){
+      chThdSleepMilliseconds(50);
+      chThdTerminate(tp);
+      chThdWait(tp);
+      cli_println("done.");
+    }
+    else{
+      cli_println("nothing to do.");
+    }
+    chThdSleepMilliseconds(50);
+  }
+}
 
 
 

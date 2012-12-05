@@ -49,6 +49,8 @@
  ******************************************************************************
  */
 extern Thread *microsd_writer_tp;
+extern Thread *microsd_reader_cc_tp;
+extern Thread *microsd_reader_dm_tp;
 
 extern MMCDriver MMCD1;
 extern BnapStorage_t Storage;
@@ -365,15 +367,21 @@ void MicrosdInit(void){
   if (microsd_writer_tp == NULL)
     chDbgPanic("Can not allocate memory");
 
-  chThdCreateStatic(MmcReaderCcThreadWA,
+  microsd_reader_cc_tp = chThdCreateStatic(
+      MmcReaderCcThreadWA,
       sizeof(MmcReaderCcThreadWA),
       MMC_THREAD_PRIO,
       MmcReaderCcThread,
       &SDGSM);
+  if (microsd_reader_cc_tp == NULL)
+      chDbgPanic("Can not allocate memory");
 
-  chThdCreateStatic(MmcReaderDmThreadWA,
+  microsd_reader_dm_tp = chThdCreateStatic(
+      MmcReaderDmThreadWA,
       sizeof(MmcReaderDmThreadWA),
       MMC_THREAD_PRIO,
       MmcReaderDmThread,
       &SDDM);
+  if (microsd_reader_dm_tp == NULL)
+      chDbgPanic("Can not allocate memory");
 }

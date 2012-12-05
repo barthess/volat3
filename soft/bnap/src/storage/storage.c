@@ -341,14 +341,14 @@ void bnapStorageMount(BnapStorage_t *bsp){
 void bnapStorageVoid(BnapStorage_t *bsp){
   uint32_t n = 0;
 
-  bnapStorageAcquire(bsp);
+  chDbgCheck(bsp != NULL, "");
+
   memset(bsp->buf, 0, STORAGE_BUFF_SIZE);
   while (n < 32){
     bsp->mmcp->vmt->write(bsp->mmcp, n, bsp->buf, 1);
     n++;
   }
   bsp->tip = 0;
-  bnapStorageRelease(bsp);
 }
 
 /**
@@ -366,7 +366,6 @@ void bnapStorageWipe(BnapStorage_t *bsp, SerialDriver *sdp){
 
   chDbgCheck(bsp != NULL, "");
 
-  bnapStorageAcquire(bsp);
   while ((n < bsp->mmcp->capacity) && (!chThdShouldTerminate())){
     bsp->mmcp->vmt->write(bsp->mmcp, n, data, blockatonce);
     n += blockatonce;
@@ -374,7 +373,6 @@ void bnapStorageWipe(BnapStorage_t *bsp, SerialDriver *sdp){
       chprintf((BaseSequentialStream *)sdp, "%U/%U\r\n", n, bsp->mmcp->capacity);
   }
   bsp->tip = 0;
-  bnapStorageRelease(bsp);
 }
 
 

@@ -39,5 +39,6 @@ void cli_print_long(const char * str, int n, int nres);
 
 void spawn_shell_threads(SerialDriver *arg);
 void kill_shell_threads(void);
+void cli_terminate_thread(Thread *tp, SerialDriver *sdp);
 
 #endif /* CLI_H_ */
