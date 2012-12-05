@@ -1,17 +1,16 @@
 /* обязательно */
 // TODO: протестировать коррекцию при убегании времени RTC вперед
+// TODO: прошивка сегфолтится почему-то с включенной оптимизацией
 
 /* хорошо бы, при наличии времени */
 // TODO: passing PIN to modem during initialization.
 // TODO: консольный апплет для работы с хранилищем (stat subcommand)
 // TODO: дополонительные команды для модемного апплета (reset, dial, etc.)
 // TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом в виде битовых полей. На текущий момент его заменяет текстовое сообщение при нажатии на кнопку Алярма.
-// TODO: узнать, кто еще читает-пишет в порты и мешает нормальному функционированию cross.
-// TODO: прошивалку модема через cross.
-// TODO: protect parameter struct using mutex or semaphore to avoid corruption during multithreaded access
-// TODO: как-то стрёмно работает писалка параметров в EEPROM. (Возможные причины: слишком слабые подтяжки, доступ к микрухе из нескольких потоков)
 
 /* не в этой жизни */
+// TODO: protect parameter struct using mutex or semaphore to avoid corruption during multithreaded access
+// TODO: как-то стрёмно работает писалка параметров в EEPROM. (Возможные причины: слишком слабые подтяжки, доступ к микрухе из нескольких потоков)
 // TODO: возможность прервать выдачу накопленных данных
 // TODO: проброс параметров от остальных компонентов системы на ДЦ
 // TODO: rewrite GPS code using nmeap
@@ -150,7 +149,6 @@ int main(void) {
   setGlobalFlag(GlobalFlags.mpiovd_port_ready);
 
   i2cLocalInit();//0xFFFB8000
-  //EepromTestThread(&SDDM);
   MsgInit();        /* init event sources */
   ParametersInit(); /* need events for proper functionality */
   MavInit();        /* set device IDs previusly red from from EEPROM byt param init*/
