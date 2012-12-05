@@ -185,7 +185,7 @@ int64_t ds1338GetTimeUnixUsec(void){
 /**
  * param[in] timp   pointer to correctly filled time  structure
  */
-void ds1338_set_time(struct tm *timp){
+void ds1338SetTimeTm(struct tm *timp){
   uint8_t bcd[DS1338_TIME_SIZE];
 
   ds1338_tm2bcd(timp, bcd);

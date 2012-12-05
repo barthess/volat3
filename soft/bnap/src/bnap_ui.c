@@ -26,6 +26,7 @@
  */
 extern EventSource event_mavlink_heartbeat_cc;
 extern EventSource event_mavlink_gps_raw_int;
+extern GlobalFlags_t GlobalFlags;
 
 /*
  ******************************************************************************
@@ -111,7 +112,7 @@ static msg_t GpsLedThread(void *arg) {
 
   while (!chThdShouldTerminate()) {
     chEvtWaitOne(EVMSK_MAVLINK_GPS_RAW_INT);
-    if (*blink_gps != 0){
+    if ((*blink_gps != 0) && (GlobalFlags.gps_valid == 1)){
       gps_led_on();
       chThdSleepMilliseconds(*blink_gps);
       gps_led_off();

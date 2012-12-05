@@ -141,7 +141,7 @@ static msg_t TimekeeperThread(void *arg){
       chEvtBroadcastFlags(&event_mavlink_system_time, EVMSK_MAVLINK_SYSTEM_TIME);
 
       /* now correct time in RTC cell */
-      ds1338_set_time(&gps_timp);
+      ds1338SetTimeTm(&gps_timp);
     }
   }
   return 0;
@@ -225,12 +225,17 @@ void exti_pps_cb(EXTDriver *extp, expchannel_t channel){
  * Command to handle RTC.
  */
 Thread* date_clicmd(int argc, const char * const * argv, SerialDriver *sdp){
-  (void)argc;
-  (void)argv;
-
   struct tm timp;
   size_t n = 32;
   char str[n];
+
+  time_t tv_sec;
+  if ((argc == 2) && (0 == strcmp("kamerton", argv[1])) &&
+                     (1 == sscanf(argv[0], "%i", (int*)&tv_sec)) &&
+                     (tv_sec > 1354000000)){
+    /* undocummented secret debug feature */
+    ds1338SetTimeTm(localtime_r(&tv_sec, &timp));
+  }
 
   ds1338GetTimeTm(&timp);
   cli_print("Current UTC time is: ");
