@@ -50,17 +50,18 @@ static const uint32_t *blink_gsm = NULL;
  ******************************************************************************
  */
 
-static WORKING_AREA(UiThreadWA, 64);
-static msg_t UiThread(void *arg) {
-  chRegSetThreadName("Ui");
+static WORKING_AREA(UiAlertBtnThreadWA, 56);
+static msg_t UiAlertBtnThread(void *arg) {
+  chRegSetThreadName("UiAlertBtn");
   (void)arg;
-  uint32_t cur = 0;
-  uint32_t last = 0;
+
+  /* set all state similar to avoid false button event during startup */
+  uint32_t cur  = palReadPad(IOPORT2, PIOB_BTN1);
+  uint32_t last = palReadPad(IOPORT2, PIOB_BTN1);
 
   while (!chThdShouldTerminate()) {
     chThdSleepMilliseconds(100);
 
-    /* buttons */
     last = cur;
     cur = palReadPad(IOPORT2, PIOB_BTN1);
     if (cur != last){
@@ -133,10 +134,10 @@ void UiInit(void){
   blink_gps = ValueSearch("Tblink_gps");
   blink_gsm = ValueSearch("Tblink_gsm");
 
-  chThdCreateStatic(UiThreadWA,
-          sizeof(UiThreadWA),
+  chThdCreateStatic(UiAlertBtnThreadWA,
+          sizeof(UiAlertBtnThreadWA),
           UITREAD_PRIO,
-          UiThread,
+          UiAlertBtnThread,
           NULL);
   chThdCreateStatic(GsmLedThreadWA,
           sizeof(GsmLedThreadWA),
