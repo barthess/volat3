@@ -26,7 +26,7 @@ extern mavlink_mpiovd_sensors_t mavlink_mpiovd_sensors_struct;
  ******************************************************************************
  */
 #define HEARTBEAT_PERIOD    MS2ST(1000)
-#define SYS_STATUS_PERIOD   MS2ST(100)
+#define SYS_STATUS_PERIOD   MS2ST(33)
 
 /*
  ******************************************************************************
