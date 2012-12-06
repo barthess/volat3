@@ -14,6 +14,7 @@
 #include "link.h"
 #include "mavlink_dbg.h"
 #include "settings_modem.h"
+#include "message.h"
 
 /*
  ******************************************************************************
@@ -37,6 +38,10 @@
 
 #define SDMODEMTRACE        SDDM /* serial port for printing debug info during modem init */
 
+/* reconnect if no heartbeats from control center detected during this time */
+#define MODEM_ALIVE_TIMEOUT       S2ST(60)
+#define MODEM_ALIVE_CHECK_PERIOD  S2ST(1)
+
 /*
  ******************************************************************************
  * EXTERNS
@@ -45,7 +50,9 @@
 extern GlobalFlags_t GlobalFlags;
 extern EepromFileStream ModemSettingsFile;
 extern mavlink_oblique_rssi_t mavlink_oblique_rssi_struct;
+extern EventSource event_mavlink_heartbeat_cc;
 extern Thread *modem_tp;
+extern Thread *rssi_tp;
 
 /*
  ******************************************************************************
@@ -490,11 +497,36 @@ static bool_t _check_settings(void){
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PORT_SIZE, EEPROM_MODEM_PORT_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
     return GSM_FAILED;
-  /* listen port can be empty */
-//  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
-//  if (0 == strlen((const char *)eeprombuf))
-//    return GSM_FAILED;
+  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
+  if (0 == strlen((const char *)eeprombuf))
+    return GSM_FAILED;
   return GSM_SUCCESS;
+}
+
+/**
+ *
+ */
+static msg_t _terminatable_wait(systime_t timeout, systime_t step){
+  systime_t t = 0;
+  while (t < timeout){
+    if (chThdShouldTerminate())
+      return RDY_RESET;
+
+    chThdSleep(step);
+    t += step;
+  }
+  return RDY_TIMEOUT;
+}
+
+/**
+ *
+ */
+static void _etx_combo(SerialDriver *sdp){
+  acquire_cc_out();
+  chThdSleepMilliseconds(1500);
+  chprintf((BaseSequentialStream *)sdp, "%s", "+++");
+  chThdSleepMilliseconds(1500);
+  release_cc_out();
 }
 
 /**
@@ -542,54 +574,70 @@ bool_t _init_modem(SerialDriver *sdp){
 static WORKING_AREA(ModemThreadWA, 768);
 static msg_t ModemThread(void *sdp) {
   chRegSetThreadName("Modem");
-  uint32_t n;
 
-  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: initializing");
+  struct EventListener el_cc_heartbeat;
+  chEvtRegisterMask(&event_mavlink_heartbeat_cc, &el_cc_heartbeat, EVMSK_MAVLINK_HEARTBEAT_CC);
 
-  /* check correctness of settings stored in EEPROM */
-  if (GSM_FAILED == _check_settings()){
-    mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: settings stored in EEPROM invalid");
-    chThdSleepMilliseconds(5);
-    mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: start shell and fix them manually");
-    return RDY_RESET;
-  }
+__INIT:
+  while (!(chThdShouldTerminate()) && GlobalFlags.modem_connected != 1){
+    clearGlobalFlag(GlobalFlags.modem_connected); /* just to be safe */
+    mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: initializing");
 
-  /* try to start modem */
-  while (GSM_FAILED == _init_modem(sdp)){
-    if (chThdShouldTerminate())
-      return RDY_OK;
-
-    mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** ERROR! Can not connect.");
-    mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** Retry after 60 seconds.");
-
-    n = 60;
-    while (n--){
-      chThdSleepSeconds(1);
-      if (chThdShouldTerminate())
-        return RDY_OK;
+    /* check correctness of settings stored in EEPROM */
+    if (GSM_FAILED == _check_settings()){
+      mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: settings stored in EEPROM invalid");
+      chThdSleepMilliseconds(5);
+      mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: start shell and fix them manually");
+      chThdExit(RDY_RESET);
     }
 
-    /* try to stop connection */
-    acquire_cc_out();
-    chThdSleepMilliseconds(1500);
-    chprintf((BaseSequentialStream *)sdp, "%s", "+++");
-    chThdSleepMilliseconds(1500);
-    release_cc_out();
+    /* try to start modem */
+    if (GSM_SUCCESS == _init_modem(sdp)){
+      mavlink_dbg_print(MAV_SEVERITY_DEBUG, "*** SUCCESS! Connection established.\r\n");
+      setGlobalFlag(GlobalFlags.modem_connected);
+    }
+    else{
+      mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** ERROR! Can not connect.");
+      mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** Auto retry after 60 seconds.");
+      if (RDY_TIMEOUT == _terminatable_wait(MODEM_ALIVE_TIMEOUT, MODEM_ALIVE_CHECK_PERIOD)){
+        _etx_combo(sdp);
+      }
+      else
+        break;
+    }
   }
 
-  mavlink_dbg_print(MAV_SEVERITY_DEBUG, "*** SUCCESS! Connection established.\r\n");
-  setGlobalFlag(GlobalFlags.modem_connected);
+  // DUTY_CYCLE:
+  int32_t n = MODEM_ALIVE_TIMEOUT;
+  while (!chThdShouldTerminate()){
+    if (EVMSK_MAVLINK_HEARTBEAT_CC == chEvtWaitOneTimeout(EVMSK_MAVLINK_HEARTBEAT_CC, MODEM_ALIVE_CHECK_PERIOD))
+      n = MODEM_ALIVE_TIMEOUT;
+    else
+      n -= MODEM_ALIVE_CHECK_PERIOD;
 
-  while (!chThdShouldTerminate())
-    chThdSleepMilliseconds(100);
+    if (n <= 0){
+      fake_rssi = 0;
+      fake_ber  = 0;
+      mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** No heartbeats from control center.");
+      chThdSleepMilliseconds(5);
+      mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** Reconnecting.");
+      clearGlobalFlag(GlobalFlags.modem_connected);
+      _etx_combo(sdp);
+      goto __INIT; /* no heartbeats from CC within timeout */
+    }
+  }
 
-  return RDY_OK;
+  // final cleanup
+  chEvtUnregister(&event_mavlink_heartbeat_cc, &el_cc_heartbeat);
+  clearGlobalFlag(GlobalFlags.modem_connected);
+  chThdExit(RDY_OK);
+  return 0;
 }
 
 /**
  *
  */
-static WORKING_AREA(RssiThreadWA, 128);
+static WORKING_AREA(RssiThreadWA, 64);
 static msg_t RssiThread(void *sdp) {
   chRegSetThreadName("Rssi");
   (void)sdp;
@@ -613,6 +661,7 @@ static msg_t RssiThread(void *sdp) {
  * Note! All modem initialization will be done in background thread.
  */
 void ModemInit(void){
+
   modem_tp = chThdCreateStatic(
       ModemThreadWA,
       sizeof(ModemThreadWA),
@@ -622,11 +671,14 @@ void ModemInit(void){
   if (modem_tp == NULL)
     chDbgPanic("Can not allocate memory");
 
-  chThdCreateStatic(RssiThreadWA,
-          sizeof(RssiThreadWA),
-          NORMALPRIO,
-          RssiThread,
-          &SDGSM);
+  rssi_tp = chThdCreateStatic(
+      RssiThreadWA,
+      sizeof(RssiThreadWA),
+      NORMALPRIO,
+      RssiThread,
+      &SDGSM);
+  if (rssi_tp == NULL)
+      chDbgPanic("Can not allocate memory");
 }
 
 /**
