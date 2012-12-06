@@ -142,7 +142,7 @@ static size_t _collect_answer(SerialDriver *sdp, uint8_t *buf, size_t lim, systi
 /**
  * Poll modem wiht "AT\r" string to check its presence.
  */
-static bool_t _wait_poweron(SerialDriver *sdp){
+static bool_t wait_poweron(SerialDriver *sdp){
   uint32_t try = POWERON_TRY;
 
   gsm_assert_reset();
@@ -173,7 +173,7 @@ static bool_t _wait_poweron(SerialDriver *sdp){
 /**
  *
  */
-static void _set_verbosity(SerialDriver *sdp){
+static void set_verbosity(SerialDriver *sdp){
   /* echo off */
   _say_to_modem(sdp, "ATE0\r");
   chThdSleepMilliseconds(50);
@@ -185,16 +185,41 @@ static void _set_verbosity(SerialDriver *sdp){
 /**
  *
  */
-static bool_t _wait_sim(SerialDriver *sdp){
+static bool_t wait_sim(SerialDriver *sdp){
   uint32_t try = CPIN_TRY;
 
   while(try--){
     _say_to_modem(sdp, "AT+CPIN?\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), CPIN_TMO);
 
-    /* check results */
+    /* pin does not needed */
     if (NULL != strstr((char *)gsmbuf, ": READY"))
       return GSM_SUCCESS;
+    /* need pin */
+    else if (NULL != strstr((char *)gsmbuf, ": SIM PIN")){
+      _say_to_modem(sdp, "AT+CPIN=");
+      read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PIN_SIZE, EEPROM_MODEM_PIN_OFFSET);
+      _say_to_modem(sdp, (char *)eeprombuf);
+      _say_to_modem(sdp, "\r");
+
+      _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), CPIN_TMO);
+      if (NULL != strstr((char *)gsmbuf, "OK"))
+        return GSM_SUCCESS;
+      else{
+        mavlink_dbg_print(MAV_SEVERITY_ERROR, "*** ERROR! Wrong PIN.");
+        chThdSleep(CPIN_TMO);
+        return GSM_FAILED;
+      }
+    }
+    /* that's all. Sim locked. You must enter PUK */
+    else if (NULL != strstr((char *)gsmbuf, ": SIM PUK")){
+      mavlink_dbg_print(MAV_SEVERITY_CRITICAL, "*** ERROR! SIM locked.");
+      mavlink_dbg_print(MAV_SEVERITY_CRITICAL, "*** You must enter PUK manually.");
+      chThdSleep(CPIN_TMO);
+      return GSM_FAILED;
+    }
+
+    /* sleep between retries */
     chThdSleep(CPIN_TMO);
   }
   return GSM_FAILED;
@@ -203,7 +228,7 @@ static bool_t _wait_sim(SerialDriver *sdp){
 /**
  * Wait registration on operator network
  */
-static bool_t _wait_cgreg(SerialDriver *sdp){
+static bool_t wait_cgreg(SerialDriver *sdp){
   uint32_t try = CREG_TRY;
   int stat, mode;
   int scanfstat;
@@ -226,7 +251,7 @@ static bool_t _wait_cgreg(SerialDriver *sdp){
 /**
  * Wait registration on operator network
  */
-static bool_t _update_rssi(SerialDriver *sdp){
+static bool_t update_rssi(SerialDriver *sdp){
   int scanfstat;
 
   /* not first function run */
@@ -255,7 +280,7 @@ static bool_t _update_rssi(SerialDriver *sdp){
 /**
  *
  */
-static bool_t _start_wopen(SerialDriver *sdp){
+static bool_t start_wopen(SerialDriver *sdp){
   uint32_t try = WOPEN_TRY;
   int stat;
   int scanfstat;
@@ -284,7 +309,7 @@ static bool_t _start_wopen(SerialDriver *sdp){
 /**
  *
  */
-static bool_t _start_wipcfg(SerialDriver *sdp){
+static bool_t start_wipcfg(SerialDriver *sdp){
   uint32_t try = WIPCFG_TRY;
 
   while(try--){
@@ -305,7 +330,7 @@ static bool_t _start_wipcfg(SerialDriver *sdp){
 /**
  *
  */
-static bool_t _load_bearer(SerialDriver *sdp){
+static bool_t load_bearer(SerialDriver *sdp){
   uint32_t try = BEARER_TRY;
 
   _say_to_modem(sdp, "AT+WIPCLOSE=1,1\r");
@@ -328,7 +353,7 @@ static bool_t _load_bearer(SerialDriver *sdp){
 /**
  *
  */
-static bool_t _set_apn(SerialDriver *sdp){
+static bool_t set_apn(SerialDriver *sdp){
   uint32_t try;
 
   /* apn name */
@@ -382,7 +407,7 @@ static bool_t _set_apn(SerialDriver *sdp){
 /**
  *
  */
-static bool_t _start_bearer(SerialDriver *sdp){
+static bool_t start_bearer(SerialDriver *sdp){
   uint32_t try = BEARER_TRY;
 
   while(try--){
@@ -391,7 +416,7 @@ static bool_t _start_bearer(SerialDriver *sdp){
     if (NULL != strstr((char *)gsmbuf, "OK"))
       return GSM_SUCCESS;
     if (NULL != strstr((char *)gsmbuf, "+CME ERROR: 803"))
-      _load_bearer(sdp); /* try to reload bearer */
+      load_bearer(sdp); /* try to reload bearer */
     chThdSleep(BEARER_TMO);
   }
   return GSM_FAILED;
@@ -400,7 +425,7 @@ static bool_t _start_bearer(SerialDriver *sdp){
 /**
  *
  */
-static bool_t _create_connection(SerialDriver *sdp){
+static bool_t create_connection(SerialDriver *sdp){
   uint32_t try = BEARER_TRY;
 
   while(try--){
@@ -446,7 +471,7 @@ static bool_t _start_connection(SerialDriver *sdp){
 /**
  *
  */
-static bool_t check_settings(void){
+static bool_t _check_settings(void){
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PIN_SIZE, EEPROM_MODEM_PIN_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
     return GSM_FAILED;
@@ -465,9 +490,10 @@ static bool_t check_settings(void){
   read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_PORT_SIZE, EEPROM_MODEM_PORT_OFFSET);
   if (0 == strlen((const char *)eeprombuf))
     return GSM_FAILED;
-  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
-  if (0 == strlen((const char *)eeprombuf))
-    return GSM_FAILED;
+  /* listen port can be empty */
+//  read_modem_param(eeprombuf, &ModemSettingsFile, EEPROM_MODEM_LISTEN_SIZE, EEPROM_MODEM_LISTEN_OFFSET);
+//  if (0 == strlen((const char *)eeprombuf))
+//    return GSM_FAILED;
   return GSM_SUCCESS;
 }
 
@@ -475,31 +501,34 @@ static bool_t check_settings(void){
  *
  */
 bool_t _init_modem(SerialDriver *sdp){
-  if ((GSM_FAILED == _wait_poweron(sdp)) || chThdShouldTerminate())
+  if ((GSM_FAILED == wait_poweron(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
-  _set_verbosity(sdp);
-  if((GSM_FAILED == _wait_sim(sdp)) || chThdShouldTerminate())
+  set_verbosity(sdp);
+  if((GSM_FAILED == wait_sim(sdp)) || chThdShouldTerminate()){
+    /* terminate thread because of PIN problems */
+    chThdExit(RDY_RESET);
     return GSM_FAILED;
-  if ((GSM_FAILED == _wait_cgreg(sdp)) || chThdShouldTerminate())
+  }
+  if ((GSM_FAILED == wait_cgreg(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
-  if ((GSM_FAILED == _update_rssi(sdp)) || chThdShouldTerminate())
+  if ((GSM_FAILED == update_rssi(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
-  if ((GSM_FAILED == _start_wopen(sdp)) || chThdShouldTerminate())
+  if ((GSM_FAILED == start_wopen(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(100);
-  if ((GSM_FAILED == _start_wipcfg(sdp)) || chThdShouldTerminate())
+  if ((GSM_FAILED == start_wipcfg(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(1000);
-  if ((GSM_FAILED == _load_bearer(sdp)) || chThdShouldTerminate())
+  if ((GSM_FAILED == load_bearer(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(100);
-  if ((GSM_FAILED == _set_apn(sdp)) || chThdShouldTerminate())
+  if ((GSM_FAILED == set_apn(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(100);
-  if ((GSM_FAILED == _start_bearer(sdp)) || chThdShouldTerminate())
+  if ((GSM_FAILED == start_bearer(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(1000);
-  if ((GSM_FAILED == _create_connection(sdp)) || chThdShouldTerminate())
+  if ((GSM_FAILED == create_connection(sdp)) || chThdShouldTerminate())
     return GSM_FAILED;
   chThdSleepMilliseconds(1000);
   if ((GSM_FAILED == _start_connection(sdp)) || chThdShouldTerminate())
@@ -518,7 +547,7 @@ static msg_t ModemThread(void *sdp) {
   mavlink_dbg_print(MAV_SEVERITY_DEBUG, "MODEM: initializing");
 
   /* check correctness of settings stored in EEPROM */
-  if (GSM_FAILED == check_settings()){
+  if (GSM_FAILED == _check_settings()){
     mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: settings stored in EEPROM invalid");
     chThdSleepMilliseconds(5);
     mavlink_dbg_print(MAV_SEVERITY_ERROR, "MODEM: start shell and fix them manually");
@@ -568,7 +597,7 @@ static msg_t RssiThread(void *sdp) {
   while (!chThdShouldTerminate()) {
     chThdSleepMilliseconds(1000);
     if (GlobalFlags.modem_connected == 1)
-      _update_rssi(sdp);
+      update_rssi(sdp);
     mavlink_oblique_rssi_struct.rssi = fake_rssi;
     mavlink_oblique_rssi_struct.ber  = fake_ber;
   }

@@ -62,8 +62,8 @@ static void cli_modem_print_help(void){
   cli_println("  'user XXXX' set user name");
   cli_println("  'pass XXXX' set password corresponding to user");
   cli_println("  'server XXXX' set server address (URI of IP");
-  cli_println("  'port XXXX' set remote destination port number on server");
-  cli_println("  'listen XXXX' set local port to listen server respose");
+  cli_println("  'port XXXX' set remote destination port on server (14550 default for QGC)");
+  cli_println("  'listen XXXX' set local port to listen server respose (14555 default for QGC)");
   cli_println("");
   cli_println("  'print' pritns currently stored in EEPROM settings");
   cli_println("  'erase' erase current settings from EEPROM");
@@ -212,8 +212,10 @@ static bool_t cli_modem_start_cross(SerialDriver *sdp){
   cli_println("  There is no software way to disable cross and return to shell.");
   cli_println("  You must hard reboot device after the work done.");
   cli_println("Notes:");
-  cli_println("  to stop ongoing internet connection (if any) use '+++' combo");
-  cli_println("  to enable echo print 'ATE1'");
+  cli_println("* to enable echo print 'ATE1'");
+  cli_println("* to correctly stop ongoing internet connection (if any) use '+++' combo");
+  cli_println("with one second guard intervals, than 'AT+WIPCLOSE=1,1'");
+
   cli_println("");
   chThdSleepMilliseconds(50);
 
@@ -241,7 +243,7 @@ static bool_t cli_modem_start_cross(SerialDriver *sdp){
   /* fire up cross */
   ModemCrossInit();
 
-  /* program will never return to shell now */
+  /* program will never return to shell from here. You need hard reboot. */
   chThdExit(0);
 
   return CH_SUCCESS;
