@@ -3,19 +3,18 @@
 // TODO: passing PIN to modem during initialization.
 
 /* хорошо бы, при наличии времени */
-// TODO: консольный апплет для работы с хранилищем (stat subcommand)
+// TODO: комманда для хранилища stat
 // TODO: дополонительные команды для модемного апплета (reset, dial, etc.)
 // TODO: дополнительный пакет "алярма" со всей хуйнёй одним махом в виде битовых полей. На текущий момент его заменяет текстовое сообщение при нажатии на кнопку Алярма.
 // TODO: прошивка сегфолтится почему-то с включенной оптимизацией
 
 /* не в этой жизни */
 // TODO: protect parameter struct using mutex or semaphore to avoid corruption during multithreaded access
-// TODO: как-то стрёмно работает писалка параметров в EEPROM на скорости 263 kHz.
+// TODO: как-то нестабильно работает писалка параметров в EEPROM на скорости 263 kHz.
 // TODO: возможность прервать выдачу накопленных данных
 // TODO: проброс параметров от остальных компонентов системы на ДЦ
 // TODO: rewrite GPS code using nmeap
 // TODO: более высокая точность парсинга координат gps.
-// TODO: EXTI (see todos in TimekeeperThread and gps_get_time())
 // TODO: обработка битых блоков хранилища
 
 #include <time.h>
