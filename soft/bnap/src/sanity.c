@@ -15,9 +15,10 @@
 extern EventSource event_mavlink_heartbeat_bnap;
 extern EventSource event_mavlink_sys_status;
 
-extern mavlink_system_t       mavlink_system_struct;
-extern mavlink_heartbeat_t    mavlink_heartbeat_bnap_struct;
-extern mavlink_sys_status_t   mavlink_sys_status_struct;
+extern mavlink_system_t         mavlink_system_struct;
+extern mavlink_heartbeat_t      mavlink_heartbeat_bnap_struct;
+extern mavlink_sys_status_t     mavlink_sys_status_struct;
+extern mavlink_mpiovd_sensors_t mavlink_mpiovd_sensors_struct;
 
 /*
  ******************************************************************************
@@ -87,6 +88,7 @@ static msg_t SysStatusThread(void *arg) {
     t += SYS_STATUS_PERIOD;
 
     mavlink_sys_status_struct.load = get_cpu_load();
+    mavlink_sys_status_struct.voltage_battery = mavlink_mpiovd_sensors_struct.voltage_battery;
     chEvtBroadcastFlags(&event_mavlink_sys_status, EVMSK_MAVLINK_SYS_STATUS);
     chThdSleepUntil(t);
   }
