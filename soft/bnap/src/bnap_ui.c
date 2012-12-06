@@ -75,6 +75,8 @@ static msg_t UiAlertBtnThread(void *arg) {
         mavlink_dbg_print(MAV_SEVERITY_ALERT, "Button 'Alert' released");
     }
   }
+
+  chThdExit(0);
   return 0;
 }
 
@@ -97,6 +99,9 @@ static msg_t GsmLedThread(void *arg) {
       gsm_led_off();
     }
   }
+
+  chEvtUnregister(&event_mavlink_heartbeat_cc, &el_cc_heartbeat);
+  chThdExit(0);
   return 0;
 }
 
@@ -121,6 +126,7 @@ static msg_t GpsLedThread(void *arg) {
   }
 
   chEvtUnregister(&event_mavlink_gps_raw_int, &el_gps_raw_int);
+  chThdExit(0);
   return 0;
 }
 

@@ -57,6 +57,7 @@ Thread *link_dm_unpacker_tp     = NULL;
 Thread *link_dm_packer_tp       = NULL;
 Thread *link_mpiovd_unpacker_tp = NULL;
 Thread *modem_tp                = NULL;
+Thread *rssi_tp                 = NULL;
 Thread *microsd_reader_cc_tp    = NULL;
 Thread *microsd_reader_dm_tp    = NULL;
 Thread *microsd_writer_tp       = NULL;
