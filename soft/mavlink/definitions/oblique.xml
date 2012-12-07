@@ -8,20 +8,8 @@
             <entry name="MAV_COMP_ID_DM" value="50">Display module</entry>
             <entry name="MAV_COMP_ID_MPIOVD" value="51">Mpiovd</entry>
             <entry name="MAV_COMP_ID_BNAP" value="52">Bnap</entry>
-            <entry name="MAV_COMP_ID_CC" value="53">Bnap</entry>
+            <entry name="MAV_COMP_ID_CC" value="53">Control Center</entry>
         </enum>
-		<enum name="MAV_CMD">
-            <entry value="220" name="MAV_CMD_BNAP_TEST_CMD">
-                 <description>Send alarm signal to 911 service.</description>
-                 <param index="1">Retry count</param>
-                 <param index="2">param2</param>
-                 <param index="3">param3</param>
-                 <param index="4">param4</param>
-                 <param index="5">param5</param>
-                 <param index="6">param6</param>
-                 <param index="7">param7</param>
-			</entry>
-		</enum>
     </enums>
 
     <messages>
@@ -56,18 +44,6 @@
             <field type="uint8_t"      name="severity">Severity of status. Relies on the definitions within RFC-5424. See enum MAV_SEVERITY.</field>
             <field type="char[254]"	   name="text">Status text message, without null termination character.</field>
         </message>
-        <message id="152" name="OBLIQUE_ALARM_BITFIELD">
-            <description>Contain bit fields denoting different alarm situations</description>
-			<field type="uint8_t"      name="target_system">System ID</field>
-			<field type="uint8_t"	   name="target_component">Component ID</field>
-            <field type="uint32_t"     name="alarm">Bit field container</field>
-        </message>
-        <message id="153" name="OBLIQUE_ALARM_BITFIELD_ACK">
-            <description>Acknowlege package for alarm</description>
-			<field type="uint8_t"      name="target_system">System ID</field>
-			<field type="uint8_t"	   name="target_component">Component ID</field>
-            <field type="uint32_t"     name="alarm">Bit field container</field>
-        </message>
         <message id="154" name="OBLIQUE_AGPS">
             <description>Assisted GPS message</description>
 			<field type="uint8_t"      name="target_system">System ID</field>
@@ -89,7 +65,7 @@
 			<field type="uint32_t"     name="count">System ID</field>
         </message>
 		<message id="158" name="OBLIQUE_STORAGE_REQUEST">
-			<description>Request to send range of records from first to last. If you want single record than set first==last. Incorrect values must be ignored.</description>
+			<description>Request to send a range of records from first to last. If you want single record than set first==last. Incorrect values will be ignored.</description>
 			<field type="uint8_t"      name="target_system">System ID</field>
 			<field type="uint8_t"	   name="target_component">Component ID</field>
 			<field type="uint32_t"     name="first">System ID</field>
