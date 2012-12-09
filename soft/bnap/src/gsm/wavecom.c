@@ -82,8 +82,6 @@ static int fake_ber  = 0; /* value for fake BER measurements */
 
 static void _trace_print(char *st, bool_t direction){
   (void)direction;
-  size_t len = strlen(st);
-  (void)len;
 
 #if defined(SDMODEMTRACE)
   mavlink_dbg_print(MAV_SEVERITY_DEBUG, st);
@@ -241,11 +239,20 @@ static bool_t wait_cgreg(SerialDriver *sdp){
   int scanfstat;
 
   while(try--){
+    /* some modem registers only in GPRS network */
     _say_to_modem(sdp, "AT+CGREG?\r");
     _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), CREG_TMO);
-
-    /* check results */
     scanfstat = siscanf((char *)gsmbuf, "+CGREG: %d,%d", &mode, &stat);
+    if (scanfstat == 2){
+      if ((stat == 1) || (stat == 5))
+        return GSM_SUCCESS;
+    }
+    chThdSleep(CREG_TMO);
+
+    /* some modem registers only in GSM network */
+    _say_to_modem(sdp, "AT+CREG?\r");
+    _collect_answer(sdp, gsmbuf, sizeof(gsmbuf), CREG_TMO);
+    scanfstat = siscanf((char *)gsmbuf, "+CREG: %d,%d", &mode, &stat);
     if (scanfstat == 2){
       if ((stat == 1) || (stat == 5))
         return GSM_SUCCESS;
@@ -637,7 +644,7 @@ __INIT:
 /**
  *
  */
-static WORKING_AREA(RssiThreadWA, 64);
+static WORKING_AREA(RssiThreadWA, 128);
 static msg_t RssiThread(void *sdp) {
   chRegSetThreadName("Rssi");
   (void)sdp;
