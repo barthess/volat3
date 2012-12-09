@@ -50,7 +50,10 @@
 extern GlobalFlags_t GlobalFlags;
 extern EepromFileStream ModemSettingsFile;
 extern mavlink_oblique_rssi_t mavlink_oblique_rssi_struct;
+extern mavlink_rc_channels_raw_t mavlink_rc_channels_raw_struct;
 extern EventSource event_mavlink_heartbeat_cc;
+extern EventSource event_mavlink_oblique_rssi;
+extern EventSource event_mavlink_rc_channels_raw;
 extern Thread *modem_tp;
 extern Thread *rssi_tp;
 
@@ -578,7 +581,7 @@ bool_t _init_modem(SerialDriver *sdp){
 /**
  *
  */
-static WORKING_AREA(ModemThreadWA, 768);
+static WORKING_AREA(ModemThreadWA, 704);
 static msg_t ModemThread(void *sdp) {
   chRegSetThreadName("Modem");
 
@@ -648,6 +651,15 @@ static WORKING_AREA(RssiThreadWA, 128);
 static msg_t RssiThread(void *sdp) {
   chRegSetThreadName("Rssi");
   (void)sdp;
+  mavlink_rc_channels_raw_struct.chan1_raw = 0;
+  mavlink_rc_channels_raw_struct.chan2_raw = 0;
+  mavlink_rc_channels_raw_struct.chan3_raw = 0;
+  mavlink_rc_channels_raw_struct.chan4_raw = 0;
+  mavlink_rc_channels_raw_struct.chan5_raw = 0;
+  mavlink_rc_channels_raw_struct.chan6_raw = 0;
+  mavlink_rc_channels_raw_struct.chan7_raw = 0;
+  mavlink_rc_channels_raw_struct.chan8_raw = 0;
+  mavlink_rc_channels_raw_struct.port = 0;
 
   while (!chThdShouldTerminate()) {
     chThdSleepMilliseconds(1000);
@@ -655,6 +667,12 @@ static msg_t RssiThread(void *sdp) {
       update_rssi(sdp);
     mavlink_oblique_rssi_struct.rssi = fake_rssi;
     mavlink_oblique_rssi_struct.ber  = fake_ber;
+
+    mavlink_rc_channels_raw_struct.rssi = fake_rssi;
+    mavlink_rc_channels_raw_struct.time_boot_ms = TIME_BOOT_MS;
+
+    chEvtBroadcastFlags(&event_mavlink_oblique_rssi, EVMSK_MAVLINK_OBLIQUE_RSSI);
+    chEvtBroadcastFlags(&event_mavlink_rc_channels_raw, EVMSK_MAVLINK_RC_CHANNELS_RAW);
   }
   return 0;
 }

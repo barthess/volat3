@@ -129,6 +129,7 @@ static const SerialConfig mpiovd_ser_cfg = {
 int main(void) {
   halInit();
   chSysInit();
+  chThdSleep(1);
 
   chHeapInit(&ThdHeap, (uint8_t *)MEM_ALIGN_NEXT(link_thd_buf), THREAD_HEAP_SIZE);
 
@@ -149,12 +150,12 @@ int main(void) {
   setGlobalFlag(GlobalFlags.mpiovd_port_ready);
 
   i2cLocalInit();//0xFFFB8000
+  ds1338Init();
   MsgInit();        /* init event sources */
   ParametersInit(); /* need events for proper functionality */
   MavInit();        /* set device IDs previusly red from from EEPROM byt param init*/
   GPSInit();
   LinkInit();
-  ds1338Init();
   TimekeeperInit();
   MicrosdInit();
   SanityControlInit();

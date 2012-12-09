@@ -34,10 +34,10 @@ mavlink_param_set_t             mavlink_param_set_struct;
 mavlink_param_request_list_t    mavlink_param_request_list_struct;
 mavlink_param_request_read_t    mavlink_param_request_read_struct;
 mavlink_command_ack_t           mavlink_command_ack_struct;
+mavlink_rc_channels_raw_t       mavlink_rc_channels_raw_struct;
 
 mavlink_mpiovd_sensors_t        mavlink_mpiovd_sensors_struct;
 mavlink_oblique_agps_t          mavlink_oblique_agps_struct;
-mavlink_oblique_rssi_t          mavlink_oblique_rssi_struct;
 mavlink_oblique_rssi_t          mavlink_oblique_rssi_struct;
 
 /* storage request handlers */
@@ -84,6 +84,7 @@ EventSource event_mavlink_param_set;
 EventSource event_mavlink_param_request_list;
 EventSource event_mavlink_param_request_read;
 EventSource event_mavlink_command_ack;
+EventSource event_mavlink_rc_channels_raw;
 
 /*
  ******************************************************************************
@@ -152,6 +153,7 @@ void MsgInit(void){
   chEvtInit(&event_mavlink_param_request_list);
   chEvtInit(&event_mavlink_param_request_read);
   chEvtInit(&event_mavlink_command_ack);
+  chEvtInit(&event_mavlink_rc_channels_raw);
 
   setGlobalFlag(GlobalFlags.messaging_ready);
 }

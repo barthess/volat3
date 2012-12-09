@@ -61,6 +61,7 @@ typedef mavlink_oblique_storage_request_count_t   mavlink_oblique_storage_reques
 #define EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_COUNT_DM  (1UL << 21)
 #define EVMSK_MAVLINK_OBLIQUE_STORAGE_REQUEST_DM        (1UL << 22)
 #define EVMSK_MAVLINK_OBLIQUE_STORAGE_COUNT             (1UL << 23)
+#define EVMSK_MAVLINK_RC_CHANNELS_RAW                   (1UL << 24)
 
 /**
  * Structure for data exchange with confimation capability.

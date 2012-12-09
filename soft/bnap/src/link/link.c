@@ -47,6 +47,7 @@ const uint32_t *to_dm_heartbeat_cc_sendperiod;
 const uint32_t *to_dm_heartbeat_bnap_sendperiod;
 const uint32_t *to_dm_oblique_rssi_sendperiod;
 const uint32_t *to_dm_oblique_storage_count_sendperiod;
+const uint32_t *to_dm_rc_channels_raw_sendperiod;
 
 extern BinarySemaphore cc_out_sem;
 extern BinarySemaphore cc_in_sem;
@@ -78,32 +79,33 @@ extern BinarySemaphore dm_in_sem;
  */
 void LinkInit(void){
 
-  to_cc_heartbeat_mpiovd_sendperiod    = ValueSearch("T_hb_mpiovd");
-  to_cc_heartbeat_dm_sendperiod        = ValueSearch("T_hb_dm");
-  to_cc_heartbeat_bnap_sendperiod      = ValueSearch("T_hb_bnap");
+  to_cc_heartbeat_mpiovd_sendperiod     = ValueSearch("T_hb_mpiovd");
+  to_cc_heartbeat_dm_sendperiod         = ValueSearch("T_hb_dm");
+  to_cc_heartbeat_bnap_sendperiod       = ValueSearch("T_hb_bnap");
 
-  to_cc_gps_raw_int_sendperiod         = ValueSearch("T_gps_raw");
-  to_cc_global_position_int_sendperiod = ValueSearch("T_gps_int");
-  to_cc_system_time_sendperiod         = ValueSearch("T_sys_time");
-  to_cc_mpiovd_sensors_sendperiod      = ValueSearch("T_mpiovd_data");
-  to_cc_sys_status_sendperiod          = ValueSearch("T_sys_status");
-  to_cc_statustext_sendperiod          = NULL;
-  to_cc_param_value_sendperiod         = NULL;
+  to_cc_gps_raw_int_sendperiod          = ValueSearch("T_gps_raw");
+  to_cc_global_position_int_sendperiod  = ValueSearch("T_gps_int");
+  to_cc_system_time_sendperiod          = ValueSearch("T_sys_time");
+  to_cc_mpiovd_sensors_sendperiod       = ValueSearch("T_mpiovd_data");
+  to_cc_sys_status_sendperiod           = ValueSearch("T_sys_status");
+  to_cc_statustext_sendperiod           = NULL;
+  to_cc_param_value_sendperiod          = NULL;
   to_cc_oblique_storage_count_sendperiod = NULL;
 
-  to_dm_heartbeat_mpiovd_sendperiod    = NULL;
-  to_dm_heartbeat_cc_sendperiod        = NULL;
-  to_dm_heartbeat_bnap_sendperiod      = NULL;
+  to_dm_heartbeat_mpiovd_sendperiod     = NULL;
+  to_dm_heartbeat_cc_sendperiod         = NULL;
+  to_dm_heartbeat_bnap_sendperiod       = NULL;
 
-  to_dm_gps_raw_int_sendperiod         = NULL;
-  to_dm_global_position_int_sendperiod = NULL;
-  to_dm_system_time_sendperiod         = NULL;
-  to_dm_mpiovd_sensors_sendperiod      = NULL;
-  to_dm_sys_status_sendperiod          = NULL;
-  to_dm_statustext_sendperiod          = NULL;
-  to_dm_param_value_sendperiod         = NULL;
-  to_dm_oblique_rssi_sendperiod        = NULL;
+  to_dm_gps_raw_int_sendperiod          = NULL;
+  to_dm_global_position_int_sendperiod  = NULL;
+  to_dm_system_time_sendperiod          = NULL;
+  to_dm_mpiovd_sensors_sendperiod       = NULL;
+  to_dm_sys_status_sendperiod           = NULL;
+  to_dm_statustext_sendperiod           = NULL;
+  to_dm_param_value_sendperiod          = NULL;
+  to_dm_oblique_rssi_sendperiod         = NULL;
   to_dm_oblique_storage_count_sendperiod = NULL;
+  to_dm_rc_channels_raw_sendperiod      = NULL;
 
   DmCliSwitcherInit(&SDDM);
   link_mpiovd_up(&SDMPIOVD);

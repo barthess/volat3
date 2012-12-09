@@ -155,6 +155,7 @@ static msg_t TimekeeperThread(void *arg){
 
 void TimekeeperInit(void){
 
+  /* init time variable */
   SysTimeUsec = ds1338GetTimeUnixUsec();
   if (SysTimeUsec < BUILD_TIMESTAMP)
     clearGlobalFlag(GlobalFlags.time_good);
