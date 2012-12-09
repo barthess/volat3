@@ -353,7 +353,7 @@
  */
 /*===========================================================================*/
 /* disable all debug checks to allow normal cross connection at 115200 */
-//#define NEED_MODEM_CROSS
+#define NEED_MODEM_CROSS
 
 /**
  * @brief   Debug option, system state check.
@@ -409,7 +409,7 @@
  * @note    The default is @p FALSE.
  */
 #if !defined(CH_DBG_ENABLE_TRACE) || defined(__DOXYGEN__)
-#define CH_DBG_ENABLE_TRACE             TRUE
+#define CH_DBG_ENABLE_TRACE             FALSE
 #endif
 
 /**

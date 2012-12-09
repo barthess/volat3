@@ -15,14 +15,14 @@ param = [
 ("SH_enable",       0,          0,      1,          "u", "NULL",    "Set to 1 to switch off telemetry sending and enabling shell."),
 
 #/* intervals between sending different data (mS) */
-("T_hb_bnap",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat BNAP"),
-("T_hb_dm",         SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat display module"),
-("T_hb_mpiovd",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat MPIOVD"),
-("T_mpiovd_data",   SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
+("T_hb_bnap",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat BNAP sending interval.\\nSet it to 0 for disabling"),
+("T_hb_dm",         SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat display module sending interval.\\nSet it to 0 for disabling"),
+("T_hb_mpiovd",     SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Hertbeat MPIOVD sending interval.\\nSet it to 0 for disabling"),
+("T_mpiovd_data",   SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Sending interval.\\nSet it to 0 for disabling"),
 ("T_sys_status",    SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Interval of sending this data in milliseconds.\\nSet it to 0 for disabling"),
-("T_sys_time",      SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Timeout help here"),
-("T_gps_int",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
-("T_gps_raw",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "NULL"),
+("T_sys_time",      SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Timeout help here sending interval.\\nSet it to 0 for disabling"),
+("T_gps_int",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Sending interval.\\nSet it to 0 for disabling"),
+("T_gps_raw",       SEND_MIN,   1000,   SEND_MAX,   "u", "sendtmo", "Sending interval.\\nSet it to 0 for disabling"),
 ("Tblink_gps",      1,          100,    60000,      "u", "NULL",    "Blink time"),
 ("Tblink_gsm",      1,          100,    60000,      "u", "NULL",    "Blink time"),
 

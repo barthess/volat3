@@ -39,11 +39,6 @@
 			<field type="uint16_t"     name="speed">Vehicle speed (m/s)</field>
             <field type="uint16_t"     name="rpm">Vehicle engine RPM</field>
         </message>
-        <message id="151" name="STATUS_TEXT_LONG">
-            <description>Status text message with maximum allowable by protocol length</description>
-            <field type="uint8_t"      name="severity">Severity of status. Relies on the definitions within RFC-5424. See enum MAV_SEVERITY.</field>
-            <field type="char[254]"	   name="text">Status text message, without null termination character.</field>
-        </message>
         <message id="154" name="OBLIQUE_AGPS">
             <description>Assisted GPS message</description>
 			<field type="uint8_t"      name="target_system">System ID</field>
