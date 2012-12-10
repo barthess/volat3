@@ -72,11 +72,11 @@ AT91C_AIC_PRIOR_HIGHEST              (0x7) // (AIC) Highest priority level
  */
 #define AT91SAM7_SPI_USE_SPI0       TRUE
 #define AT91SAM7_SPI_USE_SPI1       FALSE
-#define AT91SAM7_SPI0_PRIORITY      5
-#define AT91SAM7_SPI1_PRIORITY      5
+#define AT91SAM7_SPI0_PRIORITY      4
+#define AT91SAM7_SPI1_PRIORITY      4
 
 /*
  * I2C driver system settings.
  */
 #define SAM7_I2C_USE_I2C1           TRUE
-#define SAM7_I2C1_PRIORITY          4
+#define SAM7_I2C1_PRIORITY          5

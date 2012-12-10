@@ -269,7 +269,7 @@ static bool_t wait_cgreg(SerialDriver *sdp){
  * Wait registration on operator network
  */
 static bool_t update_rssi(SerialDriver *sdp){
-  int scanfstat;
+  int scanfstat = 0;
 
   /* not first function run */
   if ((fake_rssi != 0) && (fake_ber != 0))
