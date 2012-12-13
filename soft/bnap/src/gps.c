@@ -277,6 +277,7 @@ static void parse_gga(uint8_t *ggabuf){
     mavlink_gps_raw_int_struct.lat = 0;
     mavlink_gps_raw_int_struct.lon = 0;
     mavlink_gps_raw_int_struct.alt = 0;
+    mavlink_gps_raw_int_struct.eph = 0;
 
     mavlink_global_position_int_struct.lat = 0;
     mavlink_global_position_int_struct.lon = 0;

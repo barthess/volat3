@@ -4,21 +4,64 @@
 #include "Window.h"
 #include <QMessageBox>
 
+SerialPort *OpenSerial( char *comm, int baudrate )
+{
+   SerialPort *sp = new SerialPort();
+
+   sp->setPort( QString( comm ) );
+
+   if ( !sp->open( QIODevice::ReadWrite ) )
+   {
+      return NULL;
+   }
+
+   if ( !sp->setRate( baudrate ) )
+   {
+      return NULL;
+   }
+
+   if ( !sp->setDataBits( SerialPort::Data8 ) )
+   {
+      return NULL;
+   }
+
+   if ( !sp->setParity( SerialPort::NoParity ) )
+   {
+      return NULL;
+   }
+
+   if ( !sp->setStopBits( SerialPort::OneStop ) )
+   {
+      return NULL;
+   }
+
+   if ( !sp->setFlowControl( SerialPort::NoFlowControl ) )
+   {
+      return NULL;
+   }
+
+   return sp;
+}
+
+
 int main( int argc, char *argv[] )
 {
    QApplication a(argc, argv);
    a.setStyle( new QPlastiqueStyle() );
 
-   QTextCodec *codec = QTextCodec::codecForName( "WINDOWS-1251" );
+   //QTextCodec *codec = QTextCodec::codecForName( "WINDOWS-1251" );
+   QTextCodec *codec = QTextCodec::codecForName( "utf8" );
    QTextCodec::setCodecForTr( codec );
 
    char comm[256];
 
-   strcpy( comm, "/dev/ttyS0");
+   strcpy( comm, "/dev/ttyO0");
 
    int baudrate = 115200;
    int timezone = 3;
    int timeout  = 3000;
+
+   QMessageBox *box = new QMessageBox();
 
    try
    {
@@ -64,8 +107,16 @@ int main( int argc, char *argv[] )
          argc -= 2;
       }
 
+      SerialPort *sp = OpenSerial( comm, baudrate );
 
-      Window *window = new Window( comm, timeout, baudrate, timezone );
+      if ( !sp )
+      {
+         box->setText( "Comm open error" );
+         box->exec();
+         return -1;
+      }
+
+      Window *window = new Window( sp, timeout, timezone );
 
       window->show();
 
@@ -75,9 +126,8 @@ int main( int argc, char *argv[] )
    catch( int )
    { }
 
-   QMessageBox *box = new QMessageBox();
-
    box->setText( "Invalid command line" );
    box->exec();
+   return -1;
 }
 

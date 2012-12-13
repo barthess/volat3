@@ -51,7 +51,7 @@ void Window::InitWidgets( void )
    BNAP  = InitLabel( 15, 65, 20, "БНАП", Qt::red );
 
    bMPIOVD = false;
-   MPIOVD  = InitLabel( 15, 95, 20, "МПИОВД", Qt::red );
+   MPIOVD  = InitLabel( 15, 95, 20, "М  ПИОВД", Qt::red );
 
    bCC = false;
    CC  = InitLabel( 15, 125, 20, "ДЦ", Qt::red );
