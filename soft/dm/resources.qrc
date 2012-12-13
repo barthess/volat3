@@ -1,3 +1,14 @@
 <RCC>
-    <qresource prefix="/pictures"/>
+    <qresource prefix="/">
+        <file>images/icons/oil_gray.png</file>
+        <file>images/icons/oil_red.png</file>
+        <file>images/icons/break_gray.png</file>
+        <file>images/icons/break_red.png</file>
+        <file>images/icons/temp_gray.png</file>
+        <file>images/icons/temp_red.png</file>
+        <file>images/icons/battery_red.png</file>
+        <file>images/icons/battery_green.png</file>
+        <file>images/icons/fuel_red.png</file>
+        <file>images/icons/fuel_green.png</file>
+    </qresource>
 </RCC>

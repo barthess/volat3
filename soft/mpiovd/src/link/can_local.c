@@ -33,7 +33,7 @@ extern const mavlink_mpiovd_sensors_t     mpiovd_sensors_struct;
  ******************************************************************************
  */
 /*
- * Internal loopback mode, 500KBaud, automatic wakeup, automatic recover
+ * Internal loopback mode, 250KBaud, automatic wakeup, automatic recover
  * from abort mode.
  * See section 22.7.7 on the STM32 reference manual.
  */

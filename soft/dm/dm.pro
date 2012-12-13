@@ -12,14 +12,14 @@ TARGET = dm
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        dmface.cpp \
-    gpswidget.cpp
+SOURCES += main.cpp \
+            Clickable.cpp \
+            Window.cpp
 
-HEADERS  += dmface.h \
-    gpswidget.h
+HEADERS  += Clickable.h \
+            Window.h \
 
-FORMS    += dmface.ui
+FORMS    += cam.ui
 
 RESOURCES += \
     resources.qrc

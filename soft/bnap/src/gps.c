@@ -283,7 +283,7 @@ static void parse_gga(uint8_t *ggabuf){
     mavlink_global_position_int_struct.alt = 0;
 	}
 	mavlink_gps_raw_int_struct.satellites_visible = satellites_visible;
-	mavlink_gps_raw_int_struct.fix_type = fix;
+	mavlink_gps_raw_int_struct.fix_type = fix + 1; /* +1 to conform with mavlink rules */
 }
 
 static void parse_rmc(uint8_t *rmcbuf){

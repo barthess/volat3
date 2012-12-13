@@ -353,7 +353,7 @@
  */
 /*===========================================================================*/
 /* disable all debug checks to allow normal cross connection at 115200 */
-//#define NEED_MODEM_CROSS
+#define NEED_MODEM_CROSS
 
 /**
  * @brief   Debug option, system state check.
