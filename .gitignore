@@ -23,3 +23,4 @@ moc_*.cpp
 qrc_resources.cpp
 ui_cam.h
 *.autosave
+*/dm/dm
