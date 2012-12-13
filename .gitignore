@@ -22,3 +22,4 @@ soft/face/tuner/pyqtgraph/
 moc_*.cpp
 qrc_resources.cpp
 ui_cam.h
+*.autosave
