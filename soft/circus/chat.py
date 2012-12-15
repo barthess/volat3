@@ -21,10 +21,26 @@ master.port.settimeout(1)
 mav = mavlink.MAVLink(master)
 mav.srcSystem = 255 # прикинемся контрольным центром
 
-def heartbeater(mavdevice):
-    time.sleep(1)
-    mavdevice.heartbeat_send(0, 0, 0, 0, 0)
+class HeartbeatSender(threading.Thread):
+    """ Class sending heartbeats """
 
+    def __init__(self, mavdevice):
+        threading.Thread.__init__(self)
+        self.mavdevice = mavdevice
+        self.__stop = threading.Event()
+
+    def stop(self):
+        self.__stop.set()
+
+    def run(self):
+        print "*** heartbeter started"
+        while not (self.__stop.is_set()):
+            time.sleep(1)
+            self.mavdevice.heartbeat_send(mavlink.MAV_TYPE_GCS, mavlink.MAV_AUTOPILOT_INVALID, 192, 0, mavlink.MAV_STATE_ACTIVE)
+        print "*** heartbeater stopped"
+
+##################################################
+# main cycle
 m = None
 
 print "Awaiting connection..."
@@ -34,7 +50,26 @@ while m is None:
     except socket.timeout: pass
 
 print "Got it!"
+heartbeat_th = HeartbeatSender(mav)
+heartbeat_th.start()
+
 while True:
-    heartbeat_th = threading.Thread(target=heartbeater, args=(mav))
-    data = sys.stdin.readline()
-    mav.statustext_send(0, data)
+    try:
+        s = sys.stdin.readline()
+        if len(s) > 50:
+            s = s[0:49]
+            print "WARNING: message was truncated to first 50 symbols"
+    except KeyboardInterrupt:
+        print "*** stopping heartbeat thread"
+        heartbeat_th.stop()
+        heartbeat_th.join()
+        print "*** exiting. By."
+        exit()
+
+    strutf8 = unicode(s, "utf-8")
+    try:
+        mav.statustext_send(0, str(strutf8))
+    except UnicodeEncodeError:
+        print "ERROR: Cyrillic doest not supported yet."
+
+
