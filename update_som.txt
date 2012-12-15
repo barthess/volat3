@@ -5,3 +5,6 @@ ubiattach /dev/ubi_ctrl -m 4
 ubimkvol /dev/ubi0 -N root_volume -m
 mount -t ubifs ubi0:root_volume /mnt/nand -o compr=lzo,bulk_read,no_chk_data_crc
 cp -r /media/mmcblk0p2/* /mnt/nand/
+
+
+flash_erase /dev/mtd4 0 0 && sleep 10 && ubiformat /dev/mtd4 && sleep 10 && ubiattach /dev/ubi_ctrl -m 4 && sleep 10 && ubimkvol /dev/ubi0 -N root_volume -m && sleep 10 && mount -t ubifs ubi0:root_volume /mnt/nand -o compr=lzo,bulk_read,no_chk_data_crc && sleep 10 && cp -r /media/mmcblk0p2/* /mnt/nand/ && umount /mnt/nand
