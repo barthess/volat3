@@ -16,3 +16,6 @@ SOURCES += main.cpp
 
 HEADERS  += \
     main.h
+
+RESOURCES += \
+    resources.qrc

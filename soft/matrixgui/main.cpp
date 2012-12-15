@@ -1,26 +1,35 @@
 #include <QtGui>
 #include "main.h"
 
+#define display_w   480
+#define display_h   272
+
 KamertonGui::KamertonGui(){
 
     process = new QProcess();
 
     xtermButton = new QPushButton("Xterm");
-    xtermButton->setMinimumHeight(50);
+    xtermButton->setMaximumHeight(display_h);
     connect(xtermButton, SIGNAL(clicked()), this, SLOT(launchXterm()));
 
-    dmButton = new QPushButton("DM");
-    dmButton->setMinimumHeight(50);
+    QPixmap pix = QPixmap("://images/icons/temp_red.png");
+    dmButton = new QPushButton(pix, "");
+    dmButton->setIconSize(pix.size());
+    dmButton->setMaximumHeight(display_h);
     connect(dmButton, SIGNAL(clicked()), this, SLOT(launchDm()));
 
     termDemoButton = new QPushButton("TermDemo");
-    termDemoButton->setMinimumHeight(50);
+    termDemoButton->setMaximumHeight(display_h);
     connect(termDemoButton, SIGNAL(clicked()), this, SLOT(launchTermDemo()));
 
-    QHBoxLayout *layout = new QHBoxLayout();
-    layout->addWidget(xtermButton);
-    layout->addWidget(dmButton);
-    layout->addWidget(termDemoButton);
+    QGridLayout *layout = new QGridLayout();
+    layout->addWidget(xtermButton,      0, 0);
+//    layout->addWidget(dmButton,         0, 1);
+//    layout->addWidget(termDemoButton,   0, 2);
+//    layout->addWidget(xtermButton,      1, 0);
+    layout->addWidget(dmButton,         1, 1);
+    layout->addWidget(termDemoButton,   1, 2);
+
     this->setLayout(layout);
 }
 

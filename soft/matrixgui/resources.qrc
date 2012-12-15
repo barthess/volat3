@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/icons/temp_red.png</file>
+    </qresource>
+</RCC>
