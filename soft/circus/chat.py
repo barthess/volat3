@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-""" Assisted GPS sender """
+""" Text messaging test application """
 
 import sys
 import os
