@@ -3,30 +3,33 @@
 
 KamertonGui::KamertonGui(){
 
-    xtermButton     = new MatrixButton("://images/icons/sun.png", "Xterm");
-    dmButton        = new MatrixButton("://images/icons/kamerton.png", "DM");
-    termDemoButton  = new MatrixButton("://images/icons/fuel.png", "TermDemo");
-    poweroffButton  = new MatrixButton("://images/icons/q1.png", "Poweroff");
-    settingsButton  = new MatrixButton("://images/icons/mosfet.png", "Settings");
-    stbButton       = new MatrixButton("://images/icons/stb.png", "Stb");
-    chibiButton     = new MatrixButton("://images/icons/chibi.png", "Chibi");
-    qualityButton   = new MatrixButton("://images/icons/quality.png", "Quality");
+    sunButton       = new MatrixButton("://images/icons/sun.png",       "Xterm");
+    kamertonButton  = new MatrixButton("://images/icons/kamerton.png",  "DM");
+    fuelButton      = new MatrixButton("://images/icons/fuel.png",      "TermDemo");
+    q1Button        = new MatrixButton("://images/icons/q1.png",        "Poweroff");
+    mosfetButton    = new MatrixButton("://images/icons/mosfet.png",    "Settings");
+    stbButton       = new MatrixButton("://images/icons/stb.png",       "Stb");
+    chibiButton     = new MatrixButton("://images/icons/chibi.png",     "Chibi");
+    qualityButton   = new MatrixButton("://images/icons/quality.png",   "Quality");
 
-    connect(xtermButton,    SIGNAL(clicked()), this, SLOT(launchXterm()));
-    connect(dmButton,       SIGNAL(clicked()), this, SLOT(launchDm()));
-    connect(termDemoButton, SIGNAL(clicked()), this, SLOT(launchTermDemo()));
-    connect(poweroffButton, SIGNAL(clicked()), this, SLOT(launchPoweroff()));
-    connect(settingsButton, SIGNAL(clicked()), this, SLOT(launchSettings()));
+    connect(sunButton,      SIGNAL(clicked()), this, SLOT(launchSun()));
+    connect(kamertonButton, SIGNAL(clicked()), this, SLOT(launchKamerton()));
+    connect(fuelButton,     SIGNAL(clicked()), this, SLOT(launchFuel()));
+    connect(q1Button,       SIGNAL(clicked()), this, SLOT(launchQ1()));
+    connect(mosfetButton,   SIGNAL(clicked()), this, SLOT(launchMosfet()));
+    connect(chibiButton,    SIGNAL(clicked()), this, SLOT(launchChibi()));
+    connect(stbButton,      SIGNAL(clicked()), this, SLOT(launchStb()));
+    connect(qualityButton,  SIGNAL(clicked()), this, SLOT(launchQuality()));
 
     QGridLayout *buttonLayout = new QGridLayout();
-    buttonLayout->addWidget(xtermButton,    0, 0);
+    buttonLayout->addWidget(sunButton,      0, 0);
     buttonLayout->addWidget(stbButton,      0, 1);
     buttonLayout->addWidget(chibiButton,    0, 2);
-    buttonLayout->addWidget(settingsButton, 0, 3);
+    buttonLayout->addWidget(mosfetButton,   0, 3);
     buttonLayout->addWidget(qualityButton,  1, 0);
-    buttonLayout->addWidget(dmButton,       1, 1);
-    buttonLayout->addWidget(termDemoButton, 1, 2);
-    buttonLayout->addWidget(poweroffButton, 1, 3);
+    buttonLayout->addWidget(kamertonButton, 1, 1);
+    buttonLayout->addWidget(fuelButton,     1, 2);
+    buttonLayout->addWidget(q1Button,       1, 3);
 
     QVBoxLayout *layout = new QVBoxLayout();
     MatrixLabel *header = new MatrixLabel("--== Kamerton UberS0ft GUI ==--");
@@ -38,40 +41,50 @@ KamertonGui::KamertonGui(){
     process = new QProcess();
 }
 
-void KamertonGui::launchXterm(void){
-    QString cmd = "xterm";
+void KamertonGui::launchSun(void){
+    QString cmd = "/home/root/lightmaps";
     this->process->start(cmd);
 }
 
-void KamertonGui::launchDm(void){
-    QString cmd = "LD_LIBRARY_PATH=/home/root/libs /home/root/dm";
-    this->process->start(cmd);
-//    QStringList args = (QStringList() << "-d /dev/ttyS0" << "-z 0" << "-t 3000");
-//    this->process->start(cmd, args);
-//    QString cmd = "/mnt/work/projects/volat3/soft/dm-build-Desktop-Release/dm";
-}
-
-void KamertonGui::launchTermDemo(void){
-    QString cmd = "LD_LIBRARY_PATH=/home/root/libs /home/root/terminal";
+void KamertonGui::launchKamerton(void){
+    QString cmd = "/home/root/dm";
     this->process->start(cmd);
 }
 
-void KamertonGui::launchPoweroff(void){
-//    QMessageBox *mb = new QMessageBox();
-//    mb->setText("Are you sure you want poweroff me?");
-//    mb->show();
+void KamertonGui::launchFuel(void){
+    QString cmd = "/home/root/terminal";
+    this->process->start(cmd);
+}
+
+void KamertonGui::launchQ1(void){
+    QMessageBox *mb = new QMessageBox();
+    mb->setText("Are you sure you want poweroff me?");
+    mb->exec();
     this->process->start("poweroff");
 }
 
-void KamertonGui::launchSettings(void){
+void KamertonGui::launchMosfet(void){
     QMessageBox *mb = new QMessageBox();
     mb->setText("Settings applet will be here");
     mb->show();
 }
 
-void KamertonGui::launchChibi(void){return;}
-void KamertonGui::launchStb(void){return;}
-void KamertonGui::launchQuality(void){return;}
+void KamertonGui::launchChibi(void){
+    QString cmd = "/home/root/qv4l2";
+    this->process->start(cmd);
+}
+
+void KamertonGui::launchStb(void){
+    QMessageBox *mb = new QMessageBox();
+    mb->setText("Stub");
+    mb->show();
+}
+
+void KamertonGui::launchQuality(void){
+    QMessageBox *mb = new QMessageBox();
+    mb->setText("Stub");
+    mb->show();
+}
 
 int main(int argv, char **args)
 {

@@ -13,11 +13,11 @@ public:
     KamertonGui();
 
 private slots:
-    void launchDm(void);
-    void launchXterm(void);
-    void launchTermDemo(void);
-    void launchPoweroff(void);
-    void launchSettings(void);
+    void launchKamerton(void);
+    void launchSun(void);
+    void launchFuel(void);
+    void launchQ1(void);
+    void launchMosfet(void);
     void launchStb(void);
     void launchChibi(void);
     void launchQuality(void);
@@ -25,11 +25,11 @@ private slots:
 private:
     QProcess *process;
 
-    MatrixButton *xtermButton;
-    MatrixButton *dmButton;
-    MatrixButton *termDemoButton;
-    MatrixButton *poweroffButton;
-    MatrixButton *settingsButton;
+    MatrixButton *sunButton;
+    MatrixButton *kamertonButton;
+    MatrixButton *fuelButton;
+    MatrixButton *q1Button;
+    MatrixButton *mosfetButton;
     MatrixButton *stbButton;
     MatrixButton *qualityButton;
     MatrixButton *chibiButton;
