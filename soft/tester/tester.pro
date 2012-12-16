@@ -26,4 +26,6 @@ FORMS    += \
 #-----------------------------------------------
 INCLUDEPATH += /home/barthess/projects/qextserialport/src
 LIBS += /home/barthess/projects/qextserialport-build-Desktop-Release/libqextserialport.so.1.2
+# for cross compilation
+#LIBS += /home/barthess/projects/qextserialport/libqextserialport.so.1.2
 DEFINES += QEXTSERIALPORT_USING_SHARED

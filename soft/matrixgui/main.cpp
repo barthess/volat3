@@ -32,7 +32,7 @@ KamertonGui::KamertonGui(){
     buttonLayout->addWidget(q1Button,       1, 3);
 
     QVBoxLayout *layout = new QVBoxLayout();
-    MatrixLabel *header = new MatrixLabel("--== Kamerton ÜberS0ft GUI ==--");
+    MatrixLabel *header = new MatrixLabel("--== Kamerton UberS0ft GUI ==--");
     layout->addWidget(header);
     layout->addLayout(buttonLayout);
 
@@ -52,8 +52,9 @@ void KamertonGui::launchKamerton(void){
 }
 
 void KamertonGui::launchFuel(void){
-    QString cmd = "/home/root/terminal";
-    this->process->start(cmd);
+    QMessageBox *mb = new QMessageBox();
+    mb->setText("Stub");
+    mb->show();
 }
 
 void KamertonGui::launchQ1(void){
@@ -98,7 +99,7 @@ int main(int argv, char **args)
 
     kgui.setGeometry(0, 0, 480, 272);
     kgui.setWindowFlags(Qt::FramelessWindowHint);
-    kgui.setWindowTitle("ÜberS0ft");
+    kgui.setWindowTitle("UberS0ft");
     kgui.show();
 
     return app.exec();
