@@ -12,10 +12,16 @@ TARGET = matrixgui
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    matrixbutton.cpp \
+    matrixlabel.cpp
 
 HEADERS  += \
-    main.h
+    main.h \
+    matrixbutton.h \
+    matrixlabel.h
 
 RESOURCES += \
     resources.qrc
+
+FORMS +=

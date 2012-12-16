@@ -1,0 +1,19 @@
+#include "matrixbutton.h"
+
+MatrixButton::MatrixButton(const QString& pixpath, const QString& text, QWidget *parent):
+    QPushButton(parent)
+{
+    QPalette p;
+
+    p = this->palette();
+    p.setColor(QPalette::Button,  Qt::red);
+    //p.setColor(QPalette::WindowText, Qt::white);
+    this->setPalette(p);
+    this->setFlat(true);
+
+    QPixmap pix = QPixmap(pixpath);
+    //this->setText(text);
+    this->setIcon(pix);
+    this->setIconSize(pix.size());
+    this->setMaximumHeight(100);
+}

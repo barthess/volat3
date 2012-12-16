@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/icons/temp_red.png</file>
+        <file>images/icons/chibi.png</file>
+        <file>images/icons/fuel.png</file>
+        <file>images/icons/kamerton.png</file>
+        <file>images/icons/q1.png</file>
+        <file>images/icons/stb.png</file>
+        <file>images/icons/sun.png</file>
+        <file>images/icons/mosfet.png</file>
+        <file>images/icons/quality.png</file>
     </qresource>
 </RCC>

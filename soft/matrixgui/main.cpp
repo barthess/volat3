@@ -1,36 +1,41 @@
 #include <QtGui>
 #include "main.h"
 
-#define display_w   480
-#define display_h   272
-
 KamertonGui::KamertonGui(){
 
-    process = new QProcess();
+    xtermButton     = new MatrixButton("://images/icons/sun.png", "Xterm");
+    dmButton        = new MatrixButton("://images/icons/kamerton.png", "DM");
+    termDemoButton  = new MatrixButton("://images/icons/fuel.png", "TermDemo");
+    poweroffButton  = new MatrixButton("://images/icons/q1.png", "Poweroff");
+    settingsButton  = new MatrixButton("://images/icons/mosfet.png", "Settings");
+    stbButton       = new MatrixButton("://images/icons/stb.png", "Stb");
+    chibiButton     = new MatrixButton("://images/icons/chibi.png", "Chibi");
+    qualityButton   = new MatrixButton("://images/icons/quality.png", "Quality");
 
-    xtermButton = new QPushButton("Xterm");
-    xtermButton->setMaximumHeight(display_h);
-    connect(xtermButton, SIGNAL(clicked()), this, SLOT(launchXterm()));
-
-    QPixmap pix = QPixmap("://images/icons/temp_red.png");
-    dmButton = new QPushButton(pix, "");
-    dmButton->setIconSize(pix.size());
-    dmButton->setMaximumHeight(display_h);
-    connect(dmButton, SIGNAL(clicked()), this, SLOT(launchDm()));
-
-    termDemoButton = new QPushButton("TermDemo");
-    termDemoButton->setMaximumHeight(display_h);
+    connect(xtermButton,    SIGNAL(clicked()), this, SLOT(launchXterm()));
+    connect(dmButton,       SIGNAL(clicked()), this, SLOT(launchDm()));
     connect(termDemoButton, SIGNAL(clicked()), this, SLOT(launchTermDemo()));
+    connect(poweroffButton, SIGNAL(clicked()), this, SLOT(launchPoweroff()));
+    connect(settingsButton, SIGNAL(clicked()), this, SLOT(launchSettings()));
 
-    QGridLayout *layout = new QGridLayout();
-    layout->addWidget(xtermButton,      0, 0);
-//    layout->addWidget(dmButton,         0, 1);
-//    layout->addWidget(termDemoButton,   0, 2);
-//    layout->addWidget(xtermButton,      1, 0);
-    layout->addWidget(dmButton,         1, 1);
-    layout->addWidget(termDemoButton,   1, 2);
+    QGridLayout *buttonLayout = new QGridLayout();
+    buttonLayout->addWidget(xtermButton,    0, 0);
+    buttonLayout->addWidget(stbButton,      0, 1);
+    buttonLayout->addWidget(chibiButton,    0, 2);
+    buttonLayout->addWidget(settingsButton, 0, 3);
+    buttonLayout->addWidget(qualityButton,  1, 0);
+    buttonLayout->addWidget(dmButton,       1, 1);
+    buttonLayout->addWidget(termDemoButton, 1, 2);
+    buttonLayout->addWidget(poweroffButton, 1, 3);
+
+    QVBoxLayout *layout = new QVBoxLayout();
+    MatrixLabel *header = new MatrixLabel("--== Kamerton UberS0ft GUI ==--");
+    layout->addWidget(header);
+    layout->addLayout(buttonLayout);
 
     this->setLayout(layout);
+
+    process = new QProcess();
 }
 
 void KamertonGui::launchXterm(void){
@@ -39,11 +44,11 @@ void KamertonGui::launchXterm(void){
 }
 
 void KamertonGui::launchDm(void){
-    //QString cmd = "LD_LIBRARY_PATH=/home/root/libs /home/root/dm";
-//    QStringList args = (QStringList() << "-d /dev/ttyS0" << "-z 3" << "-t 3000");
-//    this->process->start(cmd, args);
-    QString cmd = "/mnt/work/projects/volat3/soft/dm-build-Desktop-Release/dm";
+    QString cmd = "LD_LIBRARY_PATH=/home/root/libs /home/root/dm";
     this->process->start(cmd);
+//    QStringList args = (QStringList() << "-d /dev/ttyS0" << "-z 0" << "-t 3000");
+//    this->process->start(cmd, args);
+//    QString cmd = "/mnt/work/projects/volat3/soft/dm-build-Desktop-Release/dm";
 }
 
 void KamertonGui::launchTermDemo(void){
@@ -51,7 +56,22 @@ void KamertonGui::launchTermDemo(void){
     this->process->start(cmd);
 }
 
+void KamertonGui::launchPoweroff(void){
+//    QMessageBox *mb = new QMessageBox();
+//    mb->setText("Are you sure you want poweroff me?");
+//    mb->show();
+    this->process->start("poweroff");
+}
 
+void KamertonGui::launchSettings(void){
+    QMessageBox *mb = new QMessageBox();
+    mb->setText("Settings applet will be here");
+    mb->show();
+}
+
+void KamertonGui::launchChibi(void){return;}
+void KamertonGui::launchStb(void){return;}
+void KamertonGui::launchQuality(void){return;}
 
 int main(int argv, char **args)
 {
