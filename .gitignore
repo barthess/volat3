@@ -24,3 +24,4 @@ qrc_resources.cpp
 ui_cam.h
 *.autosave
 */dm/dm
+soft/matrixgui/Makefile

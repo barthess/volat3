@@ -6,13 +6,13 @@ MatrixButton::MatrixButton(const QString& pixpath, const QString& text, QWidget 
     QPalette p;
 
     p = this->palette();
-    p.setColor(QPalette::Button,  Qt::red);
-    //p.setColor(QPalette::WindowText, Qt::white);
+    p.setColor(QPalette::ButtonText, Qt::white);
     this->setPalette(p);
+
     this->setFlat(true);
 
     QPixmap pix = QPixmap(pixpath);
-    //this->setText(text);
+    this->setText(text);
     this->setIcon(pix);
     this->setIconSize(pix.size());
     this->setMaximumHeight(100);
