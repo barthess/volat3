@@ -59,6 +59,7 @@ void KamertonGui::launchFuel(void){
 void KamertonGui::launchQ1(void){
     QMessageBox *mb = new QMessageBox();
     mb->setText("Are you sure you want poweroff me?");
+    mb->setButtonText(0, "Yes");
     mb->exec();
     this->process->start("poweroff");
 }
@@ -81,9 +82,8 @@ void KamertonGui::launchStb(void){
 }
 
 void KamertonGui::launchQuality(void){
-    QMessageBox *mb = new QMessageBox();
-    mb->setText("Stub");
-    mb->show();
+    QString cmd = "/home/root/tester";
+    this->process->start(cmd);
 }
 
 int main(int argv, char **args)
@@ -98,7 +98,7 @@ int main(int argv, char **args)
 
     kgui.setGeometry(0, 0, 480, 272);
     kgui.setWindowFlags(Qt::FramelessWindowHint);
-    kgui.setWindowTitle("UberS0ft");
+    kgui.setWindowTitle("ÜberS0ft");
     kgui.show();
 
     return app.exec();

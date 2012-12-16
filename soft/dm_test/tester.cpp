@@ -10,7 +10,7 @@ TestWidget::TestWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Tester");
-    port = new QextSerialPort("/dev/ttyS0");
+    port = new QextSerialPort("/dev/ttyO0");
     connect(port, SIGNAL(readyRead()), this, SLOT(onDataAvailable()));
     port->open(QextSerialPort::ReadWrite);
     port->setBaudRate(BAUD115200);
