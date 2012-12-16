@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Tester</class>
+ <widget class="QWidget" name="Tester">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>410</width>
+    <height>200</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>TestWidget</string>
+  </property>
+  <widget class="QGroupBox" name="discreteBox">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>10</y>
+     <width>81</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Discrete</string>
+   </property>
+   <widget class="QCheckBox" name="checkBoxD0">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D00</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxD1">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D01</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxD2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D02</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxD3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D03</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxD4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D04</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxD5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D05</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxD6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D06</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxD7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>160</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>D07</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="analogBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>301</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Analog</string>
+   </property>
+   <widget class="QLabel" name="labelAn0">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>AN01</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="barAn1">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>20</y>
+      <width>241</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>1000</number>
+    </property>
+    <property name="value">
+     <number>240</number>
+    </property>
+    <property name="format">
+     <string>%v</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="barAn2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>50</y>
+      <width>241</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>1000</number>
+    </property>
+    <property name="value">
+     <number>240</number>
+    </property>
+    <property name="format">
+     <string>%v</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAn1">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>AN01</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="barAn3">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>80</y>
+      <width>241</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>1000</number>
+    </property>
+    <property name="value">
+     <number>240</number>
+    </property>
+    <property name="format">
+     <string>%v</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAn2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>AN01</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="barAn4">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>110</y>
+      <width>241</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>1000</number>
+    </property>
+    <property name="value">
+     <number>240</number>
+    </property>
+    <property name="format">
+     <string>%v</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAn3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>AN01</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="labelVbat">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>180</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Vbat = </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelTimeUtc">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>160</y>
+     <width>281</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>UTC = </string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

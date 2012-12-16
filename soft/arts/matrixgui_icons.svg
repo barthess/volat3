@@ -26,7 +26,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
      inkscape:cx="274.88354"
-     inkscape:cy="861.84851"
+     inkscape:cy="862.35359"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -43,7 +43,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -235,7 +235,10 @@
        inkscape:export-filename="/mnt/work/projects/volat3/soft/matrixgui/images/icons/q1.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"
-       style="fill:#ffffff;fill-opacity:1" />
+       style="fill:#ffffff;fill-opacity:1">
+      <title
+         id="title3031">q1</title>
+    </path>
     <g
        id="g3416"
        transform="matrix(1.2446851,0,0,1.2446851,-1191.8168,-1547.3308)"

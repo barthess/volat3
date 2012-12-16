@@ -32,7 +32,7 @@ KamertonGui::KamertonGui(){
     buttonLayout->addWidget(q1Button,       1, 3);
 
     QVBoxLayout *layout = new QVBoxLayout();
-    MatrixLabel *header = new MatrixLabel("--== Kamerton UberS0ft GUI ==--");
+    MatrixLabel *header = new MatrixLabel("--== Kamerton ÜberS0ft GUI ==--");
     layout->addWidget(header);
     layout->addLayout(buttonLayout);
 
