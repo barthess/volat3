@@ -13,7 +13,7 @@ MatrixButton::MatrixButton(const QString& pixpath, const QString& cmd, QWidget *
     QPixmap pix = QPixmap(pixpath);
     this->setIcon(pix);
     this->setIconSize(pix.size());
-    //this->setMaximumHeight(1000);
+    this->setMaximumHeight(1000);
     this->cmd = cmd;
     connect(this, SIGNAL(clicked()), this, SLOT(launch()));
 }
