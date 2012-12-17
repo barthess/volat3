@@ -32,7 +32,7 @@ KamertonGui::KamertonGui(){
     buttonLayout->addWidget(q1Button,       1, 3);
 
     QVBoxLayout *layout = new QVBoxLayout();
-    MatrixLabel *header = new MatrixLabel("--== Kamerton UberS0ft GUI ==--");
+    MatrixLabel *header = new MatrixLabel(QObject::tr("--== Kamerton ÜberS0ft™ GUI ==--"));
     layout->addWidget(header);
     layout->addLayout(buttonLayout);
 
@@ -60,7 +60,6 @@ void KamertonGui::launchFuel(void){
 void KamertonGui::launchQ1(void){
     QMessageBox *mb = new QMessageBox();
     mb->setText("Are you sure you want poweroff me?");
-    mb->setButtonText(0, "Yes");
     mb->exec();
     this->process->start("poweroff");
 }
@@ -91,6 +90,9 @@ int main(int argv, char **args)
 {
     QApplication app(argv, args);
 
+    QTextCodec *codec = QTextCodec::codecForName("utf8");
+    QTextCodec::setCodecForTr(codec);
+
     KamertonGui kgui;
 
     QPalette p;
@@ -99,7 +101,7 @@ int main(int argv, char **args)
 
     kgui.setGeometry(0, 0, 480, 272);
     kgui.setWindowFlags(Qt::FramelessWindowHint);
-    kgui.setWindowTitle("UberS0ft");
+    kgui.setWindowTitle(QObject::tr("ÜberShell"));
     kgui.show();
 
     return app.exec();
