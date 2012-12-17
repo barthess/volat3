@@ -1,7 +1,7 @@
 #include "tester.h"
 #include "ui_tester.h"
 
-#include "../mavlink/C/oblique/mavlink.h"
+#include "/mnt/work/projects/volat3/soft/mavlink/C/oblique/mavlink.h"
 
 TestWidget::TestWidget(QextSerialPort *p, QWidget *parent) :
     QWidget(parent),

@@ -6,7 +6,7 @@
 #include <QPalette>
 #include <QDateTime>
 #include <math.h>
-#include "../mavlink/C/oblique/mavlink.h"
+#include "../../mavlink/C/oblique/mavlink.h"
 
 Window::Window( SerialPort *sp, int timeout, int timezone, QWidget *parent )
 {
