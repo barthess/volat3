@@ -2,6 +2,8 @@
 #define TESTWIDGET_H
 
 #include <QWidget>
+#include <QSettings>
+#include "qextserialport.h"
 
 namespace Ui {
 class Tester;
@@ -14,7 +16,7 @@ class TestWidget : public QWidget
     Q_OBJECT
     
 public:
-    explicit TestWidget(QWidget *parent = 0);
+    explicit TestWidget(QextSerialPort *p, QWidget *parent = 0);
     ~TestWidget();
     
 private:
@@ -23,6 +25,9 @@ private:
 
 public slots:
    void onDataAvailable(void);
+
+private slots:
+   void quit(void);
 };
 
 #endif // TESTWIDGET_H

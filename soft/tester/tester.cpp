@@ -1,19 +1,21 @@
 #include "tester.h"
 #include "ui_tester.h"
-#include "qextserialport.h"
 
 #include "../mavlink/C/oblique/mavlink.h"
 
-TestWidget::TestWidget(QWidget *parent) :
+TestWidget::TestWidget(QextSerialPort *p, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Tester)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Tester");
-    port = new QextSerialPort("/dev/ttyO0");
+
+    this->setGeometry(0, 0, 480, 272);
+    this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setWindowTitle(tr("Tester"));
+    connect(ui->exitButton, SIGNAL(clicked()), this, SLOT(quit()));
+
+    port = p;
     connect(port, SIGNAL(readyRead()), this, SLOT(onDataAvailable()));
-    port->open(QextSerialPort::ReadWrite);
-    port->setBaudRate(BAUD115200);
 }
 
 TestWidget::~TestWidget()
@@ -63,4 +65,8 @@ void TestWidget::onDataAvailable(void){
             }
         }
     }
+}
+
+void TestWidget::quit(void){
+    QApplication::exit(0);
 }

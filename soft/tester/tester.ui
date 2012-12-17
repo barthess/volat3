@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>410</width>
-    <height>200</height>
+    <width>480</width>
+    <height>272</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QGroupBox" name="discreteBox">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>390</x>
      <y>10</y>
      <width>81</width>
      <height>181</height>
@@ -138,140 +138,110 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>301</width>
+     <width>371</width>
      <height>141</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
    <property name="title">
     <string>Analog</string>
    </property>
-   <widget class="QLabel" name="labelAn0">
+   <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>31</width>
-      <height>16</height>
+      <x>9</x>
+      <y>19</y>
+      <width>351</width>
+      <height>121</height>
      </rect>
     </property>
-    <property name="text">
-     <string>AN01</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="barAn1">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>20</y>
-      <width>241</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>1000</number>
-    </property>
-    <property name="value">
-     <number>240</number>
-    </property>
-    <property name="format">
-     <string>%v</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="barAn2">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>50</y>
-      <width>241</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>1000</number>
-    </property>
-    <property name="value">
-     <number>240</number>
-    </property>
-    <property name="format">
-     <string>%v</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelAn1">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>31</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>AN01</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="barAn3">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>80</y>
-      <width>241</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>1000</number>
-    </property>
-    <property name="value">
-     <number>240</number>
-    </property>
-    <property name="format">
-     <string>%v</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelAn2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>31</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>AN01</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="barAn4">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>110</y>
-      <width>241</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>1000</number>
-    </property>
-    <property name="value">
-     <number>240</number>
-    </property>
-    <property name="format">
-     <string>%v</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelAn3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>31</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>AN01</string>
-    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelAn2">
+       <property name="text">
+        <string>AN03</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="labelAn1">
+       <property name="text">
+        <string>AN02</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelAn0">
+       <property name="text">
+        <string>AN01</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QProgressBar" name="barAn3">
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="value">
+        <number>240</number>
+       </property>
+       <property name="format">
+        <string>%v</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QProgressBar" name="barAn2">
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="value">
+        <number>240</number>
+       </property>
+       <property name="format">
+        <string>%v</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QProgressBar" name="barAn1">
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="value">
+        <number>240</number>
+       </property>
+       <property name="format">
+        <string>%v</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QProgressBar" name="barAn4">
+       <property name="maximum">
+        <number>1000</number>
+       </property>
+       <property name="value">
+        <number>240</number>
+       </property>
+       <property name="format">
+        <string>%v</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="labelAn3">
+       <property name="text">
+        <string>AN04</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QLabel" name="labelVbat">
@@ -298,6 +268,26 @@
    </property>
    <property name="text">
     <string>UTC = </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exitButton">
+   <property name="geometry">
+    <rect>
+     <x>12</x>
+     <y>204</y>
+     <width>461</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>36</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Exit</string>
    </property>
   </widget>
  </widget>
