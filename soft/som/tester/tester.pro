@@ -24,6 +24,7 @@ FORMS    += \
 #-----------------------------------------------
 # qextserialport shared library
 #-----------------------------------------------
+DEPENDPATH += ../qextserialport
 INCLUDEPATH += ../qextserialport/src
 #LIBS += /home/barthess/projects/qextserialport-build-Desktop-Release/libqextserialport.so.1.2
 LIBS += ../qextserialport/libqextserialport.so.1.2

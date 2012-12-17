@@ -8,35 +8,29 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = dm
+TARGET = telemetry
 TEMPLATE = app
 
 
 SOURCES += main.cpp \
             Clickable.cpp \
             Window.cpp \
-    QtAddOnSerialPort/ttylocker_unix.cpp \
-    QtAddOnSerialPort/serialportinfo.cpp \
-    QtAddOnSerialPort/serialportinfo_unix.cpp \
-    QtAddOnSerialPort/serialport.cpp \
-    QtAddOnSerialPort/serialport_unix.cpp \
 
 HEADERS  += Clickable.h \
             Window.h \
-    QtAddOnSerialPort/ttylocker_unix_p.h \
-    QtAddOnSerialPort/serialportinfo.h \
-    QtAddOnSerialPort/serialportinfo_p.h \
-    QtAddOnSerialPort/serialport.h \
-    QtAddOnSerialPort/serialport-global.h \
-    QtAddOnSerialPort/serialport_unix_p.h \
-    QtAddOnSerialPort/serialport_p.h \
-    QtAddOnSerialPort/qt4support/qringbuffer_p.h
 
 FORMS    += cam.ui
 
 RESOURCES += \
     resources.qrc
 
-OTHER_FILES += \
-    QtAddOnSerialPort/qt4support/serialport.prf \
-    QtAddOnSerialPort/qt4support/install-helper.pri
+#-----------------------------------------------
+# qextserialport shared library
+#-----------------------------------------------
+DEPENDPATH += ../qextserialport
+INCLUDEPATH += ../qextserialport/src
+#LIBS += /home/barthess/projects/qextserialport-build-Desktop-Release/libqextserialport.so.1.2
+LIBS += ../qextserialport/libqextserialport.so.1.2
+# for cross compilation
+#LIBS += /home/barthess/projects/qextserialport-build-Som-Release/libqextserialport.so.1.2
+DEFINES += QEXTSERIALPORT_USING_SHARED

@@ -1,133 +1,42 @@
 #include <QtGui/QApplication>
 #include <QTextCodec>
 #include <QPlastiqueStyle>
+#include <QSettings>
 #include "Window.h"
-#include <QMessageBox>
+#include "qextserialport.h"
 
-SerialPort *OpenSerial( char *comm, int baudrate )
-{
-   SerialPort *sp = new SerialPort();
-
-   sp->setPort( QString( comm ) );
-
-   if ( !sp->open( QIODevice::ReadWrite ) )
-   {
-      return NULL;
-   }
-
-   if ( !sp->setRate( baudrate ) )
-   {
-      return NULL;
-   }
-
-   if ( !sp->setDataBits( SerialPort::Data8 ) )
-   {
-      return NULL;
-   }
-
-   if ( !sp->setParity( SerialPort::NoParity ) )
-   {
-      return NULL;
-   }
-
-   if ( !sp->setStopBits( SerialPort::OneStop ) )
-   {
-      return NULL;
-   }
-
-   if ( !sp->setFlowControl( SerialPort::NoFlowControl ) )
-   {
-      return NULL;
-   }
-
-   return sp;
-}
-
+#define DEFAULT_PORT_NAME   "/dev/ttyS0"
 
 int main( int argc, char *argv[] )
 {
-   QApplication a(argc, argv);
-   a.setStyle( new QPlastiqueStyle() );
+    bool need_config_sync = false;
+    int timeout = 3000;
+    int timezone = 0;
 
-   //QTextCodec *codec = QTextCodec::codecForName( "WINDOWS-1251" );
-   QTextCodec *codec = QTextCodec::codecForName( "utf8" );
-   QTextCodec::setCodecForTr( codec );
+    QApplication a(argc, argv);
 
-   char comm[256];
+    QTextCodec *codec = QTextCodec::codecForName("utf8");
+    QTextCodec::setCodecForTr( codec );
 
-   strcpy( comm, "/dev/ttyO0");
+    QCoreApplication::setOrganizationName("Kamerton UberS0ft");
+    QCoreApplication::setApplicationName("telemetry");
 
-   int baudrate = 115200;
-   int timezone = 3;
-   int timeout  = 3000;
+    QSettings *config = new QSettings("telemetry.cfg", QSettings::NativeFormat);
+    if (!config->contains("port"))
+        need_config_sync = true;
 
-   QMessageBox *box = new QMessageBox();
+    QString portname = config->value("port", DEFAULT_PORT_NAME).toString();
+    config->setValue("port", portname);
+    if (need_config_sync)
+        config->sync();
 
-   try
-   {
-      int i = 1;
+    QextSerialPort *p = new QextSerialPort(portname);
+    p->open(QextSerialPort::ReadWrite);
+    p->setBaudRate(BAUD115200);
 
-      while ( --argc > 0 )
-      {
-         if ( !strcmp( argv[ i ], "-d" ) )
-         { 
-            strcpy( comm, argv[ i + 1 ] );
-         }
-         else
-         if ( !strcmp( argv[ i ], "-b" ) )
-         { 
-            baudrate = atoi( argv[ i + 1 ] );
+    Window *window = new Window(p, timeout, timezone);
 
-            if ( !baudrate )
-            {
-               throw 2;
-            }
-         }
-         else
-         if ( !strcmp( argv[ i ], "-z" ) )
-         { 
-            timezone = atoi( argv[ i + 1 ] );
-         }
-         else
-         if ( !strcmp( argv[ i ], "-t" ) )
-         {
-            timeout = atoi( argv[ i + 1 ] );
-
-            if ( !timeout )
-            {
-               throw 4;
-            }
-         }
-         else
-         {
-            throw 0;
-         }
-
-         i    += 2;
-         argc -= 2;
-      }
-
-      SerialPort *sp = OpenSerial( comm, baudrate );
-
-      if ( !sp )
-      {
-         box->setText( "Comm open error" );
-         box->exec();
-         return -1;
-      }
-
-      Window *window = new Window( sp, timeout, timezone );
-
-      window->show();
-
-      return a.exec();
-   }
-
-   catch( int )
-   { }
-
-   box->setText( "Invalid command line" );
-   box->exec();
-   return -1;
+    window->show();
+    return a.exec();
 }
 

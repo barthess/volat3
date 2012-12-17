@@ -8,7 +8,7 @@
 #include <math.h>
 #include "../../mavlink/C/oblique/mavlink.h"
 
-Window::Window( SerialPort *sp, int timeout, int timezone, QWidget *parent )
+Window::Window(QextSerialPort *sp, int timeout, int timezone, QWidget *parent)
 {
    setWindowFlags( Qt::FramelessWindowHint );
    setGeometry( 0, 0, 480, 272 );
@@ -44,31 +44,31 @@ void Window::InitWidgets( void )
    bBattery = false;
    Battery  = InitIcon( 375, 75, ":/images/icons/battery_red.png" );
 
-   FuelLevel    = InitLabel( 270, 140, 22, "--%", Qt::white );
-   BatteryLevel = InitLabel( 375, 140, 22, "--.-V", Qt::white );
+   FuelLevel    = InitLabel( 270, 140, 22, tr("--%"), Qt::white );
+   BatteryLevel = InitLabel( 375, 140, 22, tr("--.-V"), Qt::white );
 
    bBNAP = false;
-   BNAP  = InitLabel( 15, 65, 20, "БНАП", Qt::red );
+   BNAP  = InitLabel( 15, 65, 20, tr("БНАП"), Qt::red );
 
    bMPIOVD = false;
-   MPIOVD  = InitLabel( 15, 95, 20, "М  ПИОВД", Qt::red );
+   MPIOVD  = InitLabel( 15, 95, 20, tr("МПИОВД"), Qt::red );
 
    bCC = false;
-   CC  = InitLabel( 15, 125, 20, "ДЦ", Qt::red );
+   CC  = InitLabel( 15, 125, 20, tr("ДЦ"), Qt::red );
 
-   Time = InitLabel( 15, 155, 16, "--:--:--", Qt::white );
-   Date = InitLabel( 15, 185, 16, "--------", Qt::white );
+   Time = InitLabel( 15, 155, 16, tr("--:--:--"), Qt::white );
+   Date = InitLabel( 15, 185, 16, tr("--------"), Qt::white );
 
-   N = InitLabel( 15, 15, 14, "N:--,-----", Qt::white );
-   E = InitLabel( 15, 35, 14, "E:--,-----", Qt::white );
+   N = InitLabel( 15, 15, 14, tr("N:--,-----"), Qt::white );
+   E = InitLabel( 15, 35, 14, tr("E:--,-----"), Qt::white );
 
-   H = InitLabel  ( 145, 15, 14, "H  :---", Qt::white );
-   Vel = InitLabel( 145, 35, 14, "Vel:---", Qt::white );
-   Cog = InitLabel( 145, 55, 14, "Cog:---", Qt::white );
-   Fix = InitLabel( 145, 75, 14, "Fix:---", Qt::white );
-   Sat = InitLabel( 145, 95, 14, "Sat:---", Qt::white );
-   Eph = InitLabel( 145, 115, 14, "Eph:---", Qt::white );
-   GSM = InitLabel( 145, 185, 14, "GSM:---", Qt::white );
+   H = InitLabel  ( 145, 15, 14, tr("H  :---"), Qt::white );
+   Vel = InitLabel( 145, 35, 14, tr("Vel:---"), Qt::white );
+   Cog = InitLabel( 145, 55, 14, tr("Cog:---"), Qt::white );
+   Fix = InitLabel( 145, 75, 14, tr("Fix:---"), Qt::white );
+   Sat = InitLabel( 145, 95, 14, tr("Sat:---"), Qt::white );
+   Eph = InitLabel( 145, 115, 14, tr("Eph:---"), Qt::white );
+   GSM = InitLabel( 145, 185, 14, tr("GSM:---"), Qt::white );
 
    Message = new Clickable( "", this );
 
@@ -128,7 +128,7 @@ QLabel *Window::InitIcon( int x, int y, const char *path )
    return lab;
 }
 
-QLabel *Window::InitLabel( int x, int y, int h, char *text, QColor c )
+QLabel *Window::InitLabel( int x, int y, int h, QString text, QColor c )
 {
    QLabel *lab = new QLabel( this );
    //QFont     f = QFont( "Courier", h );
@@ -140,8 +140,8 @@ QLabel *Window::InitLabel( int x, int y, int h, char *text, QColor c )
 
    lab->setGeometry( x, y, 0, 0 );
    lab->setPalette( p );
-   lab->setFont( f );
-   lab->setText( tr( text ) );
+   lab->setFont(f);
+   lab->setText(text);
    lab->adjustSize();
 
    return lab;

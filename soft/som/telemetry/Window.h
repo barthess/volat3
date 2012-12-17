@@ -9,9 +9,7 @@
 #include "Clickable.h"
 #include <QTimer>
 #include <QList>
-#include "QtAddOnSerialPort/serialport.h"
-
-using namespace QtAddOn::SerialPort;
+#include "qextserialport.h"
 
 typedef struct
 {
@@ -23,17 +21,17 @@ class Window : public QMainWindow
 {
    Q_OBJECT
 public:
-   Window( SerialPort *sp, int timeout, int timezone, QWidget *parent = 0 );
+   Window( QextSerialPort *sp, int timeout, int timezone, QWidget *parent = 0 );
 
 private:
-   SerialPort *sp;
+   QextSerialPort *sp;
    int timeout;
    int baudrate;
    int timezone;
 
    void InitWidgets( void );
    QLabel *InitIcon( int x, int y, const char *path );
-   QLabel *InitLabel( int x, int y, int h, char *text, QColor c );
+   QLabel *InitLabel(int x, int y, int h, QString text, QColor c );
    void   SetColor  ( QLabel *lab, QColor c );
    void   SetText   ( QLabel *lab, QString text );
 
