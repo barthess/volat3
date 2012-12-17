@@ -8,5 +8,6 @@
         <file>images/icons/sun.png</file>
         <file>images/icons/mosfet.png</file>
         <file>images/icons/quality.png</file>
+        <file>images/icons/empty.png</file>
     </qresource>
 </RCC>

@@ -21,7 +21,8 @@ soft/face/tuner/pyqtgraph/
 *-build-Desktop-*
 moc_*.cpp
 qrc_resources.cpp
-ui_cam.h
+ui_*.h
 *.autosave
 */dm/dm
 soft/matrixgui/Makefile
+*.pro.user

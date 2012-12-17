@@ -14,12 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     matrixbutton.cpp \
-    matrixlabel.cpp
+    matrixlabel.cpp \
+    matrixgui.cpp
 
 HEADERS  += \
-    main.h \
     matrixbutton.h \
-    matrixlabel.h
+    matrixlabel.h \
+    matrixgui.h
 
 RESOURCES += \
     resources.qrc

@@ -1,16 +1,16 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MATRIXGUI_H
+#define MATRIXGUI_H
 
 #include <QtGui>
 #include "matrixbutton.h"
 #include "matrixlabel.h"
 
-class KamertonGui : public QWidget
+class MatrixGui : public QWidget
 {
     Q_OBJECT
 
 public:
-    KamertonGui();
+    MatrixGui(QSettings *config);
 
 private slots:
     void launchKamerton(void);
@@ -24,15 +24,7 @@ private slots:
 
 private:
     QProcess *process;
-
-    MatrixButton *sunButton;
-    MatrixButton *kamertonButton;
-    MatrixButton *fuelButton;
-    MatrixButton *q1Button;
-    MatrixButton *mosfetButton;
-    MatrixButton *stbButton;
-    MatrixButton *qualityButton;
-    MatrixButton *chibiButton;
+    void initButtonGrid(QGridLayout *lay, QSettings *config);
 };
 
-#endif // MAIN_H
+#endif // MATRIXGUI_H
