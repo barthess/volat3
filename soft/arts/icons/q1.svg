@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="40.262589"
+   height="55.879921"
+   id="svg3822"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="sun.svg">
+  <defs
+     id="defs3824" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="18.348858"
+     inkscape:cy="21.173079"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1600"
+     inkscape:window-height="850"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3827">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-165.19283,-985.07728)">
+    <path
+       d="m 183.24151,1023.5139 c -10.13149,-1.0634 -18.04868,-9.7076 -18.04868,-20.1152 0,-8.13712 4.82688,-15.14682 11.77379,-18.32142 l 0,0.6283 c -5.45806,2.9819 -9.16011,8.7743 -9.16011,15.43192 0,7.6094 6.73435,16.1921 15.43564,17.4234 0,-1.7723 0,-6.0075 0,-7.1917 -0.41229,-1.4258 -2.85118,-1.4657 -2.85118,-1.4657 v -0.4459 h 9.91046 v 0.4459 c 0,0 -2.43721,0.04 -2.85124,1.4657 0,1.1842 0,5.4211 0,7.1917 8.54015,-1.052 15.50004,-8.4393 15.50004,-17.4234 0,-6.70502 -3.73782,-12.46282 -9.23829,-15.43192 v -0.6283 c 6.93029,3.1813 11.74348,10.2032 11.74348,18.32822 0,10.9765 -7.87843,19.1118 -18.00587,20.1084 v 0.015 l -1.6e-4,6.3879 -2.2135,11.0404 -1.99769,-11.0404 v -6.394 z"
+       id="path12"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/mnt/work/projects/volat3/soft/matrixgui/images/icons/q1.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       style="fill:#ffffff;fill-opacity:1">
+      <title
+         id="title3031">q1</title>
+    </path>
+  </g>
+</svg>

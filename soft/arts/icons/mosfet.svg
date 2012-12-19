@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="49.372284"
+   height="51.771118"
+   id="svg3822"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="fuel.svg">
+  <defs
+     id="defs3824" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="66.235988"
+     inkscape:cy="27.854922"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1600"
+     inkscape:window-height="850"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3827">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-117.3057,-995.86793)">
+    <g
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="g3411"
+       transform="matrix(0.02818064,0,0,0.02818064,108.3423,987.73974)"
+       inkscape:export-filename="/mnt/work/projects/volat3/soft/matrixgui/images/icons/mosfet.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         transform="translate(0,-0.285)"
+         id="circle10"
+         d="m 1224.9688,330.1875 c -466.73922,0 -845.0938,378.35458 -845.0938,845.0937 0,466.7392 378.35458,845.125 845.0938,845.125 466.7391,0 845.0937,-378.3858 845.0937,-845.125 0,-466.73912 -378.3546,-845.0937 -845.0937,-845.0937 z m 0,80.09375 c 422.4917,0 765,342.50823 765,764.99995 0,422.4918 -342.5083,765 -765,765 -422.49182,0 -765.00005,-342.5082 -765.00005,-765 0,-422.49172 342.50823,-764.99995 765.00005,-764.99995 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         d="m 111.125,20.9375 0,10.75 -15.78125,0 0,-2.5625 -1.71875,0 0,6.84375 1.71875,0 0,-2.59375 15.78125,0 0,16.46875 -6.84375,0 0,-7.6875 0,-1.6875 -4.21875,0 0,-1.90625 -4.71875,2.75 4.71875,2.84375 0,-2 2.53125,0 0,7.6875 -7.25,0 0,-2.59375 -1.71875,0 0,6.84375 1.71875,0 0,-2.5625 15.78125,0 0,11 1.6875,0 0,-41.59375 -1.6875,0 z"
+         transform="matrix(44.16809,0,0,44.16809,-3208.4765,-636.33783)"
+         id="polygon14"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         d="m 88.0625,31.71875 0,17.375 -8.21875,0 0,1.71875 9.90625,0 0,-1.71875 0,-17.375 -1.6875,0 z"
+         transform="matrix(44.16809,0,0,44.16809,-3208.4765,-636.33783)"
+         id="rect16"
+         inkscape:connector-curvature="0" />
+      <rect
+         class="fil0 str0"
+         x="927.45099"
+         y="1043.55"
+         width="74.625397"
+         height="301.48199"
+         id="rect20"
+         style="fill:#ffffff;fill-opacity:1;stroke:none" />
+      <path
+         id="polygon36"
+         d="m 1625.545,1054.031 208.49,0 31.08,-31.07 39.27,39.41 -67.03,66.28 -207.67,0 -31.4,32.16 -40.08,-40.22 z"
+         style="fill:#ffffff;fill-opacity:1;stroke:none"
+         inkscape:connector-curvature="0" />
+      <polygon
+         class="fil0 str0"
+         points="1921.69,1369.28 1553.4,1369.28 1736.66,1066.81 "
+         id="polygon38"
+         style="fill:#ffffff;fill-opacity:1;stroke:none" />
+    </g>
+  </g>
+</svg>
