@@ -9,8 +9,8 @@ void MatrixGui::initButtonGrid(QGridLayout *lay, QSettings *config){
     bool need_sync = false;
     int rows, columns;
 
-    rows    = config->value("rows",     0).toInt();
-    columns = config->value("columns",  0).toInt();
+    rows    = config->value("layout/rows",      0).toInt();
+    columns = config->value("layout/columns",   0).toInt();
     QString name = config->fileName();
 
     if ((rows == 0) || (columns == 0)){
@@ -47,14 +47,19 @@ void MatrixGui::initButtonGrid(QGridLayout *lay, QSettings *config){
 
 MatrixGui::MatrixGui(QSettings *config){
     QPalette p;
-    p.setColor(QPalette::Window, Qt::black);
+    int r,g,b;
+
+    r = config->value("background/red",     0).toInt();
+    g = config->value("background/green",   0).toInt();
+    b = config->value("background/blue",    0).toInt();
+
+    p.setColor(QPalette::Window, QColor(r, g, b));
+    //p.setColor(QPalette::Window, Qt::black);
     this->setPalette(p);
 
     this->setGeometry(0, 0, 480, 272);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setWindowTitle(QObject::tr("ÜberShell"));
-
-
 
     QGridLayout *buttonLayout = new QGridLayout();
     initButtonGrid(buttonLayout, config);

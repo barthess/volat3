@@ -14,7 +14,8 @@ Window::Window(QextSerialPort *sp, int timeout, int timezone, QWidget *parent)
    setGeometry( 0, 0, 480, 272 );
 
    QPalette p = this->palette();
-   p.setColor( QPalette::Window, Qt::black );
+   p.setColor( QPalette::Window,  QColor(0, 40, 65));
+   //p.setColor( QPalette::Window, Qt::black );
    setPalette( p );
 
    this->sp       = sp;
@@ -78,7 +79,7 @@ void Window::InitWidgets( void )
    Message->setAutoFillBackground( true );
 
    p = Message->palette();
-   p.setColor( QPalette::Window,  Qt::black);
+   //p.setColor( QPalette::Window,  Qt::black);
    p.setColor( QPalette::WindowText, QColor( 255, 0, 0 ));
 
    Message->setAlignment( Qt::AlignCenter );

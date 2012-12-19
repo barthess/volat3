@@ -11,7 +11,7 @@ MatrixLabel::MatrixLabel(const QString &text, QWidget *parent) :
 
     this->setAutoFillBackground(true);
     p = this->palette();
-    p.setColor(QPalette::Window,  Qt::black);
+    //p.setColor(QPalette::Window,  Qt::black);
     p.setColor(QPalette::WindowText, Qt::white);
 
     this->setAlignment(Qt::AlignCenter);
