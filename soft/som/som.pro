@@ -4,7 +4,8 @@ SUBDIRS += \
     tester \
     matrixgui \
     telemetry \
-    qextserialport
+    qextserialport \
+    hello
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/qextserialport/release/ -lqextserialport
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/qextserialport/debug/ -lqextserialport

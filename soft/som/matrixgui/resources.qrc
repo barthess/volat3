@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/icons/chibi.png</file>
         <file>images/icons/fuel.png</file>
         <file>images/icons/kamerton.png</file>
         <file>images/icons/q1.png</file>
@@ -9,5 +8,8 @@
         <file>images/icons/mosfet.png</file>
         <file>images/icons/quality.png</file>
         <file>images/icons/empty.png</file>
+        <file>images/icons/lizard.png</file>
+        <file>images/icons/not_found.png</file>
+        <file>images/icons/yinyang.png</file>
     </qresource>
 </RCC>
