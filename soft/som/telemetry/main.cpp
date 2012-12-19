@@ -18,15 +18,17 @@ int main( int argc, char *argv[] )
     QTextCodec *codec = QTextCodec::codecForName("utf8");
     QTextCodec::setCodecForTr( codec );
 
-    QCoreApplication::setOrganizationName("Kamerton UberS0ft");
+    QCoreApplication::setOrganizationName("KamertonUberSoft");
     QCoreApplication::setApplicationName("telemetry");
-
-    QSettings *config = new QSettings("telemetry.cfg", QSettings::NativeFormat);
+    QSettings *config = new QSettings(QSettings::IniFormat, QSettings::UserScope,
+                                      QCoreApplication::organizationName(),
+                                      QCoreApplication::applicationName());
     if (!config->contains("port"))
         need_config_sync = true;
 
     QString portname = config->value("port", DEFAULT_PORT_NAME).toString();
     config->setValue("port", portname);
+
     if (need_config_sync)
         config->sync();
 

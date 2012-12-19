@@ -8,11 +8,11 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QCoreApplication::setOrganizationName("Kamerton UberS0ft");
+    QCoreApplication::setOrganizationName("KamertonUberSoft");
     QCoreApplication::setApplicationName("tester");
-
-    QSettings *config = new QSettings("tester.cfg", QSettings::NativeFormat);
-
+    QSettings *config = new QSettings(QSettings::IniFormat, QSettings::UserScope,
+                                      QCoreApplication::organizationName(),
+                                      QCoreApplication::applicationName());
     QString portname = config->value("port", DEFAULT_PORT_NAME).toString();
     config->setValue("port", portname);
     config->sync();

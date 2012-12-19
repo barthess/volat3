@@ -7,16 +7,17 @@
 
 void MatrixGui::initButtonGrid(QGridLayout *lay, QSettings *config){
     bool need_sync = false;
-    int rows = DEFAULT_ROWS_COUNT;
-    int columns = DEFAULT_COLUMNS_COUNT;
+    int rows, columns;
 
-    if (config->contains("rows") && config->contains("columns")){
-        rows    = config->value("rows",     DEFAULT_ROWS_COUNT).toInt();
-        columns = config->value("columns",  DEFAULT_COLUMNS_COUNT).toInt();
-    }
-    else{
+    rows    = config->value("rows",     0).toInt();
+    columns = config->value("columns",  0).toInt();
+    QString name = config->fileName();
+
+    if ((rows == 0) || (columns == 0)){
         config->setValue("rows",    DEFAULT_ROWS_COUNT);
         config->setValue("columns", DEFAULT_COLUMNS_COUNT);
+        rows = DEFAULT_ROWS_COUNT;
+        columns = DEFAULT_COLUMNS_COUNT;
         need_sync = true;
     }
 

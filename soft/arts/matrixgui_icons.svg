@@ -25,8 +25,8 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="293.29029"
-     inkscape:cy="912.33328"
+     inkscape:cx="232.21665"
+     inkscape:cy="969.76464"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -384,5 +384,62 @@
          x="302.30518"
          y="115.85657"
          style="font-weight:bold;fill:#ffffff;fill-opacity:1">Empty</tspan></text>
+    <g
+       transform="matrix(0.10648462,0,0,0.10648462,310.46699,20.81629)"
+       id="g3763"
+       inkscape:export-filename="/mnt/work/projects/volat3/soft/som/matrixgui/images/icons/yinyang.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <circle
+         d="M 464,233 C 464,360.57778 360.57778,464 233,464 105.42222,464 2,360.57778 2,233 2,105.42222 105.42222,2 233,2 360.57778,2 464,105.42222 464,233 z"
+         sodipodi:ry="231"
+         sodipodi:rx="231"
+         sodipodi:cy="233"
+         sodipodi:cx="233"
+         style="fill:#ffffff;fill-opacity:1"
+         id="circle4"
+         r="231"
+         cy="233"
+         cx="233"
+         transform="matrix(1.03,0,0,1.03,-6.99,-6.99)" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#000000;fill-opacity:1"
+         id="path6"
+         d="m 233,459 a 226,226 0 0 1 0,-452 113,113 0 0 1 0,226 z" />
+      <circle
+         d="m 346,346 c 0,62.40818 -50.59182,113 -113,113 -62.40818,0 -113,-50.59182 -113,-113 0,-62.40818 50.59182,-113 113,-113 62.40818,0 113,50.59182 113,113 z"
+         sodipodi:ry="113"
+         sodipodi:rx="113"
+         sodipodi:cy="346"
+         sodipodi:cx="233"
+         style="fill:#ffffff;fill-opacity:1"
+         id="circle8"
+         r="113"
+         cy="346"
+         cx="233" />
+      <circle
+         d="m 263,120 c 0,16.56854 -13.43146,30 -30,30 -16.56854,0 -30,-13.43146 -30,-30 0,-16.56854 13.43146,-30 30,-30 16.56854,0 30,13.43146 30,30 z"
+         sodipodi:ry="30"
+         sodipodi:rx="30"
+         sodipodi:cy="120"
+         sodipodi:cx="233"
+         style="fill:#ffffff;fill-opacity:1"
+         id="circle10-5"
+         r="30"
+         cy="120"
+         cx="233" />
+      <circle
+         d="m 263,346 c 0,16.56854 -13.43146,30 -30,30 -16.56854,0 -30,-13.43146 -30,-30 0,-16.56854 13.43146,-30 30,-30 16.56854,0 30,13.43146 30,30 z"
+         sodipodi:ry="30"
+         sodipodi:rx="30"
+         sodipodi:cy="346"
+         sodipodi:cx="233"
+         style="fill:#000000;fill-opacity:1"
+         id="circle12"
+         r="30"
+         cy="346"
+         cx="233" />
+    </g>
   </g>
 </svg>
