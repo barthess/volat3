@@ -30,6 +30,6 @@ while m is None:
 
 print "Got it!"
 while True:
-    mav.mpiovd_agps_send(20, 0, "")
+    mav.oblique_agps_send(20, 0, "")
     print "Assistant sent"
     time.sleep(2)
