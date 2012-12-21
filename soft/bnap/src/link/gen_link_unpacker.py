@@ -2,7 +2,7 @@
 
 names = {
         "Dm" : ["command_long", "param_request_read", "param_request_list", "param_set", "oblique_storage_request_dm", "oblique_storage_request_count_dm", "heartbeat_dm"],
-        "Cc" : ["command_long", "param_request_read", "param_request_list", "param_set", "oblique_storage_request_cc", "oblique_storage_request_count_cc", "heartbeat_cc", "statustext"]
+        "Cc" : ["command_long", "param_request_read", "param_request_list", "param_set", "oblique_storage_request_cc", "oblique_storage_request_count_cc", "heartbeat_cc", "statustext", "oblique_agps"]
         }
 
 

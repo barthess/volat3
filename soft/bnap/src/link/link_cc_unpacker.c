@@ -24,6 +24,7 @@ extern mavlink_oblique_storage_request_cc_t mavlink_oblique_storage_request_cc_s
 extern mavlink_oblique_storage_request_count_cc_t mavlink_oblique_storage_request_count_cc_struct;
 extern mavlink_heartbeat_cc_t mavlink_heartbeat_cc_struct;
 extern mavlink_statustext_t mavlink_statustext_struct;
+extern mavlink_oblique_agps_t mavlink_oblique_agps_struct;
 
 extern EventSource event_mavlink_command_long;
 extern EventSource event_mavlink_param_request_read;
@@ -33,6 +34,7 @@ extern EventSource event_mavlink_oblique_storage_request_cc;
 extern EventSource event_mavlink_oblique_storage_request_count_cc;
 extern EventSource event_mavlink_heartbeat_cc;
 extern EventSource event_mavlink_statustext;
+extern EventSource event_mavlink_oblique_agps;
 
 
 /**
@@ -111,6 +113,12 @@ void CcUnpackCycle(SerialDriver *sdp){
           mavlink_msg_statustext_decode(&msg, &mavlink_statustext_struct);
 //          if (mavlink_statustext_struct.target_system == mavlink_system_struct.sysid)
             chEvtBroadcastFlags(&event_mavlink_statustext, EVMSK_MAVLINK_STATUSTEXT);
+          break;
+
+        case MAVLINK_MSG_ID_OBLIQUE_AGPS:
+          mavlink_msg_oblique_agps_decode(&msg, &mavlink_oblique_agps_struct);
+          if (mavlink_oblique_agps_struct.target_system == mavlink_system_struct.sysid)
+            chEvtBroadcastFlags(&event_mavlink_oblique_agps, EVMSK_MAVLINK_OBLIQUE_AGPS);
           break;
 
 
