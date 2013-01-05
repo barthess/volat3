@@ -170,10 +170,10 @@ INCDIR = $(PORTINC) $(KERNINC) $(TESTINC) \
 MCU  = arm7tdmi -lm
 
 TRGT = arm-none-eabi-
-CC   = ccache $(TRGT)gcc
-LD   = ccache $(TRGT)gcc
-#CC   = $(TRGT)gcc
-#LD   = $(TRGT)gcc
+#CC   = ccache $(TRGT)gcc
+#LD   = ccache $(TRGT)gcc
+CC   = $(TRGT)gcc
+LD   = $(TRGT)gcc
 
 #CPPC = $(TRGT)g++
 # Enable loading with g++ only if you need C++ runtime support.
