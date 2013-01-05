@@ -8,7 +8,7 @@
 #include <math.h>
 #include "../../mavlink/C/oblique/mavlink.h"
 
-Window::Window(QextSerialPort *sp, int timeout, int timezone, QWidget *parent)
+HUD2::HUD2(QextSerialPort *sp, int timeout, int timezone, QWidget *parent)
 {
    setWindowFlags( Qt::FramelessWindowHint );
    setGeometry( 0, 0, 480, 272 );
@@ -29,7 +29,7 @@ Window::Window(QextSerialPort *sp, int timeout, int timezone, QWidget *parent)
    InitWidgets();
 }
 
-void Window::InitWidgets( void )
+void HUD2::InitWidgets( void )
 {
    QPalette p;
    QFont    f;
@@ -100,7 +100,7 @@ void Window::InitWidgets( void )
    Timer->start( 1000 );
 }
 
-void Window::Timeout( void )
+void HUD2::Timeout( void )
 {
    SetColor( BNAP,   bBNAP   ? Qt::green : Qt::red );
    SetColor( MPIOVD, bMPIOVD ? Qt::green : Qt::red );
@@ -118,7 +118,7 @@ void Window::Timeout( void )
    Timer->start( timeout );
 }
 
-QLabel *Window::InitIcon( int x, int y, const char *path )
+QLabel *HUD2::InitIcon( int x, int y, const char *path )
 {
    QPixmap pix = QPixmap( path );
    QLabel *lab = new QLabel( this );
@@ -129,7 +129,7 @@ QLabel *Window::InitIcon( int x, int y, const char *path )
    return lab;
 }
 
-QLabel *Window::InitLabel( int x, int y, int h, QString text, QColor c )
+QLabel *HUD2::InitLabel( int x, int y, int h, QString text, QColor c )
 {
    QLabel *lab = new QLabel( this );
    //QFont     f = QFont( "Courier", h );
@@ -148,30 +148,30 @@ QLabel *Window::InitLabel( int x, int y, int h, QString text, QColor c )
    return lab;
 }
 
-void Window::SetText( QLabel *lab, QString text )
+void HUD2::SetText( QLabel *lab, QString text )
 {
    lab->setText( text );
    lab->adjustSize();
 }
 
-void Window::SetColor( QLabel *lab, QColor c )
+void HUD2::SetColor( QLabel *lab, QColor c )
 {
    QPalette p = lab->palette();
    p.setColor( QPalette::WindowText, c );
    lab->setPalette( p );
 }
 
-void Window::MessageClicked( void )
+void HUD2::MessageClicked( void )
 {
       Message->setText(QString(""));
 }
 
-void Window::CloseClicked( void )
+void HUD2::CloseClicked( void )
 {
    this->close();
 }
 
-void Window::ReceiveData( void )
+void HUD2::ReceiveData( void )
 {
    static mavlink_message_t r_message;
    static mavlink_status_t  r_mavlink_status;

@@ -36,7 +36,7 @@ int main( int argc, char *argv[] )
     p->open(QextSerialPort::ReadWrite);
     p->setBaudRate(BAUD115200);
 
-    Window *window = new Window(p, timeout, timezone);
+    HUD2 *window = new HUD2(p, timeout, timezone);
 
     window->show();
     return a.exec();

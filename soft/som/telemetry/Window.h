@@ -17,11 +17,11 @@ typedef struct
    QString text;
 }  Msg;
 
-class Window : public QMainWindow
+class HUD2 : public QMainWindow
 {
    Q_OBJECT
 public:
-   Window( QextSerialPort *sp, int timeout, int timezone, QWidget *parent = 0 );
+   HUD2( QextSerialPort *sp, int timeout, int timezone, QWidget *parent = 0 );
 
 private:
    QextSerialPort *sp;

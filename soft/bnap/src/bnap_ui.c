@@ -24,8 +24,11 @@
  * EXTERNS
  ******************************************************************************
  */
+extern mavlink_mpiovd_sensors_t       mavlink_mpiovd_sensors_struct;
+
 extern EventSource event_mavlink_heartbeat_cc;
 extern EventSource event_mavlink_gps_raw_int;
+extern EventSource event_mavlink_mpiovd_sensors;
 extern GlobalFlags_t GlobalFlags;
 
 /*
@@ -50,6 +53,34 @@ static const uint32_t *blink_gsm = NULL;
  ******************************************************************************
  */
 
+/**
+ *
+ */
+static WORKING_AREA(AnalogAlarmThreadWA, 56);
+static msg_t AnalogAlarmThread(void *arg) {
+  chRegSetThreadName("AnanlogAlarm");
+  (void)arg;
+
+  struct EventListener el_mavlink_mpiovd_sensors;
+  chEvtRegisterMask(&event_mavlink_mpiovd_sensors, &el_mavlink_mpiovd_sensors, EVMSK_MAVLINK_MPIOVD_SENSORS);
+
+  while (!chThdShouldTerminate()) {
+    chEvtWaitOne(EVMSK_MAVLINK_MPIOVD_SENSORS);
+    if ((mavlink_mpiovd_sensors_struct.analog01 < 10) ||
+        (mavlink_mpiovd_sensors_struct.analog02 < 10) ||
+        (mavlink_mpiovd_sensors_struct.analog03 < 10) ||
+        (mavlink_mpiovd_sensors_struct.analog04 < 10)){
+      mavlink_dbg_print(MAV_SEVERITY_ALERT, "Sensors alarm!");
+    }
+  }
+
+  chThdExit(0);
+  return 0;
+}
+
+/**
+ *
+ */
 static WORKING_AREA(UiAlertBtnThreadWA, 56);
 static msg_t UiAlertBtnThread(void *arg) {
   chRegSetThreadName("UiAlertBtn");
@@ -154,6 +185,12 @@ void UiInit(void){
           sizeof(GpsLedThreadWA),
           UITREAD_PRIO,
           GpsLedThread,
+          NULL);
+
+  chThdCreateStatic(AnalogAlarmThreadWA,
+          sizeof(AnalogAlarmThreadWA),
+          UITREAD_PRIO,
+          AnalogAlarmThread,
           NULL);
 }
 
