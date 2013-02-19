@@ -1,4 +1,0 @@
-func void portA(unsigned int uX)
-{
-  PORTA = uX;
-}
